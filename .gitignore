@@ -1,0 +1,12 @@
+# Personal data -- never commit watch history or anything derived from it
+*.jsonl
+watch-history.html
+search-history.html
+report.json
+Takeout*/
+
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
