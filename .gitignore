@@ -5,6 +5,8 @@ search-history.html
 report.json
 minutes.json
 listening.html
+static.html
+*.png
 Takeout*/
 
 __pycache__/

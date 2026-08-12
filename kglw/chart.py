@@ -33,7 +33,11 @@ COL_GAP = 2
 # pushed the busiest years off the right edge behind a scrollbar, hiding the
 # peak: the reader saw a flat chart and no reason to scroll.
 PLOT_TARGET_W = 566
+# A static export has no tooltip, so it is rendered wider and carries direct
+# value labels on its tallest columns instead.
+STATIC_TARGET_W = 1080
 MIN_COL_W = 3
+MAX_COL_W = 24
 
 
 def nice_ticks(top: float, count: int = 4) -> list[float]:
@@ -57,10 +61,17 @@ def pretty_month(month: str) -> str:
     return f"{MONTH_NAMES[int(month[5:7]) - 1]} {month[:4]}"
 
 
-def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
+def build(
+    report: dict,
+    top_n: int = 6,
+    since: str | None = None,
+    static: bool = False,
+    target_w: int | None = None,
+) -> str:
     all_months = report["months"]
     months = [m for m in all_months if not since or m >= since]
-    col_w = max(MIN_COL_W, round(PLOT_TARGET_W / max(len(months), 1)) - COL_GAP)
+    width_budget = target_w or (STATIC_TARGET_W if static else PLOT_TARGET_W)
+    col_w = min(MAX_COL_W, max(MIN_COL_W, round(width_budget / max(len(months), 1)) - COL_GAP))
     by_month_album = report["minutes_by_month_album"]
     titles = report["album_titles"]
 
@@ -102,6 +113,7 @@ def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
 
     # --- columns ---
     columns = []
+    stack_px: dict[str, float] = {}
     for month in months:
         totals = stacks[month]
         present = [(key, totals.get(key, 0)) for key in order if totals.get(key, 0) > 0]
@@ -122,6 +134,9 @@ def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
             "total": round(month_totals[month], 1),
             "items": breakdown,
         }), quote=True)
+        stack_px[month] = sum(
+            max(minutes * scale, 1.5) for _, minutes in present
+        ) + COL_GAP * max(len(present) - 1, 0)
         columns.append(
             f'<button class="col" type="button" data-d="{payload}" '
             f'aria-label="{month}: {month_totals[month]:,.0f} minutes">'
@@ -150,6 +165,23 @@ def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
         x_labels.append(
             f'<i class="xtick end">{html.escape(pretty_month(months[-1]))}</i>'
         )
+
+    # A PNG has no hover, so the extremes are labelled on the mark itself.
+    # Selective by design -- a number on every column would be unreadable.
+    value_labels = ""
+    if static and months:
+        peaks = sorted(months, key=lambda m: -month_totals[m])[:3]
+        parts = []
+        for month in peaks:
+            if month_totals[month] <= 0:
+                continue
+            index = months.index(month)
+            centre = index * (col_w + COL_GAP) + col_w / 2
+            parts.append(
+                f'<i class="vlabel" style="left:{centre:.1f}px;'
+                f'bottom:{stack_px[month] + 6:.1f}px">{month_totals[month]:,.0f}</i>'
+            )
+        value_labels = "".join(parts)
 
     # --- legend ---
     legend = "".join(
@@ -200,7 +232,7 @@ def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
     total_plays = sum(src.values())
     counted = total_plays - src.get("none", 0)
 
-    page = TEMPLATE
+    page = STATIC_TEMPLATE if static else TEMPLATE
     replacements = {
         "__COLOURS_LIGHT__": colour_vars_light,
         "__COLOURS_DARK__": colour_vars_dark,
@@ -218,6 +250,8 @@ def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
         "__COL_W__": str(col_w),
         "__COL_GAP__": str(COL_GAP),
         "__WIDTH__": str(len(months) * (col_w + COL_GAP)),
+        # y-axis (34) + gap (10) + plot + horizontal padding (34 each side)
+        "__TOTALW__": str(len(months) * (col_w + COL_GAP) + 34 + 10 + 68),
         "__GRID__": gridlines,
         "__YLAB__": y_labels,
         "__XLAB__": "".join(x_labels),
@@ -226,6 +260,8 @@ def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
         "__ROWS__": "".join(rows),
         "__MONTHROWS__": month_rows,
         "__WINDOW__": window_note,
+        "__VLAB__": value_labels,
+        "__SUBTITLE__": window_note or "Each column is one month.",
     }
     for token, value in replacements.items():
         page = page.replace(token, value)
@@ -475,19 +511,82 @@ summary { cursor: pointer; font-size: 13px; color: var(--ink-2); }
 """
 
 
+
+# The static export reuses the page's CSS so both renders stay in step.
+_CSS = TEMPLATE.split("<style>", 1)[1].split("</style>", 1)[0]
+
+_STATIC_CSS = """
+body { background: var(--surface); }
+.export { width: __TOTALW__px; padding: 30px 34px 26px; background: var(--surface); }
+.export h1 { font-size: 21px; margin: 0; letter-spacing: -0.01em; }
+.export .sub { font-size: 13px; color: var(--ink-2); margin: 7px 0 0; max-width: 92ch; }
+.export .scroll { overflow: visible; padding-top: 22px; }
+.yunit {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; color: var(--muted); letter-spacing: .08em;
+  text-transform: uppercase; margin-bottom: 12px; text-align: right; width: 34px;
+}
+.vlabel {
+  position: absolute; transform: translateX(-50%);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums; font-size: 11px; font-weight: 600;
+  color: var(--ink); font-style: normal; white-space: nowrap;
+}
+.foot {
+  margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--hair);
+  font-size: 11.5px; color: var(--muted); line-height: 1.5;
+}
+.export .legend { margin-top: 16px; }
+.export .col { cursor: default; }
+"""
+
+STATIC_TEMPLATE = (
+    "<title>Gizzard Hours</title>\n<style>"
+    + _CSS
+    + _STATIC_CSS
+    + """</style>
+<div class="export">
+  <h1>King Gizzard &amp; the Lizard Wizard — minutes listened per month</h1>
+  <p class="sub">__SUBTITLE__</p>
+  <div class="scroll">
+    <div class="plotwrap">
+      <div>
+        <div class="yunit">min</div>
+        <div class="yaxis">__YLAB__</div>
+      </div>
+      <div class="plot">__GRID__<div class="cols">__COLS__</div>__VLAB__</div>
+    </div>
+    <div class="xaxis">__XLAB__</div>
+  </div>
+  <div class="legend">__LEGEND__</div>
+  <p class="foot">
+    Reconstructed from Google Takeout YouTube watch history; track durations from MusicBrainz.
+    Watch history records that something played, never for how long, so every play is counted as running
+    to completion — these are upper bounds. Concert footage and bootlegs count as listening;
+    interviews, reactions and podcasts do not. __TOTAL_PLAYS__ plays analysed.
+  </p>
+</div>
+"""
+)
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("input", help="minutes report JSON from kglw.minutes --json")
     ap.add_argument("-o", "--output", default="listening.html")
     ap.add_argument("--top", type=int, default=6, help="albums given their own colour")
     ap.add_argument("--since", help="first month to plot, e.g. 2023-01")
+    ap.add_argument("--static", action="store_true",
+                    help="chart-only render for image export (adds value labels)")
+    ap.add_argument("--width", type=int, help="plot width budget in px")
     args = ap.parse_args(argv)
 
     with open(args.input, "r", encoding="utf-8") as fh:
         report = json.load(fh)
 
     with open(args.output, "w", encoding="utf-8") as fh:
-        fh.write(build(report, top_n=args.top, since=args.since))
+        fh.write(build(report, top_n=args.top, since=args.since,
+                       static=args.static, target_w=args.width))
     print(f"wrote {args.output}")
     return 0
 

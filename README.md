@@ -68,6 +68,26 @@ counts. Requiring a *share* of the channel's catalogue rather than a raw hit
 count keeps big unrelated channels out when one song title happens to collide —
 without it, Fleetwood Mac and Daft Punk get pulled in.
 
+## Exporting an image
+
+For embedding in a post or slide deck. The static render drops the tooltip and
+carries direct value labels on its tallest columns instead, plus a caption
+naming the sources and the counting rules, so the image stands alone:
+
+```bash
+python3 -m kglw.chart minutes.json --since 2023-01 --static -o static.html
+python3 tools/export_png.py static.html -o chart.png            # light
+python3 tools/export_png.py static.html -o chart-dark.png --theme dark
+```
+
+Output is 2x for retina (~2400px wide). PNG export is the only part of the
+project with a dependency, kept in `tools/` so the analysis stays
+standard-library only:
+
+```bash
+pip install playwright && playwright install chromium
+```
+
 ## Reading the output
 
 Two rankings, because "listened to most" is genuinely ambiguous:
@@ -93,6 +113,9 @@ taken on trust.
   listens. This is the bulk of what stays unmatched.
 - Medleys and mashups ("Gaia/Motor Spirit Live at Red Rocks", "Murder of the
   Nonagon Fuzz") name several tracks at once and are left unattributed.
+- A single video matching a huge release group (the "Live at Red Rocks '22"
+  box is 8.5 hours) is scaled down to a 2-hour ceiling and flagged, since no
+  upload runs that long and watch history carries no duration to check against.
 - Timezone abbreviations are mapped through a fixed table; an export from a
   zone outside that table keeps its local wall-clock time but gets no UTC
   instant.
