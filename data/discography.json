@@ -1,0 +1,6059 @@
+{
+ "artist": "King Gizzard & the Lizard Wizard",
+ "artist_mbid": "f58384a4-2ad2-4f24-89c5-c7b74ae1cce7",
+ "source": "musicbrainz.org",
+ "albums": [
+  {
+   "id": "00cee1ac-7be8-480e-8c38-dbf810e13991",
+   "title": "Live in Vancouver ’24",
+   "first_release_date": "2024-09-15",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Doom City (live)",
+    "Minimum Brain Size (live)",
+    "Nuclear Fusion (live)",
+    "Pleura (live)",
+    "Straws in the Wind (live)",
+    "Mars for the Rich (live)",
+    "Dragon (live)",
+    "Flamethrower (live)",
+    "Raw Feel (live)",
+    "The Garden Goblin (live)",
+    "Swan Song (live)",
+    "Set (live)",
+    "Antarctica (live)",
+    "Rats in the Sky (live)",
+    "Hypertension (live)",
+    "Iron Lung (live)"
+   ]
+  },
+  {
+   "id": "024f9cdf-4f78-47e8-b1e9-9a37b41ff7e7",
+   "title": "Live in New Orleans ’24",
+   "first_release_date": "2024-11-20",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gila Monster",
+    "Motor Spirit",
+    "Dragon",
+    "Hell",
+    "Self‐Immolate",
+    "Slow Jam 1",
+    "This Thing",
+    "The Grim Reaper",
+    "Extinction",
+    "Shanghai",
+    "Grow Wings and Fly…",
+    "Field of Vision",
+    "Daily Blues",
+    "Trapdoor",
+    "You Can Be Your Silhouette",
+    "Robot Stop",
+    "Gamma Knife",
+    "Le Risque"
+   ]
+  },
+  {
+   "id": "03e6b990-befd-4550-b83a-6fffa929d695",
+   "title": "Live in Stanford ’24",
+   "first_release_date": "2024-11-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Superbug",
+    "Supercell",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Le Risque",
+    "Daily Blues",
+    "Cut Throat Boogie",
+    "Trapdoor",
+    "The Garden Goblin",
+    "Gondii",
+    "Interior People",
+    "Hog Calling Contest",
+    "Field of Vision",
+    "Raw Feel",
+    "Magma",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "053bece1-673d-4419-9e63-6c643ec8ad81",
+   "title": "Live in Asheville ’19",
+   "first_release_date": "2020-10-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star",
+    "Self Immolate",
+    "Venusian 2",
+    "Alter Me III",
+    "Altered Beast IV",
+    "People‐Vultures",
+    "This Thing",
+    "Beginner’s Luck",
+    "Rattlesnake",
+    "Cyboogie",
+    "Loyalty",
+    "Horology",
+    "Boogieman Sam",
+    "Plastic Boogie",
+    "Mars for the Rich",
+    "Hell",
+    "The Lord of Lightning",
+    "The Bitter Boogie"
+   ]
+  },
+  {
+   "id": "077ec90c-5c38-4d11-ba85-2edecad8d26b",
+   "title": "Murder of the Universe",
+   "first_release_date": "2017-06-23",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "The Tale of the Altered Beast: A New World",
+    "The Tale of the Altered Beast: Altered Beast I",
+    "The Tale of the Altered Beast: Alter Me I",
+    "The Tale of the Altered Beast: Altered Beast II",
+    "The Tale of the Altered Beast: Alter Me II",
+    "The Tale of the Altered Beast: Altered Beast III",
+    "The Tale of the Altered Beast: Alter Me III",
+    "The Tale of the Altered Beast: Altered Beast IV",
+    "The Tale of the Altered Beast: Life/Death",
+    "The Lord of Lightning Vs Balrog: Some Context",
+    "The Lord of Lightning Vs Balrog: The Reticent Raconteur",
+    "The Lord of Lightning Vs Balrog: The Lord of Lightning",
+    "The Lord of Lightning Vs Balrog: The Balrog",
+    "The Lord of Lightning Vs Balrog: The Floating Fire",
+    "The Lord of Lightning Vs Balrog: The Acrid Corpse",
+    "Han‐Tyumi and the Murder of the Universe: Welcome to an Altered Future",
+    "Han‐Tyumi and the Murder of the Universe: Digital Black",
+    "Han‐Tyumi and the Murder of the Universe: Han‐Tyumi, the Confused Cyborg",
+    "Han‐Tyumi and the Murder of the Universe: Soy‐Protein Munt Machine",
+    "Han‐Tyumi and the Murder of the Universe: Vomit Coffin",
+    "Han‐Tyumi and the Murder of the Universe: Murder of the Universe"
+   ]
+  },
+  {
+   "id": "0d818618-f507-4a76-a245-7b9c86738b68",
+   "title": "Butterfly 3000",
+   "first_release_date": "2021-06-11",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Yours",
+    "Shanghai",
+    "Dreams",
+    "Blue Morpho",
+    "Interior People",
+    "Catching Smoke",
+    "2.02 Killer Year",
+    "Black Hot Soup",
+    "Ya Love",
+    "Butterfly 3000"
+   ]
+  },
+  {
+   "id": "0f6c98f6-360a-40b3-a9c2-50400d45aeaf",
+   "title": "Live in Melbourne ’21",
+   "first_release_date": "2021-03-19",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Fury",
+    "K.G.L.W.",
+    "Oddlife",
+    "Doom City",
+    "O.N.E.",
+    "Ontology",
+    "Rattlesnake",
+    "East West Link",
+    "Static Electricity",
+    "All Is Known",
+    "Pleura",
+    "Straws in the Wind",
+    "Billabong Valley",
+    "Automation",
+    "Minimum Brain Size",
+    "Sleep Drifter",
+    "Honey",
+    "K.G.L.W."
+   ]
+  },
+  {
+   "id": "0ffdafab-0f85-4937-8652-ad378cbf537a",
+   "title": "Live in Lisbon ’25",
+   "first_release_date": "2025-05-23",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Mars for the Rich",
+    "Converge",
+    "Witchcraft",
+    "Antarctica",
+    "Ice V",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Daily Blues",
+    "Field of Vision",
+    "Boogieman Sam",
+    "Slow Jam 1",
+    "Am I in Heaven?",
+    "Self‐Immolate",
+    "Iron Lung",
+    "Hypertension",
+    "This Thing",
+    "Supercell",
+    "Dragon",
+    "K.G.L.W.",
+    "Doom City",
+    "Nuclear Fusion",
+    "Evil Death Roll",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Le Risque",
+    "The Dripping Tap",
+    "Magma",
+    "Sad Pilot",
+    "Rattlesnake",
+    "Straws in the Wind",
+    "Planet B",
+    "Perihelion",
+    "Gaia",
+    "Gila Monster",
+    "Flamethrower",
+    "Extinction",
+    "Set",
+    "The River"
+   ]
+  },
+  {
+   "id": "13c20751-6910-4233-8e81-a4b772b517c0",
+   "title": "Omnium Gatherum",
+   "first_release_date": "2022-04-22",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "The Dripping Tap",
+    "Magenta Mountain",
+    "Kepler‐22b",
+    "Gaia",
+    "Ambergris",
+    "Sadie Sorceress",
+    "Evilest Man",
+    "The Garden Goblin",
+    "Blame It on the Weather",
+    "Persistence",
+    "The Grim Reaper",
+    "Presumptuous",
+    "Predator X",
+    "Red Smoke",
+    "Candles",
+    "The Funeral"
+   ]
+  },
+  {
+   "id": "163ddf6c-cb41-4831-bf21-eb8e29baf294",
+   "title": "Live in St. Louis ’24",
+   "first_release_date": "2024-09-08",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Mars for the Rich (live)",
+    "Venusian 1 (live)",
+    "Organ Farmer (live)",
+    "Flamethrower",
+    "Dragon (live)",
+    "The Book (live)",
+    "Minimum Brain Size (live)",
+    "Automation (live)",
+    "Rattlesnake (live)",
+    "Astroturf (live)",
+    "Gondii (live)",
+    "Shanghai (live)",
+    "Sad Pilot (live)",
+    "Magma (live)",
+    "Rats in the Sky (live)",
+    "Daily Blues (live)",
+    "Sea of Trees (live)",
+    "Robot Stop (live)",
+    "Gamma Knife (live)",
+    "People‐Vultures (live)"
+   ]
+  },
+  {
+   "id": "1b13db33-1eb7-4f40-9d81-8d8bd0afd18b",
+   "title": "Live in Paso Robles ’24",
+   "first_release_date": "2024-11-05",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "All Is Known",
+    "Pleura",
+    "Doom City",
+    "Billabong Valley",
+    "Hypertension",
+    "Antarctica",
+    "Ambergris",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Intrasport",
+    "Set",
+    "Extinction",
+    "Converge",
+    "Gaia",
+    "Gila Monster",
+    "Motor Spirit",
+    "Gaia"
+   ]
+  },
+  {
+   "id": "21429cce-b70f-4356-896a-026d7ab75167",
+   "title": "Alien Metal",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Sapience",
+    "Alien Metal",
+    "Superheavy, Supercritical",
+    "Kill for the Steel",
+    "Level 5",
+    "Rapid Alpha Decay",
+    "Uqt",
+    "Atomic Collapse"
+   ]
+  },
+  {
+   "id": "25c22bd9-12b2-4e67-a92d-d03d96379791",
+   "title": "Oddments",
+   "first_release_date": "2014-03-07",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Alluda Majaka",
+    "Stressin’",
+    "Vegemite",
+    "It’s Got Old",
+    "Work This Time",
+    "ABABCD",
+    "Sleepwalker",
+    "Hot Wax",
+    "Crying",
+    "Pipe‐Dream",
+    "Homeless Man in Adidas",
+    "Oddments"
+   ]
+  },
+  {
+   "id": "2b48d03e-029e-4389-8949-f23a6a7e84a0",
+   "title": "Live in St. Augustine ’24",
+   "first_release_date": "2024-11-25",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Rattlesnake",
+    "O.N.E.",
+    "Straws in the Wind",
+    "Pleura",
+    "Magma",
+    "Ice V",
+    "Mirage City",
+    "Hog Calling Contest",
+    "Gaia",
+    "Flamethrower",
+    "Supercell",
+    "Mars for the Rich",
+    "Swan Song",
+    "Set",
+    "Magenta Mountain"
+   ]
+  },
+  {
+   "id": "2dc473a8-c4af-4dc0-8907-c609bf953499",
+   "title": "Flight b741",
+   "first_release_date": "2024-08-09",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Mirage City",
+    "Antarctica",
+    "Raw Feel",
+    "Field of Vision",
+    "Hog Calling Contest",
+    "Le Risque",
+    "Flight b741",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Daily Blues"
+   ]
+  },
+  {
+   "id": "2e818730-4906-4d0e-9ac7-ee11841e76d5",
+   "title": "K.G.L.W.",
+   "first_release_date": "2022-12-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation"
+   ],
+   "tracks": [
+    "K.G.L.W.",
+    "Automation",
+    "Minimum Brain Size",
+    "Straws in the Wind",
+    "Some of Us",
+    "Ontology",
+    "Intrasport",
+    "Oddlife",
+    "Honey",
+    "The Hungry Wolf of Fate",
+    "If Not Now, Then When?",
+    "O.N.E.",
+    "Pleura",
+    "Supreme Ascendancy",
+    "Static Electricity",
+    "East West Link",
+    "Ataraxia",
+    "See Me",
+    "K.G.L.W."
+   ]
+  },
+  {
+   "id": "2e9f1c1d-d505-4a78-b990-ddaa51eb016b",
+   "title": "Mango Sticky Rice",
+   "first_release_date": "2025-12-02",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation"
+   ],
+   "tracks": [
+    "Mango Sticky Rice VII",
+    "Mango Sticky Rice VIII",
+    "Mango Sticky Rice IX",
+    "Mango Sticky Rice X",
+    "Mango Sticky Rice XI",
+    "Mango Sticky Rice XII"
+   ]
+  },
+  {
+   "id": "2eb21b48-5b79-497e-a53f-5723aabb57bb",
+   "title": "Nonagon Infinity Live",
+   "first_release_date": "2024-04-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "Robot Stop (live at Red Rocks ’22)",
+    "Big Fig Wasp (live in Brussels ’19)",
+    "Gamma Knife (live at Red Rocks ’22)",
+    "People Vultures (live at Red Rocks ’22)",
+    "Mr. Beat (live in London ’19)",
+    "Evil Death Roll (live in London ’19)",
+    "Invisible Face (live in Chicago ’23)",
+    "Wah Wah (live in Chicago ’23)",
+    "Road Train (live in Chicago ’23)"
+   ]
+  },
+  {
+   "id": "311cd2ad-da9f-40c2-b2fc-272faa933020",
+   "title": "Live in San Francisco ’24",
+   "first_release_date": "2024-11-12",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Theia",
+    "The Silver Cord",
+    "Set",
+    "Chang’e",
+    "Gilgamesh",
+    "Swan Song",
+    "Extinction",
+    "Intrasport"
+   ]
+  },
+  {
+   "id": "344fe590-748a-40f9-9b7a-78b288cac74e",
+   "title": "Live in Brussels ’19",
+   "first_release_date": "2020-01-15",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star",
+    "Venusian 2",
+    "Superbug",
+    "The Lord of Lightning",
+    "Alter Me III",
+    "Altered Beast IV",
+    "People‐Vultures",
+    "This Thing",
+    "Sense",
+    "The Wheel",
+    "The Bird Song",
+    "Down the Sink",
+    "Work This Time",
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "381a758e-82bf-403f-85ea-b4f97ed1e0b7",
+   "title": "PetroDragonic Apocalypse; or, Dawn of Eternal Night: An Annihilation of Planet Earth and the Beginning of Merciless Damnation",
+   "first_release_date": "2023-06-16",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Motor Spirit",
+    "Supercell",
+    "Converge",
+    "Witchcraft",
+    "Gila Monster",
+    "Dragon",
+    "Flamethrower"
+   ]
+  },
+  {
+   "id": "42e0586b-7ef2-4254-a056-8db8d90df8c5",
+   "title": "Ice, Death, Planets, Lungs, Mushrooms and Lava",
+   "first_release_date": "2022-10-02",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Mycelium",
+    "Ice V",
+    "Magma",
+    "Lava",
+    "Hell’s Itch",
+    "Iron Lung",
+    "Gliese 710"
+   ]
+  },
+  {
+   "id": "43e4d312-08b8-411b-ad37-0684eeb5ceb6",
+   "title": "Live in Austin ’24",
+   "first_release_date": "2024-11-18",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Head On/Pill",
+    "Field of Vision",
+    "Antarctica",
+    "Wah Wah",
+    "Road Train",
+    "Flight b741",
+    "Raw Feel",
+    "Nuclear Fusion",
+    "Straws in the Wind",
+    "Intrasport",
+    "Set",
+    "Extinction",
+    "Interior People",
+    "Shanghai",
+    "Grow Wings and Fly…",
+    "Le Risque",
+    "Mars for the Rich",
+    "Converge",
+    "Witchcraft",
+    "Gila Monster",
+    "Dragon",
+    "Treaty"
+   ]
+  },
+  {
+   "id": "46b8a415-405e-44ed-ba65-0aeed626355c",
+   "title": "Changes",
+   "first_release_date": "2022-10-27",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Change",
+    "Hate Dancin’",
+    "Astroturf",
+    "No Body",
+    "Gondii",
+    "Exploding Suns",
+    "Short Change"
+   ]
+  },
+  {
+   "id": "47f7aaaf-82ed-40f2-8f98-321b56f6d80d",
+   "title": "Paper Mâché Dream Balloon",
+   "first_release_date": "2015-11-13",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Sense",
+    "Bone",
+    "Dirt",
+    "Paper Mâché Dream Balloon",
+    "Trapdoor",
+    "Cold Cadaver",
+    "The Bitter Boogie",
+    "N.G.R.I. (Bloodstain)",
+    "Time = Fate",
+    "Time = $$$",
+    "Most of What I Like",
+    "Paper Mâché"
+   ]
+  },
+  {
+   "id": "4820358b-1d83-4ef6-b2d3-8dd95affa846",
+   "title": "Live at Bonnaroo",
+   "first_release_date": "2022-08-12",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Robot Stop",
+    "Hot Water",
+    "The Grim Reaper",
+    "Mars for the Rich",
+    "Hell",
+    "Planet B",
+    "Gaia",
+    "Magenta Mountain",
+    "The Garden Goblin",
+    "Work This Time",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "485730cc-86f7-4215-b1c8-502b5b5244df",
+   "title": "Live at Forest Hills Stadium, Queens, NY (8/16/24)",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Field of Vision",
+    "Daily Blues",
+    "Cut Throat Boogie",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Boogieman Sam",
+    "Work This Time",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "This Thing",
+    "Self‐Immolate",
+    "Organ Farmer",
+    "Venusian 2",
+    "Gila Monster",
+    "Flamethrower",
+    "Straws in the Wind",
+    "Pleura",
+    "All Is Known",
+    "Doom City",
+    "Nuclear Fusion",
+    "Rattlesnake",
+    "K.G.L.W."
+   ]
+  },
+  {
+   "id": "49159642-28c1-4c23-91de-d19b16d05f26",
+   "title": "Live at Forest Hills Stadium, Queens, NY (8/17/24)",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Hot Water",
+    "Robot Stop",
+    "Ice V",
+    "The Bitter Boogie",
+    "Antarctica",
+    "Raw Feel",
+    "You Can Be Your Silhouette",
+    "Le Risque",
+    "Hot Wax",
+    "Planet B",
+    "Converge",
+    "Witchcraft",
+    "Dragon",
+    "The Great Chain of Being",
+    "Motor Spirit",
+    "Slow Jam 1",
+    "Billabong Valley",
+    "Automation",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Am I in Heaven?"
+   ]
+  },
+  {
+   "id": "4a03b02d-42b1-4bb6-affe-b4a197f64183",
+   "title": "Live in Detroit ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Theia (live)",
+    "Ambergris (live)",
+    "Rats in the Sky (live)",
+    "Sad Pilot (live)",
+    "Flight b741 (live)",
+    "Mirage City (live)",
+    "You Can Be Your Silhouette (live)",
+    "Straws in the Wind (live)",
+    "Pleura (live)",
+    "Automation (live)",
+    "Nuclear Fusion (live)",
+    "Honey (live)",
+    "Minimum Brain Size (live)",
+    "Rattlesnake (live)",
+    "Billabong Valley (live)",
+    "Crumbling Castle (live)",
+    "The Fourth Color (live)",
+    "Her and I (Slow Jam 2) (live)"
+   ]
+  },
+  {
+   "id": "4b895036-dd6b-4457-aee9-07c34085ee02",
+   "title": "Teenage Gizzard",
+   "first_release_date": "2020-12-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation"
+   ],
+   "tracks": [
+    "Hey There",
+    "Ants and Bats",
+    "Sleep",
+    "Summer!",
+    "Eddie Cousin",
+    "Fried",
+    "Good to Me",
+    "Tomb/Beach",
+    "Trench Foot",
+    "Life Is Cool"
+   ]
+  },
+  {
+   "id": "4c8b20d3-87c3-4eb2-9aa7-d6fe55de784e",
+   "title": "Chunky Shrapnel",
+   "first_release_date": "2020-04-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star",
+    "The River (live in Luxembourg ’19)",
+    "Wah Wah (live in Madrid ’19)",
+    "Road Train (live in Manchester ’19)",
+    "Murder of the Universe (live in Utrecht ’19)",
+    "Quarantine",
+    "Planet B (live in London ’19)",
+    "Parking (live in Brussels ’19)",
+    "Venusian 2 (live in Milan ’19)",
+    "Hell (live in Milan ’19)",
+    "Let Me Mend the Past (live in Madrid ’19)",
+    "Anamnesis",
+    "Inner Cell (live in Utrecht ’19)",
+    "Loyalty (live in Utrecht ’19)",
+    "Horology (live in Utrecht ’19)",
+    "A Brief History of Planet Earth (live in London, Berlin, Utrecht and Barcelona ’19)"
+   ]
+  },
+  {
+   "id": "4cf58802-7f03-423d-829e-71121c63ef2b",
+   "title": "Live at Red Rocks Amphitheatre EARLY, Morrison, CO (9/9/24)",
+   "first_release_date": "2024-09-13",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "K.G.L.W. (outro)",
+    "East West Link",
+    "Anoxia",
+    "The Book",
+    "Billabong Valley",
+    "Plastic Boogie",
+    "Tetrachromacy",
+    "Let Me Mend the Past",
+    "It’s Got Old",
+    "Mystery Jack",
+    "You Can Be Your Silhouette",
+    "God Is Calling Me Back Home",
+    "Mirage City",
+    "Dirt",
+    "Work This Time",
+    "Mirage City",
+    "Field of Vision",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Hot Water"
+   ]
+  },
+  {
+   "id": "4ec13ae1-9e73-4598-8fe0-ce314f00c74a",
+   "title": "Live at Red Rocks Amphitheatre, Morrison, CO (9/8/24)",
+   "first_release_date": "2024-09-13",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Daily Blues (live)",
+    "The Bitter Boogie (live)",
+    "Muddy Water (live)",
+    "The Bitter Boogie (live)",
+    "Hog Calling Contest (live)",
+    "Elbow (live)",
+    "The River (live)",
+    "Le Risque (live)",
+    "Gila Monster (live)",
+    "Dragon (live)",
+    "Planet B (live)",
+    "Stressin’ (live)",
+    "Gondii (live)",
+    "Chang’e (live)",
+    "Extinction (live)",
+    "Am I in Heaven? (live)"
+   ]
+  },
+  {
+   "id": "5005b2ea-19ca-404d-9ad1-288fda9f1fc4",
+   "title": "Live in Asheville ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Boogieman Sam (live)",
+    "Hypertension (live)",
+    "Rats in the Sky (live)",
+    "Ice V (live)",
+    "Antarctica (live)",
+    "Flight b741 (live)",
+    "Gaia (live)",
+    "Converge (live)",
+    "Witchcraft (live)",
+    "Mars for the Rich (live)",
+    "Inner Cell (live)",
+    "Loyalty (live)",
+    "Horology (live)",
+    "Swan Song (live)",
+    "Gilgamesh (live)",
+    "Float Along – Fill Your Lungs (live)"
+   ]
+  },
+  {
+   "id": "56f58f0d-b642-4242-a938-e7a949fff563",
+   "title": "Live in D.C. ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The Dripping Tap",
+    "Iron Lung",
+    "Antarctica",
+    "Raw Feel",
+    "Sad Pilot",
+    "Evil Death Roll",
+    "Ice V",
+    "The River",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Supercell",
+    "Mars for the Rich",
+    "Motor Spirit",
+    "Gaia"
+   ]
+  },
+  {
+   "id": "581d206e-fe8b-453a-a6c1-5e1ad602865c",
+   "title": "Live in Miami ’24",
+   "first_release_date": "2024-11-25",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Field of Vision",
+    "Hypertension",
+    "Le Risque",
+    "Evil Death Roll",
+    "Hot Water",
+    "Float Along – Fill Your Lungs",
+    "Minimum Brain Size",
+    "Billabong Valley",
+    "Gilgamesh",
+    "Extinction",
+    "This Thing",
+    "Venusian 2",
+    "Converge",
+    "Hell",
+    "Dragon",
+    "Gila Monster"
+   ]
+  },
+  {
+   "id": "59d3511d-2052-41b2-98f8-8fb373607d66",
+   "title": "Live in Houston ’24",
+   "first_release_date": "2024-11-20",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "People‐Vultures",
+    "Mr. Beat",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Ice V",
+    "Dirt",
+    "Mirage City",
+    "Magma",
+    "The Dripping Tap",
+    "Let Me Mend the Past",
+    "Theia",
+    "The Silver Cord",
+    "Perihelion",
+    "Gaia",
+    "Flamethrower"
+   ]
+  },
+  {
+   "id": "5cbdcff8-2fe8-4f79-bdee-0ef6030ac82e",
+   "title": "Live in Atlanta ’24",
+   "first_release_date": "2024-11-25",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Superbug",
+    "Converge",
+    "Witchcraft",
+    "Planet B",
+    "Hot Wax",
+    "Her and I (Slow Jam 2)",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Flight b741",
+    "Iron Lung",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Work This Time",
+    "The Garden Goblin",
+    "Intrasport",
+    "Gilgamesh"
+   ]
+  },
+  {
+   "id": "5d8a5735-15d6-4603-ae79-07fcca6a2230",
+   "title": "Live in Maine ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Theia (live)",
+    "The Silver Cord (live)",
+    "Gaia (live)",
+    "Flamethrower (live)",
+    "Mars for the Rich (live)",
+    "This Thing (live)",
+    "I’m in Your Mind (live)",
+    "I’m Not in Your Mind (live)",
+    "Cellophane (live)",
+    "I’m in Your Mind Fuzz (live)",
+    "Le Risque (live)",
+    "Rats in the Sky (live)",
+    "Iron Lung (live)",
+    "Let Me Mend the Past (live)",
+    "Trapdoor (live)",
+    "The Dripping Tap (live)"
+   ]
+  },
+  {
+   "id": "5db47b4e-5d86-4917-a3ca-75ff6d5c226e",
+   "title": "Live at Levitation ’16",
+   "first_release_date": "2021-12-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Robot Stop",
+    "Hot Water",
+    "Trapdoor",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Gamma Knife",
+    "People Vultures",
+    "The River",
+    "Evil Death Roll",
+    "Cut Throat Boogie"
+   ]
+  },
+  {
+   "id": "5e2fb12b-ab85-4fe7-be3c-48687f104502",
+   "title": "Laminated Denim",
+   "first_release_date": "2022-10-12",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "The Land Before Timeland",
+    "Hypertension"
+   ]
+  },
+  {
+   "id": "648979c4-744f-498c-a9de-6a9624274a9d",
+   "title": "I’m in Your Mind Fuzz",
+   "first_release_date": "2014-10-31",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Empty",
+    "Hot Water",
+    "Am I in Heaven?",
+    "Slow Jam 1",
+    "Satan Speeds Up",
+    "Her and I (Slow Jam 2)"
+   ]
+  },
+  {
+   "id": "652192d9-3479-44f9-88b8-94707902982b",
+   "title": "Live in San Francisco ’16",
+   "first_release_date": "2020-11-20",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Robot Stop",
+    "Hot Water",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Trapdoor",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "The River",
+    "Evil Death Roll",
+    "Head On/Pill"
+   ]
+  },
+  {
+   "id": "68cf508f-b972-44bb-b0b0-d57f8db4f47a",
+   "title": "Live in Las Vegas ’24",
+   "first_release_date": "2024-11-12",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Death Roll",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Flight b741",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Daily Blues",
+    "Hot Water",
+    "Interior People",
+    "Shanghai",
+    "The Grim Reaper",
+    "Perihelion",
+    "Converge",
+    "Witchcraft",
+    "Dragon",
+    "K.G.L.W.",
+    "Rattlesnake"
+   ]
+  },
+  {
+   "id": "6bbcaa5f-37b6-4838-ae54-eabec4446c64",
+   "title": "Head On / Pill",
+   "first_release_date": "2014-04-16",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Head On / Pill"
+   ]
+  },
+  {
+   "id": "6d2a3f29-091e-42d8-9531-a4f527be5d19",
+   "title": "Live in Chicago ’23",
+   "first_release_date": "2023-08-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Pleura",
+    "One",
+    "Nuclear Fusion",
+    "Minimum Brain Size",
+    "Gaia/Motor Spirit",
+    "The Great Chain of Being/Gaia",
+    "Witchcraft",
+    "Satan Speeds Up",
+    "Trapdoor",
+    "The River",
+    "Evil Death Roll",
+    "Magma",
+    "Boogieman Sam",
+    "Rattlesnake",
+    "Honey",
+    "Shanghai",
+    "Hate Dancin'",
+    "Astroturf",
+    "Down the Sink",
+    "Invisible Face",
+    "Wah Wah",
+    "Road Train",
+    "Ice V",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Supercell",
+    "Self-Immolate",
+    "Am I in Heaven?",
+    "Gila Monster/Converge",
+    "Planet B",
+    "Mars for the Rich",
+    "Plastic Boogie",
+    "Hot Water",
+    "Hypertension",
+    "This Thing",
+    "Magenta Mountain",
+    "Change",
+    "The Garden Goblin",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "6f56f365-c6ae-44c5-800e-cf488e41c420",
+   "title": "Live in New York City ’24",
+   "first_release_date": "2024-11-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Field of Vision",
+    "Daily Blues",
+    "Cut Throat Boogie",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Boogieman Sam",
+    "Work This Time",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "This Thing",
+    "Self‐Immolate",
+    "Organ Farmer",
+    "Venusian 2",
+    "Gila Monster",
+    "Flamethrower",
+    "Straws in the Wind",
+    "Pleura",
+    "All Is Known",
+    "Doom City",
+    "Nuclear Fusion",
+    "Rattlesnake",
+    "K.G.L.W.",
+    "Hot Water",
+    "Robot Stop",
+    "Ice V",
+    "The Bitter Boogie",
+    "Antarctica",
+    "Raw Feel",
+    "You Can Be Your Silhouette",
+    "Le Risque",
+    "Hot Wax",
+    "Planet B",
+    "Converge",
+    "Witchcraft",
+    "Dragon",
+    "The Great Chain of Being",
+    "Motor Spirit",
+    "Slow Jam 1",
+    "Billabong Valley",
+    "Automation",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Am I in Heaven?"
+   ]
+  },
+  {
+   "id": "6fbd6270-59dd-45df-aaf4-265b96087039",
+   "title": "Live in Minneapolis ’24",
+   "first_release_date": "2024-09-05",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Pleura",
+    "O.N.E.",
+    "Nuclear Fusion",
+    "The Reticent Raconteur",
+    "The Lord of Lightning",
+    "Cellophane",
+    "Mystery Jack",
+    "Antarctica",
+    "Ambergris",
+    "Hypertension",
+    "Flight b741",
+    "Le Risque",
+    "Theia",
+    "The Silver Cord",
+    "The Grim Reaper",
+    "We’re Doin’ It Together",
+    "Plastic Boogie",
+    "This Thing",
+    "Am I in Heaven?",
+    "Supercell",
+    "Motor Spirit"
+   ]
+  },
+  {
+   "id": "70cbf290-4584-4a31-a459-409fa9c8610a",
+   "title": "The Silver Cord",
+   "first_release_date": "2023-10-27",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Theia",
+    "The Silver Cord",
+    "Set",
+    "Chang’e",
+    "Gilgamesh",
+    "Swan Song",
+    "Extinction",
+    "Theia (extended mix)",
+    "The Silver Cord (extended mix)",
+    "Set (extended mix)",
+    "Chang’e (extended mix)",
+    "Gilgamesh (extended mix)",
+    "Swan Song (extended mix)",
+    "Extinction (extended mix)"
+   ]
+  },
+  {
+   "id": "716f0986-f131-4e3c-a140-55845bbded3c",
+   "title": "Phantom Island",
+   "first_release_date": "2025-06-13",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Phantom Island",
+    "Deadstick",
+    "Lonely Cosmos",
+    "Eternal Return",
+    "Panpsych",
+    "Spacesick",
+    "Aerodynamic",
+    "Sea of Doubt",
+    "Silent Spirit",
+    "Grow Wings and Fly"
+   ]
+  },
+  {
+   "id": "75e5e4e3-d55a-4abb-843f-082288233f70",
+   "title": "Live in Nashville ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Death Roll (live)",
+    "Field of Vision (live)",
+    "Mirage City (live)",
+    "Raw Feel (live)",
+    "Black Tooth (live)",
+    "Work This Time (live)",
+    "Le Risque (live)",
+    "I’m in Your Mind (live)",
+    "I’m Not in Your Mind (live)",
+    "Hot Wax (live)",
+    "I’m in Your Mind Fuzz (live)",
+    "Slow Jam 1 (live)",
+    "Motor Spirit (live)",
+    "Gila Monster (live)",
+    "Supercell (live)",
+    "Perihelion (live)",
+    "Chang’e (live)",
+    "Extinction (live)"
+   ]
+  },
+  {
+   "id": "76556eeb-8773-4007-a64d-dda968cae229",
+   "title": "Float Along – Fill Your Lungs / Oddments",
+   "first_release_date": "2014-07-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation"
+   ],
+   "tracks": [
+    "Head On/Pill",
+    "I Am Not a Man Unless I Have a Woman",
+    "God Is Calling Me Back Home",
+    "30 Past 7",
+    "Let Me Mend the Past",
+    "Mystery Jack",
+    "Pop in My Step",
+    "Float Along - Fill Your Lungs",
+    "Alluda Majaka",
+    "Stressin'",
+    "Vegemite",
+    "It's Got Old",
+    "Work This Time",
+    "ABABCD",
+    "Sleepwalker",
+    "Hot Wax",
+    "Crying",
+    "Pipe-Dream",
+    "Homeless Man in Adidas",
+    "Oddments"
+   ]
+  },
+  {
+   "id": "7731f835-da67-4214-a401-7177ef0fcb70",
+   "title": "Live in Oklahoma City ’24",
+   "first_release_date": "2024-11-15",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Planet B",
+    "Supercell",
+    "Converge",
+    "Witchcraft",
+    "Plastic Boogie",
+    "Open Water",
+    "All Is Known",
+    "Straws in the Wind",
+    "Intrasport",
+    "Set",
+    "Extinction",
+    "Iron Lung",
+    "Hypertension",
+    "Antarctica",
+    "Hog Calling Contest",
+    "Flight b741",
+    "The River"
+   ]
+  },
+  {
+   "id": "77d2266e-00a2-471a-a75d-49c8b823d0d1",
+   "title": "Live at Red Rocks Amphitheatre LATE, Morrison, CO (9/9/24)",
+   "first_release_date": "2024-09-13",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Perihelion (live)",
+    "Motor Spirit (live)",
+    "The Great Chain of Being (live)",
+    "Flamethrower (live)",
+    "Wah Wah (live)",
+    "Road Train (live)",
+    "Antarctica (live)",
+    "Ambergris (live)",
+    "Trapdoor (live)",
+    "Black Tooth (live)",
+    "People‐Vultures (live)",
+    "Mr. Beat (live)",
+    "Raw Feel (live)",
+    "Flight b741 (live)",
+    "Welcome to an Altered Future (live)",
+    "Theia (live)",
+    "Gilgamesh (live)",
+    "Set (live)",
+    "Float Along – Fill Your Lungs (live)"
+   ]
+  },
+  {
+   "id": "78e7f2df-f5b0-47c9-bca8-f61ce0bbc70c",
+   "title": "Live at The Gorge ’24",
+   "first_release_date": "2024-09-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Rattlesnake (live)",
+    "O.N.E. (live)",
+    "Sleep Drifter (live)",
+    "Open Water (live)",
+    "Magma (live)",
+    "The Reticent Raconteur (live)",
+    "The Lord of Lightning (live)",
+    "The Balrog (live)",
+    "Hog Calling Contest (live)",
+    "Road Train (live)",
+    "Flight b741 (live)",
+    "Ice V (live)",
+    "Dirt (live)",
+    "Mirage City (live)",
+    "Let Me Mend the Past (live)",
+    "Mirage City (live)",
+    "Le Risque (live)",
+    "Magenta Mountain (live)",
+    "Gondii (live)",
+    "The Silver Cord (live)",
+    "Extinction (live)",
+    "Inner Cell (live)",
+    "Loyalty (live)",
+    "Horology (live)",
+    "Venusian 1 (live)",
+    "Vegemite (live)",
+    "Gaia (live)",
+    "The Great Chain of Being (live)",
+    "Motor Spirit (live)"
+   ]
+  },
+  {
+   "id": "79243426-85db-4af0-ba0c-ea29bb52dbf1",
+   "title": "Live in Albuquerque ’24",
+   "first_release_date": "2024-11-12",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Self‐Immolate",
+    "Supercell",
+    "Organ Farmer",
+    "Venusian 2",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Mirage City",
+    "Raw Feel",
+    "Ice V",
+    "Field of Vision",
+    "Magma",
+    "The Dripping Tap",
+    "Theia",
+    "Gilgamesh",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "79578bd3-061f-4bbe-a330-0a78da219920",
+   "title": "Live in Brisbane ’21",
+   "first_release_date": "2022-01-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The River (live)",
+    "It’s Got Old (live)",
+    "Sleepwalker (live)",
+    "The Wheel (live)",
+    "Hot Water (live)",
+    "Let Me Mend the Past (live)",
+    "Dirt (live)",
+    "The Bitter Boogie (live)",
+    "Muddy Water (live)",
+    "Most of What I Like (live)",
+    "Her and I (Slow Jam II) (live)",
+    "Slow Jam I (live)",
+    "Stressin’ (live)",
+    "Sense (live)"
+   ]
+  },
+  {
+   "id": "7a8ef5e9-9297-4cd0-9920-b21af2cf40d3",
+   "title": "Live at Levitation",
+   "first_release_date": "2021-12-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind (live at Levitation ’14)",
+    "I’m Not in Your Mind (live at Levitation ’14)",
+    "Cellophane (live at Levitation ’14)",
+    "I’m in Your Mind Fuzz (live at Levitation ’14)",
+    "The Wholly Ghost (live at Levitation ’14)",
+    "Sleepwalker (live at Levitation ’14)",
+    "Am I in Heaven? (live at Levitation ’14)",
+    "Head On/Pill (live at Levitation ’14)",
+    "Robot Stop (live at Levitation ’16)",
+    "Hot Water (live at Levitation ’16)",
+    "Trapdoor (live at Levitation ’16)",
+    "Gamma Knife (live at Levitation ’16)",
+    "People‐Vultures (live at Levitation ’16)",
+    "The River (live at Levitation ’16)",
+    "Evil Death Roll (live at Levitation ’16)",
+    "Cut Throat Boogie (live at Levitation ’16)"
+   ]
+  },
+  {
+   "id": "7aeda1e1-b2d2-43c3-873d-175cbc66bf3c",
+   "title": "Live in Arkansas ’24",
+   "first_release_date": "2024-11-16",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Hot Water",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Daily Blues",
+    "The Bitter Boogie",
+    "Muddy Water",
+    "Mirage City",
+    "Work This Time",
+    "The Garden Goblin",
+    "The Grim Reaper",
+    "Magenta Mountain",
+    "Predator X",
+    "Motor Spirit",
+    "Flamethrower"
+   ]
+  },
+  {
+   "id": "7c365e51-de7b-4c72-80dd-4e0536258c6e",
+   "title": "Nonagon Infinity",
+   "first_release_date": "2016-04-29",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "People-Vultures",
+    "Mr. Beat",
+    "Evil Death Roll",
+    "Invisible Face",
+    "Wah Wah",
+    "Road Train"
+   ]
+  },
+  {
+   "id": "83f2ee3f-f4cf-4b36-8b55-249dc42d96f0",
+   "title": "Made in Timeland",
+   "first_release_date": "2022-03-05",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Timeland",
+    "Smoke & Mirrors"
+   ]
+  },
+  {
+   "id": "85fcf1b9-8482-44b0-8bb9-b5c0c12bace3",
+   "title": "Live at Red Rocks ’22",
+   "first_release_date": "2023-01-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Mars for the Rich",
+    "Hell",
+    "Magenta Mountain",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "O.N.E.",
+    "Nuclear Fusion",
+    "All Is Known",
+    "Straws in the Wind",
+    "The Garden Goblin",
+    "The River",
+    "Magma",
+    "Rattlesnake",
+    "Automation",
+    "Honey",
+    "Sleep Drifter",
+    "Ataraxia",
+    "Evil Death Roll",
+    "Ice V",
+    "The Reticent Raconteur",
+    "The Lord of Lightning",
+    "The Balrog",
+    "Trapdoor",
+    "Hot Water",
+    "The Grim Reaper",
+    "Planet B",
+    "The Dripping Tap",
+    "Gaia",
+    "Predator X",
+    "Organ Farmer",
+    "Pleura",
+    "Oddlife",
+    "Doom City",
+    "K.G.L.W.",
+    "Boogieman Sam",
+    "Sleepwalker",
+    "Sea of Trees",
+    "The Bitter Boogie",
+    "Perihelion",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Tezeta",
+    "A New World",
+    "Altered Beast I",
+    "Alter Me I",
+    "Altered Beast II",
+    "Alter Me II",
+    "Altered Beast III",
+    "Ambergris",
+    "Muddy Water",
+    "Iron Lung",
+    "Robot Stop",
+    "Gamma Knife",
+    "People Vultures",
+    "Mr. Beat",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Blame It on the Weather",
+    "Work This Time",
+    "Lava",
+    "Cut Throat Boogie",
+    "Wah Wah",
+    "Road Train",
+    "Sadie Sorceress",
+    "Self‐Immolate",
+    "Her and I (Slow Jam II)",
+    "Hot Wax",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Head On/Pill",
+    "Am I in Heaven",
+    "Venusian 1",
+    "Venusian 2",
+    "Billabong Valley",
+    "Minimum Brain Size",
+    "Static Electricity",
+    "Let Me Mend the Past",
+    "Alter Me III",
+    "Altered Beast IV",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "8755fac8-9e89-45f5-acdf-286440c431c8",
+   "title": "K.G.",
+   "first_release_date": "2020-11-20",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "K.G.L.W.",
+    "Automation",
+    "Minimum Brain Size",
+    "Straws in the Wind",
+    "Some of Us",
+    "Ontology",
+    "Intrasport",
+    "Oddlife",
+    "Honey",
+    "The Hungry Wolf of Fate"
+   ]
+  },
+  {
+   "id": "8ef7f453-bf44-4bcc-bdb8-ac86eadf90fe",
+   "title": "Infest the Rats’ Nest",
+   "first_release_date": "2019-08-16",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Planet B",
+    "Mars for the Rich",
+    "Organ Farmer",
+    "Superbug",
+    "Venusian 1",
+    "Perihelion",
+    "Venusian 2",
+    "Self‐Immolate",
+    "Hell"
+   ]
+  },
+  {
+   "id": "922244fa-7bf4-49e3-b605-9771d2e17ef7",
+   "title": "Live at Levitation ’14",
+   "first_release_date": "2021-12-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "The Wholly Ghost",
+    "Sleepwalker",
+    "Am I in Heaven",
+    "Head On/Pill"
+   ]
+  },
+  {
+   "id": "9290127a-0f47-48c2-a2f6-c68e18644d96",
+   "title": "Fishing for Fishies",
+   "first_release_date": "2019-04-26",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Fishing for Fishies",
+    "Boogieman Sam",
+    "The Bird Song",
+    "Plastic Boogie",
+    "The Cruel Millennial",
+    "Real’s Not Real",
+    "This Thing",
+    "Acarine",
+    "Cyboogie"
+   ]
+  },
+  {
+   "id": "9bb21ff4-4734-4648-9aab-8e5046494a54",
+   "title": "Eyes Like the Sky",
+   "first_release_date": "2013-02-22",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Eyes Like the Sky",
+    "Year of Our Lord",
+    "The Raid",
+    "Drum Run",
+    "Evil Man",
+    "Fort Whipple",
+    "The God Mans Goat Lust",
+    "The Killing Ground",
+    "Dust in the Wind",
+    "Guns & Horses"
+   ]
+  },
+  {
+   "id": "9ea9c288-6065-4cb4-a95f-57364366a09d",
+   "title": "Live at Red Rocks ’24",
+   "first_release_date": "2024-11-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Daily Blues",
+    "The Bitter Boogie",
+    "Muddy Water",
+    "The Bitter Boogie (reprise)",
+    "Hog Calling Contest",
+    "Elbow",
+    "The River",
+    "Le Risque",
+    "Gila Monster",
+    "Dragon",
+    "Planet B",
+    "Stressin’",
+    "Gondii",
+    "Chang’e",
+    "Extinction",
+    "Am I in Heaven?",
+    "K.G.L.W. (outro)",
+    "East West Link",
+    "Anoxia",
+    "The Book",
+    "Billabong Valley",
+    "Plastic Boogie",
+    "Tetrachromacy",
+    "Let Me Mend the Past",
+    "It’s Got Old",
+    "Mystery Jack",
+    "You Can Be Your Silhouette",
+    "God Is Calling Me Back Home",
+    "Mirage City",
+    "Dirt",
+    "Work This Time",
+    "Mirage City (reprise)",
+    "Field of Vision",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Hot Water",
+    "Perihelion",
+    "Motor Spirit",
+    "The Great Chain of Being",
+    "Flamethrower",
+    "Wah Wah",
+    "Road Train",
+    "Antarctica",
+    "Ambergris",
+    "Trapdoor",
+    "Black Tooth",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Raw Feel",
+    "Flight b741",
+    "Welcome to an Altered Future",
+    "Theia",
+    "Gilgamesh",
+    "Set",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "a1bde40f-1028-4158-9473-d5cfe80cc643",
+   "title": "Live in Richmond ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Extinction (live)",
+    "Theia (live)",
+    "The Garden Goblin (live)",
+    "Evil Death Roll (live)",
+    "Muddy Water (live)",
+    "The Bitter Boogie (live)",
+    "Raw Feel (live)",
+    "Mirage City (live)",
+    "Field of Vision (live)",
+    "Iron Lung (live)",
+    "Hell (live)",
+    "Supercell (live)",
+    "Gila Monster (live)",
+    "Head On/Pill (live)"
+   ]
+  },
+  {
+   "id": "a32240e9-1175-4413-b4c3-62edd595e3ce",
+   "title": "Live in Sydney ’21",
+   "first_release_date": "2021-05-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "If Not Now, Then When?",
+    "Oddlife",
+    "Nuclear Fusion",
+    "Ataraxia",
+    "Open Water",
+    "Anoxia",
+    "Melting",
+    "Straws in the Wind",
+    "The Book",
+    "Automation",
+    "D-Day",
+    "Some of Us",
+    "Supreme Ascendancy",
+    "See Me",
+    "The Hungry Wolf of Fate",
+    "K.G.L.W."
+   ]
+  },
+  {
+   "id": "a35e5fb0-dad0-4d12-8ac1-1e600060195d",
+   "title": "Live in Cleveland ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Magma (live)",
+    "Muddy Water (live)",
+    "Antarctica (live)",
+    "Raw Feel (live)",
+    "Daily Blues (live)",
+    "Mr. Beat (live)",
+    "Ice V (live)",
+    "Le Risque (live)",
+    "Inner Cell (live)",
+    "Loyalty (live)",
+    "Horology (live)",
+    "Superbug (live)",
+    "Supercell (live)",
+    "Predator X (live)",
+    "Self‐Immolate (live)",
+    "Flamethrower (live)",
+    "Dragon (live)",
+    "Gila Monster (live)"
+   ]
+  },
+  {
+   "id": "a3c34d4b-9dea-4450-af13-e84700dc1163",
+   "title": "Live in Adelaide ’19",
+   "first_release_date": "2020-01-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star",
+    "Planet B",
+    "Mars for the Rich",
+    "Venusian 1",
+    "Cyboogie",
+    "Real’s Not Real",
+    "Hot Water",
+    "Open Water",
+    "Sleep Drifter",
+    "Billabong Valley",
+    "The Bird Song",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Plastic Boogie",
+    "Organ Farmer",
+    "Self‐Immolate",
+    "Head On/Pill"
+   ]
+  },
+  {
+   "id": "a6439dfb-b427-4250-88c2-a0cbbc07f10d",
+   "title": "Live in Milwaukee ’19",
+   "first_release_date": "2021-10-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star",
+    "Venusian 2",
+    "Venusian 1",
+    "The Great Chain of Being",
+    "Stressin’",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "This Thing",
+    "Down the Sink",
+    "Wah Wah",
+    "Road Train",
+    "Acarine",
+    "Murder of the Universe",
+    "Cyboogie",
+    "Self‐Immolate",
+    "Mars for the Rich",
+    "Perihelion",
+    "Head On/Pill"
+   ]
+  },
+  {
+   "id": "ad6e81ac-2298-4e1d-849f-226953c9a30a",
+   "title": "Flying Microtonal Banana",
+   "first_release_date": "2017-02-24",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Rattlesnake",
+    "Melting",
+    "Open Water",
+    "Sleep Drifter",
+    "Billabong Valley",
+    "Anoxia",
+    "Doom City",
+    "Nuclear Fusion",
+    "Flying Microtonal Banana"
+   ]
+  },
+  {
+   "id": "ad7db598-0375-44aa-a3cb-3f11be7e532b",
+   "title": "Live in San Diego ’24",
+   "first_release_date": "2024-11-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Witchcraft",
+    "Chang’e",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Sense",
+    "Raw Feel",
+    "Dirt",
+    "Flight b741",
+    "Iron Lung",
+    "Muddy Water",
+    "The Bitter Boogie",
+    "God Is Calling Me Back Home",
+    "Magma",
+    "The Silver Cord",
+    "Theia",
+    "The River"
+   ]
+  },
+  {
+   "id": "b1488b1d-6726-4792-9eac-44220767f6f3",
+   "title": "Big Fig Wasp",
+   "first_release_date": "2026-04-18",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "Big Fig Wasp",
+    "Superbug",
+    "Grow Wings and Fly",
+    "Great Chain of Being"
+   ]
+  },
+  {
+   "id": "b888a2cd-3e47-4626-9912-60d2b73fa674",
+   "title": "Live in Chicago ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Robot Stop (live)",
+    "Big Fig Wasp (live)",
+    "Gamma Knife (live)",
+    "People‐Vultures (live)",
+    "Mr. Beat (live)",
+    "Sad Pilot (live)",
+    "Rats in the Sky (live)",
+    "Daily Blues (live)",
+    "Cut Throat Boogie (live)",
+    "You Can Be Your Silhouette (live)",
+    "Iron Lung (live)",
+    "Crumbling Castle (live)",
+    "The Fourth Colour (live)",
+    "Hell (live)",
+    "Predator X (live)",
+    "Dragon (live)",
+    "Flamethrower (live)",
+    "All Is Known (live)",
+    "Straws in the Wind (live)",
+    "Welcome to an Altered Future (live)",
+    "Digital Black (live)",
+    "Han‐Tyumi the Confused Cyborg (live)",
+    "Soy Protein Munt Machine (live)",
+    "Vomit Coffin (live)",
+    "Murder of the Universe (live)",
+    "Swan Song (live)",
+    "Set (live)",
+    "Head On/Pill (live)"
+   ]
+  },
+  {
+   "id": "bb70e147-0597-4aa0-b2a1-a0088409eab9",
+   "title": "Live in Los Angeles ’24",
+   "first_release_date": "2024-11-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Mars for the Rich",
+    "Planet B",
+    "Hell",
+    "Slow Jam 1",
+    "This Thing",
+    "Am I in Heaven?",
+    "Self‐Immolate",
+    "Dragon",
+    "Flamethrower",
+    "Straws in the Wind",
+    "O.N.E.",
+    "Sleep Drifter",
+    "Nuclear Fusion",
+    "Antarctica",
+    "Boogieman Sam",
+    "Field of Vision",
+    "Daily Blues",
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "Ice‐V",
+    "The Reticent Raconteur",
+    "The Lord of Lightning",
+    "The Balrog",
+    "Le Risque"
+   ]
+  },
+  {
+   "id": "bbbe3ec4-4b6a-43ea-bebc-73400598cd60",
+   "title": "Live in Omaha ’24",
+   "first_release_date": "2024-09-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind (live)",
+    "I’m Not in Your Mind (live)",
+    "Cellophane (live)",
+    "I’m in Your Mind Fuzz (live)",
+    "Self‐Immolate (live)",
+    "Motor Spirit (live)",
+    "Magenta Mountain (live)",
+    "Gilgamesh (live)",
+    "Set (live)",
+    "Nuclear Fusion (live)",
+    "Ataraxia (live)",
+    "Straws in the Wind (live)",
+    "Field of Vision (live)",
+    "Raw Feel (live)",
+    "Lava (live)",
+    "Antarctica (live)",
+    "Hypertension (live)"
+   ]
+  },
+  {
+   "id": "beb8d794-a0a0-495c-9188-4d07cf2a4cf3",
+   "title": "Live in Kentucky ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "All Is Known (live)",
+    "O.N.E. (live)",
+    "The Book (live)",
+    "Motor Spirit (live)",
+    "Gaia (live)",
+    "Converge (live)",
+    "Witchcraft (live)",
+    "Mars for the Rich (live)",
+    "Plastic Boogie (live)",
+    "This Thing (live)",
+    "Slow Jam 1 (live)",
+    "Sense (live)",
+    "Field of Vision (live)",
+    "Rats in the Sky (live)",
+    "Flight b741 (live)",
+    "Big Fig Wasp (live)",
+    "Gamma Knife (live)",
+    "People‐Vultures (live)",
+    "Work This Time (live)",
+    "Iron Lung (live)"
+   ]
+  },
+  {
+   "id": "bffe12ff-66d0-4111-9489-40a82cbf9dbd",
+   "title": "Live in Barcelona ’25",
+   "first_release_date": "2025-05-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Hot Water",
+    "Rats in the Sky",
+    "Raw Feel",
+    "Muddy Water",
+    "The Bitter Boogie",
+    "Gilgamesh",
+    "All Is Known",
+    "Sleep Drifter",
+    "Honey",
+    "Billabong Valley",
+    "Hell",
+    "Organ Farmer",
+    "The Great Chain of Being",
+    "Motor Spirit",
+    "Magma",
+    "Field of Vision",
+    "Theia",
+    "Wah Wah",
+    "Road Train",
+    "Flight b741",
+    "Open Water",
+    "Minimum Brain Size",
+    "Oddlife",
+    "The Silver Cord",
+    "Witchcraft",
+    "Mars for the Rich",
+    "Venusian 2",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Gila Monster",
+    "O.N.E.",
+    "Doom City",
+    "Supreme Ascendency",
+    "Antarctica",
+    "The Reticent Raconteur",
+    "The Lord of Lightning",
+    "The Balrog",
+    "You Can Be Your Silhouette",
+    "Cut Throat Boogie",
+    "Daily Blues",
+    "Le Risque",
+    "The Garden Goblin",
+    "Magenta Mountain",
+    "The Grim Reaper",
+    "Converge",
+    "Superbug",
+    "Flamethrower"
+   ]
+  },
+  {
+   "id": "c30b3cc8-cb68-471b-aa94-51c8c23a3c22",
+   "title": "12 Bar Bruise",
+   "first_release_date": "2012-09-07",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Elbow",
+    "Muckraker",
+    "Nein",
+    "12 Bar Bruise",
+    "Garage Liddiard",
+    "Sam Cherry’s Last Shot",
+    "High Hopes Low",
+    "Cut Throat Boogie",
+    "Bloody Ripper",
+    "Uh Oh, I Called Mum",
+    "Sea of Trees",
+    "Footy Footy"
+   ]
+  },
+  {
+   "id": "c6fc4f99-6c1f-46aa-8faf-2c22154d26c4",
+   "title": "Gumboot Soup",
+   "first_release_date": "2017-12-30",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Beginner’s Luck",
+    "Greenhouse Heat Death",
+    "Barefoot Desert",
+    "Muddy Water",
+    "Superposition",
+    "Down the Sink",
+    "The Great Chain of Being",
+    "The Last Oasis",
+    "All Is Known",
+    "I’m Sleepin’ In",
+    "The Wheel"
+   ]
+  },
+  {
+   "id": "cb774880-aaaf-43e9-a82a-1ac151f08d34",
+   "title": "Live in Philadelphia ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Minimum Brain Size",
+    "Doom City",
+    "Static Electricity",
+    "East West Link",
+    "Daily Blues",
+    "Hot Water",
+    "Antarctica",
+    "Sad Pilot",
+    "Le Risque",
+    "The River",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Planet B",
+    "Dragon",
+    "Flamethrower",
+    "Gilgamesh",
+    "Set"
+   ]
+  },
+  {
+   "id": "cb9cee5b-f671-43e0-9e10-abfaa1dae33f",
+   "title": "Demos, Vol. 7 + Vol. 8",
+   "first_release_date": "2025-07-25",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Worship Satan To",
+    "The River (demo)",
+    "Hell (demo 1)",
+    "Hell (demo 2)",
+    "The Cloud of Dread",
+    "Real’s Not Real (demo)",
+    "Robocop",
+    "Greenhouse Heat Death (demo 2)",
+    "Donkey Jam",
+    "Presumptuous (demo)",
+    "Trailer Park Kid",
+    "Music to Change To",
+    "Hate Dancin’ (demo)",
+    "Change (demo 1)",
+    "No Body (demo)",
+    "Exploding Suns (demo 1)",
+    "Gondii (demo 1)",
+    "Change (demo 2)",
+    "Exploding Suns (demo 2)",
+    "Change (demo 3)",
+    "Gondii (demo 2)",
+    "Exploding Suns (demo 3)",
+    "Astroturf (demo)",
+    "Change (demo 4)"
+   ]
+  },
+  {
+   "id": "cce52fc7-408a-43bf-9c86-f77e358877dd",
+   "title": "L.W.",
+   "first_release_date": "2021-02-25",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "If Not Now, Then When?",
+    "O.N.E.",
+    "Pleura",
+    "Supreme Ascendancy",
+    "Static Electricity",
+    "East West Link",
+    "Ataraxia",
+    "See Me",
+    "K.G.L.W."
+   ]
+  },
+  {
+   "id": "cf739a0f-74f1-4484-91fa-b7ec6b2d3415",
+   "title": "Live in Milwaukee ’24",
+   "first_release_date": "2024-09-07",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The Dripping Tap (live)",
+    "Field of Vision (live)",
+    "Hot Water (live)",
+    "Raw Feel (live)",
+    "God Is Calling Me Back Home (live)",
+    "The Garden Goblin (live)",
+    "Magenta Mountain (live)",
+    "Chang’e (live)",
+    "Extinction (live)",
+    "Planet B (live)",
+    "Converge (live)",
+    "Witchcraft (live)",
+    "Gaia (live)",
+    "Gila Monster (live)",
+    "Gaia (live)",
+    "Billabong Valley (live)",
+    "Honey (live)",
+    "Sleep Drifter (live)",
+    "K.G.L.W."
+   ]
+  },
+  {
+   "id": "d0eaad6e-dd9a-401d-853f-a0e7b0d0815f",
+   "title": "Live in Oregon ’24",
+   "first_release_date": "2024-09-15",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The Dripping Tap (live)",
+    "Boogieman Sam (live)",
+    "Daily Blues (live)",
+    "Le Risque (live)",
+    "Crumbling Castle (live)",
+    "The Fourth Colour (live)",
+    "Self‐Immolate (live)",
+    "Supercell (live)",
+    "Organ Farmer (live)",
+    "Converge (live)",
+    "Witchcraft (live)",
+    "Sad Pilot (live)",
+    "The Reticent Raconteur (live)",
+    "The Lord of Lightning (live)",
+    "The Balrog (live)",
+    "Field of Vision (live)"
+   ]
+  },
+  {
+   "id": "d1f3d03f-a5ec-4a67-8cec-67adea3e2310",
+   "title": "Demos, Vol. 1 + Vol. 2",
+   "first_release_date": "2020-09-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Kill Bad People To",
+    "Evil Death Roll (demo)",
+    "Dirt (demo)",
+    "BIT BIT BIT BIT BIT BIT BIT",
+    "Sketches of Brunswick East (demo)",
+    "Demo No. 79",
+    "Planet B (demo)",
+    "The Bird Song (demo)",
+    "Muddy Water (demo)",
+    "Mars for the Rich (demo)",
+    "Footy Footy (demo)",
+    "Stevie Ray Horn",
+    "Automation (demo)",
+    "Fishing for Fishies (demo)",
+    "Music to Eat Bananas To",
+    "The Spider and Me (demo)",
+    "Most of What I Like (demo)",
+    "9 TET",
+    "Demo No. 67",
+    "Danger $$$ (demo)",
+    "Horology (demo)",
+    "Honey (demo)",
+    "The 10th Boogie",
+    "Let It Bleed (demo)",
+    "Tezeta (demo)",
+    "Scared of Christmas",
+    "Sleepwalker (demo)",
+    "Straws in the Wind (demo)"
+   ]
+  },
+  {
+   "id": "dedee050-41d7-4193-b0e6-d3aa1334bfbb",
+   "title": "Float Along – Fill Your Lungs",
+   "first_release_date": "2013-09-27",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Head On/Pill",
+    "I’m Not a Man Unless I Have a Woman",
+    "God Is Calling Me Back Home",
+    "30 Past 7",
+    "Let Me Mend the Past",
+    "Mystery Jack",
+    "Pop in My Step",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "df1f3af0-6004-44d3-9a32-12913fdc357c",
+   "title": "Polygondwanaland",
+   "first_release_date": "2017-11-16",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Crumbling Castle",
+    "Polygondwanaland",
+    "The Castle in the Air",
+    "Deserted Dunes Welcome Weary Feet",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Tetrachromacy",
+    "Searching…",
+    "The Fourth Colour"
+   ]
+  },
+  {
+   "id": "e1052f17-e920-4582-a6f3-145bc5f91af1",
+   "title": "Live in London ’19",
+   "first_release_date": "2020-12-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star",
+    "Self‐Immolate",
+    "Mars for the Rich",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "The Great Chain of Being",
+    "Plastic Boogie",
+    "Crumbling Castle",
+    "This Thing",
+    "Boogieman Sam",
+    "Mr. Beat",
+    "Evil Death Roll",
+    "Venusian 2",
+    "Planet B",
+    "Rattlesnake",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "e21e9e38-9cbe-49aa-b008-2944a4e89275",
+   "title": "Sketches of Brunswick East",
+   "first_release_date": "2017-08-18",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "Sketches of Brunswick East I",
+    "Countdown",
+    "D-Day",
+    "Tezeta",
+    "Cranes, Planes, Migraines",
+    "The Spider and Me",
+    "Sketches of Brunswick East II",
+    "Dusk to Dawn on Lygon Street",
+    "The Book",
+    "A Journey to (S)hell",
+    "Rolling Stoned",
+    "You Can Be Your Silhouette",
+    "Sketches of Brunswick East III"
+   ]
+  },
+  {
+   "id": "e36b1186-6516-47f5-8401-8dac46bf1d7b",
+   "title": "Live in Paris ’19",
+   "first_release_date": "2020-01-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star",
+    "Venusian 2",
+    "Perihelion",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Deserted Dunes Welcome Weary Feet",
+    "The Castle in the Air",
+    "Muddy Water",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Hot Water",
+    "This Thing",
+    "Billabong Valley",
+    "Nuclear Fusion",
+    "Anoxia",
+    "All Is Known",
+    "Boogieman Sam",
+    "Mars for the Rich",
+    "Am I in Heaven?"
+   ]
+  },
+  {
+   "id": "ea6f0d77-1526-4071-8fab-d06b09c9184a",
+   "title": "Quarters!",
+   "first_release_date": "2015-05-01",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "tracks": [
+    "The River",
+    "Infinite Rise",
+    "God Is in the Rhythm",
+    "Lonely Steel Sheet Flyer"
+   ]
+  },
+  {
+   "id": "edfec753-9966-428a-ae37-bcf6c812019b",
+   "title": "Demos, Vol. 3 + Vol. 4",
+   "first_release_date": "2022-07-15",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Eat Pond Scum To",
+    "All Is Known (demo 1)",
+    "Stoned Mullet (demo)",
+    "Greenhouse Heat Death (demo 1)",
+    "Party Potential",
+    "Gaia (demo)",
+    "German Rock n’ Rolle",
+    "Sleep Drifter (demo 1)",
+    "Mariposa",
+    "Mars for the Rich (demo 2)",
+    "The Hungry Wolf of Fate (demo 1)",
+    "Flying Fishie",
+    "The Dripping Tap (demo 1)",
+    "Music to Die To",
+    "Sleep Drifter (demo 2)",
+    "Uncolonise",
+    "Altered Beast I (demo)",
+    "Worm",
+    "The Bird Song (demo 2)",
+    "Kelebek",
+    "Predator X (demo)",
+    "Tea and Jam",
+    "Big Fig Wasp (demo)",
+    "Cookies",
+    "The Mother Hen",
+    "The Dripping Tap (demo 2)"
+   ]
+  },
+  {
+   "id": "f06e67de-ec7e-4010-ba5f-fcf26e66a883",
+   "title": "Live in Phoenix ’24",
+   "first_release_date": "2024-11-12",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gaia",
+    "Gila Monster",
+    "Motor Spirit",
+    "Flamethrower",
+    "Mars for the Rich",
+    "This Thing",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Nuclear Fusion",
+    "Intrasport",
+    "Set",
+    "Swan Song",
+    "Antarctica",
+    "Black Tooth",
+    "Iron Lung",
+    "Le Risque",
+    "Boogieman Sam"
+   ]
+  },
+  {
+   "id": "f9565f08-737f-4d47-a500-fd1388f589c2",
+   "title": "Live in Toronto ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Perihelion (live)",
+    "Venusian 2 (live)",
+    "Converge (live)",
+    "Witchcraft (live)",
+    "The Great Chain of Being (live)",
+    "Dragon (live)",
+    "Hypertension (live)",
+    "Antarctica (live)",
+    "Field of Vision (live)",
+    "Raw Feel (live)",
+    "Hot Water (live)",
+    "Robot Stop (live)",
+    "Gamma Knife (live)",
+    "The Garden Goblin (live)",
+    "Extinction (live)",
+    "Set (live)"
+   ]
+  },
+  {
+   "id": "f972f0bd-8bd0-4033-917d-4dec0ac85b46",
+   "title": "Demos, Vol. 5 + Vol. 6",
+   "first_release_date": "2023-08-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Think Existentially To",
+    "Lunch Meat (demo)",
+    "Brassicas",
+    "Venusian 2 (demo)",
+    "Pleura (demo 1)",
+    "MTV",
+    "Honey (demo 2)",
+    "Moses",
+    "Ugly Guitars",
+    "Vomit Coffin (demo)",
+    "The Hungry Wolf of Fate (demo 2)",
+    "O.N.E. (demo)",
+    "The Dripping Tap (demo 3)",
+    "Music to Burn Money To",
+    "You Can Be Your Silhouette (demo)",
+    "Not Enough Time… Land",
+    "Invisible Face (demo)",
+    "Blue Horse",
+    "Digital Black (demo)",
+    "Lukey’s Brain",
+    "Self‐Immolate (demo)",
+    "Marble",
+    "Pleura (demo 2)",
+    "Sweet Talking",
+    "All Is Known (demo 2)",
+    "The Dripping Tap (demo 4)"
+   ]
+  },
+  {
+   "id": "fbce0cfb-7d0a-4d0c-b401-3c700f2e6c44",
+   "title": "Live in Boston ’24",
+   "first_release_date": "2024-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gondii",
+    "Change",
+    "Extinction",
+    "Grim Reaper",
+    "Supercell",
+    "Perihelion",
+    "Hell",
+    "Gila Monster",
+    "Magma",
+    "Daily Blues",
+    "Field of Vision",
+    "Flight b741",
+    "Sad Pilot",
+    "Wah Wah",
+    "Road Train",
+    "Hypertension",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "018ac98e-604e-445a-9a60-f54afac7bcc7",
+   "title": "Live in Gothenburg ’25",
+   "first_release_date": "2025-12-02",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Perihelion",
+    "Cyboogie",
+    "The Bitter Boogie",
+    "Candles",
+    "Gilgamesh",
+    "Kepler‐22b",
+    "The Grim Reaper",
+    "No Body",
+    "The Silver Cord"
+   ]
+  },
+  {
+   "id": "04fd8048-3d77-4b85-8fe7-39595b61ccdb",
+   "title": "Live in Copenhagen ’25",
+   "first_release_date": "2025-11-25",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Swan Song",
+    "Extinction",
+    "Blue Morpho",
+    "Set",
+    "Magma",
+    "Smoke & Mirrors",
+    "Slow Jam 1"
+   ]
+  },
+  {
+   "id": "0900e2d3-391b-479c-bcd7-2da0eafc0133",
+   "title": "Live at Remlinger Farms ’23",
+   "first_release_date": "2025-09-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Mars for the Rich",
+    "Organ Farmer",
+    "Supercell",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Sense",
+    "The Grim Reaper",
+    "Change",
+    "Shanghai",
+    "Ambergris",
+    "Hot Water",
+    "A New World",
+    "Altered Beast I",
+    "Alter Me I",
+    "Altered Beast II",
+    "Robot Stop",
+    "Static Electricity",
+    "Nuclear Fusion",
+    "Honey",
+    "Gila Monster",
+    "Witchcraft",
+    "Self‐Immolate",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "This Thing",
+    "Astroturf",
+    "Work This Time",
+    "The Garden Goblin",
+    "The Dripping Tap",
+    "Doom City",
+    "All Is Known",
+    "Anoxia",
+    "Straws in the Wind",
+    "K.G.L.W.",
+    "Converge",
+    "Hell",
+    "Her and I (Slow Jam 2)",
+    "Evil Death Roll",
+    "Invisible Face",
+    "Wah Wah",
+    "The River",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "0b8cd331-3107-4072-8290-4cee75607b73",
+   "title": "Infest the Rats’ Nest (Live ’24)",
+   "first_release_date": "2025-05-07",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "Planet B (Oklahoma City ’24)",
+    "Mars for the Rich (St. Louis ’24)",
+    "Organ Farmer (New York City ’24)",
+    "Superbug (Stanford ’24)",
+    "Venusian 1 (St. Louis ’24)",
+    "Perihelion (Houston ’24)",
+    "Venusian 2 (New York City ’24)",
+    "Self‐Immolate (Los Angeles ’24)",
+    "Hell (Los Angeles ’24)"
+   ]
+  },
+  {
+   "id": "0b98ef48-6e66-4a3c-824b-985d76ba676b",
+   "title": "Metal Night ’25 MikeSideRecords",
+   "first_release_date": "2025-07-26",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Metal Night ’25: Part I (Gaia / Gila Monster / Planet B / Organ Farmer / The Great Chain of Being / Superbug)",
+    "Metal Night ’25: Part II (Perihelion / Supercell / Dragon / Venusian 1 / Predator X / Hell)",
+    "Metal Night ’25: Part III (Hell / Mars for the Rich / Converge / Witchcraft / Venusian 1)",
+    "Metal Night ’25: Part IV (Motor Spirit / Self‐Immolate / Flamethrower)"
+   ]
+  },
+  {
+   "id": "0bbb71b2-171b-4302-a278-05eea7cd0d42",
+   "title": "Honey",
+   "first_release_date": "2020-07-15",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Honey"
+   ]
+  },
+  {
+   "id": "0cdcb375-29e6-4c1f-96d9-84c4ebb4bfe8",
+   "title": "I’m Not a Man Unless I Have a Woman",
+   "first_release_date": "2013-09-05",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "I’m Not a Man Unless I Have a Woman"
+   ]
+  },
+  {
+   "id": "175d8900-59ed-490a-a111-0d8d6b0f4b62",
+   "title": "Hog Calling Contest",
+   "first_release_date": "2024-07-23",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Hog Calling Contest",
+    "Le Risque"
+   ]
+  },
+  {
+   "id": "1a3bd111-d8bf-4870-9be9-e6dacd41f27a",
+   "title": "Kill For The Steel",
+   "first_release_date": "2026-08-11",
+   "primary_type": "EP",
+   "secondary_types": [],
+   "tracks": [
+    "Kill for the Steel",
+    "Level 5",
+    "Alien Metal"
+   ]
+  },
+  {
+   "id": "1e10f496-5fbd-421e-b671-3939705d1149",
+   "title": "Beginners Luck",
+   "first_release_date": "2017-12-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Beginners Luck"
+   ]
+  },
+  {
+   "id": "201f6014-10ff-465c-a89f-0cf18958cd2b",
+   "title": "Mind Fuzz Levitation ’16 Addendum",
+   "first_release_date": "2022-06-22",
+   "primary_type": "Single",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz"
+   ]
+  },
+  {
+   "id": "212b8220-016c-4ec6-91d0-aa15e6cd3bbe",
+   "title": "Live at Field of Vision ’25",
+   "first_release_date": "2025-09-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gamma Knife",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Field of Vision",
+    "Antarctica",
+    "Nuclear Fusion",
+    "Intrasport",
+    "Superposition",
+    "Kepler‐22b",
+    "Gilgamesh",
+    "Extinction",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Venusian 2",
+    "Converge",
+    "Witchcraft",
+    "Gaia",
+    "Police Truck",
+    "Evil Death Roll",
+    "Gila Monster",
+    "Flamethrower",
+    "Planet B",
+    "Slow Jam 1",
+    "Empty",
+    "Hot Wax",
+    "Superbug",
+    "Magenta Mountain",
+    "The Grim Reaper",
+    "Flamethrower (outro)",
+    "Swan Song",
+    "Welcome to an Altered Future",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Le Risque",
+    "Ice V",
+    "Raw Feel",
+    "Hot Water",
+    "Boogieman Sam",
+    "Straws in the Wind",
+    "Pleura",
+    "All Is Known",
+    "Rattlesnake",
+    "Theia",
+    "Sad Pilot",
+    "Most of What I Like",
+    "Aerodynamic",
+    "Supercell",
+    "Perihelion",
+    "Venusian 1",
+    "Her and I (Slow Jam 2)",
+    "Motor Spirit",
+    "O.N.E.",
+    "Billabong Valley",
+    "K.G.L.W.",
+    "Sense",
+    "Set",
+    "The Silver Cord",
+    "The Garden Goblin",
+    "Daily Blues",
+    "Float Along – Fill Your Lungs",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "2162843c-57bb-44e7-a092-78d2962c8482",
+   "title": "Live at Red Rocks ’23",
+   "first_release_date": "2025-09-19",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gaia",
+    "Motor Spirit",
+    "Superbug",
+    "Sense",
+    "Magenta Mountain",
+    "The Grim Reaper",
+    "Astroturf",
+    "Hate Dancin’",
+    "Down the Sink",
+    "The Reticent Raconteur",
+    "The Lord of Lightning",
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "Iron Lung",
+    "The Dripping Tap",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Self‐Immolate",
+    "Converge",
+    "Witchcraft",
+    "Satan Speeds Up",
+    "Shanghai",
+    "This Thing",
+    "Most of What I Like",
+    "The Wheel",
+    "Evil Death Roll",
+    "Magma",
+    "Rattlesnake",
+    "Open Water",
+    "Pleura",
+    "Straws in the Wind",
+    "Presumptuous",
+    "Hypertension",
+    "Ice V",
+    "Slow Jam 1",
+    "Hell",
+    "Mars for the Rich",
+    "Supercell",
+    "Gila Monster"
+   ]
+  },
+  {
+   "id": "22277ae5-d8b0-4ce3-be0e-d1d7d6108ce1",
+   "title": "Butterfly 3001",
+   "first_release_date": "2022-01-21",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Remix"
+   ],
+   "tracks": [
+    "Black Hot Soup (DJ Shadow “My Own Reality” re‐write)",
+    "Shanghai (The Scientist dub)",
+    "Shanghai (Deaton Chris Anthony remix)",
+    "Dreams (Yu Su instrumental mix)",
+    "Blue Morpho (Donato Dozzy remix)",
+    "Blue Morpho (VRIL remix)",
+    "Blue Morpho (Ciel’s Fluttering dub)",
+    "Blue Morpho (ZANDOLI II remix)",
+    "Catching Smoke (DāM‐FunK instrumental re‐freak)",
+    "Ya Love (Flaming Lips’ Fascinating Haircut re‐do)",
+    "Ya Love (Geneva Jacuzzi remix)",
+    "Ya Love (Héctor Oaks Playing w/ Fire mix)",
+    "2.02 Killer Year (Bullant’s F**k Mike Love remix)",
+    "Yours (Fred P Journey mix)",
+    "Butterfly 3000 (Terry Tracksuit remix)",
+    "Neu Butterfly 3000 (Peaches remix)",
+    "Catching Smoke (4am Wack rmx by Hieroglyphic Being)",
+    "Blue Morpho (Mall Grab remix)",
+    "Dreams (Peaking Lights Trancedellic Macrodosing mix)",
+    "Interior People (Confidence Man remix)",
+    "Catching Smoke (Kaitlyn Aurelia Smith remix)"
+   ]
+  },
+  {
+   "id": "22ed547c-a23c-40e2-85dd-462e76bf0517",
+   "title": "Soy‐Protein Munt Machine",
+   "first_release_date": "2017-04-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Soy‐Protein Munt Machine"
+   ]
+  },
+  {
+   "id": "24c2972c-c7ca-4140-86fa-d7cbd2a6c01a",
+   "title": "All Is Known",
+   "first_release_date": "2017-12-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "All Is Known"
+   ]
+  },
+  {
+   "id": "2ad48c25-0259-4ddb-b8ef-e8ffe89cde24",
+   "title": "Organ Farmer",
+   "first_release_date": "2019-06-25",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Organ Farmer"
+   ]
+  },
+  {
+   "id": "35e2e910-d945-4fca-94cf-b7e779b36635",
+   "title": "Gaia / Presumptuous",
+   "first_release_date": "2022-05-20",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Gaia",
+    "Presumptuous"
+   ]
+  },
+  {
+   "id": "364ca101-2c47-48ac-804a-476f3e6cf3e3",
+   "title": "Automation",
+   "first_release_date": "2020-10-20",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Automation"
+   ]
+  },
+  {
+   "id": "377ef4c1-651a-44e7-b0c4-0092a6df4da4",
+   "title": "Welcome to an Altered Universe",
+   "first_release_date": "2017-04-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Welcome to an Altered Future"
+   ]
+  },
+  {
+   "id": "3789a2bf-2087-4766-8c32-9e1df436eed1",
+   "title": "Iron Lung",
+   "first_release_date": "2022-10",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Iron Lung",
+    "Ice V"
+   ]
+  },
+  {
+   "id": "385299d7-e202-41b0-b479-03e5337c8be0",
+   "title": "Flight b741 Live!",
+   "first_release_date": "2025-05-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "Mirage City (live in Nashville ’24)",
+    "Antarctica (live in Paso Robles ’24)",
+    "Raw Feel (live in Cleveland ’24)",
+    "Field of Vision (live in Omaha ’24)",
+    "Hog Calling Contest (live in St. Augustine ’24)",
+    "Le Risque (live in Minneapolis ’24)",
+    "Flight b741 (live in Asheville ’24)",
+    "Sad Pilot (live in Houston ’24)",
+    "Rats in the Sky (live in Chicago ’24)",
+    "Daily Blues (live in Oregon ’24)"
+   ]
+  },
+  {
+   "id": "3adc8b87-3654-4c68-8452-c113b17cc4d7",
+   "title": "Live in Vienna ’25",
+   "first_release_date": "2025-11-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Kepler‐22b",
+    "Magenta Mountain",
+    "Perihelion",
+    "Muddy Water",
+    "The Bitter Boogie",
+    "2.02 Killer Year",
+    "Hot Water",
+    "The Silver Cord",
+    "Gilgamesh"
+   ]
+  },
+  {
+   "id": "3b3ea511-c26e-4dc5-a100-aa1116dab22d",
+   "title": "Altered Infinity (Live ’24)",
+   "first_release_date": "2025-04-05",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "Chapter 1: Nonagon Infinity Opens the Door (Chicago ’24)",
+    "Chapter 2: The Lord of Lightning vs Balrog (Arkansas, the Gorge & Maine ’24)",
+    "Chapter 3: Han‐Tyumi & the Murder of the Universe (Chicago & Las Vegas ’24)"
+   ]
+  },
+  {
+   "id": "3c2179b0-8c02-4c17-adbb-bce51853cf0b",
+   "title": "Rattlesnake",
+   "first_release_date": "2016-11-11",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Rattlesnake"
+   ]
+  },
+  {
+   "id": "3d549a05-6dbd-4705-b9e0-1d4d5a9d955f",
+   "title": "Live in Lithuania ’25",
+   "first_release_date": "2025-06-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gaia",
+    "Gila Monster",
+    "Witchcraft",
+    "Perihelion",
+    "This Thing",
+    "Field of Vision",
+    "Iron Lung",
+    "Sad Pilot",
+    "Gamma Knife",
+    "Work This Time",
+    "Shanghai",
+    "Slow Jam 1",
+    "Swan Song",
+    "Head On/Pill",
+    "Antarctica",
+    "Hypertension",
+    "Ice V",
+    "Rats in the Sky",
+    "Daily Blues",
+    "Let Me Mend the Past",
+    "Theia",
+    "Magenta Mountain",
+    "Flamethrower (outro)",
+    "Motor Spirit",
+    "Flamethrower",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Am I in Heaven?",
+    "Self‐Immolate",
+    "Supercell",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Dragon",
+    "Billabong Valley",
+    "Pleura",
+    "Le Risque",
+    "Down the Sink",
+    "Gilgamesh",
+    "Trapdoor",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "435e4639-718e-40b1-a09d-4810439e7452",
+   "title": "Demos, Vol. 1: Music to Kill Bad People To",
+   "first_release_date": "2020-09-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Kill Bad People To",
+    "Evil Death Roll (demo)",
+    "Dirt (demo)",
+    "BIT BIT BIT BIT BIT BIT BIT",
+    "Sketches of Brunswick East (demo)",
+    "Demo No. 79",
+    "Planet B (demo)",
+    "The Bird Song (demo)",
+    "Muddy Water (demo)",
+    "Mars for the Rich (demo)",
+    "Footy Footy (demo)",
+    "Stevie Ray Horn",
+    "Automation (demo)",
+    "Fishing for Fishies (demo)"
+   ]
+  },
+  {
+   "id": "43aa34f9-bcc1-48de-9689-bbed4f9fb91e",
+   "title": "If Not Now, Then When?",
+   "first_release_date": "2020-12-10",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "If Not Now, Then When?"
+   ]
+  },
+  {
+   "id": "445f4ef8-5835-4e40-ad94-ecd69a1b7d98",
+   "title": "Psych Suites (Live ’24)",
+   "first_release_date": "2025-04-03",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind / I’m Not in Your Mind / Cellophane / I’m in Your Mind Fuzz (Stanford, Maine & Philadelphia ’24)",
+    "Robot Stop / Big Fig Wasp / Gamma Knife / People‐Vultures / Mr. Beat (Chicago ’24)",
+    "The Lord of Lightning vs Balrog (Arkansas & The Gorge ’24)",
+    "Han‐Tyumi & the Murder of the Universe (Chicago & Las Vegas ’24)",
+    "Inner Cell / Loyalty / Horology (Albuquerque ’24)",
+    "Crumbling Castle / The Fourth Colour (Phoenix & D.C. ’24)",
+    "Doom City / Nuclear Fusion (New York City ’24)",
+    "Static Electricity / East West Link (Philadelphia ’24)"
+   ]
+  },
+  {
+   "id": "45ea15a7-044a-4f1b-b808-bd56b798aa46",
+   "title": "Sleep / Summer!",
+   "first_release_date": "2010-11-25",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Sleep",
+    "Summer!"
+   ]
+  },
+  {
+   "id": "46276601-1414-4d43-b5ab-02662c6a9392",
+   "title": "Hat Jam",
+   "first_release_date": "2022-04-11",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "The Dripping Tap",
+    "Satanic Slumber Party"
+   ]
+  },
+  {
+   "id": "4955815d-321a-4a20-9728-55f541869a00",
+   "title": "Live in London ’25",
+   "first_release_date": "2025-11-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gilgamesh",
+    "Blue Morpho",
+    "Butterfly 3000",
+    "Cyboogie",
+    "The Garden Goblin",
+    "Smoke and Mirrors",
+    "Magma",
+    "Extinction",
+    "Set",
+    "2.02 Killer Year",
+    "Dreams",
+    "Shanghai",
+    "Flamethrower",
+    "Magenta Mountain",
+    "Sense",
+    "Kepler‐22b"
+   ]
+  },
+  {
+   "id": "4d0a1bd3-471a-4801-b525-7c16b263485f",
+   "title": "Live in Athens ’25",
+   "first_release_date": "2025-06-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Open Water",
+    "Automation",
+    "Oddlife",
+    "Mirage City",
+    "Altered Beast I",
+    "Alter Me I",
+    "Altered Beast II",
+    "Raw Feel",
+    "Boogieman Sam",
+    "Chang’e",
+    "Venusian 1",
+    "Converge",
+    "Witchcraft",
+    "Predator X",
+    "Hell",
+    "Her and I (Slow Jam 2)",
+    "Magma",
+    "Gila Monster",
+    "Motor Spirit",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "The Balrog",
+    "Ambergris",
+    "Sad Pilot",
+    "Iron Lung",
+    "Evil Death Roll",
+    "Muddy Water",
+    "The Bitter Boogie",
+    "Hog Calling Contest",
+    "Kepler‐22b",
+    "Set",
+    "Mars for the Rich",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Straws in the Wind",
+    "Minimum Brain Size",
+    "Nuclear Fusion",
+    "Antarctica",
+    "Theia",
+    "Le Risque",
+    "Ice V",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Superposition",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "555171ed-3b87-4984-8e1d-3fabc5a7a236",
+   "title": "Hey There / Ants & Bats",
+   "first_release_date": "2010-10-22",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Hey There",
+    "Ants and Bats"
+   ]
+  },
+  {
+   "id": "55f9605a-47e5-42ad-84d1-e2055637a071",
+   "title": "Live in Tilburg ’25",
+   "first_release_date": "2025-11-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Ice V",
+    "The Bitter Boogie",
+    "Muddy Water",
+    "Dreams",
+    "The Grim Reaper",
+    "Swan Song",
+    "Fishing for Fishies",
+    "Smoke & Mirrors",
+    "Magma"
+   ]
+  },
+  {
+   "id": "5fe13874-1ad4-4fce-a71a-62d854218ee1",
+   "title": "2017‐04‐10: KEXP, Seattle, WA, USA",
+   "first_release_date": "2017-04-10",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Doom City",
+    "Sleep Drifter",
+    "Billabong Valley",
+    "Nuclear Fusion",
+    "Interview"
+   ]
+  },
+  {
+   "id": "614031fa-bd8b-4033-882b-5aca4af4d29e",
+   "title": "Fishing for Fishies",
+   "first_release_date": "2019-03-11",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Fishing for Fishies"
+   ]
+  },
+  {
+   "id": "62a68778-f52c-410d-8e5d-284a43567239",
+   "title": "Live in Manchester ’25",
+   "first_release_date": "2025-11-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Theia",
+    "Hot Water",
+    "Flamethrower",
+    "Magenta Mountain",
+    "Slow Jam I",
+    "Hell’s Itch",
+    "Swan Song",
+    "Murder of the Universe"
+   ]
+  },
+  {
+   "id": "65779b08-3e95-4f00-8abb-d11aa8f46f18",
+   "title": "Gila Monster",
+   "first_release_date": "2023-05-16",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Gila Monster"
+   ]
+  },
+  {
+   "id": "65efefb5-bbac-4c03-a522-d1a1e5e1d0c1",
+   "title": "Self‐Immolate",
+   "first_release_date": "2019-05-28",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Self‐Immolate"
+   ]
+  },
+  {
+   "id": "6a0b4ebb-4327-4a01-9334-a6457983e2e2",
+   "title": "Pleura",
+   "first_release_date": "2021-02-18",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Pleura"
+   ]
+  },
+  {
+   "id": "6d2d61fd-63c8-46c3-916b-ea29a58d2da2",
+   "title": "2011‐04‐25: The Temperature’s Rising, RMITV, Melbourne, Australia",
+   "first_release_date": "2011-04-25",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Eddie Cousin",
+    "Trench Foot (false start)",
+    "Trench Foot"
+   ]
+  },
+  {
+   "id": "70d22a7f-b0ce-4868-970c-4a7876af7340",
+   "title": "Black Tooth / Willoughby’s Beach",
+   "first_release_date": "2011",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Black Tooth",
+    "Willoughby’s Beach"
+   ]
+  },
+  {
+   "id": "715ecb1f-a41c-435c-a752-77b59f0dd1b7",
+   "title": "The Fourth Colour",
+   "first_release_date": "2021-07-09",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "The Fourth Colour"
+   ]
+  },
+  {
+   "id": "74100552-da59-4c8f-81a8-4980a8e0a0f6",
+   "title": "Alien Metal",
+   "first_release_date": "2026-07-28",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Alien Metal"
+   ]
+  },
+  {
+   "id": "788d72aa-4df4-4f5e-bf65-2346ee915d31",
+   "title": "Straws in the Wind",
+   "first_release_date": "2020-09-15",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Straws in the Wind"
+   ]
+  },
+  {
+   "id": "7fcf88ab-9f63-478f-ac66-97886aa8d003",
+   "title": "Demos, Vol. 4: Music to Die To",
+   "first_release_date": "2022-07-15",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Die To",
+    "Sleep Drifter (demo 2)",
+    "Uncolonise",
+    "Altered Beast I (demo)",
+    "Worm",
+    "The Bird Song (demo 2)",
+    "Kelebek",
+    "Predator X (demo)",
+    "Tea and Jam",
+    "Big Fig Wasp (demo)",
+    "Cookies",
+    "The Mother Hen",
+    "The Dripping Tap (demo 2)"
+   ]
+  },
+  {
+   "id": "80dcc391-9896-4d1f-a37a-b67cd0606875",
+   "title": "Murder of the Universe",
+   "first_release_date": "2017-04-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Murder of the Universe"
+   ]
+  },
+  {
+   "id": "85a63d8e-cc4b-4304-a26e-811117d3cef8",
+   "title": "The Lord of Lightning",
+   "first_release_date": "2017-05-31",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "The Lord of Lightning"
+   ]
+  },
+  {
+   "id": "8c508f24-b727-40e8-b833-da782bdf1d51",
+   "title": "Polygondwanaland Megamix",
+   "first_release_date": "2025-02-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Polygondwanaland Megamix (Part 1)",
+    "Polygondwanaland Megamix (Part 2)"
+   ]
+  },
+  {
+   "id": "8e6371b3-e636-4be3-ac48-fc7f0dbead0c",
+   "title": "Live in North America ’24",
+   "first_release_date": "2024-09-18",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "The Dripping Tap (live in Washington DC)",
+    "Evil Death Roll (live in Washington DC)",
+    "Boogieman Sam (live in New York)",
+    "Organ Farmer (live in New York)",
+    "Doom City (live in New York)",
+    "Hot Water (live in New York)",
+    "Ice V (live in New York)",
+    "Motor Spirit (live in New York)",
+    "Change (live in Boston)",
+    "Grim Reaper (live in Boston)",
+    "Hypertension (live in Toronto)",
+    "Extinction (live in Toronto)",
+    "Theia (live in Detroit)",
+    "Pleura (live in Detroit)",
+    "Automation (live in Detroit)",
+    "Rattlesnake (live in Detroit)",
+    "Crumbling Castle (live in Detroit)",
+    "Superbug (live in Cleveland)",
+    "Gaia (live in Newport)",
+    "Converge (live in Newport)",
+    "Witchcraft (live in Newport)",
+    "Slow Jam 1 (live in Newport)",
+    "Sense (live in Newport)",
+    "Work This Time (live in Newport)",
+    "The River (live in Philadelphia)",
+    "Gilgamesh (live in Philadelphia)",
+    "Theia (live in Richmond)",
+    "Antarctica (live in Asheville)",
+    "Float Along – Fill Your Lungs (live in Asheville)",
+    "Mirage City (live in Nashville)",
+    "Black Tooth (live in Nashville)",
+    "Hot Wax (live in Nashville)",
+    "Gila Monster (live in Nashville)",
+    "Robot Stop (live in Chicago)",
+    "Rats in the Sky (live in Chicago)",
+    "You Can Be Your Silhouette (live in Chicago)",
+    "Swan Song (live in Chicago)",
+    "Set (live in Chicago)",
+    "We’re Doing It Together (live in Minneapolis)",
+    "Dripping Tap (live in Milwaukee)",
+    "Field of Vision (live in Milwaukee)",
+    "Shanghai (live in St Louis)",
+    "Sea of Trees (live in St. Louis)",
+    "Lava (live in Omaha)",
+    "Daily Blues (live in Morrison)",
+    "Muddy Water (live in Morrison)",
+    "Elbow (live in Morrison)",
+    "Dragon (live in Morrison)",
+    "Chang’e (live in Morrison)",
+    "Am I in Heaven? (live in Morrison)",
+    "The Book (live in Morrison)",
+    "Plastic Boogie (live in Morrison)",
+    "Tetrachromacy (live in Morrison)",
+    "It’s Got Old (live in Morrison)",
+    "Mystery Jack (live in Morrison)",
+    "God Is Calling Me Back Home (live in Morrison)",
+    "Dirt (live in Morrison)",
+    "Wah Wah (live in Morrison)",
+    "Road Train (live in Morrison)",
+    "Raw Feel (live in Morrison)",
+    "Theia (live in Morrison)",
+    "Le Risque (live in Troutdale)",
+    "The Fourth Colour (live in Troutdale)",
+    "Sad Pilot (live in Troutdale)",
+    "The Reticent Raconteur (live in Troutdale)",
+    "Lord of Lightning (live in Troutdale)",
+    "The Balrog (live in Troutdale)",
+    "Straws in the Wind (live in Vancouver)",
+    "Flamethrower (live in Vancouver)",
+    "Iron Lung (live in Vancouver)",
+    "Open Water (live in Quincy)",
+    "Magma (live in Quincy)",
+    "Hog Calling Contest (live in Quincy)",
+    "Flight b741 (live in Quincy)",
+    "Magenta Mountain (live in Quincy)",
+    "Gondii (live in Quincy)",
+    "The Silver Cord (live in Quincy)",
+    "Vegemite (live in Quincy)"
+   ]
+  },
+  {
+   "id": "8eab713d-48b8-4b31-8f46-a67be03f35d3",
+   "title": "Rolling Stoned",
+   "first_release_date": "2018-01-19",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Rolling Stoned",
+    "Rolling Stoned"
+   ]
+  },
+  {
+   "id": "90331ce0-6516-4ae2-97bc-3b96768a2cb6",
+   "title": "Magenta Mountain",
+   "first_release_date": "2022-03-29",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Magenta Mountain",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "93d4b36e-ac6d-429d-a724-8ee974403b64",
+   "title": "Some of Us",
+   "first_release_date": "2020-08-13",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Some of Us"
+   ]
+  },
+  {
+   "id": "955beaef-28b7-448f-8b24-7baf6f657474",
+   "title": "O.N.E.",
+   "first_release_date": "2021-01-28",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "O.N.E."
+   ]
+  },
+  {
+   "id": "96548c84-67c5-4902-95b7-5efcade06837",
+   "title": "Live in New York City ’25",
+   "first_release_date": "2025-08-08",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gaia",
+    "Predator X",
+    "Supercell",
+    "Superbug",
+    "Minimum Brain Size",
+    "Oddlife",
+    "Sense",
+    "The Grim Reaper",
+    "Set",
+    "Extinction",
+    "Wah Wah",
+    "Road Train",
+    "Let Me Mend the Past",
+    "Altered Beast IV",
+    "Ambergris",
+    "Sad Pilot",
+    "Rats in the Sky",
+    "Hypertension"
+   ]
+  },
+  {
+   "id": "9899606b-275e-4ad7-af0d-ecde0d36a4c0",
+   "title": "Black Hot Soup (DJ Shadow “My Own Reality” re‐write)",
+   "first_release_date": "2022-01-07",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Black Hot Soup (DJ Shadow “My Own Reality” re‐write)"
+   ]
+  },
+  {
+   "id": "99ea82de-70ff-4b28-a809-821a2525a035",
+   "title": "The Last Oasis",
+   "first_release_date": "2017-12-20",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "The Last Oasis"
+   ]
+  },
+  {
+   "id": "9bfd7f14-b15f-48d5-8b67-ee55acec3ef0",
+   "title": "Greenhouse Heat Death",
+   "first_release_date": "2017-12-20",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Greenhouse Heat Death"
+   ]
+  },
+  {
+   "id": "9c66cbe4-2486-486f-aca5-bbff009e6c70",
+   "title": "Most of What I Like",
+   "first_release_date": "2023-03-17",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Most of What I Like (demo)",
+    "Most of What I Like (live in Brisbane ’21)"
+   ]
+  },
+  {
+   "id": "9d3b739b-540b-44db-a94c-b8ffed19bc47",
+   "title": "Grow Wings and Fly",
+   "first_release_date": "2025-05-13",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Grow Wings and Fly",
+    "Deadstick",
+    "Phantom Island"
+   ]
+  },
+  {
+   "id": "a3607372-00cb-40f8-826b-0bd5ce0cff3b",
+   "title": "Satanic Slumber Party",
+   "first_release_date": "2022-03-14",
+   "primary_type": "EP",
+   "secondary_types": [],
+   "tracks": [
+    "Satanic Slumber Party, Part 1 (The Chairman’s Portrait)",
+    "Satanic Slumber Party, Part 2 (Midnight in Sodom)",
+    "Satanic Slumber Party, Part 3 (Hoof and Horn)"
+   ]
+  },
+  {
+   "id": "a3e2b0f3-4178-4240-891e-841f2c7e7365",
+   "title": "Cyboogie",
+   "first_release_date": "2019-02-01",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Cyboogie"
+   ]
+  },
+  {
+   "id": "a6589365-7a26-4951-872b-6a211c1784ec",
+   "title": "Crumbling Castle",
+   "first_release_date": "2017-10-18",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Crumbling Castle"
+   ]
+  },
+  {
+   "id": "a6ad5729-826f-453a-b409-0d6a8fa263bc",
+   "title": "Demos, Vol. 6: Music to Burn Money To",
+   "first_release_date": "2023-08-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Burn Money To",
+    "You Can Be Your Silhouette (demo)",
+    "Not Enough Time… Land",
+    "Invisible Face (demo)",
+    "Blue Horse",
+    "Digital Black (demo)",
+    "Lukey’s Brain",
+    "Self‐Immolate (demo)",
+    "Marble",
+    "Pleura (demo 2)",
+    "Sweet Talking",
+    "All Is Known (demo 2)",
+    "The Dripping Tap (demo 4)"
+   ]
+  },
+  {
+   "id": "abe05798-666b-469f-84ff-764f8aebfe61",
+   "title": "Nuclear Fusion",
+   "first_release_date": "2016-12-22",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Nuclear Fusion"
+   ]
+  },
+  {
+   "id": "acff28a2-60a6-4869-86d1-bc89a63f2328",
+   "title": "Cellophane",
+   "first_release_date": "2014-11-17",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Cellophane",
+    "The Wholly Ghost"
+   ]
+  },
+  {
+   "id": "ae1e2ea3-6944-4612-b7be-5d7f6a87be0d",
+   "title": "Dragon",
+   "first_release_date": "2023-06-06",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Dragon",
+    "Gila Monster"
+   ]
+  },
+  {
+   "id": "b17dccfc-2f6c-4633-acc4-a12e82c40d07",
+   "title": "The Endless Tap (Live ’24)",
+   "first_release_date": "2025-04-02",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "The Endless Tap (Live ’24: Leg 1)",
+    "The Endless Tap (Live ’24: Leg 2)"
+   ]
+  },
+  {
+   "id": "b217be61-f609-4749-ad0e-2c9d6e76a22f",
+   "title": "Theia / The Silver Cord / Set",
+   "first_release_date": "2023-10-03",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Theia",
+    "The Silver Cord",
+    "Set"
+   ]
+  },
+  {
+   "id": "b23e697b-ce80-400e-b878-253377fa08a5",
+   "title": "No Body / Exploding Suns",
+   "first_release_date": "2023-03-03",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "No Body",
+    "Exploding Suns"
+   ]
+  },
+  {
+   "id": "b2bd04f4-1ff6-4aa7-8b95-c515f413d4fc",
+   "title": "Live in Prague ’25",
+   "first_release_date": "2025-11-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Extinction",
+    "Theia",
+    "Shanghai",
+    "Superposition",
+    "Sense",
+    "Flamethrower",
+    "The Grim Reaper",
+    "Ice V",
+    "Candles"
+   ]
+  },
+  {
+   "id": "b3cdadea-84a0-41db-8386-28ffefff702c",
+   "title": "2014‐10‐13: Baby’s All Right, Brooklyn, NY, USA",
+   "first_release_date": "2014-11-18",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Empty",
+    "Hot Water",
+    "Slow Jam 1",
+    "Am I in Heaven?",
+    "Head On/Pill"
+   ]
+  },
+  {
+   "id": "b55d1512-977d-4d6a-8762-75d2c3f7062f",
+   "title": "Ravin’ in Melbourne ’25",
+   "first_release_date": "2025-11-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The Silver Cord",
+    "Kepler‐22b",
+    "Gilgamesh",
+    "Set",
+    "2.02 Killer Year",
+    "Blue Morpho",
+    "Extinction",
+    "Butterfly 3000",
+    "The Grim Reaper"
+   ]
+  },
+  {
+   "id": "b596d87f-6e1d-4c88-89ac-5521b3e45f1f",
+   "title": "Demos, Vol. 3: Music to Eat Pond Scum To",
+   "first_release_date": "2022-07-15",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Eat Pond Scum To",
+    "All Is Known (Demo 1)",
+    "Stoned Mullet (Demo)",
+    "Greenhouse Heat Death (Demo 1)",
+    "Party Potential",
+    "Gaia (Demo)",
+    "German Rock n’ Rolle",
+    "Sleep Drifter (Demo 1)",
+    "Mariposa",
+    "Mars for the Rich (Demo 2)",
+    "The Hungry Wolf of Fate (Demo 1)",
+    "Flying Fishie",
+    "The Dripping Tap (Demo 1)"
+   ]
+  },
+  {
+   "id": "be6a5c10-ac03-414b-8fb6-b4adf6995f49",
+   "title": "L.W. Live in Australia ’21 (We Are Busy Bodies)",
+   "first_release_date": "2021-09-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Compilation",
+    "Live"
+   ],
+   "tracks": [
+    "If Not Now, Then When? / O.N.E. / Pleura / Supreme Ascendancy / Static Electricity",
+    "East West Link / Ataraxia / See Me / K.G.L.W."
+   ]
+  },
+  {
+   "id": "bfae1a45-7c71-44e2-b7c2-6ab18f182b44",
+   "title": "Live in Berlin ’25",
+   "first_release_date": "2025-11-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Murder of the Universe",
+    "Cyboogie",
+    "Perihelion",
+    "Hell’s Itch",
+    "Slow Jam I",
+    "Kepler‐22b",
+    "Gilgamesh",
+    "Set",
+    "Blue Morpho"
+   ]
+  },
+  {
+   "id": "bfd52f27-1402-434a-9179-8851c6a0c4da",
+   "title": "Vomit Coffin",
+   "first_release_date": "2017-04-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Vomit Coffin"
+   ]
+  },
+  {
+   "id": "c1bb43db-b437-4f5a-99c9-84a63729eff1",
+   "title": "Live at The Caverns ’23",
+   "first_release_date": "2025-06-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The Dripping Tap",
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Iron Lung",
+    "Hypertension",
+    "Hot Water",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Supercell",
+    "Mars for the Rich",
+    "Hell",
+    "Gila Monster",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Planet B",
+    "Predator X",
+    "Converge",
+    "This Thing",
+    "Magenta Mountain",
+    "The Grim Reaper",
+    "Astroturf",
+    "The Garden Goblin",
+    "Ice V",
+    "Doom City",
+    "Automation",
+    "Billabong Valley",
+    "K.G.L.W.",
+    "Rattlesnake",
+    "O.N.E.",
+    "Minimum Brain Size",
+    "Ataraxia",
+    "Straws in the Wind",
+    "Gaia",
+    "Witchcraft",
+    "Self‐Immolate",
+    "Perihelion",
+    "Boogieman Sam",
+    "Magma",
+    "Lava",
+    "Head On/Pill",
+    "Lonely Steel Sheet Flyer",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Sleepwalker",
+    "It’s Got Old",
+    "Muddy Water",
+    "The River",
+    "Wah Wah",
+    "The River",
+    "Let Me Mend the Past",
+    "Trapdoor",
+    "The Bitter Boogie",
+    "The Wheel",
+    "Presumptuous",
+    "Ambergris",
+    "Most of What I Like",
+    "Her and I (Slow Jam 2)"
+   ]
+  },
+  {
+   "id": "ca246f58-be85-4c93-9171-0b3c40cdde8f",
+   "title": "Anglesea",
+   "first_release_date": "2010-12-27",
+   "primary_type": "EP",
+   "secondary_types": [],
+   "tracks": [
+    "Eddie Cousin",
+    "Fried",
+    "Good to Me",
+    "Tomb/Beach"
+   ]
+  },
+  {
+   "id": "cb03e447-1e04-49e3-9b88-acb546ad909f",
+   "title": "Field of Vision",
+   "first_release_date": "2024-08-06",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Field of Vision",
+    "Hog Calling Contest",
+    "Le Risque"
+   ]
+  },
+  {
+   "id": "cbd5004b-52d2-4b1e-aa65-31d6a55689fd",
+   "title": "Level 5",
+   "first_release_date": "2026-07-08",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Level 5"
+   ]
+  },
+  {
+   "id": "cbe0045b-cfdb-4a15-a1c1-5519232c7df3",
+   "title": "Digital Black",
+   "first_release_date": "2017-04-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Digital Black"
+   ]
+  },
+  {
+   "id": "cffe3859-daee-4787-83f8-fff620a12ce3",
+   "title": "Deadstick",
+   "first_release_date": "2025-04-15",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Deadstick",
+    "Phantom Island"
+   ]
+  },
+  {
+   "id": "d63c95a0-c85b-4ba3-bbb3-7a144f7fc03e",
+   "title": "Han‐Tyumi, the Confused Cyborg",
+   "first_release_date": "2017-04-12",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Han‐Tyumi, the Confused Cyborg"
+   ]
+  },
+  {
+   "id": "dafca5f4-ea23-43e9-95f2-4005e7515eff",
+   "title": "Ice V",
+   "first_release_date": "2022-09-07",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Ice V"
+   ]
+  },
+  {
+   "id": "dc34d526-7950-41d6-b623-b80aa63d15ea",
+   "title": "Sleep Drifter",
+   "first_release_date": "2017-01-18",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Sleep Drifter"
+   ]
+  },
+  {
+   "id": "df0b4e8d-2ef2-4214-abee-fba072d3b36b",
+   "title": "Willoughby’s Beach",
+   "first_release_date": "2011-10-21",
+   "primary_type": "EP",
+   "secondary_types": [],
+   "tracks": [
+    "Danger $$$",
+    "Black Tooth",
+    "Lunch Meat",
+    "Crookedile",
+    "Let It Bleed",
+    "Dead-Beat",
+    "Dustbin Fletcher",
+    "Stoned Mullet",
+    "Willoughby’s Beach"
+   ]
+  },
+  {
+   "id": "e08a338b-bc29-4ed4-9619-9ad2ca82fab1",
+   "title": "2017‐10‐11: KEXP, Seattle, WA, USA",
+   "first_release_date": "2022-09-04",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Welcome to an Altered Future",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "The Lord of Lightning",
+    "Alter Me I",
+    "Altered Beast II",
+    "Alter Me II",
+    "Altered Beast III",
+    "Alter Me III",
+    "Altered Beast IV",
+    "Outro"
+   ]
+  },
+  {
+   "id": "e17d796d-194a-4ad6-8a5c-057028c1c85f",
+   "title": "Kepler‐22b",
+   "first_release_date": "2022-04-19",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Kepler‐22b"
+   ]
+  },
+  {
+   "id": "e2e5b06e-e0e7-4362-ab3d-353f5f6a4455",
+   "title": "Phantom Island",
+   "first_release_date": "2024-10-19",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Phantom Island"
+   ]
+  },
+  {
+   "id": "e92ef748-7107-4bb2-a575-02fcb742a619",
+   "title": "Live in Bulgaria ’25",
+   "first_release_date": "2025-06-13",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Dragon",
+    "Flamethrower",
+    "Stressin’",
+    "K.G.L.W.",
+    "The Book",
+    "Extinction",
+    "Hot Water",
+    "Mirage City",
+    "Robot Stop",
+    "Sea of Trees",
+    "Altered Beast III",
+    "Alter Me III",
+    "Altered Beast IV",
+    "Work This Time",
+    "The River",
+    "The Dripping Tap",
+    "Field of Vision",
+    "Flight b741",
+    "Antarctica",
+    "Static Electricity",
+    "Anoxia",
+    "Doom City",
+    "Intrasport",
+    "Sense",
+    "The Grim Reaper",
+    "Smoke & Mirrors",
+    "Gaia",
+    "Gila Monster",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Supercell",
+    "People‐Vultures",
+    "God Is Calling Me Back Home",
+    "Le Risque",
+    "Hog Calling Contest",
+    "Most of What I Like",
+    "The Wheel",
+    "Magma",
+    "The Silver Cord",
+    "Magenta Mountain",
+    "Converge",
+    "Witchcraft",
+    "Plastic Boogie",
+    "Hot Wax",
+    "Venusian 2",
+    "Motor Spirit",
+    "Rattlesnake"
+   ]
+  },
+  {
+   "id": "e9706254-d170-4364-8ce6-ac94c55832d5",
+   "title": "Hate Dancin’",
+   "first_release_date": "2022-10-17",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Hate Dancin’"
+   ]
+  },
+  {
+   "id": "eb715fc3-7a65-4ef4-9ba4-9646e0124f84",
+   "title": "2019-08-18: KEXP, Seattle, WA, USA",
+   "first_release_date": "2019-08-18",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "2019‐11‐01: Live on KEXP, “King Gizzard & the Lizard Wizard”"
+   ]
+  },
+  {
+   "id": "eb80eb79-db60-47c2-beee-7c284b4e648f",
+   "title": "Demos, Vol. 5: Music to Think Existentially To",
+   "first_release_date": "2023-08-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Think Existentially To",
+    "Lunch Meat (demo)",
+    "Brassicas",
+    "Venusian 2 (demo)",
+    "Pleura (demo 1)",
+    "MTV",
+    "Honey (demo 2)",
+    "Moses",
+    "Ugly Guitars",
+    "Vomit Coffin (demo)",
+    "The Hungry Wolf of Fate (demo 2)",
+    "O.N.E. (demo)",
+    "The Dripping Tap (demo 3)"
+   ]
+  },
+  {
+   "id": "ed4285e3-b180-4757-a1a5-c2afdfc9b0f0",
+   "title": "Planet B",
+   "first_release_date": "2019-04-14",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Planet B"
+   ]
+  },
+  {
+   "id": "ee0c5833-bd22-47d9-8a22-0f93d0de8221",
+   "title": "The Dripping Tap",
+   "first_release_date": "2022-03-09",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "f53d6a66-7489-4a5f-9d35-1819c474eff9",
+   "title": "Le Risque",
+   "first_release_date": "2024-07-09",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Le Risque"
+   ]
+  },
+  {
+   "id": "f759fcc3-cb4b-4d7c-b73e-c6174f581967",
+   "title": "Bloody Ripper",
+   "first_release_date": "2012-04-03",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Bloody Ripper",
+    "Sam Cherry’s Last Shot"
+   ]
+  },
+  {
+   "id": "fc8e8486-c648-4c4e-9ff2-bd951280f374",
+   "title": "Demos, Vol. 2: Music to Eat Bananas To",
+   "first_release_date": "2020-09-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Demo"
+   ],
+   "tracks": [
+    "Music to Eat Bananas To",
+    "The Spider and Me (demo)",
+    "Most of What I Like (demo)",
+    "9 TET",
+    "Demo No. 67",
+    "Danger $$$ (demo)",
+    "Horology (demo)",
+    "Honey (demo)",
+    "The 10th Boogie",
+    "Let It Bleed (demo)",
+    "Tezeta (demo)",
+    "Scared of Christmas",
+    "Sleepwalker (demo)",
+    "Straws in the Wind (demo)"
+   ]
+  },
+  {
+   "id": "031162d5-ae3c-41ed-b21c-390139435563",
+   "title": "2024‐05‐31: Brighton Dome, Brighton, England, UK",
+   "first_release_date": "2024-05-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Banter (intro)",
+    "Iron Lung",
+    "Banter (Mirage City)",
+    "Mirage City",
+    "Banter (Bondage and phallic shaped mushrooms)",
+    "Most of What I Like",
+    "Banter (Pringles juice and too many chords)",
+    "Time = $$$",
+    "Banter (Attacking the Pringles)",
+    "Let Me Mend the Past",
+    "Banter (Never ask Stu to put his shoes back on)",
+    "You Can Be Your Silhouette",
+    "Raw Feel",
+    "Banter (Grace Cummings is back and Lukey loves everyone)",
+    "The Bitter Boogie",
+    "Hot Water",
+    "Banter (Rattlesnakes and Joey’s origin story)",
+    "Trapdoor",
+    "Banter (Interview with Frying Micro Toenail Cabana)",
+    "Sad Pilot",
+    "Banter (Stu is Joe Walsh from the Eagles)",
+    "Sense",
+    "Banter (Fart jokes and Cavs teaches the band how to play music)",
+    "This Thing",
+    "Slow Jam 1",
+    "Banter (Joey spits in Cookie’s mouth and the band genuinely thanks Stacked for their cover)",
+    "Witchcraft"
+   ]
+  },
+  {
+   "id": "04488769-79fe-4b0d-ab4e-d1746dd05842",
+   "title": "2022‐10‐11: Red Rocks Amphitheatre, Morrison, CO, USA",
+   "first_release_date": "2023-01-03",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "The Dripping Tap",
+    "Joey Banter",
+    "Gaia",
+    "Predator X",
+    "Organ Farmer",
+    "Pleura",
+    "Banter",
+    "Oddlife",
+    "Doom City",
+    "K.G.L.W.",
+    "Banter",
+    "Boogieman Sam",
+    "Sleepwalker",
+    "Banter",
+    "Sea of Trees",
+    "The Bitter Boogie",
+    "Hypertension (Intermission)",
+    "Perihelion",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m Not in Your Mind Fuzz",
+    "Banter",
+    "Tezeta",
+    "A New World",
+    "Altered Beast I",
+    "Alter Me I",
+    "Altered Beast II",
+    "Alter Me II",
+    "Altered Beast III",
+    "Banter",
+    "Ambergris",
+    "Muddy Water",
+    "Banter",
+    "Iron Lung",
+    "Banter",
+    "Robot Stop",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Iron Lung Reprise"
+   ]
+  },
+  {
+   "id": "0daf9911-a509-4430-8a7f-bf23dc2cd6ee",
+   "title": "2014‐10‐26: Baby’s All Right, Brooklyn, NY, USA",
+   "first_release_date": "2014-11-18",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Slow Jam 1",
+    "Stressin’",
+    "Her and I (Slow Jam 2)",
+    "It’s Got Old",
+    "Vegemite",
+    "Sleepwalker",
+    "[banter]",
+    "God Is Calling Me Back Home",
+    "[Happy Birthday]"
+   ]
+  },
+  {
+   "id": "0de61984-9366-4224-a5b5-362fd6c87e66",
+   "title": "2024‐03‐09: Live at Play on the Plains, Deniliquin",
+   "first_release_date": "2024-03-09",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Boogieman Sam",
+    "The Dripping Tap",
+    "Willoughby’s Beach",
+    "Iron Lung",
+    "Witchcraft",
+    "Mars for the Rich",
+    "Gaia / Gila Monster / Gaia",
+    "Dragon",
+    "Billabong Valley"
+   ]
+  },
+  {
+   "id": "117aefee-1242-4089-af49-90a2316f2e7a",
+   "title": "Chunky Shrapnel (Special Features)",
+   "first_release_date": "2020-08-19",
+   "primary_type": "EP",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Beginner’s Luck (live in Zurich ’19)",
+    "Mars for the Rich (live in Glasgow ’19)",
+    "This Thing (live in Brussels ’19)",
+    "People (live in Madrid ’19)"
+   ]
+  },
+  {
+   "id": "1195588b-d644-4697-a48b-b2bec2fa14e7",
+   "title": "2012‐03‐24: Warrandyte Festival, Stiggants Reserve, Melbourne, Australia",
+   "first_release_date": "2012-03-24",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Willoughby’s Beach",
+    "Dead‐Beat"
+   ]
+  },
+  {
+   "id": "13edea0d-dd2d-4532-8d77-6badc1ac1a44",
+   "title": "2011‐12‐31: The Esplanade Hotel, Melbourne, Australia",
+   "first_release_date": "2024-02-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Elbow",
+    "Dustbin Fletcher",
+    "Lunch Meat",
+    "Black Tooth",
+    "Talk Talk Talk",
+    "Let It Bleed",
+    "High Hopes Low",
+    "Stoned",
+    "Danger $$$",
+    "Willoughby’s Beach",
+    "Dead Beat",
+    "Crookedile"
+   ]
+  },
+  {
+   "id": "15076e62-86fa-42df-9d55-9d1f3a465b19",
+   "title": "2015‐06‐19: Bowery Ballroom, New York, NY, USA",
+   "first_release_date": "2015-06-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Gamma Knife",
+    "Hot Water",
+    "Hot Wax",
+    "Robot Stop",
+    "The River",
+    "Muckraker",
+    "Evil Devil",
+    "Danger Money",
+    "Am I in Heaven",
+    "Pill"
+   ]
+  },
+  {
+   "id": "18d4e4c8-50c2-4087-a3fb-a1a3c45e9d1b",
+   "title": "2023‐06‐11: The Salt Shed, Chicago, IL, USA",
+   "first_release_date": "2023-06-11",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Pleura",
+    "O.N.E.",
+    "Nuclear Fusion",
+    "Minimum Brain Size",
+    "Gaia",
+    "Motor Spirit",
+    "The Great Chain of Being",
+    "Witchcraft",
+    "Satan Speeds Up",
+    "Trapdoor",
+    "The River",
+    "Evil Death Roll",
+    "Magma",
+    "Boogieman Sam"
+   ]
+  },
+  {
+   "id": "24a9d349-313b-4e04-814a-07d4520a94bf",
+   "title": "2022-10-10: Red Rocks Amphitheatre, Morrison, CO, USA",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Mars for the Rich",
+    "Hell",
+    "Magenta Mountain",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "O.N.E.",
+    "Nuclear Fusion",
+    "All Is Known",
+    "Straws in the Wind",
+    "The Garden Goblin",
+    "The River",
+    "Magma",
+    "Rattlesnake",
+    "Automation",
+    "Honey",
+    "Sleep Drifter",
+    "Ataraxia",
+    "Evil Death Roll",
+    "Ice V",
+    "The Reticent Raconteur",
+    "The Lord of Lightning",
+    "The Balrog",
+    "Trapdoor",
+    "Hot Water",
+    "The Grim Reaper",
+    "Planet B"
+   ]
+  },
+  {
+   "id": "25249eff-8212-4195-958f-3dc7b6cb3279",
+   "title": "2022‐12‐10: The Palace Foreshore, St. Kilda, Australia",
+   "first_release_date": "2022-12-10",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Planet B",
+    "Predator X",
+    "Hell",
+    "The Grim Reaper",
+    "Hypertension",
+    "Ice V",
+    "Iron Lung",
+    "Ambergris",
+    "Magma",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "2a220edb-0fd0-4047-8fa4-f7f98d313be6",
+   "title": "2022-10-07: KEXP, Seattle, WA, USA",
+   "first_release_date": "",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "[intro]",
+    "Ice V",
+    "Iron Lung",
+    "Magma",
+    "[interview]"
+   ]
+  },
+  {
+   "id": "3210bc50-f60e-4fae-a297-8f72b010f4bf",
+   "title": "Rogue Pubes: The Best of the Bunch",
+   "first_release_date": "2023-03-22",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Evil Star (live in London ’19)",
+    "Self‐Immolate (live in London ’19)",
+    "Mars for the Rich (live in London ’19)",
+    "Road Train (live in Milwaukee ’19)",
+    "Acarine (live in Milwaukee ’19)",
+    "Cyboogie (live in Asheville ’19)",
+    "Loyalty (live in Asheville ’19)",
+    "Horology (live in Asheville ’19)",
+    "Hot Water (live in Adelaide ’19)",
+    "Open Water (live in Adelaide ’19)",
+    "Billabong Valley (live in Paris ’19)",
+    "Nuclear Fusion (live in Paris ’19)",
+    "Sense (live in Brussels ’19)",
+    "This Thing (live in Brussels ’19)",
+    "Work This Time (live in Brussels ’19)"
+   ]
+  },
+  {
+   "id": "32adab10-fe4a-4b48-9088-37d7dab571bc",
+   "title": "The River",
+   "first_release_date": "2015",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "The River"
+   ]
+  },
+  {
+   "id": "36d94b97-71e1-4db3-81c4-253747c6e587",
+   "title": "Live in Pittsburgh ’22",
+   "first_release_date": "2022-05-22",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Self Immolate",
+    "Mars for the Rich",
+    "Organ Farmer",
+    "Predator X",
+    "Blame It on the Weather",
+    "Garden Goblin",
+    "Work This Time",
+    "Sadie Sorceress",
+    "O.N.E",
+    "D‐Day",
+    "Automation",
+    "The Book",
+    "Drums",
+    "The Book",
+    "Supreme Ascendancy",
+    "Pleura",
+    "Open Water",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "3759964c-d09a-4b4c-97e8-d72eb02847c7",
+   "title": "Synth Gizzard: Europe ’25",
+   "first_release_date": "2025-06-11",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Shanghai (live in Lithuania ’25)",
+    "Slow Jam 1 (live in Lithuania ’25)",
+    "Down the Sink (live in Lithuania ’25)",
+    "Flamethrower Outro (live in Lithuania ’25)",
+    "The Garden Goblin (live in Barcelona ’25)",
+    "Kepler 22‐B (live in Athens ’25)",
+    "Superposition (live in Athens ’25)",
+    "Hot Water (live in Bulgaria ’25)",
+    "Magenta Mountain (live in Bulgaria ’25)",
+    "Smoke & Mirrors (live in Bulgaria ’25)"
+   ]
+  },
+  {
+   "id": "4bfbf6e4-a49a-4ff4-b54c-52b2a41c17fc",
+   "title": "2025‐10‐31, rave set: The Warehouse, Aviva Studios, Manchester, England, UK",
+   "first_release_date": "2025-10-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Theia",
+    "Hot Water",
+    "Flamethrower (outro)",
+    "Magenta Mountain",
+    "Slow Jam 1",
+    "Hell’s Itch",
+    "Swan Song",
+    "Luseq",
+    "Murder of the Universe"
+   ]
+  },
+  {
+   "id": "4f272a0b-e838-4114-9ec8-80c8c9664d53",
+   "title": "2023‐06‐16: Remlinger Farms, Carnation, WA, USA",
+   "first_release_date": "2023-06-16",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Mars for the Rich",
+    "Organ Farmer",
+    "Supercell",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Sense",
+    "The Grim Reaper",
+    "Change",
+    "Shanghai",
+    "Ambergris",
+    "Hot Water",
+    "A New World",
+    "Altered Beast I",
+    "Alter Me I",
+    "Altered Beast II",
+    "Robot Stop"
+   ]
+  },
+  {
+   "id": "514f4f79-1283-4d8d-b191-09ffd14529fe",
+   "title": "2025‐11‐01, rave set: Electric Brixton, London, England, UK",
+   "first_release_date": "2025-11-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gilgamesh",
+    "Superposition",
+    "Blue Morpho",
+    "Butterfly 3000",
+    "Cyboogie",
+    "The Garden Goblin",
+    "Smoke & Mirrors",
+    "Magma",
+    "Extinction"
+   ]
+  },
+  {
+   "id": "51cba623-ceec-49c9-93f9-3e1d15e4aefe",
+   "title": "2023‐06‐03: The Caverns, Pelham, TN, USA",
+   "first_release_date": "2023-06-03",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Rattlesnake",
+    "O.N.E.",
+    "Minimum Brain Size",
+    "Ataraxia",
+    "Straws in the Wind",
+    "Gaia",
+    "Witchcraft",
+    "Self‐Immolate",
+    "Perihelion",
+    "Boogieman Sam",
+    "Magma",
+    "Lava",
+    "Head On/Pill"
+   ]
+  },
+  {
+   "id": "52527c15-c6c5-4f65-8bda-052b4285cde2",
+   "title": "2025‐08‐01: Forest Hills Stadium, New York, NY, USA (orchestra night)",
+   "first_release_date": "2025-08-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Phantom Island",
+    "Deadstick",
+    "Lonely Cosmos",
+    "Eternal Return",
+    "Panpsych",
+    "Spacesick",
+    "Aerodynamic",
+    "Sea of Doubt",
+    "Silent Spirit",
+    "Grow Wings and Fly",
+    "Magma",
+    "The River",
+    "Crumbling Castle",
+    "This Thing",
+    "Mars for the Rich",
+    "Dragon",
+    "Iron Lung"
+   ]
+  },
+  {
+   "id": "53083cd3-7953-4b09-a95b-47b6cc9daa29",
+   "title": "2011‐09‐18: High Noon Street Festival, Northcote Social Club, Melbourne, Australia",
+   "first_release_date": "2011-09-20",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Stoned Mullet"
+   ]
+  },
+  {
+   "id": "535bb6bc-0e02-4967-a8fa-5a7f6f5215de",
+   "title": "2022‐10‐10: Red Rocks Amphitheatre, Morrison, CO, USA",
+   "first_release_date": "2022-10-10",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Mars for the Rich",
+    "Hell",
+    "Magenta Mountain",
+    "Tuning",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "O.N.E.",
+    "Nuclear Fusion",
+    "Banter",
+    "All Is Known",
+    "Straws in the Wind",
+    "Banter",
+    "The Garden Goblin",
+    "The River",
+    "Magma",
+    "Rattlesnake",
+    "Banter",
+    "Automation",
+    "Honey",
+    "Sleep Drifter",
+    "Ataraxia",
+    "Tuning",
+    "Evil Death Roll",
+    "Ice V",
+    "Leah Intro",
+    "The Recent Raconteur",
+    "Lord of Lightning",
+    "The Balrog",
+    "Trapdoor",
+    "Hot Water",
+    "Banter",
+    "The Grim Reaper",
+    "Planet B"
+   ]
+  },
+  {
+   "id": "554ccd89-ecb3-4194-9d01-f94e39e7c005",
+   "title": "2023‐02‐25: Northcote Theatre, Victoria, Australia",
+   "first_release_date": "2023-02-25",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "K.G.L.W.",
+    "Doom City",
+    "Pleura",
+    "Self‐Immolate",
+    "Gaia",
+    "The Great Chain of Being",
+    "Slow Jam 1",
+    "Sense",
+    "Shanghai",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "583b2616-c662-4f40-85ff-54d9161ca8d4",
+   "title": "Live in Cleveland ’22",
+   "first_release_date": "2022-05-20",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Crumbling Castle",
+    "Venusian 2",
+    "Planet B",
+    "Gaia",
+    "Her and I (Slow Jam 2)",
+    "Sleepwalker",
+    "Presumptuous",
+    "Sea of Trees",
+    "Hot Water",
+    "The Grim Reaper",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "65b51002-0944-49c6-b7ee-33889f5456b8",
+   "title": "2025‐07‐30: Westville Music Bowl, New Haven, CT, USA",
+   "first_release_date": "2025-07-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "[tuning]",
+    "Phantom Island",
+    "Deadstick",
+    "Lonely Cosmos",
+    "Eternal Return",
+    "Panpsych",
+    "Spacesick",
+    "Aerodynamic",
+    "Sea of Doubt",
+    "Silent Spirit",
+    "Grow Wings and Fly",
+    "Hot Water",
+    "The River",
+    "Crumbling Castle",
+    "This Thing",
+    "Mars for the Rich",
+    "Dragon",
+    "Iron Lung"
+   ]
+  },
+  {
+   "id": "68137e3f-a10b-41aa-b8b4-9d577320b3d0",
+   "title": "2011‐12‐06: The Old Bar, Adelaide, Australia",
+   "first_release_date": "2011-12-06",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Black Tooth"
+   ]
+  },
+  {
+   "id": "68bb6b17-be13-4c98-9917-0d91e905ac2b",
+   "title": "2011‐11‐18: The Tote Hotel, Melbourne, Australia",
+   "first_release_date": "2021-11-08",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Danger $$$"
+   ]
+  },
+  {
+   "id": "6beb7a11-09a5-4294-a564-d68cc542e05b",
+   "title": "Trapdoor",
+   "first_release_date": "2015",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Trapdoor"
+   ]
+  },
+  {
+   "id": "6c0996d4-85db-49fd-9598-26ed19f1d80b",
+   "title": "2013-02-08: PBS 106.7 FM, Melbourne, Australia",
+   "first_release_date": "",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Head On/Pill",
+    "Elbow",
+    "I Gotta Rock ’n’ Roll",
+    "Muckraker",
+    "Sea of Trees",
+    "Cut Throat Boogie",
+    "Bloody Ripper",
+    "Uh Oh, I Called Mum",
+    "High Hopes Low",
+    "Dead‐Beat"
+   ]
+  },
+  {
+   "id": "6e788ef6-6cbb-4307-89ae-0e2c95c7e1a9",
+   "title": "Vegemite",
+   "first_release_date": "2014",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Vegemite"
+   ]
+  },
+  {
+   "id": "77263e2d-9e32-4760-82f8-def8cc8d3172",
+   "title": "2023‐06‐04: The Caverns, Pelham, TN, USA",
+   "first_release_date": "2023-06-04",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Lonely Steel Sheet Flyer",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Sleepwalker",
+    "It’s Got Old",
+    "Muddy Water",
+    "The River",
+    "Let Me Mend the Past",
+    "Trapdoor",
+    "The Bitter Boogie",
+    "Banter",
+    "The Wheel",
+    "Banter",
+    "Presumptuous",
+    "Ambergris",
+    "Banter",
+    "Most of What I Like",
+    "Banter",
+    "Her and I (Slow Jam 2)"
+   ]
+  },
+  {
+   "id": "782363e0-6b6f-4f54-a6ce-ba108ed266b8",
+   "title": "2022‐10‐28: Stubbs BBQ, Austin, TX, USA",
+   "first_release_date": "2022-10-31",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Perihelion",
+    "Organ Farmer",
+    "Predator X",
+    "Hot Wax",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Ambergris",
+    "The Garden Goblin",
+    "Blame It on the Weather",
+    "Hypertension",
+    "Iron Lung",
+    "A New World",
+    "Altered Beast I",
+    "Alter Me I",
+    "Altered Beast II",
+    "Magma"
+   ]
+  },
+  {
+   "id": "868cfec0-fc1d-445d-a0e5-aad0c22f2f5b",
+   "title": "2015‐09‐02: KEXP, Seattle, WA, USA",
+   "first_release_date": "2022-09-04",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "[intro]",
+    "The River",
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "[interview]"
+   ]
+  },
+  {
+   "id": "8c6d53b5-1b9c-4811-80e3-8595ea4e890a",
+   "title": "2011‐08‐19: Public Bar, The Esplanade Hotel, Melbourne, Australia",
+   "first_release_date": "2011-08-21",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Crookedile"
+   ]
+  },
+  {
+   "id": "8f084321-5b24-4096-b656-cadd7935ded9",
+   "title": "2018-06-07: KEXP, Seattle, WA, USA",
+   "first_release_date": "2018-06-07",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Deserted Dunes Welcome Weary Feet",
+    "The Castle in the Air",
+    "Muddy Water",
+    "Interlude",
+    "The Wheel",
+    "Interview"
+   ]
+  },
+  {
+   "id": "920d95b7-7b00-4c8b-9b56-3a73f6d55e5c",
+   "title": "2023‐06‐13: The Salt Shed, Chicago, IL, USA",
+   "first_release_date": "2023-06-13",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Gila Monster / Converge",
+    "Planet B",
+    "Mars for the Rich",
+    "Plastic Boogie",
+    "Hot Water",
+    "Hypertension",
+    "This Thing",
+    "Magenta Mountain",
+    "Change",
+    "The Garden Goblin",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "92c8072d-b0db-4d06-ac39-9edb1fe07ac9",
+   "title": "2023‐06‐12: The Salt Shed, Chicago, IL, USA",
+   "first_release_date": "2023-06-12",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Rattlesnake",
+    "Honey",
+    "Shanghai",
+    "Hate Dancin",
+    "Astroturf",
+    "Down the Sink",
+    "Invisible Face",
+    "Wah Wah",
+    "Road Train",
+    "Ice V",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Supercell",
+    "Self‐Immolate",
+    "Am I in Heaven"
+   ]
+  },
+  {
+   "id": "966a88ab-c094-4ff9-8f71-c2d9470a361f",
+   "title": "2015‐09‐12: Hopscotch Music Festival, Pour House, Raleigh, NC, USA",
+   "first_release_date": "2015",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Hot Wax",
+    "Gamma Knife",
+    "The River",
+    "Robot Stop",
+    "Its Got Old",
+    "Cut Throat Boogie",
+    "[banter]",
+    "Sleepwalker",
+    "Am I in Heaven / Pill"
+   ]
+  },
+  {
+   "id": "9907f299-20b7-4891-86a4-7926952e2fcb",
+   "title": "2022‐11‐02: Red Rocks Amphitheatre, Morrison, CO, USA",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "[intro – this is so cool]",
+    "Digital Black",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe",
+    "Blame It on the Weather",
+    "Work This Time",
+    "Lava",
+    "Cut Throat Boogie",
+    "Wah Wah",
+    "Road Train",
+    "Sadie Sorceress",
+    "Self‐Immolate",
+    "Her and I (Slow Jam 2)",
+    "Hot Wax",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Head On/Pill",
+    "Am I in Heaven?",
+    "Venusian 1",
+    "Venusian 2",
+    "Billabong Valley",
+    "Minimum Brain Size",
+    "Static Electricity",
+    "Let Me Mend the Past",
+    "Alter Me III",
+    "Altered Beast IV",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "9bbe8beb-ea71-4e32-ad0d-c18784379622",
+   "title": "2023‐06‐01: The Caverns, Pelham, TN, USA",
+   "first_release_date": "2023-06-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "The Dripping Tap",
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "People Vultures",
+    "Mr Beat",
+    "Iron Lung",
+    "Hypertension",
+    "Hot Water",
+    "Banter",
+    "Inner Cell",
+    "Loyalty",
+    "Horology",
+    "Supercell",
+    "Mars for the Rich",
+    "Hell",
+    "Gila Monster"
+   ]
+  },
+  {
+   "id": "a3bc3a66-fd89-40f6-bed6-a1191d964eb7",
+   "title": "2022‐10‐15: Radius, Chicago, IL, USA",
+   "first_release_date": "2022-10-15",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Venusian 1 (live in Chicago ’22)",
+    "Venusian 2 (live in Chicago ’22)",
+    "Slow Jam 1 (live in Chicago ’22)",
+    "The Grim Reaper (live in Chicago ’22)",
+    "Oddlife (live in Chicago ’22)",
+    "The Book (live in Chicago ’22)",
+    "Doom City (live in Chicago ’22)",
+    "Lava (live in Chicago ’22)",
+    "Ambergris (live in Chicago ’22)",
+    "Presumptuous (live in Chicago ’22)",
+    "The Reticent Raconteur (live in Chicago ’22)",
+    "The Lord of Lightning (live in Chicago ’22)",
+    "The Balrog (live in Chicago ’22)",
+    "Iron Lung (live in Chicago ’22)",
+    "Float Along – Fill Your Lungs (live in Chicago ’22)"
+   ]
+  },
+  {
+   "id": "a521f7c8-d85a-40a7-a60b-3ae5f92715f5",
+   "title": "2011‐03‐04: The Grace Darling Hotel, Melbourne, Australia",
+   "first_release_date": "2011-03-04",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Good to Me",
+    "Gypsy"
+   ]
+  },
+  {
+   "id": "a77c2a82-c5a8-47b5-84c1-65fab72ca82d",
+   "title": "2023‐06‐08, late show: Red Rocks Amphitheatre, Morrison, CO, USA",
+   "first_release_date": "2023-06-08",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Rattlesnake",
+    "Open Water",
+    "Pleura",
+    "Straws in the Wind",
+    "Presumptuous",
+    "Hypetension",
+    "Ice V",
+    "Slow Jam 1",
+    "Hell",
+    "Mars for the Rich",
+    "Supercell",
+    "Gila Monster"
+   ]
+  },
+  {
+   "id": "a8bc8a0b-8dc9-4817-adab-378b6aaa15ff",
+   "title": "2011‐10‐17: PBS 106.7 FM, Melbourne, Australia",
+   "first_release_date": "2021-11-19",
+   "primary_type": "Broadcast",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Danger $$$",
+    "Black Tooth",
+    "Lunch Meat",
+    "Crookedile",
+    "Let It Bleed",
+    "Dead‐Beat",
+    "Dustbin Fletcher",
+    "Stoned Mullet",
+    "Willoughby’s Beach"
+   ]
+  },
+  {
+   "id": "a957a042-2e34-4bc1-80c5-eb6ac59dbc20",
+   "title": "2023‐06‐02: The Caverns, Pelham, TN, USA",
+   "first_release_date": "2023-06-02",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Planet B",
+    "Predator X",
+    "Converge",
+    "This Thing",
+    "Magenta Mountain",
+    "The Grim Reaper",
+    "Astroturf",
+    "The Garden Goblin",
+    "Ice V",
+    "Doom City",
+    "Automation",
+    "Billabong Valley",
+    "K.G.L.W. (outro)"
+   ]
+  },
+  {
+   "id": "b29883bd-e479-48e8-81f5-87fe263a8cfc",
+   "title": "Emperor of the Abyss: PetroDragonic Apocalypse Live in Bulgaria ’25",
+   "first_release_date": "2025",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Motor Spirit",
+    "Supercell",
+    "Converge",
+    "Witchcraft",
+    "Gila Monster",
+    "Dragon",
+    "Flamethrower",
+    "Emperor of the Abyss: Petrodragonic Apocalypse Live in Bulgaria ’25 (continuous mix)"
+   ]
+  },
+  {
+   "id": "b5e4a2d9-c288-4540-907b-572e2c1680cd",
+   "title": "Gamma Knife",
+   "first_release_date": "2016",
+   "primary_type": "Single",
+   "secondary_types": [],
+   "tracks": [
+    "Gamma Knife"
+   ]
+  },
+  {
+   "id": "bb076e84-e984-47a8-bc6c-5f8bb5a3db7d",
+   "title": "Open Water / Greenhouse Heat Death",
+   "first_release_date": "2022",
+   "primary_type": "Single",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Open Water",
+    "Greenhouse Heat Death"
+   ]
+  },
+  {
+   "id": "bcc2abd3-1bc7-4221-b330-718db613a3a8",
+   "title": "2023‐06‐07: Red Rocks Amphitheatre, Morrison, CO, USA",
+   "first_release_date": "2023-06-07",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Gaia",
+    "Motor Spirit",
+    "Superbug",
+    "Sense",
+    "Magenta Mountain",
+    "The Grim Reaper",
+    "Astroturf",
+    "Hate Dancin’",
+    "Down the Sink",
+    "The Lord of Lightning",
+    "Robot Stop",
+    "Big Fig Wasp",
+    "Gamma Knife",
+    "Iron Lung"
+   ]
+  },
+  {
+   "id": "c22f2f68-8b71-4420-9ee8-ce080f13fbf0",
+   "title": "2022‐04‐28: Bimbo’s 365 Club, San Francisco, CA, USA",
+   "first_release_date": "2022-04-28",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "[smells like weed]",
+    "Rattlesnake",
+    "Minimum Brain Size",
+    "Oddlife",
+    "Static Electricity",
+    "Hot Water",
+    "Blame It on the Weather",
+    "Gamma Knife",
+    "People‐Vultures",
+    "Mr. Beat",
+    "Sea of Trees",
+    "Hot Wax",
+    "Magenta Mountain",
+    "Slow Jam 1",
+    "Predator X",
+    "Mars for the Rich"
+   ]
+  },
+  {
+   "id": "dd966efd-af7a-4fc7-b84e-550a84abcac3",
+   "title": "2025‐10‐24, rave set: Fed Square, Melbourne, Australia",
+   "first_release_date": "2025-10-24",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The Silver Cord",
+    "Kepler‐22b",
+    "Gilgamesh",
+    "Set",
+    "JOJAM",
+    "2.02 Killer Year",
+    "Blue Morpho",
+    "Extinction",
+    "Butterfly 3000",
+    "The Grim Reaper"
+   ]
+  },
+  {
+   "id": "dfe81a74-82b3-459b-8b49-9963e3e89362",
+   "title": "2011‐12‐09: Meredith Supernatural Amphitheatre, Meredith, Australia",
+   "first_release_date": "2022-12-22",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Talk Talk Talk",
+    "Let It Bleed",
+    "High Hopes Low",
+    "Unknown",
+    "Danger $$$",
+    "Willoughby’s Beach",
+    "Dead Beat",
+    "Crookedile"
+   ]
+  },
+  {
+   "id": "e3a007cf-f55f-42b3-b68a-218220bce278",
+   "title": "ＰＯＬＹＷΛＶΣ",
+   "first_release_date": "2025-11-03",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Remix"
+   ],
+   "tracks": [
+    "ｃｒｕｍｂｌｅｄ░ｃａｓｔｌｅ城",
+    "ｇｏｎｄｗａｎａｌａｎｄ土地",
+    "ｔｈｅ░ｃａｓｔｌｅ░ｉｎ░ｔｈｅ░ｓｅａ海の城",
+    "ｄｅｓｅｒｔｅｄ░ｄｕｎｅ，░ｗｅａｒｙ░ｆｅｅｔ荒れた砂丘",
+    "ｃｅｌｌｓ░ｉｎｔｅｒｌｉｎｋｅｄ細胞",
+    "ｂｅｔｒａｙａｌ裏切り",
+    "ｌｏｓｔ░ｔｉｍｅ時間",
+    "ｎｅｃｒｏｍａｎｃｙ降霊術",
+    "．．．ｍｉｓｓｉｎｇ行方不明",
+    "ｎｏ░ｃｏｌｏｕｒ色なし"
+   ]
+  },
+  {
+   "id": "e46f7121-60a6-4581-90a2-224d1e87ccb8",
+   "title": "2025‐07‐28: The Mann Music Center, Philadelphia, PA, USA",
+   "first_release_date": "2025-07-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Phantom Island",
+    "Deadstick",
+    "Lonely Cosmos",
+    "Eternal Return",
+    "Panpsych",
+    "Spacesick",
+    "Aerodynamic",
+    "Sea of Doubt",
+    "Silent Spirit",
+    "Grow Wings and Fly",
+    "The Dripping Tap",
+    "The River",
+    "Crumbling Castle",
+    "This Thing",
+    "Mars for the Rich",
+    "Dragon",
+    "Iron Lung"
+   ]
+  },
+  {
+   "id": "e6770a8a-3bbf-4a0b-85a8-4c2d2fcce3b9",
+   "title": "2023-06-08, early show: Red Rocks Amphitheatre, Morrison, CO, USA",
+   "first_release_date": "2023-06-08",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "The Dripping Tap",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "Self‐Immolate",
+    "Converge",
+    "Witchcraft",
+    "Satan Speeds Up",
+    "Shanghai",
+    "This Thing",
+    "Most of What I Like",
+    "The Wheel",
+    "Evil Death Roll",
+    "Magma"
+   ]
+  },
+  {
+   "id": "e74c1aa8-9489-474f-bb29-db1f085a3467",
+   "title": "2023‐06‐17: Remlinger Farms, Carnation, WA, USA",
+   "first_release_date": "2023-06-17",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Static Electricity",
+    "Nuclear Fusion",
+    "Honey",
+    "Gila Monster",
+    "Witchcraft",
+    "Self‐Immolate",
+    "Crumbling Castle",
+    "The Fourth Colour",
+    "This Thing",
+    "Astroturf",
+    "Work This Time",
+    "The Garden Goblin",
+    "The Dripping Tap"
+   ]
+  },
+  {
+   "id": "ebeeb93d-e06f-41f5-a392-9be58bd95602",
+   "title": "2011‐02‐12: Geelong Gaol, Geelong, Australia",
+   "first_release_date": "2023-08-30",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Ants and Bats",
+    "Good to Me",
+    "Lunch Meat",
+    "Fried",
+    "Gypsy",
+    "Ghost",
+    "Eddie Cousin"
+   ]
+  },
+  {
+   "id": "ed5d651e-cfa0-4157-ae6f-bf8c9e9e32ce",
+   "title": "Oops! All Drums",
+   "first_release_date": "2025-08-01",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Oops! Some Drums",
+    "Oops! More Drums"
+   ]
+  },
+  {
+   "id": "ee7bc5a5-150a-4fcf-86a6-d285f42c64ad",
+   "title": "2023‐04‐06: The Tivoli, Brisbane, Australia",
+   "first_release_date": "2023-04-06",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "The Dripping Tap",
+    "Magma",
+    "Boogieman Sam",
+    "Mr. Beat",
+    "Boogieman Sam (reprise)",
+    "Gaia",
+    "Gila Monster",
+    "Gaia (reprise)",
+    "Venusian 2",
+    "Organ Farmer",
+    "This Thing",
+    "Magenta Mountain",
+    "The Grim Reaper",
+    "Trapdoor",
+    "The Garden Goblin",
+    "Iron Lung",
+    "Han‐Tyumi, the Confused Cyborg",
+    "Soy‐Protein Munt Machine",
+    "Vomit Coffin",
+    "Murder of the Universe"
+   ]
+  },
+  {
+   "id": "f16ee269-ee0e-4b56-9bca-e4a7f95a7799",
+   "title": "2015‐06‐24: Baby’s All Right, Brooklyn, NY, USA",
+   "first_release_date": "2015-07-16",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind",
+    "I’m Not in Your Mind",
+    "Cellophane",
+    "I’m in Your Mind Fuzz",
+    "Wah Wah",
+    "Hot Water",
+    "Hot Wax",
+    "Robot Stop",
+    "The River",
+    "[watering the crowd]",
+    "Muckraker",
+    "Danger Money",
+    "[what do you want]",
+    "Am I in Heaven",
+    "Pill"
+   ]
+  },
+  {
+   "id": "f26b6430-4f5b-4082-8081-af7dc9d75010",
+   "title": "2023‐06‐18: Remlinger Farms, Carnation, WA, USA",
+   "first_release_date": "2023-06-18",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Doom City",
+    "All Is Known",
+    "Anoxia",
+    "Straws in the Wind",
+    "K.G.L.W.",
+    "Converge",
+    "Hell",
+    "Her and I (Slow Jam 2)",
+    "Evil Death Roll",
+    "Invisible Face",
+    "Wah Wah",
+    "The River",
+    "Float Along – Fill Your Lungs"
+   ]
+  },
+  {
+   "id": "f6282a5a-6a24-49de-8955-223804aecd2b",
+   "title": "2025‐07‐28: The Mann Music Center, Philadelphia, PA, USA",
+   "first_release_date": "2025-07-29",
+   "primary_type": "Album",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Intro",
+    "Phantom Island",
+    "Deadstick",
+    "Lonely Cosmos",
+    "Eternal Return",
+    "Panpsych",
+    "Spacesick",
+    "Aerodynamic",
+    "Sea of Doubt",
+    "Silent Spirit",
+    "Grow Wings and Fly / The Dripping Tap",
+    "The River",
+    "The River (Continues)",
+    "Crumbling Castle",
+    "This Thing",
+    "Mars for the Rich",
+    "Dragon",
+    "Iron Lung"
+   ]
+  },
+  {
+   "id": "f9d38ed4-771c-4da8-92af-968139baf8be",
+   "title": "2010-10-29: Live at Kaleide Theatre, RMIT University",
+   "first_release_date": "2022-12-28",
+   "primary_type": "Other",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "Ants and Bats",
+    "Life Is Cool",
+    "Love for Me",
+    "Oh God",
+    "Other Side"
+   ]
+  },
+  {
+   "id": "ff2dedd6-93cc-4755-aee0-49109f950bd5",
+   "title": "Daytrotter Session – Sep 15, 2015",
+   "first_release_date": "2015-09-15",
+   "primary_type": "EP",
+   "secondary_types": [
+    "Live"
+   ],
+   "tracks": [
+    "I’m in Your Mind / I’m Not in Your Mind / Cellophane / I’m in Your Mind Fuzz"
+   ]
+  }
+ ]
+}
