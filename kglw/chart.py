@@ -259,16 +259,63 @@ def chart_fragment(report: dict, top_n: int = 6, since: str | None = None,
     )
 
 
+def smooth_path(points: list[tuple[float, float]]) -> str:
+    """SVG path through the points, monotone-cubic smoothed.
+
+    Fritsch-Carlson rather than a plain Catmull-Rom spline: an ordinary spline
+    overshoots between points, which on a percentage axis would swing a series
+    below 0% between two small values and invent a dip nobody listened to.
+    Monotone cubic is guaranteed to stay within each pair of adjacent values,
+    so the curve can only ever be a smoother reading of the real numbers.
+    """
+    count = len(points)
+    if count < 2:
+        return ""
+    if count == 2:
+        return (f"M{points[0][0]:.1f},{points[0][1]:.1f}"
+                f"L{points[1][0]:.1f},{points[1][1]:.1f}")
+
+    xs = [p[0] for p in points]
+    ys = [p[1] for p in points]
+    widths = [xs[i + 1] - xs[i] for i in range(count - 1)]
+    slopes = [(ys[i + 1] - ys[i]) / widths[i] if widths[i] else 0.0
+              for i in range(count - 1)]
+
+    tangents = [slopes[0]]
+    for i in range(1, count - 1):
+        if slopes[i - 1] * slopes[i] <= 0:
+            # A local peak or trough: flatten, so the curve turns at the point
+            # rather than sailing past it.
+            tangents.append(0.0)
+        else:
+            left, right = widths[i - 1], widths[i]
+            tangents.append(
+                3 * (left + right) / ((2 * right + left) / slopes[i - 1]
+                                      + (right + 2 * left) / slopes[i])
+            )
+    tangents.append(slopes[-1])
+
+    parts = [f"M{xs[0]:.1f},{ys[0]:.1f}"]
+    for i in range(count - 1):
+        third = widths[i] / 3
+        parts.append(
+            f"C{xs[i] + third:.1f},{ys[i] + tangents[i] * third:.1f} "
+            f"{xs[i + 1] - third:.1f},{ys[i + 1] - tangents[i + 1] * third:.1f} "
+            f"{xs[i + 1]:.1f},{ys[i + 1]:.1f}"
+        )
+    return " ".join(parts)
+
+
 def line_fragment(report: dict, top_n: int = 5, since: str | None = None,
                   period: str = "quarter", min_base: float = 30.0,
-                  budget: int = PAGE_TARGET_W) -> str:
+                  budget: int = PAGE_TARGET_W, smooth: bool = True) -> str:
     """Each album's share of a period's listening, as lines.
 
-    A share is a ratio, and a ratio computed on a tiny base is noise: three
-    quarters here carry 5-11 minutes of listening total, where one play would
-    swing a series by tens of percent. Those periods are left as gaps rather
-    than plotted at a confident-looking 0%, and shaded so the gap reads as
-    "too little to say" instead of "nothing happened".
+    A share is a ratio, and a ratio computed on a tiny base is noise: a quarter
+    carrying a handful of minutes swings by tens of percent on a single play.
+    The lines run continuously through those periods, but the periods are
+    shaded, so a dip to 0% is legible as "hardly any listening at all" rather
+    than "none of these albums".
     """
     top_ids, _, label_of = series_for(report, top_n)
     periods, raw, totals = bucketed(report, top_ids, since, period, False)
@@ -279,14 +326,14 @@ def line_fragment(report: dict, top_n: int = 5, since: str | None = None,
     step_x = plot_w / (len(periods) - 1)
     xs = [index * step_x for index in range(len(periods))]
 
-    shares: dict[str, list[float | None]] = {}
+    shares: dict[str, list[float]] = {}
     for album_id in top_ids:
         shares[album_id] = [
-            None if totals[p] < min_base else raw[p].get(album_id, 0) / totals[p] * 100
+            (raw[p].get(album_id, 0) / totals[p] * 100) if totals[p] else 0.0
             for p in periods
         ]
 
-    peak = max((v for pts in shares.values() for v in pts if v is not None), default=0)
+    peak = max((v for pts in shares.values() for v in pts), default=0)
     ticks = nice_ticks(peak, 5)
     axis_top = ticks[-1] or 1
 
@@ -313,30 +360,26 @@ def line_fragment(report: dict, top_n: int = 5, since: str | None = None,
     paths = []
     for album_id in top_ids:
         colour = f"var(--c-{album_id})"
-        run: list[tuple[float, float]] = []
-        runs: list[list[tuple[float, float]]] = []
-        for index, value in enumerate(shares[album_id]):
-            if value is None:
-                if run:
-                    runs.append(run)
-                run = []
-            else:
-                run.append((xs[index], y_of(value)))
-        if run:
-            runs.append(run)
-        for points in runs:
-            if len(points) > 1:
-                d = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
-                paths.append(
-                    f'<polyline points="{d}" fill="none" stroke="{colour}" '
-                    f'stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
-                )
-            for x, y in points:
-                # 2px surface ring keeps overlapping markers legible.
-                paths.append(
-                    f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{colour}" '
-                    f'stroke="var(--surface)" stroke-width="2"/>'
-                )
+        points = [(xs[i], y_of(v)) for i, v in enumerate(shares[album_id])]
+        if smooth:
+            paths.append(
+                f'<path d="{smooth_path(points)}" fill="none" stroke="{colour}" '
+                f'stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round"/>'
+            )
+        else:
+            d = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
+            paths.append(
+                f'<polyline points="{d}" fill="none" stroke="{colour}" '
+                f'stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
+            )
+        for x, y in points:
+            # Markers anchor the curve to the quarters that were actually
+            # measured -- smoothing invents the path between them, not the
+            # points themselves. 2px surface ring keeps overlaps legible.
+            paths.append(
+                f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" fill="{colour}" '
+                f'stroke="var(--surface)" stroke-width="2"/>'
+            )
 
     y_labels = "".join(
         f'<i class="ytick" style="bottom:{PLOT_H - y_of(v):.1f}px">{v:.0f}%</i>'
@@ -347,7 +390,9 @@ def line_fragment(report: dict, top_n: int = 5, since: str | None = None,
         x_labels.append(
             f'<i class="xtick q" style="left:{xs[index]:.1f}px">{key_period[-2:]}</i>'
         )
-        if key_period.endswith("Q1"):
+        # Year on each Q1, and on the first column when the range opens
+        # mid-year -- otherwise the opening quarter carries no year at all.
+        if key_period.endswith("Q1") or index == 0:
             x_labels.append(
                 f'<i class="xtick yr" style="left:{xs[index]:.1f}px">{key_period[:4]}</i>'
             )
@@ -590,13 +635,13 @@ def _shell(extra_css: str, body: str, top_ids: list[str], totals: bool = False) 
 
 def build_export(report: dict, top_n: int = 6, since: str | None = None,
                  period: str = "month", totals: bool = False,
-                 share: bool = False, line: bool = False,
-                 measure: str | None = None) -> str:
+                 share: bool = False, line: bool = False, smooth: bool = True,
+                 measure: str | None = None, title: str | None = None) -> str:
     """Chart-only render, laid out for a newsletter column."""
     top_ids, _, _ = series_for(report, top_n)
     if line:
         fragment = line_fragment(report, top_n, since, period,
-                                 budget=EXPORT_TARGET_W)
+                                 budget=EXPORT_TARGET_W, smooth=smooth)
     else:
         fragment = chart_fragment(report, top_n, since, period, totals, share,
                                   budget=EXPORT_TARGET_W)
@@ -606,9 +651,12 @@ def build_export(report: dict, top_n: int = 6, since: str | None = None,
         else:
             unit = "Share of listening" if share else "Minutes listened"
             measure = f"{unit} per {period}"
+    # An empty measure drops the second line entirely, for a chart whose
+    # title already carries the measure.
+    heading = html.escape(title) if title else "King Gizzard &amp; the Lizard Wizard"
+    sub = f'\n  <p class="measure">{html.escape(measure)}</p>' if measure else ""
     body = (f'<div class="export">\n'
-            f'  <h1>King Gizzard &amp; the Lizard Wizard</h1>\n'
-            f'  <p class="measure">{html.escape(measure)}</p>\n'
+            f'  <h1>{heading}</h1>{sub}\n'
             f'  {fragment}\n</div>')
     return _shell(EXPORT_CSS, body, top_ids, totals)
 
@@ -644,7 +692,8 @@ def build_page(report: dict, cards: list[tuple[str, str, str]], top_n: int = 6) 
     )
     card_html = "".join(
         f'<section class="card"><h2>{html.escape(title)}</h2>'
-        f'<p class="note">{note}</p>{frag}</section>'
+        + (f'<p class="note">{note}</p>' if note else '<div style="height:14px"></div>')
+        + f'{frag}</section>'
         for title, note, frag in cards
     )
     src = report.get("duration_sources", {})
@@ -763,6 +812,11 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--page", action="store_true", help="full interactive page")
     ap.add_argument("--table", action="store_true", help="render the ranking instead")
     ap.add_argument("--rows", type=int, default=12)
+    ap.add_argument("--title", help="override the chart heading")
+    ap.add_argument("--no-measure", action="store_true",
+                    help="drop the line under the title")
+    ap.add_argument("--straight", action="store_true",
+                    help="line view: straight segments instead of smoothed")
     ap.add_argument("--tsv", help="also write the ranking as TSV")
     ap.add_argument("--list", dest="list_out", help="also write the ranking as a list")
     args = ap.parse_args(argv)
@@ -783,7 +837,8 @@ def main(argv: list[str] | None = None) -> int:
         page = build_table(report, top_n=args.top, rows=args.rows)
     elif args.page:
         if args.line:
-            frag = line_fragment(report, args.top, args.since, args.period)
+            frag = line_fragment(report, args.top, args.since, args.period,
+                                 smooth=not args.straight)
             label = f"Top {args.top} albums — share of listening"
         else:
             frag = chart_fragment(report, args.top, args.since, args.period,
@@ -794,7 +849,9 @@ def main(argv: list[str] | None = None) -> int:
     else:
         page = build_export(report, top_n=args.top, since=args.since,
                             period=args.period, totals=args.totals,
-                            share=args.share, line=args.line)
+                            share=args.share, line=args.line,
+                            smooth=not args.straight, title=args.title,
+                            measure="" if args.no_measure else None)
 
     with open(args.output, "w", encoding="utf-8") as fh:
         fh.write(page)
