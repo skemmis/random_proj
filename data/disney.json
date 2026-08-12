@@ -1,0 +1,5591 @@
+{
+ "artist": "Disney",
+ "source": "musicbrainz.org",
+ "albums": [
+  {
+   "id": "disney:frozen",
+   "title": "Frozen",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Frozen Heart",
+     "length_ms": 106733
+    },
+    {
+     "title": "Do You Want to Build a Snowman?",
+     "length_ms": 207960
+    },
+    {
+     "title": "For the First Time in Forever",
+     "length_ms": 225080
+    },
+    {
+     "title": "Love Is an Open Door",
+     "length_ms": 127120
+    },
+    {
+     "title": "Let It Go",
+     "length_ms": 224613
+    },
+    {
+     "title": "Reindeer(s) Are Better Than People",
+     "length_ms": 50960
+    },
+    {
+     "title": "In Summer",
+     "length_ms": 114093
+    },
+    {
+     "title": "For the First Time in Forever (reprise)",
+     "length_ms": 150186
+    },
+    {
+     "title": "Fixer Upper",
+     "length_ms": 182106
+    },
+    {
+     "title": "Let It Go (Demi Lovato version)",
+     "length_ms": 227120
+    },
+    {
+     "title": "Vuelie (score)",
+     "length_ms": 96866
+    },
+    {
+     "title": "Elsa and Anna (score)",
+     "length_ms": 163546
+    },
+    {
+     "title": "The Trolls (score)",
+     "length_ms": 108040
+    },
+    {
+     "title": "Coronation Day (score)",
+     "length_ms": 74880
+    },
+    {
+     "title": "Heimr Àrnadalr (score)",
+     "length_ms": 85600
+    },
+    {
+     "title": "Winter’s Waltz (score)",
+     "length_ms": 60360
+    },
+    {
+     "title": "Sorcery (score)",
+     "length_ms": 197200
+    },
+    {
+     "title": "Royal Pursuit (score)",
+     "length_ms": 62373
+    },
+    {
+     "title": "Onward and Upward (score)",
+     "length_ms": 114133
+    },
+    {
+     "title": "Wolves (score)",
+     "length_ms": 104680
+    },
+    {
+     "title": "The North Mountain (score)",
+     "length_ms": 94013
+    },
+    {
+     "title": "We Were So Close (score)",
+     "length_ms": 113506
+    },
+    {
+     "title": "Marshmallow Attack! (score)",
+     "length_ms": 103800
+    },
+    {
+     "title": "Conceal, Don’t Feel (score)",
+     "length_ms": 67493
+    },
+    {
+     "title": "Only an Act of True Love (score)",
+     "length_ms": 67466
+    },
+    {
+     "title": "Summit Siege (score)",
+     "length_ms": 152733
+    },
+    {
+     "title": "Return to Arendelle (score)",
+     "length_ms": 98933
+    },
+    {
+     "title": "Treason (score)",
+     "length_ms": 96626
+    },
+    {
+     "title": "Some People Are Worth Melting For (score)",
+     "length_ms": 126040
+    },
+    {
+     "title": "Whiteout (score)",
+     "length_ms": 257373
+    },
+    {
+     "title": "The Great Thaw (Vuelie reprise) (score)",
+     "length_ms": 149453
+    },
+    {
+     "title": "Epilogue (score)",
+     "length_ms": 186200
+    },
+    {
+     "title": "For the First Time in Forever (demo)",
+     "length_ms": 212986
+    },
+    {
+     "title": "Love Is an Open Door (demo)",
+     "length_ms": 122293
+    },
+    {
+     "title": "We Know Better (outtake)",
+     "length_ms": 244653
+    },
+    {
+     "title": "Spring Pageant (outtake)",
+     "length_ms": 189760
+    },
+    {
+     "title": "More Than Just the Spare (outtake)",
+     "length_ms": 205640
+    },
+    {
+     "title": "You’re You (outtake)",
+     "length_ms": 108400
+    },
+    {
+     "title": "Life’s Too Short (outtake)",
+     "length_ms": 232720
+    },
+    {
+     "title": "Life’s Too Short (reprise) (outtake)",
+     "length_ms": 102133
+    },
+    {
+     "title": "Reindeer(s) Remix (outtake)",
+     "length_ms": 146426
+    },
+    {
+     "title": "The Ballad of Olaf & Sven (teaser trailer) (score demo)",
+     "length_ms": 95333
+    },
+    {
+     "title": "Queen Elsa of Arendelle (score demo)",
+     "length_ms": 42800
+    },
+    {
+     "title": "Hans (score demo)",
+     "length_ms": 80146
+    },
+    {
+     "title": "It Had to Be Snow (score demo)",
+     "length_ms": 77920
+    },
+    {
+     "title": "Meet Olaf (score demo)",
+     "length_ms": 121440
+    },
+    {
+     "title": "Hands for Hands (score demo)",
+     "length_ms": 48920
+    },
+    {
+     "title": "Oaken’s Sauna (score demo)",
+     "length_ms": 85573
+    },
+    {
+     "title": "Thin Air (score demo)",
+     "length_ms": 139666
+    },
+    {
+     "title": "Cliff Diving (score demo)",
+     "length_ms": 50213
+    },
+    {
+     "title": "The Love Experts (score demo)",
+     "length_ms": 62893
+    },
+    {
+     "title": "Elsa Imprisoned (score demo)",
+     "length_ms": 64466
+    },
+    {
+     "title": "Hans’ Kiss (score demo)",
+     "length_ms": 131666
+    },
+    {
+     "title": "Coronation Band Suite (source score)",
+     "length_ms": 92853
+    },
+    {
+     "title": "Let It Go (instrumental karaoke)",
+     "length_ms": 224560
+    },
+    {
+     "title": "Bevroren hart",
+     "length_ms": 106093
+    },
+    {
+     "title": "Zullen wij een sneeuwpop maken",
+     "length_ms": 206893
+    },
+    {
+     "title": "Voor het eerst na al die jaren",
+     "length_ms": 224800
+    },
+    {
+     "title": "Liefde geeft ons ruim baan",
+     "length_ms": 124866
+    },
+    {
+     "title": "Laat het los",
+     "length_ms": 223626
+    },
+    {
+     "title": "Dieren zijn beter dan mensen",
+     "length_ms": 51533
+    },
+    {
+     "title": "Zomer",
+     "length_ms": 111320
+    },
+    {
+     "title": "Voor het eerst na al die jaren (reprise)",
+     "length_ms": 150253
+    },
+    {
+     "title": "Mankementje",
+     "length_ms": 179600
+    },
+    {
+     "title": "Let It Go (Demi Lovato versie)",
+     "length_ms": 224360
+    },
+    {
+     "title": "Veulie",
+     "length_ms": 95973
+    },
+    {
+     "title": "Elsa en Anna",
+     "length_ms": 163506
+    },
+    {
+     "title": "Trollen",
+     "length_ms": 108040
+    },
+    {
+     "title": "Kroningsdag",
+     "length_ms": 74840
+    },
+    {
+     "title": "Heimr Àrnadalr",
+     "length_ms": 85600
+    },
+    {
+     "title": "Winterwals",
+     "length_ms": 58893
+    },
+    {
+     "title": "Tovenarij",
+     "length_ms": 196053
+    },
+    {
+     "title": "Koninklije achtervolging",
+     "length_ms": 62346
+    },
+    {
+     "title": "Voors en tegens",
+     "length_ms": 114133
+    },
+    {
+     "title": "Wolven",
+     "length_ms": 104640
+    },
+    {
+     "title": "De Noorderberg",
+     "length_ms": 93240
+    },
+    {
+     "title": "We waren toen zo close",
+     "length_ms": 113493
+    },
+    {
+     "title": "Marshmallow valt aan",
+     "length_ms": 102626
+    },
+    {
+     "title": "Verberg en zeg niets",
+     "length_ms": 67480
+    },
+    {
+     "title": "Alleen een daad uit ware liefde",
+     "length_ms": 65746
+    },
+    {
+     "title": "De belegering",
+     "length_ms": 152693
+    },
+    {
+     "title": "Terug naar Arendelle",
+     "length_ms": 96413
+    },
+    {
+     "title": "Verraad",
+     "length_ms": 95186
+    },
+    {
+     "title": "Sommige mensen zijn 't waard om voor te smelten",
+     "length_ms": 126013
+    },
+    {
+     "title": "Bevroren",
+     "length_ms": 255573
+    },
+    {
+     "title": "De grote dooi (Vuelie reprise)",
+     "length_ms": 148693
+    },
+    {
+     "title": "Epiloog",
+     "length_ms": 186213
+    },
+    {
+     "title": "Bebaskan",
+     "length_ms": 225013
+    }
+   ]
+  },
+  {
+   "id": "disney:tangled",
+   "title": "Tangled",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "When Will My Life Begin?",
+     "length_ms": 152333
+    },
+    {
+     "title": "When Will My Life Begin? (reprise 1)",
+     "length_ms": 63213
+    },
+    {
+     "title": "Mother Knows Best",
+     "length_ms": 190440
+    },
+    {
+     "title": "When Will My Life Begin? (reprise 2)",
+     "length_ms": 126093
+    },
+    {
+     "title": "I've Got a Dream",
+     "length_ms": 191413
+    },
+    {
+     "title": "Mother Knows Best (reprise)",
+     "length_ms": 98320
+    },
+    {
+     "title": "I See the Light",
+     "length_ms": 224240
+    },
+    {
+     "title": "Healing Incantation",
+     "length_ms": 54440
+    },
+    {
+     "title": "Flynn Wanted (score)",
+     "length_ms": 171360
+    },
+    {
+     "title": "Prologue (songs and score)",
+     "length_ms": 122573
+    },
+    {
+     "title": "Horse With No Rider (score)",
+     "length_ms": 116946
+    },
+    {
+     "title": "Escape Route (score)",
+     "length_ms": 117426
+    },
+    {
+     "title": "Campfire (score)",
+     "length_ms": 201666
+    },
+    {
+     "title": "Kingdom Dance (score)",
+     "length_ms": 140413
+    },
+    {
+     "title": "Waiting for the Lights (score)",
+     "length_ms": 167693
+    },
+    {
+     "title": "Return to Mother (score)",
+     "length_ms": 126546
+    },
+    {
+     "title": "Realization and Escape (score)",
+     "length_ms": 350680
+    },
+    {
+     "title": "The Tear Heals (score and song)",
+     "length_ms": 457693
+    },
+    {
+     "title": "Kingdom Celebration (score)",
+     "length_ms": 110800
+    },
+    {
+     "title": "Something That I Want",
+     "length_ms": 163280
+    },
+    {
+     "title": "Flynn Wanted",
+     "length_ms": 171360
+    },
+    {
+     "title": "Prologue",
+     "length_ms": 122573
+    },
+    {
+     "title": "Horse With No Rider",
+     "length_ms": 116946
+    },
+    {
+     "title": "Escape Route",
+     "length_ms": 117426
+    },
+    {
+     "title": "Campfire",
+     "length_ms": 201666
+    },
+    {
+     "title": "Kingdom Dance",
+     "length_ms": 140413
+    },
+    {
+     "title": "Waiting for the Lights",
+     "length_ms": 167693
+    },
+    {
+     "title": "Return to Mother",
+     "length_ms": 126546
+    },
+    {
+     "title": "Realization and Escape",
+     "length_ms": 350680
+    },
+    {
+     "title": "The Tear Heals",
+     "length_ms": 457693
+    },
+    {
+     "title": "Kingdom Celebration",
+     "length_ms": 110800
+    }
+   ]
+  },
+  {
+   "id": "disney:mary poppins",
+   "title": "Mary Poppins",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Prologue / Chim Chim Cher-Ee",
+     "length_ms": 94000
+    },
+    {
+     "title": "Cherry Tree Lane, Part 1",
+     "length_ms": 208000
+    },
+    {
+     "title": "The Perfect Nanny",
+     "length_ms": 74000
+    },
+    {
+     "title": "Cherry Tree Lane, Part 2",
+     "length_ms": 68000
+    },
+    {
+     "title": "Practically Perfect",
+     "length_ms": 250000
+    },
+    {
+     "title": "Jolly Holiday",
+     "length_ms": 383000
+    },
+    {
+     "title": "Cherry Tree Lane (reprise) / Being Mrs. Banks / Jolly Holiday (reprise)",
+     "length_ms": 166000
+    },
+    {
+     "title": "A Spoonful of Sugar",
+     "length_ms": 211000
+    },
+    {
+     "title": "Feed the Birds",
+     "length_ms": 219000
+    },
+    {
+     "title": "Supercalifragilisticexpialidocious",
+     "length_ms": 264000
+    },
+    {
+     "title": "Temper, Temper",
+     "length_ms": 255000
+    },
+    {
+     "title": "Chim Chim Cher-Ee (Rooftop Duet)",
+     "length_ms": 243000
+    },
+    {
+     "title": "Entr'acte: Run Away",
+     "length_ms": 68000
+    },
+    {
+     "title": "Brimstone and Treacle, Part 1",
+     "length_ms": 98000
+    },
+    {
+     "title": "Let's Go Fly a Kite",
+     "length_ms": 124000
+    },
+    {
+     "title": "Good for Nothing / Being Mrs. Banks (reprise)",
+     "length_ms": 246000
+    },
+    {
+     "title": "Brimstone and Treacle, Part 2",
+     "length_ms": 220000
+    },
+    {
+     "title": "Step in Time",
+     "length_ms": 334000
+    },
+    {
+     "title": "A Man Has Dreams / A Spoonful of Sugar (reprise)",
+     "length_ms": 211000
+    },
+    {
+     "title": "Anything Can Happen",
+     "length_ms": 294000
+    },
+    {
+     "title": "A Spoonful of Sugar (reprise) / A Shooting Star",
+     "length_ms": 226000
+    },
+    {
+     "title": "Overture",
+     "length_ms": 246000
+    },
+    {
+     "title": "Sister Suffragette",
+     "length_ms": 104000
+    },
+    {
+     "title": "The Life I Lead",
+     "length_ms": 114000
+    },
+    {
+     "title": "Pavement Artist (Chim Chim Cheree)",
+     "length_ms": 107000
+    },
+    {
+     "title": "Stay Awake",
+     "length_ms": 106000
+    },
+    {
+     "title": "I Love to Laugh",
+     "length_ms": 162000
+    },
+    {
+     "title": "A British Bank (The Life I Lead)",
+     "length_ms": 119000
+    },
+    {
+     "title": "Feed the Birds (Tuppence a Bag)",
+     "length_ms": 230000
+    },
+    {
+     "title": "Fidelity Fiduciary Bank",
+     "length_ms": 227000
+    },
+    {
+     "title": "Chim Chim Cheree",
+     "length_ms": 169000
+    },
+    {
+     "title": "A Man Has Dreams (The Life I Lead) (Spoonful of Sugar)",
+     "length_ms": 260000
+    },
+    {
+     "title": "Overture: Mary Poppins",
+     "length_ms": 181827
+    },
+    {
+     "title": "Pavement Artist",
+     "length_ms": 120493
+    },
+    {
+     "title": "Chim Chim Cher-ee",
+     "length_ms": 166600
+    },
+    {
+     "title": "A Man Has Dreams",
+     "length_ms": 268800
+    },
+    {
+     "title": "The Sherman Brothers Reminisce About Their Work on Mary Poppins (Interview)",
+     "length_ms": 969040
+    }
+   ]
+  },
+  {
+   "id": "disney:the little mermaid",
+   "title": "The Little Mermaid",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Act 1: [speech]",
+     "length_ms": 171000
+    },
+    {
+     "title": "Act 1: Overture",
+     "length_ms": 211000
+    },
+    {
+     "title": "Act 1: Fathoms Below / Where I Belong",
+     "length_ms": 295000
+    },
+    {
+     "title": "Act 1: [scene] / Victory Celebration",
+     "length_ms": 84000
+    },
+    {
+     "title": "Act 1: Daughters of Triton",
+     "length_ms": 86000
+    },
+    {
+     "title": "Act 1: The World Above",
+     "length_ms": 88000
+    },
+    {
+     "title": "Act 1: [scene] / The Surface",
+     "length_ms": 72000
+    },
+    {
+     "title": "Act 1: Human Stuff",
+     "length_ms": 212000
+    },
+    {
+     "title": "Act 1: [scene] / Late for the Concert / Ursula's Castle",
+     "length_ms": 108000
+    },
+    {
+     "title": "Act 1: [scene] / Ariel in Trouble",
+     "length_ms": 149000
+    },
+    {
+     "title": "Act 1: Under the Sea",
+     "length_ms": 129000
+    },
+    {
+     "title": "Act 2: Positoovity",
+     "length_ms": 356000
+    },
+    {
+     "title": "Act 2: Positoovity (reprise)",
+     "length_ms": 85000
+    },
+    {
+     "title": "Act 2: Beyond My Wildest Dreams",
+     "length_ms": 245000
+    },
+    {
+     "title": "Act 2: Les Poissons",
+     "length_ms": 378000
+    },
+    {
+     "title": "Act 2: One Step Closer",
+     "length_ms": 302000
+    },
+    {
+     "title": "Act 2: [scene] / Good Night, Ariel",
+     "length_ms": 89000
+    },
+    {
+     "title": "Act 2: I Want the Good Times Back (reprise)",
+     "length_ms": 156000
+    },
+    {
+     "title": "Act 2: [scene] / The Date",
+     "length_ms": 68000
+    },
+    {
+     "title": "Act 2: Kiss the Girl",
+     "length_ms": 176000
+    },
+    {
+     "title": "Act 2: Sweet Child (reprise)",
+     "length_ms": 106000
+    },
+    {
+     "title": "Act 2: If Only / Her Voice (reprise)",
+     "length_ms": 359000
+    },
+    {
+     "title": "Act 2: [scene] / Where Is She?",
+     "length_ms": 61000
+    },
+    {
+     "title": "Act 2: Her Voice (reprise)",
+     "length_ms": 43000
+    },
+    {
+     "title": "Act 2: The Contest",
+     "length_ms": 230000
+    },
+    {
+     "title": "Act 2: Poor Unfortunate Souls (reprise)",
+     "length_ms": 262000
+    },
+    {
+     "title": "Act 2: If Only (reprise)",
+     "length_ms": 184000
+    },
+    {
+     "title": "Act 2: Finale Ultimo",
+     "length_ms": 169000
+    },
+    {
+     "title": "Act 2: Curtain Call",
+     "length_ms": 163000
+    },
+    {
+     "title": "Fathoms Below",
+     "length_ms": 101000
+    },
+    {
+     "title": "Main Titles",
+     "length_ms": 86000
+    },
+    {
+     "title": "Fanfare",
+     "length_ms": 27000
+    },
+    {
+     "title": "Daughters of Triton",
+     "length_ms": 38000
+    },
+    {
+     "title": "Part of Your World",
+     "length_ms": 193000
+    },
+    {
+     "title": "Under the Sea",
+     "length_ms": 192000
+    },
+    {
+     "title": "Part of Your World (reprise)",
+     "length_ms": 135000
+    },
+    {
+     "title": "Poor Unfortunate Souls",
+     "length_ms": 289000
+    },
+    {
+     "title": "Les Poissons",
+     "length_ms": 93000
+    },
+    {
+     "title": "Kiss the Girl",
+     "length_ms": 161000
+    },
+    {
+     "title": "Fireworks",
+     "length_ms": 38000
+    },
+    {
+     "title": "Jig",
+     "length_ms": 92000
+    },
+    {
+     "title": "The Storm",
+     "length_ms": 198000
+    },
+    {
+     "title": "Destruction of the Grotto",
+     "length_ms": 112000
+    },
+    {
+     "title": "Flotsam and Jetsam",
+     "length_ms": 82000
+    },
+    {
+     "title": "Tour of the Kingdom",
+     "length_ms": 84000
+    },
+    {
+     "title": "Bedtime",
+     "length_ms": 80000
+    },
+    {
+     "title": "Wedding Announcement",
+     "length_ms": 136000
+    },
+    {
+     "title": "Eric to the Rescue",
+     "length_ms": 220000
+    },
+    {
+     "title": "Happy Ending",
+     "length_ms": 191000
+    },
+    {
+     "title": "Mysterious Girl",
+     "length_ms": 243000
+    },
+    {
+     "title": "Triton’s Kingdom",
+     "length_ms": 153000
+    },
+    {
+     "title": "Wild Uncharted Waters",
+     "length_ms": 180000
+    },
+    {
+     "title": "For the First Time",
+     "length_ms": 248000
+    },
+    {
+     "title": "The Scuttlebutt",
+     "length_ms": 122000
+    },
+    {
+     "title": "Eric’s Decision",
+     "length_ms": 142000
+    },
+    {
+     "title": "Vanessa’s Trick",
+     "length_ms": 64000
+    },
+    {
+     "title": "Kiss the Girl (Island Band reprise)",
+     "length_ms": 137000
+    },
+    {
+     "title": "Finale",
+     "length_ms": 146000
+    }
+   ]
+  },
+  {
+   "id": "disney:the lion king",
+   "title": "The Lion King",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Circle of Life",
+     "length_ms": 239560
+    },
+    {
+     "title": "I Just Can’t Wait to Be King",
+     "length_ms": 170933
+    },
+    {
+     "title": "Be Prepared",
+     "length_ms": 220240
+    },
+    {
+     "title": "Hakuna Matata",
+     "length_ms": 213666
+    },
+    {
+     "title": "Can You Feel the Love Tonight",
+     "length_ms": 177666
+    },
+    {
+     "title": "This Land (instrumental)",
+     "length_ms": 175466
+    },
+    {
+     "title": "… To Die For (instrumental)",
+     "length_ms": 257666
+    },
+    {
+     "title": "Under the Stars (instrumental)",
+     "length_ms": 225200
+    },
+    {
+     "title": "King of Pride Rock (instrumental)",
+     "length_ms": 359066
+    },
+    {
+     "title": "Can You Feel the Love Tonight (end title)",
+     "length_ms": 239693
+    },
+    {
+     "title": "Circle of Life (from “The Lion King”/soundtrack)",
+     "length_ms": 239000
+    },
+    {
+     "title": "I Just Can’t Wait to Be King (from “The Lion King”/soundtrack version)",
+     "length_ms": 171000
+    },
+    {
+     "title": "Be Prepared (from ”The Lion King”/soundtrack version)",
+     "length_ms": 220000
+    },
+    {
+     "title": "Hakuna Matata (from “The Lion King”/soundtrack version)",
+     "length_ms": 214000
+    },
+    {
+     "title": "Can You Feel the Love Tonight (from “The Lion King”/soundtrack version)",
+     "length_ms": 178000
+    },
+    {
+     "title": "The Morning Report (from “The Lion King”/soundtrack version)",
+     "length_ms": 97000
+    },
+    {
+     "title": "This Land",
+     "length_ms": 176000
+    },
+    {
+     "title": "…to Die For",
+     "length_ms": 258000
+    },
+    {
+     "title": "Under the Stars",
+     "length_ms": 225000
+    },
+    {
+     "title": "King of Pride Rock",
+     "length_ms": 359000
+    },
+    {
+     "title": "Can You Feel the Love Tonight (remix)",
+     "length_ms": 249000
+    },
+    {
+     "title": "Life Isn’t Fair, Is It",
+     "length_ms": 55000
+    },
+    {
+     "title": "The Once and Future King",
+     "length_ms": 188000
+    },
+    {
+     "title": "Plotting",
+     "length_ms": 244000
+    },
+    {
+     "title": "The Elephant Graveyard",
+     "length_ms": 291000
+    },
+    {
+     "title": "King of the Past",
+     "length_ms": 142000
+    },
+    {
+     "title": "Hyenas",
+     "length_ms": 139000
+    },
+    {
+     "title": "Stampede",
+     "length_ms": 208000
+    },
+    {
+     "title": "What Have You Done - Run Away",
+     "length_ms": 212000
+    },
+    {
+     "title": "A New Era / Bowling for Buzzards",
+     "length_ms": 105000
+    },
+    {
+     "title": "Under the Stars / Simba Alive",
+     "length_ms": 182000
+    },
+    {
+     "title": "Hunting / Pinned Again / Reunion",
+     "length_ms": 263000
+    },
+    {
+     "title": "An Argument / You’re Mufasa’s Son",
+     "length_ms": 478000
+    },
+    {
+     "title": "This Is My Home",
+     "length_ms": 153000
+    },
+    {
+     "title": "The Return / Battle of Pride Rock",
+     "length_ms": 704000
+    },
+    {
+     "title": "On Our Side. Simba Awakens",
+     "length_ms": 34000
+    }
+   ]
+  },
+  {
+   "id": "disney:sleeping beauty",
+   "title": "Sleeping Beauty",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Bluebird / I Wonder",
+     "length_ms": 163867
+    },
+    {
+     "title": "Woodland Symphony / Once Upon a Dream",
+     "length_ms": 215320
+    },
+    {
+     "title": "Such Fair Skin",
+     "length_ms": 122000
+    },
+    {
+     "title": "Bread Crumbs",
+     "length_ms": 132000
+    },
+    {
+     "title": "Morning After I",
+     "length_ms": 42000
+    },
+    {
+     "title": "Morning After II",
+     "length_ms": 46000
+    },
+    {
+     "title": "Mirror",
+     "length_ms": 63000
+    },
+    {
+     "title": "Fear of Death Is the Number One Hoax",
+     "length_ms": 43000
+    },
+    {
+     "title": "Sleeping Beauty",
+     "length_ms": 294000
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 1",
+     "length_ms": 172893
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 2",
+     "length_ms": 351573
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 3",
+     "length_ms": 211560
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 4",
+     "length_ms": 229466
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 5",
+     "length_ms": 106026
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 6",
+     "length_ms": 317666
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 7",
+     "length_ms": 312746
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 8",
+     "length_ms": 270906
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 9",
+     "length_ms": 272253
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 10",
+     "length_ms": 192853
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 11",
+     "length_ms": 215306
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 12",
+     "length_ms": 97680
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 13",
+     "length_ms": 301853
+    },
+    {
+     "title": "1983-12-25: Sleeping Beauty, Part 14",
+     "length_ms": 384480
+    },
+    {
+     "title": "Main Title / Once Upon a Dream / Prologue",
+     "length_ms": 177933
+    },
+    {
+     "title": "Hail to the Princess Aurora",
+     "length_ms": 117160
+    },
+    {
+     "title": "The Gifts of Beauty and Song / Maleficent Appears / True Love Conquers All",
+     "length_ms": 338706
+    },
+    {
+     "title": "The Burning of the Spinning Wheels / The Fairies Plan",
+     "length_ms": 272533
+    },
+    {
+     "title": "Maleficent’s Frustration",
+     "length_ms": 128360
+    },
+    {
+     "title": "A Cottage in the Woods",
+     "length_ms": 207640
+    },
+    {
+     "title": "Do You Hear That? / I Wonder",
+     "length_ms": 237533
+    },
+    {
+     "title": "An Unusual Prince / Once Upon a Dream",
+     "length_ms": 209693
+    },
+    {
+     "title": "Magical House Cleaning / Blue or Pink",
+     "length_ms": 167173
+    },
+    {
+     "title": "A Secret Revealed",
+     "length_ms": 117800
+    },
+    {
+     "title": "Skumps (Drinking Song) / The Royal Argument",
+     "length_ms": 249533
+    },
+    {
+     "title": "Prince Phillip Arrives / How to Tell Stefan",
+     "length_ms": 146293
+    },
+    {
+     "title": "Aurora’s Return / Maleficent’s Evil Spell",
+     "length_ms": 306533
+    },
+    {
+     "title": "Poor Aurora / Sleeping Beauty",
+     "length_ms": 177600
+    },
+    {
+     "title": "Forbidden Mountain",
+     "length_ms": 171666
+    },
+    {
+     "title": "A Fairy Tale Come True",
+     "length_ms": 168640
+    },
+    {
+     "title": "Battle With the Forces of Evil",
+     "length_ms": 311560
+    },
+    {
+     "title": "Awakening",
+     "length_ms": 164333
+    },
+    {
+     "title": "Finale",
+     "length_ms": 102307
+    }
+   ]
+  },
+  {
+   "id": "disney:frozen 2",
+   "title": "Frozen 2",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Introduction",
+     "length_ms": 59587
+    },
+    {
+     "title": "The Northuldra",
+     "length_ms": 155870
+    },
+    {
+     "title": "Sisters",
+     "length_ms": 65936
+    },
+    {
+     "title": "Exodus",
+     "length_ms": 81125
+    },
+    {
+     "title": "The Mist",
+     "length_ms": 162361
+    },
+    {
+     "title": "Wind",
+     "length_ms": 186242
+    },
+    {
+     "title": "Iduna’s Scarf",
+     "length_ms": 277172
+    },
+    {
+     "title": "Fire and Ice",
+     "length_ms": 196279
+    },
+    {
+     "title": "Earth Giants",
+     "length_ms": 117346
+    },
+    {
+     "title": "The Ship",
+     "length_ms": 295190
+    },
+    {
+     "title": "River Slide",
+     "length_ms": 152684
+    },
+    {
+     "title": "Dark Sea",
+     "length_ms": 167940
+    },
+    {
+     "title": "Ghosts of Arendelle Past",
+     "length_ms": 178149
+    },
+    {
+     "title": "Gone Too Far",
+     "length_ms": 223973
+    },
+    {
+     "title": "Rude Awakening",
+     "length_ms": 125148
+    },
+    {
+     "title": "The Flood",
+     "length_ms": 214840
+    },
+    {
+     "title": "Reindeer Circle",
+     "length_ms": 100529
+    },
+    {
+     "title": "Reunion",
+     "length_ms": 230867
+    },
+    {
+     "title": "Epilogue",
+     "length_ms": 205240
+    },
+    {
+     "title": "Into the Unknown (from “Frozen 2\"/First Listen)",
+     "length_ms": 29974
+    },
+    {
+     "title": "The Next Right Thing (from “Frozen 2\"/First Listen)",
+     "length_ms": 31000
+    },
+    {
+     "title": "When I Am Older (from “Frozen 2\"/First Listen)",
+     "length_ms": 31000
+    },
+    {
+     "title": "All Is Found",
+     "length_ms": 125000
+    },
+    {
+     "title": "Some Things Never Change",
+     "length_ms": 210000
+    },
+    {
+     "title": "Into the Unknown",
+     "length_ms": 195000
+    },
+    {
+     "title": "When I Am Older",
+     "length_ms": 111000
+    },
+    {
+     "title": "Reindeer(s) Are Better Than People (Cont.)",
+     "length_ms": 26000
+    },
+    {
+     "title": "Lost in the Woods",
+     "length_ms": 181000
+    },
+    {
+     "title": "Show Yourself",
+     "length_ms": 261000
+    },
+    {
+     "title": "The Next Right Thing",
+     "length_ms": 217000
+    },
+    {
+     "title": "All Is Found (Lullaby Ending)",
+     "length_ms": 114000
+    },
+    {
+     "title": "Home",
+     "length_ms": 177000
+    },
+    {
+     "title": "I Seek the Truth",
+     "length_ms": 242000
+    },
+    {
+     "title": "Unmeltable Me",
+     "length_ms": 85000
+    },
+    {
+     "title": "Get This Right",
+     "length_ms": 227000
+    },
+    {
+     "title": "Into the Unknown - Panic! At The Disco Version",
+     "length_ms": 189132
+    },
+    {
+     "title": "All Is Found - Kacey Musgraves Version",
+     "length_ms": 183734
+    },
+    {
+     "title": "Lost in the Woods - Weezer Version",
+     "length_ms": 185231
+    },
+    {
+     "title": "All Is Found (Lullaby Ending) - Outtake",
+     "length_ms": 114040
+    },
+    {
+     "title": "Home - Outtake",
+     "length_ms": 176865
+    },
+    {
+     "title": "I Seek the Truth - Outtake",
+     "length_ms": 241534
+    },
+    {
+     "title": "Unmeltable Me - Outtake",
+     "length_ms": 85306
+    },
+    {
+     "title": "Get This Right - Outtake",
+     "length_ms": 226920
+    },
+    {
+     "title": "All Is Found - Instrumental",
+     "length_ms": 127343
+    },
+    {
+     "title": "Some Things Never Change - Instrumental",
+     "length_ms": 207588
+    },
+    {
+     "title": "Into the Unknown - Instrumental",
+     "length_ms": 196495
+    },
+    {
+     "title": "When I Am Older - Instrumental",
+     "length_ms": 112560
+    },
+    {
+     "title": "Reindeer(s) Are Better Than People (Cont.) - Instrumental",
+     "length_ms": 14253
+    },
+    {
+     "title": "Lost in the Woods - Instrumental",
+     "length_ms": 181818
+    },
+    {
+     "title": "Show Yourself - Instrumental",
+     "length_ms": 258788
+    },
+    {
+     "title": "The Next Right Thing - Instrumental",
+     "length_ms": 216653
+    },
+    {
+     "title": "Into the Unknown - Panic! At The Disco Version/Instrumental",
+     "length_ms": 188466
+    },
+    {
+     "title": "All Is Found - Kacey Musgraves Version/Instrumental",
+     "length_ms": 181840
+    },
+    {
+     "title": "Lost in the Woods - Weezer Version/Instrumental",
+     "length_ms": 182586
+    }
+   ]
+  },
+  {
+   "id": "disney:moana",
+   "title": "Moana",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Tulou Tagaloa",
+     "length_ms": 51933
+    },
+    {
+     "title": "An Innocent Warrior",
+     "length_ms": 97413
+    },
+    {
+     "title": "Where You Are",
+     "length_ms": 210320
+    },
+    {
+     "title": "How Far I’ll Go",
+     "length_ms": 163386
+    },
+    {
+     "title": "We Know the Way",
+     "length_ms": 141413
+    },
+    {
+     "title": "How Far I’ll Go (reprise)",
+     "length_ms": 87346
+    },
+    {
+     "title": "You’re Welcome",
+     "length_ms": 163893
+    },
+    {
+     "title": "Shiny",
+     "length_ms": 185466
+    },
+    {
+     "title": "Logo te pate",
+     "length_ms": 130173
+    },
+    {
+     "title": "I Am Moana (Song of the Ancestors)",
+     "length_ms": 162826
+    },
+    {
+     "title": "Know Who You Are",
+     "length_ms": 72626
+    },
+    {
+     "title": "We Know the Way (Finale)",
+     "length_ms": 69120
+    },
+    {
+     "title": "How Far I’ll Go (Alessia Cara version)",
+     "length_ms": 175506
+    },
+    {
+     "title": "You’re Welcome (Jordan Fisher/Lin‐Manuel Miranda version)",
+     "length_ms": 137426
+    },
+    {
+     "title": "Prologue",
+     "length_ms": 145440
+    },
+    {
+     "title": "He Was You",
+     "length_ms": 50573
+    },
+    {
+     "title": "Village Crazy Lady",
+     "length_ms": 45706
+    },
+    {
+     "title": "Cavern",
+     "length_ms": 125293
+    },
+    {
+     "title": "The Ocean Chose You",
+     "length_ms": 77960
+    },
+    {
+     "title": "The Hook",
+     "length_ms": 69960
+    },
+    {
+     "title": "Tala’s Deathbed",
+     "length_ms": 120880
+    },
+    {
+     "title": "Battle of Wills",
+     "length_ms": 190893
+    },
+    {
+     "title": "Kakamora",
+     "length_ms": 273266
+    },
+    {
+     "title": "Wayfinding",
+     "length_ms": 112373
+    },
+    {
+     "title": "Climbing",
+     "length_ms": 54573
+    },
+    {
+     "title": "Tamatoa’s Lair",
+     "length_ms": 165946
+    },
+    {
+     "title": "Great Escape",
+     "length_ms": 59706
+    },
+    {
+     "title": "If I Were the Ocean",
+     "length_ms": 181613
+    },
+    {
+     "title": "Te Ka Attacks",
+     "length_ms": 101080
+    },
+    {
+     "title": "Maui Leaves",
+     "length_ms": 125333
+    },
+    {
+     "title": "Heartache",
+     "length_ms": 39253
+    },
+    {
+     "title": "Tala Returns",
+     "length_ms": 61986
+    },
+    {
+     "title": "Sails to Te Fiti",
+     "length_ms": 346306
+    },
+    {
+     "title": "Shiny Heart",
+     "length_ms": 36693
+    },
+    {
+     "title": "Te Fiti Restored",
+     "length_ms": 63346
+    },
+    {
+     "title": "Hand of a God",
+     "length_ms": 30093
+    },
+    {
+     "title": "Voyager Tagaloa",
+     "length_ms": 57266
+    },
+    {
+     "title": "Toe feiloaʻi",
+     "length_ms": 85333
+    },
+    {
+     "title": "Navigating Home",
+     "length_ms": 47986
+    },
+    {
+     "title": "The Return to Voyaging",
+     "length_ms": 61986
+    },
+    {
+     "title": "Unstoppable (outtake)",
+     "length_ms": 239426
+    },
+    {
+     "title": "More (outtake)",
+     "length_ms": 196480
+    },
+    {
+     "title": "More (reprise) (outtake)",
+     "length_ms": 158800
+    },
+    {
+     "title": "Warrior Face (outtake)",
+     "length_ms": 136680
+    },
+    {
+     "title": "Where You Are (demo)",
+     "length_ms": 181826
+    },
+    {
+     "title": "You’re Welcome (demo)",
+     "length_ms": 157360
+    },
+    {
+     "title": "Shiny (demo)",
+     "length_ms": 184266
+    },
+    {
+     "title": "Prologue (score demo)",
+     "length_ms": 146106
+    },
+    {
+     "title": "Village Crazy Lady (score demo)",
+     "length_ms": 44986
+    },
+    {
+     "title": "Cavern (score demo)",
+     "length_ms": 125413
+    },
+    {
+     "title": "Kakamora (score demo)",
+     "length_ms": 238426
+    },
+    {
+     "title": "It’s Called Wayfinding (score demo)",
+     "length_ms": 53373
+    },
+    {
+     "title": "Maui Leaves (score demo)",
+     "length_ms": 124360
+    },
+    {
+     "title": "Sails to Te Fiti (score demo)",
+     "length_ms": 97786
+    },
+    {
+     "title": "Maui Battles (score demo)",
+     "length_ms": 117733
+    },
+    {
+     "title": "Sea Monsters (score demo)",
+     "length_ms": 45040
+    },
+    {
+     "title": "Tala Returns (score demo)",
+     "length_ms": 75080
+    },
+    {
+     "title": "How Far I’ll Go (instrumental karaoke)",
+     "length_ms": 164520
+    },
+    {
+     "title": "You’re Welcome (instrumental karaoke)",
+     "length_ms": 163920
+    },
+    {
+     "title": "Tulou Tagaloa (Sei e va’ai mai)",
+     "length_ms": 68173
+    },
+    {
+     "title": "We're Back",
+     "length_ms": 191746
+    },
+    {
+     "title": "Tuputupu (The Feast)",
+     "length_ms": 34853
+    },
+    {
+     "title": "Beyond",
+     "length_ms": 230266
+    },
+    {
+     "title": "My Wish for You (Innocent Warrior)",
+     "length_ms": 52533
+    },
+    {
+     "title": "Finding the Way",
+     "length_ms": 88466
+    },
+    {
+     "title": "What Could Be Better Than This?",
+     "length_ms": 179040
+    },
+    {
+     "title": "Get Lost",
+     "length_ms": 184693
+    },
+    {
+     "title": "Can I Get a Chee Hoo?",
+     "length_ms": 169560
+    },
+    {
+     "title": "Mana Vavau",
+     "length_ms": 90920
+    },
+    {
+     "title": "Beyond (reprise)",
+     "length_ms": 52560
+    },
+    {
+     "title": "Nuku o Kaiga",
+     "length_ms": 69666
+    },
+    {
+     "title": "Finding the Way (reprise)",
+     "length_ms": 68826
+    },
+    {
+     "title": "We Know the Way (Te fenua te malie)",
+     "length_ms": 88360
+    },
+    {
+     "title": "Beyond (end credit version)",
+     "length_ms": 196306
+    },
+    {
+     "title": "We're Back (Te Vaka version)",
+     "length_ms": 193533
+    }
+   ]
+  },
+  {
+   "id": "disney:alice in wonderland",
+   "title": "Alice in Wonderland",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Prologue / Cherry Ripe",
+     "length_ms": 51200
+    },
+    {
+     "title": "Main Title",
+     "length_ms": 189133
+    },
+    {
+     "title": "Rabbit Hole",
+     "length_ms": 128666
+    },
+    {
+     "title": "Round House",
+     "length_ms": 221293
+    },
+    {
+     "title": "Swimming in Tears",
+     "length_ms": 130639
+    },
+    {
+     "title": "What am I Going to Talk About ?",
+     "length_ms": 53960
+    },
+    {
+     "title": "The Caucus Race",
+     "length_ms": 85333
+    },
+    {
+     "title": "The Prizegiving",
+     "length_ms": 72240
+    },
+    {
+     "title": "Mr Rabit's House",
+     "length_ms": 147466
+    },
+    {
+     "title": "Pat",
+     "length_ms": 17893
+    },
+    {
+     "title": "Bill",
+     "length_ms": 205800
+    },
+    {
+     "title": "Tiny Cakes",
+     "length_ms": 141466
+    },
+    {
+     "title": "Caterpillar",
+     "length_ms": 90240
+    },
+    {
+     "title": "You're Old Father William",
+     "length_ms": 105426
+    },
+    {
+     "title": "Magic Mushrooms",
+     "length_ms": 52440
+    },
+    {
+     "title": "Wow Wow Wow",
+     "length_ms": 94293
+    },
+    {
+     "title": "Little Pig",
+     "length_ms": 41600
+    },
+    {
+     "title": "The Blossom Tree",
+     "length_ms": 59106
+    },
+    {
+     "title": "Meet Hatter & Hare",
+     "length_ms": 178266
+    },
+    {
+     "title": "Auntie's Wooden Leg",
+     "length_ms": 46066
+    },
+    {
+     "title": "Twinkle Twinkle",
+     "length_ms": 65893
+    },
+    {
+     "title": "The Treacle Well",
+     "length_ms": 168866
+    },
+    {
+     "title": "Alice Leaves the Tea Party",
+     "length_ms": 176373
+    },
+    {
+     "title": "Queen's March",
+     "length_ms": 54800
+    },
+    {
+     "title": "Croquet Match",
+     "length_ms": 142893
+    },
+    {
+     "title": "No Thanks to You",
+     "length_ms": 51506
+    },
+    {
+     "title": "The Duchess Reappears",
+     "length_ms": 92960
+    },
+    {
+     "title": "The Griffin's Grotto",
+     "length_ms": 91533
+    },
+    {
+     "title": "Will You Won't You Join the Dance",
+     "length_ms": 114706
+    },
+    {
+     "title": "Beautiful Soup",
+     "length_ms": 151533
+    },
+    {
+     "title": "Into the Book",
+     "length_ms": 130626
+    },
+    {
+     "title": "The Red Knight Leaves",
+     "length_ms": 80373
+    },
+    {
+     "title": "The White Knight",
+     "length_ms": 117333
+    },
+    {
+     "title": "Flowers to the Tweedles",
+     "length_ms": 114426
+    },
+    {
+     "title": "Tweedles Fight",
+     "length_ms": 70400
+    },
+    {
+     "title": "The Walrus & the Carpenter",
+     "length_ms": 243933
+    },
+    {
+     "title": "The Monstrous Crow",
+     "length_ms": 73973
+    },
+    {
+     "title": "Twinkle Twinkle Little Gnat",
+     "length_ms": 20893
+    },
+    {
+     "title": "Waking Up",
+     "length_ms": 122000
+    },
+    {
+     "title": "Alice's Theme",
+     "length_ms": 307000
+    },
+    {
+     "title": "Little Alice",
+     "length_ms": 94000
+    },
+    {
+     "title": "Proposal / Down the Hole",
+     "length_ms": 178000
+    },
+    {
+     "title": "Doors",
+     "length_ms": 111000
+    },
+    {
+     "title": "Drink Me",
+     "length_ms": 168000
+    },
+    {
+     "title": "Into the Garden",
+     "length_ms": 50000
+    },
+    {
+     "title": "Alice Reprise #1",
+     "length_ms": 26000
+    },
+    {
+     "title": "Bandersnatched",
+     "length_ms": 162000
+    },
+    {
+     "title": "Finding Absolem",
+     "length_ms": 161000
+    },
+    {
+     "title": "Alice Reprise #2",
+     "length_ms": 38000
+    },
+    {
+     "title": "The Cheshire Cat",
+     "length_ms": 127000
+    },
+    {
+     "title": "Alice and Bayard's Journey",
+     "length_ms": 244000
+    },
+    {
+     "title": "Alice Reprise #3",
+     "length_ms": 24000
+    },
+    {
+     "title": "Alice Escapes",
+     "length_ms": 67000
+    },
+    {
+     "title": "The White Queen",
+     "length_ms": 36000
+    },
+    {
+     "title": "Only a Dream",
+     "length_ms": 85000
+    },
+    {
+     "title": "The Dungeon",
+     "length_ms": 138000
+    },
+    {
+     "title": "Alice Decides",
+     "length_ms": 194000
+    },
+    {
+     "title": "Alice Reprise #4",
+     "length_ms": 61000
+    },
+    {
+     "title": "Going to Battle",
+     "length_ms": 161000
+    },
+    {
+     "title": "The Final Confrontation",
+     "length_ms": 101000
+    },
+    {
+     "title": "Blood of the Jabberwocky",
+     "length_ms": 157000
+    },
+    {
+     "title": "Alice Returns",
+     "length_ms": 194000
+    },
+    {
+     "title": "Alice Reprise #5",
+     "length_ms": 175000
+    }
+   ]
+  },
+  {
+   "id": "disney:cinderella",
+   "title": "Cinderella",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "A Dream Is a Wish Your Heart Makes",
+     "length_ms": 202000
+    },
+    {
+     "title": "The Cinderella Work Song",
+     "length_ms": 209000
+    },
+    {
+     "title": "Bibbidi-Bobbidi-Boo (The Magic Song) / So This Is Love",
+     "length_ms": 213000
+    },
+    {
+     "title": "Main Title / Cinderella",
+     "length_ms": 171653
+    },
+    {
+     "title": "A Visitor / Caught in a Trap / Lucifer / Feed the Chickens / Breakfast Is Served / Time on Our Hands",
+     "length_ms": 130867
+    },
+    {
+     "title": "The King’s Plan",
+     "length_ms": 81960
+    },
+    {
+     "title": "The Music Lesson / Oh, Sing Sweet Nightingale / Bad Boy Lucifer / A Message From His Majesty",
+     "length_ms": 126733
+    },
+    {
+     "title": "Little Dressmakers / The Work Song / Scavenger Hunt / A Dream Is a Wish Your Heart Makes / The Dress / My Beads / Escape to the Garden",
+     "length_ms": 564400
+    },
+    {
+     "title": "Where Did I Put That Thing? / Bibbidi-Bobbidi-Boo",
+     "length_ms": 287933
+    },
+    {
+     "title": "Reception at the Palace / So This Is Love",
+     "length_ms": 344920
+    },
+    {
+     "title": "The Stroke of Midnight / Thank You Fairy Godmother",
+     "length_ms": 125320
+    },
+    {
+     "title": "Locked in the Tower / Gus and Jaq to the Rescue / Slipper Fittings / Cinderella’s Slipper / Finale",
+     "length_ms": 456280
+    },
+    {
+     "title": "A Golden Childhood",
+     "length_ms": 236000
+    },
+    {
+     "title": "The Great Secret",
+     "length_ms": 181000
+    },
+    {
+     "title": "A New Family",
+     "length_ms": 135000
+    },
+    {
+     "title": "Life and Laughter",
+     "length_ms": 94000
+    },
+    {
+     "title": "The First Branch",
+     "length_ms": 131000
+    },
+    {
+     "title": "Nice and Airy",
+     "length_ms": 113000
+    },
+    {
+     "title": "Orphaned",
+     "length_ms": 226000
+    },
+    {
+     "title": "The Stag",
+     "length_ms": 296000
+    },
+    {
+     "title": "Rich Beyond Reason",
+     "length_ms": 103000
+    },
+    {
+     "title": "Fairy Godmother",
+     "length_ms": 167000
+    },
+    {
+     "title": "Pumpkins and Mice",
+     "length_ms": 272000
+    },
+    {
+     "title": "You Shall Go",
+     "length_ms": 182000
+    },
+    {
+     "title": "Valse Royale",
+     "length_ms": 126000
+    },
+    {
+     "title": "Who Is She",
+     "length_ms": 200000
+    },
+    {
+     "title": "La Valse de l'Amour",
+     "length_ms": 154000
+    },
+    {
+     "title": "La Valse Champagne",
+     "length_ms": 95000
+    },
+    {
+     "title": "La Polka Militaire",
+     "length_ms": 107000
+    },
+    {
+     "title": "La Polka de Paris",
+     "length_ms": 82000
+    },
+    {
+     "title": "A Secret Garden",
+     "length_ms": 168000
+    },
+    {
+     "title": "La Polka de Minuit",
+     "length_ms": 122000
+    },
+    {
+     "title": "Choose That One",
+     "length_ms": 76000
+    },
+    {
+     "title": "Pumpkin Pursuit",
+     "length_ms": 148000
+    },
+    {
+     "title": "The Slipper",
+     "length_ms": 60000
+    },
+    {
+     "title": "Shattered Dreams",
+     "length_ms": 250000
+    },
+    {
+     "title": "Searching the Kingdom",
+     "length_ms": 171000
+    },
+    {
+     "title": "Ella and Kit",
+     "length_ms": 131000
+    },
+    {
+     "title": "Courage and Kindness",
+     "length_ms": 278000
+    },
+    {
+     "title": "Strong",
+     "length_ms": 194000
+    },
+    {
+     "title": "Bibbidi-Bobbidi-Boo (The Magic Song)",
+     "length_ms": 82000
+    },
+    {
+     "title": "I’m in the Middle of a Muddle (demo recording)",
+     "length_ms": 115040
+    },
+    {
+     "title": "Overture",
+     "length_ms": 179000
+    },
+    {
+     "title": "In My Own Little Corner",
+     "length_ms": 226160
+    },
+    {
+     "title": "The Prince Is Giving a Ball",
+     "length_ms": 157240
+    },
+    {
+     "title": "Royal Dressing Room Scene",
+     "length_ms": 105560
+    },
+    {
+     "title": "In My Own Little Corner (reprise)",
+     "length_ms": 155000
+    },
+    {
+     "title": "Impossible / It's Possible",
+     "length_ms": 257440
+    },
+    {
+     "title": "Gavotte",
+     "length_ms": 186466
+    },
+    {
+     "title": "Ten Minutes Ago",
+     "length_ms": 156226
+    },
+    {
+     "title": "Stepsisters' Lament",
+     "length_ms": 84866
+    },
+    {
+     "title": "Waltz for a Ball",
+     "length_ms": 226973
+    },
+    {
+     "title": "Do I Love You Because You're Beautiful?",
+     "length_ms": 172960
+    },
+    {
+     "title": "When You're Driving Through the Moonlight / A Lovely Night",
+     "length_ms": 332306
+    },
+    {
+     "title": "The Search",
+     "length_ms": 81093
+    },
+    {
+     "title": "The Wedding",
+     "length_ms": 230000
+    }
+   ]
+  },
+  {
+   "id": "disney:the jungle book",
+   "title": "The Jungle Book",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "The Bare Necessities",
+     "length_ms": 216000
+    },
+    {
+     "title": "Trust in Me",
+     "length_ms": 175000
+    },
+    {
+     "title": "Main Titles - Jungle Run",
+     "length_ms": 147000
+    },
+    {
+     "title": "Wolves - Law of the Jungle",
+     "length_ms": 136000
+    },
+    {
+     "title": "Water Truce",
+     "length_ms": 220000
+    },
+    {
+     "title": "The Rains Return",
+     "length_ms": 106000
+    },
+    {
+     "title": "Mowgli's Leaving - Elephant Theme",
+     "length_ms": 208000
+    },
+    {
+     "title": "Shere Khan Attacks - Stampede",
+     "length_ms": 126000
+    },
+    {
+     "title": "Kaa - Baloo to the Rescue",
+     "length_ms": 321000
+    },
+    {
+     "title": "Honeycomb Climb",
+     "length_ms": 211000
+    },
+    {
+     "title": "The Man Village",
+     "length_ms": 179000
+    },
+    {
+     "title": "Mowgli and the Pit",
+     "length_ms": 206000
+    },
+    {
+     "title": "Monkeys Kidnap Mowgli",
+     "length_ms": 112000
+    },
+    {
+     "title": "Arrival at King Louie's Temple",
+     "length_ms": 275000
+    },
+    {
+     "title": "Cold Lair Chase",
+     "length_ms": 243000
+    },
+    {
+     "title": "The Red Flower",
+     "length_ms": 195000
+    },
+    {
+     "title": "To the River",
+     "length_ms": 185000
+    },
+    {
+     "title": "Shere Khan's War Theme",
+     "length_ms": 157000
+    },
+    {
+     "title": "Shere Khan and the Fire",
+     "length_ms": 292000
+    },
+    {
+     "title": "Elephant Waterfall",
+     "length_ms": 207000
+    },
+    {
+     "title": "Mowgli Wins the Race",
+     "length_ms": 41000
+    },
+    {
+     "title": "The Jungle Book Closes",
+     "length_ms": 136000
+    },
+    {
+     "title": "I Wan'na Be Like You (2016)",
+     "length_ms": 182000
+    },
+    {
+     "title": "Two Different Worlds",
+     "length_ms": 351000
+    },
+    {
+     "title": "Main Titles / The Caravan",
+     "length_ms": 263000
+    },
+    {
+     "title": "Shere Kahn Attacks",
+     "length_ms": 288000
+    },
+    {
+     "title": "Mowgli",
+     "length_ms": 220000
+    },
+    {
+     "title": "Monkey City",
+     "length_ms": 279000
+    },
+    {
+     "title": "Kitty",
+     "length_ms": 321000
+    },
+    {
+     "title": "Treasure Room",
+     "length_ms": 252000
+    },
+    {
+     "title": "Civilization",
+     "length_ms": 333000
+    },
+    {
+     "title": "Baloo",
+     "length_ms": 171000
+    },
+    {
+     "title": "Spoils",
+     "length_ms": 552000
+    },
+    {
+     "title": "Finale",
+     "length_ms": 209000
+    },
+    {
+     "title": "I Wan'na Be Like You",
+     "length_ms": 243466
+    },
+    {
+     "title": "Bare Necessities",
+     "length_ms": 146666
+    }
+   ]
+  },
+  {
+   "id": "disney:aladdin",
+   "title": "Aladdin",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Noites da Arábia",
+     "length_ms": 79000
+    },
+    {
+     "title": "Lenda da lâmpada",
+     "length_ms": 85226
+    },
+    {
+     "title": "Correr para viver",
+     "length_ms": 143000
+    },
+    {
+     "title": "Menino de rua",
+     "length_ms": 113000
+    },
+    {
+     "title": "Correr para viver (reprise)",
+     "length_ms": 61733
+    },
+    {
+     "title": "Amigo insuperável",
+     "length_ms": 146400
+    },
+    {
+     "title": "Ser livre",
+     "length_ms": 99266
+    },
+    {
+     "title": "Príncipe Ali",
+     "length_ms": 171866
+    },
+    {
+     "title": "Um mundo ideal",
+     "length_ms": 160933
+    },
+    {
+     "title": "Hora de Jafar",
+     "length_ms": 162693
+    },
+    {
+     "title": "Os confins da Terra",
+     "length_ms": 95440
+    },
+    {
+     "title": "O beijo",
+     "length_ms": 111133
+    },
+    {
+     "title": "Numa noite escura",
+     "length_ms": 175733
+    },
+    {
+     "title": "Jasmine foge",
+     "length_ms": 46960
+    },
+    {
+     "title": "Mercado",
+     "length_ms": 157266
+    },
+    {
+     "title": "A caverna das maravilhas",
+     "length_ms": 297933
+    },
+    {
+     "title": "A promessa de Aladdin",
+     "length_ms": 111600
+    },
+    {
+     "title": "A batalha",
+     "length_ms": 219733
+    },
+    {
+     "title": "Final feliz em Agrabah",
+     "length_ms": 255640
+    },
+    {
+     "title": "Um mundo ideal (Tema de Aladdin)",
+     "length_ms": 244533
+    },
+    {
+     "title": "Arabian Nights",
+     "length_ms": 79133
+    },
+    {
+     "title": "Legend of the Lamp",
+     "length_ms": 85106
+    },
+    {
+     "title": "One Jump Ahead",
+     "length_ms": 142733
+    },
+    {
+     "title": "Street Urchins",
+     "length_ms": 112760
+    },
+    {
+     "title": "One Jump Ahead (reprise)",
+     "length_ms": 61600
+    },
+    {
+     "title": "Friend Like Me",
+     "length_ms": 146506
+    },
+    {
+     "title": "To Be Free",
+     "length_ms": 99160
+    },
+    {
+     "title": "Prince Ali",
+     "length_ms": 171906
+    },
+    {
+     "title": "A Whole New World",
+     "length_ms": 160893
+    },
+    {
+     "title": "Jafar's Hour",
+     "length_ms": 162866
+    },
+    {
+     "title": "Prince Ali (reprise)",
+     "length_ms": 67773
+    },
+    {
+     "title": "The Ends of the Earth",
+     "length_ms": 95333
+    },
+    {
+     "title": "The Kiss",
+     "length_ms": 111133
+    },
+    {
+     "title": "On a Dark Night",
+     "length_ms": 175733
+    },
+    {
+     "title": "Jasmine Runs Away",
+     "length_ms": 46933
+    },
+    {
+     "title": "Marketplace",
+     "length_ms": 157293
+    },
+    {
+     "title": "The Cave of Wonders",
+     "length_ms": 297906
+    },
+    {
+     "title": "Aladdin's Word",
+     "length_ms": 111600
+    },
+    {
+     "title": "The Battle",
+     "length_ms": 218293
+    },
+    {
+     "title": "Happy End in Agrabah",
+     "length_ms": 252640
+    },
+    {
+     "title": "A Whole New World (Aladdin's Theme)",
+     "length_ms": 247160
+    },
+    {
+     "title": "Ouverture ( Rejsesangen )",
+     "length_ms": 275426
+    },
+    {
+     "title": "Noureddins sang",
+     "length_ms": 258800
+    },
+    {
+     "title": "Klagekor",
+     "length_ms": 153440
+    },
+    {
+     "title": "Hulen",
+     "length_ms": 81626
+    },
+    {
+     "title": "Ringens Ånd",
+     "length_ms": 254440
+    },
+    {
+     "title": "Gulnares bad",
+     "length_ms": 221693
+    },
+    {
+     "title": "Kærlighedstema 1",
+     "length_ms": 166733
+    },
+    {
+     "title": "Lampens Ånd",
+     "length_ms": 90240
+    },
+    {
+     "title": "Gulnares sang",
+     "length_ms": 236960
+    },
+    {
+     "title": "Slavemarch",
+     "length_ms": 156600
+    },
+    {
+     "title": "Alladins bad",
+     "length_ms": 58066
+    },
+    {
+     "title": "Paladset bygges",
+     "length_ms": 73266
+    },
+    {
+     "title": "Brylluppet",
+     "length_ms": 126440
+    },
+    {
+     "title": "Mavedans",
+     "length_ms": 124200
+    },
+    {
+     "title": "Sangen om Slangen",
+     "length_ms": 192866
+    },
+    {
+     "title": "Bryllupsfesten",
+     "length_ms": 176200
+    },
+    {
+     "title": "Jagten",
+     "length_ms": 214693
+    },
+    {
+     "title": "Krybets sang",
+     "length_ms": 163466
+    },
+    {
+     "title": "Vuggesang",
+     "length_ms": 194840
+    },
+    {
+     "title": "Kærlighedstema 2",
+     "length_ms": 113426
+    },
+    {
+     "title": "Hyldestkor",
+     "length_ms": 238440
+    },
+    {
+     "title": "Epilog",
+     "length_ms": 166134
+    },
+    {
+     "title": "Si a Arabia tú vas",
+     "length_ms": 83600
+    },
+    {
+     "title": "La leyenda de la lámpara",
+     "length_ms": 80920
+    },
+    {
+     "title": "El rey",
+     "length_ms": 142320
+    },
+    {
+     "title": "Los golfillos",
+     "length_ms": 113186
+    },
+    {
+     "title": "El rey (repetición)",
+     "length_ms": 61266
+    },
+    {
+     "title": "Un genio genial",
+     "length_ms": 146733
+    },
+    {
+     "title": "Ser libre",
+     "length_ms": 99146
+    },
+    {
+     "title": "Un mundo ideal",
+     "length_ms": 160960
+    },
+    {
+     "title": "La hora de Yafar",
+     "length_ms": 158200
+    },
+    {
+     "title": "Príncipe Ali (repetición)",
+     "length_ms": 72573
+    },
+    {
+     "title": "El fin de la tierra",
+     "length_ms": 95266
+    },
+    {
+     "title": "El beso",
+     "length_ms": 111426
+    },
+    {
+     "title": "En una noche oscura",
+     "length_ms": 175706
+    },
+    {
+     "title": "Yasmin escapa",
+     "length_ms": 46986
+    },
+    {
+     "title": "El bazar",
+     "length_ms": 157320
+    },
+    {
+     "title": "La cueva de las maravillas",
+     "length_ms": 297880
+    },
+    {
+     "title": "La palabra de Aladdin",
+     "length_ms": 111773
+    },
+    {
+     "title": "La batalla final",
+     "length_ms": 219733
+    },
+    {
+     "title": "Final feliz en Agrabah",
+     "length_ms": 254106
+    },
+    {
+     "title": "Un mundo ideal (Tema de Aladdin)",
+     "length_ms": 247134
+    }
+   ]
+  },
+  {
+   "id": "disney:marvel rising: playing with fire",
+   "title": "Marvel Rising: Playing with Fire",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": []
+  },
+  {
+   "id": "disney:the princess and the frog",
+   "title": "The Princess and the Frog",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Never Knew I Needed",
+     "length_ms": 218000
+    },
+    {
+     "title": "Down in New Orleans (Prologue)",
+     "length_ms": 28000
+    },
+    {
+     "title": "Down in New Orleans",
+     "length_ms": 147000
+    },
+    {
+     "title": "Almost There",
+     "length_ms": 144000
+    },
+    {
+     "title": "Friends on the Other Side",
+     "length_ms": 215000
+    },
+    {
+     "title": "When We’re Human",
+     "length_ms": 142000
+    },
+    {
+     "title": "Gonna Take You There",
+     "length_ms": 106000
+    },
+    {
+     "title": "Ma Belle Evangeline",
+     "length_ms": 116000
+    },
+    {
+     "title": "Dig a Little Deeper",
+     "length_ms": 168000
+    },
+    {
+     "title": "Down in New Orleans (Finale)",
+     "length_ms": 98000
+    },
+    {
+     "title": "Fairy Tale / Going Home",
+     "length_ms": 257000
+    },
+    {
+     "title": "I Know This Story",
+     "length_ms": 327000
+    },
+    {
+     "title": "The Frog Hunters / Gator Down",
+     "length_ms": 364000
+    },
+    {
+     "title": "Tiana’s Bad Dream",
+     "length_ms": 382000
+    },
+    {
+     "title": "Ray Laid Low",
+     "length_ms": 202000
+    },
+    {
+     "title": "Ray / Mama Odie",
+     "length_ms": 241000
+    },
+    {
+     "title": "This Is Gonna Be Good",
+     "length_ms": 200000
+    },
+    {
+     "title": "Fairy Tale",
+     "length_ms": 58080
+    },
+    {
+     "title": "Kiss",
+     "length_ms": 31066
+    },
+    {
+     "title": "Going Home",
+     "length_ms": 116906
+    },
+    {
+     "title": "Charlotte",
+     "length_ms": 75493
+    },
+    {
+     "title": "Daddy's Girl",
+     "length_ms": 76560
+    },
+    {
+     "title": "Your Background",
+     "length_ms": 49933
+    },
+    {
+     "title": "Two Frogs",
+     "length_ms": 127306
+    },
+    {
+     "title": "Leech",
+     "length_ms": 36026
+    },
+    {
+     "title": "Logs",
+     "length_ms": 69960
+    },
+    {
+     "title": "La Bouff Proposes",
+     "length_ms": 107840
+    },
+    {
+     "title": "Shadows",
+     "length_ms": 69360
+    },
+    {
+     "title": "Shadows Me",
+     "length_ms": 20293
+    },
+    {
+     "title": "Mama Odie",
+     "length_ms": 71666
+    },
+    {
+     "title": "Juju",
+     "length_ms": 39746
+    },
+    {
+     "title": "Finale",
+     "length_ms": 200053
+    }
+   ]
+  },
+  {
+   "id": "disney:toy story",
+   "title": "Toy Story",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "You’ve Got a Friend in Me",
+     "length_ms": 124800
+    },
+    {
+     "title": "Strange Things",
+     "length_ms": 198520
+    },
+    {
+     "title": "I Will Go Sailing No More",
+     "length_ms": 177826
+    },
+    {
+     "title": "Andy’s Birthday",
+     "length_ms": 358093
+    },
+    {
+     "title": "Soldier’s Mission",
+     "length_ms": 89266
+    },
+    {
+     "title": "Presents",
+     "length_ms": 69053
+    },
+    {
+     "title": "Buzz",
+     "length_ms": 100493
+    },
+    {
+     "title": "Sid",
+     "length_ms": 80693
+    },
+    {
+     "title": "Woody and Buzz",
+     "length_ms": 270093
+    },
+    {
+     "title": "Mutants",
+     "length_ms": 365000
+    },
+    {
+     "title": "Woody’s Gone",
+     "length_ms": 133360
+    },
+    {
+     "title": "The Big One",
+     "length_ms": 170800
+    },
+    {
+     "title": "Hang Together",
+     "length_ms": 362680
+    },
+    {
+     "title": "On the Move",
+     "length_ms": 378613
+    },
+    {
+     "title": "Infinity and Beyond",
+     "length_ms": 189706
+    },
+    {
+     "title": "You’ve Got a Friend in Me (duet)",
+     "length_ms": 159506
+    },
+    {
+     "title": "Yo soy tu amigo fiel",
+     "length_ms": 124800
+    },
+    {
+     "title": "Cambios Extraños",
+     "length_ms": 198520
+    },
+    {
+     "title": "No navegaré nunca más",
+     "length_ms": 177826
+    },
+    {
+     "title": "El cumpleaños de Andy (Instrumental)",
+     "length_ms": 358093
+    },
+    {
+     "title": "La misión del soldado (Instrumental)",
+     "length_ms": 89266
+    },
+    {
+     "title": "Regalos (Instrumental)",
+     "length_ms": 69053
+    },
+    {
+     "title": "Buzz Lightyear (Instrumental)",
+     "length_ms": 100493
+    },
+    {
+     "title": "Sid (Instrumental)",
+     "length_ms": 80693
+    },
+    {
+     "title": "Woody y Buzz (Instrumental)",
+     "length_ms": 270093
+    },
+    {
+     "title": "Los mutantes (Instrumental)",
+     "length_ms": 365000
+    },
+    {
+     "title": "Woody perdido (Instrumental)",
+     "length_ms": 133360
+    },
+    {
+     "title": "El grande (Instrumental)",
+     "length_ms": 170800
+    },
+    {
+     "title": "Todos juntos (Instrumental)",
+     "length_ms": 362680
+    },
+    {
+     "title": "En camino (Instrumental)",
+     "length_ms": 378613
+    },
+    {
+     "title": "Al infinito y más allá (Instrumental)",
+     "length_ms": 189706
+    },
+    {
+     "title": "Yo soy tu amigo fiel (Dueto)",
+     "length_ms": 159000
+    },
+    {
+     "title": "Je suis ton ami",
+     "length_ms": 125133
+    },
+    {
+     "title": "Etrange bazar",
+     "length_ms": 197360
+    },
+    {
+     "title": "Jamais plus je ne volerai",
+     "length_ms": 176600
+    },
+    {
+     "title": "L'anniversaire d'Andy",
+     "length_ms": 357973
+    },
+    {
+     "title": "Les soldats en mission",
+     "length_ms": 89293
+    },
+    {
+     "title": "Les cadeaux",
+     "length_ms": 69106
+    },
+    {
+     "title": "Woody et Buzz",
+     "length_ms": 269533
+    },
+    {
+     "title": "Les mutants",
+     "length_ms": 365466
+    },
+    {
+     "title": "Woody s'évade",
+     "length_ms": 133093
+    },
+    {
+     "title": "Le grand coup",
+     "length_ms": 170906
+    },
+    {
+     "title": "Liés tous les deux",
+     "length_ms": 362666
+    },
+    {
+     "title": "En route",
+     "length_ms": 378760
+    },
+    {
+     "title": "Vers l'infini et au-delà",
+     "length_ms": 190173
+    }
+   ]
+  },
+  {
+   "id": "disney:lilo & stitch",
+   "title": "Lilo & Stitch",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Hawaiian Roller Coaster Ride",
+     "length_ms": 208226
+    },
+    {
+     "title": "Stuck on You",
+     "length_ms": 144586
+    },
+    {
+     "title": "Burning Love",
+     "length_ms": 189333
+    },
+    {
+     "title": "Suspicious Minds",
+     "length_ms": 202973
+    },
+    {
+     "title": "Heartbreak Hotel",
+     "length_ms": 133533
+    },
+    {
+     "title": "(You’re the) Devil in Disguise",
+     "length_ms": 150520
+    },
+    {
+     "title": "He Mele No Lilo",
+     "length_ms": 148133
+    },
+    {
+     "title": "Hound Dog",
+     "length_ms": 147733
+    },
+    {
+     "title": "Can’t Help Falling in Love",
+     "length_ms": 187506
+    },
+    {
+     "title": "Stitch to the Rescue",
+     "length_ms": 354826
+    },
+    {
+     "title": "You Can Never Belong",
+     "length_ms": 234266
+    },
+    {
+     "title": "I’m Lost",
+     "length_ms": 281853
+    }
+   ]
+  },
+  {
+   "id": "disney:pocahontas",
+   "title": "Pocahontas",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Virginia Company",
+     "length_ms": 90000
+    },
+    {
+     "title": "La partenza della nave (strumentale)",
+     "length_ms": 154000
+    },
+    {
+     "title": "Virginia Company (reprise)",
+     "length_ms": 35000
+    },
+    {
+     "title": "Come un rullo di tamburi",
+     "length_ms": 107000
+    },
+    {
+     "title": "Come un rullo di tamburi (reprise)",
+     "length_ms": 45000
+    },
+    {
+     "title": "Dopo il fiume cosa c'è",
+     "length_ms": 147000
+    },
+    {
+     "title": "Nonna Salice (strumentale)",
+     "length_ms": 87000
+    },
+    {
+     "title": "Ascolta il tuo cuore, Part I",
+     "length_ms": 69000
+    },
+    {
+     "title": "Mio, mio, mio",
+     "length_ms": 186000
+    },
+    {
+     "title": "Ascolta il tuo cuore, Part II",
+     "length_ms": 166000
+    },
+    {
+     "title": "I colori del vento",
+     "length_ms": 214000
+    },
+    {
+     "title": "Barbari, Part I",
+     "length_ms": 103000
+    },
+    {
+     "title": "Barbari, Part II",
+     "length_ms": 136000
+    },
+    {
+     "title": "Non lo rivedrò più (strumentale)",
+     "length_ms": 115000
+    },
+    {
+     "title": "Pocahontas (strumentale)",
+     "length_ms": 82000
+    },
+    {
+     "title": "La riunione del consiglio (strumentale)",
+     "length_ms": 72000
+    },
+    {
+     "title": "Il bagno di Perlin (strumentale)",
+     "length_ms": 52000
+    },
+    {
+     "title": "La riva del fiume (strumentale)",
+     "length_ms": 88000
+    },
+    {
+     "title": "La schermaglia (strumentale)",
+     "length_ms": 124000
+    },
+    {
+     "title": "L'incontro (strumentale)",
+     "length_ms": 91000
+    },
+    {
+     "title": "Il piano di Ratcliffe (strumentale)",
+     "length_ms": 108000
+    },
+    {
+     "title": "La raccolta (strumentale)",
+     "length_ms": 55000
+    },
+    {
+     "title": "L'arrivo dei guerrieri (strumentale)",
+     "length_ms": 83000
+    },
+    {
+     "title": "John Smith (strumentale)",
+     "length_ms": 75000
+    },
+    {
+     "title": "L'esecuzione (strumentale)",
+     "length_ms": 94000
+    },
+    {
+     "title": "L'addio (strumentale)",
+     "length_ms": 287000
+    },
+    {
+     "title": "I colori del vento (end title)",
+     "length_ms": 243000
+    },
+    {
+     "title": "Se tu non ci fossi (end title)",
+     "length_ms": 252000
+    },
+    {
+     "title": "Virginia Company (I)",
+     "length_ms": 90000
+    },
+    {
+     "title": "Na morzu",
+     "length_ms": 153000
+    },
+    {
+     "title": "Virginia Company (II)",
+     "length_ms": 35000
+    },
+    {
+     "title": "Jak uparty bębna dźwięk (I)",
+     "length_ms": 105000
+    },
+    {
+     "title": "Jak uparty bębna dźwięk (II)",
+     "length_ms": 45000
+    },
+    {
+     "title": "Ten za łukiem rzeki świat",
+     "length_ms": 147000
+    },
+    {
+     "title": "Babcia Wierzba",
+     "length_ms": 87000
+    },
+    {
+     "title": "Wszystko pojmiesz wnet (I)",
+     "length_ms": 67000
+    },
+    {
+     "title": "Mój, mój, mój",
+     "length_ms": 185000
+    },
+    {
+     "title": "Wszystko pojmiesz wnet (II)",
+     "length_ms": 165000
+    },
+    {
+     "title": "Kolorowy wiatr",
+     "length_ms": 212000
+    },
+    {
+     "title": "Dzicy są cz. 1",
+     "length_ms": 103000
+    },
+    {
+     "title": "Dzicy są cz. 2",
+     "length_ms": 134000
+    },
+    {
+     "title": "Nigdy go już nie zobaczę",
+     "length_ms": 114000
+    },
+    {
+     "title": "Pocahontas",
+     "length_ms": 83000
+    },
+    {
+     "title": "Rada Starszych",
+     "length_ms": 71000
+    },
+    {
+     "title": "Persi w kąpieli",
+     "length_ms": 51000
+    },
+    {
+     "title": "Brzeg rzeki",
+     "length_ms": 87000
+    },
+    {
+     "title": "Napad",
+     "length_ms": 122000
+    },
+    {
+     "title": "Spotkanie",
+     "length_ms": 90000
+    },
+    {
+     "title": "Plan Ratciiffa",
+     "length_ms": 106000
+    },
+    {
+     "title": "Zbieranie kukurydzy",
+     "length_ms": 54000
+    },
+    {
+     "title": "Przybycie wojowników",
+     "length_ms": 82000
+    },
+    {
+     "title": "Ostrzeżenie",
+     "length_ms": 74000
+    },
+    {
+     "title": "Egzekucja",
+     "length_ms": 94000
+    },
+    {
+     "title": "Pożegnanie",
+     "length_ms": 286000
+    },
+    {
+     "title": "Colors of the Wind",
+     "length_ms": 257000
+    },
+    {
+     "title": "If I Never Knew You",
+     "length_ms": 251000
+    }
+   ]
+  },
+  {
+   "id": "disney:brave",
+   "title": "Brave",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Touch the Sky",
+     "length_ms": 151400
+    },
+    {
+     "title": "Into the Open Air",
+     "length_ms": 161933
+    },
+    {
+     "title": "Learn Me Right",
+     "length_ms": 225986
+    },
+    {
+     "title": "Fate & Destiny",
+     "length_ms": 257266
+    },
+    {
+     "title": "The Games",
+     "length_ms": 113266
+    },
+    {
+     "title": "I Am Merida",
+     "length_ms": 143160
+    },
+    {
+     "title": "Remember to Smile",
+     "length_ms": 137080
+    },
+    {
+     "title": "Merida Rides Away",
+     "length_ms": 247626
+    },
+    {
+     "title": "The Witch’s Cottage",
+     "length_ms": 266333
+    },
+    {
+     "title": "Song of Mor’du",
+     "length_ms": 137853
+    },
+    {
+     "title": "Through the Castle",
+     "length_ms": 274573
+    },
+    {
+     "title": "Legends Are Lessons",
+     "length_ms": 246720
+    },
+    {
+     "title": "Show Us the Way",
+     "length_ms": 226626
+    },
+    {
+     "title": "Mum Goes Wild",
+     "length_ms": 205933
+    },
+    {
+     "title": "In Her Heart",
+     "length_ms": 156773
+    },
+    {
+     "title": "Noble Maiden Fair (A Mhaighdean Bhan Uasal)",
+     "length_ms": 156040
+    },
+    {
+     "title": "Not Now!",
+     "length_ms": 214546
+    },
+    {
+     "title": "Get the Key",
+     "length_ms": 195226
+    },
+    {
+     "title": "We’ve Both Changed",
+     "length_ms": 330493
+    },
+    {
+     "title": "Merida’s Home",
+     "length_ms": 92306
+    }
+   ]
+  },
+  {
+   "id": "disney:tarzan",
+   "title": "Tarzan",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Two Worlds",
+     "length_ms": 313330
+    },
+    {
+     "title": "You’ll Be in My Heart",
+     "length_ms": 190217
+    },
+    {
+     "title": "Who Better Than Me",
+     "length_ms": 111920
+    },
+    {
+     "title": "No Other Way",
+     "length_ms": 219358
+    },
+    {
+     "title": "I Need to Know",
+     "length_ms": 133212
+    },
+    {
+     "title": "Son of Man",
+     "length_ms": 166696
+    },
+    {
+     "title": "Sure as the Sun Turns to Moon",
+     "length_ms": 174706
+    },
+    {
+     "title": "Waiting for This Moment",
+     "length_ms": 236843
+    },
+    {
+     "title": "Different",
+     "length_ms": 174428
+    },
+    {
+     "title": "Trashin’ the Camp",
+     "length_ms": 160705
+    },
+    {
+     "title": "Like No Man I’ve Ever Seen",
+     "length_ms": 161610
+    },
+    {
+     "title": "Strangers Like Me",
+     "length_ms": 226696
+    },
+    {
+     "title": "For the First Time",
+     "length_ms": 252400
+    },
+    {
+     "title": "Who Better Than Me (reprise)",
+     "length_ms": 124157
+    },
+    {
+     "title": "Everything That I Am",
+     "length_ms": 284328
+    },
+    {
+     "title": "You’ll Be in My Heart (reprise)",
+     "length_ms": 138112
+    },
+    {
+     "title": "Sure as the Sun Turns to Moon (reprise)",
+     "length_ms": 105882
+    },
+    {
+     "title": "Two Worlds (reprise)",
+     "length_ms": 78715
+    },
+    {
+     "title": "To liv (“Two Worlds”)",
+     "length_ms": 198000
+    },
+    {
+     "title": "Du er mit hjerteslag (“You’ll Be in My Heart”)",
+     "length_ms": 97000
+    },
+    {
+     "title": "Menneskesøn (“Son of Man”)",
+     "length_ms": 163000
+    },
+    {
+     "title": "Lejren smadres (“Trashin’ the Camp”)",
+     "length_ms": 136000
+    },
+    {
+     "title": "Fremmed som mig (“Strangers Like Me”)",
+     "length_ms": 180000
+    },
+    {
+     "title": "To liv – Reprise (“Two Worlds Reprise”)",
+     "length_ms": 50000
+    },
+    {
+     "title": "You’ll Be in My Heart (single version)",
+     "length_ms": 258000
+    },
+    {
+     "title": "Trashin’ the Camp (Phil and ’N Sync version)",
+     "length_ms": 143000
+    },
+    {
+     "title": "Strangers Like Me (Top 40 mix)",
+     "length_ms": 179000
+    },
+    {
+     "title": "Son of Man (single version)",
+     "length_ms": 164000
+    },
+    {
+     "title": "Et vidunderligt sted (“A Wondrous Place” – Score)",
+     "length_ms": 318000
+    },
+    {
+     "title": "Er som en abe, ser ud som et menneske (“Moves Like an Ape, Looks Like a Man” – Score)",
+     "length_ms": 177000
+    },
+    {
+     "title": "Gorillaerne (“The Gorillas” – Score)",
+     "length_ms": 268000
+    },
+    {
+     "title": "Et kærligt hjem (“One Family” – Score)",
+     "length_ms": 228000
+    },
+    {
+     "title": "To liv – Finale (“Two Worlds Finale”)",
+     "length_ms": 75000
+    },
+    {
+     "title": "Kala Discovers Tarzan",
+     "length_ms": 35000
+    },
+    {
+     "title": "Sabor Attacks",
+     "length_ms": 99000
+    },
+    {
+     "title": "Kala & Kerchar",
+     "length_ms": 154000
+    },
+    {
+     "title": "You Will Be in My Heart",
+     "length_ms": 98000
+    },
+    {
+     "title": "Elephant Stampede",
+     "length_ms": 72000
+    },
+    {
+     "title": "Sabor Fight",
+     "length_ms": 135000
+    },
+    {
+     "title": "Tarzan the Hero",
+     "length_ms": 57000
+    },
+    {
+     "title": "The Offering",
+     "length_ms": 39000
+    },
+    {
+     "title": "Tracking the Humans",
+     "length_ms": 76000
+    },
+    {
+     "title": "Tarzan and the Humans",
+     "length_ms": 112000
+    },
+    {
+     "title": "Baboon Chase",
+     "length_ms": 132000
+    },
+    {
+     "title": "Jane Meets Kerchak",
+     "length_ms": 55000
+    },
+    {
+     "title": "Kerchak's Speech",
+     "length_ms": 50000
+    },
+    {
+     "title": "The Pirates",
+     "length_ms": 69000
+    },
+    {
+     "title": "Jane Leaves",
+     "length_ms": 151000
+    },
+    {
+     "title": "Tarzan & Jane",
+     "length_ms": 61000
+    },
+    {
+     "title": "A Wonderous Place",
+     "length_ms": 192000
+    },
+    {
+     "title": "Kerchak Threatens",
+     "length_ms": 58000
+    },
+    {
+     "title": "The Treehouse",
+     "length_ms": 65000
+    },
+    {
+     "title": "Memories",
+     "length_ms": 164000
+    },
+    {
+     "title": "Tarzan Leaves",
+     "length_ms": 52000
+    },
+    {
+     "title": "Farewell at Sea",
+     "length_ms": 45000
+    },
+    {
+     "title": "Clayton's Ambush",
+     "length_ms": 110000
+    },
+    {
+     "title": "The Rescue",
+     "length_ms": 53000
+    },
+    {
+     "title": "Tarzan Saves the Apes / Vine Fight",
+     "length_ms": 275000
+    },
+    {
+     "title": "Kerchak",
+     "length_ms": 159000
+    },
+    {
+     "title": "Jane Stays With Tarzan",
+     "length_ms": 107000
+    },
+    {
+     "title": "Two Worlds (Finale)",
+     "length_ms": 76000
+    },
+    {
+     "title": "Dois mundos",
+     "length_ms": 200000
+    },
+    {
+     "title": "No meu coração você vai sempre estar",
+     "length_ms": 99000
+    },
+    {
+     "title": "Grande homem",
+     "length_ms": 164000
+    },
+    {
+     "title": "Estragando o acampamento",
+     "length_ms": 52000
+    },
+    {
+     "title": "Estranhos como eu",
+     "length_ms": 143000
+    },
+    {
+     "title": "Dois mundos (reprise)",
+     "length_ms": 52000
+    },
+    {
+     "title": "Um lugar maravilhoso (partitura)",
+     "length_ms": 317000
+    },
+    {
+     "title": "Se mexe como um macaco, se vê como um homem (partitura)",
+     "length_ms": 176000
+    },
+    {
+     "title": "Os gorilas (partitura)",
+     "length_ms": 267000
+    },
+    {
+     "title": "Uma família (partitura)",
+     "length_ms": 227000
+    },
+    {
+     "title": "Dois mundos (final)",
+     "length_ms": 76000
+    },
+    {
+     "title": "Prologue",
+     "length_ms": 89665
+    },
+    {
+     "title": "Family Fun",
+     "length_ms": 194153
+    },
+    {
+     "title": "Kala and Kerchak",
+     "length_ms": 263904
+    },
+    {
+     "title": "Tarzan Is Alive",
+     "length_ms": 116050
+    },
+    {
+     "title": "Tarzan Wakes Up",
+     "length_ms": 158871
+    },
+    {
+     "title": "Growing Up",
+     "length_ms": 130912
+    },
+    {
+     "title": "Tarzan Climbs Tree",
+     "length_ms": 119231
+    },
+    {
+     "title": "Tarzan Looks Beyond",
+     "length_ms": 92202
+    },
+    {
+     "title": "Tarzan Helps Jane",
+     "length_ms": 160739
+    },
+    {
+     "title": "Jane and Dad",
+     "length_ms": 232413
+    },
+    {
+     "title": "Tarzan",
+     "length_ms": 194485
+    },
+    {
+     "title": "Tarzan Fight",
+     "length_ms": 117443
+    },
+    {
+     "title": "Jane Returns to the Camp",
+     "length_ms": 216217
+    },
+    {
+     "title": "Tarzan in Camp",
+     "length_ms": 108917
+    },
+    {
+     "title": "Blackmail",
+     "length_ms": 104409
+    },
+    {
+     "title": "Tarzan and Jane",
+     "length_ms": 311784
+    },
+    {
+     "title": "Tarzan and Jane in the Lake",
+     "length_ms": 157070
+    },
+    {
+     "title": "Entrance to Cave",
+     "length_ms": 226141
+    },
+    {
+     "title": "Reunion",
+     "length_ms": 122376
+    },
+    {
+     "title": "Kala Is Shot",
+     "length_ms": 211440
+    },
+    {
+     "title": "Tarzan Mourns for Kala",
+     "length_ms": 160664
+    },
+    {
+     "title": "Take Me to the Meteor",
+     "length_ms": 296050
+    },
+    {
+     "title": "Detonation in 8 Minutes",
+     "length_ms": 184607
+    },
+    {
+     "title": "Finale",
+     "length_ms": 163741
+    }
+   ]
+  },
+  {
+   "id": "disney:pirates of the caribbean: at world's end",
+   "title": "Pirates of the Caribbean: At World's End",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Hoist the Colours",
+     "length_ms": 91080
+    },
+    {
+     "title": "Singapore",
+     "length_ms": 220866
+    },
+    {
+     "title": "At Wit’s End",
+     "length_ms": 485906
+    },
+    {
+     "title": "Multiple Jacks",
+     "length_ms": 231840
+    },
+    {
+     "title": "Up Is Down",
+     "length_ms": 162200
+    },
+    {
+     "title": "I See Dead People in Boats",
+     "length_ms": 429186
+    },
+    {
+     "title": "The Brethren Court",
+     "length_ms": 141146
+    },
+    {
+     "title": "Parlay",
+     "length_ms": 130360
+    },
+    {
+     "title": "Calypso",
+     "length_ms": 182840
+    },
+    {
+     "title": "What Shall We Die For",
+     "length_ms": 122786
+    },
+    {
+     "title": "I Don’t Think Now Is the Best Time",
+     "length_ms": 645493
+    },
+    {
+     "title": "One Day",
+     "length_ms": 241560
+    },
+    {
+     "title": "Drink Up Me Hearties",
+     "length_ms": 271866
+    }
+   ]
+  },
+  {
+   "id": "disney:lava",
+   "title": "Lava",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Jeene De Yeh Duniya",
+     "length_ms": 419712
+    },
+    {
+     "title": "Ham Tum Dono Milke",
+     "length_ms": 387626
+    },
+    {
+     "title": "Koi Bhi Naam Do",
+     "length_ms": 294040
+    },
+    {
+     "title": "Dil Kya Hai",
+     "length_ms": 295706
+    },
+    {
+     "title": "Jeene De Yeh Duniya (Sad)",
+     "length_ms": 422333
+    },
+    {
+     "title": "Kuchh Log Mohabbat Karke",
+     "length_ms": 339746
+    },
+    {
+     "title": "Jeene De Yeh Duniya (Sad version)",
+     "length_ms": 422333
+    },
+    {
+     "title": "Hum Tum Dono Milke",
+     "length_ms": 387626
+    },
+    {
+     "title": "Jeene De Yeh Duniya (Happy version)",
+     "length_ms": 419712
+    },
+    {
+     "title": "Lava Blade",
+     "length_ms": 140916
+    },
+    {
+     "title": "Character Select",
+     "length_ms": 92000
+    },
+    {
+     "title": "Overworld",
+     "length_ms": 44000
+    },
+    {
+     "title": "Training Grounds",
+     "length_ms": 332000
+    },
+    {
+     "title": "Forest",
+     "length_ms": 321416
+    },
+    {
+     "title": "Mountain",
+     "length_ms": 288000
+    },
+    {
+     "title": "Volcano",
+     "length_ms": 298124
+    },
+    {
+     "title": "A Strategic Blitz",
+     "length_ms": 253750
+    },
+    {
+     "title": "Buy Something!",
+     "length_ms": 246208
+    },
+    {
+     "title": "Nailed It!",
+     "length_ms": 333958
+    },
+    {
+     "title": "Raavana",
+     "length_ms": 258123
+    },
+    {
+     "title": "Tring Tring",
+     "length_ms": 260588
+    },
+    {
+     "title": "Nee Kallalona",
+     "length_ms": 235404
+    },
+    {
+     "title": "Dochestha",
+     "length_ms": 249216
+    },
+    {
+     "title": "Swing Zara",
+     "length_ms": 262000
+    },
+    {
+     "title": "Andamaina Lokam",
+     "length_ms": 197000
+    }
+   ]
+  },
+  {
+   "id": "disney:turning red",
+   "title": "Turning Red",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Nobody Like U",
+     "length_ms": 160946
+    },
+    {
+     "title": "1 True Love",
+     "length_ms": 199906
+    },
+    {
+     "title": "U Know What’s Up",
+     "length_ms": 188893
+    },
+    {
+     "title": "Family",
+     "length_ms": 40893
+    },
+    {
+     "title": "Turning Red",
+     "length_ms": 130360
+    },
+    {
+     "title": "Meilin Lee",
+     "length_ms": 58106
+    },
+    {
+     "title": "Temple Duties",
+     "length_ms": 73200
+    },
+    {
+     "title": "Jin’s Family Dinner",
+     "length_ms": 56360
+    },
+    {
+     "title": "Drawing Love",
+     "length_ms": 135280
+    },
+    {
+     "title": "Never Again Dream",
+     "length_ms": 94280
+    },
+    {
+     "title": "Turning Panda",
+     "length_ms": 136800
+    },
+    {
+     "title": "Panda‐monium",
+     "length_ms": 154946
+    },
+    {
+     "title": "Ancestors",
+     "length_ms": 279933
+    },
+    {
+     "title": "Inconvenient Genetics",
+     "length_ms": 215800
+    },
+    {
+     "title": "U Know What’s Up (The Panda Hustle version)",
+     "length_ms": 169946
+    },
+    {
+     "title": "Tyler’s Deal",
+     "length_ms": 139280
+    },
+    {
+     "title": "The Aunties",
+     "length_ms": 37106
+    },
+    {
+     "title": "Grandma’s Warning",
+     "length_ms": 91413
+    },
+    {
+     "title": "Keeping the Panda",
+     "length_ms": 314026
+    },
+    {
+     "title": "Dad Talk",
+     "length_ms": 148893
+    },
+    {
+     "title": "Red Moon Ritual",
+     "length_ms": 199800
+    },
+    {
+     "title": "I’m Keeping It",
+     "length_ms": 102586
+    },
+    {
+     "title": "Making It Right",
+     "length_ms": 119680
+    },
+    {
+     "title": "Unleashing the Panda",
+     "length_ms": 126013
+    },
+    {
+     "title": "Stadium Ritual",
+     "length_ms": 120613
+    },
+    {
+     "title": "Pandas Unite / Nobody Like U (reprise)",
+     "length_ms": 185493
+    },
+    {
+     "title": "The Real Ming",
+     "length_ms": 119653
+    },
+    {
+     "title": "No Going Back",
+     "length_ms": 193386
+    },
+    {
+     "title": "Let Your Inner Panda Out",
+     "length_ms": 90773
+    }
+   ]
+  },
+  {
+   "id": "disney:mulan",
+   "title": "Mulan",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Lustro",
+     "length_ms": 215000
+    },
+    {
+     "title": "True to Your Heart",
+     "length_ms": 256000
+    },
+    {
+     "title": "Reflection",
+     "length_ms": 217000
+    },
+    {
+     "title": "Zaszczyt nam przyniesie to",
+     "length_ms": 183000
+    },
+    {
+     "title": "Zrobię z was mężczyzn",
+     "length_ms": 200000
+    },
+    {
+     "title": "Ta, za którą walczyć chcesz",
+     "length_ms": 145000
+    },
+    {
+     "title": "Postrzyżyny",
+     "length_ms": 76000
+    },
+    {
+     "title": "Suita z \"Mulan\"",
+     "length_ms": 423000
+    },
+    {
+     "title": "Atak",
+     "length_ms": 297000
+    },
+    {
+     "title": "Decyzja",
+     "length_ms": 200000
+    },
+    {
+     "title": "Pąki",
+     "length_ms": 385000
+    },
+    {
+     "title": "Natarcie Hunów",
+     "length_ms": 264000
+    },
+    {
+     "title": "Spalona wioska",
+     "length_ms": 350000
+    }
+   ]
+  },
+  {
+   "id": "disney:snow white and the seven dwarfs",
+   "title": "Snow White And The Seven Dwarfs",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Overture/Narration/Story",
+     "length_ms": 106000
+    },
+    {
+     "title": "I’m Wishing",
+     "length_ms": 79000
+    },
+    {
+     "title": "One Song",
+     "length_ms": 91000
+    },
+    {
+     "title": "Story/Narration",
+     "length_ms": 207000
+    },
+    {
+     "title": "With a Smile and a Song",
+     "length_ms": 113000
+    },
+    {
+     "title": "Whistle While You Work",
+     "length_ms": 93000
+    },
+    {
+     "title": "Heigh Ho (The Dwarfs’ Marching Song)",
+     "length_ms": 155000
+    },
+    {
+     "title": "Bluddle‐Uddle‐Um‐Dum (The Dwarfs’ Washing Song)",
+     "length_ms": 125000
+    },
+    {
+     "title": "The Dwarfs’ Yodel Song (The Silly Song)",
+     "length_ms": 170000
+    },
+    {
+     "title": "Some Day My Prince Will Come",
+     "length_ms": 108000
+    },
+    {
+     "title": "Story/Narration/Finale",
+     "length_ms": 645000
+    },
+    {
+     "title": "Walt Disney interviewed by Cecil B. DeMille, December 1938",
+     "length_ms": 95000
+    },
+    {
+     "title": "Adriana Caselotti Interview, March 1983",
+     "length_ms": 110000
+    },
+    {
+     "title": "Ward Kimball Interview, March 1983",
+     "length_ms": 315000
+    },
+    {
+     "title": "Music in Your Soup",
+     "length_ms": 162000
+    }
+   ]
+  },
+  {
+   "id": "disney:olaf's frozen adventure",
+   "title": "Olaf's Frozen Adventure",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Ring in the Season",
+     "length_ms": 118833
+    },
+    {
+     "title": "The Ballad of Flemmingrad",
+     "length_ms": 46000
+    },
+    {
+     "title": "Ring in the Season (reprise)",
+     "length_ms": 77000
+    },
+    {
+     "title": "That Time of Year",
+     "length_ms": 183175
+    },
+    {
+     "title": "That Time of Year (reprise)",
+     "length_ms": 52676
+    },
+    {
+     "title": "When We're Together",
+     "length_ms": 172000
+    },
+    {
+     "title": "Olaf's Frozen Adventure Score Suite",
+     "length_ms": 267584
+    },
+    {
+     "title": "The Ballad of Flemmingrad (Traditional version)",
+     "length_ms": 186369
+    },
+    {
+     "title": "Ring in the Season (instrumental)",
+     "length_ms": 120000
+    },
+    {
+     "title": "That Time of Year (instrumental)",
+     "length_ms": 183000
+    },
+    {
+     "title": "When We're Together (instrumental)",
+     "length_ms": 169979
+    }
+   ]
+  },
+  {
+   "id": "disney:treasure planet",
+   "title": "Treasure Planet",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "I'm Still Here (Jim's Theme)",
+     "length_ms": 251466
+    },
+    {
+     "title": "Always Know Where You Are",
+     "length_ms": 199426
+    },
+    {
+     "title": "12 Years Later",
+     "length_ms": 164533
+    },
+    {
+     "title": "To the Spaceport",
+     "length_ms": 115533
+    },
+    {
+     "title": "Rooftop",
+     "length_ms": 152133
+    },
+    {
+     "title": "Billy Bones",
+     "length_ms": 144733
+    },
+    {
+     "title": "The Map",
+     "length_ms": 58440
+    },
+    {
+     "title": "Silver",
+     "length_ms": 159560
+    },
+    {
+     "title": "The Launch",
+     "length_ms": 162600
+    },
+    {
+     "title": "Silver Comforts Jim",
+     "length_ms": 203333
+    },
+    {
+     "title": "Jim Chases Morph",
+     "length_ms": 197266
+    },
+    {
+     "title": "Ben",
+     "length_ms": 150973
+    },
+    {
+     "title": "Silver Bargains",
+     "length_ms": 179066
+    },
+    {
+     "title": "The Back Door",
+     "length_ms": 258733
+    },
+    {
+     "title": "The Portal",
+     "length_ms": 304360
+    },
+    {
+     "title": "Jim Saves the Crew",
+     "length_ms": 277533
+    },
+    {
+     "title": "Silver Leaves",
+     "length_ms": 311306
+    },
+    {
+     "title": "Un homme libre",
+     "length_ms": 223000
+    },
+    {
+     "title": "Ci sono anch'io",
+     "length_ms": 223000
+    },
+    {
+     "title": "Sigo aquí",
+     "length_ms": 221000
+    }
+   ]
+  },
+  {
+   "id": "disney:zootopia",
+   "title": "Zootopia",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Try Everything",
+     "length_ms": 197000
+    },
+    {
+     "title": "Stage Fright",
+     "length_ms": 39000
+    },
+    {
+     "title": "Grey's Uh-Mad at Me",
+     "length_ms": 104000
+    },
+    {
+     "title": "Ticket to Write",
+     "length_ms": 67000
+    },
+    {
+     "title": "Foxy Fakeout",
+     "length_ms": 129000
+    },
+    {
+     "title": "Jumbo Pop Hustle",
+     "length_ms": 111000
+    },
+    {
+     "title": "Walk and Stalk",
+     "length_ms": 89000
+    },
+    {
+     "title": "Not a Real Cop",
+     "length_ms": 94000
+    },
+    {
+     "title": "Hopps Goes (After) The Weasel",
+     "length_ms": 140000
+    },
+    {
+     "title": "The Naturalist",
+     "length_ms": 190000
+    },
+    {
+     "title": "Work Slowly and Carry a Big Shtick",
+     "length_ms": 44000
+    },
+    {
+     "title": "Mr. Big",
+     "length_ms": 168000
+    },
+    {
+     "title": "Case of the Manchas",
+     "length_ms": 241000
+    },
+    {
+     "title": "The Nick of Time",
+     "length_ms": 303000
+    },
+    {
+     "title": "World's Worst Animal Shelter",
+     "length_ms": 264000
+    },
+    {
+     "title": "Some of My Best Friends Are Predators",
+     "length_ms": 227000
+    },
+    {
+     "title": "A Bunny Can Go Savage",
+     "length_ms": 106000
+    },
+    {
+     "title": "Weasel Shakedown",
+     "length_ms": 125000
+    },
+    {
+     "title": "Ramifications",
+     "length_ms": 238000
+    },
+    {
+     "title": "Ewe Fell for It",
+     "length_ms": 397000
+    },
+    {
+     "title": "Three-Toe Bandito",
+     "length_ms": 44000
+    },
+    {
+     "title": "Suite From Zootopia",
+     "length_ms": 449000
+    }
+   ]
+  },
+  {
+   "id": "disney:the jungle book",
+   "title": "The jungle Book",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "The Bare Necessities",
+     "length_ms": 216000
+    },
+    {
+     "title": "Trust in Me",
+     "length_ms": 175000
+    },
+    {
+     "title": "Main Titles - Jungle Run",
+     "length_ms": 147000
+    },
+    {
+     "title": "Wolves - Law of the Jungle",
+     "length_ms": 136000
+    },
+    {
+     "title": "Water Truce",
+     "length_ms": 220000
+    },
+    {
+     "title": "The Rains Return",
+     "length_ms": 106000
+    },
+    {
+     "title": "Mowgli's Leaving - Elephant Theme",
+     "length_ms": 208000
+    },
+    {
+     "title": "Shere Khan Attacks - Stampede",
+     "length_ms": 126000
+    },
+    {
+     "title": "Kaa - Baloo to the Rescue",
+     "length_ms": 321000
+    },
+    {
+     "title": "Honeycomb Climb",
+     "length_ms": 211000
+    },
+    {
+     "title": "The Man Village",
+     "length_ms": 179000
+    },
+    {
+     "title": "Mowgli and the Pit",
+     "length_ms": 206000
+    },
+    {
+     "title": "Monkeys Kidnap Mowgli",
+     "length_ms": 112000
+    },
+    {
+     "title": "Arrival at King Louie's Temple",
+     "length_ms": 275000
+    },
+    {
+     "title": "Cold Lair Chase",
+     "length_ms": 243000
+    },
+    {
+     "title": "The Red Flower",
+     "length_ms": 195000
+    },
+    {
+     "title": "To the River",
+     "length_ms": 185000
+    },
+    {
+     "title": "Shere Khan's War Theme",
+     "length_ms": 157000
+    },
+    {
+     "title": "Shere Khan and the Fire",
+     "length_ms": 292000
+    },
+    {
+     "title": "Elephant Waterfall",
+     "length_ms": 207000
+    },
+    {
+     "title": "Mowgli Wins the Race",
+     "length_ms": 41000
+    },
+    {
+     "title": "The Jungle Book Closes",
+     "length_ms": 136000
+    },
+    {
+     "title": "I Wan'na Be Like You (2016)",
+     "length_ms": 182000
+    }
+   ]
+  },
+  {
+   "id": "disney:frozen: the broadway musical",
+   "title": "Frozen: The Broadway Musical",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Vuelie / Let the Sun Shine On",
+     "length_ms": 274413
+    },
+    {
+     "title": "A Little Bit of You",
+     "length_ms": 116320
+    },
+    {
+     "title": "Do You Want to Build a Snowman?",
+     "length_ms": 220840
+    },
+    {
+     "title": "For the First Time in Forever",
+     "length_ms": 254160
+    },
+    {
+     "title": "Hans of the Southern Isles",
+     "length_ms": 95333
+    },
+    {
+     "title": "Queen Anointed",
+     "length_ms": 86920
+    },
+    {
+     "title": "Dangerous to Dream",
+     "length_ms": 303893
+    },
+    {
+     "title": "Love Is an Open Door",
+     "length_ms": 190440
+    },
+    {
+     "title": "Reindeer(s) Are Better Than People",
+     "length_ms": 54720
+    },
+    {
+     "title": "What Do You Know About Love?",
+     "length_ms": 278226
+    },
+    {
+     "title": "In Summer",
+     "length_ms": 118120
+    },
+    {
+     "title": "Hans of the Southern Isles (reprise)",
+     "length_ms": 136600
+    },
+    {
+     "title": "Let It Go",
+     "length_ms": 226866
+    },
+    {
+     "title": "Hygge",
+     "length_ms": 370626
+    },
+    {
+     "title": "For the First Time in Forever (reprise)",
+     "length_ms": 173200
+    },
+    {
+     "title": "Fixer Upper",
+     "length_ms": 222293
+    },
+    {
+     "title": "Kristoff Lullaby",
+     "length_ms": 103213
+    },
+    {
+     "title": "Monster",
+     "length_ms": 222653
+    },
+    {
+     "title": "True Love",
+     "length_ms": 174533
+    },
+    {
+     "title": "Colder by the Minute",
+     "length_ms": 241320
+    },
+    {
+     "title": "Finale / Let It Go",
+     "length_ms": 154453
+    },
+    {
+     "title": "When Everything Falls Apart",
+     "length_ms": 240573
+    }
+   ]
+  },
+  {
+   "id": "disney:beauty and the beast",
+   "title": "Beauty and the Beast",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Prologue (The Enchantress)",
+     "length_ms": 158026
+    },
+    {
+     "title": "Belle",
+     "length_ms": 319573
+    },
+    {
+     "title": "No Matter What",
+     "length_ms": 169226
+    },
+    {
+     "title": "No Matter What (reprise) / Wolf Chase",
+     "length_ms": 127173
+    },
+    {
+     "title": "Me",
+     "length_ms": 163960
+    },
+    {
+     "title": "Belle (reprise)",
+     "length_ms": 68040
+    },
+    {
+     "title": "Home",
+     "length_ms": 173960
+    },
+    {
+     "title": "Home (reprise)",
+     "length_ms": 48640
+    },
+    {
+     "title": "Gaston",
+     "length_ms": 347933
+    },
+    {
+     "title": "Gaston (reprise)",
+     "length_ms": 98000
+    },
+    {
+     "title": "How Long Must This Go On?",
+     "length_ms": 60333
+    },
+    {
+     "title": "Be Our Guest",
+     "length_ms": 491026
+    },
+    {
+     "title": "If I Can’t Love Her",
+     "length_ms": 242973
+    },
+    {
+     "title": "Entr’acte / Wolf Chase",
+     "length_ms": 258360
+    },
+    {
+     "title": "Something There",
+     "length_ms": 350040
+    },
+    {
+     "title": "Human Again",
+     "length_ms": 284400
+    },
+    {
+     "title": "Maison des lunes",
+     "length_ms": 178160
+    },
+    {
+     "title": "Beauty and the Beast",
+     "length_ms": 203933
+    },
+    {
+     "title": "The Mob Song",
+     "length_ms": 176306
+    },
+    {
+     "title": "The Battle",
+     "length_ms": 148560
+    },
+    {
+     "title": "Transformation",
+     "length_ms": 205066
+    },
+    {
+     "title": "Beauty and the Beast (reprise)",
+     "length_ms": 49506
+    }
+   ]
+  },
+  {
+   "id": "disney:snow white and the seven dwarfs",
+   "title": "Snow White and the Seven Dwarfs",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Overture/Narration/Story",
+     "length_ms": 106000
+    },
+    {
+     "title": "I’m Wishing",
+     "length_ms": 79000
+    },
+    {
+     "title": "One Song",
+     "length_ms": 91000
+    },
+    {
+     "title": "Story/Narration",
+     "length_ms": 207000
+    },
+    {
+     "title": "With a Smile and a Song",
+     "length_ms": 113000
+    },
+    {
+     "title": "Whistle While You Work",
+     "length_ms": 93000
+    },
+    {
+     "title": "Heigh Ho (The Dwarfs’ Marching Song)",
+     "length_ms": 155000
+    },
+    {
+     "title": "Bluddle‐Uddle‐Um‐Dum (The Dwarfs’ Washing Song)",
+     "length_ms": 125000
+    },
+    {
+     "title": "The Dwarfs’ Yodel Song (The Silly Song)",
+     "length_ms": 170000
+    },
+    {
+     "title": "Some Day My Prince Will Come",
+     "length_ms": 108000
+    },
+    {
+     "title": "Story/Narration/Finale",
+     "length_ms": 645000
+    },
+    {
+     "title": "Walt Disney interviewed by Cecil B. DeMille, December 1938",
+     "length_ms": 95000
+    },
+    {
+     "title": "Adriana Caselotti Interview, March 1983",
+     "length_ms": 110000
+    },
+    {
+     "title": "Ward Kimball Interview, March 1983",
+     "length_ms": 315000
+    },
+    {
+     "title": "Music in Your Soup",
+     "length_ms": 162000
+    },
+    {
+     "title": "Overture",
+     "length_ms": 131440
+    },
+    {
+     "title": "Magic Mirror",
+     "length_ms": 85493
+    },
+    {
+     "title": "I’m Wishing / One Song",
+     "length_ms": 186666
+    },
+    {
+     "title": "Queen Theme",
+     "length_ms": 44840
+    },
+    {
+     "title": "Far Into the Forest",
+     "length_ms": 146800
+    },
+    {
+     "title": "Animal Friends / With a Smile and a Song",
+     "length_ms": 264200
+    },
+    {
+     "title": "Just Like a Doll’s House",
+     "length_ms": 165800
+    },
+    {
+     "title": "Heigh‐Ho",
+     "length_ms": 166840
+    },
+    {
+     "title": "Let’s See What’s Upstairs",
+     "length_ms": 76666
+    },
+    {
+     "title": "There’s Trouble A‐Brewin’",
+     "length_ms": 261466
+    },
+    {
+     "title": "It’s a Girl",
+     "length_ms": 267426
+    },
+    {
+     "title": "Hooray! She Stays",
+     "length_ms": 169466
+    },
+    {
+     "title": "Bluddle‐Uddle‐Um‐Dum",
+     "length_ms": 266066
+    },
+    {
+     "title": "I’ve Been Tricked",
+     "length_ms": 245173
+    },
+    {
+     "title": "The Silly Song",
+     "length_ms": 275226
+    },
+    {
+     "title": "Pleasant Dreams",
+     "length_ms": 149160
+    },
+    {
+     "title": "A Special Sort of Death",
+     "length_ms": 122640
+    },
+    {
+     "title": "Why Grumpy, You Do Care",
+     "length_ms": 127733
+    },
+    {
+     "title": "Makin’ Pies",
+     "length_ms": 183866
+    },
+    {
+     "title": "Have a Bite",
+     "length_ms": 88000
+    },
+    {
+     "title": "Chorale for Snow White",
+     "length_ms": 66093
+    },
+    {
+     "title": "Love’s First Kiss",
+     "length_ms": 251773
+    },
+    {
+     "title": "You’re Never Too Old to Be Young",
+     "length_ms": 199040
+    }
+   ]
+  },
+  {
+   "id": "disney:mary poppins returns",
+   "title": "Mary Poppins Returns",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "(Underneath the) Lovely London Sky",
+     "length_ms": 227000
+    },
+    {
+     "title": "Overture",
+     "length_ms": 148000
+    },
+    {
+     "title": "A Conversation",
+     "length_ms": 162000
+    },
+    {
+     "title": "Can You Imagine That?",
+     "length_ms": 262000
+    },
+    {
+     "title": "The Royal Doulton Music Hall",
+     "length_ms": 181000
+    },
+    {
+     "title": "Introducing Mary Poppins",
+     "length_ms": 31000
+    },
+    {
+     "title": "A Cover Is Not the Book",
+     "length_ms": 265000
+    },
+    {
+     "title": "The Place Where Lost Things Go",
+     "length_ms": 223000
+    },
+    {
+     "title": "Turning Turtle",
+     "length_ms": 260000
+    },
+    {
+     "title": "Trip a Little Light Fantastic",
+     "length_ms": 422000
+    },
+    {
+     "title": "The Place Where Lost Things Go (reprise)",
+     "length_ms": 90000
+    },
+    {
+     "title": "Trip a Little Light Fantastic (reprise)",
+     "length_ms": 46000
+    },
+    {
+     "title": "Nowhere to Go but Up",
+     "length_ms": 345000
+    },
+    {
+     "title": "(Underneath the) Lovely London Sky (reprise)",
+     "length_ms": 112000
+    },
+    {
+     "title": "Theme From Mary Poppins Returns",
+     "length_ms": 98000
+    },
+    {
+     "title": "Kite Takes Off",
+     "length_ms": 160000
+    },
+    {
+     "title": "Mary Poppins Arrives",
+     "length_ms": 101000
+    },
+    {
+     "title": "Magic Papers",
+     "length_ms": 93000
+    },
+    {
+     "title": "Banks in the Bank",
+     "length_ms": 43000
+    },
+    {
+     "title": "Into the Royal Doulton Bowl",
+     "length_ms": 118000
+    },
+    {
+     "title": "Rescuing Georgie",
+     "length_ms": 241000
+    },
+    {
+     "title": "Off to Topsy’s",
+     "length_ms": 173000
+    },
+    {
+     "title": "Chase Through the Bank",
+     "length_ms": 71000
+    },
+    {
+     "title": "Lost in a Fog",
+     "length_ms": 59000
+    },
+    {
+     "title": "Goodbye Old Friend",
+     "length_ms": 152000
+    },
+    {
+     "title": "Race to Big Ben",
+     "length_ms": 295000
+    },
+    {
+     "title": "End Title Suite",
+     "length_ms": 312000
+    }
+   ]
+  },
+  {
+   "id": "disney:lady and the tramp",
+   "title": "Lady and the Tramp",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "Main Title (Bella Notte) / The Wag of a Dog’s Tail",
+     "length_ms": 123000
+    },
+    {
+     "title": "Peace on Earth",
+     "length_ms": 61000
+    },
+    {
+     "title": "It Has a Ribbon / Lady to Bed / A Few Mornings Later",
+     "length_ms": 234000
+    },
+    {
+     "title": "Sunday / The Rat / Morning Paper",
+     "length_ms": 104000
+    },
+    {
+     "title": "A New Collar / Jock & Trusty / It’s Jim Dear",
+     "length_ms": 198000
+    },
+    {
+     "title": "What a Day! / Breakfast at Tony’s",
+     "length_ms": 65000
+    },
+    {
+     "title": "Warning / Breakout / Snob Hill / A Wee Bairn",
+     "length_ms": 165000
+    },
+    {
+     "title": "Countdown to B‐Day",
+     "length_ms": 125000
+    },
+    {
+     "title": "Baby’s First Morning / What Is a Baby? / La La Lu",
+     "length_ms": 192000
+    },
+    {
+     "title": "Going Away / Aunt Sarah",
+     "length_ms": 111000
+    },
+    {
+     "title": "The Siamese Cat Song / What’s Going on Down There?",
+     "length_ms": 156000
+    },
+    {
+     "title": "The Muzzle / Wrong Side of the Tracks",
+     "length_ms": 114000
+    },
+    {
+     "title": "You Poor Kid / He’s Not My Dog",
+     "length_ms": 84000
+    },
+    {
+     "title": "Through the Zoo / A Log Puller",
+     "length_ms": 120000
+    },
+    {
+     "title": "Footloose and Collar‐Free / Bella Notte",
+     "length_ms": 262000
+    },
+    {
+     "title": "It’s Morning / Ever Chase Chickens? / Caught",
+     "length_ms": 171000
+    },
+    {
+     "title": "Home Sweet Home",
+     "length_ms": 91000
+    },
+    {
+     "title": "The Pound",
+     "length_ms": 88000
+    },
+    {
+     "title": "What a Dog! / He’s a Tramp",
+     "length_ms": 145000
+    },
+    {
+     "title": "In the Doghouse / The Rat Returns / Falsely Accused / We’ve Got to Stop That Wagon / Trusty’s Sacrifice",
+     "length_ms": 366000
+    },
+    {
+     "title": "Watch the Birdie / Visitors",
+     "length_ms": 126000
+    },
+    {
+     "title": "Finale (Peace on Earth)",
+     "length_ms": 30000
+    },
+    {
+     "title": "New Collar, A / Jock & Trusty / It's Jim Dear",
+     "length_ms": 198000
+    },
+    {
+     "title": "Siamese Cat Song, The / What's Going on Down There?",
+     "length_ms": 156000
+    },
+    {
+     "title": "Muzzle, The / Wrong Side of the Tracks",
+     "length_ms": 114000
+    },
+    {
+     "title": "Pound, The",
+     "length_ms": 88000
+    },
+    {
+     "title": "Main Title (Bella Notte)/Peace on Earth",
+     "length_ms": 143000
+    },
+    {
+     "title": "Welcome to the Family",
+     "length_ms": 178000
+    },
+    {
+     "title": "Another Perfect Day (La La Lu)",
+     "length_ms": 66000
+    },
+    {
+     "title": "The Tramp",
+     "length_ms": 182000
+    },
+    {
+     "title": "Busting Peg and Bull",
+     "length_ms": 213000
+    },
+    {
+     "title": "Tramp Comes to Town",
+     "length_ms": 188000
+    },
+    {
+     "title": "La La Lu",
+     "length_ms": 79000
+    },
+    {
+     "title": "Baby Moves In",
+     "length_ms": 87000
+    },
+    {
+     "title": "Auntie Arrives",
+     "length_ms": 103000
+    },
+    {
+     "title": "What a Shame",
+     "length_ms": 147000
+    },
+    {
+     "title": "Muzzled",
+     "length_ms": 264000
+    },
+    {
+     "title": "Scenic Route",
+     "length_ms": 161000
+    },
+    {
+     "title": "Getting on the Boat",
+     "length_ms": 114000
+    },
+    {
+     "title": "Carriage Ride",
+     "length_ms": 137000
+    },
+    {
+     "title": "Tony and Joe",
+     "length_ms": 149000
+    },
+    {
+     "title": "Bella Notte",
+     "length_ms": 170000
+    },
+    {
+     "title": "A Home",
+     "length_ms": 189000
+    },
+    {
+     "title": "Left Behind",
+     "length_ms": 112000
+    },
+    {
+     "title": "Dog Catcher Chase",
+     "length_ms": 218000
+    },
+    {
+     "title": "Lady at Pound",
+     "length_ms": 113000
+    },
+    {
+     "title": "He's a Tramp (2019)",
+     "length_ms": 94000
+    },
+    {
+     "title": "The One Way Door",
+     "length_ms": 94000
+    },
+    {
+     "title": "They Came Back",
+     "length_ms": 88000
+    },
+    {
+     "title": "Lady Meet Lulu",
+     "length_ms": 71000
+    },
+    {
+     "title": "Howling at the Moon",
+     "length_ms": 63000
+    },
+    {
+     "title": "I Missed You",
+     "length_ms": 283000
+    },
+    {
+     "title": "Rat",
+     "length_ms": 370000
+    },
+    {
+     "title": "Caught",
+     "length_ms": 96000
+    },
+    {
+     "title": "Carriage Chase",
+     "length_ms": 319000
+    },
+    {
+     "title": "He Has a Home",
+     "length_ms": 279000
+    },
+    {
+     "title": "That's Enough",
+     "length_ms": 130000
+    },
+    {
+     "title": "I’m Free as the Breeze (demo)",
+     "length_ms": 149333
+    },
+    {
+     "title": "I’m Free as the Breeze",
+     "length_ms": 193053
+    },
+    {
+     "title": "I’m Singin’ (’Cause I Want to Sing)",
+     "length_ms": 107920
+    },
+    {
+     "title": "What Is a Baby",
+     "length_ms": 205160
+    },
+    {
+     "title": "The Siamese Cat Song",
+     "length_ms": 163453
+    },
+    {
+     "title": "He’s a Tramp",
+     "length_ms": 129080
+    }
+   ]
+  },
+  {
+   "id": "disney:toy story 4",
+   "title": "Toy Story 4",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "You’ve Got a Friend in Me",
+     "length_ms": 124000
+    },
+    {
+     "title": "I Can’t Let You Throw Yourself Away",
+     "length_ms": 126000
+    },
+    {
+     "title": "The Ballad of the Lonesome Cowboy",
+     "length_ms": 105000
+    },
+    {
+     "title": "Operation Pull Toy",
+     "length_ms": 319000
+    },
+    {
+     "title": "Woody’s Closet of Neglect",
+     "length_ms": 236000
+    },
+    {
+     "title": "School Daze",
+     "length_ms": 262000
+    },
+    {
+     "title": "Trash Can Chronicles",
+     "length_ms": 208000
+    },
+    {
+     "title": "The Road to Antiques",
+     "length_ms": 162000
+    },
+    {
+     "title": "A Spork in the Road",
+     "length_ms": 116000
+    },
+    {
+     "title": "Rubber Baby Buggy Butlers",
+     "length_ms": 113000
+    },
+    {
+     "title": "Buzz’s Flight & a Maiden",
+     "length_ms": 247000
+    },
+    {
+     "title": "Ducky, Bunny & Tea",
+     "length_ms": 137000
+    },
+    {
+     "title": "Moving at the Speed of Skunk",
+     "length_ms": 95000
+    },
+    {
+     "title": "Bo Peep’s Panorama for Two",
+     "length_ms": 156000
+    },
+    {
+     "title": "Three Sheeps to the Wind",
+     "length_ms": 175000
+    },
+    {
+     "title": "Sneaking and Antiquing",
+     "length_ms": 102000
+    },
+    {
+     "title": "Recruiting Duke Caboom",
+     "length_ms": 77000
+    },
+    {
+     "title": "Prepping the Jump",
+     "length_ms": 140000
+    },
+    {
+     "title": "Let’s Caboom!",
+     "length_ms": 248000
+    },
+    {
+     "title": "Cowboy Sacrifice",
+     "length_ms": 127000
+    },
+    {
+     "title": "Operation Harmony",
+     "length_ms": 264000
+    },
+    {
+     "title": "Duke’s Best Crash Ever",
+     "length_ms": 163000
+    },
+    {
+     "title": "Gabby Gabby’s Most Noble Thing",
+     "length_ms": 183000
+    },
+    {
+     "title": "Parting Gifts & New Horizons",
+     "length_ms": 305000
+    },
+    {
+     "title": "The Ballad of the Lonesome Cowboy (soundtrack version)",
+     "length_ms": 109000
+    },
+    {
+     "title": "Plush Rush!",
+     "length_ms": 72000
+    }
+   ]
+  },
+  {
+   "id": "disney:a bug's life",
+   "title": "A Bug's Life",
+   "first_release_date": "",
+   "primary_type": "Album",
+   "secondary_types": [],
+   "genres": [],
+   "tracks": [
+    {
+     "title": "The Time of Your Life",
+     "length_ms": 194706
+    },
+    {
+     "title": "The Flik Machine",
+     "length_ms": 174280
+    },
+    {
+     "title": "Seed to Tree",
+     "length_ms": 61093
+    },
+    {
+     "title": "Red Alert",
+     "length_ms": 109600
+    },
+    {
+     "title": "Hopper and His Gang",
+     "length_ms": 201346
+    },
+    {
+     "title": "Flik Leaves",
+     "length_ms": 158013
+    },
+    {
+     "title": "Circus Bugs",
+     "length_ms": 87146
+    },
+    {
+     "title": "The City",
+     "length_ms": 155213
+    },
+    {
+     "title": "Robin Hood",
+     "length_ms": 59186
+    },
+    {
+     "title": "Return to Colony",
+     "length_ms": 93120
+    },
+    {
+     "title": "Flik’s Return",
+     "length_ms": 84706
+    },
+    {
+     "title": "Loser",
+     "length_ms": 164000
+    },
+    {
+     "title": "Dot’s Rescue",
+     "length_ms": 240453
+    },
+    {
+     "title": "Atta",
+     "length_ms": 69013
+    },
+    {
+     "title": "Don’t Come Back",
+     "length_ms": 67600
+    },
+    {
+     "title": "Grasshoppers’ Return",
+     "length_ms": 181680
+    },
+    {
+     "title": "The Bird Flies",
+     "length_ms": 158960
+    },
+    {
+     "title": "Ants Fight Back",
+     "length_ms": 134280
+    },
+    {
+     "title": "Victory",
+     "length_ms": 152960
+    },
+    {
+     "title": "A Bug’s Life Suite",
+     "length_ms": 313893
+    }
+   ]
+  }
+ ]
+}

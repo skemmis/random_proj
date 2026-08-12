@@ -356,5 +356,58 @@ class TestChartRender(unittest.TestCase):
         self.assertNotIn("Other releases", page)
 
 
+class TestDisney(unittest.TestCase):
+    def setUp(self):
+        from kglw import disney
+        self.disney = disney
+
+    def test_reads_the_film_from_a_soundtrack_title(self):
+        self.assertEqual(
+            self.disney.film_of('Step In Time (From "Mary Poppins"/Soundtrack Version)'),
+            "Mary Poppins",
+        )
+
+    def test_recovers_a_film_from_a_malformed_title(self):
+        """YouTube drops the closing quote on some Frozen tracks."""
+        self.assertEqual(
+            self.disney.film_of('Let It Go (From "Frozen / Single Version)'),
+            "Frozen",
+        )
+
+    def test_non_soundtrack_titles_name_no_film(self):
+        self.assertIsNone(self.disney.film_of("Robot Stop"))
+        self.assertIsNone(self.disney.film_of(None))
+
+    def test_disney_canon_excludes_other_studios(self):
+        self.assertTrue(self.disney.is_disney_film("Frozen"))
+        self.assertTrue(self.disney.is_disney_film("tangled"))
+        # Series entries match on the part before the colon.
+        self.assertTrue(self.disney.is_disney_film("Pirates of the Caribbean: At World's End"))
+        for other in ("The Graduate", "Grease", "Despicable Me 2",
+                      "Willy Wonka & The Chocolate Factory"):
+            self.assertFalse(self.disney.is_disney_film(other), other)
+
+    def test_strips_soundtrack_furniture_from_song_titles(self):
+        self.assertEqual(
+            self.disney.song_title('Step In Time (From "Mary Poppins"/Soundtrack Version)'),
+            "Step In Time",
+        )
+        self.assertEqual(
+            self.disney.song_title('Let It Go (From "Frozen / Single Version)'),
+            "Let It Go",
+        )
+
+    def test_keeps_parentheses_that_are_part_of_the_song(self):
+        self.assertEqual(
+            self.disney.song_title('Feed The Birds (Tuppence A Bag) (From "Mary Poppins")'),
+            "Feed The Birds (Tuppence A Bag)",
+        )
+
+    def test_channel_naming_disney_counts(self):
+        self.assertEqual(self.disney.is_disney({"channel": "DisneyMusicVEVO"}), "channel")
+        self.assertIsNone(self.disney.is_disney({"channel": "King Gizzard - Topic",
+                                                 "title": "Robot Stop"}))
+
+
 if __name__ == "__main__":
     unittest.main()
