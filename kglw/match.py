@@ -151,6 +151,27 @@ def find_band_channels(
     return confident, borderline
 
 
+def track_entries(album: dict):
+    """Yield (title, length_ms) for an album, accepting either cache format.
+
+    Older caches stored tracks as bare strings; newer ones store dicts with
+    durations. Both are read so a half-upgraded cache never crashes a run.
+    """
+    for track in album.get("tracks") or []:
+        if isinstance(track, str):
+            yield track, None
+        else:
+            yield track.get("title"), track.get("length_ms")
+
+
+def album_duration_ms(album: dict) -> int | None:
+    """Total runtime, or None if any track's length is unknown."""
+    lengths = [length for _, length in track_entries(album)]
+    if not lengths or any(length is None for length in lengths):
+        return None
+    return sum(lengths)
+
+
 class AlbumIndex:
     """Maps a normalized track title to its most likely album."""
 
@@ -164,8 +185,13 @@ class AlbumIndex:
             # First writer wins, and albums are pre-sorted best-first.
             for album_key in self._title_aliases(album["title"]):
                 self.by_album_title.setdefault(album_key, album)
-            for track in album["tracks"]:
-                self.by_track.setdefault(normalize(track), {"album": album, "track": track})
+            for title, length_ms in track_entries(album):
+                if not title:
+                    continue
+                self.by_track.setdefault(
+                    normalize(title),
+                    {"album": album, "track": title, "length_ms": length_ms},
+                )
 
         self._track_keys = list(self.by_track)
 
@@ -203,6 +229,34 @@ class AlbumIndex:
                 if best is None or len(album_key) > len(normalize(best["title"])):
                     best = album
         return best
+
+    def find_tracks_in_title(self, title: str, min_chars: int = 8) -> list[dict]:
+        """Find track names embedded in a longer title (live sets, medleys).
+
+        Only called on rows already confirmed to be KGLW, so the risk is a
+        track name colliding with ordinary words rather than another artist.
+        Short names are skipped anyway -- "Dirt", "Bone", "Sense" and "Honey"
+        are all real KGLW tracks and all far too common to match on.
+        """
+        key = normalize(title)
+        found: list[tuple[str, dict]] = []
+        for track_key, hit in self.by_track.items():
+            if len(track_key) < min_chars:
+                continue
+            if re.search(rf"\b{re.escape(track_key)}\b", key):
+                found.append((track_key, hit))
+
+        # Drop names wholly contained in a longer match, so "Motor Spirit" does
+        # not also count as part of a longer title containing it.
+        found.sort(key=lambda pair: -len(pair[0]))
+        kept: list[dict] = []
+        claimed: list[str] = []
+        for track_key, hit in found:
+            if any(track_key in longer for longer in claimed):
+                continue
+            claimed.append(track_key)
+            kept.append(hit)
+        return kept
 
     def match_track(self, cleaned: str, fuzzy_cutoff: float = 0.90) -> tuple[dict | None, str]:
         """Exact then fuzzy track lookup. Returns (hit, how)."""

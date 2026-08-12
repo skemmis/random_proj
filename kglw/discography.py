@@ -73,8 +73,8 @@ def fetch_release_groups() -> list[dict]:
     return groups
 
 
-def fetch_tracklist(release_group_id: str) -> list[str]:
-    """Track titles from the earliest release in a release group."""
+def fetch_tracklist(release_group_id: str) -> list[dict]:
+    """Track titles and durations from the standard release in a group."""
     data = _get(
         "release",
         **{"release-group": release_group_id, "inc": "recordings", "limit": 25},
@@ -97,13 +97,17 @@ def fetch_tracklist(release_group_id: str) -> list[str]:
     modal_count = counts.most_common(1)[0][0]
     candidates = [r for r in official if track_total(r) == modal_count]
     best = min(candidates, key=lambda r: r.get("date") or "9999")
-    titles = []
+    tracks = []
     for medium in best.get("media", []):
         for track in medium.get("tracks", []):
             title = track.get("title")
-            if title:
-                titles.append(title)
-    return titles
+            if not title:
+                continue
+            # Track length wins over recording length: the same recording can
+            # appear on several releases with different edits.
+            length = track.get("length") or (track.get("recording") or {}).get("length")
+            tracks.append({"title": title, "length_ms": length})
+    return tracks
 
 
 def build() -> dict:

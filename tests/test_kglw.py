@@ -185,5 +185,110 @@ class TestClassification(unittest.TestCase):
         self.assertIn("UCx", borderline)
 
 
+FAKE_TIMED = {
+    "albums": [
+        {
+            "id": "studio-nonagon",
+            "title": "Nonagon Infinity",
+            "first_release_date": "2016-04-29",
+            "primary_type": "Album",
+            "secondary_types": [],
+            "tracks": [
+                {"title": "Robot Stop", "length_ms": 200_000},
+                {"title": "Big Fig Wasp", "length_ms": 160_000},
+                {"title": "Evil Death Roll", "length_ms": 400_000},
+            ],
+        },
+        {
+            "id": "studio-petro",
+            "title": "PetroDragonic Apocalypse",
+            "first_release_date": "2023-06-16",
+            "primary_type": "Album",
+            "secondary_types": [],
+            "tracks": [
+                {"title": "Motor Spirit", "length_ms": 300_000},
+                {"title": "Gila Monster", "length_ms": 360_000},
+            ],
+        },
+    ]
+}
+
+
+class TestTrackFormats(unittest.TestCase):
+    def test_reads_legacy_string_tracks(self):
+        album = {"tracks": ["A", "B"]}
+        self.assertEqual(list(match.track_entries(album)), [("A", None), ("B", None)])
+
+    def test_reads_timed_tracks(self):
+        album = FAKE_TIMED["albums"][1]
+        self.assertEqual(match.album_duration_ms(album), 660_000)
+
+    def test_duration_is_none_when_a_track_length_is_missing(self):
+        album = {"tracks": [{"title": "A", "length_ms": 1000}, {"title": "B", "length_ms": None}]}
+        self.assertIsNone(match.album_duration_ms(album))
+
+
+class TestMinutes(unittest.TestCase):
+    def setUp(self):
+        from kglw import minutes
+
+        self.minutes = minutes
+        self.index = match.AlbumIndex(FAKE_TIMED)
+
+    def test_single_track_play_uses_track_duration(self):
+        entry = {"track": "Robot Stop", "album": "Nonagon Infinity", "album_id": "studio-nonagon"}
+        segments, source = self.minutes.segments_for(entry, self.index)
+        self.assertEqual(source, "track")
+        self.assertEqual(sum(s["length_ms"] for s in segments), 200_000)
+
+    def test_full_album_play_uses_whole_record(self):
+        entry = {"is_full_album": True, "album_id": "studio-nonagon", "album": "Nonagon Infinity"}
+        segments, source = self.minutes.segments_for(entry, self.index)
+        self.assertEqual(source, "album")
+        self.assertEqual(sum(s["length_ms"] for s in segments), 760_000)
+
+    def test_live_medley_recovers_each_named_track(self):
+        entry = {"title": "Gila Monster/Motor Spirit Live at Red Rocks 6/7/23"}
+        segments, source = self.minutes.segments_for(entry, self.index)
+        self.assertEqual(source, "title-scan")
+        self.assertEqual({s["track"] for s in segments}, {"Gila Monster", "Motor Spirit"})
+        self.assertEqual(sum(s["length_ms"] for s in segments), 660_000)
+
+    def test_interviews_contribute_no_time(self):
+        for title in (
+            "Talking to King Gizzard & The Lizard Wizard (Stu)",
+            "Old Composer Reacts to King Gizzard",
+            "King Gizzard on the Midnight Chats podcast",
+            "How To Get Into King Gizzard & The Lizard Wizard",
+        ):
+            self.assertTrue(self.minutes.is_non_music(title), title)
+            segments, source = self.minutes.segments_for({"title": title}, self.index)
+            self.assertEqual(segments, [])
+            self.assertEqual(source, "none")
+
+    def test_interview_naming_a_track_still_contributes_nothing(self):
+        """Talk must not bank a track's runtime just by mentioning it."""
+        entry = {"title": "Motor Spirit explained - a track by track review"}
+        segments, _ = self.minutes.segments_for(entry, self.index)
+        self.assertEqual(segments, [])
+
+    def test_short_track_names_are_not_scanned_from_prose(self):
+        # A hypothetical 'Dirt'-length name must not match inside prose.
+        hits = self.index.find_tracks_in_title("some video about a robot stopping")
+        self.assertEqual(hits, [])
+
+    def test_monthly_series_fills_gaps(self):
+        entries = [
+            {"track": "Robot Stop", "album": "Nonagon Infinity", "album_id": "studio-nonagon",
+             "watched_at_utc": "2024-01-05T00:00:00+00:00"},
+            {"track": "Robot Stop", "album": "Nonagon Infinity", "album_id": "studio-nonagon",
+             "watched_at_utc": "2024-04-05T00:00:00+00:00"},
+        ]
+        report = self.minutes.summarise(entries, self.index)
+        self.assertEqual(report["months"], ["2024-01", "2024-02", "2024-03", "2024-04"])
+        self.assertEqual(report["minutes_by_month"]["2024-02"], 0)
+        self.assertAlmostEqual(report["total_minutes"], 6.7, places=1)
+
+
 if __name__ == "__main__":
     unittest.main()
