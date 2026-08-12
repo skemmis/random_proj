@@ -695,6 +695,24 @@ def build_table(report: dict, top_n: int = 6, rows: int = 12) -> str:
     return page
 
 
+def build_list(report: dict, rows: int = 12) -> str:
+    """A ranked list in plain text.
+
+    Substack has no table control and strips table markup, so a list is the
+    only tabular-ish form that survives as real text: selectable, searchable,
+    and readable on a phone, where a table image is not.
+    """
+    ranked = [row for row in report["albums"] if row["minutes"] > 0][:rows]
+    lines = []
+    for rank, row in enumerate(ranked, 1):
+        album = row["album"].split(";")[0].split(":")[0].strip()
+        lines.append(
+            f"{rank}. {album} \u2014 {row['hours']:,.1f} hours"
+            f" (most played: {row['top_track']})"
+        )
+    return "\n".join(lines) + "\n"
+
+
 def build_tsv(report: dict, rows: int = 20) -> str:
     """Tab-separated rows for pasting into a native Substack table."""
     ranked = [row for row in report["albums"] if row["minutes"] > 0][:rows]
@@ -719,12 +737,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--totals", action="store_true",
                     help="single series of monthly totals, no legend or captions")
     ap.add_argument("--table", action="store_true", help="render the album ranking instead")
-    ap.add_argument("--tsv", help="also write the ranking as TSV for pasting")
+    ap.add_argument("--tsv", help="also write the ranking as TSV (Datawrapper, Sheets)")
+    ap.add_argument("--list", dest="list_out", help="also write the ranking as a plain-text list")
     ap.add_argument("--rows", type=int, default=12, help="rows in the table render")
     args = ap.parse_args(argv)
 
     with open(args.input, "r", encoding="utf-8") as fh:
         report = json.load(fh)
+
+    if args.list_out:
+        with open(args.list_out, "w", encoding="utf-8") as fh:
+            fh.write(build_list(report, rows=args.rows))
+        print(f"wrote {args.list_out}")
 
     if args.tsv:
         with open(args.tsv, "w", encoding="utf-8") as fh:

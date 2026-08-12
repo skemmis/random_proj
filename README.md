@@ -88,6 +88,23 @@ standard-library only:
 pip install playwright && playwright install chromium
 ```
 
+## Embedding a table
+
+Substack has no table control and strips table markup on publish, so tabular
+data has to arrive some other way:
+
+```bash
+# image -- most reliable, matches the chart's colours
+python3 -m kglw.chart minutes.json --table --rows 12 -o table.html
+python3 tools/export_png.py table.html -o table.png
+
+# plain-text list -- survives as real text, reads well on a phone
+python3 -m kglw.chart minutes.json --list albums.txt -o /dev/null
+
+# TSV -- for Datawrapper (Substack embeds it by URL) or a spreadsheet
+python3 -m kglw.chart minutes.json --tsv albums.tsv -o /dev/null
+```
+
 ## Reading the output
 
 Two rankings, because "listened to most" is genuinely ambiguous:
