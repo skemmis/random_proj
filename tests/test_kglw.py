@@ -254,6 +254,21 @@ class TestMinutes(unittest.TestCase):
         self.assertEqual({s["track"] for s in segments}, {"Gila Monster", "Motor Spirit"})
         self.assertEqual(sum(s["length_ms"] for s in segments), 660_000)
 
+    def test_oversized_album_match_is_capped(self):
+        """One video cannot bank a multi-hour box set's full runtime."""
+        big = {"albums": [{
+            "id": "box", "title": "Live Box", "first_release_date": "2022-01-01",
+            "primary_type": "Album", "secondary_types": ["Live"],
+            "tracks": [{"title": f"Jam {i}", "length_ms": 30 * 60 * 1000} for i in range(20)],
+        }]}
+        index = match.AlbumIndex(big)
+        entry = {"is_full_album": True, "album_id": "box", "album": "Live Box"}
+        segments, source = self.minutes.segments_for(entry, index)
+        self.assertEqual(source, "album-capped")
+        self.assertAlmostEqual(
+            sum(s["length_ms"] for s in segments), self.minutes.MAX_SINGLE_VIDEO_MS, places=3
+        )
+
     def test_interviews_contribute_no_time(self):
         for title in (
             "Talking to King Gizzard & The Lizard Wizard (Stu)",

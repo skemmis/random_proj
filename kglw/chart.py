@@ -28,8 +28,12 @@ SERIES = [
 OTHER = ("#898781", "#898781")
 
 PLOT_H = 340
-COL_W = 9
-COL_GAP = 3
+COL_GAP = 2
+# Column width is derived so the whole history fits the card. A fixed width
+# pushed the busiest years off the right edge behind a scrollbar, hiding the
+# peak: the reader saw a flat chart and no reason to scroll.
+PLOT_TARGET_W = 566
+MIN_COL_W = 3
 
 
 def nice_ticks(top: float, count: int = 4) -> list[float]:
@@ -47,6 +51,7 @@ def nice_ticks(top: float, count: int = 4) -> list[float]:
 
 def build(report: dict, top_n: int = 6) -> str:
     months = report["months"]
+    col_w = max(MIN_COL_W, round(PLOT_TARGET_W / max(len(months), 1)) - COL_GAP)
     by_month_album = report["minutes_by_month_album"]
     titles = report["album_titles"]
 
@@ -61,6 +66,15 @@ def build(report: dict, top_n: int = 6) -> str:
     order = top_ids + ["__other__"]
     label_of = {aid: titles.get(aid, aid) for aid in top_ids}
     label_of["__other__"] = "Other releases"
+
+    def short(text: str, limit: int = 34) -> str:
+        """Legend and tooltip names only -- tables keep the full title.
+
+        Several KGLW albums have subtitles long enough to swallow a legend
+        whole ("PetroDragonic Apocalypse; or, Dawn of Eternal Night: ...").
+        """
+        text = text.split(";")[0].split(":")[0].strip()
+        return text if len(text) <= limit else text[: limit - 1].rstrip() + "…"
 
     stacks: dict[str, dict[str, float]] = {}
     for month in months:
@@ -91,7 +105,7 @@ def build(report: dict, top_n: int = 6) -> str:
                 f'background:var(--c-{key})"></i>'
             )
         breakdown = [
-            {"label": label_of[key], "key": key, "min": round(minutes, 1)}
+            {"label": short(label_of[key]), "key": key, "min": round(minutes, 1)}
             for key, minutes in sorted(present, key=lambda kv: -kv[1])
         ]
         payload = html.escape(json.dumps({
@@ -115,14 +129,16 @@ def build(report: dict, top_n: int = 6) -> str:
     )
     x_labels = []
     for index, month in enumerate(months):
-        if month.endswith("-01") or index == 0:
-            left = index * (COL_W + COL_GAP)
+        # Januarys only. Also labelling index 0 put two years a single column
+        # apart when the history began in December.
+        if month.endswith("-01"):
+            left = index * (col_w + COL_GAP)
             x_labels.append(f'<i class="xtick" style="left:{left}px">{month[:4]}</i>')
 
     # --- legend ---
     legend = "".join(
         f'<span class="key"><i style="background:var(--c-{key})"></i>'
-        f'{html.escape(label_of[key])}</span>'
+        f'{html.escape(short(label_of[key]))}</span>'
         for key in order
     )
 
@@ -170,9 +186,9 @@ def build(report: dict, top_n: int = 6) -> str:
         "__TALK__": f"{report['skipped_non_music']:,}",
         "__NODUR__": f"{report['skipped_unknown_count']:,}",
         "__PLOT_H__": str(PLOT_H),
-        "__COL_W__": str(COL_W),
+        "__COL_W__": str(col_w),
         "__COL_GAP__": str(COL_GAP),
-        "__WIDTH__": str(len(months) * (COL_W + COL_GAP)),
+        "__WIDTH__": str(len(months) * (col_w + COL_GAP)),
         "__GRID__": gridlines,
         "__YLAB__": y_labels,
         "__XLAB__": "".join(x_labels),
@@ -260,7 +276,7 @@ h1 { font-size: 30px; line-height: 1.15; margin: 6px 0 0; text-wrap: balance; le
 .card h2 { font-size: 15px; margin: 0; letter-spacing: -0.005em; }
 .card .note { font-size: 13px; color: var(--ink-2); margin: 6px 0 20px; }
 
-.scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 4px; }
+.scroll { overflow-x: auto; overflow-y: hidden; padding: 10px 0 4px; }
 .plotwrap { display: flex; gap: 10px; min-width: min-content; }
 .yaxis { position: relative; width: 34px; height: __PLOT_H__px; flex: none; }
 .ytick {

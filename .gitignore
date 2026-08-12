@@ -3,6 +3,8 @@
 watch-history.html
 search-history.html
 report.json
+minutes.json
+listening.html
 Takeout*/
 
 __pycache__/

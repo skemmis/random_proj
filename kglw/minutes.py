@@ -35,6 +35,16 @@ NON_MUSIC_MARKERS = (
 
 NON_MUSIC_RE = re.compile("|".join(re.escape(m) for m in NON_MUSIC_MARKERS), re.IGNORECASE)
 
+# Ceiling on what a single "full album" video may contribute.
+#
+# Some KGLW release groups are enormous -- the "Live at Red Rocks '22" box is
+# 8.5 hours across three nights -- and one video titled "(Full Album)" matched
+# the whole box, letting a single click outrank albums played hundreds of
+# times. No YouTube upload is 8.5 hours, and watch history carries no duration
+# to check against, so an over-long match is scaled down proportionally (album
+# shares preserved) and flagged rather than trusted or dropped.
+MAX_SINGLE_VIDEO_MS = 120 * 60 * 1000
+
 
 def is_non_music(title: str | None) -> bool:
     return bool(title and NON_MUSIC_RE.search(title))
@@ -57,6 +67,12 @@ def segments_for(entry: dict, index: match.AlbumIndex) -> tuple[list[dict], str]
                 for title, length in match.track_entries(album)
                 if length
             ]
+            total = sum(s["length_ms"] for s in segments)
+            if total > MAX_SINGLE_VIDEO_MS:
+                factor = MAX_SINGLE_VIDEO_MS / total
+                for segment in segments:
+                    segment["length_ms"] = segment["length_ms"] * factor
+                return segments, "album-capped"
             if segments:
                 return segments, "album"
 
@@ -218,12 +234,16 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     report = summarise(entries, index)
-    print_report(report)
 
+    # Write before printing: the report is long, and piping it through `head`
+    # closes stdout mid-print, which would otherwise kill the process before
+    # the file was written and leave a stale JSON behind.
     if args.json_out:
         with open(args.json_out, "w", encoding="utf-8") as fh:
             json.dump(report, fh, indent=1, ensure_ascii=False)
         print(f"wrote {args.json_out}", file=sys.stderr)
+
+    print_report(report)
     return 0
 
 
