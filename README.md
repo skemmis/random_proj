@@ -75,9 +75,17 @@ carries direct value labels on its tallest columns instead, plus a caption
 naming the sources and the counting rules, so the image stands alone:
 
 ```bash
-python3 -m kglw.chart minutes.json --since 2023-01 --static -o static.html
-python3 tools/export_png.py static.html -o chart.png            # light
-python3 tools/export_png.py static.html -o chart-dark.png --theme dark
+# volume: minutes per period, stacked by album
+python3 -m kglw.chart minutes.json --since 2023-01 --period quarter -o q.html
+
+# totals: one series, no legend -- least busy
+python3 -m kglw.chart minutes.json --since 2023-01 --totals -o totals.html
+
+# share: 100% stacked -- composition rather than magnitude
+python3 -m kglw.chart minutes.json --since 2023-01 --period quarter --share -o s.html
+
+python3 tools/export_png.py q.html -o chart.png                 # light
+python3 tools/export_png.py q.html -o chart-dark.png --theme dark
 ```
 
 ### Sizing
@@ -116,6 +124,17 @@ python3 -m kglw.chart minutes.json --tsv albums.tsv -o /dev/null
 ```
 
 ## Reading the output
+
+Three chart views, because they answer different questions. `volume` is
+magnitude ("how much did I listen"), `share` is composition ("of what I did
+listen to, what was it"), and `totals` is volume with the breakdown dropped.
+
+Quarters (`--period quarter`) exist for legibility: 15 wide columns survive
+being scaled down on a phone where 44 thin ones do not.
+
+A share chart hides its own denominator — a quarter with 8 minutes renders
+exactly as tall as one with 1,500 — so each column carries its real total
+above it.
 
 Two rankings, because "listened to most" is genuinely ambiguous:
 

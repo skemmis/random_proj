@@ -329,11 +329,13 @@ class TestChartRender(unittest.TestCase):
 
     @staticmethod
     def _plotted_minutes(page: str) -> float:
+        """Invert the render: pixels back to minutes, via the real axis top."""
         import re
         from kglw import chart
         heights = [float(h) for h in re.findall(r"height:([0-9.]+)px", page)]
-        # nice_ticks(30) -> top tick 40, so 340px of plot maps to 40 minutes.
-        return sum(heights) / (chart.PLOT_H / 40)
+        busiest = max(MINI_REPORT["minutes_by_month"].values())
+        axis_top = chart.nice_ticks(busiest)[-1]
+        return sum(heights) / (chart.PLOT_H / axis_top)
 
     def test_stacked_render_plots_every_minute(self):
         from kglw import chart
