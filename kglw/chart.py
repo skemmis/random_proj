@@ -49,8 +49,17 @@ def nice_ticks(top: float, count: int = 4) -> list[float]:
     return [step * i for i in range(count + 1)]
 
 
-def build(report: dict, top_n: int = 6) -> str:
-    months = report["months"]
+MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+               "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+
+
+def pretty_month(month: str) -> str:
+    return f"{MONTH_NAMES[int(month[5:7]) - 1]} {month[:4]}"
+
+
+def build(report: dict, top_n: int = 6, since: str | None = None) -> str:
+    all_months = report["months"]
+    months = [m for m in all_months if not since or m >= since]
     col_w = max(MIN_COL_W, round(PLOT_TARGET_W / max(len(months), 1)) - COL_GAP)
     by_month_album = report["minutes_by_month_album"]
     titles = report["album_titles"]
@@ -127,13 +136,20 @@ def build(report: dict, top_n: int = 6) -> str:
         f'<i class="ytick" style="bottom:{value * scale:.2f}px">{value:,.0f}</i>'
         for value in ticks
     )
+    # Januarys, plus the final month. Labelling only Januarys made the columns
+    # after the last tick look like they fell outside the chart's range.
     x_labels = []
+    last_left = len(months) * (col_w + COL_GAP)
     for index, month in enumerate(months):
-        # Januarys only. Also labelling index 0 put two years a single column
-        # apart when the history began in December.
         if month.endswith("-01"):
             left = index * (col_w + COL_GAP)
+            if last_left - left < 46:
+                continue  # would collide with the end label
             x_labels.append(f'<i class="xtick" style="left:{left}px">{month[:4]}</i>')
+    if months:
+        x_labels.append(
+            f'<i class="xtick end">{html.escape(pretty_month(months[-1]))}</i>'
+        )
 
     # --- legend ---
     legend = "".join(
@@ -167,6 +183,19 @@ def build(report: dict, top_n: int = 6) -> str:
         f"  --c-{aid}: {SERIES[i][1]};" for i, aid in enumerate(top_ids)
     ) + f"\n  --c-__other__: {OTHER[1]};"
 
+    dropped = sum(
+        report["minutes_by_month"].get(m, 0) for m in all_months if m not in set(months)
+    )
+    if since and dropped:
+        window_note = (
+            f"{html.escape(pretty_month(months[0]))} onward — "
+            f"{dropped:,.0f} earlier minutes "
+            f"({dropped / max(report['total_minutes'], 1) * 100:.0f}% of the total) "
+            f"predate this window and are not plotted."
+        )
+    else:
+        window_note = ""
+
     src = report.get("duration_sources", {})
     total_plays = sum(src.values())
     counted = total_plays - src.get("none", 0)
@@ -196,6 +225,7 @@ def build(report: dict, top_n: int = 6) -> str:
         "__LEGEND__": legend,
         "__ROWS__": "".join(rows),
         "__MONTHROWS__": month_rows,
+        "__WINDOW__": window_note,
     }
     for token, value in replacements.items():
         page = page.replace(token, value)
@@ -302,6 +332,7 @@ h1 { font-size: 30px; line-height: 1.15; margin: 6px 0 0; text-wrap: balance; le
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 10px; color: var(--muted); font-style: normal;
 }
+.xtick.end { right: 0; color: var(--ink-2); }
 
 .legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--hair); }
 .key { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; color: var(--ink-2); }
@@ -354,7 +385,7 @@ summary { cursor: pointer; font-size: 13px; color: var(--ink-2); }
 
   <section class="card">
     <h2>Minutes per month, by album</h2>
-    <p class="note">Each column is one month. Hover or focus a column for its breakdown.</p>
+    <p class="note">__WINDOW__ Each column is one month. Hover or focus a column for its breakdown.</p>
     <div class="scroll">
       <div class="plotwrap">
         <div class="yaxis">__YLAB__</div>
@@ -449,13 +480,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("input", help="minutes report JSON from kglw.minutes --json")
     ap.add_argument("-o", "--output", default="listening.html")
     ap.add_argument("--top", type=int, default=6, help="albums given their own colour")
+    ap.add_argument("--since", help="first month to plot, e.g. 2023-01")
     args = ap.parse_args(argv)
 
     with open(args.input, "r", encoding="utf-8") as fh:
         report = json.load(fh)
 
     with open(args.output, "w", encoding="utf-8") as fh:
-        fh.write(build(report, top_n=args.top))
+        fh.write(build(report, top_n=args.top, since=args.since))
     print(f"wrote {args.output}")
     return 0
 
