@@ -1,10 +1,11 @@
 """Render listening reports as self-contained HTML (and, via tools/, as PNG).
 
-Three views, because they answer different questions:
+Four views, because they answer different questions:
 
   volume  - minutes per period, stacked by album. "How much did I listen?"
   totals  - minutes per period, one series. Same question, less noise.
   share   - 100% stacked. "Of what I did listen to, what was it?"
+  line    - each album's share as its own series. "How did that change?"
 
 Periods are months or quarters. Quarters exist for legibility: 15 wide columns
 survive being scaled down on a phone where 44 thin ones do not.
@@ -258,6 +259,119 @@ def chart_fragment(report: dict, top_n: int = 6, since: str | None = None,
     )
 
 
+def line_fragment(report: dict, top_n: int = 5, since: str | None = None,
+                  period: str = "quarter", min_base: float = 30.0,
+                  budget: int = PAGE_TARGET_W) -> str:
+    """Each album's share of a period's listening, as lines.
+
+    A share is a ratio, and a ratio computed on a tiny base is noise: three
+    quarters here carry 5-11 minutes of listening total, where one play would
+    swing a series by tens of percent. Those periods are left as gaps rather
+    than plotted at a confident-looking 0%, and shaded so the gap reads as
+    "too little to say" instead of "nothing happened".
+    """
+    top_ids, _, label_of = series_for(report, top_n)
+    periods, raw, totals = bucketed(report, top_ids, since, period, False)
+    if len(periods) < 2:
+        return ""
+
+    plot_w = budget
+    step_x = plot_w / (len(periods) - 1)
+    xs = [index * step_x for index in range(len(periods))]
+
+    shares: dict[str, list[float | None]] = {}
+    for album_id in top_ids:
+        shares[album_id] = [
+            None if totals[p] < min_base else raw[p].get(album_id, 0) / totals[p] * 100
+            for p in periods
+        ]
+
+    peak = max((v for pts in shares.values() for v in pts if v is not None), default=0)
+    ticks = nice_ticks(peak, 5)
+    axis_top = ticks[-1] or 1
+
+    def y_of(value: float) -> float:
+        return PLOT_H - value / axis_top * PLOT_H
+
+    # Shade the periods with too little listening to support a share.
+    bands = []
+    for index, key_period in enumerate(periods):
+        if totals[key_period] >= min_base:
+            continue
+        left = max(xs[index] - step_x / 2, 0)
+        right = min(xs[index] + step_x / 2, plot_w)
+        bands.append(
+            f'<rect x="{left:.1f}" y="0" width="{right - left:.1f}" '
+            f'height="{PLOT_H}" fill="var(--grid)" opacity="0.55"/>'
+        )
+
+    grid = "".join(
+        f'<line x1="0" y1="{y_of(v):.1f}" x2="{plot_w}" y2="{y_of(v):.1f}" '
+        f'stroke="var(--grid)" stroke-width="1"/>' for v in ticks
+    )
+
+    paths = []
+    for album_id in top_ids:
+        colour = f"var(--c-{album_id})"
+        run: list[tuple[float, float]] = []
+        runs: list[list[tuple[float, float]]] = []
+        for index, value in enumerate(shares[album_id]):
+            if value is None:
+                if run:
+                    runs.append(run)
+                run = []
+            else:
+                run.append((xs[index], y_of(value)))
+        if run:
+            runs.append(run)
+        for points in runs:
+            if len(points) > 1:
+                d = " ".join(f"{x:.1f},{y:.1f}" for x, y in points)
+                paths.append(
+                    f'<polyline points="{d}" fill="none" stroke="{colour}" '
+                    f'stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
+                )
+            for x, y in points:
+                # 2px surface ring keeps overlapping markers legible.
+                paths.append(
+                    f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4" fill="{colour}" '
+                    f'stroke="var(--surface)" stroke-width="2"/>'
+                )
+
+    y_labels = "".join(
+        f'<i class="ytick" style="bottom:{PLOT_H - y_of(v):.1f}px">{v:.0f}%</i>'
+        for v in ticks
+    )
+    x_labels = []
+    for index, key_period in enumerate(periods):
+        x_labels.append(
+            f'<i class="xtick q" style="left:{xs[index]:.1f}px">{key_period[-2:]}</i>'
+        )
+        if key_period.endswith("Q1"):
+            x_labels.append(
+                f'<i class="xtick yr" style="left:{xs[index]:.1f}px">{key_period[:4]}</i>'
+            )
+    legend = "".join(
+        f'<span class="key"><i style="background:var(--c-{a})"></i>'
+        f'{html.escape(short(label_of[a]))}</span>'
+        for a in top_ids
+    )
+
+    return (
+        f'<div class="scroll"><div class="plotwrap">'
+        f'<div class="yaxis">{y_labels}</div>'
+        f'<div class="plot" style="width:{plot_w}px">'
+        f'<svg width="{plot_w}" height="{PLOT_H}" viewBox="0 0 {plot_w} {PLOT_H}" '
+        f'role="img" aria-label="Share of listening per {period} for the top '
+        f'{len(top_ids)} albums">'
+        f'{"".join(bands)}{grid}{"".join(paths)}</svg>'
+        f'</div></div>'
+        f'<div class="xaxis tiers" style="width:{plot_w}px">{"".join(x_labels)}</div>'
+        f'</div>'
+        f'<div class="legend">{legend}</div>'
+    )
+
+
 CSS = """
 :root {
   color-scheme: light;
@@ -476,14 +590,22 @@ def _shell(extra_css: str, body: str, top_ids: list[str], totals: bool = False) 
 
 def build_export(report: dict, top_n: int = 6, since: str | None = None,
                  period: str = "month", totals: bool = False,
-                 share: bool = False, measure: str | None = None) -> str:
+                 share: bool = False, line: bool = False,
+                 measure: str | None = None) -> str:
     """Chart-only render, laid out for a newsletter column."""
     top_ids, _, _ = series_for(report, top_n)
-    fragment = chart_fragment(report, top_n, since, period, totals, share,
-                              budget=EXPORT_TARGET_W)
+    if line:
+        fragment = line_fragment(report, top_n, since, period,
+                                 budget=EXPORT_TARGET_W)
+    else:
+        fragment = chart_fragment(report, top_n, since, period, totals, share,
+                                  budget=EXPORT_TARGET_W)
     if measure is None:
-        unit = "Share of listening" if share else "Minutes listened"
-        measure = f"{unit} per {period}"
+        if line:
+            measure = f"Top {top_n} albums — share of listening per {period}"
+        else:
+            unit = "Share of listening" if share else "Minutes listened"
+            measure = f"{unit} per {period}"
     body = (f'<div class="export">\n'
             f'  <h1>King Gizzard &amp; the Lizard Wizard</h1>\n'
             f'  <p class="measure">{html.escape(measure)}</p>\n'
@@ -636,6 +758,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--period", choices=("month", "quarter"), default="month")
     ap.add_argument("--totals", action="store_true", help="one series, no legend")
     ap.add_argument("--share", action="store_true", help="100%% stacked composition")
+    ap.add_argument("--line", action="store_true",
+                    help="multi-series lines of each album's share")
     ap.add_argument("--page", action="store_true", help="full interactive page")
     ap.add_argument("--table", action="store_true", help="render the ranking instead")
     ap.add_argument("--rows", type=int, default=12)
@@ -658,14 +782,19 @@ def main(argv: list[str] | None = None) -> int:
     if args.table:
         page = build_table(report, top_n=args.top, rows=args.rows)
     elif args.page:
-        frag = chart_fragment(report, args.top, args.since, args.period,
-                              args.totals, args.share)
-        label = "Share of listening" if args.share else "Minutes"
+        if args.line:
+            frag = line_fragment(report, args.top, args.since, args.period)
+            label = f"Top {args.top} albums — share of listening"
+        else:
+            frag = chart_fragment(report, args.top, args.since, args.period,
+                                  args.totals, args.share)
+            label = "Share of listening" if args.share else "Minutes"
         page = build_page(report, [(f"{label} per {args.period}", "", frag)],
                           top_n=args.top)
     else:
         page = build_export(report, top_n=args.top, since=args.since,
-                            period=args.period, totals=args.totals, share=args.share)
+                            period=args.period, totals=args.totals,
+                            share=args.share, line=args.line)
 
     with open(args.output, "w", encoding="utf-8") as fh:
         fh.write(page)

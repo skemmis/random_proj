@@ -84,6 +84,9 @@ python3 -m kglw.chart minutes.json --since 2023-01 --totals -o totals.html
 # share: 100% stacked -- composition rather than magnitude
 python3 -m kglw.chart minutes.json --since 2023-01 --period quarter --share -o s.html
 
+# line: each album's share as its own series
+python3 -m kglw.chart minutes.json --since 2023-01 --period quarter --line --top 5 -o l.html
+
 python3 tools/export_png.py q.html -o chart.png                 # light
 python3 tools/export_png.py q.html -o chart-dark.png --theme dark
 ```
@@ -125,9 +128,15 @@ python3 -m kglw.chart minutes.json --tsv albums.tsv -o /dev/null
 
 ## Reading the output
 
-Three chart views, because they answer different questions. `volume` is
+Four chart views, because they answer different questions. `volume` is
 magnitude ("how much did I listen"), `share` is composition ("of what I did
-listen to, what was it"), and `totals` is volume with the breakdown dropped.
+listen to, what was it"), `totals` is volume with the breakdown dropped, and
+`line` follows each album's share as its own series over time.
+
+A share is a ratio, and a ratio on a tiny base is noise — three quarters here
+carry 5-11 minutes total, where a single play swings a series by tens of
+percent. The line view leaves those periods as shaded gaps rather than
+plotting a confident-looking 0%.
 
 Quarters (`--period quarter`) exist for legibility: 15 wide columns survive
 being scaled down on a phone where 44 thin ones do not.
