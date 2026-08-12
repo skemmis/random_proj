@@ -80,7 +80,17 @@ python3 tools/export_png.py static.html -o chart.png            # light
 python3 tools/export_png.py static.html -o chart-dark.png --theme dark
 ```
 
-Output is 2x for retina (~2400px wide). PNG export is the only part of the
+### Sizing
+
+Renders are laid out at the width they will be **displayed** at (~716px, a
+newsletter column) and exported at 2x for density — roughly 1430px of source.
+
+This is the whole trick, and getting it backwards is the usual reason an
+exported chart looks unreadable. Laying out at 1200px and letting the platform
+downscale to 728px shrinks every label by the same 40%: 10px axis type lands at
+6px on screen. The pixel count looks generous and the chart is still illegible.
+Layout width governs legibility; export scale governs sharpness. Email clients
+cap content near 600px, so the same render survives there too. PNG export is the only part of the
 project with a dependency, kept in `tools/` so the analysis stays
 standard-library only:
 

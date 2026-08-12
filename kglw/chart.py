@@ -33,9 +33,11 @@ COL_GAP = 2
 # pushed the busiest years off the right edge behind a scrollbar, hiding the
 # peak: the reader saw a flat chart and no reason to scroll.
 PLOT_TARGET_W = 566
-# A static export has no tooltip, so it is rendered wider and carries direct
-# value labels on its tallest columns instead.
-STATIC_TARGET_W = 1080
+# Static exports are laid out at the width they will actually be displayed at,
+# not larger. Newsletter columns are ~600-730px; rendering at 1080+ and letting
+# the platform downscale shrinks every label with it, which is how 10px axis
+# type ends up at 6px on screen. Density comes from the export scale instead.
+STATIC_TARGET_W = 600
 MIN_COL_W = 3
 MAX_COL_W = 24
 
@@ -211,7 +213,7 @@ def build(
             f"<tr><td class='n'>{rank}</td><td>{swatch}{html.escape(row['album'])}</td>"
             f"<td class='n'>{row['hours']:,.1f}</td><td class='n'>{row['minutes']:,.0f}</td>"
             f"<td class='n'>{row['distinct_tracks']}</td>"
-            f"<td>{html.escape(row['top_track'] or '')}</td></tr>"
+            f"<td>{html.escape(short(row['top_track'] or '', 18))}</td></tr>"
         )
 
     month_rows = "".join(
@@ -266,8 +268,10 @@ def build(
         "__COL_W__": str(col_w),
         "__COL_GAP__": str(COL_GAP),
         "__WIDTH__": str(len(months) * (col_w + COL_GAP)),
-        # y-axis (34) + gap (10) + plot + horizontal padding (34 each side)
-        "__TOTALW__": str(len(months) * (col_w + COL_GAP) + 34 + 10 + 68),
+        # plot + y-axis gutter + gap + horizontal padding
+        "__TOTALW__": str(
+            len(months) * (col_w + COL_GAP) + (100 if totals else 112)
+        ),
         "__GRID__": gridlines,
         "__YLAB__": y_labels,
         "__XLAB__": "".join(x_labels),
@@ -592,11 +596,14 @@ TABLE_TEMPLATE = (
     + _CSS
     + """
 body { background: var(--surface); }
-.export { width: 760px; padding: 28px 30px 24px; background: var(--surface); }
-.export h1 { font-size: 19px; margin: 0 0 4px; letter-spacing: -0.01em; }
-.export .sub { font-size: 12.5px; color: var(--ink-2); margin: 0 0 18px; }
-.export table { font-size: 13.5px; }
-.export td { padding: 8px 10px 8px 0; }
+/* Laid out at newsletter column width so nothing is downscaled on display. */
+.export { width: 716px; padding: 26px 24px 20px; background: var(--surface); }
+.export h1 { font-size: 20px; margin: 0 0 3px; letter-spacing: -0.015em; }
+.export .sub { font-size: 14px; color: var(--ink-2); margin: 0 0 18px; }
+.export table { font-size: 14.5px; }
+.export th { font-size: 11.5px; }
+/* Uniform row height: a wrapped cell breaks the table's rhythm. */
+.export td { padding: 9px 10px 9px 0; white-space: nowrap; }
 .export .bar { display: inline-block; height: 7px; border-radius: 2px; vertical-align: middle; }
 .foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--hair);
         font-size: 11.5px; color: var(--muted); line-height: 1.5; }
@@ -624,18 +631,23 @@ TOTALS_TEMPLATE = (
     + _CSS
     + """
 body { background: var(--surface); }
-.export { width: __TOTALW__px; padding: 30px 34px 24px; background: var(--surface); }
-.export h1 { font-size: 21px; margin: 0; letter-spacing: -0.01em; }
-.export .scroll { overflow: visible; padding-top: 26px; }
+.export { width: __TOTALW__px; padding: 26px 24px 20px; background: var(--surface); }
+.export h1 { font-size: 20px; line-height: 1.25; margin: 0; letter-spacing: -0.015em; }
+/* A title lockup rather than one long line: the em-dash version wrapped to a
+   dangling "— minutes listened per month" on line two. */
+.export .measure { font-size: 14.5px; color: var(--ink-2); margin: 3px 0 0; }
+.export .scroll { overflow: visible; padding-top: 20px; }
 .export .col { cursor: default; }
-.yunit {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 10px; color: var(--muted); letter-spacing: .08em;
-  text-transform: uppercase; margin-bottom: 12px; text-align: right; width: 34px;
-}
+/* Sized for reading at display size, not for a downscaled canvas. */
+.export .yaxis { width: 42px; }
+.export .xaxis { margin-left: 52px; height: 20px; }
+.export .ytick { font-size: 12px; }
+.export .xtick { font-size: 12px; }
+.export .seg.top { border-radius: 2px 2px 0 0; }
 </style>
 <div class="export">
-  <h1>King Gizzard &amp; the Lizard Wizard — minutes listened per month</h1>
+  <h1>King Gizzard &amp; the Lizard Wizard</h1>
+  <p class="measure">Minutes listened per month</p>
   <div class="scroll">
     <div class="plotwrap">
       <div class="yaxis">__YLAB__</div>
@@ -653,7 +665,7 @@ def build_table(report: dict, top_n: int = 6, rows: int = 12) -> str:
     ranked = [row for row in report["albums"] if row["minutes"] > 0]
     top_ids = [row["album_id"] for row in ranked[:top_n]]
 
-    def short(text: str, limit: int = 40) -> str:
+    def short(text: str, limit: int = 30) -> str:
         text = text.split(";")[0].split(":")[0].strip()
         return text if len(text) <= limit else text[: limit - 1].rstrip() + "\u2026"
 
@@ -671,7 +683,7 @@ def build_table(report: dict, top_n: int = 6, rows: int = 12) -> str:
             f"<td><i class='bar' style='width:{width:.0f}px;"
             f"background:var(--c-{key})'></i></td>"
             f"<td class='n'>{row['hours']:,.1f}</td>"
-            f"<td>{html.escape(row['top_track'] or '')}</td></tr>"
+            f"<td>{html.escape(short(row['top_track'] or '', 18))}</td></tr>"
         )
 
     colour_light = "\n".join(
