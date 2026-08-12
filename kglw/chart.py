@@ -570,6 +570,96 @@ STATIC_TEMPLATE = (
 )
 
 
+
+TABLE_TEMPLATE = (
+    "<title>Gizzard Hours</title>\n<style>"
+    + _CSS
+    + """
+body { background: var(--surface); }
+.export { width: 760px; padding: 28px 30px 24px; background: var(--surface); }
+.export h1 { font-size: 19px; margin: 0 0 4px; letter-spacing: -0.01em; }
+.export .sub { font-size: 12.5px; color: var(--ink-2); margin: 0 0 18px; }
+.export table { font-size: 13.5px; }
+.export td { padding: 8px 10px 8px 0; }
+.export .bar { display: inline-block; height: 7px; border-radius: 2px; vertical-align: middle; }
+.foot { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--hair);
+        font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+</style>
+<div class="export">
+  <h1>King Gizzard &amp; the Lizard Wizard — albums by listening time</h1>
+  <p class="sub">__TABLE_SUB__</p>
+  <table>
+    <thead><tr><th class="n">#</th><th>Album</th><th></th><th class="n">Hours</th><th>Most played</th></tr></thead>
+    <tbody>__TABLEROWS__</tbody>
+  </table>
+  <p class="foot">
+    Reconstructed from Google Takeout YouTube watch history; track durations from MusicBrainz.
+    Every play is counted as running to completion, so these are upper bounds.
+  </p>
+</div>
+"""
+)
+
+
+def build_table(report: dict, top_n: int = 6, rows: int = 12) -> str:
+    """A standalone table image: the ranking, styled to match the chart."""
+    ranked = [row for row in report["albums"] if row["minutes"] > 0]
+    top_ids = [row["album_id"] for row in ranked[:top_n]]
+
+    def short(text: str, limit: int = 40) -> str:
+        text = text.split(";")[0].split(":")[0].strip()
+        return text if len(text) <= limit else text[: limit - 1].rstrip() + "\u2026"
+
+    peak = max((r["hours"] for r in ranked[:rows]), default=1) or 1
+    out = []
+    for rank, row in enumerate(ranked[:rows], 1):
+        key = row["album_id"] if row["album_id"] in top_ids else "__other__"
+        # A proportional bar in the row's own colour: the ranking is a
+        # magnitude comparison, and a number alone makes the reader do the work.
+        width = max(row["hours"] / peak * 132, 3)
+        out.append(
+            f"<tr><td class='n'>{rank}</td>"
+            f"<td><i class='sw' style='background:var(--c-{key})'></i>"
+            f"{html.escape(short(row['album']))}</td>"
+            f"<td><i class='bar' style='width:{width:.0f}px;"
+            f"background:var(--c-{key})'></i></td>"
+            f"<td class='n'>{row['hours']:,.1f}</td>"
+            f"<td>{html.escape(row['top_track'] or '')}</td></tr>"
+        )
+
+    colour_light = "\n".join(
+        f"  --c-{aid}: {SERIES[i][0]};" for i, aid in enumerate(top_ids)
+    ) + f"\n  --c-__other__: {OTHER[0]};"
+    colour_dark = "\n".join(
+        f"  --c-{aid}: {SERIES[i][1]};" for i, aid in enumerate(top_ids)
+    ) + f"\n  --c-__other__: {OTHER[1]};"
+
+    page = TABLE_TEMPLATE
+    for token, value in {
+        "__COLOURS_LIGHT__": colour_light,
+        "__COLOURS_DARK__": colour_dark,
+        "__TABLEROWS__": "".join(out),
+        "__TABLE_SUB__": (
+            f"Top {min(rows, len(ranked))} of {len(ranked)} releases · "
+            f"{report['total_hours']:,.0f} hours total"
+        ),
+    }.items():
+        page = page.replace(token, value)
+    return page
+
+
+def build_tsv(report: dict, rows: int = 20) -> str:
+    """Tab-separated rows for pasting into a native Substack table."""
+    ranked = [row for row in report["albums"] if row["minutes"] > 0][:rows]
+    lines = ["#\tAlbum\tHours\tMinutes\tMost played"]
+    for rank, row in enumerate(ranked, 1):
+        album = row["album"].split(";")[0].split(":")[0].strip()
+        lines.append(
+            f"{rank}\t{album}\t{row['hours']:,.1f}\t{row['minutes']:,.0f}\t{row['top_track'] or ''}"
+        )
+    return "\n".join(lines) + "\n"
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("input", help="minutes report JSON from kglw.minutes --json")
@@ -579,14 +669,25 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--static", action="store_true",
                     help="chart-only render for image export (adds value labels)")
     ap.add_argument("--width", type=int, help="plot width budget in px")
+    ap.add_argument("--table", action="store_true", help="render the album ranking instead")
+    ap.add_argument("--tsv", help="also write the ranking as TSV for pasting")
+    ap.add_argument("--rows", type=int, default=12, help="rows in the table render")
     args = ap.parse_args(argv)
 
     with open(args.input, "r", encoding="utf-8") as fh:
         report = json.load(fh)
 
+    if args.tsv:
+        with open(args.tsv, "w", encoding="utf-8") as fh:
+            fh.write(build_tsv(report, rows=max(args.rows, 20)))
+        print(f"wrote {args.tsv}")
+
     with open(args.output, "w", encoding="utf-8") as fh:
-        fh.write(build(report, top_n=args.top, since=args.since,
-                       static=args.static, target_w=args.width))
+        if args.table:
+            fh.write(build_table(report, top_n=args.top, rows=args.rows))
+        else:
+            fh.write(build(report, top_n=args.top, since=args.since,
+                           static=args.static, target_w=args.width))
     print(f"wrote {args.output}")
     return 0
 
