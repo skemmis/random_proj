@@ -60,10 +60,15 @@ def _get(path: str, **params: Any) -> dict:
 
 
 def fetch_release_groups() -> list[dict]:
-    """All release groups for the artist, paged."""
+    """All release groups for the artist, paged, with genre tags.
+
+    Genres ride along on this endpoint, so the whole discography's tags cost
+    three requests rather than one per release.
+    """
     groups, offset = [], 0
     while True:
-        page = _get("release-group", artist=ARTIST_MBID, limit=100, offset=offset)
+        page = _get("release-group", artist=ARTIST_MBID, limit=100, offset=offset,
+                    inc="genres")
         batch = page.get("release-groups", [])
         groups.extend(batch)
         offset += len(batch)
@@ -131,6 +136,11 @@ def build() -> dict:
                 "first_release_date": group.get("first-release-date", ""),
                 "primary_type": group.get("primary-type"),
                 "secondary_types": group.get("secondary-types", []),
+                "genres": [
+                    {"name": g["name"], "count": g.get("count", 0)}
+                    for g in sorted(group.get("genres", []),
+                                    key=lambda g: -g.get("count", 0))
+                ],
                 "tracks": tracks,
             }
         )
@@ -151,6 +161,8 @@ def load() -> dict:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--stats", action="store_true", help="summarise the cache")
+    ap.add_argument("--genres", action="store_true",
+                    help="refresh only the genre tags, merging into the cache")
     args = ap.parse_args(argv)
 
     if args.stats:
@@ -160,6 +172,27 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{len(albums)} release groups, {len(studio)} studio albums")
         for album in sorted(studio, key=lambda a: a["first_release_date"]):
             print(f"  {album['first_release_date'][:4]}  {album['title']}  ({len(album['tracks'])} tracks)")
+        return 0
+
+    if args.genres:
+        # Genres alone are three requests; tracklists are 265. Merge rather
+        # than rebuild so a tag refresh stays cheap.
+        data = load()
+        fresh = {g["id"]: g.get("genres", []) for g in fetch_release_groups()}
+        hit = 0
+        for album in data["albums"]:
+            genres = fresh.get(album["id"])
+            if genres:
+                album["genres"] = [
+                    {"name": g["name"], "count": g.get("count", 0)}
+                    for g in sorted(genres, key=lambda g: -g.get("count", 0))
+                ]
+                hit += 1
+        tmp = CACHE_PATH + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as fh:
+            json.dump(data, fh, indent=1, ensure_ascii=False)
+        os.replace(tmp, CACHE_PATH)
+        print(f"merged genres into {hit}/{len(data['albums'])} releases")
         return 0
 
     data = build()

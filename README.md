@@ -126,6 +126,25 @@ python3 -m kglw.chart minutes.json --list albums.txt -o /dev/null
 python3 -m kglw.chart minutes.json --tsv albums.tsv -o /dev/null
 ```
 
+## Heavy vs light
+
+`heaviness.py` scores each album on a heavy↔light axis from its MusicBrainz
+genre tags, weighted by how many users voted for each tag. The judgement lives
+once in the keyword tables rather than album by album, so every result is
+derived the same way and disagreeing means editing a weight.
+
+```bash
+python3 -m kglw.heaviness          # the scored discography, with tags
+```
+
+Two guards worth knowing about. Genre votes for this artist are nearly all 1,
+so a single mistaken tag can carry an album: one user filed the techno EP
+*Made in Timeland* under heavy metal, which was enough to score it heavy off
+two matching tags. Albums now need at least three matching tags to be scored
+at all, and those that fall short are reported as untagged rather than
+guessed. Most of the band's vocabulary (psychedelic rock, krautrock,
+progressive rock) is genuinely neutral on this axis and carries no weight.
+
 ## Reading the output
 
 Four chart views, because they answer different questions. `volume` is

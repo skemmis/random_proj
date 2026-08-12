@@ -98,7 +98,13 @@ def series_for(report: dict, top_n: int):
     return top_ids, top_ids + ["__other__"], label_of
 
 
-def colour_vars(top_ids: list[str], totals: bool) -> tuple[str, str]:
+def colour_vars(top_ids: list[str], totals: bool,
+                palette: dict | None = None) -> tuple[str, str]:
+    if palette:
+        # An explicit palette for series that are poles of one axis rather
+        # than unrelated categories.
+        return ("\n".join(f"  --c-{k}: {v[0]};" for k, v in palette.items()),
+                "\n".join(f"  --c-{k}: {v[1]};" for k, v in palette.items()))
     if totals:
         return f"  --c-__total__: {SERIES[0][0]};", f"  --c-__total__: {SERIES[0][1]};"
     light = "\n".join(f"  --c-{a}: {SERIES[i][0]};" for i, a in enumerate(top_ids))
@@ -150,7 +156,9 @@ def axis_labels(periods: list[str], col_w: int, col_gap: int, plot_w: int) -> st
         for index, period in enumerate(periods):
             centre = index * (col_w + col_gap) + col_w / 2
             parts.append(f'<i class="xtick q" style="left:{centre:.1f}px">{period[-2:]}</i>')
-            if period.endswith("Q1"):
+            # Year on each Q1, and on the opening column when the range starts
+            # mid-year -- otherwise the first quarter carries no year at all.
+            if period.endswith("Q1") or index == 0:
                 parts.append(f'<i class="xtick yr" style="left:{centre:.1f}px">{period[:4]}</i>')
         return "".join(parts)
 
@@ -237,11 +245,14 @@ def chart_fragment(report: dict, top_n: int = 6, since: str | None = None,
         f'{(f"{v:.0f}%" if share else f"{v:,.0f}")}</i>'
         for v in ticks
     )
+    # Only series that actually appear: an unused key rendered a labelled
+    # swatch with no colour behind it.
+    used = {k for buckets in raw.values() for k, v in buckets.items() if v > 0}
     # A single series needs no legend -- the title already names what is plotted.
     legend = "" if totals else "".join(
         f'<span class="key"><i style="background:var(--c-{k})"></i>'
         f'{html.escape(short(label_of[k]))}</span>'
-        for k in order
+        for k in order if k in used
     )
     tier = " tiers" if period == "quarter" else ""
 
@@ -619,8 +630,9 @@ def _fill(page: str, mapping: dict) -> str:
     return page
 
 
-def _shell(extra_css: str, body: str, top_ids: list[str], totals: bool = False) -> str:
-    light, dark = colour_vars(top_ids, totals)
+def _shell(extra_css: str, body: str, top_ids: list[str], totals: bool = False,
+           palette: dict | None = None) -> str:
+    light, dark = colour_vars(top_ids, totals, palette)
     return _fill(
         "<title>Gizzard Hours</title>\n<style>" + CSS + extra_css + "</style>\n" + body,
         {
@@ -636,7 +648,8 @@ def _shell(extra_css: str, body: str, top_ids: list[str], totals: bool = False) 
 def build_export(report: dict, top_n: int = 6, since: str | None = None,
                  period: str = "month", totals: bool = False,
                  share: bool = False, line: bool = False, smooth: bool = True,
-                 measure: str | None = None, title: str | None = None) -> str:
+                 measure: str | None = None, title: str | None = None,
+                 palette: dict | None = None) -> str:
     """Chart-only render, laid out for a newsletter column."""
     top_ids, _, _ = series_for(report, top_n)
     if line:
@@ -658,7 +671,7 @@ def build_export(report: dict, top_n: int = 6, since: str | None = None,
     body = (f'<div class="export">\n'
             f'  <h1>{heading}</h1>{sub}\n'
             f'  {fragment}\n</div>')
-    return _shell(EXPORT_CSS, body, top_ids, totals)
+    return _shell(EXPORT_CSS, body, top_ids, totals, palette)
 
 
 # Older entry point, kept for callers and the render tests.
@@ -668,7 +681,8 @@ def build(report: dict, top_n: int = 6, since: str | None = None,
     return build_export(report, top_n=top_n, since=since, totals=totals, **kw)
 
 
-def build_page(report: dict, cards: list[tuple[str, str, str]], top_n: int = 6) -> str:
+def build_page(report: dict, cards: list[tuple[str, str, str]], top_n: int = 6,
+               palette: dict | None = None) -> str:
     """The full interactive page: hero, stat tiles, chart cards, ranking."""
     top_ids, _, _ = series_for(report, top_n)
     months = report["months"]
@@ -741,7 +755,7 @@ def build_page(report: dict, cards: list[tuple[str, str, str]], top_n: int = 6) 
   </section>
 </div>
 {TOOLTIP_JS}"""
-    return _shell("", body, top_ids)
+    return _shell("", body, top_ids, palette=palette)
 
 
 def build_table(report: dict, top_n: int = 6, rows: int = 12) -> str:

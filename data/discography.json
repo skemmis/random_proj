@@ -76,6 +76,48 @@
      "title": "Iron Lung (live)",
      "length_ms": 534089
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -158,6 +200,40 @@
     {
      "title": "Le Risque",
      "length_ms": 449000
+    }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -242,6 +318,36 @@
      "title": "The Dripping Tap",
      "length_ms": 754000
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -324,6 +430,36 @@
     {
      "title": "The Bitter Boogie",
      "length_ms": 795080
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -418,6 +554,44 @@
      "title": "Han‐Tyumi and the Murder of the Universe: Murder of the Universe",
      "length_ms": 249653
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 3
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "spoken word",
+     "count": 3
+    },
+    {
+     "name": "heavy psych",
+     "count": 2
+    },
+    {
+     "name": "noise rock",
+     "count": 2
+    },
+    {
+     "name": "progressive rock",
+     "count": 2
+    },
+    {
+     "name": "space rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "occult rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -466,6 +640,44 @@
     {
      "title": "Butterfly 3000",
      "length_ms": 171000
+    }
+   ],
+   "genres": [
+    {
+     "name": "synth-pop",
+     "count": 2
+    },
+    {
+     "name": "indietronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "pop",
+     "count": 1
+    },
+    {
+     "name": "progressive pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "sunshine pop",
+     "count": 1
     }
    ]
   },
@@ -549,6 +761,32 @@
     {
      "title": "K.G.L.W.",
      "length_ms": 571000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "soul",
+     "count": 1
     }
    ]
   },
@@ -729,6 +967,56 @@
      "title": "The River",
      "length_ms": 1376110
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -801,6 +1089,56 @@
     {
      "title": "The Funeral",
      "length_ms": 143000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 4
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 3
+    },
+    {
+     "name": "abstract hip hop",
+     "count": 1
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "hip hop",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "psychedelic soul",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "soul",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
     }
    ]
   },
@@ -893,6 +1231,48 @@
      "title": "People‐Vultures (live)",
      "length_ms": 498963
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -971,6 +1351,32 @@
     {
      "title": "Gaia",
      "length_ms": 146000
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -1070,6 +1476,36 @@
      "title": "Oddments",
      "length_ms": 25040
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 4
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 3
+    },
+    {
+     "name": "folk rock",
+     "count": 2
+    },
+    {
+     "name": "garage rock",
+     "count": 2
+    },
+    {
+     "name": "slacker rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "indie pop",
+     "count": 1
+    }
    ]
   },
   {
@@ -1141,6 +1577,24 @@
      "title": "Magenta Mountain",
      "length_ms": 745000
     }
+   ],
+   "genres": [
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -1189,6 +1643,32 @@
     {
      "title": "Daily Blues",
      "length_ms": 462000
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 2
+    },
+    {
+     "name": "roots rock",
+     "count": 2
+    },
+    {
+     "name": "glam rock",
+     "count": 1
+    },
+    {
+     "name": "hard rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "southern rock",
+     "count": 1
     }
    ]
   },
@@ -1312,6 +1792,24 @@
      "title": "Mango Sticky Rice XII",
      "length_ms": 900000
     }
+   ],
+   "genres": [
+    {
+     "name": "algorave",
+     "count": 1
+    },
+    {
+     "name": "glitch hop",
+     "count": 1
+    },
+    {
+     "name": "idm",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    }
    ]
   },
   {
@@ -1360,6 +1858,20 @@
      "title": "Road Train (live in Chicago ’23)",
      "length_ms": 175168
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -1402,6 +1914,40 @@
     {
      "title": "Intrasport",
      "length_ms": 383000
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid techno",
+     "count": 1
+    },
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "electro-disco",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -1482,6 +2028,56 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 731134
     }
+   ],
+   "genres": [
+    {
+     "name": "neo-psychedelia",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -1519,6 +2115,32 @@
      "title": "Flamethrower",
      "length_ms": 561000
     }
+   ],
+   "genres": [
+    {
+     "name": "progressive metal",
+     "count": 2
+    },
+    {
+     "name": "stoner metal",
+     "count": 2
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "speed metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -1555,6 +2177,44 @@
     {
      "title": "Gliese 710",
      "length_ms": 467000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 6
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 2
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "funk rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -1655,6 +2315,32 @@
      "title": "Treaty",
      "length_ms": 327000
     }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -1691,6 +2377,44 @@
     {
      "title": "Short Change",
      "length_ms": 170000
+    }
+   ],
+   "genres": [
+    {
+     "name": "neo-psychedelia",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jazz pop",
+     "count": 1
+    },
+    {
+     "name": "jazz-funk",
+     "count": 1
+    },
+    {
+     "name": "progressive pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic soul",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -1749,6 +2473,56 @@
      "title": "Paper Mâché",
      "length_ms": 150000
     }
+   ],
+   "genres": [
+    {
+     "name": "neo-psychedelia",
+     "count": 2
+    },
+    {
+     "name": "psychedelic folk",
+     "count": 2
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "folk pop",
+     "count": 1
+    },
+    {
+     "name": "folk rock",
+     "count": 1
+    },
+    {
+     "name": "indie pop",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "sunshine pop",
+     "count": 1
+    }
    ]
   },
   {
@@ -1803,6 +2577,40 @@
     {
      "title": "The Dripping Tap",
      "length_ms": 788042
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -1915,6 +2723,48 @@
      "title": "K.G.L.W.",
      "length_ms": 697950
     }
+   ],
+   "genres": [
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -2022,6 +2872,48 @@
      "title": "Am I in Heaven?",
      "length_ms": 839813
     }
+   ],
+   "genres": [
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -2105,6 +2997,44 @@
      "title": "Her and I (Slow Jam 2) (live)",
      "length_ms": 635120
     }
+   ],
+   "genres": [
+    {
+     "name": "acoustic rock",
+     "count": 1
+    },
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "roots rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -2155,6 +3085,44 @@
     {
      "title": "Life Is Cool",
      "length_ms": 131051
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "noise rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "surf",
+     "count": 1
+    },
+    {
+     "name": "surf punk",
+     "count": 1
     }
    ]
   },
@@ -2230,6 +3198,68 @@
     {
      "title": "A Brief History of Planet Earth (live in London, Berlin, Utrecht and Barcelona ’19)",
      "length_ms": 1143896
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "alternative metal",
+     "count": 1
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "experimental",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "space rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -2322,6 +3352,20 @@
      "title": "Hot Water",
      "length_ms": 775671
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -2396,6 +3440,32 @@
     {
      "title": "Am I in Heaven? (live)",
      "length_ms": 568576
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -2472,6 +3542,36 @@
      "title": "Float Along – Fill Your Lungs (live)",
      "length_ms": 852650
     }
+   ],
+   "genres": [
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -2538,6 +3638,48 @@
     {
      "title": "Gaia",
      "length_ms": 746000
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -2614,6 +3756,28 @@
      "title": "Gila Monster",
      "length_ms": 376000
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -2684,6 +3848,28 @@
     {
      "title": "Flamethrower",
      "length_ms": 437000
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -2760,6 +3946,28 @@
      "title": "Gilgamesh",
      "length_ms": 559802
     }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -2835,6 +4043,56 @@
      "title": "The Dripping Tap (live)",
      "length_ms": 1166360
     }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -2894,6 +4152,44 @@
      "title": "Cut Throat Boogie",
      "length_ms": 179619
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -2910,6 +4206,52 @@
     {
      "title": "Hypertension",
      "length_ms": 900000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "soul",
+     "count": 2
+    },
+    {
+     "name": "surf",
+     "count": 2
+    },
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "space rock",
+     "count": 1
     }
    ]
   },
@@ -2959,6 +4301,36 @@
     {
      "title": "Her and I (Slow Jam 2)",
      "length_ms": 495000
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 3
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
     }
    ]
   },
@@ -3022,6 +4394,52 @@
     {
      "title": "Head On/Pill",
      "length_ms": 1350000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -3113,6 +4531,36 @@
     {
      "title": "Rattlesnake",
      "length_ms": 615000
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -3299,6 +4747,48 @@
     {
      "title": "The Dripping Tap",
      "length_ms": 1167000
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -3507,6 +4997,40 @@
      "title": "Am I in Heaven?",
      "length_ms": 840000
     }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -3602,6 +5126,32 @@
      "title": "Motor Spirit",
      "length_ms": 554000
     }
+   ],
+   "genres": [
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -3667,6 +5217,40 @@
      "title": "Extinction (extended mix)",
      "length_ms": 749000
     }
+   ],
+   "genres": [
+    {
+     "name": "acid techno",
+     "count": 1
+    },
+    {
+     "name": "electro-disco",
+     "count": 1
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "synth-pop",
+     "count": 1
+    },
+    {
+     "name": "synthwave",
+     "count": 1
+    }
    ]
   },
   {
@@ -3715,6 +5299,40 @@
     {
      "title": "Grow Wings and Fly",
      "length_ms": 308000
+    }
+   ],
+   "genres": [
+    {
+     "name": "progressive pop",
+     "count": 2
+    },
+    {
+     "name": "symphonic rock",
+     "count": 2
+    },
+    {
+     "name": "baroque pop",
+     "count": 1
+    },
+    {
+     "name": "glam rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "roots rock",
+     "count": 1
+    },
+    {
+     "name": "southern rock",
+     "count": 1
     }
    ]
   },
@@ -3798,6 +5416,40 @@
     {
      "title": "Extinction (live)",
      "length_ms": 653263
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -3890,6 +5542,20 @@
      "title": "Oddments",
      "length_ms": 25040
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -3968,6 +5634,48 @@
     {
      "title": "The River",
      "length_ms": 1019000
+    }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -4055,6 +5763,40 @@
     {
      "title": "Float Along – Fill Your Lungs (live)",
      "length_ms": 643952
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -4183,6 +5925,44 @@
      "title": "Motor Spirit (live)",
      "length_ms": 658034
     }
+   ],
+   "genres": [
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -4258,6 +6038,36 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 739000
     }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -4324,6 +6134,40 @@
     {
      "title": "Sense (live)",
      "length_ms": 528000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 4
+    },
+    {
+     "name": "acoustic rock",
+     "count": 1
+    },
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -4475,6 +6319,28 @@
      "title": "Flamethrower",
      "length_ms": 330000
     }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -4520,6 +6386,48 @@
      "title": "Road Train",
      "length_ms": 258000
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 3
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "heavy psych",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "noise rock",
+     "count": 1
+    },
+    {
+     "name": "occult rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -4536,6 +6444,56 @@
     {
      "title": "Smoke & Mirrors",
      "length_ms": 900000
+    }
+   ],
+   "genres": [
+    {
+     "name": "neo-psychedelia",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "acid house",
+     "count": 1
+    },
+    {
+     "name": "acid techno",
+     "count": 1
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "idm",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "trance",
+     "count": 1
     }
    ]
   },
@@ -4892,6 +6850,72 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 554000
     }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -4941,6 +6965,32 @@
      "title": "The Hungry Wolf of Fate",
      "length_ms": 307000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 4
+    },
+    {
+     "name": "anatolian rock",
+     "count": 2
+    },
+    {
+     "name": "heavy psych",
+     "count": 2
+    },
+    {
+     "name": "psychedelic folk",
+     "count": 2
+    },
+    {
+     "name": "folk rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -4986,6 +7036,32 @@
      "title": "Hell",
      "length_ms": 219592
     }
+   ],
+   "genres": [
+    {
+     "name": "thrash metal",
+     "count": 4
+    },
+    {
+     "name": "heavy psych",
+     "count": 3
+    },
+    {
+     "name": "stoner metal",
+     "count": 2
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -5028,6 +7104,40 @@
     {
      "title": "Head On/Pill",
      "length_ms": 1008330
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -5073,6 +7183,40 @@
     {
      "title": "Cyboogie",
      "length_ms": 408013
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "boogie rock",
+     "count": 2
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 2
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "punk blues",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "roots rock",
+     "count": 1
     }
    ]
   },
@@ -5122,6 +7266,28 @@
     {
      "title": "Guns & Horses",
      "length_ms": 68254
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "spoken word",
+     "count": 1
     }
    ]
   },
@@ -5354,6 +7520,28 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 643000
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -5420,6 +7608,40 @@
     {
      "title": "Head On/Pill (live)",
      "length_ms": 911949
+    }
+   ],
+   "genres": [
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -5495,6 +7717,40 @@
     {
      "title": "K.G.L.W.",
      "length_ms": 668000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -5579,6 +7835,36 @@
      "title": "Gila Monster (live)",
      "length_ms": 359426
     }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -5661,6 +7947,56 @@
     {
      "title": "Head On/Pill",
      "length_ms": 1782770
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "soul",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -5749,6 +8085,60 @@
      "title": "Head On/Pill",
      "length_ms": 1825550
     }
+   ],
+   "genres": [
+    {
+     "name": "neo-psychedelia",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -5793,6 +8183,32 @@
     {
      "title": "Flying Microtonal Banana",
      "length_ms": 154000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "garage rock",
+     "count": 2
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
     }
    ]
   },
@@ -5872,6 +8288,32 @@
     {
      "title": "The River",
      "length_ms": 811000
+    }
+   ],
+   "genres": [
+    {
+     "name": "acoustic rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "folk rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
     }
    ]
   },
@@ -6024,6 +8466,56 @@
      "title": "Head On/Pill (live)",
      "length_ms": 1019390
     }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -6135,6 +8627,32 @@
      "title": "Le Risque",
      "length_ms": 357000
     }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -6213,6 +8731,28 @@
     {
      "title": "Hypertension (live)",
      "length_ms": 479539
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -6304,6 +8844,40 @@
     {
      "title": "Iron Lung (live)",
      "length_ms": 730848
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -6520,6 +9094,56 @@
      "title": "Flamethrower",
      "length_ms": 316954
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -6577,6 +9201,40 @@
      "title": "Footy Footy",
      "length_ms": 119000
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 3
+    },
+    {
+     "name": "noise rock",
+     "count": 3
+    },
+    {
+     "name": "garage punk",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "shitgaze",
+     "count": 1
+    },
+    {
+     "name": "surf punk",
+     "count": 1
+    }
    ]
   },
   {
@@ -6629,6 +9287,40 @@
     {
      "title": "The Wheel",
      "length_ms": 337346
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie pop",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "surf",
+     "count": 1
     }
    ]
   },
@@ -6716,6 +9408,36 @@
     {
      "title": "Set",
      "length_ms": 959431
+    }
+   ],
+   "genres": [
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -6825,6 +9547,24 @@
      "title": "Change (demo 4)",
      "length_ms": 264630
     }
+   ],
+   "genres": [
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -6869,6 +9609,36 @@
     {
      "title": "K.G.L.W.",
      "length_ms": 508143
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic folk",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -6957,6 +9727,40 @@
      "title": "K.G.L.W.",
      "length_ms": 593956
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -7031,6 +9835,36 @@
     {
      "title": "Field of Vision (live)",
      "length_ms": 309974
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -7156,6 +9990,44 @@
      "title": "Straws in the Wind (demo)",
      "length_ms": 681000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "soul",
+     "count": 1
+    }
    ]
   },
   {
@@ -7196,6 +10068,48 @@
     {
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 405134
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "acid rock",
+     "count": 2
+    },
+    {
+     "name": "garage rock",
+     "count": 2
+    },
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "noise rock",
+     "count": 1
+    },
+    {
+     "name": "raga rock",
+     "count": 1
+    },
+    {
+     "name": "space rock revival",
+     "count": 1
     }
    ]
   },
@@ -7245,6 +10159,28 @@
     {
      "title": "The Fourth Colour",
      "length_ms": 372444
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "progressive rock",
+     "count": 2
+    },
+    {
+     "name": "ambient",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "space rock",
+     "count": 1
     }
    ]
   },
@@ -7325,6 +10261,36 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 566000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -7385,6 +10351,52 @@
     {
      "title": "Sketches of Brunswick East III",
      "length_ms": 128000
+    }
+   ],
+   "genres": [
+    {
+     "name": "jazz rock",
+     "count": 3
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 3
+    },
+    {
+     "name": "jazz-funk",
+     "count": 2
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 2
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "rock",
+     "count": 2
+    },
+    {
+     "name": "jazz",
+     "count": 1
+    },
+    {
+     "name": "jazz pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic",
+     "count": 1
+    },
+    {
+     "name": "samba-rock",
+     "count": 1
+    },
+    {
+     "name": "soul",
+     "count": 1
     }
    ]
   },
@@ -7473,6 +10485,48 @@
      "title": "Am I in Heaven?",
      "length_ms": 753516
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -7497,6 +10551,56 @@
     {
      "title": "Lonely Steel Sheet Flyer",
      "length_ms": 610000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "hypnagogic pop",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "jazz fusion",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "space rock revival",
+     "count": 1
     }
    ]
   },
@@ -7614,6 +10718,40 @@
      "title": "The Dripping Tap (demo 2)",
      "length_ms": 737000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -7693,6 +10831,52 @@
      "title": "Boogieman Sam",
      "length_ms": 766000
     }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -7767,6 +10951,48 @@
     {
      "title": "Set (live)",
      "length_ms": 572240
+    }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "roots rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -7884,6 +11110,32 @@
      "title": "The Dripping Tap (demo 4)",
      "length_ms": 92000
     }
+   ],
+   "genres": [
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -7963,6 +11215,40 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 901539
     }
+   ],
+   "genres": [
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -8010,6 +11296,32 @@
      "title": "The Silver Cord",
      "length_ms": 2164691
     }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
+    },
+    {
+     "name": "trancestep",
+     "count": 1
+    }
    ]
   },
   {
@@ -8048,6 +11360,24 @@
     {
      "title": "Slow Jam 1",
      "length_ms": 1490484
+    }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
     }
    ]
   },
@@ -8236,6 +11566,36 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 544623
     }
+   ],
+   "genres": [
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -8324,6 +11684,36 @@
      "title": "Honey",
      "length_ms": 273854
     }
+   ],
+   "genres": [
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "blues",
+     "count": 1
+    },
+    {
+     "name": "folk rock",
+     "count": 1
+    },
+    {
+     "name": "progressive folk",
+     "count": 1
+    },
+    {
+     "name": "psychedelic folk",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -8336,6 +11726,36 @@
     {
      "title": "I’m Not a Man Unless I Have a Woman",
      "length_ms": 175000
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "blues rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic soul",
+     "count": 1
+    },
+    {
+     "name": "raga rock",
+     "count": 1
     }
    ]
   },
@@ -8388,6 +11808,36 @@
      "title": "Beginners Luck",
      "length_ms": 265000
     }
+   ],
+   "genres": [
+    {
+     "name": "hypnagogic pop",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic soul",
+     "count": 1
+    },
+    {
+     "name": "soft rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -8414,6 +11864,16 @@
     {
      "title": "I’m in Your Mind Fuzz",
      "length_ms": null
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -8702,6 +12162,36 @@
      "title": "The Dripping Tap",
      "length_ms": 672310
     }
+   ],
+   "genres": [
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -8873,6 +12363,36 @@
      "title": "Gila Monster",
      "length_ms": 356995
     }
+   ],
+   "genres": [
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -8968,6 +12488,32 @@
      "title": "Catching Smoke (Kaitlyn Aurelia Smith remix)",
      "length_ms": 174859
     }
+   ],
+   "genres": [
+    {
+     "name": "house",
+     "count": 2
+    },
+    {
+     "name": "edm",
+     "count": 1
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "indietronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
+    }
    ]
   },
   {
@@ -8994,6 +12540,40 @@
      "title": "All Is Known",
      "length_ms": 214000
     }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "post-punk",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -9006,6 +12586,24 @@
     {
      "title": "Organ Farmer",
      "length_ms": 159080
+    }
+   ],
+   "genres": [
+    {
+     "name": "groove metal",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "speed metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
     }
    ]
   },
@@ -9024,6 +12622,16 @@
      "title": "Presumptuous",
      "length_ms": 292000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -9036,6 +12644,28 @@
     {
      "title": "Automation",
      "length_ms": 209000
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -9166,6 +12796,28 @@
      "title": "Gilgamesh",
      "length_ms": 656438
     }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
+    }
    ]
   },
   {
@@ -9189,6 +12841,16 @@
     {
      "title": "Chapter 3: Han‐Tyumi & the Murder of the Universe (Chicago & Las Vegas ’24)",
      "length_ms": 931608
+    }
+   ],
+   "genres": [
+    {
+     "name": "metal",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
     }
    ]
   },
@@ -9378,6 +13040,40 @@
      "title": "The Dripping Tap",
      "length_ms": 1398000
     }
+   ],
+   "genres": [
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -9445,6 +13141,16 @@
      "title": "Fishing for Fishies (demo)",
      "length_ms": 263000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -9457,6 +13163,16 @@
     {
      "title": "If Not Now, Then When?",
      "length_ms": 230000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -9519,6 +13235,40 @@
      "title": "Summer!",
      "length_ms": 168089
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "indie surf",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "surf",
+     "count": 1
+    },
+    {
+     "name": "surf rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -9535,6 +13285,56 @@
     {
      "title": "Satanic Slumber Party",
      "length_ms": null
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "experimental rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "noise rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "sound collage",
+     "count": 1
+    },
+    {
+     "name": "tape music",
+     "count": 1
     }
    ]
   },
@@ -9610,6 +13410,28 @@
     {
      "title": "Kepler‐22b",
      "length_ms": 1101980
+    }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
     }
    ]
   },
@@ -9822,6 +13644,48 @@
      "title": "Float Along – Fill Your Lungs",
      "length_ms": 871803
     }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -9838,6 +13702,44 @@
     {
      "title": "Ants and Bats",
      "length_ms": 193770
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "punk blues",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "surf",
+     "count": 1
+    },
+    {
+     "name": "surf punk",
+     "count": 1
     }
    ]
   },
@@ -9885,6 +13787,28 @@
     {
      "title": "Magma",
      "length_ms": 924857
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid techno",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
     }
    ]
   },
@@ -9977,6 +13901,28 @@
      "title": "Murder of the Universe",
      "length_ms": 818157
     }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
+    }
    ]
   },
   {
@@ -10003,6 +13949,32 @@
      "title": "Self‐Immolate",
      "length_ms": 268520
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "hard rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -10015,6 +13987,32 @@
     {
      "title": "Pleura",
      "length_ms": 252000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "folk rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -10056,6 +14054,16 @@
      "title": "Willoughby’s Beach",
      "length_ms": 176000
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -10068,6 +14076,40 @@
     {
      "title": "The Fourth Colour",
      "length_ms": 372444
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "drone",
+     "count": 1
+    },
+    {
+     "name": "noise rock",
+     "count": 1
+    },
+    {
+     "name": "post-rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "space ambient",
+     "count": 1
+    },
+    {
+     "name": "space rock",
+     "count": 1
     }
    ]
   },
@@ -10094,6 +14136,16 @@
     {
      "title": "Straws in the Wind",
      "length_ms": 341000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -10200,6 +14252,24 @@
     {
      "title": "Polygondwanaland Megamix (Part 2)",
      "length_ms": 279259
+    }
+   ],
+   "genres": [
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "surf",
+     "count": 1
     }
    ]
   },
@@ -10542,6 +14612,56 @@
      "title": "Rolling Stoned",
      "length_ms": 198000
     }
+   ],
+   "genres": [
+    {
+     "name": "lounge",
+     "count": 2
+    },
+    {
+     "name": "bossa nova",
+     "count": 1
+    },
+    {
+     "name": "cocktail nation",
+     "count": 1
+    },
+    {
+     "name": "jazz",
+     "count": 1
+    },
+    {
+     "name": "jazz pop",
+     "count": 1
+    },
+    {
+     "name": "jazz-funk",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "smooth jazz",
+     "count": 1
+    },
+    {
+     "name": "soft rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -10572,6 +14692,32 @@
      "title": "Some of Us",
      "length_ms": 232000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "experimental rock",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -10584,6 +14730,24 @@
     {
      "title": "O.N.E.",
      "length_ms": 220000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "synth-pop",
+     "count": 1
     }
    ]
   },
@@ -10668,6 +14832,32 @@
      "title": "Hypertension",
      "length_ms": 805762
     }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -10680,6 +14870,16 @@
     {
      "title": "Black Hot Soup (DJ Shadow “My Own Reality” re‐write)",
      "length_ms": 216097
+    }
+   ],
+   "genres": [
+    {
+     "name": "hip hop",
+     "count": 1
+    },
+    {
+     "name": "instrumental",
+     "count": 1
     }
    ]
   },
@@ -10694,6 +14894,44 @@
      "title": "The Last Oasis",
      "length_ms": 219000
     }
+   ],
+   "genres": [
+    {
+     "name": "hypnagogic pop",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "lounge",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic soul",
+     "count": 1
+    },
+    {
+     "name": "space age pop",
+     "count": 1
+    }
    ]
   },
   {
@@ -10706,6 +14944,44 @@
     {
      "title": "Greenhouse Heat Death",
      "length_ms": 253000
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "post-punk",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "stoner rock",
+     "count": 1
     }
    ]
   },
@@ -10723,6 +14999,20 @@
     {
      "title": "Most of What I Like (live in Brisbane ’21)",
      "length_ms": 299750
+    }
+   ],
+   "genres": [
+    {
+     "name": "pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -10766,6 +15056,72 @@
      "title": "Satanic Slumber Party, Part 3 (Hoof and Horn)",
      "length_ms": 734000
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 3
+    },
+    {
+     "name": "dark ambient",
+     "count": 1
+    },
+    {
+     "name": "experimental",
+     "count": 1
+    },
+    {
+     "name": "experimental rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "industrial",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "noise",
+     "count": 1
+    },
+    {
+     "name": "noise rock",
+     "count": 1
+    },
+    {
+     "name": "post-punk",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "sound collage",
+     "count": 1
+    },
+    {
+     "name": "tape music",
+     "count": 1
+    }
    ]
   },
   {
@@ -10778,6 +15134,36 @@
     {
      "title": "Cyboogie",
      "length_ms": 408013
+    }
+   ],
+   "genres": [
+    {
+     "name": "synth-pop",
+     "count": 2
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "space disco",
+     "count": 1
     }
    ]
   },
@@ -10885,6 +15271,40 @@
      "title": "The Wholly Ghost",
      "length_ms": 192906
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "post-punk",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -10921,6 +15341,16 @@
     {
      "title": "The Endless Tap (Live ’24: Leg 2)",
      "length_ms": 2034010
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
     }
    ]
   },
@@ -10959,6 +15389,16 @@
     {
      "title": "Exploding Suns",
      "length_ms": 280000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -11006,6 +15446,28 @@
     {
      "title": "Candles",
      "length_ms": 348489
+    }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
     }
    ]
   },
@@ -11100,6 +15562,28 @@
     {
      "title": "The Grim Reaper",
      "length_ms": 709029
+    }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
     }
    ]
   },
@@ -11230,6 +15714,32 @@
     {
      "title": "Blue Morpho",
      "length_ms": 475615
+    }
+   ],
+   "genres": [
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "progressive electronic",
+     "count": 1
+    },
+    {
+     "name": "psytrance",
+     "count": 1
+    },
+    {
+     "name": "techno",
+     "count": 1
+    },
+    {
+     "name": "trance",
+     "count": 1
     }
    ]
   },
@@ -11503,6 +16013,44 @@
      "title": "Her and I (Slow Jam 2)",
      "length_ms": 426028
     }
+   ],
+   "genres": [
+    {
+     "name": "acoustic rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "heavy psych",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic pop",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -11527,6 +16075,32 @@
     {
      "title": "Tomb/Beach",
      "length_ms": 227000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 2
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "surf",
+     "count": 1
+    },
+    {
+     "name": "surf punk",
+     "count": 1
     }
    ]
   },
@@ -11618,6 +16192,28 @@
      "title": "Ice V",
      "length_ms": 615000
     }
+   ],
+   "genres": [
+    {
+     "name": "funk rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "jazz rock",
+     "count": 1
+    },
+    {
+     "name": "jazz-funk",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -11630,6 +16226,28 @@
     {
      "title": "Sleep Drifter",
      "length_ms": 284853
+    }
+   ],
+   "genres": [
+    {
+     "name": "acid rock",
+     "count": 1
+    },
+    {
+     "name": "anatolian rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "krautrock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
     }
    ]
   },
@@ -11675,6 +16293,52 @@
     {
      "title": "Willoughby’s Beach",
      "length_ms": 173000
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage punk",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "neo-psychedelia",
+     "count": 1
+    },
+    {
+     "name": "noise rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "psychobilly",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "surf punk",
+     "count": 1
     }
    ]
   },
@@ -11964,6 +16628,48 @@
      "title": "Rattlesnake",
      "length_ms": 699210
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "boogie rock",
+     "count": 1
+    },
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "indie rock",
+     "count": 1
+    },
+    {
+     "name": "jam band",
+     "count": 1
+    },
+    {
+     "name": "livetronica",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -12068,6 +16774,28 @@
      "title": "Planet B",
      "length_ms": 235932
     }
+   ],
+   "genres": [
+    {
+     "name": "heavy metal",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "speed metal",
+     "count": 1
+    },
+    {
+     "name": "stoner metal",
+     "count": 1
+    },
+    {
+     "name": "thrash metal",
+     "count": 1
+    }
    ]
   },
   {
@@ -12080,6 +16808,16 @@
     {
      "title": "The Dripping Tap",
      "length_ms": 1097010
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -12110,6 +16848,28 @@
     {
      "title": "Sam Cherry’s Last Shot",
      "length_ms": 169174
+    }
+   ],
+   "genres": [
+    {
+     "name": "frat rock",
+     "count": 1
+    },
+    {
+     "name": "garage psych",
+     "count": 1
+    },
+    {
+     "name": "garage rock revival",
+     "count": 1
+    },
+    {
+     "name": "indie surf",
+     "count": 1
+    },
+    {
+     "name": "surf punk",
+     "count": 1
     }
    ]
   },
@@ -12177,6 +16937,16 @@
     {
      "title": "Straws in the Wind (demo)",
      "length_ms": 680000
+    }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   },
@@ -14037,6 +18807,16 @@
      "title": "Vegemite",
      "length_ms": 165632
     }
+   ],
+   "genres": [
+    {
+     "name": "alternative rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -15073,6 +19853,16 @@
      "title": "Greenhouse Heat Death",
      "length_ms": null
     }
+   ],
+   "genres": [
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    }
    ]
   },
   {
@@ -15363,6 +20153,44 @@
     {
      "title": "ｎｏ░ｃｏｌｏｕｒ色なし",
      "length_ms": 167826
+    }
+   ],
+   "genres": [
+    {
+     "name": "barber beats",
+     "count": 1
+    },
+    {
+     "name": "eccojams",
+     "count": 1
+    },
+    {
+     "name": "electronic",
+     "count": 1
+    },
+    {
+     "name": "progressive rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
+    },
+    {
+     "name": "slushwave",
+     "count": 1
+    },
+    {
+     "name": "synthwave",
+     "count": 1
+    },
+    {
+     "name": "vaporwave",
+     "count": 1
     }
    ]
   },
@@ -15988,6 +20816,20 @@
     {
      "title": "I’m in Your Mind / I’m Not in Your Mind / Cellophane / I’m in Your Mind Fuzz",
      "length_ms": 749000
+    }
+   ],
+   "genres": [
+    {
+     "name": "garage rock",
+     "count": 1
+    },
+    {
+     "name": "psychedelic rock",
+     "count": 1
+    },
+    {
+     "name": "rock",
+     "count": 1
     }
    ]
   }
