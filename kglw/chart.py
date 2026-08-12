@@ -67,6 +67,7 @@ def build(
     since: str | None = None,
     static: bool = False,
     target_w: int | None = None,
+    totals: bool = False,
 ) -> str:
     all_months = report["months"]
     months = [m for m in all_months if not since or m >= since]
@@ -80,12 +81,20 @@ def build(
     colour_of = {album_id: SERIES[i] for i, album_id in enumerate(top_ids)}
 
     def bucket(album_id: str) -> str:
+        # In totals mode every album collapses into one series: the question
+        # is "how much listening that month", not "of what".
+        if totals:
+            return "__total__"
         return album_id if album_id in colour_of else "__other__"
 
     # Per-month totals per bucket, ordered so the legend and stack agree.
-    order = top_ids + ["__other__"]
-    label_of = {aid: titles.get(aid, aid) for aid in top_ids}
-    label_of["__other__"] = "Other releases"
+    if totals:
+        order = ["__total__"]
+        label_of = {"__total__": "Minutes"}
+    else:
+        order = top_ids + ["__other__"]
+        label_of = {aid: titles.get(aid, aid) for aid in top_ids}
+        label_of["__other__"] = "Other releases"
 
     def short(text: str, limit: int = 34) -> str:
         """Legend and tooltip names only -- tables keep the full title.
@@ -98,11 +107,13 @@ def build(
 
     stacks: dict[str, dict[str, float]] = {}
     for month in months:
-        totals: dict[str, float] = {}
+        # Not named `totals`: that is the mode flag, and rebinding it here
+        # silently flipped bucket()'s branch mid-loop.
+        buckets: dict[str, float] = {}
         for album_id, minutes in (by_month_album.get(month) or {}).items():
             key = bucket(album_id)
-            totals[key] = totals.get(key, 0) + minutes
-        stacks[month] = totals
+            buckets[key] = buckets.get(key, 0) + minutes
+        stacks[month] = buckets
 
     month_totals = {m: sum(v.values()) for m, v in stacks.items()}
     peak_month = max(month_totals, key=lambda m: month_totals[m]) if month_totals else None
@@ -115,8 +126,8 @@ def build(
     columns = []
     stack_px: dict[str, float] = {}
     for month in months:
-        totals = stacks[month]
-        present = [(key, totals.get(key, 0)) for key in order if totals.get(key, 0) > 0]
+        buckets = stacks[month]
+        present = [(key, buckets.get(key, 0)) for key in order if buckets.get(key, 0) > 0]
         segments = []
         for position, (key, minutes) in enumerate(present):
             height = max(minutes * scale, 1.5)
@@ -169,7 +180,7 @@ def build(
     # A PNG has no hover, so the extremes are labelled on the mark itself.
     # Selective by design -- a number on every column would be unreadable.
     value_labels = ""
-    if static and months:
+    if static and months and not totals:
         peaks = sorted(months, key=lambda m: -month_totals[m])[:3]
         parts = []
         for month in peaks:
@@ -184,7 +195,8 @@ def build(
         value_labels = "".join(parts)
 
     # --- legend ---
-    legend = "".join(
+    # A single series needs no legend: the title already names what is plotted.
+    legend = "" if totals else "".join(
         f'<span class="key"><i style="background:var(--c-{key})"></i>'
         f'{html.escape(short(label_of[key]))}</span>'
         for key in order
@@ -208,12 +220,16 @@ def build(
         if month_totals[m] > 0
     )
 
-    colour_vars_light = "\n".join(
-        f"  --c-{aid}: {SERIES[i][0]};" for i, aid in enumerate(top_ids)
-    ) + f"\n  --c-__other__: {OTHER[0]};"
-    colour_vars_dark = "\n".join(
-        f"  --c-{aid}: {SERIES[i][1]};" for i, aid in enumerate(top_ids)
-    ) + f"\n  --c-__other__: {OTHER[1]};"
+    if totals:
+        colour_vars_light = f"  --c-__total__: {SERIES[0][0]};"
+        colour_vars_dark = f"  --c-__total__: {SERIES[0][1]};"
+    else:
+        colour_vars_light = "\n".join(
+            f"  --c-{aid}: {SERIES[i][0]};" for i, aid in enumerate(top_ids)
+        ) + f"\n  --c-__other__: {OTHER[0]};"
+        colour_vars_dark = "\n".join(
+            f"  --c-{aid}: {SERIES[i][1]};" for i, aid in enumerate(top_ids)
+        ) + f"\n  --c-__other__: {OTHER[1]};"
 
     dropped = sum(
         report["minutes_by_month"].get(m, 0) for m in all_months if m not in set(months)
@@ -232,7 +248,7 @@ def build(
     total_plays = sum(src.values())
     counted = total_plays - src.get("none", 0)
 
-    page = STATIC_TEMPLATE if static else TEMPLATE
+    page = TOTALS_TEMPLATE if totals else (STATIC_TEMPLATE if static else TEMPLATE)
     replacements = {
         "__COLOURS_LIGHT__": colour_vars_light,
         "__COLOURS_DARK__": colour_vars_dark,
@@ -601,6 +617,37 @@ body { background: var(--surface); }
 )
 
 
+
+# Chart only: title, axes, bars. No subtitle, legend, value labels or caption.
+TOTALS_TEMPLATE = (
+    "<title>Gizzard Hours</title>\n<style>"
+    + _CSS
+    + """
+body { background: var(--surface); }
+.export { width: __TOTALW__px; padding: 30px 34px 24px; background: var(--surface); }
+.export h1 { font-size: 21px; margin: 0; letter-spacing: -0.01em; }
+.export .scroll { overflow: visible; padding-top: 26px; }
+.export .col { cursor: default; }
+.yunit {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px; color: var(--muted); letter-spacing: .08em;
+  text-transform: uppercase; margin-bottom: 12px; text-align: right; width: 34px;
+}
+</style>
+<div class="export">
+  <h1>King Gizzard &amp; the Lizard Wizard — minutes listened per month</h1>
+  <div class="scroll">
+    <div class="plotwrap">
+      <div class="yaxis">__YLAB__</div>
+      <div class="plot">__GRID__<div class="cols">__COLS__</div></div>
+    </div>
+    <div class="xaxis">__XLAB__</div>
+  </div>
+</div>
+"""
+)
+
+
 def build_table(report: dict, top_n: int = 6, rows: int = 12) -> str:
     """A standalone table image: the ranking, styled to match the chart."""
     ranked = [row for row in report["albums"] if row["minutes"] > 0]
@@ -669,6 +716,8 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--static", action="store_true",
                     help="chart-only render for image export (adds value labels)")
     ap.add_argument("--width", type=int, help="plot width budget in px")
+    ap.add_argument("--totals", action="store_true",
+                    help="single series of monthly totals, no legend or captions")
     ap.add_argument("--table", action="store_true", help="render the album ranking instead")
     ap.add_argument("--tsv", help="also write the ranking as TSV for pasting")
     ap.add_argument("--rows", type=int, default=12, help="rows in the table render")
@@ -687,7 +736,8 @@ def main(argv: list[str] | None = None) -> int:
             fh.write(build_table(report, top_n=args.top, rows=args.rows))
         else:
             fh.write(build(report, top_n=args.top, since=args.since,
-                           static=args.static, target_w=args.width))
+                           static=args.static or args.totals,
+                           target_w=args.width, totals=args.totals))
     print(f"wrote {args.output}")
     return 0
 

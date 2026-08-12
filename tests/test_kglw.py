@@ -305,5 +305,54 @@ class TestMinutes(unittest.TestCase):
         self.assertAlmostEqual(report["total_minutes"], 6.7, places=1)
 
 
+MINI_REPORT = {
+    "months": ["2024-01", "2024-02"],
+    "minutes_by_month": {"2024-01": 30.0, "2024-02": 10.0},
+    "minutes_by_month_album": {"2024-01": {"a": 20.0, "b": 10.0}, "2024-02": {"a": 10.0}},
+    "album_titles": {"a": "Album A", "b": "Album B"},
+    "albums": [
+        {"album_id": "a", "album": "Album A", "minutes": 30.0, "hours": 0.5,
+         "distinct_tracks": 2, "top_track": "T1"},
+        {"album_id": "b", "album": "Album B", "minutes": 10.0, "hours": 0.2,
+         "distinct_tracks": 1, "top_track": "T2"},
+    ],
+    "total_minutes": 40.0,
+    "total_hours": 0.7,
+    "duration_sources": {"track": 4},
+    "skipped_non_music": 0,
+    "skipped_unknown_count": 0,
+}
+
+
+class TestChartRender(unittest.TestCase):
+    """The bars must account for every minute, in both render modes."""
+
+    @staticmethod
+    def _plotted_minutes(page: str) -> float:
+        import re
+        from kglw import chart
+        heights = [float(h) for h in re.findall(r"height:([0-9.]+)px", page)]
+        # nice_ticks(30) -> top tick 40, so 340px of plot maps to 40 minutes.
+        return sum(heights) / (chart.PLOT_H / 40)
+
+    def test_stacked_render_plots_every_minute(self):
+        from kglw import chart
+        page = chart.build(MINI_REPORT, static=True)
+        self.assertAlmostEqual(self._plotted_minutes(page), 40.0, places=2)
+
+    def test_totals_render_plots_every_minute(self):
+        """Regression: a local named `totals` shadowed the mode flag, so the
+        first album of each month fell into an undrawn bucket."""
+        from kglw import chart
+        page = chart.build(MINI_REPORT, static=True, totals=True)
+        self.assertAlmostEqual(self._plotted_minutes(page), 40.0, places=2)
+
+    def test_totals_render_drops_legend_and_value_labels(self):
+        from kglw import chart
+        page = chart.build(MINI_REPORT, static=True, totals=True)
+        self.assertNotIn("vlabel", page)
+        self.assertNotIn("Other releases", page)
+
+
 if __name__ == "__main__":
     unittest.main()
