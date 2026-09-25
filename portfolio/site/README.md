@@ -1,9 +1,11 @@
 # samkemmis portfolio
 
-A shelf of projects built with AI coding agents. Static site, no dependencies.
+A fullscreen retro OS ("SKOS") that boots and shows my projects as cartridges on a desktop. Static site, no dependencies.
 
 - `projects.json` is the only file you edit to add, reorder, or reword a project.
-- `build.mjs` turns it into `dist/` (copies `public/`, generates the HTML, falls back to a monogram tile when a project has no screenshot).
+- `build.mjs` turns it into `dist/`: copies `public/`, generates the boot text, the desktop icons, one window per project, the All-projects table, README.txt and Trash.
+- `src/app.js` is the window manager: boot sequence (skippable, once per session), drag, minimize, zoom, taskbar, start menu, `#slug` deep links.
+- Drop a pixel-art portrait at `public/art/avatar.png` and it appears in README.txt and the start button.
 - `server.mjs` serves `dist/` with long cache headers on media. Railway runs it.
 
 ## Run locally
