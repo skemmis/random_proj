@@ -12,6 +12,7 @@
     if (bootDone) return; bootDone = true; clearTimeout(bootTimer);
     try { sessionStorage.setItem('booted', '1'); } catch {}
     bootEl.hidden = true; desktop.hidden = false;
+    screen.classList.remove('poweron');
     if (!reduced) { screen.classList.add('degauss'); setTimeout(() => screen.classList.remove('degauss'), 520); }
     if (!openHash()) { let welcomed = false; try { welcomed = sessionStorage.getItem('welcomed') === '1'; } catch {} if (!welcomed) { open('win-about'); try { sessionStorage.setItem('welcomed', '1'); } catch {} } }
   }
@@ -37,6 +38,7 @@
     };
     bootTimer = setTimeout(step, reduced ? 0 : 700);
   }
+  screen.addEventListener('animationend', (e) => { if (e.animationName === 'poweron') screen.classList.remove('poweron'); });
   bootEl.addEventListener('click', finishBoot);
   addEventListener('keydown', (e) => { if (!bootDone && !e.metaKey && !e.ctrlKey) { e.preventDefault(); finishBoot(); } }, { capture: true });
   let seen = false; try { seen = sessionStorage.getItem('booted') === '1'; } catch {}
