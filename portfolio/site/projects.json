@@ -81,7 +81,7 @@
       "group": "bet",
       "status": "live",
       "year": "2026",
-      "url": "https://fantasy-reality.com/tracker",
+      "url": "https://kalshi-mention-tracker.lovable.app",
       "repo": "https://github.com/skemmis/mention_tracker",
       "tools": [
         "Lovable",
@@ -93,8 +93,14 @@
         "Kalshi API"
       ],
       "featured": false,
-      "description": "Kalshi runs markets on whether a speaker will say a given phrase. This tracks every one of them: phrase search, per-phrase timelines, and an event log with settled outcomes, so you can see how often \"tariff\" actually gets said before you bet on it. Built first in Lovable, then rebuilt into the Fantasy Reality house style.",
-      "notes": null
+      "description": "Kalshi runs markets on whether a speaker will say a given phrase. This tracks every one of them: phrase search, per-phrase timelines, and an event log with settled outcomes, so you can see how often \"tariff\" actually gets said before you bet on it. The standalone version was built in Lovable in an afternoon; it was later folded into Fantasy Reality, where it feeds the research behind the newsletter.",
+      "notes": null,
+      "links": [
+        {
+          "label": "Inside Fantasy Reality",
+          "url": "https://fantasy-reality.com/tracker"
+        }
+      ]
     },
     {
       "slug": "fr-newsletter",
@@ -227,22 +233,23 @@
     },
     {
       "slug": "adaptive-resume",
-      "name": "Adaptive Resume",
-      "one": "A resume that rearranges itself for whoever is reading it.",
+      "name": "Chameleon Resume",
+      "one": "Paste a job posting and it tells you whether I'm a fit.",
       "group": "also",
-      "status": "unlinked",
+      "status": "live",
       "year": "2026",
-      "url": null,
+      "url": "https://sam-kemmis-chameleon.lovable.app",
       "repo": null,
       "tools": [
         "Lovable"
       ],
       "stack": [
-        "React"
+        "React",
+        "LLM fit analysis"
       ],
       "featured": false,
-      "description": "Built in Lovable. Link coming once it has a public URL.",
-      "notes": null
+      "description": "A resume that meets the reader halfway. Paste a job posting URL and it reads the role, scores the fit against my background, and reorders what it shows you to match. The rest of the page is a conventional resume for people who'd rather just read one.",
+      "notes": "Built in Lovable, which is also why it's the only thing here I can't show you the code for."
     }
   ]
 }

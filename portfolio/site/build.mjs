@@ -64,6 +64,7 @@ const dialog = (p) => `
     <p class="links">
       ${p.url ? `<a class="btn primary" href="${esc(p.url)}" ${p.external ? 'target="_blank" rel="noopener"' : ''}>${p.external ? 'Launch ↗' : 'Open'}</a>` : `<span class="btn disabled">No public link yet</span>`}
       ${p.repo ? `<a class="btn" href="${esc(p.repo)}" target="_blank" rel="noopener">Code</a>` : ''}
+      ${(p.links || []).map((l) => `<a class="btn" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join('')}
     </p>
   </div>
 </dialog>`;
