@@ -1,0 +1,248 @@
+{
+  "site": {
+    "name": "Sam Kemmis",
+    "tagline": "A year of things I built with AI coding agents.",
+    "intro": "Games, prediction-market tools, and a few analyses. Every one of these was vibe coded: I described what I wanted, an agent wrote the code, and we argued about it until it worked. The ones that didn't work aren't here, but there were plenty.",
+    "github": "https://github.com/skemmis",
+    "substack": "https://fantasyreality.substack.com",
+    "groups": [
+      {
+        "key": "play",
+        "label": "Play",
+        "blurb": "Games you can open in a browser right now."
+      },
+      {
+        "key": "bet",
+        "label": "Bet",
+        "blurb": "Prediction-market tools, mostly built around Kalshi."
+      },
+      {
+        "key": "read",
+        "label": "Read",
+        "blurb": "Data stories and the newsletter that runs on them."
+      },
+      {
+        "key": "also",
+        "label": "Also",
+        "blurb": "Odds and ends."
+      }
+    ]
+  },
+  "projects": [
+    {
+      "slug": "fantasy-reality",
+      "name": "Fantasy Reality",
+      "one": "A fantasy league for prediction markets.",
+      "group": "bet",
+      "status": "live",
+      "year": "2025–26",
+      "url": "https://fantasy-reality.com",
+      "repo": null,
+      "tools": [
+        "Replit",
+        "Claude Code"
+      ],
+      "stack": [
+        "React",
+        "Express",
+        "Postgres",
+        "Auth0",
+        "Kalshi API"
+      ],
+      "featured": true,
+      "description": "Seasons, leagues, parlays, and a shared wallet, all scored against real Kalshi and Polymarket prices. AI players bet alongside humans, a weekly digest goes out by email, and a Discord bot nags the league when a week is empty. It started as \"VibeBet\" on Replit in December 2025 and became the project every other one on this page grew out of.",
+      "notes": "The rule that caused the most bugs: the season is the economy, a league is only a grouping of people."
+    },
+    {
+      "slug": "degenbench",
+      "name": "DegenBench",
+      "one": "Frontier AI models paper-bet on real markets, every day.",
+      "group": "bet",
+      "status": "live",
+      "year": "2026",
+      "url": "https://fantasy-reality.com/degenbench",
+      "repo": null,
+      "tools": [
+        "Claude Code"
+      ],
+      "stack": [
+        "Node",
+        "Postgres",
+        "Anthropic, OpenAI, Google and xAI SDKs"
+      ],
+      "featured": true,
+      "description": "Each model gets the same slate of Kalshi markets and its own web search. Round one is an independent forecast with a public argument. Round two, every model reads the others' anonymized arguments and submits a final probability and an optional bet from a virtual bankroll. Scored on Brier score against a market-implied baseline, and on profit, because that's the degen metric.",
+      "notes": "All paper trading. No real money, no orders placed."
+    },
+    {
+      "slug": "mention-tracker",
+      "name": "Kalshi Mention Tracker",
+      "one": "Which words will he say? A phrase-market database.",
+      "group": "bet",
+      "status": "live",
+      "year": "2026",
+      "url": "https://fantasy-reality.com/tracker",
+      "repo": "https://github.com/skemmis/mention_tracker",
+      "tools": [
+        "Lovable",
+        "Claude Code"
+      ],
+      "stack": [
+        "React",
+        "Supabase",
+        "Kalshi API"
+      ],
+      "featured": false,
+      "description": "Kalshi runs markets on whether a speaker will say a given phrase. This tracks every one of them: phrase search, per-phrase timelines, and an event log with settled outcomes, so you can see how often \"tariff\" actually gets said before you bet on it. Built first in Lovable, then rebuilt into the Fantasy Reality house style.",
+      "notes": null
+    },
+    {
+      "slug": "fr-newsletter",
+      "name": "Fantasy Reality Newsletter",
+      "one": "A Substack about prediction markets, plus the chart-maker behind it.",
+      "group": "read",
+      "status": "live",
+      "year": "2026",
+      "url": "https://fantasyreality.substack.com",
+      "repo": "https://github.com/skemmis/fantasy-reality-newsletter",
+      "tools": [
+        "Claude Code"
+      ],
+      "stack": [
+        "Python",
+        "Railway",
+        "GitHub Actions"
+      ],
+      "featured": false,
+      "description": "The newsletter is the human part. The tool is a three-step wizard: paste a Kalshi event URL, frame the window and the y-axis, drop annotations on the chart, and export a PNG in the house style. There's an editorial preset and a louder meme preset with pixel callout boxes. Every chart saves a story file so the GitHub Action can re-render it later.",
+      "notes": "A companion branch holds a video pipeline for a Kalshi market video series, one episode in.",
+      "sq": "/art/newsletter-chart-meme.webp",
+      "wide": "/art/newsletter-chart-editorial.webp"
+    },
+    {
+      "slug": "emberfall",
+      "name": "Emberfall",
+      "one": "A real-time online table for a cooperative Middle-earth board game.",
+      "group": "play",
+      "status": "live",
+      "year": "2026",
+      "url": "https://emberfallclient-production.up.railway.app",
+      "repo": "https://github.com/skemmis/fakefellowship",
+      "tools": [
+        "Claude Code"
+      ],
+      "stack": [
+        "TypeScript",
+        "WebSockets",
+        "Railway"
+      ],
+      "featured": true,
+      "description": "Two to five players, each running two characters, escorting Frodo to Mount Doom from different living rooms. The host shares a four-letter room code. The engine only offers legal moves, every location, stat, die face and card is hover-documented, and dice rolls pause in a resolution panel so anyone present can spend a resource before the roll is locked in. Reloading rejoins your seat with the full log restored.",
+      "notes": "Rules paraphrased from the publisher's rulebook, no art or card text copied. Not affiliated with anyone. Buy the real game."
+    },
+    {
+      "slug": "music-for-parking",
+      "name": "Music for Parking",
+      "one": "A day of Los Angeles parking tickets, replayed on the hour, as music.",
+      "group": "play",
+      "status": "live",
+      "year": "2026",
+      "url": "https://la-brea-madre-staging.up.railway.app/pulse",
+      "repo": "https://github.com/skemmis/la-brea-madre",
+      "tools": [
+        "Claude Code"
+      ],
+      "stack": [
+        "React",
+        "deck.gl",
+        "Mapbox",
+        "H3",
+        "LA open data"
+      ],
+      "featured": true,
+      "description": "Real parking citations from the city's open-data feed, replayed across a map of LA on the hour. Each ticket is a note, and the neighborhoods keep their own rhythm, so the city becomes a slow generative score. It's the shippable slice of a much bigger idea, a territory game on a real hex map fed by LA's own data, with a lore bible that runs from Horace Bell to Manly P. Hall to Didion. The game part is still in the repo, waiting.",
+      "notes": null
+    },
+    {
+      "slug": "sex-house-island",
+      "name": "Sex House Island",
+      "one": "The first fully autonomous season of reality TV, and the engine to play it.",
+      "group": "play",
+      "status": "live",
+      "year": "2026",
+      "url": "https://sexhouseisland-production-569a.up.railway.app",
+      "repo": "https://github.com/skemmis/sexhouseisland",
+      "tools": [
+        "Claude Code"
+      ],
+      "stack": [
+        "TypeScript",
+        "HTML5 Canvas",
+        "no framework"
+      ],
+      "featured": false,
+      "description": "A promotional site for a reality show that doesn't exist: eight cast members, a remote island, prediction markets on who gets eliminated, and an investor page. Underneath it is the real experiment, a LucasArts-style point-and-click engine in about six hundred lines of TypeScript and Canvas. Nine verbs, a sentence line, hotspots, inventory combinations, a parrot with a dialogue tree, and a three-step puzzle. The walk cycle is drawn in code so the engine could be felt before any sprite existed.",
+      "notes": "Answer to the question it was built to ask: the engine is the easy part. The art is the hard part."
+    },
+    {
+      "slug": "gizzard-hours",
+      "name": "Gizzard Hours",
+      "one": "How much King Gizzard, actually, from a YouTube history export.",
+      "group": "read",
+      "status": "live",
+      "year": "2026",
+      "url": "/notes/gizzard-hours.html",
+      "repo": "https://github.com/skemmis/random_proj",
+      "tools": [
+        "Claude Code"
+      ],
+      "stack": [
+        "Python, standard library only",
+        "MusicBrainz"
+      ],
+      "featured": false,
+      "description": "Google Takeout ships your watch history as one 67 MB HTML file with no newlines. This streams it in chunks, fingerprints the band by channel ID, matches every play against a cached MusicBrainz discography of 265 releases, and reconstructs listening time by month, by album, and by how heavy the album is. Then it does the same for the Disney catalogue, for comparison. It fed an essay on the newsletter.",
+      "notes": null
+    },
+    {
+      "slug": "pre-speech-odds",
+      "name": "Pre-Speech Odds vs. Reality",
+      "one": "Fifteen months of Trump mention markets: is anyone an insider?",
+      "group": "read",
+      "status": "live",
+      "year": "2026",
+      "url": "/notes/pre-speech-odds.html",
+      "repo": null,
+      "tools": [
+        "Claude Code"
+      ],
+      "stack": [
+        "Kalshi trade API",
+        "Factba.se transcripts",
+        "SVG"
+      ],
+      "featured": false,
+      "description": "Every price, trade and transcript for 159 speeches. Speech starts are recovered from the moment a phrase's contract pins to 99 cents. The crowd overpays for coin-flips, ignores each phrase's own track record, and keeps paying for words he has stopped saying. Insiders, though, didn't show up: 92 suspicious contracts hit exactly as often as their prices claimed.",
+      "notes": null
+    },
+    {
+      "slug": "adaptive-resume",
+      "name": "Adaptive Resume",
+      "one": "A resume that rearranges itself for whoever is reading it.",
+      "group": "also",
+      "status": "unlinked",
+      "year": "2026",
+      "url": null,
+      "repo": null,
+      "tools": [
+        "Lovable"
+      ],
+      "stack": [
+        "React"
+      ],
+      "featured": false,
+      "description": "Built in Lovable. Link coming once it has a public URL.",
+      "notes": null
+    }
+  ]
+}

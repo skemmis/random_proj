@@ -1,0 +1,11 @@
+{
+  "name": "samkemmis-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "node server.mjs",
+    "dev": "node build.mjs && node server.mjs"
+  },
+  "engines": { "node": ">=20" }
+}

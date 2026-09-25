@@ -1,0 +1,509 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>Pre-Speech Odds vs Reality — Trump Mention Markets</title>
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #fcfcfb; --plane: #f9f9f7;
+    --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #898781;
+    --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+    --s1: #2a78d6; --s2: #eb6834; --pole-hi: #e34948; --pole-lo: #2a78d6;
+    --good: #006300; --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --paper: #1a1a19; --plane: #0d0d0d;
+      --ink: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+      --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+      --s1: #3987e5; --s2: #d95926; --pole-hi: #e66767; --pole-lo: #3987e5;
+      --good: #0ca30c; --card: #212120;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #1a1a19; --plane: #0d0d0d;
+    --ink: #ffffff; --ink-2: #c3c2b7; --ink-3: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926; --pole-hi: #e66767; --pole-lo: #3987e5;
+    --good: #0ca30c; --card: #212120;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--plane); color: var(--ink);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+  main { max-width: 960px; margin: 0 auto; padding: 40px 20px 96px; }
+  header.masthead { border-bottom: 2px solid var(--ink); padding-bottom: 20px; margin-bottom: 8px; }
+  .eyebrow { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; }
+  h1 { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: clamp(24px, 4.4vw, 40px); line-height: 1.15; letter-spacing: -.01em; margin: 0 0 12px; text-wrap: balance; text-transform: uppercase; }
+  .dek { max-width: 68ch; color: var(--ink-2); font-size: 17px; margin: 0; }
+  .meta { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; color: var(--ink-3); margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px 22px; }
+  .meta b { color: var(--ink); font-weight: 600; }
+  section { margin-top: 52px; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; border-top: 1px solid var(--grid); padding-top: 14px; }
+  .sec-no { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; color: var(--ink-3); letter-spacing: .12em; }
+  h2 { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 19px; margin: 0 0 4px; text-transform: uppercase; letter-spacing: .02em; }
+  p { max-width: 72ch; }
+  p.note { color: var(--ink-2); }
+  .caveat { border-left: 3px solid var(--s2); padding: 2px 0 2px 14px; color: var(--ink-2); font-size: 14.5px; max-width: 68ch; }
+  .card { background: var(--paper); border: 1px solid var(--ring); border-radius: 10px; padding: 18px 18px 10px; margin: 18px 0; }
+  .card h3 { margin: 0 0 2px; font-size: 14px; font-weight: 600; }
+  .card .sub { margin: 0 0 10px; font-size: 12.5px; color: var(--ink-3); }
+  .chart-wrap { overflow-x: auto; }
+  svg text { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 10.5px; fill: var(--ink-3); }
+  svg text.val { fill: var(--ink-2); }
+  svg text.direct { font-size: 11px; font-weight: 600; fill: var(--ink-2); }
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); margin: 4px 2px 8px; }
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+  .sw { width: 14px; height: 4px; border-radius: 2px; display: inline-block; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 24px 0 6px; }
+  .kpi { background: var(--paper); border: 1px solid var(--ring); border-radius: 10px; padding: 14px 16px; }
+  .kpi .v { font-size: 30px; font-weight: 650; letter-spacing: -.01em; }
+  .kpi .l { font-size: 12px; color: var(--ink-3); margin-top: 2px; line-height: 1.35; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th { text-align: left; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-weight: 600; padding: 6px 10px; border-bottom: 1px solid var(--axis); }
+  td { padding: 6px 10px; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+  td.num, th.num { text-align: right; }
+  .tbl-wrap { overflow-x: auto; }
+  .pos { color: var(--good); font-weight: 600; }
+  .neg { color: var(--pole-hi); font-weight: 600; }
+  #tip { position: fixed; pointer-events: none; background: var(--ink); color: var(--paper); font: 12px/1.45 ui-monospace, Menlo, Consolas, monospace; padding: 7px 10px; border-radius: 6px; opacity: 0; transition: opacity .12s; z-index: 10; max-width: 260px; }
+  footer { margin-top: 64px; border-top: 1px solid var(--grid); padding-top: 14px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px; color: var(--ink-3); }
+  @media (prefers-reduced-motion: reduce) { #tip { transition: none; } }
+</style>
+
+<main>
+<header class="masthead">
+  <p class="eyebrow">Fantasy Reality · Research Memo · 2026-08-09</p>
+  <h1>Pre-Speech Odds vs. Reality</h1>
+  <p class="dek">For fifteen months, Kalshi has run betting markets on what Donald Trump will say in his speeches — will he say "Biden"? "Tariff"? "Hormuz"? We pulled every price, every trade, and every transcript to answer two questions: does anyone know what he'll say before he says it, and where does the betting crowd get it wrong? Short answers: we found no sign of insiders — but the crowd has habits you can see from orbit.</p>
+  <div class="meta">
+    <span><b>159</b> speeches, Apr 2025 – Aug 2026</span>
+    <span><b>3,896</b> phrase contracts</span>
+    <span><b>974,533</b> individual trades</span>
+    <span><b>58,960</b> settled contracts backing the track records</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head"><span class="sec-no">01</span><div>
+    <h2>How we know when a speech started</h2>
+    <p class="note">Kalshi doesn't record when a speech actually begins — but the market tells you anyway. The moment Trump says a tracked word, that word's contract becomes settled fact (you can't un-say "Biden"), so its price slams to 99¢ and stays there. Below is the "Will he say Biden?" contract on August 3: at 18:03 the price jumps from 63¢ to 99¢ in a single minute. That jump <em>is</em> the word being spoken. We matched jumps like this against the word-by-word timestamps in the Factba.se transcript of the same speech, which pins down the true start — <b>19 minutes before the first tracked word landed</b>. Everything left of the dashed line is betting that happened before anyone had heard a word. That's the only part of the tape this report trusts.</p>
+  </div></div>
+  <div class="card">
+    <h3>"Will Trump say Biden?" · Executive Order signing, Aug 3</h3>
+    <p class="sub">Price by minute, final 100 minutes of trading · hover for price and volume</p>
+    <div class="chart-wrap"><div id="tape"></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">02</span><div>
+    <h2>Are the prices honest?</h2>
+    <p class="note">A price in these markets is a probability: a 70¢ contract is a claim that there's a 70% chance he says the word. The honesty test is simple — gather every contract priced around 70¢ and check whether about 70% of them came true. Do that at every price level and you get the curve below; an honest market sits on the dashed diagonal. We drew it twice: once using our careful transcript-based cutoff, and once with a sloppier cutoff that lets in bets placed while the speech was already underway.</p>
+  </div></div>
+  <div class="card">
+    <h3>What the price claimed vs. how often it happened</h3>
+    <p class="sub">1,059 contracts · dot size = number of contracts in that price range</p>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--s1)"></i> honest cutoff (from transcripts)</span>
+      <span><i class="sw" style="background:var(--s2)"></i> sloppy cutoff (leaks live betting)</span>
+      <span><i class="sw" style="background:var(--axis)"></i> perfectly honest prices</span>
+    </div>
+    <div class="chart-wrap"><div id="calib"></div></div>
+  </div>
+  <p>Both versions agree on the main flaw: <b>contracts priced near a coin flip (40–60¢) came true meaningfully less often than their price claimed</b> — the crowd pays a premium for "will he say it" whenever it feels like a toss-up. Cheap contracts and near-certain ones were priced roughly right. Notice also that the sloppy cutoff's suspiciously perfect top-right corner softens under the honest one: some of what looked like foresight was just people betting on words they were hearing live.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">03</span><div>
+    <h2>The market ignores its own history</h2>
+    <p class="note">Every phrase has a track record — across 58,960 settled contracts, we know exactly how often Trump says "tariff" or "fake news." So take each contract and ask: is its price above or below the phrase's lifetime rate? If prices already absorbed that history, every group below would sit near zero. They don't.</p>
+  </div></div>
+  <div class="card">
+    <h3>How each group actually did, relative to its price</h3>
+    <p class="sub">Bars to the right: contracts that beat their price. Bars to the left: contracts that fell short.</p>
+    <div class="chart-wrap"><div id="signal"></div></div>
+  </div>
+  <p>Contracts priced far <em>below</em> the phrase's track record beat their price by 12–17 points; contracts priced far <em>above</em> it fell short by 7–17. In plain terms: <b>when the price and the history disagree, bet on the history.</b> The crowd trades the day's narrative and under-weights how often he actually says things.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">04</span><div>
+    <h2>Phrase by phrase: who gets mispriced</h2>
+    <p class="note">One dot per phrase: its average pre-speech price against how often it actually got said. On the diagonal, the market has that phrase figured out. Below the diagonal, bettors kept paying for a word he doesn't say. Above it, they kept underrating one of his staples.</p>
+  </div></div>
+  <div class="card">
+    <h3>Average price vs. actual rate, per phrase</h3>
+    <p class="sub">58 phrases with 4+ appearances · dot size = number of appearances · hover for detail</p>
+    <div class="chart-wrap"><div id="scatter"></div></div>
+  </div>
+  <div class="card">
+    <h3>The biggest gaps (phrases with 6+ appearances)</h3>
+    <p class="sub">Blue: happened more often than the price claimed. Red: less often.</p>
+    <div class="chart-wrap"><div id="gaps"></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">05</span><div>
+    <h2>A tempting story that didn't survive testing</h2>
+    <p class="note">Why do phrases get mispriced? A tidy theory: his vocabulary changes and prices lag behind. Each row below shows a phrase's long-run rate (hollow dot) drifting to its recent rate (solid dot), with the market's average price as the orange tick. Measured the obvious way, mispricing lines up with this drift impressively well.</p>
+  </div></div>
+  <div class="card">
+    <h3>Old rate → recent rate, vs. where the market priced it</h3>
+    <p class="sub">Hollow dot = long-run rate · solid dot = recent rate · orange tick = average market price</p>
+    <div class="chart-wrap"><div id="drift"></div></div>
+  </div>
+  <p class="caveat"><b>We tested it properly, and it failed.</b> The obvious measurement partly grades its own homework — the "recent" window overlaps the very events the mispricing is measured on. When we separated them cleanly (drift measured on spring events, mispricing measured on summer events), the relationship vanished — though only 18 phrases qualified for the clean test, so it's a weak instrument. Honest verdict: unproven. The better-built version of the "market is slow to update" idea is the next section, which uses only information available before each event.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">06</span><div>
+    <h2>Streaks: the question that cracked it open</h2>
+    <p class="note">If he's said a word at his last few events, is he more likely to say it at the next one?</p>
+  </div></div>
+  <p>At first glance, obviously yes: after three straight mentions, a phrase hits 62% of the time; after three straight misses, 25%. But that's mostly an illusion of composition — words on hot streaks are words he says all the time anyway. Compare each phrase to its own track record and the streak of hits tells you nothing new. A coin that landed heads three times isn't extra likely to land heads again.</p>
+  <p>A <em>miss</em> is different — for Trump. His vocabulary lives in eras: topics arrive, dominate every speech, then get dropped. When "ceasefire" went from every-speech to skipped-one-speech, that silence was real news — the word was leaving the rotation for good. In the numbers: <b>after a fresh miss, a phrase comes up about 9 points less often than its track record predicts.</b> His misses carry information. His streaks don't.</p>
+  <div class="card">
+    <h3>How the market handles streaks (3,149 priced contracts)</h3>
+    <p class="sub">Each bar: how the group actually did, relative to its price. The market prices hot streaks almost perfectly — and won't believe a word has been dropped.</p>
+    <div class="chart-wrap"><div id="streaks"></div></div>
+  </div>
+  <p>The market half-understands this. Contracts on hot-streak phrases were priced within a point of reality. But it keeps paying for words he's stopped saying: contracts on phrases missed three or more times in a row were priced around 37¢ and came true 27% of the time — <b>paying 37 cents for something worth 27</b>.</p>
+  <p><b>Is that gap money?</b> Nominally, yes. Buying NO on every three-plus-miss phrase at real pre-speech prices — after Kalshi's ~7% fee and up to 2¢ of spread — would have returned 4–6¢ per contract, roughly 6–10% per speech-day, across the 168 chances the modern era offered. (Reassuringly, the same strategy applied to <em>every</em> contract nets zero after fees — the edge is specific, not an accounting artifact.) But 168 chances is a small book: one unlucky month erases it, and the next section shows this market gets sharper every quarter. A documented bias, not an ATM.</p>
+  <p><b>Half of this is Trump; half is human nature.</b> Kalshi runs identical markets on other people — CEOs on earnings calls, press briefings. Two findings. First, the miss-signal is Trump-only: for everyone else, skipping a word one time says nothing about next time (14,111 cases, dead zero). A CEO who skips "AI" one quarter is right back at his usual rate the next — most speakers' vocabularies are stationary; Trump's has regimes. Second, the twist: <b>the betting mistake is universal.</b> On every subject, contracts on a just-missed word were overpriced by about 7 points (25,121 contracts checked against day-before prices). Everywhere, bettors make the same hope-trade — <em>he didn't say it last time, surely this time</em> — like betting extra on a slumping hitter because he's "due." On Trump it simply costs more — 8½ points instead of 7 — because his misses actually mean something.</p>
+  <div class="card">
+    <h3>Trump's misses vs everyone else's misses</h3>
+    <p class="sub">Top chart — the <b>difference</b>: what actually happens the next time, relative to each speaker's own track record. Zero means a miss told you nothing. Bottom chart — the <b>similarity</b>: what happened relative to the day-before price. After a miss, every crowd overpays.</p>
+    <div class="chart-wrap"><div id="xsubjBehavior"></div></div>
+    <p class="sub" style="margin-top:18px">…and what bettors paid for those same situations:</p>
+    <div class="chart-wrap"><div id="xsubjMarket"></div></div>
+  </div>
+  <div class="card">
+    <h3>Where the crowd misjudges the room</h3>
+    <p class="sub">How each event type actually did, relative to its prices (modern era)</p>
+    <div class="chart-wrap"><div id="venues"></div></div>
+  </div>
+  <p>Where he speaks matters enormously. At Cabinet meetings, tracked words hit 61% of the time; on scripted tele-rallies, 29%. A two-ingredient recipe — the phrase's track record plus the type of event — gets you most of the way to the market's own accuracy. And the crowd misjudges the scripted formats specifically: it <b>overpays at tele-rallies by 12 points</b> and rallies by 9, while underpaying bilateral meetings — the format where he wanders furthest off script — by 9.</p>
+  <p>Two more habits show up in the fine-grained data. <b>Overnight excitement overshoots:</b> contracts that jumped 15+ points between the previous day's close and the pre-speech morning came true 11 points less often than their new, higher price claimed; overnight crashes overshot the other way. And the trade tape shows who's wrong: where <em>NO</em> buyers had been active before a speech, prices were almost exactly right; where <em>YES</em> buyers ran unopposed, prices sat about 11 points too high. In these markets, aggressive optimism doesn't discover the truth — it inflates the price until a skeptic shows up.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">07</span><div>
+    <h2>Fifteen months of history: the market learned</h2>
+    <p class="note">Kalshi deletes minute-level data after about ten weeks, but daily summary files survive — so 121 older speeches, back to April 2025, join the sample through a coarser snapshot: the price range on the day <em>before</em> each speech. That snapshot is imperfect (we checked it against exact prices on the 648 modern contracts where both exist — correlated, but noisy, and biased toward 50¢), so the comparison below applies the <b>same imperfect snapshot to both eras</b>. Whatever it distorts, it distorts equally. The gap between the lines is real.</p>
+  </div></div>
+  <div class="card">
+    <h3>Same measurement, two eras</h3>
+    <p class="sub">Day-before price vs. how often the contract came true · historical = Apr 2025 – May 2026 (2,837 contracts) · modern = May – Aug 2026 (648)</p>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--pole-hi)"></i> historical era</span>
+      <span><i class="sw" style="background:var(--s1)"></i> modern era</span>
+      <span><i class="sw" style="background:var(--axis)"></i> perfectly honest prices</span>
+    </div>
+    <div class="chart-wrap"><div id="eracalib"></div></div>
+  </div>
+  <p>The 2025 crowd massively overpaid for longshots: words priced 35–50¢ the day before a speech came true just <b>18%</b> of the time. Today the same price range misses by single digits. Whether traders got smarter, market makers got tighter, or Kalshi's phrase menus got more realistic, the market of April 2025 and the market of today are different animals — <b>and any "strategy" backtested on the old days would not survive in the new ones.</b></p>
+  <div class="tbl-wrap"><table>
+    <tr><th>Phrase</th><th class="num">2025 era: priced → hit</th><th class="num">2026 era: priced → hit</th><th>Reading</th></tr>
+    <tr><td>BARACK HUSSEIN OBAMA</td><td class="num">47% → <span class="neg">9%</span></td><td class="num">39% → <span class="pos">54%</span></td><td>He barely said it in 2025; now it's a staple the market still underrates</td></tr>
+    <tr><td>HORMUZ</td><td class="num">56% → 58%</td><td class="num">49% → <span class="neg">16%</span></td><td>Priced fine historically — the 2026 mispricing is pure crisis hype</td></tr>
+    <tr><td>CEASEFIRE</td><td class="num">48% → <span class="neg">18%</span></td><td class="num">28% → <span class="neg">0%</span></td><td>Overpriced in both eras; the crowd never learns on this one</td></tr>
+    <tr><td>OIL</td><td class="num">58% → 53%</td><td class="num">75% → <span class="pos">90%</span></td><td>He says it far more now; the market chased but still trails</td></tr>
+    <tr><td>TRANSGENDER</td><td class="num">42% → <span class="neg">24%</span></td><td class="num">44% → 48%</td><td>A 2025 overpricing that corrected as his usage rose to meet the price</td></tr>
+  </table></div>
+  <p class="caveat">Fine print for this era comparison: day-before prices can't see news that broke overnight, so some "mispricing" is just information that arrived after the snapshot. Only markets listed at least a day early qualify (946 same-day listings had no day-before price to use, and 178 never traded). Five daily files are missing from Kalshi's archive. Every exclusion is counted; none are silent.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">08</span><div>
+    <h2>The insider question</h2>
+    <p class="note">The hypothesis that started this project: a phrase with a suspiciously high price on suspiciously heavy betting means <em>somebody knows</em>. Our screen for that fingerprint — price above 60¢, at least twice the phrase's usual share of the event's betting, priced far above its track record — flagged 18 contracts in the modern era, and 16 of them hit. Enticing. So we ran the same screen on all fifteen months.</p>
+  </div></div>
+  <div class="kpis">
+    <div class="kpi"><div class="v mono">16 / 18</div><div class="l">modern-era "suspects" that hit — the tease that sent us digging</div></div>
+    <div class="kpi"><div class="v mono">78% vs 79%</div><div class="l">all 92 suspects over 15 months: how often they hit vs. what their prices claimed. Dead even.</div></div>
+    <div class="kpi"><div class="v mono">3×</div><div class="l">HORMUZ made the suspect list in three separate crises — and missed all three</div></div>
+    <div class="kpi"><div class="v mono">19 min</div><div class="l">the measured gap between a speech starting and the first tracked word — the window live-listeners exploit</div></div>
+  </div>
+  <p>At full scale, the fingerprint evaporated. The historical era's 74 suspects actually did <em>worse</em> than their prices claimed. Across all 92 suspect contracts, hits came in at 78% against prices claiming 79% — the "insider" signature paid exactly nothing, and the modern 16-of-18 looks like what it probably was: a lucky streak in a small sample. The one screen that stays mildly positive — heavy betting on already-expensive contracts — doesn't need insiders to explain it, because expensive contracts ran slightly cheap across the board in both eras. And the list of suspects that <em>missed</em> reads like a highlight reel of hype: HORMUZ during a strait crisis, AFFORDABLE three times during affordability news cycles, PUTIN, TARIFF. The honest residual: our day-before snapshot can't see a same-day insider on the 946 markets that only opened on speech day. On everything we <em>can</em> see, the crowd isn't hiding insiders. It's just a crowd.</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">09</span><div>
+    <h2>Ledger &amp; method</h2>
+  </div></div>
+  <div class="tbl-wrap"><table>
+    <tr><th>Step</th><th>Detail</th></tr>
+    <tr><td>Sample</td><td>Every settled Trump mention event Kalshi still exposes: 38 with minute-level prices and transcript alignment, 121 older ones via day-before snapshots; 1,427 markets' full minute candles; 974,533 trades</td></tr>
+    <tr><td>Speech starts</td><td>Median of (price-jump time − transcript word timestamp) across each event's spoken phrases; typical agreement within ±13 seconds. Rejected honestly: one event with no transcript, one TV broadcast where ad breaks break the math</td></tr>
+    <tr><td>Pre-speech window</td><td>Everything before the transcript-derived start, minus a one-minute buffer. Hedge legs excluded; stale and untraded contracts dropped to a ledger, never silently</td></tr>
+    <tr><td>Track records</td><td>58,960 settled phrase contracts in the FR tracker database, smoothed so one-appearance phrases can't produce fake certainty</td></tr>
+    <tr><td>Known limits</td><td>Ten weeks of minute-level data; small per-phrase samples (4–36 events); day-before snapshots can't separate a same-day insider from a fast live-listener; every claimed bias should be assumed smaller going forward, because the market is visibly improving</td></tr>
+  </table></div>
+</section>
+
+<footer>
+  fantasy-reality research · sources: Kalshi trade API (candles, trades, settlements) · Kalshi public daily files · Roll Call Factba.se (word-offset transcripts) · FR phrase tracker (track records) · reproducible via scripts/insider-edge/run.mjs · data preserved in research_* tables
+</footer>
+</main>
+<div id="tip" role="status"></div>
+
+<script>
+const DATA = {"stats": {"events": 38, "markets": 1059, "alignedSpreadMedian": 16, "transcripts": 38, "histEvents": 121, "histMarkets": 2837}, "calibAligned": [{"mid": 0.05, "n": 53, "meanPrice": 0.051509433962264144, "realized": 0.05660377358490566}, {"mid": 0.15000000000000002, "n": 97, "meanPrice": 0.1531958762886598, "realized": 0.17525773195876287}, {"mid": 0.25, "n": 108, "meanPrice": 0.24342592592592582, "realized": 0.28703703703703703}, {"mid": 0.35, "n": 127, "meanPrice": 0.34346456692913396, "realized": 0.2755905511811024}, {"mid": 0.45, "n": 108, "meanPrice": 0.4410185185185182, "realized": 0.35185185185185186}, {"mid": 0.55, "n": 98, "meanPrice": 0.5480612244897959, "realized": 0.41836734693877553}, {"mid": 0.6499999999999999, "n": 152, "meanPrice": 0.6445394736842103, "realized": 0.618421052631579}, {"mid": 0.75, "n": 138, "meanPrice": 0.7440579710144932, "realized": 0.7028985507246377}, {"mid": 0.8500000000000001, "n": 134, "meanPrice": 0.840074626865671, "realized": 0.8582089552238806}, {"mid": 0.95, "n": 44, "meanPrice": 0.9193181818181817, "realized": 1}], "calibNaive": [{"mid": 0.05, "n": 86, "meanPrice": 0.03976744186046504, "realized": 0.03488372093023256}, {"mid": 0.15000000000000002, "n": 103, "meanPrice": 0.15271844660194173, "realized": 0.1650485436893204}, {"mid": 0.25, "n": 117, "meanPrice": 0.24358974358974353, "realized": 0.27350427350427353}, {"mid": 0.35, "n": 138, "meanPrice": 0.3444202898550725, "realized": 0.2826086956521739}, {"mid": 0.45, "n": 127, "meanPrice": 0.4422047244094486, "realized": 0.33858267716535434}, {"mid": 0.55, "n": 110, "meanPrice": 0.5481818181818182, "realized": 0.39090909090909093}, {"mid": 0.6499999999999999, "n": 166, "meanPrice": 0.6444578313253011, "realized": 0.6204819277108434}, {"mid": 0.75, "n": 148, "meanPrice": 0.7453378378378382, "realized": 0.6959459459459459}, {"mid": 0.8500000000000001, "n": 151, "meanPrice": 0.8407947019867542, "realized": 0.8675496688741722}, {"mid": 0.95, "n": 51, "meanPrice": 0.9180392156862742, "realized": 1}], "scatter": [{"phrase": "HORMUZ", "n": 19, "price": 0.4868421052631579, "realized": 0.15789473684210525, "z": -2.8686901591812304}, {"phrase": "BIDEN", "n": 34, "price": 0.6994117647058824, "realized": 0.8823529411764706, "z": 2.3264754293525547}, {"phrase": "CEASEFIRE", "n": 14, "price": 0.2764285714285714, "realized": 0, "z": -2.3126759157762784}, {"phrase": "NEGOTIATE / NEGOTIATED / NEGOTIATION", "n": 14, "price": 0.547142857142857, "realized": 0.2857142857142857, "z": -1.9651064878050677}, {"phrase": "WORLD CUP", "n": 14, "price": 0.4371428571428571, "realized": 0.21428571428571427, "z": -1.6810467526314359}, {"phrase": "SAVE AMERICA ACT", "n": 14, "price": 0.752857142857143, "realized": 0.5714285714285714, "z": -1.573763177646572}, {"phrase": "REBUILT THE MILITARY", "n": 4, "price": 0.3775, "realized": 0, "z": -1.5574667929830734}, {"phrase": "BARACK HUSSEIN OBAMA", "n": 26, "price": 0.39230769230769236, "realized": 0.5384615384615384, "z": 1.5263061046666597}, {"phrase": "OIL", "n": 19, "price": 0.7505263157894737, "realized": 0.8947368421052632, "z": 1.452708339596835}, {"phrase": "HOAX", "n": 6, "price": 0.21833333333333338, "realized": 0, "z": -1.2945679523952656}, {"phrase": "TARIFF", "n": 25, "price": 0.5948, "realized": 0.72, "z": 1.2751290352660525}, {"phrase": "CHEAT / CHEATER / CHEATING", "n": 10, "price": 0.3869999999999999, "realized": 0.2, "z": -1.2141039911184854}, {"phrase": "AMERICA FIRST", "n": 15, "price": 0.48866666666666675, "realized": 0.3333333333333333, "z": -1.203516035840339}, {"phrase": "FAKE NEWS", "n": 25, "price": 0.5739999999999998, "realized": 0.68, "z": 1.0718033838634577}, {"phrase": "AMERICAN DREAM", "n": 6, "price": 0.6333333333333334, "realized": 0.8333333333333334, "z": 1.016608490504829}, {"phrase": "AI / ARTIFICIAL INTELLIGENCE", "n": 31, "price": 0.36387096774193534, "realized": 0.45161290322580644, "z": 1.0154107240992691}, {"phrase": "DRILL BABY DRILL", "n": 8, "price": 0.27875, "realized": 0.125, "z": -0.9698616051452363}, {"phrase": "AFFORD / AFFORDABLE / AFFORDABILITY", "n": 23, "price": 0.4021739130434783, "realized": 0.30434782608695654, "z": -0.9568067283830712}, {"phrase": "SUPREME COURT", "n": 11, "price": 0.4081818181818182, "realized": 0.5454545454545454, "z": 0.9263169801246683}, {"phrase": "NATO", "n": 7, "price": 0.45285714285714285, "realized": 0.2857142857142857, "z": -0.8883945050482802}, {"phrase": "MAGA / MAKE AMERICA GREAT AGAIN", "n": 13, "price": 0.5815384615384616, "realized": 0.46153846153846156, "z": -0.8770733738298252}, {"phrase": "FRAUD", "n": 20, "price": 0.3955000000000001, "realized": 0.3, "z": -0.8734679475409}, {"phrase": "NUCLEAR", "n": 16, "price": 0.786875, "realized": 0.875, "z": 0.8607738195179833}, {"phrase": "CRYPTO / BITCOIN", "n": 35, "price": 0.054285714285714305, "realized": 0.08571428571428572, "z": 0.8206083088184202}, {"phrase": "STOCK MARKET", "n": 36, "price": 0.563888888888889, "realized": 0.5, "z": -0.7730031100611199}, {"phrase": "BALLROOM", "n": 7, "price": 0.5728571428571428, "realized": 0.42857142857142855, "z": -0.7717250779865161}, {"phrase": "VENEZUELA", "n": 13, "price": 0.6707692307692308, "realized": 0.7692307692307693, "z": 0.7554426825210753}, {"phrase": "KNICKS", "n": 4, "price": 0.1225, "realized": 0, "z": -0.7472647177570733}, {"phrase": "SLEEPY JOE", "n": 6, "price": 0.48500000000000004, "realized": 0.3333333333333333, "z": -0.7433464698533829}, {"phrase": "TRILLION", "n": 4, "price": 0.57, "realized": 0.75, "z": 0.7271614469220994}, {"phrase": "IRAN (3+ TIMES)", "n": 23, "price": 0.6239130434782608, "realized": 0.6956521739130435, "z": 0.7102542775291568}, {"phrase": "HOTTEST", "n": 35, "price": 0.6002857142857143, "realized": 0.5428571428571428, "z": -0.6935985812872827}, {"phrase": "DEMOCRAT", "n": 29, "price": 0.7444827586206897, "realized": 0.6896551724137931, "z": -0.6769563994748797}, {"phrase": "GULF OF AMERICA", "n": 4, "price": 0.33999999999999997, "realized": 0.5, "z": 0.6755205294731986}, {"phrase": "CHINA / CHINESE", "n": 27, "price": 0.6033333333333333, "realized": 0.6666666666666666, "z": 0.6727019938390052}, {"phrase": "LANDSLIDE", "n": 9, "price": 0.5555555555555556, "realized": 0.6666666666666666, "z": 0.6708203932499366}, {"phrase": "GAS / GASOLINE", "n": 7, "price": 0.8099999999999999, "realized": 0.7142857142857143, "z": -0.6455151995346221}, {"phrase": "UFC", "n": 6, "price": 0.27499999999999997, "realized": 0.16666666666666666, "z": -0.5942954171472427}, {"phrase": "250", "n": 15, "price": 0.466, "realized": 0.4, "z": -0.5124198891890085}, {"phrase": "TRANSGENDER", "n": 31, "price": 0.44000000000000006, "realized": 0.4838709677419355, "z": 0.4920822612352234}, {"phrase": "DUMBOCRAT / DUMACRAT", "n": 22, "price": 0.5045454545454547, "realized": 0.45454545454545453, "z": -0.4690609590670891}, {"phrase": "UKRAINE", "n": 9, "price": 0.48666666666666664, "realized": 0.5555555555555556, "z": 0.41348037472301996}, {"phrase": "WINDMILL", "n": 7, "price": 0.36, "realized": 0.42857142857142855, "z": 0.37796447300922714}, {"phrase": "RUSSIA / RUSSIAN", "n": 7, "price": 0.5000000000000001, "realized": 0.5714285714285714, "z": 0.3779644730092265}, {"phrase": "COMMUNIST / COMMUNISM", "n": 19, "price": 0.5889473684210527, "realized": 0.631578947368421, "z": 0.3776776273929728}, {"phrase": "SOYBEAN", "n": 4, "price": 0.5825, "realized": 0.5, "z": -0.33458598037457593}, {"phrase": "ISRAEL / ISRAELI", "n": 26, "price": 0.5119230769230769, "realized": 0.5384615384615384, "z": 0.2707172476355688}, {"phrase": "ELECTION", "n": 15, "price": 0.6333333333333334, "realized": 0.6, "z": -0.26789985988841075}, {"phrase": "DEAL / SETTLE", "n": 5, "price": 0.77, "realized": 0.8, "z": 0.1594031782476756}, {"phrase": "IRAN (5+ TIMES)", "n": 5, "price": 0.566, "realized": 0.6, "z": 0.15339487111538663}, {"phrase": "BIG BEAUTIFUL BILL", "n": 4, "price": 0.7200000000000001, "realized": 0.75, "z": 0.1336306209562118}, {"phrase": "BIBI / NETANYAHU", "n": 7, "price": 0.3028571428571428, "realized": 0.2857142857142857, "z": -0.09870801640353132}, {"phrase": "RADICAL LEFT", "n": 13, "price": 0.5253846153846153, "realized": 0.5384615384615384, "z": 0.09442079737204226}, {"phrase": "INVEST / INVESTED / INVESTMENT", "n": 4, "price": 0.7625, "realized": 0.75, "z": -0.058747349544604456}, {"phrase": "ENDORSE / ENDORSED / ENDORSEMENT", "n": 4, "price": 0.7374999999999999, "realized": 0.75, "z": 0.05681909897271391}, {"phrase": "FIRST TERM", "n": 20, "price": 0.597, "realized": 0.6, "z": 0.027352470852884978}, {"phrase": "DRONE", "n": 6, "price": 0.5049999999999999, "realized": 0.5, "z": -0.024496122264566173}, {"phrase": "OIL / GAS / GASOLINE", "n": 18, "price": 0.6649999999999998, "realized": 0.6666666666666666, "z": 0.014981378483575395}], "gaps": [{"phrase": "HORMUZ", "n": 19, "gap": -0.32894736842105265, "price": 0.4868421052631579, "realized": 0.15789473684210525}, {"phrase": "CEASEFIRE", "n": 14, "gap": -0.2764285714285714, "price": 0.2764285714285714, "realized": 0}, {"phrase": "NEGOTIATE / NEGOTIATED / NEGOTIATION", "n": 14, "gap": -0.26142857142857134, "price": 0.547142857142857, "realized": 0.2857142857142857}, {"phrase": "WORLD CUP", "n": 14, "gap": -0.22285714285714284, "price": 0.4371428571428571, "realized": 0.21428571428571427}, {"phrase": "HOAX", "n": 6, "gap": -0.21833333333333338, "price": 0.21833333333333338, "realized": 0}, {"phrase": "AMERICAN DREAM", "n": 6, "gap": 0.19999999999999996, "price": 0.6333333333333334, "realized": 0.8333333333333334}, {"phrase": "CHEAT / CHEATER / CHEATING", "n": 10, "gap": -0.1869999999999999, "price": 0.3869999999999999, "realized": 0.2}, {"phrase": "BIDEN", "n": 34, "gap": 0.18294117647058816, "price": 0.6994117647058824, "realized": 0.8823529411764706}, {"phrase": "SAVE AMERICA ACT", "n": 14, "gap": -0.1814285714285716, "price": 0.752857142857143, "realized": 0.5714285714285714}, {"phrase": "NATO", "n": 7, "gap": -0.16714285714285715, "price": 0.45285714285714285, "realized": 0.2857142857142857}, {"phrase": "AMERICA FIRST", "n": 15, "gap": -0.15533333333333343, "price": 0.48866666666666675, "realized": 0.3333333333333333}, {"phrase": "DRILL BABY DRILL", "n": 8, "gap": -0.15375, "price": 0.27875, "realized": 0.125}, {"phrase": "SLEEPY JOE", "n": 6, "gap": -0.15166666666666673, "price": 0.48500000000000004, "realized": 0.3333333333333333}, {"phrase": "BARACK HUSSEIN OBAMA", "n": 26, "gap": 0.14615384615384608, "price": 0.39230769230769236, "realized": 0.5384615384615384}, {"phrase": "BALLROOM", "n": 7, "gap": -0.1442857142857143, "price": 0.5728571428571428, "realized": 0.42857142857142855}, {"phrase": "OIL", "n": 19, "gap": 0.14421052631578946, "price": 0.7505263157894737, "realized": 0.8947368421052632}], "drift": [{"phrase": "AMERICAN DREAM", "longRun": 0.5384615384615384, "recent": 0.8571428571428571, "price": 0.6333333333333334, "gap": 0.19999999999999996, "n": 6}, {"phrase": "OIL", "longRun": 0.6307692307692307, "recent": 0.9, "price": 0.7505263157894737, "gap": 0.14421052631578946, "n": 19}, {"phrase": "SUPREME COURT", "longRun": 0.3170731707317073, "recent": 0.5333333333333333, "price": 0.4081818181818182, "gap": 0.1372727272727272, "n": 11}, {"phrase": "CHEAT / CHEATER / CHEATING", "longRun": 0.375, "recent": 0.18181818181818182, "price": 0.3869999999999999, "gap": -0.1869999999999999, "n": 10}, {"phrase": "NEGOTIATE / NEGOTIATED / NEGOTIATION", "longRun": 0.4, "recent": 0.23076923076923078, "price": 0.547142857142857, "gap": -0.26142857142857134, "n": 14}, {"phrase": "BALLROOM", "longRun": 0.3333333333333333, "recent": 0.5, "price": 0.5728571428571428, "gap": -0.1442857142857143, "n": 7}, {"phrase": "NATO", "longRun": 0.45, "recent": 0.2857142857142857, "price": 0.45285714285714285, "gap": -0.16714285714285715, "n": 7}, {"phrase": "SLEEPY JOE", "longRun": 0.45, "recent": 0.2857142857142857, "price": 0.48500000000000004, "gap": -0.15166666666666673, "n": 6}, {"phrase": "250", "longRun": 0.4857142857142857, "recent": 0.35294117647058826, "price": 0.466, "gap": -0.066, "n": 15}, {"phrase": "AMERICA FIRST", "longRun": 0.38235294117647056, "recent": 0.25, "price": 0.48866666666666675, "gap": -0.15533333333333343, "n": 15}, {"phrase": "DRILL BABY DRILL", "longRun": 0.23809523809523808, "recent": 0.1111111111111111, "price": 0.27875, "gap": -0.15375, "n": 8}, {"phrase": "CEASEFIRE", "longRun": 0.125, "recent": 0, "price": 0.2764285714285714, "gap": -0.2764285714285714, "n": 14}, {"phrase": "LANDSLIDE", "longRun": 0.7142857142857143, "recent": 0.6, "price": 0.5555555555555556, "gap": 0.11111111111111105, "n": 9}, {"phrase": "SAVE AMERICA ACT", "longRun": 0.391304347826087, "recent": 0.5, "price": 0.752857142857143, "gap": -0.1814285714285716, "n": 14}], "driftCorr": {"r": 0.555, "t": 4.62, "n": 50}, "tape": {"points": [{"t": 1785778260, "p": 0.78, "v": 110.05}, {"t": 1785778320, "p": 0.8, "v": 30.33}, {"t": 1785778440, "p": 0.78, "v": 2.89}, {"t": 1785778560, "p": 0.76, "v": 2.58}, {"t": 1785778740, "p": 0.76, "v": 6.47}, {"t": 1785778800, "p": 0.75, "v": 19}, {"t": 1785778860, "p": 0.76, "v": 59.85}, {"t": 1785778920, "p": 0.76, "v": 3.95}, {"t": 1785778980, "p": 0.77, "v": 25.28}, {"t": 1785779040, "p": 0.76, "v": 1.97}, {"t": 1785779100, "p": 0.76, "v": 18.04}, {"t": 1785779220, "p": 0.71, "v": 186.76}, {"t": 1785779280, "p": 0.72, "v": 27.16}, {"t": 1785779340, "p": 0.65, "v": 239.28}, {"t": 1785779400, "p": 0.65, "v": 145.32}, {"t": 1785779520, "p": 0.66, "v": 71.5}, {"t": 1785779580, "p": 0.7, "v": 64.51}, {"t": 1785779640, "p": 0.7, "v": 153.32}, {"t": 1785779700, "p": 0.72, "v": 4052.32}, {"t": 1785779760, "p": 0.65, "v": 1163.28}, {"t": 1785779820, "p": 0.64, "v": 242.66}, {"t": 1785779880, "p": 0.68, "v": 216.34}, {"t": 1785779940, "p": 0.66, "v": 560.82}, {"t": 1785780000, "p": 0.57, "v": 256.94}, {"t": 1785780060, "p": 0.59, "v": 90.74}, {"t": 1785780120, "p": 0.64, "v": 53.06}, {"t": 1785780180, "p": 0.63, "v": 74.26}, {"t": 1785780240, "p": 0.99, "v": 1211.13}, {"t": 1785780300, "p": 0.99, "v": 127.86}, {"t": 1785780360, "p": 0.99, "v": 6.81}, {"t": 1785780420, "p": 0.99, "v": 146.51}, {"t": 1785780480, "p": 0.99, "v": 94.14}, {"t": 1785780540, "p": 0.99, "v": 140.26}, {"t": 1785780600, "p": 0.99, "v": 193.74}, {"t": 1785780720, "p": 0.99, "v": 467.58}, {"t": 1785780840, "p": 0.99, "v": 114.21}, {"t": 1785780900, "p": 0.99, "v": 495.19}, {"t": 1785780960, "p": 0.99, "v": 1.31}, {"t": 1785781020, "p": 0.99, "v": 30.86}, {"t": 1785781080, "p": 0.99, "v": 3.75}, {"t": 1785781140, "p": 0.99, "v": 187.03}, {"t": 1785781380, "p": 0.99, "v": 935.19}, {"t": 1785781860, "p": 0.99, "v": 467.59}, {"t": 1785781980, "p": 0.99, "v": 13.87}, {"t": 1785782460, "p": 0.99, "v": 2.76}, {"t": 1785782520, "p": 0.99, "v": 18.64}, {"t": 1785782640, "p": 0.99, "v": 93.51}, {"t": 1785783120, "p": 0.99, "v": 935.19}, {"t": 1785783720, "p": 0.99, "v": 250}, {"t": 1785783780, "p": 0.99, "v": 34.52}, {"t": 1785783900, "p": 0.99, "v": 15.3}, {"t": 1785784200, "p": 0.99, "v": 93.51}], "speechStart": 1785779071, "close": 1785784247, "pinNote": "0.63 \u2192 0.99 at 18:03Z"}, "signalBuckets": [{"label": "price \u226a base rate", "n": 28, "meanPrice": 0.184, "realized": 0.357}, {"label": "price < base rate", "n": 98, "meanPrice": 0.248, "realized": 0.367}, {"label": "\u2248 base rate (\u2212.20\u2026+.05)", "n": 392, "meanPrice": 0.357, "realized": 0.354}, {"label": "price > base rate", "n": 488, "meanPrice": 0.679, "realized": 0.608}, {"label": "price \u226b base rate (+.40)", "n": 53, "meanPrice": 0.793, "realized": 0.623}], "eraCalib": {"modern": [{"mid": 0.1, "n": 87, "meanPrice": 0.09942528735632182, "realized": 0.10344827586206896}, {"mid": 0.275, "n": 108, "meanPrice": 0.2779629629629629, "realized": 0.26851851851851855}, {"mid": 0.425, "n": 138, "meanPrice": 0.42644927536231886, "realized": 0.34782608695652173}, {"mid": 0.575, "n": 139, "meanPrice": 0.5627338129496402, "realized": 0.6330935251798561}, {"mid": 0.7250000000000001, "n": 116, "meanPrice": 0.7135344827586206, "realized": 0.8362068965517241}, {"mid": 0.9, "n": 60, "meanPrice": 0.8576666666666669, "realized": 0.7833333333333333}], "hist": [{"mid": 0.1, "n": 322, "meanPrice": 0.120031055900621, "realized": 0.037267080745341616}, {"mid": 0.275, "n": 491, "meanPrice": 0.26991853360488804, "realized": 0.13034623217922606}, {"mid": 0.425, "n": 628, "meanPrice": 0.42726114649681535, "realized": 0.17834394904458598}, {"mid": 0.575, "n": 558, "meanPrice": 0.5632974910394265, "realized": 0.6559139784946236}, {"mid": 0.7250000000000001, "n": 466, "meanPrice": 0.7214592274678113, "realized": 0.7896995708154506}, {"mid": 0.9, "n": 372, "meanPrice": 0.8765322580645176, "realized": 0.8763440860215054}]}, "estimator": {"n": 648, "r": 0.711, "mae": 13.9, "bias": [[10, 11.5], [30, 7.2], [50, -3.4], [70, -9.6], [90, -15.6]]}, "eraPhrases": [{"phrase": "BARACK HUSSEIN OBAMA", "hist": {"px": 0.467, "ry": 0.091, "n": 11}, "modern": {"px": 0.392, "ry": 0.538, "n": 26}}, {"phrase": "HORMUZ", "hist": {"px": 0.555, "ry": 0.583, "n": 12}, "modern": {"px": 0.487, "ry": 0.158, "n": 19}}, {"phrase": "CEASEFIRE", "hist": {"px": 0.479, "ry": 0.182, "n": 22}, "modern": {"px": 0.276, "ry": 0, "n": 14}}, {"phrase": "OIL", "hist": {"px": 0.58, "ry": 0.531, "n": 32}, "modern": {"px": 0.751, "ry": 0.895, "n": 19}}, {"phrase": "IRAN (3+ TIMES)", "hist": {"px": 0.718, "ry": 1, "n": 4}, "modern": {"px": 0.624, "ry": 0.696, "n": 23}}, {"phrase": "TRANSGENDER", "hist": {"px": 0.42, "ry": 0.24, "n": 25}, "modern": {"px": 0.44, "ry": 0.484, "n": 31}}], "streakMarket": [{"state": "said last 3+", "n": 417, "price": 0.627, "realized": 0.638}, {"state": "said last 2", "n": 329, "price": 0.583, "realized": 0.55}, {"state": "said last 1", "n": 733, "price": 0.545, "realized": 0.521}, {"state": "missed last 1", "n": 731, "price": 0.5, "realized": 0.445}, {"state": "missed last 2", "n": 353, "price": 0.464, "realized": 0.416}, {"state": "missed last 3+", "n": 586, "price": 0.374, "realized": 0.273}], "venueGaps": [{"venue": "bilateral", "n": 114, "gap": 0.094}, {"venue": "remarks/other", "n": 238, "gap": 0.068}, {"venue": "ceremony/dinner", "n": 70, "gap": -0.008}, {"venue": "signing/announce", "n": 154, "gap": -0.045}, {"venue": "media", "n": 132, "gap": -0.053}, {"venue": "rally", "n": 55, "gap": -0.09}, {"venue": "tele-rally", "n": 104, "gap": -0.121}], "xsubj": {"behavior": [{"label": "everyone else \u2014 after a hit", "v": -0.012, "realized": 0.621, "ref": 0.633, "n": 12363, "trump": 0}, {"label": "everyone else \u2014 after a miss", "v": -0.003, "realized": 0.33, "ref": 0.333, "n": 14111, "trump": 0}, {"label": "Trump \u2014 after a hit", "v": -0.027, "realized": 0.556, "ref": 0.584, "n": 1443, "trump": 1}, {"label": "Trump \u2014 after a miss", "v": -0.037, "realized": 0.353, "ref": 0.39, "n": 1793, "trump": 1}], "market": [{"label": "everyone else \u2014 after a hit", "v": -0.016, "realized": 0.618, "ref": 0.634, "n": 10681, "trump": 0}, {"label": "everyone else \u2014 after a miss", "v": -0.071, "realized": 0.327, "ref": 0.398, "n": 11740, "trump": 0}, {"label": "Trump \u2014 after a hit", "v": -0.024, "realized": 0.535, "ref": 0.559, "n": 1184, "trump": 1}, {"label": "Trump \u2014 after a miss", "v": -0.085, "realized": 0.334, "ref": 0.419, "n": 1516, "trump": 1}]}};
+const NS = 'http://www.w3.org/2000/svg';
+const el = (n, at, parent) => { const e = document.createElementNS(NS, n); for (const k in at) e.setAttribute(k, at[k]); if (parent) parent.appendChild(e); return e; };
+const tip = document.getElementById('tip');
+const showTip = (evt, html) => { tip.innerHTML = html; tip.style.opacity = 1; const pad = 14; let x = evt.clientX + pad, y = evt.clientY + pad; if (x + 270 > innerWidth) x = evt.clientX - 270; tip.style.left = x + 'px'; tip.style.top = y + 'px'; };
+const hideTip = () => tip.style.opacity = 0;
+const pctf = (x) => (x * 100).toFixed(0) + '%';
+
+// ---- 01 tape --------------------------------------------------------------
+(function tape() {
+  const { points, speechStart, close } = DATA.tape;
+  const W = 920, H = 300, L = 46, R = 14, T = 16, B = 58, VH = 42;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById('tape'));
+  const t0 = points[0].t, t1 = close + 120;
+  const x = (t) => L + (t - t0) / (t1 - t0) * (W - L - R);
+  const y = (p) => T + (1 - p) * (H - T - B - VH);
+  const maxV = Math.max(...points.map(p => p.v));
+  for (const g of [0, .25, .5, .75, 1]) {
+    el('line', { x1: L, x2: W - R, y1: y(g), y2: y(g), stroke: 'var(--grid)', 'stroke-width': 1 }, svg);
+    el('text', { x: L - 8, y: y(g) + 4, 'text-anchor': 'end' }, svg).textContent = pctf(g);
+  }
+  // volume bars
+  for (const p of points) {
+    el('rect', { x: x(p.t) - 2, y: H - B - (p.v / maxV) * VH, width: 4, height: (p.v / maxV) * VH, rx: 1, style: 'fill:var(--axis)' }, svg);
+  }
+  // price line
+  const d = points.map((p, i) => (i ? 'L' : 'M') + x(p.t).toFixed(1) + ' ' + y(p.p).toFixed(1)).join(' ');
+  el('path', { d, fill: 'none', style: 'stroke:var(--s1)', 'stroke-width': 2, 'stroke-linejoin': 'round' }, svg);
+  // speech start annotation
+  if (speechStart) {
+    el('line', { x1: x(speechStart), x2: x(speechStart), y1: T - 2, y2: H - B + VH === H - B + VH ? H - B : H - B, stroke: 'var(--ink-2)', 'stroke-width': 1.5, 'stroke-dasharray': '5 4' }, svg);
+    el('line', { x1: x(speechStart), x2: x(speechStart), y1: H - B, y2: H - B + 6, stroke: 'var(--ink-2)', 'stroke-width': 1.5 }, svg);
+    const nearLeft = x(speechStart) < L + 220;
+    const tx = el('text', { x: x(speechStart) + (nearLeft ? 8 : -8), y: T + 12, 'text-anchor': nearLeft ? 'start' : 'end', class: 'direct' }, svg);
+    tx.textContent = 'speech starts 17:44Z (transcript)';
+  }
+  // pin annotation: find first p>=0.95
+  const pin = points.find(p => p.p >= 0.95);
+  if (pin) {
+    el('circle', { cx: x(pin.t), cy: y(pin.p), r: 5, style: 'fill:var(--s2)', stroke: 'var(--paper)', 'stroke-width': 2 }, svg);
+    const tx = el('text', { x: x(pin.t) + 9, y: y(pin.p) + 14, class: 'direct' }, svg);
+    tx.textContent = '"Biden" spoken — pins at 99¢';
+  }
+  el('text', { x: L, y: H - 8 }, svg).textContent = '17:31Z';
+  el('text', { x: W - R, y: H - 8, 'text-anchor': 'end' }, svg).textContent = 'close 19:10Z';
+  el('text', { x: L, y: H - B + 16 }, svg).textContent = 'volume/min';
+  // hover
+  const hot = el('rect', { x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent' }, svg);
+  hot.addEventListener('mousemove', (evt) => {
+    const r = svg.getBoundingClientRect();
+    const tt = t0 + ((evt.clientX - r.left) / r.width * W - L) / (W - L - R) * (t1 - t0);
+    let best = points[0];
+    for (const p of points) if (Math.abs(p.t - tt) < Math.abs(best.t - tt)) best = p;
+    showTip(evt, `${new Date(best.t * 1000).toISOString().slice(11, 16)}Z · <b>${(best.p * 100).toFixed(0)}¢</b> · vol ${Math.round(best.v)}`);
+  });
+  hot.addEventListener('mouseleave', hideTip);
+})();
+
+// ---- 02 calibration ---------------------------------------------------------
+(function calib() {
+  const W = 920, H = 380, L = 52, R = 16, T = 16, B = 44;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById('calib'));
+  const x = (v) => L + v * (W - L - R), y = (v) => T + (1 - v) * (H - T - B);
+  for (const g of [0, .2, .4, .6, .8, 1]) {
+    el('line', { x1: L, x2: W - R, y1: y(g), y2: y(g), stroke: 'var(--grid)' }, svg);
+    el('text', { x: L - 8, y: y(g) + 4, 'text-anchor': 'end' }, svg).textContent = pctf(g);
+    el('text', { x: x(g), y: H - B + 18, 'text-anchor': 'middle' }, svg).textContent = pctf(g);
+  }
+  el('line', { x1: x(0), y1: y(0), x2: x(1), y2: y(1), stroke: 'var(--axis)', 'stroke-width': 1.5, 'stroke-dasharray': '6 5' }, svg);
+  el('text', { x: x(.5), y: H - 6, 'text-anchor': 'middle' }, svg).textContent = 'implied probability (last pre-speech price)';
+  const series = [[DATA.calibNaive, 'var(--s2)', 'naive'], [DATA.calibAligned, 'var(--s1)', 'aligned']];
+  for (const [pts, color, name] of series) {
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + x(p.meanPrice).toFixed(1) + ' ' + y(p.realized).toFixed(1)).join(' ');
+    el('path', { d, fill: 'none', style: `stroke:${color}`, 'stroke-width': 2, 'stroke-linejoin': 'round', opacity: name === 'naive' ? .75 : 1 }, svg);
+    for (const p of pts) {
+      const c = el('circle', { cx: x(p.meanPrice), cy: y(p.realized), r: Math.max(4, Math.min(9, Math.sqrt(p.n) / 1.8)), style: `fill:${color}`, stroke: 'var(--paper)', 'stroke-width': 2 }, svg);
+      c.addEventListener('mousemove', (evt) => showTip(evt, `<b>${name}</b> cutoff · bucket ~${pctf(p.mid)}<br>implied ${pctf(p.meanPrice)} → realized ${pctf(p.realized)}<br>n = ${p.n}`));
+      c.addEventListener('mouseleave', hideTip);
+    }
+  }
+  el('text', { x: x(.72), y: y(.99), class: 'direct' }, svg).textContent = 'realized';
+})();
+
+
+// Value label placement: outside the bar when there's room, inside (paper ink)
+// when the bar is long enough to collide with the row-label gutter.
+function barValueLabel(svg, xv, x0, cy, text) {
+  const wpx = Math.abs(xv - x0), neg = xv < x0;
+  if (wpx > 110) {
+    const t = el('text', { x: neg ? xv + 6 : xv - 6, y: cy + 4, 'text-anchor': neg ? 'start' : 'end', class: 'direct', style: 'fill:var(--paper)' }, svg);
+    t.textContent = text;
+  } else {
+    const t = el('text', { x: neg ? xv - 6 : xv + 6, y: cy + 4, 'text-anchor': neg ? 'end' : 'start', class: 'direct' }, svg);
+    t.textContent = text;
+  }
+}
+
+// ---- 03 signal buckets --------------------------------------------------------
+(function signal() {
+  const rows = DATA.signalBuckets.map(b => ({ ...b, gap: b.realized - b.meanPrice }));
+  const W = 920, RH = 40, L = 250, R = 90, T = 8;
+  const H = T + rows.length * RH + 26;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById('signal'));
+  const maxAbs = .2;
+  const x = (v) => L + (v + maxAbs) / (2 * maxAbs) * (W - L - R);
+  for (const g of [-.2, -.1, 0, .1, .2]) {
+    el('line', { x1: x(g), x2: x(g), y1: T, y2: H - 26, stroke: g === 0 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': g === 0 ? 1.5 : 1 }, svg);
+    el('text', { x: x(g), y: H - 8, 'text-anchor': 'middle' }, svg).textContent = (g > 0 ? '+' : '') + g * 100 + 'pp';
+  }
+  rows.forEach((r, i) => {
+    const cy = T + i * RH + RH / 2;
+    const w = Math.abs(x(r.gap) - x(0));
+    const rect = el('rect', { x: r.gap < 0 ? x(r.gap) : x(0), y: cy - 9, width: Math.max(w, 1), height: 18, rx: 4, style: `fill:${r.gap < 0 ? 'var(--pole-hi)' : 'var(--pole-lo)'}` }, svg);
+    el('text', { x: L - 10, y: cy + 4, 'text-anchor': 'end', class: 'val' }, svg).textContent = r.label;
+    barValueLabel(svg, x(r.gap), x(0), cy, (r.gap > 0 ? '+' : '') + (r.gap * 100).toFixed(0) + 'pp · n=' + r.n);
+    rect.addEventListener('mousemove', (evt) => showTip(evt, `${r.label}<br>implied ${pctf(r.meanPrice)} → realized ${pctf(r.realized)}<br>n = ${r.n}`));
+    rect.addEventListener('mouseleave', hideTip);
+  });
+})();
+
+// ---- 04 scatter -----------------------------------------------------------------
+(function scatter() {
+  const W = 920, H = 460, L = 52, R = 16, T = 16, B = 44;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById('scatter'));
+  const x = (v) => L + v * (W - L - R), y = (v) => T + (1 - v) * (H - T - B);
+  for (const g of [0, .2, .4, .6, .8, 1]) {
+    el('line', { x1: L, x2: W - R, y1: y(g), y2: y(g), stroke: 'var(--grid)' }, svg);
+    el('text', { x: L - 8, y: y(g) + 4, 'text-anchor': 'end' }, svg).textContent = pctf(g);
+    el('text', { x: x(g), y: H - B + 18, 'text-anchor': 'middle' }, svg).textContent = pctf(g);
+  }
+  el('line', { x1: x(0), y1: y(0), x2: x(1), y2: y(1), stroke: 'var(--axis)', 'stroke-width': 1.5, 'stroke-dasharray': '6 5' }, svg);
+  el('text', { x: x(.5), y: H - 6, 'text-anchor': 'middle' }, svg).textContent = 'mean pre-speech price';
+  const LABELS = new Set(['HORMUZ', 'BIDEN', 'CEASEFIRE', 'OIL', 'WORLD CUP', 'TARIFF', 'BARACK HUSSEIN OBAMA', 'NEGOTIATE / NEGOTIATED / NEGOTIATION']);
+  for (const p of DATA.scatter) {
+    const r = Math.max(4, Math.min(12, Math.sqrt(p.n) * 1.55));
+    const c = el('circle', { cx: x(p.price), cy: y(p.realized), r, style: 'fill:var(--s1)', 'fill-opacity': .78, stroke: 'var(--paper)', 'stroke-width': 1.5 }, svg);
+    c.addEventListener('mousemove', (evt) => showTip(evt, `<b>${p.phrase}</b><br>price ${pctf(p.price)} → realized ${pctf(p.realized)}<br>n = ${p.n} · z = ${p.z.toFixed(1)}`));
+    c.addEventListener('mouseleave', hideTip);
+    if (LABELS.has(p.phrase)) {
+      const short = p.phrase.split(' /')[0];
+      const above = p.realized >= p.price;
+      el('text', { x: x(p.price) + (above ? -r - 4 : r + 4), y: y(p.realized) + (above ? -r * .4 : r * .9), 'text-anchor': above ? 'end' : 'start', class: 'direct' }, svg).textContent = short;
+    }
+  }
+  el('text', { x: x(.07), y: y(.93), class: 'direct' }, svg).textContent = 'underpriced ↑';
+  el('text', { x: x(.6), y: y(.1), class: 'direct' }, svg).textContent = '↓ overpriced';
+})();
+
+// ---- 04b gaps ------------------------------------------------------------------
+(function gaps() {
+  const rows = DATA.gaps;
+  const W = 920, RH = 30, L = 250, R = 96, T = 8;
+  const H = T + rows.length * RH + 26;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById('gaps'));
+  const maxAbs = Math.max(...rows.map(r => Math.abs(r.gap))) * 1.15;
+  const x = (v) => L + (v + maxAbs) / (2 * maxAbs) * (W - L - R);
+  for (const g of [-.3, -.15, 0, .15, .3]) {
+    if (Math.abs(g) > maxAbs) continue;
+    el('line', { x1: x(g), x2: x(g), y1: T, y2: H - 26, stroke: g === 0 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': g === 0 ? 1.5 : 1 }, svg);
+    el('text', { x: x(g), y: H - 8, 'text-anchor': 'middle' }, svg).textContent = (g > 0 ? '+' : '') + (g * 100) + 'pp';
+  }
+  rows.forEach((r, i) => {
+    const cy = T + i * RH + RH / 2;
+    const w = Math.abs(x(r.gap) - x(0));
+    const rect = el('rect', { x: r.gap < 0 ? x(r.gap) : x(0), y: cy - 8, width: Math.max(w, 1), height: 16, rx: 4, style: `fill:${r.gap < 0 ? 'var(--pole-hi)' : 'var(--pole-lo)'}` }, svg);
+    el('text', { x: L - 10, y: cy + 4, 'text-anchor': 'end', class: 'val' }, svg).textContent = r.phrase.split(' /')[0].slice(0, 26);
+    barValueLabel(svg, x(r.gap), x(0), cy, (r.gap > 0 ? '+' : '−') + Math.abs(r.gap * 100).toFixed(0) + 'pp');
+    rect.addEventListener('mousemove', (evt) => showTip(evt, `<b>${r.phrase}</b><br>priced ${pctf(r.price)} → hit ${pctf(r.realized)}<br>n = ${r.n} events`));
+    rect.addEventListener('mouseleave', hideTip);
+  });
+})();
+
+// ---- 05 drift dumbbells ---------------------------------------------------------
+(function drift() {
+  const rows = DATA.drift;
+  const W = 920, RH = 34, L = 250, R = 30, T = 8;
+  const H = T + rows.length * RH + 26;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById('drift'));
+  const x = (v) => L + v * (W - L - R);
+  for (const g of [0, .25, .5, .75, 1]) {
+    el('line', { x1: x(g), x2: x(g), y1: T, y2: H - 26, stroke: 'var(--grid)' }, svg);
+    el('text', { x: x(g), y: H - 8, 'text-anchor': 'middle' }, svg).textContent = pctf(g);
+  }
+  rows.forEach((r, i) => {
+    const cy = T + i * RH + RH / 2;
+    el('text', { x: L - 10, y: cy + 4, 'text-anchor': 'end', class: 'val' }, svg).textContent = r.phrase.split(' /')[0].slice(0, 26);
+    el('line', { x1: x(r.longRun), x2: x(r.recent), y1: cy, y2: cy, style: 'stroke:var(--s1)', 'stroke-width': 2.5, opacity: .55 }, svg);
+    el('circle', { cx: x(r.longRun), cy, r: 6, fill: 'var(--paper)', style: 'stroke:var(--s1)', 'stroke-width': 2.5 }, svg);
+    const solid = el('circle', { cx: x(r.recent), cy, r: 6.5, style: 'fill:var(--s1)' }, svg);
+    // market price tick
+    el('line', { x1: x(r.price), x2: x(r.price), y1: cy - 10, y2: cy + 10, style: 'stroke:var(--s2)', 'stroke-width': 3 }, svg);
+    solid.addEventListener('mousemove', (evt) => showTip(evt, `<b>${r.phrase}</b><br>long-run ${pctf(r.longRun)} → recent ${pctf(r.recent)}<br>market priced ${pctf(r.price)} · gap ${(r.gap * 100).toFixed(0)}pp`));
+    solid.addEventListener('mouseleave', hideTip);
+  });
+  const lg = document.createElement('p');
+})();
+
+// ---- 06 era calibration ---------------------------------------------------------
+(function eracalib() {
+  const W = 920, H = 400, L = 52, R = 16, T = 16, B = 44;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById('eracalib'));
+  const x = (v) => L + v * (W - L - R), y = (v) => T + (1 - v) * (H - T - B);
+  for (const g of [0, .2, .4, .6, .8, 1]) {
+    el('line', { x1: L, x2: W - R, y1: y(g), y2: y(g), stroke: 'var(--grid)' }, svg);
+    el('text', { x: L - 8, y: y(g) + 4, 'text-anchor': 'end' }, svg).textContent = pctf(g);
+    el('text', { x: x(g), y: H - B + 18, 'text-anchor': 'middle' }, svg).textContent = pctf(g);
+  }
+  el('line', { x1: x(0), y1: y(0), x2: x(1), y2: y(1), stroke: 'var(--axis)', 'stroke-width': 1.5, 'stroke-dasharray': '6 5' }, svg);
+  el('text', { x: x(.5), y: H - 6, 'text-anchor': 'middle' }, svg).textContent = 'day-before price (high/low midpoint)';
+  const series = [[DATA.eraCalib.hist, 'var(--pole-hi)', 'historical (Apr 2025 – May 2026)'], [DATA.eraCalib.modern, 'var(--s1)', 'modern (May – Aug 2026)']];
+  for (const [pts, color, name] of series) {
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + x(p.meanPrice).toFixed(1) + ' ' + y(p.realized).toFixed(1)).join(' ');
+    el('path', { d, fill: 'none', style: `stroke:${color}`, 'stroke-width': 2, 'stroke-linejoin': 'round' }, svg);
+    for (const p of pts) {
+      const c = el('circle', { cx: x(p.meanPrice), cy: y(p.realized), r: Math.max(4, Math.min(10, Math.sqrt(p.n) / 2.4)), style: `fill:${color}`, stroke: 'var(--paper)', 'stroke-width': 2 }, svg);
+      c.addEventListener('mousemove', (evt) => showTip(evt, `<b>${name}</b><br>day-before ${pctf(p.meanPrice)} → realized ${pctf(p.realized)}<br>n = ${p.n}`));
+      c.addEventListener('mouseleave', hideTip);
+    }
+  }
+})();
+
+// ---- 06 streak + venue bars -----------------------------------------------------
+function divergingBars(elId, rows, labelKey, valKey, fmt) {
+  const W = 920, RH = 34, L = 250, R = 96, T = 8;
+  const H = T + rows.length * RH + 26;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, width: '100%' }, document.getElementById(elId));
+  const maxAbs = Math.max(...rows.map(r => Math.abs(r[valKey]))) * 1.2;
+  const x = (v) => L + (v + maxAbs) / (2 * maxAbs) * (W - L - R);
+  for (const g of [-.1, -.05, 0, .05, .1]) {
+    if (Math.abs(g) > maxAbs) continue;
+    el('line', { x1: x(g), x2: x(g), y1: T, y2: H - 26, stroke: g === 0 ? 'var(--axis)' : 'var(--grid)', 'stroke-width': g === 0 ? 1.5 : 1 }, svg);
+    el('text', { x: x(g), y: H - 8, 'text-anchor': 'middle' }, svg).textContent = (g > 0 ? '+' : '') + (g * 100).toFixed(0) + 'pp';
+  }
+  for (let i = 0; i < rows.length; i++) {
+    const r = rows[i], v = r[valKey], cy = T + i * RH + RH / 2;
+    const rect = el('rect', { x: v < 0 ? x(v) : x(0), y: cy - 9, width: Math.max(Math.abs(x(v) - x(0)), 1), height: 18, rx: 4, style: `fill:${r.color || (v < 0 ? 'var(--pole-hi)' : 'var(--pole-lo)')}` }, svg);
+    el('text', { x: L - 10, y: cy + 4, 'text-anchor': 'end', class: 'val' }, svg).textContent = r[labelKey];
+    barValueLabel(svg, x(v), x(0), cy, (v > 0 ? '+' : '−') + Math.abs(v * 100).toFixed(1) + 'pp · n=' + r.n);
+    rect.addEventListener('mousemove', (evt) => showTip(evt, fmt(r)));
+    rect.addEventListener('mouseleave', hideTip);
+  }
+}
+divergingBars('streaks', DATA.streakMarket.map(r => ({ ...r, err: r.realized - r.price })), 'state', 'err',
+  (r) => `<b>${r.state}</b><br>priced ${pctf(r.price)} → realized ${pctf(r.realized)}<br>n = ${r.n}`);
+divergingBars('venues', DATA.venueGaps, 'venue', 'gap',
+  (r) => `<b>${r.venue}</b><br>realized − implied: ${(r.gap * 100).toFixed(1)}pp<br>n = ${r.n}`);
+
+// ---- 06 Trump misses vs everyone else's ------------------------------------------
+divergingBars('xsubjBehavior', DATA.xsubj.behavior.map(r => ({ ...r, color: r.trump ? 'var(--s2)' : 'var(--s1)' })), 'label', 'v',
+  (r) => `<b>${r.label}</b><br>next-time hit rate ${pctf(r.realized)} vs own track record ${pctf(r.ref)}<br>n = ${r.n.toLocaleString()}`);
+divergingBars('xsubjMarket', DATA.xsubj.market.map(r => ({ ...r, color: r.trump ? 'var(--s2)' : 'var(--s1)' })), 'label', 'v',
+  (r) => `<b>${r.label}</b><br>day-before price ${pctf(r.ref)} → realized ${pctf(r.realized)}<br>n = ${r.n.toLocaleString()}`);
+</script>
+
+</body></html>
