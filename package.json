@@ -1,0 +1,10 @@
+{
+  "name": "random-proj",
+  "private": true,
+  "description": "Root shim so Railway can deploy the portfolio site from this repo without a root-directory setting. The site lives in portfolio/site.",
+  "scripts": {
+    "build": "cd portfolio/site && npm run build",
+    "start": "cd portfolio/site && npm start"
+  },
+  "engines": { "node": "22.x" }
+}

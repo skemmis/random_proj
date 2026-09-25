@@ -14,9 +14,9 @@ npm run dev      # builds, then serves on http://localhost:3000
 
 ## Deploy on Railway
 
-1. Railway → New → GitHub Repo → `skemmis/random_proj`.
-2. In the service settings set **Root Directory** to `portfolio/site`. The `railway.json` there sets the build (`npm run build`) and start (`npm start`) commands.
-3. Generate a domain. Every push to the connected branch redeploys.
+1. Railway → New → GitHub Repo → `skemmis/random_proj`, and pick the branch.
+2. Nothing else. The repo root has a shim `package.json` and `railway.json` that build and start the site from `portfolio/site`, so the Root Directory setting can stay blank. (Setting it to `portfolio/site` also works; that folder has its own copies.)
+3. Generate a domain under Settings → Networking. Every push to the connected branch redeploys.
 
 ## Adding a project
 
