@@ -1,0 +1,10 @@
+{
+  "name": "random-proj",
+  "private": true,
+  "description": "Grab-bag of small projects. The deployable web app lives in caitlin-site/.",
+  "workspaces": ["caitlin-site"],
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node caitlin-site/src/server.js"
+  }
+}

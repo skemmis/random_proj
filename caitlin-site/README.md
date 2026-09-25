@@ -20,7 +20,8 @@ npm start          # http://localhost:3000
 npm run dev        # same, restarts on file changes
 ```
 
-Node 20 or newer. The only runtime dependency is Express.
+Node 20 or newer. The only runtime dependency is Express. You can also run
+`npm install && npm start` from the repository root.
 
 ## What's here
 
@@ -58,11 +59,15 @@ tools/             one-off scripts: image generation, optimisation, screenshots
 
 ## Deploy to Railway
 
-1. New project → Deploy from GitHub repo → pick this repo and branch.
-2. In the service settings set **Root Directory** to `caitlin-site`
-   (the repo holds other projects at its root).
-3. Nothing else is required. Railway detects Node, runs `npm start`, injects `PORT`,
-   and uses `/healthz` from `railway.json` as the health check.
+The repo is set up so the site deploys whether or not you point Railway at the
+subfolder:
+
+1. New project → Deploy from GitHub repo → pick this repo and the branch.
+2. Leave **Root Directory** blank (the root `package.json` declares `caitlin-site`
+   as an npm workspace and starts the server), or set it to `caitlin-site`.
+   Both work.
+3. Nothing else is required. Railpack detects Node, runs `npm ci`, injects `PORT`,
+   starts the server, and uses `/healthz` from `railway.json` as the health check.
 4. Optional: set `NODE_ENV=production` to enable long cache headers on static files.
 
 No environment variables or secrets are needed at runtime.
@@ -72,6 +77,9 @@ No environment variables or secrets are needed at runtime.
 The images were generated once with Gemini using the picture-book spreads as
 style references, then converted to webp. The API key is only needed for that
 step and is never used by the running site.
+
+The scripts' dependencies (sharp, Playwright) live in `tools/package.json` so the
+production install stays tiny. Install them once with `npm run tools:install`.
 
 ```bash
 export GEMINI_API_KEY=...            # never commit this
