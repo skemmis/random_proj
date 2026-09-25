@@ -1,0 +1,23 @@
+{
+  "name": "matilija-family-medicine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prototype website for a small integrative family medicine practice in Ojai, CA",
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "images": "node tools/gen-images.mjs && node tools/optimize-images.mjs",
+    "images:optimize": "node tools/optimize-images.mjs",
+    "screenshots": "node tools/screenshots.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "playwright": "^1.50.0",
+    "sharp": "^0.33.5"
+  }
+}
