@@ -1,8 +1,8 @@
 {
   "site": {
     "name": "Sam Kemmis",
-    "tagline": "Games, prediction-market tools, and data stories I've built.",
-    "intro": "A year of shipping small things: multiplayer games, tools for betting on prediction markets, and a few pieces of research that grew out of them. Most are live. Double-click a cartridge to see what it is and launch it.",
+    "tagline": "Things I've been building this year.",
+    "intro": "Here's what I've been building this year, including a multiplayer prediction market game, research tools, and a relaxing map of parking tickets in Los Angeles.",
     "github": "https://github.com/skemmis",
     "substack": "https://fantasyreality.substack.com",
     "groups": [
@@ -32,7 +32,7 @@
     {
       "slug": "fantasy-reality",
       "name": "Fantasy Reality",
-      "one": "A fantasy league for prediction markets.",
+      "one": "A fantasy league, but for prediction markets.",
       "group": "bet",
       "status": "live",
       "year": "2025–26",
@@ -50,13 +50,13 @@
         "Kalshi API"
       ],
       "featured": true,
-      "description": "Seasons, leagues, parlays, and a shared wallet, all scored against real Kalshi and Polymarket prices. AI players bet alongside humans, a weekly digest goes out by email, and a Discord bot nags the league when a week is empty. It started as \"VibeBet\" on Replit in December 2025 and became the project every other one on this page grew out of.",
-      "notes": "The rule that caused the most bugs: the season is the economy, a league is only a grouping of people."
+      "description": "You join a league with friends, get a weekly allowance of fake money, and bet it on real Kalshi and Polymarket markets. Whoever calls the future best wins the season. There are parlays, achievements, AI players you can compete against, a weekly email recap, and a Discord bot that bugs the league when nobody has bet yet. It started as a weekend project on Replit and turned into the thing most of the other projects here spun out of.",
+      "notes": "The bug that bit me most: the season is the economy, and a league is just a group of people playing in it."
     },
     {
       "slug": "degenbench",
       "name": "DegenBench",
-      "one": "Frontier AI models paper-bet on real markets, every day.",
+      "one": "AI models bet on real markets every day. Which one is best at predicting the future?",
       "group": "bet",
       "status": "live",
       "year": "2026",
@@ -71,13 +71,13 @@
         "Anthropic, OpenAI, Google and xAI SDKs"
       ],
       "featured": true,
-      "description": "Each model gets the same slate of Kalshi markets and its own web search. Round one is an independent forecast with a public argument. Round two, every model reads the others' anonymized arguments and submits a final probability and an optional bet from a virtual bankroll. Scored on Brier score against a market-implied baseline, and on profit, because that's the degen metric.",
-      "notes": "All paper trading. No real money, no orders placed."
+      "description": "Every morning a handful of frontier models get the same set of Kalshi markets and go research them. Each one makes a forecast and explains itself. Then they all read each other's arguments (anonymized), argue back, and place a final bet from a fake bankroll. I score them on how well calibrated they are, with the market's own price as the bar to beat, and on plain profit, because that's what everyone actually wants to know.",
+      "notes": "Fake money only. No real orders get placed."
     },
     {
       "slug": "mention-tracker",
       "name": "Kalshi Mention Tracker",
-      "one": "Which words will he say? A phrase-market database.",
+      "one": "How often does Trump actually say \"tariff\"? Look it up before you bet.",
       "group": "bet",
       "status": "live",
       "year": "2026",
@@ -93,7 +93,7 @@
         "Kalshi API"
       ],
       "featured": false,
-      "description": "Kalshi runs markets on whether a speaker will say a given phrase. This tracks every one of them: phrase search, per-phrase timelines, and an event log with settled outcomes, so you can see how often \"tariff\" actually gets said before you bet on it. The standalone version was built in Lovable in an afternoon; it was later folded into Fantasy Reality, where it feeds the research behind the newsletter.",
+      "description": "Kalshi runs markets on whether someone will say a specific word during a speech or an earnings call. This tracks all of them. Search a phrase, see how often it came up at past events, and check the timeline before you put money down. I built the first version in Lovable in an afternoon, then folded it into Fantasy Reality, where it feeds the research behind the newsletter.",
       "notes": null,
       "links": [
         {
@@ -105,7 +105,7 @@
     {
       "slug": "fr-newsletter",
       "name": "Fantasy Reality Newsletter",
-      "one": "A Substack about prediction markets, plus the chart-maker behind it.",
+      "one": "A newsletter about prediction markets, and the chart tool I made for it.",
       "group": "read",
       "status": "live",
       "year": "2026",
@@ -120,15 +120,15 @@
         "GitHub Actions"
       ],
       "featured": false,
-      "description": "The newsletter is the human part. The tool is a three-step wizard: paste a Kalshi event URL, frame the window and the y-axis, drop annotations on the chart, and export a PNG in the house style. There's an editorial preset and a louder meme preset with pixel callout boxes. Every chart saves a story file so the GitHub Action can re-render it later.",
-      "notes": "A companion branch holds a video pipeline for a Kalshi market video series, one episode in.",
+      "description": "Fantasy Reality is a Substack about what prediction markets are saying about reality, and what reality is saying back. The chart maker is the tool behind it: paste a Kalshi link, pick a time window, drop in some callouts, and it makes a chart in the house style. There's a straight editorial look and a louder meme version with pixel speech bubbles.",
+      "notes": "There's also a half-built pipeline for turning market stories into short videos. One episode in.",
       "sq": "/art/newsletter-chart-meme.webp",
       "wide": "/art/newsletter-chart-editorial.webp"
     },
     {
       "slug": "emberfall",
       "name": "Emberfall",
-      "one": "A real-time online table for a cooperative Middle-earth board game.",
+      "one": "Play a cooperative Lord of the Rings board game with friends who live far away.",
       "group": "play",
       "status": "live",
       "year": "2026",
@@ -143,13 +143,13 @@
         "Railway"
       ],
       "featured": true,
-      "description": "Two to five players, each running two characters, escorting Frodo to Mount Doom from different living rooms. The host shares a four-letter room code. The engine only offers legal moves, every location, stat, die face and card is hover-documented, and dice rolls pause in a resolution panel so anyone present can spend a resource before the roll is locked in. Reloading rejoins your seat with the full log restored.",
-      "notes": "Rules paraphrased from the publisher's rulebook, no art or card text copied. Not affiliated with anyone. Buy the real game."
+      "description": "A browser version of Fate of the Fellowship for two to five people. Someone hosts, shares a four-letter code, and everyone jumps in. The game only lets you make legal moves, every card and location explains itself when you hover, and dice rolls pause so people can spend resources before the result locks in. If you refresh, you land back in your seat with the log intact.",
+      "notes": "Rules are paraphrased from the rulebook. No art or card text is copied, and I'm not affiliated with anyone. Buy the real game, it's great."
     },
     {
       "slug": "music-for-parking",
       "name": "Music for Parking",
-      "one": "A day of Los Angeles parking tickets, replayed on the hour, as music.",
+      "one": "A relaxing map of parking tickets in Los Angeles.",
       "group": "play",
       "status": "live",
       "year": "2026",
@@ -166,13 +166,13 @@
         "LA open data"
       ],
       "featured": true,
-      "description": "Real parking citations from the city's open-data feed, replayed across a map of LA on the hour. Each ticket is a note, and the neighborhoods keep their own rhythm, so the city becomes a slow generative score. It's the shippable slice of a much bigger idea, a territory game on a real hex map fed by LA's own data, with a lore bible that runs from Horace Bell to Manly P. Hall to Didion. The game part is still in the repo, waiting.",
+      "description": "Real LA parking citations replayed on a map, hour by hour, and turned into music. Every ticket is a note. Different neighborhoods get their own rhythm, so the whole city becomes a slow, generative score. It's the piece I kept from a much bigger idea: a territory game played on a real hex map of LA, powered by the city's open data. The game part is still sitting in the repo.",
       "notes": null
     },
     {
       "slug": "sex-house-island",
       "name": "Sex House Island",
-      "one": "The first fully autonomous season of reality TV, and the engine to play it.",
+      "one": "A fake reality show, and the point-and-click adventure engine underneath it.",
       "group": "play",
       "status": "live",
       "year": "2026",
@@ -187,13 +187,13 @@
         "no framework"
       ],
       "featured": false,
-      "description": "A promotional site for a reality show that doesn't exist: eight cast members, a remote island, prediction markets on who gets eliminated, and an investor page. Underneath it is the real experiment, a LucasArts-style point-and-click engine in about six hundred lines of TypeScript and Canvas. Nine verbs, a sentence line, hotspots, inventory combinations, a parrot with a dialogue tree, and a three-step puzzle. The walk cycle is drawn in code so the engine could be felt before any sprite existed.",
-      "notes": "Answer to the question it was built to ask: the engine is the easy part. The art is the hard part."
+      "description": "The site is a promo page for a reality show that doesn't exist: eight cast members, an island, prediction markets on who gets voted off, and an investor page. The real experiment is under the hood: a LucasArts-style point-and-click engine in about six hundred lines of TypeScript. Nine verbs, an inventory, a parrot you can talk to, and a three-step puzzle. The walk cycle is drawn in code so I could feel the engine before drawing a single sprite.",
+      "notes": "What I learned: the engine is the easy part. The art is the hard part."
     },
     {
       "slug": "gizzard-hours",
       "name": "Gizzard Hours",
-      "one": "How much King Gizzard, actually, from a YouTube history export.",
+      "one": "How much King Gizzard have I actually listened to?",
       "group": "read",
       "status": "live",
       "year": "2026",
@@ -207,13 +207,13 @@
         "MusicBrainz"
       ],
       "featured": false,
-      "description": "Google Takeout ships your watch history as one 67 MB HTML file with no newlines. This streams it in chunks, fingerprints the band by channel ID, matches every play against a cached MusicBrainz discography of 265 releases, and reconstructs listening time by month, by album, and by how heavy the album is. Then it does the same for the Disney catalogue, for comparison. It fed an essay on the newsletter.",
+      "description": "I exported my YouTube history and found out. Google hands you a 67 MB HTML file with no line breaks, so the first job was reading it without choking. Then: match every play to the band's 265 releases using MusicBrainz, add up listening time by month and by album, and score the albums by how heavy they are. Then do the same for the Disney catalog, for comparison. This turned into an essay on the newsletter.",
       "notes": null
     },
     {
       "slug": "pre-speech-odds",
       "name": "Pre-Speech Odds vs. Reality",
-      "one": "Fifteen months of Trump mention markets: is anyone an insider?",
+      "one": "Does anyone know what Trump will say before he says it?",
       "group": "read",
       "status": "live",
       "year": "2026",
@@ -228,13 +228,13 @@
         "SVG"
       ],
       "featured": false,
-      "description": "Every price, trade and transcript for 159 speeches. Speech starts are recovered from the moment a phrase's contract pins to 99 cents. The crowd overpays for coin-flips, ignores each phrase's own track record, and keeps paying for words he has stopped saying. Insiders, though, didn't show up: 92 suspicious contracts hit exactly as often as their prices claimed.",
+      "description": "Fifteen months of Kalshi markets on what Trump would say in his speeches, checked against every price, trade, and transcript. I worked out when each speech started by watching for the moment a word's contract snapped to 99 cents. The short version: the crowd overpays for coin flips, ignores how often he actually says things, and keeps betting on words he has dropped. And no, there's no sign of insiders.",
       "notes": null
     },
     {
       "slug": "adaptive-resume",
       "name": "Chameleon Resume",
-      "one": "Paste a job posting and it tells you whether I'm a fit.",
+      "one": "Paste a job posting and my resume tells you if I'm a fit.",
       "group": "also",
       "status": "live",
       "year": "2026",
@@ -248,8 +248,8 @@
         "LLM fit analysis"
       ],
       "featured": false,
-      "description": "A resume that meets the reader halfway. Paste a job posting URL and it reads the role, scores the fit against my background, and reorders what it shows you to match. The rest of the page is a conventional resume for people who'd rather just read one.",
-      "notes": "Built in Lovable, which is also why it's the only thing here I can't show you the code for."
+      "description": "A resume that adjusts to whoever is reading it. Drop in a job posting URL and it reads the role, scores how well I match, and reorders itself to lead with the relevant stuff. Or skip that part and read it like a normal resume.",
+      "notes": "Built in Lovable, so it's the one thing here without a code link."
     }
   ]
 }

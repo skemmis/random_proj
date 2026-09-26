@@ -104,18 +104,18 @@ const aboutWin = win('win-about', 'README.txt', `
     <h2>${esc(site.name)}</h2>
     <p class="one">${esc(site.tagline)}</p>
     <p>${esc(site.intro)}</p>
-    <p>I work at the seam between technical systems and the people who have to understand them. These projects are where I test ideas end to end: design, build, ship, and see who shows up. Each window lists the tools it was built with.</p>
+    <p>Most of these are live and you can try them right now. A couple are half finished, and the ones that fizzled out are in the Trash. Each window says what it is, how it works, and what I built it with.</p>
     <p class="links"><a class="btn" href="${esc(site.github)}" target="_blank" rel="noopener">GitHub ↗</a><a class="btn" href="${esc(site.substack)}" target="_blank" rel="noopener">Substack ↗</a></p>
-    <p class="mono small">Double-click a cartridge to open it. Drag icons and windows anywhere. The SKOS menu lists everything.</p>
+    <p class="mono small">Double-click a cartridge to open it. You can drag the icons and windows around. The SKOS menu lists everything.</p>
   </div>`, { w: 560 });
 
 const trashWin = win('win-trash', 'Trash', `
   <div class="doc">
-    <p class="mono small">3 items. Recovered fragments of things that didn't make it.</p>
+    <p class="mono small">3 items. Things I started and didn't finish.</p>
     <ul class="trash-list">
-      <li><span class="mono">crucible.exe</span><span>An agent-governed evolution sim. I no longer remember what it was for.</span></li>
-      <li><span class="mono">feed-unfucker</span><span>A calmer social feed by email. Never shipped.</span></li>
-      <li><span class="mono">culty-clicker</span><span>A Replit-era clicker. The repo is empty.</span></li>
+      <li><span class="mono">crucible.exe</span><span>An evolution simulator where AI agents debated each change. I honestly don't remember where it was going.</span></li>
+      <li><span class="mono">feed-unfucker</span><span>A calmer version of your social feed, delivered by email. Never shipped.</span></li>
+      <li><span class="mono">culty-clicker</span><span>A clicker game from my Replit phase. The repo is empty.</span></li>
     </ul>
   </div>`, { w: 520 });
 
