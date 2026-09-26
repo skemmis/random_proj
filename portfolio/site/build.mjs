@@ -104,9 +104,9 @@ const aboutWin = win('win-about', 'README.txt', `
     <h2>${esc(site.name)}</h2>
     <p class="one">${esc(site.tagline)}</p>
     <p>${esc(site.intro)}</p>
-    <p>Every project here was written with an AI coding agent, mostly Claude Code, a couple in Lovable and Replit. The ideas, the taste, and the bugs I chose to live with are mine.</p>
+    <p>I work at the seam between technical systems and the people who have to understand them. These projects are where I test ideas end to end: design, build, ship, and see who shows up. Each window lists the tools it was built with.</p>
     <p class="links"><a class="btn" href="${esc(site.github)}" target="_blank" rel="noopener">GitHub ↗</a><a class="btn" href="${esc(site.substack)}" target="_blank" rel="noopener">Substack ↗</a></p>
-    <p class="mono small">Double-click a cartridge to open it. Drag windows by their title bars. The ▾ menu lists everything.</p>
+    <p class="mono small">Double-click a cartridge to open it. Drag icons and windows anywhere. The SKOS menu lists everything.</p>
   </div>`, { w: 560 });
 
 const trashWin = win('win-trash', 'Trash', `
@@ -182,6 +182,7 @@ const html = `<!doctype html>
           <button role="menuitem" type="button" data-open="win-ledger">All projects</button>
           <a role="menuitem" href="${esc(site.github)}" target="_blank" rel="noopener">GitHub ↗</a>
           <a role="menuitem" href="${esc(site.substack)}" target="_blank" rel="noopener">Substack ↗</a>
+          <button role="menuitem" type="button" id="cleanup">Clean up desktop</button>
           <button role="menuitem" type="button" id="reboot">Restart…</button>
         </div>
       </div>

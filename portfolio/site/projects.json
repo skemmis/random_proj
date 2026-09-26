@@ -1,8 +1,8 @@
 {
   "site": {
     "name": "Sam Kemmis",
-    "tagline": "A year of things I built with AI coding agents.",
-    "intro": "Games, prediction-market tools, and a few analyses. Every one of these was vibe coded: I described what I wanted, an agent wrote the code, and we argued about it until it worked. The ones that didn't work aren't here, but there were plenty.",
+    "tagline": "Games, prediction-market tools, and data stories I've built.",
+    "intro": "A year of shipping small things: multiplayer games, tools for betting on prediction markets, and a few pieces of research that grew out of them. Most are live. Double-click a cartridge to see what it is and launch it.",
     "github": "https://github.com/skemmis",
     "substack": "https://fantasyreality.substack.com",
     "groups": [
