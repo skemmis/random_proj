@@ -172,7 +172,7 @@
     {
       "slug": "sex-house-island",
       "name": "Sex House Island",
-      "one": "A fake reality show, and the point-and-click adventure engine underneath it.",
+      "one": "A fake reality show, and a playable point-and-click adventure set on the island.",
       "group": "play",
       "status": "live",
       "year": "2026",
@@ -187,8 +187,14 @@
         "no framework"
       ],
       "featured": false,
-      "description": "The site is a promo page for a reality show that doesn't exist: eight cast members, an island, prediction markets on who gets voted off, and an investor page. The real experiment is under the hood: a LucasArts-style point-and-click engine in about six hundred lines of TypeScript. Nine verbs, an inventory, a parrot you can talk to, and a three-step puzzle. The walk cycle is drawn in code so I could feel the engine before drawing a single sprite.",
-      "notes": "What I learned: the engine is the easy part. The art is the hard part."
+      "description": "The site is a promo page for a reality show that doesn't exist: eight cast members, an island, prediction markets on who gets voted off, and an investor page. The game is the real experiment: a LucasArts-style point-and-click adventure built from scratch in TypeScript. Nine verbs, an inventory, a parrot you can talk to, and a puzzle to get into the tavern. Launch goes to the show's site. Play the game opens the adventure.",
+      "notes": "What I learned: the engine is the easy part. The art is the hard part.",
+      "links": [
+        {
+          "label": "Play the game",
+          "url": "https://sexhouseisland-production.up.railway.app/"
+        }
+      ]
     },
     {
       "slug": "gizzard-hours",
