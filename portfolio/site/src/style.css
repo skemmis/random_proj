@@ -96,7 +96,7 @@ button { font: inherit; color: inherit; }
 .wbtn.zoom::after { content: ""; position: absolute; inset: 3px; border: 2px solid var(--ink); border-top-width: 3px; }
 .wbtn.close::after { content: "×"; position: absolute; inset: 0; font: 700 15px/14px var(--body); text-align: center; }
 .win-body { overflow: auto; flex: 1; min-height: 0; background: var(--win-hi); }
-.shot { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-bottom: 2px solid var(--ink); image-rendering: auto; }
+.shot { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; border-bottom: 2px solid var(--ink); image-rendering: auto; background: #000; }
 .doc { padding: 16px 20px 20px; }
 .doc h2 { font-family: var(--pix); font-size: 30px; font-weight: 700; line-height: 1; margin: 2px 0 6px; letter-spacing: .005em; }
 .doc .one { font-weight: 600; font-size: 17px; margin: 0 0 12px; color: var(--ink-2); }

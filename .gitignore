@@ -14,3 +14,7 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+
+# Portfolio raw screen captures (source videos live in Drive)
+portfolio/captures/*.mov
+portfolio/captures/*.webm

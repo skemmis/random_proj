@@ -24,6 +24,7 @@ for (const p of projects) {
   p.accent = accents[p.group];
   p.wide = p.wide || ((await exists(`shots/${p.slug}.webp`)) ? `/shots/${p.slug}.webp` : null);
   p.external = p.url && /^https?:/.test(p.url);
+  p.video = (await exists(`shots/${p.slug}.webm`)) ? `/shots/${p.slug}` : null;
 }
 
 const avatar = (await exists('art/avatar.png')) ? '/art/avatar.png' : null;
@@ -66,7 +67,7 @@ const win = (id, title, body, opts = {}) => `
 </section>`;
 
 const projectWin = (p) => win(`win-${p.slug}`, p.name, `
-  ${p.wide ? `<img class="shot" src="${p.wide}" alt="Screenshot of ${esc(p.name)}" loading="lazy">` : ''}
+  ${p.video ? `<video class="shot" muted loop playsinline preload="none" poster="${p.video}-poster.webp" aria-label="Short clips of ${esc(p.name)}"><source src="${p.video}.webm" type="video/webm"><source src="${p.video}.mp4" type="video/mp4"></video>` : p.wide ? `<img class="shot" src="${p.wide}" alt="Screenshot of ${esc(p.name)}" loading="lazy">` : ''}
   <div class="doc">
     <p class="eyebrow">${esc(groupLabel(p.group))} · ${esc(p.year)} · <span class="dot ${p.status}"></span>${statusLabel[p.status] || p.status}</p>
     <h2>${esc(p.name)}</h2>
@@ -200,4 +201,4 @@ const html = `<!doctype html>
 await writeFile(join(dist, 'index.html'), html);
 await writeFile(join(dist, '404.html'), `<!doctype html><meta charset="utf-8"><title>Not found</title><link rel="stylesheet" href="/style.css"><body class="plain"><main class="plain"><h1>404</h1><p>No cartridge at that address. <a href="/">Back to the desktop.</a></p></main>`);
 await writeFile(join(dist, 'favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="10" fill="#1a1712"/><rect x="8" y="10" width="48" height="36" rx="4" fill="#0a100c" stroke="#3d3833" stroke-width="3"/><rect x="14" y="18" width="20" height="4" fill="#8cff9f"/><rect x="14" y="26" width="30" height="4" fill="#8cff9f"/><rect x="24" y="50" width="16" height="5" rx="2" fill="#3d3833"/></svg>`);
-console.log(`built ${projects.length} projects → dist/ (${projects.filter((p) => p.wide).length} with screenshots)`);
+console.log(`built ${projects.length} projects → dist/ (${projects.filter((p) => p.video).length} with video, ${projects.filter((p) => p.wide && !p.video).length} with stills)`);

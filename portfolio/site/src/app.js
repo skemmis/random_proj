@@ -61,15 +61,16 @@
     wins.forEach((o) => o.classList.toggle('blur', o !== w));
     w.style.zIndex = ++z; active = w; renderTasks();
   }
+  function playVideo(w, on) { const v = w.querySelector('video.shot'); if (!v) return; if (on && !reduced) { v.play().catch(() => {}); } else { v.pause(); } }
   function open(id) {
     const w = document.getElementById(id); if (!w) return;
     if (w.hidden) { if (!w.dataset.placed) { place(w); w.dataset.placed = '1'; } w.hidden = false; w.dataset.min = ''; }
-    focus(w);
+    focus(w); playVideo(w, true);
     const first = w.querySelector('.win-body'); first.setAttribute('tabindex', '-1'); first.focus({ preventScroll: true });
     history.replaceState(null, '', id.startsWith('win-') ? '#' + id.slice(4) : location.pathname);
   }
-  function close(w) { w.hidden = true; w.classList.remove('max'); if (active === w) active = null; renderTasks(); if (location.hash === '#' + w.id.slice(4)) history.replaceState(null, '', location.pathname); }
-  function minimize(w) { w.hidden = true; w.dataset.min = '1'; if (active === w) active = null; renderTasks(); }
+  function close(w) { w.hidden = true; playVideo(w, false); w.classList.remove('max'); if (active === w) active = null; renderTasks(); if (location.hash === '#' + w.id.slice(4)) history.replaceState(null, '', location.pathname); }
+  function minimize(w) { w.hidden = true; playVideo(w, false); w.dataset.min = '1'; if (active === w) active = null; renderTasks(); }
   function renderTasks() {
     tasks.innerHTML = '';
     wins.filter((w) => !w.hidden || w.dataset.min === '1').forEach((w) => {
