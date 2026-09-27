@@ -3,7 +3,7 @@
   const $ = (s, r = document) => r.querySelector(s);
   const screen = $('#screen'), bootEl = $('#boot'), bootText = $('#boot-text'), desktop = $('#desktop');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const touch = matchMedia('(hover: none)').matches;
+  const touch = matchMedia('(hover: none)').matches || matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
   const small = () => innerWidth <= 640;
 
   // ---- boot --------------------------------------------------------------
@@ -13,7 +13,7 @@
     bootEl.hidden = true; desktop.hidden = false;
     screen.classList.remove('poweron');
     if (!reduced) { screen.classList.add('degauss'); setTimeout(() => screen.classList.remove('degauss'), 520); }
-    if (!openHash()) { let welcomed = false; try { welcomed = sessionStorage.getItem('welcomed') === '1'; } catch {} if (!welcomed) { open('win-about'); try { sessionStorage.setItem('welcomed', '1'); } catch {} } }
+    if (!openHash()) { let welcomed = false; try { welcomed = sessionStorage.getItem('welcomed') === '1'; } catch {} if (!welcomed && !small()) { open('win-about'); try { sessionStorage.setItem('welcomed', '1'); } catch {} } }
   }
   function boot(fast) {
     bootDone = false; desktop.hidden = true; bootEl.hidden = false; bootText.innerHTML = '';
@@ -141,8 +141,10 @@
     const end = () => { if (d && d.moved) { i.classList.remove('dragging'); persist(); } d = null; };
     i.addEventListener('pointerup', end); i.addEventListener('pointercancel', end);
   });
+  let tappedAt = 0;
   icons.forEach((i) => {
-    i.addEventListener('click', () => { select(i); if (touch) open(i.dataset.open); });
+    i.addEventListener('pointerup', (e) => { if (e.pointerType === 'touch' || e.pointerType === 'pen') { tappedAt = Date.now(); select(i); open(i.dataset.open); } });
+    i.addEventListener('click', () => { if (Date.now() - tappedAt < 600) return; select(i); if (touch) open(i.dataset.open); });
     i.addEventListener('dblclick', () => open(i.dataset.open));
     i.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i.dataset.open); } });
     i.setAttribute('title', touch ? 'Tap to open' : 'Double-click to open');

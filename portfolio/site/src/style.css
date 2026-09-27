@@ -118,7 +118,7 @@ button { font: inherit; color: inherit; }
 .avatar { width: 96px; height: 96px; image-rendering: pixelated; float: right; margin: 0 0 8px 16px; border: 2px solid var(--ink); }
 .trash-list { list-style: none; margin: 0; padding: 0; }
 .trash-list li { display: grid; grid-template-columns: 150px 1fr; gap: 12px; padding: 8px 0; border-top: 1px solid var(--win-lo); font-size: 14px; }
-@media (max-width: 640px) { .win { inset: 0 !important; width: auto !important; max-height: none; transform: none !important; } .trash-list li { grid-template-columns: 1fr; gap: 2px; } }
+@media (max-width: 640px) { .win { inset: 10px 8px 6px 8px !important; width: auto !important; max-height: none; transform: none !important; box-shadow: inset 1px 1px 0 var(--win-hi), inset -1px -1px 0 var(--win-lo), 4px 4px 0 rgba(0,0,0,.45); } .win.max { inset: 0 !important; } .trash-list li { grid-template-columns: 1fr; gap: 2px; } }
 
 /* ledger table inside its window */
 .ledger { width: 100%; border-collapse: collapse; font-size: 14.5px; }

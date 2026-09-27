@@ -107,7 +107,7 @@ const aboutWin = win('win-about', 'README.txt', `
     <p>${esc(site.intro)}</p>
     <p>Most of these are live and you can try them right now. A couple are half finished, and the ones that fizzled out are in the Trash. Each window says what it is, how it works, and what I built it with.</p>
     <p class="links"><a class="btn" href="${esc(site.github)}" target="_blank" rel="noopener">GitHub ↗</a><a class="btn" href="${esc(site.substack)}" target="_blank" rel="noopener">Substack ↗</a></p>
-    <p class="mono small">Double-click a cartridge to open it. You can drag the icons and windows around. The SKOS menu lists everything.</p>
+    <p class="mono small">Double-click a cartridge to open it (one tap on a phone). You can drag the icons and windows around. The SKOS menu lists everything.</p>
   </div>`, { w: 560 });
 
 const trashWin = win('win-trash', 'Trash', `
