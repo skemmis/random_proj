@@ -160,7 +160,9 @@ def build():
     M = best[0]
     print(f"  chosen pitch {best[2]:+d} deg, median surface error {best[1]:.2f} mm")
     full = M @ to_bust
-    place = fit_neck(full, skin, on_ear, bp_skin_raw=trimesh.load(ANAT / "skin_head_neck.ply"))
+    full = refine_by_tissue_depth(full, skin, on_ear) @ full
+    warp = make_face_warp(full, skin)
+    place = fit_neck(full, skin, on_ear, bp_skin_raw=trimesh.load(ANAT / "skin_head_neck.ply"), warp=warp)
 
     # --- auricle enlargement ---------------------------------------------------------------
     ears_info = {}
@@ -208,6 +210,7 @@ def build():
         return mesh
 
     skin_out = save(skin, "skin_head", "skin", "bust")
+    export_textures(parts)
     np.save(OUT / "skin_head_ear_flags.npy", ear_flags)
     save(parts["hair"], "hair", "hair", "bust")
     save(parts["Don_with_skeleton:Suit3:Suittexturematerial"], "suit", "clothing", "bust")
@@ -233,7 +236,7 @@ def build():
 NECK_SCALE = 1.0
 
 
-def fit_neck(full, skin, on_ear, bp_skin_raw):
+def fit_neck(full, skin, on_ear, bp_skin_raw, warp=None):
     """Second fit for the neck, blended into the cranial fit.
 
     The cranial fit pitches BodyParts3D by about -12 deg, which swings its (neutral-posture)
@@ -296,6 +299,8 @@ def fit_neck(full, skin, on_ear, bp_skin_raw):
 
     def place(points, cranial_only=False):
         a = trimesh.transform_points(np.asarray(points, float), full)
+        if warp is not None:
+            a = warp(a)
         if cranial_only:
             return a
         b = trimesh.transform_points(np.asarray(points, float), T_neck)
@@ -306,6 +311,248 @@ def fit_neck(full, skin, on_ear, bp_skin_raw):
 
 
 FIT_INFO = {}
+
+# Soft-tissue depth over the cranial vault, adult men (forensic facial-reconstruction tables,
+# e.g. De Greef et al. 2006; Stephan & Simpson 2008): about 5-6 mm at the vertex, forehead and
+# occiput, and about 10-12 mm over the temporal fossa where the temporalis muscle sits.
+TISSUE_VAULT_MM = 5.8
+TISSUE_TEMPORAL_MM = 11.0
+
+
+def refine_by_tissue_depth(full, skin, on_ear):
+    """Re-fit the cranium so the skin sits a realistic tissue depth outside the skull.
+
+    The first fit matched BodyParts3D's skin to the bust's skin, which leaves the skull
+    wherever BP3D's own scalp put it (gaps of 8-9 mm on top, under 1 mm at the forehead).
+    Sam flagged the skull as looking too small. Here we adjust per-axis scale, translation and
+    pitch of the cranial transform so the skull-to-skin gap along each outer-skull normal
+    matches the tissue-depth targets above. Returns a 4x4 correction applied after `full`.
+    """
+    from scipy.optimize import least_squares
+    sk = trimesh.load(ANAT / "skull_cranium.ply")
+    sk.apply_transform(full)
+    # Outer-surface vault points: vertices whose normal points away from the skull centre and
+    # whose outward ray does not hit the skull again.
+    c = sk.bounds.mean(0)
+    v, n = sk.vertices, sk.vertex_normals
+    outward = np.einsum("ij,ij->i", v - c, n) > 0
+    vault = outward & (v[:, 1] > c[1] - 15)
+    idx = np.where(vault)[0][:: max(1, vault.sum() // 6000)]
+    again = sk.ray.intersects_any(v[idx] + n[idx] * 0.5, n[idx])
+    idx = idx[~again]
+    # Temporal fossa: lateral points below the temporal lines (approx. |x| > 50, low on vault,
+    # in front of the ear canal-ish region).
+    p0 = v[idx]
+    temporal = (np.abs(p0[:, 0] - c[0]) > 52) & (p0[:, 1] < c[1] + 25) & (p0[:, 2] > c[2] - 40)
+    target = np.where(temporal, TISSUE_TEMPORAL_MM, TISSUE_VAULT_MM)
+    skin_no_ear = skin.submesh([np.where(~on_ear[skin.faces].any(axis=1))[0]], append=True)
+    pairs = landmark_pairs(full, skin)
+    lm_p = np.array([p[1] for p in pairs])
+    lm_goal = np.array([p[2] for p in pairs])
+    lm_mask = np.array([p[3] for p in pairs], float)
+    w_lm = np.sqrt(len(p0) / len(pairs))
+
+    def correction(x):
+        sx, sy, sz, tx, ty, tz, pitch = x
+        R = trimesh.transformations.rotation_matrix(np.radians(pitch), [1, 0, 0], c)
+        S = np.diag([sx, sy, sz, 1.0])
+        S[:3, 3] = c - np.array([sx, sy, sz]) * c + [tx, ty, tz]
+        return S @ R
+
+    def resid(x):
+        T = correction(x)
+        p = trimesh.transform_points(p0, T)
+        nn = trimesh.transform_points(p0 + n[idx], T) - p
+        nn /= np.linalg.norm(nn, axis=1, keepdims=True)
+        locs, ray, _ = skin_no_ear.ray.intersects_location(p, nn, multiple_hits=False)
+        gap = np.full(len(p), 30.0)
+        gap[ray] = np.einsum("ij,ij->i", locs - p[ray], nn[ray])
+        # Skull poking through the skin: the outward ray misses or the gap is huge; also
+        # check inward so negative gaps are seen.
+        locs2, ray2, _ = skin_no_ear.ray.intersects_location(p, -nn, multiple_hits=False)
+        inside_miss = np.setdiff1d(ray2, ray)
+        gap[inside_miss] = -np.einsum("ij,ij->i", locs2[np.isin(ray2, inside_miss)] - p[inside_miss],
+                                      -nn[inside_miss])
+        err = np.clip(gap - target, -20, 20)
+        # Bone may never come closer than 3 mm to the surface: penalise that 5x.
+        err = np.where(gap < 3.0, 5.0 * err, err)
+        return np.concatenate([err, w_lm * landmark_errors(T)])
+
+    def landmark_errors(T):
+        p = trimesh.transform_points(lm_p, T)
+        return np.clip(((p - lm_goal) * lm_mask).sum(axis=1), -25, 25)
+
+    x0 = np.array([1, 1, 1, 0, 0, 0, 0], float)
+    r0 = resid(x0)
+    sol = least_squares(resid, x0, diff_step=1e-3, loss="soft_l1", f_scale=2.0,
+                        bounds=([0.85, 0.85, 0.85, -15, -15, -15, -10], [1.25, 1.25, 1.25, 15, 15, 15, 10]))
+    r1 = resid(sol.x)
+    e0, e1 = landmark_errors(correction(x0)), landmark_errors(correction(sol.x))
+    for (name, *_), a, b in zip(pairs, e0, e1):
+        print(f"    {name:18s} bone-vs-target error {a:+6.1f} -> {b:+6.1f} mm")
+    print(f"  tissue-depth refit: scale {sol.x[:3].round(3)}, shift {sol.x[3:6].round(1)} mm, "
+          f"pitch {sol.x[6]:+.1f} deg; gap error median {np.median(np.abs(r0)):.1f} -> "
+          f"{np.median(np.abs(r1)):.1f} mm")
+    FIT_INFO.update(tissue_refit=dict(scale=sol.x[:3].tolist(), shift_mm=sol.x[3:6].tolist(),
+                                      pitch_deg=float(sol.x[6]), median_abs_gap_error_mm=float(np.median(np.abs(r1)))))
+    return correction(sol.x)
+
+
+# Midline/facial soft-tissue depths for adult men, mm (De Greef et al. 2006, Forensic Sci Int
+# 159S: S126-S146, BMI-normal males; rounded). Direction is the skin-normal direction we probe.
+FACE_TISSUE = {"glabella": 5.6, "nasion": 6.5, "rhinion": 2.9, "upper_lip": 12.9, "lower_lip": 14.0,
+               "chin_lip_fold": 11.0, "pogonion": 11.5, "menton": 7.6, "zygion": 7.0, "gonion": 13.0}
+
+
+def skin_profile_landmarks(skin):
+    """Soft-tissue landmarks on the bust's midline profile (bust frame, mm)."""
+    # Ray-cast the profile from in front (robust to the sculpt's patch seams on the midline):
+    # median over three parallel rays 2.5 mm either side of the midline.
+    c = skin.bounds.mean(0)
+    ys = np.arange(skin.bounds[0, 1], skin.bounds[1, 1], 1.0)
+    zs = []
+    for x in (-2.5, 0.0, 2.5):
+        o = np.column_stack([np.full(len(ys), x), ys, np.full(len(ys), skin.bounds[1, 2] + 50)])
+        d = np.tile([0, 0, -1.0], (len(ys), 1))
+        locs, ray, _ = skin.ray.intersects_location(o, d, multiple_hits=False)
+        zz = np.full(len(ys), np.nan)
+        zz[ray] = locs[:, 2]
+        zs.append(zz)
+    z = np.nanmedian(np.array(zs), axis=0)
+    z[z < c[2]] = np.nan  # only the face side
+    front = np.column_stack([np.zeros(np.isfinite(z).sum()), ys[np.isfinite(z)], z[np.isfinite(z)]])
+
+    def arg(fn, lo, hi):
+        m = (ys >= lo) & (ys <= hi) & np.isfinite(z)
+        i = np.where(m)[0][fn(z[m])]
+        return np.array([0.0, ys[i], z[i]])
+
+    prn = arg(np.argmax, ys.min(), ys.max())
+    sn = arg(np.argmin, prn[1] - 32, prn[1] - 10)
+    ls = arg(np.argmax, sn[1] - 18, sn[1] - 4)
+    sto = arg(np.argmin, ls[1] - 14, ls[1] - 3)
+    li = arg(np.argmax, sto[1] - 12, sto[1] - 2)
+    fold = arg(np.argmin, li[1] - 25, li[1] - 6)
+    pog = arg(np.argmax, fold[1] - 30, fold[1] - 6)
+    # Menton: bottom of the chin, found by casting rays upward under the chin.
+    zz = np.arange(pog[2] - 30, pog[2] - 2, 1.0)
+    o = np.column_stack([np.zeros(len(zz)), np.full(len(zz), pog[1] - 80), zz])
+    locs, ray, _ = skin.ray.intersects_location(o, np.tile([0, 1.0, 0], (len(zz), 1)), multiple_hits=False)
+    under = locs[locs[:, 1] < pog[1]]
+    me = under[under[:, 1].argmin()] if len(under) else np.array([0, pog[1] - 15, pog[2] - 12])
+    me = np.array([0.0, me[1], me[2]])
+    n = arg(np.argmin, prn[1] + 25, prn[1] + 60)
+    g = arg(np.argmax, n[1] + 5, n[1] + 30)
+    return dict(pronasale=prn, subnasale=sn, labrale_sup=ls, stomion=sto, labrale_inf=li,
+                labiomental_fold=fold, pogonion=pog, menton=me, nasion=n, glabella=g)
+
+
+def make_face_warp(full, skin):
+    """Smooth deformation of the facial skeleton so the jaw, teeth and nose sit behind the
+    bust's chin, lips and nose at realistic tissue depths, while the vault stays put.
+
+    The bust's face is longer and less protruding relative to its cranium than BodyParts3D's,
+    so one affine transform cannot fit both (Sam spotted the jaw sitting too high). We use a
+    Gaussian radial-basis warp: the landmark displacements are the (masked) bone-to-target
+    offsets from landmark_pairs(); a ring of vault and skull-base anchor points has zero
+    displacement, and the warp fades to zero far from the face.
+    """
+    from scipy.interpolate import RBFInterpolator
+    pairs = landmark_pairs(full, skin)
+    P = np.array([p[1] for p in pairs])
+    D = np.array([(p[2] - p[1]) * p[3] for p in pairs])
+    sk = trimesh.load(ANAT / "skull_cranium.ply")
+    sk.apply_transform(full)
+    v = sk.vertices
+    c = sk.bounds.mean(0)
+    # Anchors: vault (above the brow, behind the orbits) and the skull base/ear region.
+    gl_y = [p[1] for p in pairs if p[0] == "glabella"][0][1]
+    anchors = v[(v[:, 1] > gl_y + 10) | (v[:, 2] < c[2] - 10)]
+    anchors = anchors[:: max(1, len(anchors) // 300)]
+    # Condyles stay in their sockets so the jaw hinges rather than floats.
+    md = trimesh.load(ANAT / "mandible.ply")
+    md.apply_transform(full)
+    mv = md.vertices
+    condyles = [mv[(mv[:, 0] * s > 0)][(mv[(mv[:, 0] * s > 0)][:, 1]).argmax()] for s in (1, -1)]
+    ctrl = np.vstack([P, anchors, condyles])
+    disp = np.vstack([D, np.zeros((len(anchors) + 2, 3))])
+    rbf = RBFInterpolator(ctrl, disp, kernel="gaussian", epsilon=1 / 35.0, smoothing=1e-3)
+    for (name, *_), d in zip(pairs, D):
+        print(f"    warp {name:16s} moves {np.linalg.norm(d):5.1f} mm  {d.round(1)}")
+    FIT_INFO["face_warp"] = {p[0]: d.round(2).tolist() for p, d in zip(pairs, D)}
+
+    def warp(points):
+        points = np.asarray(points, float)
+        out = points.copy()
+        near = np.linalg.norm(points - P.mean(0), axis=1) < 160
+        if near.any():
+            out[near] = points[near] + rbf(points[near])
+        return out
+
+    return warp
+
+
+def landmark_pairs(full, skin):
+    """(name, bone point, goal point, axis mask): bone landmark should sit at the matching skin
+    landmark minus the soft-tissue depth. Only the listed axes are constrained."""
+    def load(name):
+        m = trimesh.load(ANAT / f"{name}.ply")
+        m.apply_transform(full)
+        return m
+    sk, md, th = load("skull_cranium"), load("mandible"), load("teeth")
+    slab = lambda v: v[np.abs(v[:, 0]) < 3.0]
+    skv, mdv, thv = slab(sk.vertices), slab(md.vertices), slab(th.vertices)
+    S = skin_profile_landmarks(skin)
+    Z, Y, YZ = (0, 0, 1), (0, 1, 0), (0, 1, 1)
+    out = []
+    # Upper face, from the bone's front profile (max z per 1 mm height band, so inner-table and
+    # sinus surfaces are ignored).
+    def front_at(lo, hi):
+        ys = np.arange(lo, hi, 1.0)
+        pts = []
+        for y in ys:
+            sel = skv[(np.abs(skv[:, 1] - y) < 0.75) & (skv[:, 2] > skv[:, 2].max() - 45)]
+            if len(sel):
+                pts.append(sel[sel[:, 2].argmax()])
+        return np.array(pts)
+    # Bony nasion = the frontonasal suture, i.e. the top of the nasal bones.
+    nasal = trimesh.util.concatenate([load("bone_left_nasal_bone"), load("bone_right_nasal_bone")])
+    na_y = nasal.vertices[:, 1].max()
+    prof = front_at(na_y - 10, na_y + 45)
+    na = prof[np.abs(prof[:, 1] - na_y).argmin()]
+    above = prof[(prof[:, 1] > na[1] + 3) & (prof[:, 1] < na[1] + 35)]
+    gl = above[above[:, 2].argmax()]
+    out.append(("glabella", gl, S["glabella"] - [0, 0, FACE_TISSUE["glabella"]], Z))
+    out.append(("nasion", na, S["nasion"] - [0, 0, FACE_TISSUE["nasion"]], YZ))
+    # Mouth: upper incisor under the upper lip, lower incisor under the lower lip.
+    ui = thv[thv[:, 2].argmax()]
+    out.append(("upper_incisor", ui, S["labrale_sup"] - [0, 0, FACE_TISSUE["upper_lip"]], Z))
+    out.append(("incisal_edge", ui, S["stomion"] + [0, 2, 0], Y))  # incisor tip ~2 mm above stomion
+    low = thv[thv[:, 1] < ui[1] - 8]
+    li = low[low[:, 2].argmax()]
+    out.append(("lower_incisor", li, S["labrale_inf"] - [0, 0, FACE_TISSUE["lower_lip"]], Z))
+    # Chin.
+    me = mdv[mdv[:, 1].argmin()]
+    out.append(("menton", me, S["menton"] + [0, FACE_TISSUE["menton"], 0], Y))
+    chin = mdv[mdv[:, 1] < me[1] + 22]
+    pg = chin[chin[:, 2].argmax()]
+    out.append(("pogonion", pg, S["pogonion"] - [0, 0, FACE_TISSUE["pogonion"]], Z))
+    fold = mdv[(mdv[:, 1] > pg[1]) & (mdv[:, 1] < li[1]) & (mdv[:, 2] > pg[2] - 20)]
+    if len(fold):
+        out.append(("chin_lip_fold", fold[fold[:, 2].argmin()],
+                    S["labiomental_fold"] - [0, 0, FACE_TISSUE["chin_lip_fold"]], Z))
+    FIT_INFO["skin_landmarks"] = {k: v.round(1).tolist() for k, v in S.items()}
+    return out
+
+
+def export_textures(parts=None):
+    """Per-vertex UVs and base-colour textures of the bust skin and suit, for rendering."""
+    parts = parts or load_bust()
+    OUT.mkdir(parents=True, exist_ok=True)
+    for key, name in (("HeadHires", "skin_head"), ("Don_with_skeleton:Suit3:Suittexturematerial", "suit")):
+        vis = parts[key].visual
+        np.save(OUT / f"{name}_uv.npy", np.asarray(vis.uv, np.float32))
+        vis.material.baseColorTexture.convert("RGB").save(OUT / f"{name}_texture.png")
 
 
 def tube(points, radius, sections=14):

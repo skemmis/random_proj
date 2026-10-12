@@ -55,9 +55,32 @@ def render(meshes, view_dir, up=(0, 0, 1), res=600, pad=0.05, extent=None, cente
         lam = np.clip(n @ light, 0, 1)
         spec = np.clip(n @ (light - d) / np.linalg.norm(light - d), 0, 1) ** 30
         shade = 0.25 + 0.7 * lam
-        img[idx_ray] = np.clip(np.asarray(rgb)[None, :] * shade[:, None] + 0.15 * spec[:, None], 0, 1)
+        base = rgb(mesh, idx_tri, locs[closer]) if callable(rgb) else np.asarray(rgb)[None, :]
+        img[idx_ray] = np.clip(base * shade[:, None] + 0.15 * spec[:, None], 0, 1)
         depth[idx_ray] = t
     return img.reshape(res, res, 3), depth.reshape(res, res)
+
+
+def textured(uv, image, tint_faces=None, tint=(0.95, 0.2, 0.2), tint_amount=0.6):
+    """Colour function for render(): samples `image` (HxWx3 floats) at per-vertex `uv`."""
+    image = np.asarray(image, float)
+    if image.max() > 1:
+        image = image / 255.0
+    h, w = image.shape[:2]
+
+    def fn(mesh, tri, locs):
+        bary = trimesh.triangles.points_to_barycentric(mesh.triangles[tri], locs)
+        fuv = uv[mesh.faces[tri]]
+        p = np.einsum("ij,ijk->ik", bary, fuv)
+        x = np.clip((p[:, 0] % 1.0) * (w - 1), 0, w - 1).astype(int)
+        y = np.clip((1 - (p[:, 1] % 1.0)) * (h - 1), 0, h - 1).astype(int)
+        col = image[y, x, :3]
+        if tint_faces is not None:
+            t = tint_faces[tri]
+            col[t] = (1 - tint_amount) * col[t] + tint_amount * np.asarray(tint)
+        return col
+
+    return fn
 
 
 def load_mesh(path):
