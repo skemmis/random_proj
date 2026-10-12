@@ -14,3 +14,9 @@ __pycache__/
 .venv/
 venv/
 .DS_Store
+
+# Butler shooting: large generated / third-party meshes (rebuild with model/build_head.py;
+# bust source zip lives in the project's shared folder)
+butler-shooting/assets/bust/
+butler-shooting/assets/head_model/
+butler-shooting/results/maps/

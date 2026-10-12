@@ -1,0 +1,57 @@
+"""Sweep head pose and record outcome probabilities for head and chest aim.
+
+Writes results/sweep.json (one row per pose) and results/maps/*.npz for selected poses.
+Pose is described by rel = shooter_az - head_yaw (0 = face toward the shooter, 90 = right ear
+toward the shooter), plus head pitch (chin up +) and roll (top of head toward his left -).
+"""
+
+import json
+import sys
+from multiprocessing import Pool
+from pathlib import Path
+
+import numpy as np
+
+sys.path.insert(0, str(Path(__file__).parent))
+from maps import CODES, OutcomeMap, buckets  # noqa: E402
+
+OUT = Path(__file__).resolve().parents[1] / "results"
+SHOOTER_AZ = 90.0
+
+
+def run(pose):
+    rel, pitch, roll = pose
+    m = OutcomeMap(shooter_az=SHOOTER_AZ, head_yaw=SHOOTER_AZ - rel, head_pitch=pitch, head_roll=roll)
+    row = dict(rel=rel, pitch=pitch, roll=roll)
+    for aim in ("head", "chest"):
+        rng = np.random.default_rng(2024)
+        p = m.probabilities(aim, n_eng=20_000, rng=rng)
+        row[aim] = dict(codes=p, buckets=buckets(p))
+        rng = np.random.default_rng(2025)
+        p2 = m.probabilities(aim, n_eng=20_000, rng=rng, followup=True)
+        row[aim + "_followup"] = dict(codes=p2, buckets=buckets(p2))
+    if pitch in (0.0, 10.0) and roll == 0.0 and rel % 10 == 0:
+        (OUT / "maps").mkdir(parents=True, exist_ok=True)
+        np.savez_compressed(OUT / "maps" / f"map_rel{rel:+04.0f}_p{pitch:+03.0f}_r{roll:+03.0f}.npz",
+                            fine=m.fine, coarse=m.coarse, fu=m.fu, fv=m.fv, cu=m.cu, cv=m.cv,
+                            aim_head=m.aims["head"], aim_chest=m.aims["chest"], codes=np.array(CODES))
+    print(f"rel {rel:+4.0f} pitch {pitch:+3.0f} roll {roll:+3.0f}: ear-only head {row['head']['buckets']['ear_only']:.4%}",
+          flush=True)
+    return row
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    poses = [(float(r), 0.0, 0.0) for r in range(-60, 181, 5)]
+    for pitch in (-10.0, 10.0, 20.0):
+        poses += [(float(r), pitch, 0.0) for r in range(-40, 71, 5)]
+    for roll in (-10.0, -20.0, 10.0):
+        poses += [(float(r), 0.0, roll) for r in range(-40, 71, 5)]
+        poses += [(float(r), 10.0, roll) for r in range(-40, 71, 5)]
+    with Pool(4) as pool:
+        rows = pool.map(run, poses, chunksize=1)
+    (OUT / "sweep.json").write_text(json.dumps(rows, indent=0))
+
+
+if __name__ == "__main__":
+    main()

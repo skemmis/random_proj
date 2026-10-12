@@ -1,0 +1,3286 @@
+{
+ "source": "BodyParts3D 4.0 (IS-A tree, polygon reduction 99%), https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+ "license": "CC BY-SA 2.1 JP. Attribution: 'BodyParts3D, (c) The Database Center for Life Science licensed under CC Attribution-Share Alike 2.1 Japan'. Derived meshes are distributed under the same licence.",
+ "units": "mm",
+ "coordinate_frame": {
+  "origin": "BodyParts3D body frame (z=0 near the soles; values not re-centred)",
+  "x": "+x = body's LEFT (right side x<0)",
+  "y": "+y = POSTERIOR (anterior/face is -y)",
+  "z": "+z = SUPERIOR (up)",
+  "handedness": "right-handed",
+  "reference": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/coordinate_system.png"
+ },
+ "skull_bbox_mm": {
+  "cranium_only": {
+   "min": [
+    -76.19,
+    -190.83,
+    1463.99
+   ],
+   "max": [
+    74.86,
+    18.0,
+    1636.27
+   ]
+  },
+  "cranium_plus_mandible": {
+   "min": [
+    -76.19,
+    -190.83,
+    1421.63
+   ],
+   "max": [
+    74.86,
+    18.0,
+    1636.27
+   ]
+  }
+ },
+ "ear_landmarks_mm": {
+  "external_acoustic_meatus_bony_estimate": {
+   "method": "Rays cast medially over the auricle's y-z footprint onto the temporal bone; the meatus is the largest enclosed depression (>=6 mm from bone edges) relative to the 20 mm median surface level. opening_centre = (lateral surface level, centroid y, z); deepest_point = deepest first hit inside the canal. Approximate (99%-reduced mesh).",
+   "left": {
+    "opening_centre_mm": [
+     56.8,
+     -83.6,
+     1505.6
+    ],
+    "deepest_point_mm": [
+     43.7,
+     -86.3,
+     1506.2
+    ],
+    "equivalent_diameter_mm": 7.3
+   },
+   "right": {
+    "opening_centre_mm": [
+     -58.2,
+     -83.7,
+     1505.7
+    ],
+    "deepest_point_mm": [
+     -43.9,
+     -86.3,
+     1506.3
+    ],
+    "equivalent_diameter_mm": 7.0
+   }
+  },
+  "auricle": {
+   "left": {
+    "centroid": [
+     68.3,
+     -82.2,
+     1508.5
+    ],
+    "bbox_min": [
+     56.6,
+     -103.8,
+     1479.7
+    ],
+    "bbox_max": [
+     83.1,
+     -66.7,
+     1536.7
+    ]
+   },
+   "right": {
+    "centroid": [
+     -69.6,
+     -82.2,
+     1508.4
+    ],
+    "bbox_min": [
+     -84.4,
+     -103.8,
+     1479.8
+    ],
+    "bbox_max": [
+     -57.9,
+     -66.6,
+     1536.6
+    ]
+   }
+  }
+ },
+ "missing": [
+  "external carotid arteries (not modelled in BodyParts3D 4.0)",
+  "cervical segment of internal carotid arteries (model starts at skull base)",
+  "upper internal jugular vein (only ~44 mm lower-neck segment modelled)",
+  "spinal cord solid (synthetic cervical cord provided instead)"
+ ],
+ "files": [
+  {
+   "file": "bone_frontal_bone.ply",
+   "structure": "Frontal bone",
+   "category": "skull",
+   "side": "midline",
+   "fma_ids": [
+    "FMA52734"
+   ],
+   "fma_id": "FMA52734",
+   "source_elements": [
+    {
+     "file_id": "FJ3200",
+     "fma": "FMA52734",
+     "name": "Frontal bone"
+    }
+   ],
+   "faces": 14510,
+   "vertices": 8472,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -63.3,
+     -177.38,
+     1520.89
+    ],
+    "max": [
+     61.99,
+     -106.64,
+     1629.94
+    ]
+   },
+   "size_bytes": 290512,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_left_parietal_bone.ply",
+   "structure": "Left parietal bone",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA52789"
+   ],
+   "fma_id": "FMA52789",
+   "source_elements": [
+    {
+     "file_id": "FJ3274",
+     "fma": "FMA52789",
+     "name": "Left parietal bone"
+    }
+   ],
+   "faces": 13210,
+   "vertices": 8367,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -7.87,
+     -131.69,
+     1517.8
+    ],
+    "max": [
+     74.86,
+     14.95,
+     1636.27
+    ]
+   },
+   "size_bytes": 272352,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_right_parietal_bone.ply",
+   "structure": "Right parietal bone",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA52788"
+   ],
+   "fma_id": "FMA52788",
+   "source_elements": [
+    {
+     "file_id": "FJ3380",
+     "fma": "FMA52788",
+     "name": "Right parietal bone"
+    }
+   ],
+   "faces": 13002,
+   "vertices": 8028,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -76.19,
+     -127.89,
+     1517.88
+    ],
+    "max": [
+     5.0,
+     14.83,
+     1636.27
+    ]
+   },
+   "size_bytes": 265580,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_occipital_bone.ply",
+   "structure": "Occipital bone",
+   "category": "skull",
+   "side": "midline",
+   "fma_ids": [
+    "FMA52735"
+   ],
+   "fma_id": "FMA52735",
+   "source_elements": [
+    {
+     "file_id": "FJ3309",
+     "fma": "FMA52735",
+     "name": "Occipital bone"
+    }
+   ],
+   "faces": 12450,
+   "vertices": 6995,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -61.96,
+     -100.96,
+     1477.77
+    ],
+    "max": [
+     60.71,
+     18.0,
+     1584.51
+    ]
+   },
+   "size_bytes": 246008,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_left_temporal_bone.ply",
+   "structure": "Left temporal bone",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA52739"
+   ],
+   "fma_id": "FMA52739",
+   "source_elements": [
+    {
+     "file_id": "FJ3281",
+     "fma": "FMA52739",
+     "name": "Left temporal bone"
+    }
+   ],
+   "faces": 4936,
+   "vertices": 3013,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     11.62,
+     -133.57,
+     1475.48
+    ],
+    "max": [
+     72.59,
+     -35.07,
+     1551.46
+    ]
+   },
+   "size_bytes": 100541,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_right_temporal_bone.ply",
+   "structure": "Right temporal bone",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA52738"
+   ],
+   "fma_id": "FMA52738",
+   "source_elements": [
+    {
+     "file_id": "FJ3386",
+     "fma": "FMA52738",
+     "name": "Right temporal bone"
+    }
+   ],
+   "faces": 4928,
+   "vertices": 3102,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -73.99,
+     -133.74,
+     1475.57
+    ],
+    "max": [
+     -12.7,
+     -35.01,
+     1551.53
+    ]
+   },
+   "size_bytes": 101505,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_sphenoid_bone.ply",
+   "structure": "Sphenoid bone",
+   "category": "skull",
+   "side": "midline",
+   "fma_ids": [
+    "FMA52736"
+   ],
+   "fma_id": "FMA52736",
+   "source_elements": [
+    {
+     "file_id": "FJ3394",
+     "fma": "FMA52736",
+     "name": "Sphenoid bone"
+    }
+   ],
+   "faces": 8154,
+   "vertices": 4957,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -56.32,
+     -145.02,
+     1478.91
+    ],
+    "max": [
+     55.03,
+     -90.41,
+     1548.46
+    ]
+   },
+   "size_bytes": 165703,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_ethmoid.ply",
+   "structure": "Ethmoid",
+   "category": "skull",
+   "side": "midline",
+   "fma_ids": [
+    "FMA52740"
+   ],
+   "fma_id": "FMA52740",
+   "source_elements": [
+    {
+     "file_id": "FJ3199",
+     "fma": "FMA52740",
+     "name": "Ethmoid"
+    }
+   ],
+   "faces": 22276,
+   "vertices": 12479,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -21.51,
+     -167.2,
+     1497.28
+    ],
+    "max": [
+     20.2,
+     -119.82,
+     1532.34
+    ]
+   },
+   "size_bytes": 439555,
+   "decimated": false,
+   "notes": "neurocranium"
+  },
+  {
+   "file": "bone_left_maxilla.ply",
+   "structure": "Left maxilla",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA53650"
+   ],
+   "fma_id": "FMA53650",
+   "source_elements": [
+    {
+     "file_id": "FJ3269",
+     "fma": "FMA53650",
+     "name": "Left maxilla"
+    }
+   ],
+   "faces": 5198,
+   "vertices": 3577,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -3.07,
+     -182.88,
+     1463.99
+    ],
+    "max": [
+     45.8,
+     -126.81,
+     1533.29
+    ]
+   },
+   "size_bytes": 110715,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_right_maxilla.ply",
+   "structure": "Right maxilla",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA53649"
+   ],
+   "fma_id": "FMA53649",
+   "source_elements": [
+    {
+     "file_id": "FJ3375",
+     "fma": "FMA53649",
+     "name": "Right maxilla"
+    }
+   ],
+   "faces": 5324,
+   "vertices": 3513,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -47.61,
+     -184.03,
+     1463.99
+    ],
+    "max": [
+     -0.25,
+     -129.37,
+     1533.35
+    ]
+   },
+   "size_bytes": 111585,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_left_zygomatic_bone.ply",
+   "structure": "Left zygomatic bone",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA52893"
+   ],
+   "fma_id": "FMA52893",
+   "source_elements": [
+    {
+     "file_id": "FJ3287",
+     "fma": "FMA52893",
+     "name": "Left zygomatic bone"
+    }
+   ],
+   "faces": 1434,
+   "vertices": 929,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     31.89,
+     -161.43,
+     1480.62
+    ],
+    "max": [
+     63.24,
+     -121.74,
+     1536.74
+    ]
+   },
+   "size_bytes": 30006,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_right_zygomatic_bone.ply",
+   "structure": "Right zygomatic bone",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA52892"
+   ],
+   "fma_id": "FMA52892",
+   "source_elements": [
+    {
+     "file_id": "FJ3392",
+     "fma": "FMA52892",
+     "name": "Right zygomatic bone"
+    }
+   ],
+   "faces": 1556,
+   "vertices": 934,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -64.58,
+     -161.45,
+     1480.64
+    ],
+    "max": [
+     -33.23,
+     -121.77,
+     1536.64
+    ]
+   },
+   "size_bytes": 31652,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_left_nasal_bone.ply",
+   "structure": "Left nasal bone",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA53648"
+   ],
+   "fma_id": "FMA53648",
+   "source_elements": [
+    {
+     "file_id": "FJ3272",
+     "fma": "FMA53648",
+     "name": "Left nasal bone"
+    }
+   ],
+   "faces": 438,
+   "vertices": 263,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -2.52,
+     -189.47,
+     1501.85
+    ],
+    "max": [
+     7.2,
+     -169.29,
+     1533.49
+    ]
+   },
+   "size_bytes": 9065,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_right_nasal_bone.ply",
+   "structure": "Right nasal bone",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA53647"
+   ],
+   "fma_id": "FMA53647",
+   "source_elements": [
+    {
+     "file_id": "FJ3378",
+     "fma": "FMA53647",
+     "name": "Right nasal bone"
+    }
+   ],
+   "faces": 416,
+   "vertices": 265,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -9.15,
+     -190.83,
+     1501.17
+    ],
+    "max": [
+     -0.74,
+     -169.58,
+     1533.19
+    ]
+   },
+   "size_bytes": 8803,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_left_lacrimal_bone.ply",
+   "structure": "Left lacrimal bone",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA53646"
+   ],
+   "fma_id": "FMA53646",
+   "source_elements": [
+    {
+     "file_id": "FJ3265",
+     "fma": "FMA53646",
+     "name": "Left lacrimal bone"
+    }
+   ],
+   "faces": 640,
+   "vertices": 366,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     7.32,
+     -164.73,
+     1497.87
+    ],
+    "max": [
+     17.93,
+     -150.76,
+     1526.88
+    ]
+   },
+   "size_bytes": 12927,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_right_lacrimal_bone.ply",
+   "structure": "Right lacrimal bone",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA53645"
+   ],
+   "fma_id": "FMA53645",
+   "source_elements": [
+    {
+     "file_id": "FJ3371",
+     "fma": "FMA53645",
+     "name": "Right lacrimal bone"
+    }
+   ],
+   "faces": 702,
+   "vertices": 401,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -18.04,
+     -165.51,
+     1501.88
+    ],
+    "max": [
+     -7.49,
+     -150.95,
+     1527.35
+    ]
+   },
+   "size_bytes": 14153,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_left_palatine_bone.ply",
+   "structure": "Left palatine bone",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA53656"
+   ],
+   "fma_id": "FMA53656",
+   "source_elements": [
+    {
+     "file_id": "FJ3273",
+     "fma": "FMA53656",
+     "name": "Left palatine bone"
+    }
+   ],
+   "faces": 1938,
+   "vertices": 1164,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -1.54,
+     -149.96,
+     1470.16
+    ],
+    "max": [
+     27.46,
+     -103.32,
+     1513.4
+    ]
+   },
+   "size_bytes": 39379,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_right_palatine_bone.ply",
+   "structure": "Right palatine bone",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA53655"
+   ],
+   "fma_id": "FMA53655",
+   "source_elements": [
+    {
+     "file_id": "FJ3379",
+     "fma": "FMA53655",
+     "name": "Right palatine bone"
+    }
+   ],
+   "faces": 1736,
+   "vertices": 1132,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -28.81,
+     -149.91,
+     1470.45
+    ],
+    "max": [
+     0.15,
+     -103.31,
+     1513.34
+    ]
+   },
+   "size_bytes": 36369,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_vomer.ply",
+   "structure": "Vomer",
+   "category": "skull",
+   "side": "midline",
+   "fma_ids": [
+    "FMA9710"
+   ],
+   "fma_id": "FMA9710",
+   "source_elements": [
+    {
+     "file_id": "FJ3395",
+     "fma": "FMA9710",
+     "name": "Vomer"
+    }
+   ],
+   "faces": 7218,
+   "vertices": 3660,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -6.11,
+     -165.81,
+     1474.59
+    ],
+    "max": [
+     4.81,
+     -110.75,
+     1518.11
+    ]
+   },
+   "size_bytes": 137971,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_left_inferior_nasal_concha.ply",
+   "structure": "Left inferior nasal concha",
+   "category": "skull",
+   "side": "left",
+   "fma_ids": [
+    "FMA54738"
+   ],
+   "fma_id": "FMA54738",
+   "source_elements": [
+    {
+     "file_id": "FJ3263",
+     "fma": "FMA54738",
+     "name": "Left inferior nasal concha"
+    }
+   ],
+   "faces": 738,
+   "vertices": 482,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     4.59,
+     -169.48,
+     1482.66
+    ],
+    "max": [
+     15.94,
+     -133.95,
+     1498.05
+    ]
+   },
+   "size_bytes": 15593,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "bone_right_inferior_nasal_concha.ply",
+   "structure": "Right inferior nasal concha",
+   "category": "skull",
+   "side": "right",
+   "fma_ids": [
+    "FMA54737"
+   ],
+   "fma_id": "FMA54737",
+   "source_elements": [
+    {
+     "file_id": "FJ3369",
+     "fma": "FMA54737",
+     "name": "Right inferior nasal concha"
+    }
+   ],
+   "faces": 714,
+   "vertices": 572,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -16.53,
+     -166.33,
+     1478.52
+    ],
+    "max": [
+     -6.69,
+     -129.96,
+     1498.48
+    ]
+   },
+   "size_bytes": 16361,
+   "decimated": false,
+   "notes": "viscerocranium (facial skeleton)"
+  },
+  {
+   "file": "skull_cranium.ply",
+   "structure": "Cranium (neurocranium + facial skeleton, without mandible)",
+   "category": "skull",
+   "side": "midline",
+   "fma_ids": [
+    "FMA53672",
+    "FMA53673"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ3200",
+     "fma": "FMA52734",
+     "name": "Frontal bone"
+    },
+    {
+     "file_id": "FJ3274",
+     "fma": "FMA52789",
+     "name": "Left parietal bone"
+    },
+    {
+     "file_id": "FJ3380",
+     "fma": "FMA52788",
+     "name": "Right parietal bone"
+    },
+    {
+     "file_id": "FJ3309",
+     "fma": "FMA52735",
+     "name": "Occipital bone"
+    },
+    {
+     "file_id": "FJ3281",
+     "fma": "FMA52739",
+     "name": "Left temporal bone"
+    },
+    {
+     "file_id": "FJ3386",
+     "fma": "FMA52738",
+     "name": "Right temporal bone"
+    },
+    {
+     "file_id": "FJ3394",
+     "fma": "FMA52736",
+     "name": "Sphenoid bone"
+    },
+    {
+     "file_id": "FJ3199",
+     "fma": "FMA52740",
+     "name": "Ethmoid"
+    },
+    {
+     "file_id": "FJ3269",
+     "fma": "FMA53650",
+     "name": "Left maxilla"
+    },
+    {
+     "file_id": "FJ3375",
+     "fma": "FMA53649",
+     "name": "Right maxilla"
+    },
+    {
+     "file_id": "FJ3287",
+     "fma": "FMA52893",
+     "name": "Left zygomatic bone"
+    },
+    {
+     "file_id": "FJ3392",
+     "fma": "FMA52892",
+     "name": "Right zygomatic bone"
+    },
+    {
+     "file_id": "FJ3272",
+     "fma": "FMA53648",
+     "name": "Left nasal bone"
+    },
+    {
+     "file_id": "FJ3378",
+     "fma": "FMA53647",
+     "name": "Right nasal bone"
+    },
+    {
+     "file_id": "FJ3265",
+     "fma": "FMA53646",
+     "name": "Left lacrimal bone"
+    },
+    {
+     "file_id": "FJ3371",
+     "fma": "FMA53645",
+     "name": "Right lacrimal bone"
+    },
+    {
+     "file_id": "FJ3273",
+     "fma": "FMA53656",
+     "name": "Left palatine bone"
+    },
+    {
+     "file_id": "FJ3379",
+     "fma": "FMA53655",
+     "name": "Right palatine bone"
+    },
+    {
+     "file_id": "FJ3395",
+     "fma": "FMA9710",
+     "name": "Vomer"
+    },
+    {
+     "file_id": "FJ3263",
+     "fma": "FMA54738",
+     "name": "Left inferior nasal concha"
+    },
+    {
+     "file_id": "FJ3369",
+     "fma": "FMA54737",
+     "name": "Right inferior nasal concha"
+    }
+   ],
+   "faces": 121518,
+   "vertices": 72671,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -76.19,
+     -190.83,
+     1463.99
+    ],
+    "max": [
+     74.86,
+     18.0,
+     1636.27
+    ]
+   },
+   "size_bytes": 2452006,
+   "decimated": false,
+   "notes": "Union of the 21 bone_* meshes; bones are separate shells (not boolean-merged)."
+  },
+  {
+   "file": "mandible.ply",
+   "structure": "Mandible",
+   "category": "skull",
+   "side": "midline",
+   "fma_ids": [
+    "FMA52748"
+   ],
+   "fma_id": "FMA52748",
+   "source_elements": [
+    {
+     "file_id": "FJ3289",
+     "fma": "FMA52748",
+     "name": "Mandible"
+    }
+   ],
+   "faces": 5576,
+   "vertices": 2845,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -53.85,
+     -173.83,
+     1421.63
+    ],
+    "max": [
+     52.55,
+     -89.85,
+     1506.1
+    ]
+   },
+   "size_bytes": 106845,
+   "decimated": false
+  },
+  {
+   "file": "teeth.ply",
+   "structure": "Permanent teeth (upper + lower)",
+   "category": "other",
+   "side": "midline",
+   "fma_ids": [
+    "FMA55680",
+    "FMA55681",
+    "FMA55682",
+    "FMA55683",
+    "FMA55686",
+    "FMA55687",
+    "FMA55688",
+    "FMA55689",
+    "FMA55690",
+    "FMA55691",
+    "FMA55692",
+    "FMA55693",
+    "FMA55694",
+    "FMA55695",
+    "FMA55697",
+    "FMA55698",
+    "FMA55699",
+    "FMA55700",
+    "FMA55703",
+    "FMA55704",
+    "FMA55705",
+    "FMA55706",
+    "FMA55798",
+    "FMA55799",
+    "FMA57140",
+    "FMA57141",
+    "FMA57142",
+    "FMA57143"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ1254",
+     "fma": "FMA55704",
+     "name": "Left lower first secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1255",
+     "fma": "FMA55693",
+     "name": "Left lower first secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1256",
+     "fma": "FMA55703",
+     "name": "Left lower second secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1257",
+     "fma": "FMA55692",
+     "name": "Left lower second secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1258",
+     "fma": "FMA57143",
+     "name": "Left lower central secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1259",
+     "fma": "FMA57141",
+     "name": "Left lower lateral secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1260",
+     "fma": "FMA55687",
+     "name": "Left lower secondary canine tooth"
+    },
+    {
+     "file_id": "FJ1261",
+     "fma": "FMA55699",
+     "name": "Left upper first secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1262",
+     "fma": "FMA55690",
+     "name": "Left upper first secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1263",
+     "fma": "FMA55700",
+     "name": "Left upper second secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1264",
+     "fma": "FMA55691",
+     "name": "Left upper second secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1265",
+     "fma": "FMA55682",
+     "name": "Left upper central secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1266",
+     "fma": "FMA55683",
+     "name": "Left upper lateral secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1267",
+     "fma": "FMA55799",
+     "name": "Left upper secondary canine tooth"
+    },
+    {
+     "file_id": "FJ1268",
+     "fma": "FMA55705",
+     "name": "Right lower first secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1269",
+     "fma": "FMA55694",
+     "name": "Right lower first secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1270",
+     "fma": "FMA55706",
+     "name": "Right lower second secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1271",
+     "fma": "FMA55695",
+     "name": "Right lower second secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1272",
+     "fma": "FMA57142",
+     "name": "Right lower central secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1273",
+     "fma": "FMA57140",
+     "name": "Right lower lateral secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1274",
+     "fma": "FMA55686",
+     "name": "Right lower secondary canine tooth"
+    },
+    {
+     "file_id": "FJ1275",
+     "fma": "FMA55697",
+     "name": "Right upper second secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1276",
+     "fma": "FMA55698",
+     "name": "Right upper first secondary molar tooth"
+    },
+    {
+     "file_id": "FJ1277",
+     "fma": "FMA55689",
+     "name": "Right upper first secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1278",
+     "fma": "FMA55688",
+     "name": "Right upper second secondary premolar tooth"
+    },
+    {
+     "file_id": "FJ1279",
+     "fma": "FMA55681",
+     "name": "Right upper central secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1280",
+     "fma": "FMA55680",
+     "name": "Right upper lateral secondary incisor tooth"
+    },
+    {
+     "file_id": "FJ1281",
+     "fma": "FMA55798",
+     "name": "Right upper secondary canine tooth"
+    }
+   ],
+   "faces": 39744,
+   "vertices": 20097,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -33.45,
+     -183.35,
+     1427.15
+    ],
+    "max": [
+     32.16,
+     -126.34,
+     1484.52
+    ]
+   },
+   "size_bytes": 758055,
+   "decimated": false
+  },
+  {
+   "file": "hyoid.ply",
+   "structure": "Hyoid bone",
+   "category": "other",
+   "side": "midline",
+   "fma_ids": [
+    "FMA52749"
+   ],
+   "fma_id": "FMA52749",
+   "source_elements": [
+    {
+     "file_id": "FJ2772",
+     "fma": "FMA52749",
+     "name": "Hyoid bone"
+    }
+   ],
+   "faces": 1196,
+   "vertices": 687,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -19.52,
+     -129.0,
+     1422.37
+    ],
+    "max": [
+     18.28,
+     -94.42,
+     1440.86
+    ]
+   },
+   "size_bytes": 24008,
+   "decimated": false
+  },
+  {
+   "file": "cerebrum_left.ply",
+   "structure": "Left cerebral hemisphere (cortex gyri + white matter + deep nuclei/diencephalon)",
+   "category": "brain",
+   "side": "left",
+   "fma_ids": [
+    "FMA256194",
+    "FMA258716",
+    "FMA260794",
+    "FMA62008",
+    "FMA62045",
+    "FMA62327",
+    "FMA67936",
+    "FMA72654",
+    "FMA72656",
+    "FMA72658",
+    "FMA72662",
+    "FMA72666",
+    "FMA72668",
+    "FMA72670",
+    "FMA72672",
+    "FMA72686",
+    "FMA72688",
+    "FMA72690",
+    "FMA72706",
+    "FMA72714",
+    "FMA72718",
+    "FMA72801",
+    "FMA72805",
+    "FMA72827",
+    "FMA72829",
+    "FMA72831",
+    "FMA72833",
+    "FMA72907",
+    "FMA72925",
+    "FMA72976",
+    "FMA72978",
+    "FMA73414",
+    "FMA74877"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ1732",
+     "fma": "FMA72670",
+     "name": "Left angular gyrus"
+    },
+    {
+     "file_id": "FJ1739",
+     "fma": "FMA72718",
+     "name": "Left cingulate gyrus"
+    },
+    {
+     "file_id": "FJ1744",
+     "fma": "FMA72658",
+     "name": "Left inferior frontal gyrus"
+    },
+    {
+     "file_id": "FJ1746",
+     "fma": "FMA72688",
+     "name": "Left inferior temporal gyrus"
+    },
+    {
+     "file_id": "FJ1748",
+     "fma": "FMA72978",
+     "name": "Left insula"
+    },
+    {
+     "file_id": "FJ1750",
+     "fma": "FMA72907",
+     "name": "Left internal capsule"
+    },
+    {
+     "file_id": "FJ1753",
+     "fma": "FMA72833",
+     "name": "Left amygdala"
+    },
+    {
+     "file_id": "FJ1754",
+     "fma": "FMA72827",
+     "name": "Left caudate nucleus"
+    },
+    {
+     "file_id": "FJ1756",
+     "fma": "FMA72925",
+     "name": "Left fornix of forebrain"
+    },
+    {
+     "file_id": "FJ1757",
+     "fma": "FMA72831",
+     "name": "Left globus pallidus"
+    },
+    {
+     "file_id": "FJ1758",
+     "fma": "FMA260794",
+     "name": "White matter of left cerebral hemisphere"
+    },
+    {
+     "file_id": "FJ1759",
+     "fma": "FMA72714",
+     "name": "Left hippocampus"
+    },
+    {
+     "file_id": "FJ1760",
+     "fma": "FMA62008",
+     "name": "Hypothalamus"
+    },
+    {
+     "file_id": "FJ1768",
+     "fma": "FMA74877",
+     "name": "Mammillary body"
+    },
+    {
+     "file_id": "FJ1771",
+     "fma": "FMA62045",
+     "name": "Optic chiasm"
+    },
+    {
+     "file_id": "FJ1773",
+     "fma": "FMA67936",
+     "name": "Left optic tract"
+    },
+    {
+     "file_id": "FJ1776",
+     "fma": "FMA72829",
+     "name": "Left putamen"
+    },
+    {
+     "file_id": "FJ1777",
+     "fma": "FMA73414",
+     "name": "Left stria medullaris of thalamus"
+    },
+    {
+     "file_id": "FJ1780",
+     "fma": "FMA62327",
+     "name": "Tuber cinereum"
+    },
+    {
+     "file_id": "FJ1782",
+     "fma": "FMA258716",
+     "name": "Left thalamus"
+    },
+    {
+     "file_id": "FJ1783",
+     "fma": "FMA72690",
+     "name": "Left fusiform gyrus"
+    },
+    {
+     "file_id": "FJ1785",
+     "fma": "FMA72706",
+     "name": "Left parahippocampal gyrus"
+    },
+    {
+     "file_id": "FJ1787",
+     "fma": "FMA72656",
+     "name": "Left middle frontal gyrus"
+    },
+    {
+     "file_id": "FJ1789",
+     "fma": "FMA72686",
+     "name": "Left middle temporal gyrus"
+    },
+    {
+     "file_id": "FJ1791",
+     "fma": "FMA72976",
+     "name": "Left occipital lobe"
+    },
+    {
+     "file_id": "FJ1793",
+     "fma": "FMA256194",
+     "name": "Orbital gyrus"
+    },
+    {
+     "file_id": "FJ1797",
+     "fma": "FMA72666",
+     "name": "Left postcentral gyrus"
+    },
+    {
+     "file_id": "FJ1800",
+     "fma": "FMA72662",
+     "name": "Left precentral gyrus"
+    },
+    {
+     "file_id": "FJ1833",
+     "fma": "FMA72654",
+     "name": "Left superior frontal gyrus"
+    },
+    {
+     "file_id": "FJ1835",
+     "fma": "FMA72672",
+     "name": "Left superior parietal lobule"
+    },
+    {
+     "file_id": "FJ1837",
+     "fma": "FMA72801",
+     "name": "Anterior part of left superior temporal gyrus"
+    },
+    {
+     "file_id": "FJ1839",
+     "fma": "FMA72805",
+     "name": "Posterior part of left superior temporal gyrus"
+    },
+    {
+     "file_id": "FJ1841",
+     "fma": "FMA72668",
+     "name": "Left supramarginal gyrus"
+    }
+   ],
+   "faces": 125912,
+   "vertices": 70092,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -0.66,
+     -169.68,
+     1513.5
+    ],
+    "max": [
+     69.7,
+     10.33,
+     1630.46
+    ]
+   },
+   "size_bytes": 2478180,
+   "decimated": false,
+   "notes": "Composite of BodyParts3D gyral/nuclear elements; midline diencephalic parts assigned by centroid side."
+  },
+  {
+   "file": "cerebrum_right.ply",
+   "structure": "Right cerebral hemisphere (cortex gyri + white matter + deep nuclei/diencephalon)",
+   "category": "brain",
+   "side": "right",
+   "fma_ids": [
+    "FMA256194",
+    "FMA258714",
+    "FMA260791",
+    "FMA61970",
+    "FMA62008",
+    "FMA62032",
+    "FMA62033",
+    "FMA62045",
+    "FMA62327",
+    "FMA62382",
+    "FMA72653",
+    "FMA72655",
+    "FMA72657",
+    "FMA72661",
+    "FMA72665",
+    "FMA72667",
+    "FMA72669",
+    "FMA72671",
+    "FMA72685",
+    "FMA72687",
+    "FMA72689",
+    "FMA72705",
+    "FMA72713",
+    "FMA72717",
+    "FMA72800",
+    "FMA72804",
+    "FMA72826",
+    "FMA72828",
+    "FMA72830",
+    "FMA72832",
+    "FMA72906",
+    "FMA72924",
+    "FMA72975",
+    "FMA72977",
+    "FMA73413",
+    "FMA74877",
+    "FMA86464"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ1733",
+     "fma": "FMA72669",
+     "name": "Right angular gyrus"
+    },
+    {
+     "file_id": "FJ1740",
+     "fma": "FMA72717",
+     "name": "Right cingulate gyrus"
+    },
+    {
+     "file_id": "FJ1741",
+     "fma": "FMA61970",
+     "name": "Commissure of fornix of forebrain"
+    },
+    {
+     "file_id": "FJ1742",
+     "fma": "FMA86464",
+     "name": "Corpus callosum"
+    },
+    {
+     "file_id": "FJ1743",
+     "fma": "FMA62032",
+     "name": "Habenula"
+    },
+    {
+     "file_id": "FJ1745",
+     "fma": "FMA72657",
+     "name": "Right inferior frontal gyrus"
+    },
+    {
+     "file_id": "FJ1747",
+     "fma": "FMA72687",
+     "name": "Right inferior temporal gyrus"
+    },
+    {
+     "file_id": "FJ1749",
+     "fma": "FMA72977",
+     "name": "Right insula"
+    },
+    {
+     "file_id": "FJ1751",
+     "fma": "FMA72906",
+     "name": "Right internal capsule"
+    },
+    {
+     "file_id": "FJ1784",
+     "fma": "FMA72689",
+     "name": "Right fusiform gyrus"
+    },
+    {
+     "file_id": "FJ1786",
+     "fma": "FMA72705",
+     "name": "Right parahippocampal gyrus"
+    },
+    {
+     "file_id": "FJ1788",
+     "fma": "FMA72655",
+     "name": "Right middle frontal gyrus"
+    },
+    {
+     "file_id": "FJ1790",
+     "fma": "FMA72685",
+     "name": "Right middle temporal gyrus"
+    },
+    {
+     "file_id": "FJ1792",
+     "fma": "FMA72975",
+     "name": "Right occipital lobe"
+    },
+    {
+     "file_id": "FJ1794",
+     "fma": "FMA256194",
+     "name": "Orbital gyrus"
+    },
+    {
+     "file_id": "FJ1795",
+     "fma": "FMA62033",
+     "name": "Pineal body"
+    },
+    {
+     "file_id": "FJ1798",
+     "fma": "FMA72665",
+     "name": "Right postcentral gyrus"
+    },
+    {
+     "file_id": "FJ1801",
+     "fma": "FMA72661",
+     "name": "Right precentral gyrus"
+    },
+    {
+     "file_id": "FJ1802",
+     "fma": "FMA72826",
+     "name": "Right caudate nucleus"
+    },
+    {
+     "file_id": "FJ1804",
+     "fma": "FMA72924",
+     "name": "Right fornix of forebrain"
+    },
+    {
+     "file_id": "FJ1805",
+     "fma": "FMA72830",
+     "name": "Right globus pallidus"
+    },
+    {
+     "file_id": "FJ1806",
+     "fma": "FMA260791",
+     "name": "White matter of right cerebral hemisphere"
+    },
+    {
+     "file_id": "FJ1807",
+     "fma": "FMA72713",
+     "name": "Right hippocampus"
+    },
+    {
+     "file_id": "FJ1808",
+     "fma": "FMA62008",
+     "name": "Hypothalamus"
+    },
+    {
+     "file_id": "FJ1815",
+     "fma": "FMA74877",
+     "name": "Mammillary body"
+    },
+    {
+     "file_id": "FJ1818",
+     "fma": "FMA62045",
+     "name": "Optic chiasm"
+    },
+    {
+     "file_id": "FJ1820",
+     "fma": "FMA62382",
+     "name": "Right optic tract"
+    },
+    {
+     "file_id": "FJ1823",
+     "fma": "FMA72828",
+     "name": "Right putamen"
+    },
+    {
+     "file_id": "FJ1824",
+     "fma": "FMA73413",
+     "name": "Right stria medullaris of thalamus"
+    },
+    {
+     "file_id": "FJ1827",
+     "fma": "FMA258714",
+     "name": "Right thalamus"
+    },
+    {
+     "file_id": "FJ1828",
+     "fma": "FMA62327",
+     "name": "Tuber cinereum"
+    },
+    {
+     "file_id": "FJ1829",
+     "fma": "FMA72832",
+     "name": "Right amygdala"
+    },
+    {
+     "file_id": "FJ1834",
+     "fma": "FMA72653",
+     "name": "Right superior frontal gyrus"
+    },
+    {
+     "file_id": "FJ1836",
+     "fma": "FMA72671",
+     "name": "Right superior parietal lobule"
+    },
+    {
+     "file_id": "FJ1838",
+     "fma": "FMA72800",
+     "name": "Anterior part of right superior temporal gyrus"
+    },
+    {
+     "file_id": "FJ1840",
+     "fma": "FMA72804",
+     "name": "Posterior part of right superior temporal gyrus"
+    },
+    {
+     "file_id": "FJ1842",
+     "fma": "FMA72667",
+     "name": "Right supramarginal gyrus"
+    }
+   ],
+   "faces": 166424,
+   "vertices": 92529,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -71.15,
+     -169.67,
+     1513.55
+    ],
+    "max": [
+     25.24,
+     10.26,
+     1630.42
+    ]
+   },
+   "size_bytes": 3274080,
+   "decimated": false,
+   "notes": "Composite of BodyParts3D gyral/nuclear elements; midline diencephalic parts assigned by centroid side."
+  },
+  {
+   "file": "cerebellum.ply",
+   "structure": "Cerebellum",
+   "category": "brain",
+   "side": "midline",
+   "fma_ids": [
+    "FMA67944"
+   ],
+   "fma_id": "FMA67944",
+   "source_elements": [
+    {
+     "file_id": "FJ1781",
+     "fma": "FMA67944",
+     "name": "Cerebellum"
+    },
+    {
+     "file_id": "FJ1830",
+     "fma": "FMA67944",
+     "name": "Cerebellum"
+    }
+   ],
+   "faces": 47700,
+   "vertices": 24324,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -53.93,
+     -68.47,
+     1487.24
+    ],
+    "max": [
+     52.61,
+     -12.17,
+     1540.51
+    ]
+   },
+   "size_bytes": 912207,
+   "decimated": false,
+   "notes": "Two hemi-meshes (left/right halves) concatenated."
+  },
+  {
+   "file": "brainstem_midbrain.ply",
+   "structure": "Midbrain",
+   "category": "brainstem",
+   "side": "midline",
+   "fma_ids": [
+    "FMA61993",
+    "FMA62394",
+    "FMA73422",
+    "FMA73423",
+    "FMA73434",
+    "FMA73435",
+    "FMA73461",
+    "FMA73462",
+    "FMA73463",
+    "FMA73464"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ1735",
+     "fma": "FMA73462",
+     "name": "Brachium of left superior colliculus"
+    },
+    {
+     "file_id": "FJ1736",
+     "fma": "FMA73461",
+     "name": "Brachium of right superior colliculus"
+    },
+    {
+     "file_id": "FJ1761",
+     "fma": "FMA73464",
+     "name": "Brachium of left inferior colliculus"
+    },
+    {
+     "file_id": "FJ1762",
+     "fma": "FMA73435",
+     "name": "Left inferior colliculus"
+    },
+    {
+     "file_id": "FJ1770",
+     "fma": "FMA61993",
+     "name": "Midbrain"
+    },
+    {
+     "file_id": "FJ1774",
+     "fma": "FMA62394",
+     "name": "Peduncle of midbrain"
+    },
+    {
+     "file_id": "FJ1779",
+     "fma": "FMA73423",
+     "name": "Left superior colliculus"
+    },
+    {
+     "file_id": "FJ1809",
+     "fma": "FMA73463",
+     "name": "Brachium of right inferior colliculus"
+    },
+    {
+     "file_id": "FJ1810",
+     "fma": "FMA73434",
+     "name": "Right inferior colliculus"
+    },
+    {
+     "file_id": "FJ1817",
+     "fma": "FMA61993",
+     "name": "Midbrain"
+    },
+    {
+     "file_id": "FJ1821",
+     "fma": "FMA62394",
+     "name": "Peduncle of midbrain"
+    },
+    {
+     "file_id": "FJ1826",
+     "fma": "FMA73422",
+     "name": "Right superior colliculus"
+    }
+   ],
+   "faces": 25478,
+   "vertices": 16036,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -21.92,
+     -99.27,
+     1528.49
+    ],
+    "max": [
+     20.6,
+     -66.58,
+     1545.79
+    ]
+   },
+   "size_bytes": 523865,
+   "decimated": false
+  },
+  {
+   "file": "brainstem_pons.ply",
+   "structure": "Pons",
+   "category": "brainstem",
+   "side": "midline",
+   "fma_ids": [
+    "FMA67943"
+   ],
+   "fma_id": "FMA67943",
+   "source_elements": [
+    {
+     "file_id": "FJ1775",
+     "fma": "FMA67943",
+     "name": "Pons"
+    },
+    {
+     "file_id": "FJ1822",
+     "fma": "FMA67943",
+     "name": "Pons"
+    }
+   ],
+   "faces": 20650,
+   "vertices": 11943,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -21.75,
+     -96.99,
+     1502.07
+    ],
+    "max": [
+     20.45,
+     -62.58,
+     1530.69
+    ]
+   },
+   "size_bytes": 411985,
+   "decimated": false
+  },
+  {
+   "file": "brainstem_medulla.ply",
+   "structure": "Medulla oblongata",
+   "category": "brainstem",
+   "side": "midline",
+   "fma_ids": [
+    "FMA62004"
+   ],
+   "fma_id": "FMA62004",
+   "source_elements": [
+    {
+     "file_id": "FJ1769",
+     "fma": "FMA62004",
+     "name": "Medulla oblongata"
+    },
+    {
+     "file_id": "FJ1831",
+     "fma": "FMA62004",
+     "name": "Medulla oblongata"
+    }
+   ],
+   "faces": 12096,
+   "vertices": 6477,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -14.02,
+     -84.44,
+     1464.5
+    ],
+    "max": [
+     12.71,
+     -51.24,
+     1505.78
+    ]
+   },
+   "size_bytes": 235190,
+   "decimated": false
+  },
+  {
+   "file": "ventricular_system.ply",
+   "structure": "Ventricles, cerebral aqueduct, central canal",
+   "category": "other",
+   "side": "midline",
+   "fma_ids": [
+    "FMA78449",
+    "FMA78450",
+    "FMA78454",
+    "FMA78467",
+    "FMA78469",
+    "FMA78497"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ1730",
+     "fma": "FMA78454",
+     "name": "Third ventricle"
+    },
+    {
+     "file_id": "FJ1731",
+     "fma": "FMA78469",
+     "name": "Fourth ventricle"
+    },
+    {
+     "file_id": "FJ1737",
+     "fma": "FMA78497",
+     "name": "Central canal of spinal cord"
+    },
+    {
+     "file_id": "FJ1738",
+     "fma": "FMA78467",
+     "name": "Cerebral aqueduct"
+    },
+    {
+     "file_id": "FJ1767",
+     "fma": "FMA78450",
+     "name": "Left lateral ventricle"
+    },
+    {
+     "file_id": "FJ1814",
+     "fma": "FMA78449",
+     "name": "Right lateral ventricle"
+    }
+   ],
+   "faces": 48040,
+   "vertices": 24295,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -39.41,
+     -126.94,
+     1458.6
+    ],
+    "max": [
+     38.1,
+     -17.61,
+     1579.34
+    ]
+   },
+   "size_bytes": 916279,
+   "decimated": false,
+   "notes": "CSF spaces (cavities), useful as internal landmarks."
+  },
+  {
+   "file": "pituitary.ply",
+   "structure": "Pituitary gland",
+   "category": "other",
+   "side": "midline",
+   "fma_ids": [
+    "FMA13889"
+   ],
+   "fma_id": "FMA13889",
+   "source_elements": [
+    {
+     "file_id": "FJ1796",
+     "fma": "FMA13889",
+     "name": "Pituitary gland"
+    }
+   ],
+   "faces": 1164,
+   "vertices": 609,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -6.79,
+     -110.56,
+     1522.57
+    ],
+    "max": [
+     5.52,
+     -101.1,
+     1535.54
+    ]
+   },
+   "size_bytes": 22656,
+   "decimated": false
+  },
+  {
+   "file": "tentorium_cerebelli.ply",
+   "structure": "Tentorium cerebelli",
+   "category": "other",
+   "side": "midline",
+   "fma_ids": [
+    "FMA83966"
+   ],
+   "fma_id": "FMA83966",
+   "source_elements": [
+    {
+     "file_id": "FJ1843",
+     "fma": "FMA83966",
+     "name": "Tentorium cerebelli"
+    }
+   ],
+   "faces": 21924,
+   "vertices": 11794,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -63.33,
+     -93.29,
+     1507.53
+    ],
+    "max": [
+     -2.33,
+     -5.82,
+     1541.65
+    ]
+   },
+   "size_bytes": 426759,
+   "decimated": false
+  },
+  {
+   "file": "vertebra_C1.ply",
+   "structure": "Atlas (C1)",
+   "category": "vertebra",
+   "side": "midline",
+   "fma_ids": [
+    "FMA12519"
+   ],
+   "fma_id": "FMA12519",
+   "source_elements": [
+    {
+     "file_id": "FJ3176",
+     "fma": "FMA12519",
+     "name": "Atlas"
+    }
+   ],
+   "faces": 2094,
+   "vertices": 1433,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -41.36,
+     -87.64,
+     1462.21
+    ],
+    "max": [
+     40.23,
+     -40.6,
+     1481.43
+    ]
+   },
+   "size_bytes": 44635,
+   "decimated": false
+  },
+  {
+   "file": "vertebra_C2.ply",
+   "structure": "Axis (C2)",
+   "category": "vertebra",
+   "side": "midline",
+   "fma_ids": [
+    "FMA12520"
+   ],
+   "fma_id": "FMA12520",
+   "source_elements": [
+    {
+     "file_id": "FJ3177",
+     "fma": "FMA12520",
+     "name": "Axis"
+    }
+   ],
+   "faces": 2288,
+   "vertices": 1540,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -25.96,
+     -86.54,
+     1433.17
+    ],
+    "max": [
+     24.57,
+     -36.67,
+     1478.35
+    ]
+   },
+   "size_bytes": 48441,
+   "decimated": false
+  },
+  {
+   "file": "vertebra_C3.ply",
+   "structure": "Third cervical vertebra (C3)",
+   "category": "vertebra",
+   "side": "midline",
+   "fma_ids": [
+    "FMA12521"
+   ],
+   "fma_id": "FMA12521",
+   "source_elements": [
+    {
+     "file_id": "FJ3161",
+     "fma": "FMA12521",
+     "name": "Third cervical vertebra"
+    }
+   ],
+   "faces": 2030,
+   "vertices": 1323,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -29.84,
+     -87.81,
+     1417.0
+    ],
+    "max": [
+     28.54,
+     -38.13,
+     1445.74
+    ]
+   },
+   "size_bytes": 42483,
+   "decimated": false
+  },
+  {
+   "file": "vertebra_C4.ply",
+   "structure": "Fourth cervical vertebra (C4)",
+   "category": "vertebra",
+   "side": "midline",
+   "fma_ids": [
+    "FMA12522"
+   ],
+   "fma_id": "FMA12522",
+   "source_elements": [
+    {
+     "file_id": "FJ3164",
+     "fma": "FMA12522",
+     "name": "Fourth cervical vertebra"
+    }
+   ],
+   "faces": 2410,
+   "vertices": 1469,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -27.75,
+     -89.11,
+     1404.6
+    ],
+    "max": [
+     26.38,
+     -40.69,
+     1432.14
+    ]
+   },
+   "size_bytes": 49175,
+   "decimated": false
+  },
+  {
+   "file": "vertebra_C5.ply",
+   "structure": "Fifth cervical vertebra (C5)",
+   "category": "vertebra",
+   "side": "midline",
+   "fma_ids": [
+    "FMA12523"
+   ],
+   "fma_id": "FMA12523",
+   "source_elements": [
+    {
+     "file_id": "FJ3167",
+     "fma": "FMA12523",
+     "name": "Fifth cervical vertebra"
+    }
+   ],
+   "faces": 2196,
+   "vertices": 1539,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -29.7,
+     -90.77,
+     1393.77
+    ],
+    "max": [
+     28.33,
+     -36.08,
+     1417.99
+    ]
+   },
+   "size_bytes": 47233,
+   "decimated": false
+  },
+  {
+   "file": "vertebra_C6.ply",
+   "structure": "Sixth cervical vertebra (C6)",
+   "category": "vertebra",
+   "side": "midline",
+   "fma_ids": [
+    "FMA12524"
+   ],
+   "fma_id": "FMA12524",
+   "source_elements": [
+    {
+     "file_id": "FJ3170",
+     "fma": "FMA12524",
+     "name": "Sixth cervical vertebra"
+    }
+   ],
+   "faces": 2374,
+   "vertices": 1498,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -31.27,
+     -91.67,
+     1381.59
+    ],
+    "max": [
+     29.95,
+     -29.18,
+     1404.74
+    ]
+   },
+   "size_bytes": 49055,
+   "decimated": false
+  },
+  {
+   "file": "vertebra_C7.ply",
+   "structure": "Seventh cervical vertebra (C7)",
+   "category": "vertebra",
+   "side": "midline",
+   "fma_ids": [
+    "FMA12525"
+   ],
+   "fma_id": "FMA12525",
+   "source_elements": [
+    {
+     "file_id": "FJ3172",
+     "fma": "FMA12525",
+     "name": "Seventh cervical vertebra"
+    }
+   ],
+   "faces": 1820,
+   "vertices": 1324,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -33.23,
+     -90.03,
+     1364.71
+    ],
+    "max": [
+     31.93,
+     -21.27,
+     1391.84
+    ]
+   },
+   "size_bytes": 39765,
+   "decimated": false
+  },
+  {
+   "file": "cervical_discs.ply",
+   "structure": "Cervical intervertebral discs (C2/3 - C7/T1)",
+   "category": "other",
+   "side": "midline",
+   "fma_ids": [
+    "FMA13896",
+    "FMA13897",
+    "FMA13898",
+    "FMA13899",
+    "FMA13900",
+    "FMA25058"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ3202",
+     "fma": "FMA25058",
+     "name": "Intervertebral disk of axis"
+    },
+    {
+     "file_id": "FJ3213",
+     "fma": "FMA13896",
+     "name": "Intervertebral disk of third cervical vertebra"
+    },
+    {
+     "file_id": "FJ3218",
+     "fma": "FMA13897",
+     "name": "Intervertebral disk of fourth cervical vertebra"
+    },
+    {
+     "file_id": "FJ3219",
+     "fma": "FMA13898",
+     "name": "Intervertebral disk of fifth cervical vertebra"
+    },
+    {
+     "file_id": "FJ3220",
+     "fma": "FMA13899",
+     "name": "Intervertebral disk of sixth cervical vertebra"
+    },
+    {
+     "file_id": "FJ3221",
+     "fma": "FMA13900",
+     "name": "Intervertebral disk of seventh cervical vertebra"
+    }
+   ],
+   "faces": 8348,
+   "vertices": 5747,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -16.33,
+     -91.98,
+     1360.0
+    ],
+    "max": [
+     14.94,
+     -69.22,
+     1450.94
+    ]
+   },
+   "size_bytes": 177705,
+   "decimated": false
+  },
+  {
+   "file": "spinal_cord_cervical.ply",
+   "structure": "Cervical spinal cord (synthetic approximation)",
+   "category": "spinal_cord",
+   "side": "midline",
+   "fma_ids": [
+    "FMA7647"
+   ],
+   "fma_id": "FMA7647",
+   "source_elements": [],
+   "faces": 3840,
+   "vertices": 1922,
+   "watertight": true,
+   "bbox_mm": {
+    "min": [
+     -7.09,
+     -74.72,
+     1364.71
+    ],
+    "max": [
+     6.57,
+     -48.85,
+     1468.5
+    ]
+   },
+   "size_bytes": 73201,
+   "decimated": false,
+   "notes": "SYNTHETIC: BodyParts3D 4.0 has no spinal-cord solid (only the central canal). Elliptic tube built along a centreline through 18 ray-centred vertebral-canal points (C1-C7) plus the base of the medulla; transverse diameter 10-13 mm, AP 7-8.5 mm from adult MRI norms. Spans medulla base to inferior border of C7.",
+   "synthetic": true
+  },
+  {
+   "file": "artery_common_carotid_left.ply",
+   "structure": "Left common carotid artery",
+   "category": "artery",
+   "side": "left",
+   "fma_ids": [
+    "FMA4058"
+   ],
+   "fma_id": "FMA4058",
+   "source_elements": [
+    {
+     "file_id": "FJ3483",
+     "fma": "FMA4058",
+     "name": "Left common carotid artery"
+    }
+   ],
+   "faces": 170,
+   "vertices": 126,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     10.82,
+     -112.22,
+     1307.39
+    ],
+    "max": [
+     22.93,
+     -96.01,
+     1373.68
+    ]
+   },
+   "size_bytes": 3937,
+   "decimated": false
+  },
+  {
+   "file": "artery_internal_carotid_left.ply",
+   "structure": "Left internal carotid artery",
+   "category": "artery",
+   "side": "left",
+   "fma_ids": [
+    "FMA4062"
+   ],
+   "fma_id": "FMA4062",
+   "source_elements": [
+    {
+     "file_id": "FJ1682M",
+     "fma": "FMA4062",
+     "name": "Left internal carotid artery"
+    }
+   ],
+   "faces": 1272,
+   "vertices": 650,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     9.84,
+     -114.56,
+     1434.54
+    ],
+    "max": [
+     37.47,
+     -94.04,
+     1537.72
+    ]
+   },
+   "size_bytes": 24552,
+   "decimated": false,
+   "notes": "BodyParts3D model covers only the skull-base/intracranial part (z>=~1434); cervical segment absent."
+  },
+  {
+   "file": "artery_vertebral_left.ply",
+   "structure": "Left vertebral artery",
+   "category": "artery",
+   "side": "left",
+   "fma_ids": [
+    "FMA4066"
+   ],
+   "fma_id": "FMA4066",
+   "source_elements": [
+    {
+     "file_id": "FJ1725M",
+     "fma": "FMA4066",
+     "name": "Left vertebral artery"
+    }
+   ],
+   "faces": 800,
+   "vertices": 489,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -0.38,
+     -86.87,
+     1398.41
+    ],
+    "max": [
+     33.67,
+     -58.57,
+     1506.03
+    ]
+   },
+   "size_bytes": 16483,
+   "decimated": false
+  },
+  {
+   "file": "artery_subclavian_left.ply",
+   "structure": "Left subclavian artery",
+   "category": "artery",
+   "side": "left",
+   "fma_ids": [
+    "FMA4694"
+   ],
+   "fma_id": "FMA4694",
+   "source_elements": [
+    {
+     "file_id": "FJ3479",
+     "fma": "FMA4694",
+     "name": "Left subclavian artery"
+    }
+   ],
+   "faces": 646,
+   "vertices": 362,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     17.69,
+     -105.63,
+     1307.31
+    ],
+    "max": [
+     86.55,
+     -86.85,
+     1356.46
+    ]
+   },
+   "size_bytes": 12957,
+   "decimated": false
+  },
+  {
+   "file": "vein_internal_jugular_left.ply",
+   "structure": "Left internal jugular vein",
+   "category": "vein",
+   "side": "left",
+   "fma_ids": [
+    "FMA4762"
+   ],
+   "fma_id": "FMA4762",
+   "source_elements": [
+    {
+     "file_id": "FJ3485",
+     "fma": "FMA4762",
+     "name": "Left internal jugular vein"
+    }
+   ],
+   "faces": 280,
+   "vertices": 158,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     18.11,
+     -122.11,
+     1337.41
+    ],
+    "max": [
+     30.91,
+     -111.7,
+     1380.43
+    ]
+   },
+   "size_bytes": 5751,
+   "decimated": false,
+   "notes": "BodyParts3D model covers only the lower neck segment (~z 1337-1381 mm)."
+  },
+  {
+   "file": "vein_subclavian_left.ply",
+   "structure": "Left subclavian vein",
+   "category": "vein",
+   "side": "left",
+   "fma_ids": [
+    "FMA4763"
+   ],
+   "fma_id": "FMA4763",
+   "source_elements": [
+    {
+     "file_id": "FJ3486",
+     "fma": "FMA4763",
+     "name": "Left subclavian vein"
+    }
+   ],
+   "faces": 434,
+   "vertices": 271,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     19.38,
+     -121.08,
+     1325.19
+    ],
+    "max": [
+     94.26,
+     -105.44,
+     1353.47
+    ]
+   },
+   "size_bytes": 9109,
+   "decimated": false
+  },
+  {
+   "file": "artery_common_carotid_right.ply",
+   "structure": "Right common carotid artery",
+   "category": "artery",
+   "side": "right",
+   "fma_ids": [
+    "FMA3941"
+   ],
+   "fma_id": "FMA3941",
+   "source_elements": [
+    {
+     "file_id": "FJ3564",
+     "fma": "FMA3941",
+     "name": "Right common carotid artery"
+    }
+   ],
+   "faces": 884,
+   "vertices": 448,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -21.26,
+     -117.55,
+     1329.42
+    ],
+    "max": [
+     -8.61,
+     -105.38,
+     1373.38
+    ]
+   },
+   "size_bytes": 17083,
+   "decimated": false
+  },
+  {
+   "file": "artery_internal_carotid_right.ply",
+   "structure": "Right internal carotid artery",
+   "category": "artery",
+   "side": "right",
+   "fma_ids": [
+    "FMA3949"
+   ],
+   "fma_id": "FMA3949",
+   "source_elements": [
+    {
+     "file_id": "FJ1682",
+     "fma": "FMA3949",
+     "name": "Right internal carotid artery"
+    }
+   ],
+   "faces": 1272,
+   "vertices": 650,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -37.47,
+     -114.56,
+     1434.54
+    ],
+    "max": [
+     -9.84,
+     -94.04,
+     1537.72
+    ]
+   },
+   "size_bytes": 24552,
+   "decimated": false,
+   "notes": "BodyParts3D model covers only the skull-base/intracranial part (z>=~1434); cervical segment absent."
+  },
+  {
+   "file": "artery_vertebral_right.ply",
+   "structure": "Right vertebral artery",
+   "category": "artery",
+   "side": "right",
+   "fma_ids": [
+    "FMA3958"
+   ],
+   "fma_id": "FMA3958",
+   "source_elements": [
+    {
+     "file_id": "FJ1725",
+     "fma": "FMA3958",
+     "name": "Right vertebral artery"
+    }
+   ],
+   "faces": 800,
+   "vertices": 489,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -33.67,
+     -86.87,
+     1398.41
+    ],
+    "max": [
+     0.38,
+     -58.57,
+     1506.04
+    ]
+   },
+   "size_bytes": 16483,
+   "decimated": false
+  },
+  {
+   "file": "artery_subclavian_right.ply",
+   "structure": "Right subclavian artery",
+   "category": "artery",
+   "side": "right",
+   "fma_ids": [
+    "FMA3953"
+   ],
+   "fma_id": "FMA3953",
+   "source_elements": [
+    {
+     "file_id": "FJ3579",
+     "fma": "FMA3953",
+     "name": "Right subclavian artery"
+    }
+   ],
+   "faces": 452,
+   "vertices": 247,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -82.18,
+     -112.22,
+     1330.94
+    ],
+    "max": [
+     -9.75,
+     -94.35,
+     1353.03
+    ]
+   },
+   "size_bytes": 9055,
+   "decimated": false
+  },
+  {
+   "file": "vein_internal_jugular_right.ply",
+   "structure": "Right internal jugular vein",
+   "category": "vein",
+   "side": "right",
+   "fma_ids": [
+    "FMA4754"
+   ],
+   "fma_id": "FMA4754",
+   "source_elements": [
+    {
+     "file_id": "FJ3585",
+     "fma": "FMA4754",
+     "name": "Right internal jugular vein"
+    }
+   ],
+   "faces": 226,
+   "vertices": 153,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -31.14,
+     -122.08,
+     1340.48
+    ],
+    "max": [
+     -21.71,
+     -112.89,
+     1381.74
+    ]
+   },
+   "size_bytes": 4989,
+   "decimated": false,
+   "notes": "BodyParts3D model covers only the lower neck segment (~z 1337-1381 mm)."
+  },
+  {
+   "file": "vein_subclavian_right.ply",
+   "structure": "Right subclavian vein",
+   "category": "vein",
+   "side": "right",
+   "fma_ids": [
+    "FMA4755"
+   ],
+   "fma_id": "FMA4755",
+   "source_elements": [
+    {
+     "file_id": "FJ3587",
+     "fma": "FMA4755",
+     "name": "Right subclavian vein"
+    }
+   ],
+   "faces": 368,
+   "vertices": 209,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -86.83,
+     -121.79,
+     1327.73
+    ],
+    "max": [
+     -22.34,
+     -108.5,
+     1351.55
+    ]
+   },
+   "size_bytes": 7507,
+   "decimated": false
+  },
+  {
+   "file": "artery_basilar.ply",
+   "structure": "Basilar artery",
+   "category": "artery",
+   "side": "midline",
+   "fma_ids": [
+    "FMA50542"
+   ],
+   "fma_id": "FMA50542",
+   "source_elements": [
+    {
+     "file_id": "FJ1672",
+     "fma": "FMA50542",
+     "name": "Basilar artery"
+    }
+   ],
+   "faces": 262,
+   "vertices": 140,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -2.11,
+     -97.73,
+     1503.55
+    ],
+    "max": [
+     1.27,
+     -84.34,
+     1531.85
+    ]
+   },
+   "size_bytes": 5301,
+   "decimated": false
+  },
+  {
+   "file": "artery_brachiocephalic_trunk.ply",
+   "structure": "Brachiocephalic trunk",
+   "category": "artery",
+   "side": "right",
+   "fma_ids": [
+    "FMA3932"
+   ],
+   "fma_id": "FMA3932",
+   "source_elements": [
+    {
+     "file_id": "FJ3417",
+     "fma": "FMA3932",
+     "name": "Brachiocephalic artery"
+    }
+   ],
+   "faces": 262,
+   "vertices": 160,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -19.28,
+     -119.66,
+     1304.32
+    ],
+    "max": [
+     18.25,
+     -101.97,
+     1342.28
+    ]
+   },
+   "size_bytes": 5541,
+   "decimated": false
+  },
+  {
+   "file": "trachea.ply",
+   "structure": "Trachea",
+   "category": "airway",
+   "side": "midline",
+   "fma_ids": [
+    "FMA7394"
+   ],
+   "fma_id": "FMA7394",
+   "source_elements": [
+    {
+     "file_id": "FJ2541",
+     "fma": "FMA7394",
+     "name": "Trachea"
+    }
+   ],
+   "faces": 4996,
+   "vertices": 2607,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -13.12,
+     -110.13,
+     1285.09
+    ],
+    "max": [
+     12.81,
+     -77.37,
+     1395.44
+    ]
+   },
+   "size_bytes": 96449,
+   "decimated": false
+  },
+  {
+   "file": "larynx.ply",
+   "structure": "Larynx (laryngeal cartilages + epiglottis)",
+   "category": "airway",
+   "side": "midline",
+   "fma_ids": [
+    "FMA55097"
+   ],
+   "fma_id": "FMA55097",
+   "source_elements": [
+    {
+     "file_id": "FJ2440",
+     "fma": "FMA9615",
+     "name": "Cricoid cartilage"
+    },
+    {
+     "file_id": "FJ2770",
+     "fma": "FMA55130",
+     "name": "Epiglottis"
+    },
+    {
+     "file_id": "FJ2773",
+     "fma": "FMA55118",
+     "name": "Left cuneiform cartilage"
+    },
+    {
+     "file_id": "FJ2775",
+     "fma": "FMA55114",
+     "name": "Left arytenoid cartilage"
+    },
+    {
+     "file_id": "FJ2776",
+     "fma": "FMA55116",
+     "name": "Left corniculate cartilage"
+    },
+    {
+     "file_id": "FJ2792",
+     "fma": "FMA55113",
+     "name": "Right arytenoid cartilage"
+    },
+    {
+     "file_id": "FJ2793",
+     "fma": "FMA55115",
+     "name": "Right corniculate cartilage"
+    },
+    {
+     "file_id": "FJ2795",
+     "fma": "FMA55117",
+     "name": "Right cuneiform cartilage"
+    },
+    {
+     "file_id": "FJ2808",
+     "fma": "FMA55099",
+     "name": "Thyroid cartilage"
+    }
+   ],
+   "faces": 9642,
+   "vertices": 6252,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -19.98,
+     -122.45,
+     1387.2
+    ],
+    "max": [
+     18.68,
+     -91.51,
+     1438.23
+    ]
+   },
+   "size_bytes": 200587,
+   "decimated": false,
+   "notes": "Cartilaginous skeleton only; laryngeal muscles/ligaments not included."
+  },
+  {
+   "file": "esophagus.ply",
+   "structure": "Esophagus",
+   "category": "other",
+   "side": "midline",
+   "fma_ids": [
+    "FMA7131"
+   ],
+   "fma_id": "FMA7131",
+   "source_elements": [
+    {
+     "file_id": "FJ2563",
+     "fma": "FMA7131",
+     "name": "Esophagus"
+    }
+   ],
+   "faces": 578,
+   "vertices": 323,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -8.81,
+     -124.26,
+     1115.99
+    ],
+    "max": [
+     23.6,
+     -66.39,
+     1390.39
+    ]
+   },
+   "size_bytes": 11605,
+   "decimated": false
+  },
+  {
+   "file": "eyeball_left.ply",
+   "structure": "Left eyeball (sclera, cornea, lens, vitreous...)",
+   "category": "other",
+   "side": "left",
+   "fma_ids": [
+    "FMA58082",
+    "FMA58237",
+    "FMA58240",
+    "FMA58243",
+    "FMA58272",
+    "FMA58300",
+    "FMA58829"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ1282",
+     "fma": "FMA58082",
+     "name": "Anterior chamber of left eyeball"
+    },
+    {
+     "file_id": "FJ1285",
+     "fma": "FMA58300",
+     "name": "Left choroid"
+    },
+    {
+     "file_id": "FJ1286",
+     "fma": "FMA58300",
+     "name": "Left choroid"
+    },
+    {
+     "file_id": "FJ1289",
+     "fma": "FMA58240",
+     "name": "Left cornea"
+    },
+    {
+     "file_id": "FJ1297",
+     "fma": "FMA58237",
+     "name": "Left iris"
+    },
+    {
+     "file_id": "FJ1305",
+     "fma": "FMA58243",
+     "name": "Left lens"
+    },
+    {
+     "file_id": "FJ1317",
+     "fma": "FMA58272",
+     "name": "Left sclera"
+    },
+    {
+     "file_id": "FJ1331",
+     "fma": "FMA58829",
+     "name": "Left vitreous body"
+    }
+   ],
+   "faces": 93132,
+   "vertices": 49236,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     15.99,
+     -166.05,
+     1504.96
+    ],
+    "max": [
+     42.31,
+     -138.83,
+     1531.19
+    ]
+   },
+   "size_bytes": 1801767,
+   "decimated": false
+  },
+  {
+   "file": "eyeball_right.ply",
+   "structure": "Right eyeball (sclera, cornea, lens, vitreous...)",
+   "category": "other",
+   "side": "right",
+   "fma_ids": [
+    "FMA58081",
+    "FMA58236",
+    "FMA58239",
+    "FMA58242",
+    "FMA58271",
+    "FMA58299",
+    "FMA58828"
+   ],
+   "fma_id": null,
+   "source_elements": [
+    {
+     "file_id": "FJ1332",
+     "fma": "FMA58081",
+     "name": "Anterior chamber of right eyeball"
+    },
+    {
+     "file_id": "FJ1336",
+     "fma": "FMA58299",
+     "name": "Right choroid"
+    },
+    {
+     "file_id": "FJ1337",
+     "fma": "FMA58299",
+     "name": "Right choroid"
+    },
+    {
+     "file_id": "FJ1340",
+     "fma": "FMA58239",
+     "name": "Right cornea"
+    },
+    {
+     "file_id": "FJ1348",
+     "fma": "FMA58236",
+     "name": "Right iris"
+    },
+    {
+     "file_id": "FJ1356",
+     "fma": "FMA58242",
+     "name": "Right lens"
+    },
+    {
+     "file_id": "FJ1368",
+     "fma": "FMA58271",
+     "name": "Right sclera"
+    },
+    {
+     "file_id": "FJ1382",
+     "fma": "FMA58828",
+     "name": "Right vitreous body"
+    }
+   ],
+   "faces": 93012,
+   "vertices": 50090,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -43.62,
+     -166.05,
+     1504.96
+    ],
+    "max": [
+     34.59,
+     -138.83,
+     1531.19
+    ]
+   },
+   "size_bytes": 1810455,
+   "decimated": false
+  },
+  {
+   "file": "ear_external_left.ply",
+   "structure": "Left external ear (auricle)",
+   "category": "ear",
+   "side": "left",
+   "fma_ids": [
+    "FMA52781"
+   ],
+   "fma_id": "FMA52781",
+   "source_elements": [
+    {
+     "file_id": "FJ2811",
+     "fma": "FMA52781",
+     "name": "External ear"
+    }
+   ],
+   "faces": 1508,
+   "vertices": 935,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     56.58,
+     -103.82,
+     1479.73
+    ],
+    "max": [
+     83.1,
+     -66.66,
+     1536.71
+    ]
+   },
+   "size_bytes": 31040,
+   "decimated": false,
+   "notes": "Split by side from the single BodyParts3D 'External ear' element."
+  },
+  {
+   "file": "ear_external_right.ply",
+   "structure": "Right external ear (auricle)",
+   "category": "ear",
+   "side": "right",
+   "fma_ids": [
+    "FMA52781"
+   ],
+   "fma_id": "FMA52781",
+   "source_elements": [
+    {
+     "file_id": "FJ2811",
+     "fma": "FMA52781",
+     "name": "External ear"
+    }
+   ],
+   "faces": 1434,
+   "vertices": 839,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -84.45,
+     -103.79,
+     1479.76
+    ],
+    "max": [
+     -57.87,
+     -66.57,
+     1536.59
+    ]
+   },
+   "size_bytes": 28926,
+   "decimated": false,
+   "notes": "Split by side from the single BodyParts3D 'External ear' element."
+  },
+  {
+   "file": "skin_head_neck.ply",
+   "structure": "Skin surface of head and neck",
+   "category": "skin",
+   "side": "midline",
+   "fma_ids": [
+    "FMA7163"
+   ],
+   "fma_id": "FMA7163",
+   "source_elements": [
+    {
+     "file_id": "FJ2810",
+     "fma": "FMA7163",
+     "name": "Skin"
+    }
+   ],
+   "faces": 28344,
+   "vertices": 14739,
+   "watertight": false,
+   "bbox_mm": {
+    "min": [
+     -198.37,
+     -205.24,
+     1340.01
+    ],
+    "max": [
+     197.6,
+     26.95,
+     1641.36
+    ]
+   },
+   "size_bytes": 545559,
+   "decimated": false,
+   "notes": "Whole-body skin cropped to z >= 1340.0 mm (approx. base of neck / top of shoulders); open at the cut."
+  }
+ ]
+}
