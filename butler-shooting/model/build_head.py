@@ -161,7 +161,9 @@ def build():
     print(f"  chosen pitch {best[2]:+d} deg, median surface error {best[1]:.2f} mm")
     full = M @ to_bust
     full = refine_by_tissue_depth(full, skin, on_ear) @ full
-    warp = make_face_warp(full, skin)
+    face_warp = make_face_warp(full, skin)
+    side_warp = make_lateral_warp(full, face_warp, skin, on_ear)
+    warp = lambda p: side_warp(face_warp(p))
     place = fit_neck(full, skin, on_ear, bp_skin_raw=trimesh.load(ANAT / "skin_head_neck.ply"), warp=warp)
 
     # --- auricle enlargement ---------------------------------------------------------------
@@ -316,7 +318,7 @@ FIT_INFO = {}
 # e.g. De Greef et al. 2006; Stephan & Simpson 2008): about 5-6 mm at the vertex, forehead and
 # occiput, and about 10-12 mm over the temporal fossa where the temporalis muscle sits.
 TISSUE_VAULT_MM = 5.8
-TISSUE_TEMPORAL_MM = 11.0
+TISSUE_TEMPORAL_MM = 6.0  # set to the vault value: Sam judged the skull too narrow at 11 mm
 
 
 def refine_by_tissue_depth(full, skin, on_ear):
@@ -445,6 +447,73 @@ def skin_profile_landmarks(skin):
     g = arg(np.argmax, n[1] + 5, n[1] + 30)
     return dict(pronasale=prn, subnasale=sn, labrale_sup=ls, stomion=sto, labrale_inf=li,
                 labiomental_fold=fold, pogonion=pog, menton=me, nasion=n, glabella=g)
+
+
+LATERAL_TISSUE_MM = 6.0
+
+
+def make_lateral_warp(full, face_warp, skin, on_ear):
+    """Widen (or narrow) the cranium side to side so its sides sit LATERAL_TISSUE_MM under the
+    bust's skin at every height and depth (Sam: "the skull is too narrow for the Trump model").
+
+    The bust's head is broad low on the sides (temples), where BodyParts3D's skull left 10-25 mm
+    of gap, but tight at the upper back. We measure the gap on a (y, z) grid by casting rays
+    sideways from the midline, smooth it, and scale x by s(y, z) = 1 + (gap - target) / halfwidth,
+    so contents (brain, vessels) widen with the skull. Below the cheekbones, where real soft
+    tissue is thick (cheeks, jowls), the warp fades out.
+    """
+    from scipy.ndimage import gaussian_filter
+    from scipy.interpolate import RegularGridInterpolator
+    sk = trimesh.load(ANAT / "skull_cranium.ply")
+    sk.apply_transform(full)
+    sk.vertices = face_warp(sk.vertices)
+    skin_ne = skin.submesh([np.where(~on_ear[skin.faces].any(axis=1))[0]], append=True)
+    gy = np.arange(sk.bounds[0, 1] - 10, sk.bounds[1, 1] + 10, 4.0)
+    gz = np.arange(sk.bounds[0, 2] - 10, sk.bounds[1, 2] + 10, 4.0)
+    Y, Zg = np.meshgrid(gy, gz, indexing="ij")
+    ratio = np.full(Y.shape + (2,), np.nan)
+    for k, sgn in enumerate((1, -1)):
+        o = np.column_stack([np.zeros(Y.size), Y.ravel(), Zg.ravel()])
+        d = np.tile([sgn, 0, 0.0], (Y.size, 1))
+        ls, rs, _ = sk.ray.intersects_location(o, d)
+        lk, rk, _ = skin_ne.ray.intersects_location(o, d, multiple_hits=False)
+        outer = np.full(Y.size, np.nan)
+        np.fmax.at(outer, rs, np.abs(ls[:, 0])) if len(rs) else None
+        outer[np.isnan(outer)] = np.nan
+        sk_x = np.full(Y.size, np.nan)
+        for r, x in zip(rs, np.abs(ls[:, 0])):
+            sk_x[r] = x if np.isnan(sk_x[r]) else max(sk_x[r], x)
+        sn_x = np.full(Y.size, np.nan)
+        sn_x[rk] = np.abs(lk[:, 0])
+        ok = np.isfinite(sk_x) & np.isfinite(sn_x) & (sk_x > 20)
+        r = np.full(Y.size, np.nan)
+        # 6 mm over the upper vault; 9 mm low on the side, where the temporalis muscle lies.
+        tgt = LATERAL_TISSUE_MM + 3.0 * np.clip((40.0 - Y.ravel()[ok]) / 25.0, 0, 1)
+        r[ok] = (sn_x[ok] - tgt) / sk_x[ok]
+        ratio[..., k] = r.reshape(Y.shape)
+    sc = np.nanmean(ratio, axis=2)
+    have = np.isfinite(sc)
+    sc = np.clip(np.where(have, sc, 1.0), 0.94, 1.25)
+    w = gaussian_filter(have.astype(float), 2.0)
+    sc = 1.0 + gaussian_filter(np.where(have, sc - 1.0, 0.0), 2.0) / np.maximum(w, 1e-3) * (w > 0.05)
+    # Fade out below the zygomatic arches (cheeks and jowls have thick soft tissue).
+    zyg = trimesh.util.concatenate([trimesh.load(ANAT / f"bone_{s}_zygomatic_bone.ply") for s in ("left", "right")])
+    zyg.apply_transform(full)
+    zyg_y = float(np.median(face_warp(zyg.vertices)[:, 1]))
+    fade = np.clip((Y - (zyg_y - 20)) / 15.0, 0, 1)
+    sc = 1.0 + (sc - 1.0) * fade
+    interp = RegularGridInterpolator((gy, gz), sc, bounds_error=False, fill_value=1.0)
+    print(f"  lateral warp: side-to-side scale {sc[have].min():.3f}-{sc[have].max():.3f} "
+          f"(median {np.median(sc[have]):.3f})")
+    FIT_INFO["lateral_warp"] = dict(target_mm=LATERAL_TISSUE_MM, scale_min=float(sc[have].min()),
+                                    scale_max=float(sc[have].max()), scale_median=float(np.median(sc[have])))
+
+    def warp(points):
+        p = np.asarray(points, float).copy()
+        p[:, 0] *= interp(p[:, 1:3])
+        return p
+
+    return warp
 
 
 def make_face_warp(full, skin):
