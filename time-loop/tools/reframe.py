@@ -3,6 +3,7 @@
 Usage: python3 reframe.py IN.mp4 OUT.mp4 --seed X [--aspect 4:5] [--keys "t:x,t:x"] [--start S --dur D]
   --seed  horizontal position (0-1) of the person to follow in the first frame.
   --keys  optional manual centres (seconds:fraction) that override the tracker near those times.
+  --manual  pan linearly between --keys and ignore the tracker (for crowded shots).
 The tracker detects faces with OpenCV's YuNet model, follows the face nearest the last position,
 holds its place when the face is lost, and smooths the path so the virtual camera pans gently.
 """
@@ -12,6 +13,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("inp"); ap.add_argument("out")
 ap.add_argument("--seed", type=float, default=0.5); ap.add_argument("--aspect", default="4:5")
 ap.add_argument("--keys", default=""); ap.add_argument("--start", type=float, default=0); ap.add_argument("--dur", type=float, default=0)
+ap.add_argument("--manual", action="store_true", help="ignore the tracker and pan linearly between --keys")
 ap.add_argument("--height", type=int, default=960); ap.add_argument("--crf", type=int, default=24)
 a = ap.parse_args()
 model = str(pathlib.Path(__file__).with_name("face_detection_yunet_2023mar.onnx"))
@@ -40,6 +42,9 @@ xs = np.array(xs, float)
 for k in filter(None, a.keys.split(",")):  # manual centres win within half a second
     t, fx = map(float, k.split(":")); i = int(t * fps)
     lo, hi = max(0, i - int(fps / 2)), min(len(xs), i + int(fps / 2)); xs[lo:hi] = fx * W
+if a.manual and a.keys:
+    kt, kx = zip(*[map(float, k.split(":")) for k in a.keys.split(",")])
+    xs = np.interp(np.arange(len(xs)) / fps, kt, np.array(kx) * W)
 win = int(fps * 0.8) | 1; pad = np.pad(xs, win, mode="edge")
 sm = np.convolve(pad, np.ones(win) / win, mode="same")[win:-win]
 left = np.clip(sm - cw / 2, 0, W - cw).astype(int)
