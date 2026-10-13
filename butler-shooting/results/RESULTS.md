@@ -26,7 +26,7 @@ No one has published how far Trump had turned his head when the first shot hit. 
 
 ## The follow-up shot
 
-If Crooks had fired again at a Trump who stood still in the same pose, the second shot would have hit only the ear about 0.5% of the time with a head aim and 0.14% of the time with a chest aim. These numbers are lower because the simulation adds the recoil and the hurried re-aim of a quick second shot.
+If Crooks had fired again at a Trump who stood still in the same pose, the second shot would have hit only the ear about 0.5% of the time with a head aim and 0.14% of the time with a chest aim. These numbers are lower because a shot fired less than a second after the previous one scatters about 1.5 times as widely, based on the same marksmanship data.
 
 ## What the model contains
 
