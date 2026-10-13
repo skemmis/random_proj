@@ -27,6 +27,8 @@ At the moment Crooks fired, Trump had turned his face almost straight toward the
 | Arm only | 0.02% |
 | Miss | 68.8% |
 
+At that turn the margin was slim. Our model puts the edge of the real bullet, which is 5.7 mm across, 6.1 mm from Trump's skull and 2.2 mm from the depth, 3 mm under the skin, at which a graze becomes a serious wound. Holding the same bullet path fixed while the head turns, the bullet would have reached that depth at turns from about 20° past the rifle and from about 60° short of it. The skull itself stays at least 5 mm away from the bullet's edge everywhere from 20° past the rifle to the back of the head (`assets/dashboard/margin_by_turn.json`).
+
 ## What "grazed" means
 
 Sam set the definition on 2026-10-13. A shot grazes Trump when the bullet touches only his ear, or only the outer 3 mm of skin anywhere on his head or neck, and goes no deeper. A bullet that reaches deeper soft tissue, bone, the brain, a major blood vessel, the airway, an eye or the torso counts as killing or seriously wounding him. A bullet that touches only hair counts as a miss.
