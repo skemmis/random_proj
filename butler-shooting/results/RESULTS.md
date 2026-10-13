@@ -39,15 +39,15 @@ An ear-only hit is possible only when his face, or the back of his head, points 
 
 ## How unusual that head turn was
 
-The video thread measured Trump's head turn five times a second from the RSBN broadcast over the six and a half minutes before the first shot (`video/pose_track.csv`, 1,597 usable frames, after the video thread dropped frames that showed spectators rather than Trump). Through most of the speech he faced somewhere between the crowd and the rifle; his median turn put his face about 45° short of the rifle. He turned toward the rifle line mainly in the last 50 seconds, when he looked at the immigration chart.
+The video thread measured Trump's head turn five times a second from the RSBN broadcast over the six and a half minutes before the first shot (`video/pose_track.csv`, 1,599 usable frames, after the video thread dropped frames that showed spectators rather than Trump). Through most of the speech he faced somewhere between the crowd and the rifle; his median turn put his face about 45° short of the rifle. He turned toward the rifle line mainly in the last 50 seconds, when he looked at the immigration chart.
 
 The camera's bearing error of about 14° shifts every frame of the track by the same amount, so we drew that shift once per trial. The ear-only wound says the shift was most likely about 10° toward the rifle. With that correction:
 
 - A head-aimed shot fired at a random moment in the speech would have grazed him 1.06% of the time, against 1.75% at the moment of the first shot. His turn at the shot made a graze 1.7 times as likely as his average turn (90% range 1.3 to 1.8).
 - An ear-only hit was 6 times as likely at the shot as on average (0.89% against 0.16%).
-- Only about 6% of the speech found him turned as favourably as he was at the first shot (90% range 1% to 19%).
+- Only about 6% of the speech found him turned as favourably as he was at the first shot (90% range under 1% to 19%).
 
-The video alone, without the wound's correction, gives a weaker and much less certain answer: a graze 1.4 times as likely as average, with about 20% of the speech as favourable as the shot (90% range 2% to 60%). The wound sharpens the estimate because only a turn near the rifle line can produce it. That reasoning does lean on the very outcome whose luck we are measuring, so the article should quote the video-only figure alongside it.
+The video alone, without the wound's correction, gives a weaker and much less certain answer: a graze 1.4 times as likely as average, with about 20% of the speech as favourable as the shot (90% range 1% to 60%). The wound sharpens the estimate because only a turn near the rifle line can produce it. That reasoning does lean on the very outcome whose luck we are measuring, so the article should quote the video-only figure alongside it.
 
 The calculation is `model/speech_luck.py`; its output is `results/speech_luck.json` and the chart is `figures/head_turn_over_speech.png`.
 

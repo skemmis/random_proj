@@ -140,7 +140,7 @@ if __name__ == "__main__":
     res = {"pitch_averaged": run(False), "level_head": run(True), "video_only_pitch_averaged": run(False, use_wound=False),
            "notes": __doc__}
     def quoted(r):
-        pct = lambda x: f"{100 * x:.0f}%"
+        pct = lambda x: "under 1%" if x < 0.005 else f"{100 * x:.0f}%"
         return {"share_of_speech_as_lucky": pct(r["grazed_pct_frames_higher"]["mean"]),
                 "share_of_speech_as_lucky_90pct": [pct(r["grazed_pct_frames_higher"]["p05"]),
                                                    pct(r["grazed_pct_frames_higher"]["p95"])],
