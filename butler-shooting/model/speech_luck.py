@@ -139,6 +139,21 @@ def chart():
 if __name__ == "__main__":
     res = {"pitch_averaged": run(False), "level_head": run(True), "video_only_pitch_averaged": run(False, use_wound=False),
            "notes": __doc__}
+    def quoted(r):
+        pct = lambda x: f"{100 * x:.0f}%"
+        return {"share_of_speech_as_lucky": pct(r["grazed_pct_frames_higher"]["mean"]),
+                "share_of_speech_as_lucky_90pct": [pct(r["grazed_pct_frames_higher"]["p05"]),
+                                                   pct(r["grazed_pct_frames_higher"]["p95"])],
+                "graze_lift": f"{r['grazed_lift']['mean']:.1f}x",
+                "graze_lift_90pct": [f"{r['grazed_lift']['p05']:.1f}", f"{r['grazed_lift']['p95']:.1f}"],
+                "ear_only_lift": f"{r['ear_lift']['mean']:.0f}x",
+                "graze_at_shot": f"{100 * r['grazed_shot']['mean']:.2f}%",
+                "graze_speech_average": f"{100 * r['grazed_avg']['mean']:.2f}%",
+                "ear_only_at_shot": f"{100 * r['ear_shot']['mean']:.2f}%",
+                "ear_only_speech_average": f"{100 * r['ear_avg']['mean']:.2f}%"}
+    # The rounded figures RESULTS.md and the pages quote, so nobody has to round by hand.
+    res["quoted"] = {"wound_corrected": quoted(res["pitch_averaged"]),
+                     "video_only": quoted(res["video_only_pitch_averaged"])}
     OUT.write_text(json.dumps(res, indent=1))
     chart()
     for k in ("pitch_averaged", "level_head", "video_only_pitch_averaged"):

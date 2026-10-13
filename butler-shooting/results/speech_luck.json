@@ -173,5 +173,41 @@
   ],
   "offset_posterior_mean": -0.07244709107274361
  },
- "notes": "How unusual was his head angle at shot 1? Combine the video thread's whole-speech head track\n(RSBN, 5 fps) with the sweep's outcome-by-turn curves. The track's 14 deg error is mostly one shared\ncamera-bearing offset, so we draw that offset once per sample, weighted by how well it explains the\nwound (right ear only), and shift the whole track by it."
+ "notes": "How unusual was his head angle at shot 1? Combine the video thread's whole-speech head track\n(RSBN, 5 fps) with the sweep's outcome-by-turn curves. The track's 14 deg error is mostly one shared\ncamera-bearing offset, so we draw that offset once per sample, weighted by how well it explains the\nwound (right ear only), and shift the whole track by it.",
+ "quoted": {
+  "wound_corrected": {
+   "share_of_speech_as_lucky": "6%",
+   "share_of_speech_as_lucky_90pct": [
+    "1%",
+    "19%"
+   ],
+   "graze_lift": "1.7x",
+   "graze_lift_90pct": [
+    "1.3",
+    "1.8"
+   ],
+   "ear_only_lift": "6x",
+   "graze_at_shot": "1.75%",
+   "graze_speech_average": "1.06%",
+   "ear_only_at_shot": "0.89%",
+   "ear_only_speech_average": "0.16%"
+  },
+  "video_only": {
+   "share_of_speech_as_lucky": "20%",
+   "share_of_speech_as_lucky_90pct": [
+    "2%",
+    "60%"
+   ],
+   "graze_lift": "1.4x",
+   "graze_lift_90pct": [
+    "0.8",
+    "1.8"
+   ],
+   "ear_only_lift": "4x",
+   "graze_at_shot": "1.53%",
+   "graze_speech_average": "1.12%",
+   "ear_only_at_shot": "0.64%",
+   "ear_only_speech_average": "0.22%"
+  }
+ }
 }
