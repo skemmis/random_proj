@@ -53,3 +53,18 @@ Page one uses these seven exhibits. Every link was found on October 13, 2026.
 ## The Butler exhibit
 
 The closing exhibit quotes the Butler project's figures and does not recompute them. From `butler-shooting/results/RESULTS.md` and the quoted section of `results/speech_luck.json`: one head-aimed shot fired at a random moment of the speech hits only the ear 1 in 625 times (0.16%) and merely grazes him 1 in 94 times (1.06%). The only arithmetic the page adds is the chance of at least one ear-only day in N tries, 1 − (1 − 1/625)^N: even odds after about 433 days, 63% after 625, 90% after about 1,438.
+
+## More loops worth exploring (added October 13, 22:55)
+
+| Work | The loop | A possible pairing |
+|---|---|---|
+| *Stargate SG-1*, "Window of Opportunity" (2000) | Colonel Jack O'Neill and Teal'c relive one day for months. They learn to juggle, O'Neill resigns his commission and kisses Major Carter, and he hits golf balls through the Stargate. | The purest "no consequences" episode on television; a second film side for exhibits 1 or 2. |
+| *Supernatural*, "Mystery Spot" (2008) | Sam Winchester wakes every Tuesday to watch his brother Dean die, more than a hundred times, by a falling piano, a taco and a dog among them. | The Butler finale: a montage of the deaths that never happened. |
+| *The X-Files*, "Monday" (1999) | A bank robbery ends in a bomb blast every day; only the robber's girlfriend remembers, and she must change one detail. | Butler as a day that must be changed by one small detail, such as a turn of the head. |
+| *Star Trek: The Next Generation*, "Cause and Effect" (1992) | The Enterprise collides with another ship and explodes, again and again; Data sends himself a clue, the number 3. | The crew's growing déjà vu, set beside Trump's repeated riffs. |
+| *Doctor Who*, "Heaven Sent" (2015) | The Doctor punches through a wall harder than diamond, one punch per loop, for billions of years. | Persistence: the 2016, 2020 and 2024 campaigns. |
+| *Re:Zero* (anime, 2016) | Subaru's power is "Return by Death": each time he dies, he returns to a checkpoint and tries again until things turn out right. | The closest match to Sam's Butler hypothesis after *Edge of Tomorrow*. |
+| *Russian Doll* (2019) | Nadia dies and returns to the same bathroom at her own party, to the same Harry Nilsson song, "Gotta Get Up". | A second "same morning" clip for exhibit 5. |
+| *Happy Death Day* (2017) | Someone in a baby mask murders Tree every night of her birthday until she works out who. | Who wanted him dead: the motive question in the Butler story. |
+| *Doctor Strange* (2016) | Strange traps Dormammu in a loop and lets himself be killed until Dormammu gives in: "Dormammu, I've come to bargain." | The art of the deal by exhaustion. |
+| *Twelve Minutes* (video game, 2021) | A man relives the same twelve minutes in his apartment as an intruder breaks in. | A tighter, more claustrophobic loop for the Butler minutes. |

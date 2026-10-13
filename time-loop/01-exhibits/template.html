@@ -46,36 +46,29 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .label .s { font-size: 11px; color: var(--dim); }
 .label .s a { color: var(--dim); }
 .stub { position: absolute; z-index: 3; top: calc(env(safe-area-inset-top, 0px) + 60px); left: 16px; font-family: var(--font-mono); font-size: 11px; color: var(--black); background: var(--amber); padding: 2px 6px; border-radius: 2px; }
-.audio-btn { position: absolute; z-index: 4; right: 14px; bottom: 16px; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--faint); background: var(--shade); color: var(--white); font-size: 15px; display: grid; place-items: center; }
-.audio-btn.on { background: var(--white); color: var(--black); }
 
-/* Split layout: two screens side by side, stacked on tall screens. */
+/* Split layout: two screens side by side (stacked on tall screens). One side plays while the other
+   waits, dimmed; then they swap. The playing side widens a little. */
+.split .media { transition: left .7s cubic-bezier(.3,.8,.2,1), right .7s cubic-bezier(.3,.8,.2,1), top .7s cubic-bezier(.3,.8,.2,1), bottom .7s cubic-bezier(.3,.8,.2,1); }
 .split .media.a { right: 50%; }
 .split .media.b { left: 50%; }
-.split .seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--black); }
+.split.play-a .media.a { right: 40%; } .split.play-a .media.b { left: 60%; }
+.split.play-b .media.a { right: 60%; } .split.play-b .media.b { left: 40%; }
+.split .media video, .split .media img { transition: filter .7s; }
+.split.play-a .media.b video, .split.play-a .media.b img, .split.play-b .media.a video, .split.play-b .media.a img { filter: grayscale(1) brightness(.32); }
+.split .media .label { transition: opacity .7s; }
+.split.play-a .media.b .label, .split.play-b .media.a .label { opacity: .3; }
+.split .seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--black); transition: left .7s cubic-bezier(.3,.8,.2,1), top .7s cubic-bezier(.3,.8,.2,1); }
+.split.play-a .seam { left: 60%; } .split.play-b .seam { left: 40%; }
+.prog { position: absolute; z-index: 4; left: 0; bottom: 0; height: 3px; width: 0; background: var(--red); }
+.split.play-a .media.b .prog, .split.play-b .media.a .prog { opacity: 0; }
 @media (max-aspect-ratio: 1/1) {
-  .split .media.a { right: 0; bottom: 50%; }
-  .split .media.b { left: 0; top: 50%; }
-  .split .seam { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 3px; margin: -1.5px 0 0; }
-}
-
-/* Wipe layout: the record covers the film; drag the line to trade one for the other. */
-.wipe .media.b { clip-path: inset(0 0 0 var(--cut, 50%)); }
-.wipe .handle { position: absolute; z-index: 5; top: 0; bottom: 0; left: var(--cut, 50%); width: 44px; margin-left: -22px; cursor: ew-resize; touch-action: none; }
-.wipe .handle::before { content: ""; position: absolute; left: 21px; top: 0; bottom: 0; width: 2px; background: var(--white); box-shadow: 0 0 12px rgba(0,0,0,.6); }
-.wipe .handle::after { content: "\2194"; position: absolute; left: 4px; top: 50%; width: 36px; height: 36px; margin-top: -18px; border-radius: 50%; background: var(--white); color: var(--black); display: grid; place-items: center; font-size: 18px; font-weight: 800; }
-.wipe .media.a .label { right: 52%; }
-.wipe .media.b .label { left: 52%; }
-@media (max-aspect-ratio: 1/1) {
-  .wipe .media.b { clip-path: inset(var(--cut, 50%) 0 0 0); }
-  .wipe .handle { left: 0; right: 0; width: auto; margin: -22px 0 0; top: var(--cut, 50%); bottom: auto; height: 44px; cursor: ns-resize; }
-  .wipe .handle::before { left: 0; right: 0; top: 21px; bottom: auto; width: auto; height: 2px; }
-  .wipe .handle::after { content: "\2195"; left: 50%; top: 4px; margin: 0 0 0 -18px; }
-  .wipe .media.a .label, .wipe .media.b .label { left: 16px; right: 16px; }
-  .wipe .media.a .label { bottom: auto; top: calc(env(safe-area-inset-top, 0px) + 150px); }
+  .split .media.a { right: 0; bottom: 50%; } .split .media.b { left: 0; top: 50%; }
+  .split.play-a .media.a { right: 0; bottom: 40%; } .split.play-a .media.b { left: 0; top: 60%; }
+  .split.play-b .media.a { right: 0; bottom: 60%; } .split.play-b .media.b { left: 0; top: 40%; }
+  .split .seam, .split.play-a .seam, .split.play-b .seam { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 3px; margin: -1.5px 0 0; }
+  .split.play-a .seam { top: 60%; } .split.play-b .seam { top: 40%; }
   .split .media.a .label { bottom: auto; top: calc(env(safe-area-inset-top, 0px) + 60px); }
-  .split .media.a .audio-btn { bottom: auto; top: calc(env(safe-area-inset-top, 0px) + 60px); }
-  .split .media.a .label { right: 64px; }
 }
 @media (max-width: 600px) { .finale .pip .label { display: none; } }
 
@@ -89,6 +82,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .over p.sub { font-size: clamp(16px, 1.8vw, 22px); font-weight: 700; max-width: 36ch; margin: 14px auto 0; line-height: 1.3; text-shadow: 0 1px 14px rgba(0,0,0,.8); }
 .over.top p.sub { margin-left: 0; }
 .scene.enter .over h2 { animation: punch .7s cubic-bezier(.2,.9,.2,1) both; }
+.split.enter .over { animation: titlecard 4.2s ease-in forwards; }
+@keyframes titlecard { 0%, 72% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes punch { from { opacity: 0; transform: scale(1.08); letter-spacing: .02em; } to { opacity: 1; transform: none; } }
 .scene.enter .rewind { animation: rewind .45s steps(6) both; }
 .rewind { position: absolute; inset: 0; z-index: 7; pointer-events: none; opacity: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.09) 0 2px, transparent 2px 5px); mix-blend-mode: screen; }
@@ -143,14 +138,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 
 <div class="hud">
   <div class="radio" aria-label="Clock radio"><span class="t" id="hudTime">6:00</span><span class="d" id="hudDay">DAY 0001</span></div>
-  <div class="hud-r"><button class="pill" id="pauseBtn" type="button">Pause</button></div>
+  <div class="hud-r"><button class="pill" id="soundBtn" type="button" aria-pressed="false">Sound off</button><button class="pill" id="pauseBtn" type="button">Pause</button></div>
 </div>
 <nav class="dots" id="dots" aria-label="Scenes"></nav>
 <main id="film"></main>
 
 <script>
 /* ===== CONTENT: Sam edits everything in this block. Empty strings hide a line. =====
-   layout: "split" (side by side), "wipe" (drag a line between them) or "finale".
+   layout: "split" (the film plays, then the Trump clip, side by side) or "finale".
+   hold: seconds each side shows when it has no video yet (default 6).
    file: a video published beside the page, e.g. "clips/ex1-film.mp4". Until a file exists the scene
    falls back to YouTube's four preview frames for the clip named by yt. */
 const CONTENT = {
@@ -160,27 +156,27 @@ const CONTENT = {
     cue: "Scroll to wake up"
   },
   scenes: [
-    { id: "ex1", layout: "split", kicker: "Exhibit 1", title: "The rules don't apply", sub: "", pos: "center",
-      film:  { file: "clips/ex1-film.mp4",  yt: "50jZVcRgkno", tag: "Groundhog Day, 1993", who: "Phil Connors (Bill Murray)", quote: "I'm not going to live by their rules anymore!", credit: "Fan upload by David Q Heffner" },
-      trump: { file: "clips/ex1-trump.mp4", yt: "Iimj0j4NYME", tag: "NATO, Brussels, May 25, 2017", who: "Trump pushes past Montenegro's prime minister", quote: "", credit: "Associated Press" } },
-    { id: "ex2", layout: "wipe", kicker: "Exhibit 2", title: "No consequences", sub: "", pos: "top",
-      film:  { file: "clips/ex2-film.mp4",  yt: "ZHpXxAW3p_o", tag: "Groundhog Day, 1993", who: "Phil Connors at the bowling-alley bar", quote: "What if there were no tomorrow?", credit: "Fan upload by Gale N Thrope" },
-      trump: { file: "clips/ex2-trump.mp4", yt: "iTACH1eVIaA", tag: "Sioux Center, Iowa, Jan. 23, 2016", who: "Trump at a rally at Dordt College", quote: "I could stand in the middle of Fifth Avenue and shoot somebody, and I wouldn't lose any voters.", credit: "CNN" } },
-    { id: "ex3", layout: "split", kicker: "Exhibit 3", title: "Perfect recall", sub: "", pos: "center",
-      film:  { file: "clips/ex3-film.mp4",  yt: "uw63_YyNsF4", tag: "Groundhog Day, 1993", who: "Phil recites everyone in the diner", quote: "I'm a god. I'm not the God, I don't think.", credit: "Movieclips" },
-      trump: { file: "clips/ex3-trump.mp4", yt: "yVpsTa_dnSc", tag: "Fox News, July 22, 2020", who: "Trump describes his cognitive test", quote: "Person, woman, man, camera, TV.", credit: "NowThis" } },
-    { id: "ex4", layout: "wipe", kicker: "Exhibit 4", title: "Death holds no fear", sub: "", pos: "top",
-      film:  { file: "clips/ex4-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs, 2020", who: "Nyles (Andy Samberg) and Sarah (Cristin Milioti)", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Prime Video UK" },
-      trump: { file: "clips/ex4-trump.mp4", yt: "LuiUk03MUfs", tag: "The White House, Oct. 5, 2020", who: "Back from Walter Reed with Covid-19, Trump takes off his mask", quote: "Don't be afraid of Covid.", credit: "NBC News" } },
-    { id: "ex5", layout: "split", kicker: "Exhibit 5", title: "Ennui", sub: "", pos: "center",
-      film:  { file: "clips/ex5-film.mp4",  yt: "vBeGQAvabOE", tag: "Groundhog Day, 1993", who: "Phil's forecast from Gobbler's Knob", quote: "It's gonna last you for the rest of your life.", credit: "Fan upload by Vlkoslak" },
-      trump: { file: "clips/ex5-trump.mp4", yt: "OgAKS23TCXY", tag: "Oaks, Pa., Oct. 14, 2024", who: "Trump sways to music on stage for 39 minutes", quote: "Let's just listen to music.", credit: "PBS NewsHour" } },
-    { id: "ex6", layout: "split", kicker: "Exhibit 6", title: "Same day, same lines", sub: "", pos: "center",
-      film:  { file: "clips/ex6-film.mp4",  yt: "hQCG2AwzTxA", tag: "Groundhog Day, 1993", who: "Phil's second February 2", quote: "Okay, campers, rise and shine!", credit: "Movieclips" },
-      trump: { file: "clips/ex6-trump.mp4", yt: "fHi5TNZ29F4", tag: "Wildwood, N.J., May 11, 2024", who: "Trump at a beach rally", quote: "The late, great Hannibal Lecter.", credit: "MS NOW" } },
-    { id: "ex7", layout: "finale", kicker: "Exhibit 7", title: "Again. Again. Again.", sub: "", pos: "top",
-      film:  { file: "clips/ex7-film.mp4",  yt: "1ORm14QpJvk", tag: "Edge of Tomorrow, 2014", who: "Cage (Tom Cruise) and Rita (Emily Blunt)", quote: "Come find me when you wake up.", credit: "Fan upload by Free Movie Scene" },
-      trump: { file: "clips/ex7-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } }
+    { id: "rules", layout: "split", kicker: "Exhibit 1", title: "The rules don't apply", sub: "", pos: "center",
+      film:  { file: "clips/rules-film.mp4",  yt: "50jZVcRgkno", tag: "Groundhog Day, 1993", who: "Phil Connors (Bill Murray)", quote: "I'm not going to live by their rules anymore!", credit: "Fan upload by David Q Heffner" },
+      trump: { file: "clips/rules-trump.mp4", yt: "Iimj0j4NYME", tag: "NATO, Brussels, May 25, 2017", who: "Trump pushes past Montenegro's prime minister", quote: "", credit: "Associated Press" } },
+    { id: "consequences", layout: "split", kicker: "Exhibit 2", title: "No consequences", sub: "", pos: "center",
+      film:  { file: "clips/consequences-film.mp4",  yt: "ZHpXxAW3p_o", tag: "Groundhog Day, 1993", who: "Phil Connors at the bowling-alley bar", quote: "What if there were no tomorrow?", credit: "Fan upload by Gale N Thrope" },
+      trump: { file: "clips/consequences-trump.mp4", yt: "iTACH1eVIaA", tag: "Sioux Center, Iowa, Jan. 23, 2016", who: "Trump at a rally at Dordt College", quote: "I could stand in the middle of Fifth Avenue and shoot somebody, and I wouldn't lose any voters.", credit: "CNN" } },
+    { id: "recall", layout: "split", kicker: "Exhibit 3", title: "Perfect recall", sub: "", pos: "center",
+      film:  { file: "clips/recall-film.mp4",  yt: "uw63_YyNsF4", tag: "Groundhog Day, 1993", who: "Phil recites everyone in the diner", quote: "I'm a god. I'm not the God, I don't think.", credit: "Movieclips" },
+      trump: { file: "clips/recall-trump.mp4", yt: "yVpsTa_dnSc", tag: "Fox News, July 22, 2020", who: "Trump describes his cognitive test", quote: "Person, woman, man, camera, TV.", credit: "NowThis" } },
+    { id: "ennui", layout: "split", kicker: "Exhibit 4", title: "Ennui", sub: "", pos: "center",
+      film:  { file: "clips/ennui-film.mp4",  yt: "vBeGQAvabOE", tag: "Groundhog Day, 1993", who: "Phil's forecast from Gobbler's Knob", quote: "It's gonna last you for the rest of your life.", credit: "Fan upload by Vlkoslak" },
+      trump: { file: "clips/ennui-trump.mp4", yt: "OgAKS23TCXY", tag: "Oaks, Pa., Oct. 14, 2024", who: "Trump sways to music on stage for 39 minutes", quote: "Let's just listen to music.", credit: "PBS NewsHour" } },
+    { id: "lines", layout: "split", kicker: "Exhibit 5", title: "Same day, same lines", sub: "", pos: "center",
+      film:  { file: "clips/lines-film.mp4",  yt: "XqSYC_vwhDg", tag: "Groundhog Day, 1993", who: "Ned Ryerson (Stephen Tobolowsky) greets Phil, every morning", quote: "Phil? Phil Connors? I thought that was you!", credit: "Movieclips" },
+      trump: { file: "clips/lines-trump.mp4", yt: "bqbmTnr9NSE", tag: "Las Vegas, June 9, 2024, and other rallies", who: "Trump's riff about sharks and electric boats, rally after rally", quote: "", credit: "Rally footage, several sources" } },
+    { id: "butler", layout: "finale", kicker: "Exhibit 6", title: "Again. Again. Again.", sub: "", pos: "top",
+      film:  { file: "clips/butler-film.mp4",  yt: "1ORm14QpJvk", tag: "Edge of Tomorrow, 2014", who: "Cage (Tom Cruise) and Rita (Emily Blunt)", quote: "Come find me when you wake up.", credit: "Fan upload by Free Movie Scene" },
+      trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } },
+    { id: "reaction", layout: "split", kicker: "Exhibit 7", title: "Death holds no fear", sub: "", pos: "center",
+      film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs, 2020", who: "Nyles (Andy Samberg), shot with an arrow, shrugs it off", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Prime Video UK" },
+      trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "About a minute after the shot, Trump rises and raises his fist", quote: "Fight! Fight! Fight!", credit: "RSBN broadcast, via the Internet Archive" } }
   ],
   finale: {
     once: "Live July 13 again",
@@ -206,24 +202,50 @@ function media(c, cls, scene, side) {
   const keys = ["hqdefault", "hq1", "hq2", "hq3"];
   const imgs = keys.map((k, i) => { const im = new Image(); im.alt = ""; im.src = FRAMES[c.yt + "_" + k] || ""; if (!i) im.className = "on"; m.appendChild(im); return im; });
   const p = { scene, side, v: null, imgs, i: 0, stub: null };
-  const v = document.createElement("video"); v.muted = true; v.loop = true; v.playsInline = true; v.preload = "metadata"; v.setAttribute("playsinline", "");
+  const v = document.createElement("video"); v.muted = true; v.loop = false; v.playsInline = true; v.preload = "metadata"; v.setAttribute("playsinline", "");
   v.addEventListener("loadeddata", () => { p.v = v; imgs.forEach(im => im.remove()); p.stub && p.stub.remove(); });
   v.addEventListener("error", () => { v.remove(); }, true);
   const s = document.createElement("source"); s.src = c.file; s.type = "video/mp4";
   s.addEventListener("error", () => { v.remove(); });
   v.appendChild(s); m.prepend(v);
   m.insertAdjacentHTML("beforeend", `<div class="grade"></div><div class="label">${c.tag ? `<span class="k">${esc(c.tag)}</span>` : ""}${c.who ? `<span class="w">${esc(c.who)}</span>` : ""}${c.quote ? `<span class="q">“${esc(c.quote)}”</span>` : ""}<span class="s">${esc(c.credit)} · <a href="https://www.youtube.com/watch?v=${c.yt}" target="_blank" rel="noopener">source clip</a></span></div>`);
-  const btn = document.createElement("button"); btn.className = "audio-btn"; btn.type = "button"; btn.setAttribute("aria-label", "Sound for " + (c.tag || "this clip")); btn.textContent = "♪";
-  btn.addEventListener("click", () => toggleSound(p, btn)); m.appendChild(btn); p.btn = btn;
+  p.prog = document.createElement("div"); p.prog.className = "prog"; m.appendChild(p.prog);
+  v.addEventListener("ended", () => { if (scene.onEnded) scene.onEnded(p); });
   p.vEl = v; players.push(p); return m;
 }
-function toggleSound(p, btn) {
-  const on = !btn.classList.contains("on");
-  players.forEach(q => { if (q.vEl) q.vEl.muted = true; q.btn.classList.remove("on"); });
-  if (on && p.vEl) { p.vEl.muted = false; btn.classList.add("on"); p.vEl.play().catch(() => {}); }
-}
+let sound = false;
+document.getElementById("soundBtn").addEventListener("click", e => {
+  sound = !sound; e.target.textContent = sound ? "Sound on" : "Sound off"; e.target.classList.toggle("on", sound); e.target.setAttribute("aria-pressed", sound);
+  players.forEach(q => { if (q.vEl) q.vEl.muted = !(sound && q.active); });
+});
 function overlay(sc) {
   return `<div class="over ${sc.pos || "center"}">${sc.kicker ? `<p class="kick">${esc(sc.kicker)}</p>` : ""}${sc.title ? `<h2>${esc(sc.title)}</h2>` : ""}${sc.sub ? `<p class="sub">${esc(sc.sub)}</p>` : ""}</div><div class="rewind"></div>`;
+}
+
+
+// One side plays, then the other, then the film again. A side without video holds its preview frames.
+function sequencer(s, sc) {
+  const [pa, pb] = players.filter(p => p.scene === s);
+  let side = null, t0 = 0;
+  s.go = which => {
+    side = which; t0 = performance.now();
+    s.classList.toggle("play-a", which === "a"); s.classList.toggle("play-b", which === "b");
+    [pa, pb].forEach(p => {
+      p.active = (p === (which === "a" ? pa : pb));
+      if (!p.vEl) return;
+      p.vEl.muted = !(sound && p.active);
+      if (p.active) { p.vEl.currentTime = 0; if (!paused) p.vEl.play().catch(() => {}); } else p.vEl.pause();
+    });
+  };
+  s.onEnded = p => { if (p.active && side) s.go(side === "a" ? "b" : "a"); };
+  s.start = () => s.go("a");
+  s.stop = () => { [pa, pb].forEach(p => { p.active = false; if (p.vEl) p.vEl.pause(); }); side = null; };
+  s.tick = now => {
+    if (!side || paused) return;
+    const p = side === "a" ? pa : pb, hold = (sc.hold || 6) * 1000;
+    if (p.v) { const d = p.vEl.duration || 1; p.prog.style.width = (p.vEl.currentTime / d * 100) + "%"; }
+    else { p.prog.style.width = Math.min(100, (now - t0) / hold * 100) + "%"; if (now - t0 > hold) s.go(side === "a" ? "b" : "a"); }
+  };
 }
 
 // Opening scene
@@ -247,18 +269,8 @@ CONTENT.scenes.forEach((sc, idx) => {
   } else {
     s.appendChild(media(sc.film, "a", s, "film"));
     s.appendChild(media(sc.trump, "b", s, "trump"));
-    if (sc.layout === "split") s.insertAdjacentHTML("beforeend", `<div class="seam"></div>`);
-    if (sc.layout === "wipe") {
-      const h = document.createElement("div"); h.className = "handle"; h.setAttribute("role", "slider"); h.tabIndex = 0; h.setAttribute("aria-label", "Move the line between the film and the record"); s.appendChild(h);
-      let drag = false, touched = false;
-      const tall = matchMedia("(max-aspect-ratio: 1/1)");
-      const set = e => { const b = s.getBoundingClientRect(); const pct = Math.max(4, Math.min(96, tall.matches ? (e.clientY - b.top) / b.height * 100 : (e.clientX - b.left) / b.width * 100)); s.style.setProperty("--cut", pct + "%"); h.setAttribute("aria-valuenow", Math.round(pct)); };
-      h.addEventListener("pointerdown", e => { drag = touched = true; h.setPointerCapture(e.pointerId); });
-      h.addEventListener("pointermove", e => { if (drag) set(e); });
-      h.addEventListener("pointerup", () => { drag = false; });
-      h.addEventListener("keydown", e => { const cur = parseFloat(getComputedStyle(s).getPropertyValue("--cut")) || 50; if (["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)) { touched = true; e.preventDefault(); s.style.setProperty("--cut", Math.max(4, Math.min(96, cur + (e.key === "ArrowLeft" || e.key === "ArrowUp" ? -4 : 4))) + "%"); } });
-      s.sweep = t => { if (!touched && !reduce) s.style.setProperty("--cut", (50 + 30 * Math.sin(t / 1800)) + "%"); };
-    }
+    s.insertAdjacentHTML("beforeend", `<div class="seam"></div>`);
+    sequencer(s, sc);
     s.insertAdjacentHTML("beforeend", overlay(sc));
   }
   film.appendChild(s); sections.push(s);
@@ -288,20 +300,23 @@ const io = new IntersectionObserver(es => es.forEach(en => {
     dotEls.forEach((d, j) => d.classList.toggle("on", j === i));
     document.getElementById("hudDay").textContent = "DAY " + String(i + 1).padStart(4, "0");
   }
-  players.filter(p => p.scene === en.target).forEach(p => { if (!p.vEl) return; if (en.isIntersecting && !paused) p.vEl.play().catch(() => {}); else p.vEl.pause(); });
+  const sc = en.target;
+  if (sc.start) { if (en.isIntersecting) sc.start(); else sc.stop(); }
+  else players.filter(p => p.scene === sc).forEach(p => { if (!p.vEl) return; if (en.isIntersecting && !paused) p.vEl.play().catch(() => {}); else p.vEl.pause(); });
 }), { threshold: 0.6 });
 sections.forEach(s => io.observe(s));
 
-// Flip-book fallback and wipe sweep
+// Flip-book fallback and sequencer clock
 setInterval(() => { if (paused) return; players.forEach(p => { if (p.v || !p.imgs.length || sections[current] !== p.scene) return; p.imgs[p.i].classList.remove("on"); p.i = (p.i + 1) % 4; p.imgs[p.i].classList.add("on"); }); }, 1000);
-(function sweep(t) { const s = sections[current]; if (s && s.sweep && !paused) s.sweep(t); requestAnimationFrame(sweep); })(0);
+(function tick(t) { const s = sections[current]; if (s && s.tick) s.tick(t); requestAnimationFrame(tick); })(0);
 
 document.getElementById("pauseBtn").addEventListener("click", e => {
   paused = !paused; e.target.textContent = paused ? "Play" : "Pause"; e.target.classList.toggle("on", paused);
-  players.forEach(p => { if (!p.vEl) return; if (paused) p.vEl.pause(); else if (sections[current] === p.scene) p.vEl.play().catch(() => {}); });
+  players.forEach(p => { if (!p.vEl) return; if (paused) p.vEl.pause(); else if (sections[current] === p.scene && (p.active || !p.scene.start)) p.vEl.play().catch(() => {}); });
 });
 
-// Finale: relive July 13 until the ear-only day.
+// Finale: relive July 13 until the ear-only day. Its two clips loop on their own.
+players.filter(p => p.scene.classList.contains("finale")).forEach(p => { p.vEl.loop = true; });
 const FIN = CONTENT.scenes.find(s => s.layout === "finale");
 const fp = players.find(p => p.side === "trump" && p.scene.classList.contains("finale"));
 const pipP = players.find(p => p.side === "film" && p.scene.classList.contains("finale"));
