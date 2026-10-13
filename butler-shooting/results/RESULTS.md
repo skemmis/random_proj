@@ -27,7 +27,7 @@ At the moment Crooks fired, Trump had turned his face almost straight toward the
 | Arm only | 0.02% |
 | Miss | 68.8% |
 
-At that turn the margin was slim. Our model puts the edge of the real bullet, which is 5.7 mm across, 6.1 mm from Trump's skull and 2.2 mm from the depth, 3 mm under the skin, at which a graze becomes a serious wound. Holding the same bullet path fixed while the head turns, the bullet would have reached that depth at turns from about 20° past the rifle and from about 60° short of it. The skull itself stays at least 5 mm away from the bullet's edge everywhere from 20° past the rifle to the back of the head (`assets/dashboard/margin_by_turn.json`).
+At that turn the margin was slim. Our model puts the edge of the real bullet, which is 5.7 mm across, 6.1 mm from Trump's skull and 2.2 mm from the depth, 3 mm under the skin, at which a graze becomes a serious wound. Holding the same bullet path fixed while the head turns, the bullet would have gone deeper than 3 mm if his face had been turned 20° or more past the rifle, or between about 60° and 125° short of it, which includes facing the crowd. The bullet's edge would have touched the skull only if his face had been turned about 20° or more past the rifle (`assets/dashboard/margin_by_turn.json`).
 
 ## What "grazed" means
 
