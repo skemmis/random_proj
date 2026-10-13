@@ -212,8 +212,9 @@ def chart_map(rows, summary):
     ax.set_ylim(z["fv"][0], z["fv"][-1])
     ax.set_xlabel("mm, shooter's right →", color=INK2)
     ax.set_ylabel("mm, up →", color=INK2)
-    ax.set_title(f"What each bullet path does, seen from the rifle\n(face turned {rel:.0f}° from the shooter; "
-                 "blue = ear only)", loc="left", color=INK, fontsize=11)
+    ax.set_title(f"Seen from the rifle, his ears (blue) are thin strips beside a skull that fills the target\n"
+                 f"Each colour shows what a bullet on that path would hit, with his face turned {rel:.0f}° from the gunman.\n"
+                 "The circles hold the typical spread of shots aimed at the cross.", loc="left", color=INK, fontsize=10)
     import matplotlib.patches as mpatches
     keys = [("ear only", BLUE), ("brain", "#b3406a"), ("skull/spine bone", "#c9c3b3"), ("major vessel", "#d0312d"),
             ("airway", "#7fb2c9"), ("face", "#eb9a70"), ("scalp/neck graze", AQUA), ("hair only (miss)", "#f3e3a0"),
