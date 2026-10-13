@@ -8,6 +8,8 @@ Suppose Crooks had fired one head-aimed shot at a random moment in the six and a
 
 These figures use the video thread's frame-by-frame track of Trump's head, with the camera's bearing corrected by the wound (see "How unusual that head turn was" below). Using the video alone, without that correction, the figures are 1 in 455 for an ear-only hit (0.22%) and 1 in 89 for a graze (1.12%).
 
+The model follows only how far Trump turned his head, not how he nodded or tilted it. No one measured his nod and tilt frame by frame, so the speech figures average over the few nods we simulated near level (−10° to +20°), and this assumption is untested. Sam chose on 2026-10-13 not to run the extra poses. Judging by the poses already simulated, we expect that measured nod and tilt would keep the ear-only headline roughly between 1 in 500 and 1 in 750.
+
 | Outcome of one head-aimed shot | At a random moment in the speech | At his actual turn when Crooks fired |
 |---|---|---|
 | Hits only the ear | 0.16% (1 in 625) | 0.90% (about 1 in 110) |
