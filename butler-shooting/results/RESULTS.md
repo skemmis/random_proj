@@ -2,11 +2,22 @@
 
 ## The headline
 
-On July 13, 2024, Thomas Crooks fired his first shot at Donald Trump from a roof about 135 m away, and the bullet passed through the top of Trump's right ear without touching his skull. Our simulation estimates that a head-aimed shot like Crooks's first one, fired at Trump as he stood at that moment, had about a 1 in 57 chance (1.8%) of merely grazing him. It had a 0.90% chance, about 1 in 110, of doing exactly what the real bullet did: hitting the ear and nothing else.
+On July 13, 2024, Thomas Crooks fired his first shot at Donald Trump from a roof about 135 m away, and the bullet passed through the top of Trump's right ear without touching his skull. The headline asks how likely that was, given everything we model: Crooks's accuracy, Trump's anatomy, and the way Trump's head moved through his speech.
 
-The same shot had about a 29% chance of killing or seriously wounding Trump and a 69% chance of missing him.
+Suppose Crooks had fired one head-aimed shot at a random moment in the six and a half minutes of the speech before the first shot. Our simulation estimates that the shot would have hit only Trump's ear, as the real bullet did, about **1 in 625** times (0.16%). It would have merely grazed him, touching only the ear or the outer 3 mm of skin, about **1 in 94** times (1.06%). Sam named 1 in 625 as the project's headline on 2026-10-13; whether the article quotes the ear-only figure or the wider graze figure is still his call, so both appear here.
 
-| Outcome of one head-aimed shot | Chance |
+These figures use the video thread's frame-by-frame track of Trump's head, with the camera's bearing corrected by the wound (see "How unusual that head turn was" below). Using the video alone, without that correction, the figures are 1 in 455 for an ear-only hit (0.22%) and 1 in 89 for a graze (1.12%).
+
+| Outcome of one head-aimed shot | At a random moment in the speech | At his actual turn when Crooks fired |
+|---|---|---|
+| Hits only the ear | 0.16% (1 in 625) | 0.90% (about 1 in 110) |
+| Grazed, not lethal (ear or outer 3 mm of skin) | 1.06% (1 in 94) | 1.76% (1 in 57) |
+
+### At his actual turn
+
+At the moment Crooks fired, Trump had turned his face almost straight toward the rifle, which made the odds much better for him. A head-aimed shot fired at that turn had a 1.76% chance (1 in 57) of merely grazing him and a 0.90% chance (about 1 in 110) of hitting the ear and nothing else. It had about a 29% chance of killing or seriously wounding him and a 69% chance of missing him.
+
+| Outcome of one head-aimed shot at his actual turn | Chance |
 |---|---|
 | Grazed, not lethal | 1.76% |
 | of which, the ear only | 0.90% |

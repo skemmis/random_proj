@@ -190,7 +190,9 @@
    "graze_at_shot": "1.75%",
    "graze_speech_average": "1.06%",
    "ear_only_at_shot": "0.89%",
-   "ear_only_speech_average": "0.16%"
+   "ear_only_speech_average": "0.16%",
+   "graze_speech_average_one_in": "1 in 94",
+   "ear_only_speech_average_one_in": "1 in 625"
   },
   "video_only": {
    "share_of_speech_as_lucky": "20%",
@@ -207,7 +209,9 @@
    "graze_at_shot": "1.53%",
    "graze_speech_average": "1.12%",
    "ear_only_at_shot": "0.64%",
-   "ear_only_speech_average": "0.22%"
+   "ear_only_speech_average": "0.22%",
+   "graze_speech_average_one_in": "1 in 89",
+   "ear_only_speech_average_one_in": "1 in 455"
   }
  }
 }

@@ -150,7 +150,14 @@ if __name__ == "__main__":
                 "graze_at_shot": f"{100 * r['grazed_shot']['mean']:.2f}%",
                 "graze_speech_average": f"{100 * r['grazed_avg']['mean']:.2f}%",
                 "ear_only_at_shot": f"{100 * r['ear_shot']['mean']:.2f}%",
-                "ear_only_speech_average": f"{100 * r['ear_avg']['mean']:.2f}%"}
+                "ear_only_speech_average": f"{100 * r['ear_avg']['mean']:.2f}%",
+                "graze_speech_average_one_in": f"1 in {one_in(r['grazed_avg']['mean'])}",
+                "ear_only_speech_average_one_in": f"1 in {one_in(r['ear_avg']['mean'])}"}
+
+    def one_in(p):  # 1/p from the rounded percentage the text quotes, so "0.16%" and "1 in 625" agree
+        pr = float(f"{100 * p:.2f}") / 100
+        n = 1 / pr
+        return int(round(n))
     # The rounded figures RESULTS.md and the pages quote, so nobody has to round by hand.
     res["quoted"] = {"wound_corrected": quoted(res["pitch_averaged"]),
                      "video_only": quoted(res["video_only_pitch_averaged"])}
