@@ -1,0 +1,397 @@
+<title>The Loop Hypothesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* One reading column, broken by full-width split screens: the film on a dark cinema panel at left,
+   the public record on paper at right, each a looping four-frame strip. A clock-radio counter is the motif. */
+:root {
+  --bg: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #75736e; --rule: #e4e3df; --grid: #ecebe7;
+  --trump: #e34948; --screen: #121212; --screen-ink: #f1efe9; --screen-ink-2: #b9b6ad; --clock: #e34948;
+  --chip: #f1f0ec; --btn: #0b0b0b; --btn-ink: #ffffff; --tip: #ffffff;
+  --font-head: "Libre Franklin", "Franklin Gothic Medium", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161616; --ink: #f0efec; --ink-2: #c3c2b9; --ink-3: #9b9a93; --rule: #34332f; --grid: #2a2927;
+    --trump: #e66767; --screen: #050505; --screen-ink: #f1efe9; --screen-ink-2: #b9b6ad; --clock: #ff6b66;
+    --chip: #232322; --btn: #f0efec; --btn-ink: #161616; --tip: #232322; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161616; --ink: #f0efec; --ink-2: #c3c2b9; --ink-3: #9b9a93; --rule: #34332f; --grid: #2a2927;
+  --trump: #e66767; --screen: #050505; --screen-ink: #f1efe9; --screen-ink-2: #b9b6ad; --clock: #ff6b66;
+  --chip: #232322; --btn: #f0efec; --btn-ink: #161616; --tip: #232322; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 19px; line-height: 1.58; }
+a { color: inherit; text-decoration-color: var(--ink-3); text-underline-offset: 3px; }
+.wrap { max-width: 760px; margin: 0 auto; padding-inline: 16px; }
+.wide { max-width: 1120px; margin: 0 auto; padding-inline: 16px; }
+.kicker { font-family: var(--font-head); font-size: 12px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px; }
+h1 { font-family: var(--font-head); font-weight: 900; font-size: clamp(32px, 6.4vw, 60px); line-height: 1.02; letter-spacing: -.022em; margin: 0 0 16px; text-wrap: balance; }
+.dek { font-size: 21px; color: var(--ink-2); margin: 0 0 22px; }
+h2 { font-family: var(--font-head); font-weight: 800; font-size: clamp(23px, 3.4vw, 30px); line-height: 1.15; margin: 0 0 12px; text-wrap: balance; letter-spacing: -.01em; }
+p { margin: 0 0 16px; }
+.byline { font-family: var(--font-head); font-size: 13px; color: var(--ink-3); margin: 0 0 30px; }
+
+/* Hero clock radio */
+.hero { padding-block: 40px 8px; }
+.radio { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; margin: 0 0 26px; }
+.clock { font-family: var(--font-mono); font-weight: 600; font-size: clamp(54px, 11vw, 96px); line-height: 1; color: var(--clock); background: var(--screen); border-radius: 6px; padding: 12px 20px 10px; letter-spacing: .02em; font-variant-numeric: tabular-nums; min-width: 0; }
+.clock small { font-size: .28em; margin-left: .3em; vertical-align: top; color: var(--screen-ink-2); }
+.radio-cap { font-family: var(--font-head); font-size: 14px; color: var(--ink-2); max-width: 30ch; line-height: 1.4; }
+.radio-cap b { color: var(--ink); }
+
+/* Sticky exhibit nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); border-bottom: 1px solid var(--rule); }
+.nav .wide { display: flex; gap: 6px; overflow-x: auto; padding-block: 9px; scrollbar-width: none; align-items: center; }
+.nav a { flex: none; font-family: var(--font-head); font-size: 12.5px; font-weight: 700; text-decoration: none; color: var(--ink-2); background: var(--chip); border-radius: 999px; padding: 5px 11px; }
+.nav a.on { background: var(--ink); color: var(--bg); }
+.nav button { margin-left: auto; flex: none; }
+
+/* Exhibits */
+.ex { padding-block: 56px 8px; border-bottom: 1px solid var(--rule); scroll-margin-top: 54px; }
+.exno { font-family: var(--font-head); font-size: 12.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--trump); margin: 0 0 8px; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 26px 0 22px; border-radius: 4px; overflow: hidden; }
+@media (max-width: 760px) { .pair { grid-template-columns: 1fr; } }
+.side { margin: 0; min-width: 0; display: flex; flex-direction: column; }
+.side.film { background: var(--screen); color: var(--screen-ink); }
+.side.rec { background: var(--chip); }
+.reel { position: relative; aspect-ratio: 16 / 9; max-width: 100%; overflow: hidden; background: #000; cursor: pointer; }
+.reel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.reel img.on { opacity: 1; }
+.reel .tag { position: absolute; left: 10px; top: 10px; font-family: var(--font-head); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 3px 7px; border-radius: 2px; background: rgba(0,0,0,.72); color: #fff; }
+.reel .ticks { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 4px; }
+.reel .ticks i { width: 14px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.35); }
+.reel .ticks i.on { background: #fff; }
+.reel .day { position: absolute; left: 10px; bottom: 9px; font-family: var(--font-mono); font-size: 12px; color: #fff; background: rgba(0,0,0,.62); padding: 2px 6px; border-radius: 2px; }
+.cap { padding: 14px 16px 16px; font-family: var(--font-head); font-size: 14.5px; line-height: 1.45; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+.cap .who { font-weight: 800; font-size: 15.5px; }
+.film .cap .who { color: #fff; }
+.cap q { font-family: var(--font-body); font-style: italic; font-size: 18px; line-height: 1.35; quotes: "\201C" "\201D"; display: block; }
+.cap .src { font-size: 12.5px; margin-top: auto; }
+.film .cap .src, .film .cap .src a { color: var(--screen-ink-2); }
+.rec .cap .src { color: var(--ink-3); }
+.verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 0 0 28px; }
+@media (max-width: 640px) { .verdict { grid-template-columns: 1fr; gap: 6px; } }
+.verdict div { min-width: 0; }
+.verdict h3 { font-family: var(--font-head); font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 4px; }
+.verdict .loop h3 { color: var(--trump); }
+.verdict p { font-size: 17px; line-height: 1.5; margin: 0 0 10px; }
+
+/* Butler exhibit */
+.hero-num { display: flex; gap: 30px; flex-wrap: wrap; font-family: var(--font-head); margin: 10px 0 18px; align-items: flex-end; }
+.hero-num .big { font-size: clamp(46px, 8vw, 64px); font-weight: 900; letter-spacing: -.02em; line-height: 1; color: var(--trump); font-variant-numeric: tabular-nums; }
+.hero-num .mid { font-size: 30px; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.hero-num .lab { font-size: 13px; color: var(--ink-2); margin-top: 5px; max-width: 24ch; line-height: 1.35; }
+.ctitle { font-family: var(--font-head); font-weight: 700; font-size: 16.5px; line-height: 1.3; margin: 0 0 3px; }
+.csub { font-family: var(--font-head); font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; line-height: 1.4; }
+.controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-family: var(--font-head); margin: 4px 0 6px; }
+button { font-family: var(--font-head); font-size: 13.5px; font-weight: 700; border-radius: 3px; padding: 7px 12px; cursor: pointer; border: 1.5px solid var(--btn); background: transparent; color: var(--ink); }
+button.primary { background: var(--btn); color: var(--btn-ink); }
+button:disabled { opacity: .45; cursor: default; }
+button:focus-visible, a:focus-visible, .reel:focus-visible { outline: 3px solid var(--trump); outline-offset: 2px; }
+.small-btn { font-size: 12px; padding: 4px 9px; border-width: 1px; }
+.counter { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 12px 0 6px; }
+.counter .clock { font-size: 40px; padding: 8px 14px 6px; }
+.readout { font-family: var(--font-head); font-size: 15px; color: var(--ink-2); line-height: 1.45; min-height: 3em; flex: 1; min-width: 0; }
+.readout b { color: var(--ink); }
+.chart { position: relative; width: 100%; margin-top: 8px; }
+.chart svg { display: block; width: 100%; overflow: visible; touch-action: pan-y; }
+svg text { font-family: var(--font-head); }
+.axis text { fill: var(--ink-2); font-size: 12px; }
+.axis line { stroke: var(--rule); }
+.grid line { stroke: var(--grid); stroke-width: .8; }
+.mark-line { stroke: var(--ink-3); stroke-width: .9; stroke-dasharray: 3 3; }
+.note { fill: var(--ink); font-size: 12.5px; font-weight: 600; }
+.note-sub { fill: var(--ink-2); font-size: 12px; }
+.tip { position: absolute; pointer-events: none; background: var(--tip); border: 1px solid var(--rule); border-radius: 4px; padding: 7px 10px; font-family: var(--font-head); font-size: 13px; line-height: 1.35; color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,.08); white-space: nowrap; }
+.src-line { font-family: var(--font-head); font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+.links { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px; margin: 18px 0 8px; }
+.links a { display: block; text-decoration: none; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; font-family: var(--font-head); font-size: 13.5px; line-height: 1.35; color: var(--ink-2); }
+.links a b { display: block; color: var(--ink); font-size: 15px; margin-bottom: 2px; }
+.notes { margin-top: 44px; border-top: 1px solid var(--rule); padding-block: 14px 64px; font-size: 16px; color: var(--ink-2); }
+.notes h3 { font-family: var(--font-head); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 18px 0 6px; }
+.notes p { margin: 0 0 12px; }
+.notes ol { padding-left: 20px; margin: 0 0 12px; }
+.notes li { margin-bottom: 6px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<header class="hero wrap">
+  <p class="kicker">An investigation · The Loop Hypothesis, part 1</p>
+  <h1>Is Donald Trump Living the Same Day Over and Over?</h1>
+  <p class="dek">The heroes of time-loop films share a set of habits: they ignore the rules, fear nothing, feel no shame, master impossible feats and look bored by all of it. We set seven of those habits beside Donald Trump's public record, and then asked what a bullet through the ear in Butler, Pennsylvania, would take.</p>
+  <div class="radio" aria-label="Clock radio">
+    <div class="clock" id="heroClock">5:59<small>AM</small></div>
+    <p class="radio-cap">In <b>Groundhog Day</b> (1993), the weatherman Phil Connors wakes every morning at 6:00 to the same song on his clock radio, and every morning is February 2 again.</p>
+  </div>
+  <p>A time loop is a story device in which one person relives the same stretch of time again and again while everyone else experiences it only once. The looped person keeps his memories; the world resets. Films have used it for comedy, horror and war, and the people trapped in loops tend to behave in the same ways.</p>
+  <p>This page compares those behaviours with moments from Trump's public life, one trait at a time. Each exhibit pairs a scene from a time-loop film with a recorded moment from Trump's career, then sets the ordinary explanation against the loop explanation. The strips loop through four frames that YouTube takes automatically from each clip; tap a strip to pause it, or follow the link beneath it to watch the clip.</p>
+  <p class="byline">Clips found October 13, 2026. Frames are YouTube's automatic previews, shown for commentary; every clip belongs to its uploader.</p>
+</header>
+
+<nav class="nav" aria-label="Exhibits">
+  <div class="wide" id="navInner"></div>
+</nav>
+
+<main id="exhibits"></main>
+
+<section class="ex wide" id="ex7" style="border-bottom:0">
+  <div class="wrap" style="padding-inline:0">
+    <p class="exno">Exhibit 7 · He keeps dying until he gets it right</p>
+    <h2>In <i>Edge of Tomorrow</i>, a soldier must die again and again until he finds the one way through. Butler may have been Trump's beach.</h2>
+  </div>
+  <div class="pair" id="pair7"></div>
+  <div class="wrap" style="padding-inline:0">
+    <p>The hypothesis runs like this. Suppose the only version of July 13, 2024, that ends with Trump in the White House is the one in which a bullet passes through the top of his right ear and touches nothing else. Every other version ends with a miss, which changes nothing, or with a wound that kills or disables him. A man trapped in a loop would have to relive that afternoon until the bullet found his ear.</p>
+    <p>The Butler project measured how rare that outcome is. It simulated the marksmanship of Thomas Crooks, the 20-year-old gunman who fired from a roof about 135 metres away, against a 3D model of Trump's head, turning his head as the RSBN broadcast shows it turning through the six and a half minutes of his speech before the first shot.</p>
+    <div class="hero-num">
+      <div><div class="big">1 in 625</div><div class="lab">chance that one shot, fired at a random moment of the speech, hits only his ear</div></div>
+      <div><div class="mid">1 in 94</div><div class="lab">chance that it merely grazes him anywhere, ear or outer skin</div></div>
+    </div>
+    <p>In loop terms, 1 in 625 means Trump would have relived July 13 about 625 times on average before getting the ear-only day. Luck could make it much shorter or much longer. The chart shows the chance that he has had his ear-only day after any number of tries. Try it yourself: each press relives the afternoon once, with one shot at a random moment.</p>
+
+    <p class="ctitle">A looped Trump has even odds of his ear-only day after about 433 tries</p>
+    <p class="csub">Chance that at least one of his relived July 13ths has ended with a bullet through the ear and nothing else, by number of days lived</p>
+    <div class="counter">
+      <div class="clock" id="dayClock" aria-live="off">0001</div>
+      <div class="readout" id="readout" aria-live="polite">Day 1 has not been lived yet. Press <b>Live July 13 again</b> to fire one shot, or let the loop run until the ear-only day comes.</div>
+    </div>
+    <div class="controls">
+      <button class="primary" id="once">Live July 13 again</button>
+      <button id="run">Loop until it works</button>
+      <button id="reset">Start a new Trump</button>
+    </div>
+    <div class="chart" id="chart"></div>
+    <p class="src-line">Odds from the Butler project's simulation (<code>results/RESULTS.md</code>, the headline section). The curve is 1 − (1 − 1/625)<sup>N</sup>. Each run on this page draws random days at the same 1-in-625 rate; it treats any other outcome as a day that resets.</p>
+
+    <p style="margin-top:22px">A graze of any kind comes much sooner, after about 65 tries at even odds, but a graze of the scalp or neck is a different wound from the one Trump got. The ear alone is what the record shows, and only about one shot in 625 produces it.</p>
+    <p>Trump's head turn at the moment Crooks fired made the odds much better than average: at his actual turn, the simulation puts an ear-only hit at about 1 in 110. Only about 6 percent of the speech found him turned that well. The loop hypothesis has an answer for that too. A man who had lived the afternoon hundreds of times would know when to look at his immigration chart.</p>
+
+    <p class="ctitle" style="margin-top:28px">The Butler analysis behind these numbers</p>
+    <div class="links">
+      <a href="https://claude.ai/artifact/JGEfKhHho4XZzHSed5YfBg" target="_blank" rel="noopener"><b>Only the Ear</b>Fire at a still head until a bullet hits only his ear.</a>
+      <a href="https://claude.ai/artifact/5WaijmmetS7uG2dVGBsheb" target="_blank" rel="noopener"><b>The Turn</b>Watch the first bullet's path sweep his head through the speech.</a>
+      <a href="https://claude.ai/artifact/97TVEKUAy91vTmbmpXCyzn" target="_blank" rel="noopener"><b>Moving Target</b>Fire while the speech plays and his head turns.</a>
+      <a href="https://claude.ai/artifact/6mqn5mzxwPv78qwL8KAzJh" target="_blank" rel="noopener"><b>The Bump</b>What the shooting did to his betting odds.</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap notes">
+  <h3>What this page can and cannot show</h3>
+  <p>The published page cannot play YouTube video, and YouTube refuses downloads from the computer that built it. Each strip therefore shows the four preview frames YouTube generates for every upload: the uploader's thumbnail and three frames taken at a quarter, half and three quarters of the way through. The frames are a sample, not the scene itself; the link under each strip opens the full clip. Several film clips are fan uploads rather than studio releases, and they may disappear.</p>
+  <p>We matched each clip by its title and its frames and checked the facts of each Trump moment against news reports, but we did not watch every clip end to end. Quotations from the films are the well-known lines of each scene.</p>
+  <h3>How the Butler figures were made</h3>
+  <p>The 1-in-625 and 1-in-94 figures come from the Butler project's 3D simulation, which models Crooks's aim from published marksmanship tests, Trump's head and ear from a sculpted 3D likeness fitted with an anatomical skull, and his head turn from the RSBN broadcast. A graze means the bullet touches only the ear or the outer 3 millimetres of skin. The simulation assumes Crooks aimed at the middle of Trump's head. This page adds only one calculation, the chance of at least one ear-only day in N independent tries.</p>
+  <h3>Clips</h3>
+  <ol id="cliplist"></ol>
+</footer>
+
+<script>
+const FRAMES = __FRAMES__;
+const EX = [
+  { n: 1, short: "No rules", trait: "The rules do not apply to him",
+    head: "Phil Connors drives down a railroad track at a train. Trump pushes a prime minister out of his way. Neither looks back.",
+    film: { id: "50jZVcRgkno", tag: "Groundhog Day, 1993", who: "Phil Connors (Bill Murray)",
+      text: "After weeks of identical days, Phil takes two drunk locals for a drive, steers onto the railroad tracks and races an oncoming train, because nothing he does will be there in the morning.",
+      quote: "I'm not going to live by their rules anymore!", src: "Fan upload by David Q Heffner, 1:01" },
+    rec: { id: "Iimj0j4NYME", tag: "NATO, May 25, 2017", who: "Donald Trump at NATO headquarters, Brussels",
+      text: "As leaders toured NATO's new headquarters, Trump put a hand on the arm of Duško Marković, the prime minister of Montenegro, pushed past him to the front of the group and adjusted his jacket. Marković later called it \"a harmless situation.\"",
+      src: "Associated Press, 0:29" },
+    plain: "Trump has always treated protocol as optional. His supporters call it authenticity, his critics call it rudeness, and both agree he does it on purpose.",
+    loop: "Phil stops respecting the town's rules the moment he understands that nothing sticks. A man who has toured the same building a hundred times stops waiting his turn in the photograph." },
+  { n: 2, short: "No consequences", trait: "Nothing he does has consequences",
+    head: "Both men have said out loud that nothing they do can hurt them.",
+    film: { id: "ZHpXxAW3p_o", tag: "Groundhog Day, 1993", who: "Phil Connors at the bowling-alley bar",
+      text: "Phil asks two locals what they would do if every day were the same and nothing mattered. Then he asks a sharper question, and the men work out the answer: no consequences, no hangovers, and they could do whatever they wanted.",
+      quote: "What if there were no tomorrow?", src: "Fan upload by Gale N Thrope, 2:05" },
+    rec: { id: "iTACH1eVIaA", tag: "Sioux Center, Iowa, Jan. 23, 2016", who: "Donald Trump at a rally at Dordt College",
+      text: "Nine days before the Iowa caucuses, Trump told a crowd at a small Christian college that his supporters' loyalty had no limit.",
+      quote: "I could stand in the middle of Fifth Avenue and shoot somebody, and I wouldn't lose any voters, OK?", src: "CNN, 0:49" },
+    plain: "Trump was boasting about the loyalty of his base, and the boast turned out to be largely right: he won the nomination and the presidency that year.",
+    loop: "He was not guessing. A man who had already lived through the primaries knew exactly how much he could get away with, and said so." },
+  { n: 3, short: "Perfect recall", trait: "Perfect recall of a sequence he has seen before",
+    head: "Phil proves he is a god by reciting the diner. Trump proves his mind by reciting five words in order.",
+    film: { id: "uw63_YyNsF4", tag: "Groundhog Day, 1993", who: "Phil Connors and Rita Hanson (Andie MacDowell)",
+      text: "To convince Rita, his producer, that he is reliving the day, Phil names every customer in the diner, tells her their secrets and calls out what will happen next before it happens.",
+      quote: "I'm a god. I'm not the God, I don't think.", src: "Movieclips, 2:43" },
+    rec: { id: "yVpsTa_dnSc", tag: "Fox News, July 22, 2020", who: "Donald Trump in an interview with Fox News",
+      text: "Describing a cognitive test his doctors gave him, Trump recited five words he had been asked to remember and said that getting them back in the right order had amazed the people testing him.",
+      quote: "Person, woman, man, camera, TV.", src: "NowThis, 4:07" },
+    plain: "The test was the Montreal Cognitive Assessment, a ten-minute screen for dementia that doctors expect healthy adults to pass. Recalling five words is the easy part.",
+    loop: "Recalling five words is easy once. Recalling them in order, on demand, months later, and treating it as a feat, is how a man talks when he has taken the same test every morning." },
+  { n: 4, short: "No fear of death", trait: "Death holds no fear",
+    head: "Nyles shrugs off being shot with arrows. Trump walked out of a hospital still sick with Covid-19 and took off his mask.",
+    film: { id: "7FS56uRsnjo", tag: "Palm Springs, 2020", who: "Nyles (Andy Samberg) and Sarah (Cristin Milioti)",
+      text: "The night before, a wedding guest named Roy hunted Nyles through the desert and shot him with an arrow, and Nyles treated it as a nuisance. Now Sarah has woken up on the same wedding day, and Nyles calmly explains what has happened to her.",
+      quote: "It's one of those infinite time loop situations you might have heard about.", src: "Prime Video UK, 3:59" },
+    rec: { id: "LuiUk03MUfs", tag: "The White House, Oct. 5, 2020", who: "Donald Trump returning from Walter Reed",
+      text: "Three days after announcing he had Covid-19, Trump left Walter Reed National Military Medical Center, climbed to a White House balcony, pulled off his mask and saluted his departing helicopter. His doctor, Sean Conley, said he was not yet entirely out of the woods. In a video that evening he told Americans not to be afraid of the virus.",
+      quote: "Don't be afraid of Covid. Don't let it dominate your life.", src: "NBC News, 3:39" },
+    plain: "Trump wanted to look strong a month before an election, and his doctors had given him an experimental antibody treatment that probably helped.",
+    loop: "In every time-loop film, the hero's fear of dying goes first. Death simply means waking up again. The salute on the balcony is the posture of a man who has already seen how October ends." },
+  { n: 5, short: "Ennui", trait: "Dead-eyed ennui",
+    head: "Phil gives up on forecasting the weather. Trump gave up on taking questions and swayed to music for 39 minutes.",
+    film: { id: "vBeGQAvabOE", tag: "Groundhog Day, 1993", who: "Phil Connors at Gobbler's Knob",
+      text: "Deep in his despair, Phil delivers his live report on the groundhog's prediction with a flat stare into the camera.",
+      quote: "It's gonna be cold, it's gonna be gray, and it's gonna last you for the rest of your life.", src: "Fan upload by Vlkoslak, 0:18" },
+    rec: { id: "OgAKS23TCXY", tag: "Oaks, Pa., Oct. 14, 2024", who: "Donald Trump at a town hall outside Philadelphia",
+      text: "Three weeks before the election, after two people in the hall needed medical help, Trump told the moderator, Kristi Noem, the governor of South Dakota, to stop the questions and play music. For about 39 minutes he stood and swayed on stage to songs including \"Ave Maria\" and \"Hallelujah\".",
+      quote: "Let's not do any more questions. Let's just listen to music.", src: "PBS NewsHour, 4:05" },
+    plain: "His campaign called the evening a \"lovefest\" and said he simply enjoyed the music. His opponent, Kamala Harris, said she hoped he was okay.",
+    loop: "Every looped hero reaches the stage where the script no longer matters. Phil stops trying to do the forecast well; Trump stopped doing the town hall at all and waited for the day to end." },
+  { n: 6, short: "Same lines", trait: "The same day, the same lines",
+    head: "Phil hears the same song and the same small talk every morning. Trump's crowds hear the same riffs at every rally.",
+    film: { id: "hQCG2AwzTxA", tag: "Groundhog Day, 1993", who: "Phil Connors on his second February 2",
+      text: "Phil wakes to the same song at the same minute, meets the same guest-house owner on the stairs and hears the same small talk, and slowly realizes the day is repeating.",
+      quote: "Okay, campers, rise and shine, and don't forget your booties, 'cause it's cold out there today.", src: "Movieclips, 2:43" },
+    rec: { id: "fHi5TNZ29F4", tag: "Wildwood, N.J., May 11, 2024", who: "Donald Trump at a beach rally",
+      text: "Trump praised \"the late, great Hannibal Lecter,\" the cannibal killer from the film The Silence of the Lambs, as part of a riff about immigration. He had told versions of the Lecter line at rallies before, and he kept telling it.",
+      quote: "The late, great Hannibal Lecter. He's a wonderful man.", src: "MS NOW, 0:39" },
+    plain: "Every politician repeats a stump speech. Trump's riffs are his greatest hits, and crowds come to hear them the way fans come to hear a band's old songs.",
+    loop: "Phil can mouth along with the radio DJs. A man who has given the same rally on the same day many times would find it hard to tell which version of the speech he is in, and would keep reaching for the lines that worked." }
+];
+const EX7 = { film: { id: "1ORm14QpJvk", tag: "Edge of Tomorrow, 2014", who: "Maj. William Cage (Tom Cruise) and Sgt. Rita Vrataski (Emily Blunt)",
+      text: "Cage dies on the first day of a beach invasion and wakes up the day before, again and again. He finds Rita, a war hero who once had the same power, and she tells him to find her each time he wakes. Together they rehearse the battle, dying over and over, until they find the one path that works.",
+      quote: "Come find me when you wake up.", src: "Fan upload by Free Movie Scene, 3:10" },
+    rec: { id: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "Donald Trump at his rally at the Butler Farm Show grounds",
+      text: "About six minutes into his speech, Trump turned his head to look at a chart of immigration figures. Thomas Crooks fired from the roof of a nearby building. The first bullet passed through the top of Trump's right ear. Trump rose with blood on his face and raised his fist.",
+      quote: "Fight! Fight! Fight!", src: "ABC News, 2:12" } };
+
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let paused = reduce;
+const reels = [];
+function reel(c, kind) {
+  const f = document.createElement("figure"); f.className = "side " + kind;
+  const r = document.createElement("div"); r.className = "reel"; r.tabIndex = 0; r.setAttribute("role", "button");
+  r.setAttribute("aria-label", "Four frames from " + c.tag + ". Press to pause or play.");
+  const keys = ["hqdefault", "hq1", "hq2", "hq3"];
+  keys.forEach((k, i) => { const im = new Image(); im.src = FRAMES[c.id + "_" + k]; im.alt = i ? "" : "Frame from " + c.tag; if (!i) im.className = "on"; r.appendChild(im); });
+  r.insertAdjacentHTML("beforeend", `<span class="tag">${kind === "film" ? "The film" : "The record"}</span><span class="day">${kind === "film" ? "LOOP" : "ONCE?"}</span><span class="ticks"><i class="on"></i><i></i><i></i><i></i></span>`);
+  const state = { r, i: 0 }; reels.push(state);
+  r.addEventListener("click", () => { state.hold = !state.hold; });
+  r.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); state.hold = !state.hold; } });
+  const url = "https://www.youtube.com/watch?v=" + c.id;
+  f.appendChild(r);
+  f.insertAdjacentHTML("beforeend", `<figcaption class="cap"><span class="kicker" style="margin:0;color:inherit;opacity:.75">${c.tag}</span><span class="who">${c.who}</span><span>${c.text}</span>${c.quote ? `<q>${c.quote}</q>` : ""}<span class="src"><a href="${url}" target="_blank" rel="noopener">Watch on YouTube</a> · ${c.src}</span></figcaption>`);
+  return f;
+}
+function step() {
+  if (!paused) reels.forEach(s => {
+    if (s.hold) return;
+    const ims = s.r.querySelectorAll("img"), ts = s.r.querySelectorAll(".ticks i");
+    ims[s.i].classList.remove("on"); ts[s.i].classList.remove("on");
+    s.i = (s.i + 1) % 4; ims[s.i].classList.add("on"); ts[s.i].classList.add("on");
+  });
+}
+setInterval(step, 1100);
+
+const main = document.getElementById("exhibits"), nav = document.getElementById("navInner"), list = document.getElementById("cliplist");
+EX.forEach(e => {
+  const s = document.createElement("section"); s.className = "ex wide"; s.id = "ex" + e.n;
+  s.innerHTML = `<div class="wrap" style="padding-inline:0"><p class="exno">Exhibit ${e.n} · ${e.trait}</p><h2>${e.head}</h2></div><div class="pair"></div>
+    <div class="wrap verdict" style="padding-inline:0"><div><h3>The ordinary explanation</h3><p>${e.plain}</p></div><div class="loop"><h3>The loop explanation</h3><p>${e.loop}</p></div></div>`;
+  const p = s.querySelector(".pair"); p.appendChild(reel(e.film, "film")); p.appendChild(reel(e.rec, "rec"));
+  main.appendChild(s);
+});
+const p7 = document.getElementById("pair7"); p7.appendChild(reel(EX7.film, "film")); p7.appendChild(reel(EX7.rec, "rec"));
+[...EX, { n: 7, short: "Butler", film: EX7.film, rec: EX7.rec }].forEach(e => {
+  nav.insertAdjacentHTML("beforeend", `<a href="#ex${e.n}" data-n="${e.n}">${e.n}. ${e.short}</a>`);
+  [e.film, e.rec].forEach(c => list.insertAdjacentHTML("beforeend", `<li>Exhibit ${e.n}: ${c.tag}. ${c.src}. <a href="https://www.youtube.com/watch?v=${c.id}" target="_blank" rel="noopener">youtube.com/watch?v=${c.id}</a></li>`));
+});
+nav.insertAdjacentHTML("beforeend", `<button class="small-btn" id="pauseAll">${paused ? "Play the loops" : "Pause the loops"}</button>`);
+document.getElementById("pauseAll").addEventListener("click", ev => { paused = !paused; ev.target.textContent = paused ? "Play the loops" : "Pause the loops"; });
+const navLinks = [...nav.querySelectorAll("a")];
+const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) navLinks.forEach(a => a.classList.toggle("on", a.dataset.n === en.target.id.slice(2))); }), { rootMargin: "-45% 0px -50% 0px" });
+document.querySelectorAll(".ex").forEach(s => io.observe(s));
+
+// Hero clock: 5:59 turns to 6:00 once.
+setTimeout(() => { document.getElementById("heroClock").innerHTML = "6:00<small>AM</small>"; }, reduce ? 0 : 1600);
+
+// Exhibit 7: loop simulator and cumulative chart.
+const P = 1 / 625, XMAX = 2000;
+const cum = n => 1 - Math.pow(1 - P, n);
+const runs = []; let day = 0, timer = null, done = false;
+const chart = document.getElementById("chart"), NS = "http://www.w3.org/2000/svg";
+let svg, W, H, M = { l: 44, r: 16, t: 18, b: 40 }, xs, ys;
+function el(t, a, parent) { const e = document.createElementNS(NS, t); for (const k in a) e.setAttribute(k, a[k]); (parent || svg).appendChild(e); return e; }
+function draw() {
+  chart.innerHTML = ""; W = chart.clientWidth; H = Math.max(260, Math.min(360, W * 0.55));
+  svg = document.createElementNS(NS, "svg"); svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.setAttribute("height", H); chart.appendChild(svg);
+  svg.setAttribute("role", "img"); svg.setAttribute("aria-label", "Chance of at least one ear-only day rises from zero to 50 percent at 433 days, 63 percent at 625 days and 90 percent at about 1,438 days.");
+  const iw = W - M.l - M.r, ih = H - M.t - M.b;
+  xs = x => M.l + x / XMAX * iw; ys = y => M.t + (1 - y) * ih;
+  const g = el("g", { class: "grid" });
+  [0, .25, .5, .75, 1].forEach(v => el("line", { x1: M.l, x2: W - M.r, y1: ys(v), y2: ys(v), style: v === 0 ? "stroke:var(--ink-3);stroke-width:.8" : "" }, g));
+  const ax = el("g", { class: "axis" });
+  [0, .25, .5, .75, 1].forEach(v => { const t = el("text", { x: M.l - 8, y: ys(v) + 4, "text-anchor": "end" }, ax); t.textContent = Math.round(v * 100) + (v === 1 ? "%" : ""); });
+  const ticks = W < 480 ? [0, 500, 1000, 1500, 2000] : [0, 250, 500, 750, 1000, 1250, 1500, 1750, 2000];
+  ticks.forEach(v => { const t = el("text", { x: xs(v), y: H - M.b + 18, "text-anchor": v === 0 ? "start" : v === XMAX ? "end" : "middle" }, ax); t.textContent = v.toLocaleString(); });
+  const xl = el("text", { x: M.l + iw / 2, y: H - 4, "text-anchor": "middle" }, ax); xl.textContent = "July 13ths relived";
+  let d = ""; for (let n = 0; n <= XMAX; n += 10) d += (n ? "L" : "M") + xs(n).toFixed(1) + "," + ys(cum(n)).toFixed(1);
+  // Marks for even odds and the average.
+  [[433, "Even odds: day 433", "50%"], [625, "Average wait: day 625", "63%"]].forEach(([n, a], i) => {
+    el("line", { class: "mark-line", x1: xs(n), x2: xs(n), y1: ys(cum(n)), y2: ys(0) });
+    el("circle", { cx: xs(n), cy: ys(cum(n)), r: 4, fill: "var(--trump)", stroke: "var(--bg)", "stroke-width": 2 });
+    const t = el("text", { class: "note", x: xs(n) + 8, y: ys(cum(n)) + (i ? -8 : 16) }); t.textContent = a;
+  });
+  el("path", { d, fill: "none", stroke: "var(--trump)", "stroke-width": 2.2 });
+  const lab = el("text", { class: "note-sub", x: xs(1438) + 6, y: ys(cum(1438)) + 18 }); lab.textContent = "90% by day 1,438";
+  // Reader's runs.
+  const rg = el("g", {});
+  runs.forEach((n, i) => {
+    const x = xs(Math.min(n, XMAX)), last = i === runs.length - 1;
+    el("line", { x1: x, x2: x, y1: ys(0) - 7, y2: ys(0) + 7, stroke: last ? "var(--ink)" : "var(--ink-3)", "stroke-width": last ? 2.5 : 1.5, "stroke-linecap": "round" }, rg);
+    if (last) { const t = el("text", { class: "note", x: Math.min(x, W - M.r - 4), y: ys(0) - 12, "text-anchor": x > W - 140 ? "end" : x < M.l + 70 ? "start" : "middle" }, rg); t.textContent = n > XMAX ? `Your Trump: day ${n.toLocaleString()} (off the chart)` : `Your Trump: day ${n.toLocaleString()}`; }
+  });
+  if (!done && day > 0) el("line", { x1: xs(Math.min(day, XMAX)), x2: xs(Math.min(day, XMAX)), y1: ys(1), y2: ys(0), stroke: "var(--ink)", "stroke-width": 1, "stroke-dasharray": "2 2" });
+  // Hover layer.
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; chart.appendChild(tip);
+  const cross = el("line", { x1: 0, x2: 0, y1: ys(1), y2: ys(0), stroke: "var(--ink-3)", "stroke-width": 1, visibility: "hidden" });
+  const dot = el("circle", { r: 4.5, fill: "var(--trump)", stroke: "var(--bg)", "stroke-width": 2, visibility: "hidden" });
+  const hit = el("rect", { x: M.l, y: M.t, width: iw, height: ih, fill: "transparent" });
+  function move(ev) {
+    const b = svg.getBoundingClientRect(), px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - b.left;
+    const n = Math.max(1, Math.min(XMAX, Math.round((px - M.l) / iw * XMAX)));
+    cross.setAttribute("x1", xs(n)); cross.setAttribute("x2", xs(n)); cross.setAttribute("visibility", "visible");
+    dot.setAttribute("cx", xs(n)); dot.setAttribute("cy", ys(cum(n))); dot.setAttribute("visibility", "visible");
+    tip.hidden = false; tip.innerHTML = `After <b>${n.toLocaleString()}</b> relived days<br><b>${(cum(n) * 100).toFixed(cum(n) < .1 ? 1 : 0)}%</b> chance of an ear-only day`;
+    const tx = xs(n) + 12, tw = tip.offsetWidth; tip.style.left = (tx + tw > W ? xs(n) - tw - 12 : tx) + "px"; tip.style.top = (ys(cum(n)) - 50) + "px";
+  }
+  function leave() { tip.hidden = true; cross.setAttribute("visibility", "hidden"); dot.setAttribute("visibility", "hidden"); }
+  hit.addEventListener("pointermove", move); hit.addEventListener("pointerleave", leave);
+}
+const clock = document.getElementById("dayClock"), readout = document.getElementById("readout");
+const pad = n => String(n).padStart(4, "0");
+function liveOne() {
+  day++; clock.textContent = pad(day);
+  if (Math.random() < P) {
+    done = true; runs.push(day); stop();
+    readout.innerHTML = `<b>Day ${day.toLocaleString()}: the bullet passes through the top of his right ear and touches nothing else.</b> He stands, raises his fist and goes on to win. ${day <= 433 ? "This Trump got lucky early: fewer than half of looped Trumps get there this fast." : day <= 1438 ? "That is a typical wait for a looped Trump." : "This Trump was unlucky: fewer than one in ten looped Trumps wait this long."}`;
+    document.getElementById("once").disabled = true; document.getElementById("run").disabled = true;
+    return true;
+  }
+  readout.innerHTML = `Day ${day.toLocaleString()}: the shot does something other than graze only his ear. A miss, a scalp wound or worse. <b>The day resets.</b>`;
+  return false;
+}
+function stop() { if (timer) { cancelAnimationFrame(timer); timer = null; document.getElementById("run").textContent = "Loop until it works"; } draw(); }
+document.getElementById("once").addEventListener("click", () => { if (!done) { liveOne(); draw(); } });
+document.getElementById("run").addEventListener("click", ev => {
+  if (timer) { stop(); return; }
+  ev.target.textContent = "Stop the loop";
+  const perFrame = reduce ? 200 : 3;
+  const tick = () => { for (let k = 0; k < perFrame; k++) if (liveOne()) return; if (day % 15 < perFrame) draw(); timer = requestAnimationFrame(tick); };
+  timer = requestAnimationFrame(tick);
+});
+document.getElementById("reset").addEventListener("click", () => {
+  stop(); day = 0; done = false; clock.textContent = pad(1);
+  document.getElementById("once").disabled = false; document.getElementById("run").disabled = false;
+  readout.innerHTML = runs.length ? `A new Trump wakes on July 13. Your earlier Trumps needed ${runs.map(n => n.toLocaleString()).join(", ")} days; their marks stay on the chart.` : "Day 1 has not been lived yet.";
+  draw();
+});
+draw(); let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(draw, 120); });
+</script>
