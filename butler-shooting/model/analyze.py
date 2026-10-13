@@ -99,59 +99,91 @@ def main():
     (RES / "summary.json").write_text(json.dumps(summary, indent=1))
     print(json.dumps(summary, indent=1))
 
-    chart_curve(rows)
+    chart_curve(rows, summary)
     chart_bars(summary)
     chart_map(rows, summary)
 
 
-def chart_curve(rows):
-    fig, ax = plt.subplots(figsize=(10, 5.2))
-    for aim, col, lab in (("head", BLUE, "Aimed at his head"), ("chest", ORANGE, "Aimed at his chest")):
+def chart_curve(rows, summary):
+    """Line chart: chance that one shot is an ear-only hit, by how far his face was turned."""
+    fig, ax = plt.subplots(figsize=(10, 5.4))
+    fig.patch.set_facecolor("#fcfcfb")
+    ax.set_facecolor("#fcfcfb")
+    ax.axvspan(-30, 90, color="#f1f0ec", zorder=0, lw=0)
+    peak = {}
+    for aim, col, lab in (("head", BLUE, "Gunman aimed at his head"), ("chest", ORANGE, "Gunman aimed at his chest")):
         sel = sorted([r for r in rows if r["roll"] == 0.0 and r["pitch"] == 0.0], key=lambda r: r["rel"])
-        x = [r["rel"] for r in sel]
-        y = [100 * r[aim]["buckets"]["ear_only"] for r in sel]
-        ax.plot(x, y, color=col, lw=2, solid_capstyle="round", label=lab)
+        x = np.array([r["rel"] for r in sel])
+        y = np.array([100 * r[aim]["buckets"]["ear_only"] for r in sel])
+        ax.plot(x, y, color=col, lw=2, solid_capstyle="round", solid_joinstyle="round")
         i = int(np.argmax(y))
-        ax.annotate(f"{y[i]:.2f}%", (x[i], y[i]), xytext=(6, 4), textcoords="offset points", color=INK, fontsize=10)
-    ax.axvspan(-30, 90, color="#f1f0ec", zorder=0)
-    ax.text(30, ax.get_ylim()[1] * 0.93, "plausible head turns (0–120° to his right)", ha="center", color=INK2, fontsize=10)
+        peak[aim] = (x[i], y[i])
+        ax.plot(x[i], y[i], "o", ms=8, color=col, mec="#fcfcfb", mew=2, zorder=5)
+        ymax_lab = {"head": 0.97, "chest": 0.20}[aim]
+        peak[aim] = (x[i], y[i], ymax_lab, lab)
+    top = max(v[1] for v in peak.values()) * 1.08
+    ax.set_ylim(0, top)
+    arrow = dict(arrowstyle="-", color=INK2, lw=0.8, shrinkA=2, shrinkB=6)
+    for aim, (px, py, fy, lab) in peak.items():
+        ax.annotate(f"{lab}: peaks at {py:.2f}%", (px, py), xytext=(48, fy * top), color=INK, fontsize=10,
+                    va="center", arrowprops=arrow)
+    est = summary["head"]["posterior_rel_mean"]
+    ax.axvline(est, color=INK2, lw=1, ls=(0, (4, 3)))
+    ax.annotate(f"His most likely head turn, about {est:.0f}°,\ninferred from where the bullet actually hit",
+                (est, 0.66 * top), xytext=(48, 0.66 * top), color=INK2, fontsize=9, va="center", arrowprops=arrow)
+    ax.text(62, 0.03 * top, "Head turns we consider plausible", ha="center", va="bottom", color=INK2, fontsize=9)
     ax.set_xticks([-60, -30, 0, 30, 60, 90, 120, 150, 180])
-    ax.set_xticklabels(["-60°", "-30°", "0°\nface to\nshooter", "30°", "60°", "90°\nright ear to\nshooter",
-                        "120°", "150°", "180°\nback of head\nto shooter"])
-    ax.set_ylabel("Chance one shot is ear-only (%)", color=INK2)
-    ax.set_title("A survivable ear hit is only possible when his face (or the back of his head) points near the rifle",
+    ax.set_xticklabels(["-60°", "-30°", "0°\nface toward\ngunman", "30°", "60°", "90°\nright ear toward\ngunman",
+                        "120°", "150°", "180°\nback of head\ntoward gunman"])
+    ax.set_xlim(-60, 180)
+    ax.set_ylabel("Chance one shot hits only the ear (%)", color=INK2)
+    ax.set_title("A bullet can clip only his ear when his face, or the back of his head, points close to the rifle",
                  loc="left", color=INK, fontsize=12)
     style(ax)
-    ax.legend(frameon=False, loc="upper right")
+    for sp in ("left", "bottom"):
+        ax.spines[sp].set_visible(False)
+    ax.tick_params(length=0)
     fig.savefig(FIG / "ear_only_vs_head_turn.png", dpi=150, bbox_inches="tight", facecolor="#fcfcfb")
     plt.close(fig)
 
 
 def chart_bars(summary):
-    cases = [("Aimed at head", summary["head"]["given_estimated_pose"]),
-             ("Aimed at chest", summary["chest"]["given_estimated_pose"]),
-             ("Best guess\n(aim weighted)", summary["combined_given_estimated_pose"])]
-    fig, ax = plt.subplots(figsize=(10, 3.6))
+    """Stacked bars: what one shot does to Trump in his estimated pose, for each aim point."""
+    cases = [("Gunman aimed\nat his head", summary["head"]["given_estimated_pose"]),
+             ("Gunman aimed\nat his chest", summary["chest"]["given_estimated_pose"]),
+             ("Our best guess\n(both aims, weighted)", summary["combined_given_estimated_pose"])]
+    fig, ax = plt.subplots(figsize=(10, 3.9))
+    fig.patch.set_facecolor("#fcfcfb")
+    ax.set_facecolor("#fcfcfb")
     for i, (lab, p) in enumerate(cases):
         left = 0.0
         for k, name, col in OUTCOMES:
             w = 100 * p[k]
-            ax.barh(i, w, left=left, height=0.5, color=col, edgecolor="#fcfcfb", lw=2,
+            ax.barh(i, w, left=left, height=0.42, color=col, edgecolor="#fcfcfb", lw=2,
                     label=name if i == 0 else None)
-            if w > 6:
-                ax.text(left + w / 2, i, f"{w:.0f}%", ha="center", va="center", color="white" if col in (BLUE, ORANGE) else INK,
-                        fontsize=10)
+            if w > 7:
+                ax.text(left + w / 2, i, f"{w:.0f}%", ha="center", va="center",
+                        color="white" if col in (BLUE, ORANGE) else INK, fontsize=10)
             left += w
-        ax.text(101, i, f"ear only: {100 * p['ear_only']:.2f}%", va="center", color=INK, fontsize=10)
+        ax.text(101.5, i, f"ear only: {100 * p['ear_only']:.2f}%", va="center", color=INK, fontsize=10)
+    comb = 100 * summary["combined_given_estimated_pose"]["ear_only"]
     ax.set_yticks(range(len(cases)))
-    ax.set_yticklabels([c[0] for c in cases])
+    ax.set_yticklabels([c[0] for c in cases], color=INK)
     ax.invert_yaxis()
-    ax.set_xlim(0, 125)
+    ax.set_xlim(0, 122)
     ax.set_xticks([0, 25, 50, 75, 100])
-    ax.set_xlabel("Outcome of one shot fired at him in his estimated pose (%)", color=INK2)
+    ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"])
+    ax.set_xlabel("What one shot does to him, with his head turned as we estimate", color=INK2)
+    one_in = 10 * round(100 / comb / 10)
+    ax.set_title(f"About 1 shot in {one_in} would do what Crooks's first shot did: hit his ear and nothing else",
+                 loc="left", color=INK, fontsize=12, pad=28)
     style(ax)
     ax.yaxis.grid(False)
-    ax.legend(frameon=False, ncol=4, loc="lower center", bbox_to_anchor=(0.45, 1.0))
+    ax.xaxis.grid(True, color=GRID, lw=1)
+    for sp in ("left", "bottom"):
+        ax.spines[sp].set_visible(False)
+    ax.tick_params(length=0)
+    ax.legend(frameon=False, ncol=4, loc="lower left", bbox_to_anchor=(0.0, 1.0), fontsize=9, handlelength=1.2)
     fig.savefig(FIG / "outcome_bars.png", dpi=150, bbox_inches="tight", facecolor="#fcfcfb")
     plt.close(fig)
 
