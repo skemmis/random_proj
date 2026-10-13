@@ -155,7 +155,7 @@ def export_outcomes(out):
     (ear-only numbers are identical under both rules; graze numbers need the new sweep)."""
     rows_dir = RES / "rows"
     rows = [json.loads(p.read_text()) for p in sorted(rows_dir.glob("*.json"))] if rows_dir.exists() else []
-    source = "4 mm graze rule, head aim (current)"
+    source = f"{GRAZE_DEPTH_MM:.0f} mm graze rule, head aim (current)"
     if not rows:
         rows = json.loads((RES / "sweep_v1.json").read_text())
         source = ("PROVISIONAL: first sweep, before the 4 mm graze rule. Only ear_only_right/ear_only_left "

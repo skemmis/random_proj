@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent))
+from sim3d import GRAZE_DEPTH_MM  # noqa: E402
 from views import view_path  # noqa: E402
 
 FIG = Path(__file__).resolve().parents[1] / "figures"
@@ -35,9 +36,6 @@ def painted(rel, pitch=0.0, alpha=0.75, show=("ear", "graze")):
     return img, z
 
 
-if __name__ == "__main__":
-    img, z = painted(0.0)
-    plt.imsave(FIG / "_preview_view.png", img)
 
 
 # ---------------------------------------------------------------------------------------------
@@ -58,6 +56,17 @@ def sweep_rows():
 def curve(rows, key):
     sel = sorted([r for r in rows if r["pitch"] == 0.0 and r["roll"] == 0.0], key=lambda r: r["rel"])
     return np.array([r["rel"] for r in sel]), np.array([100 * key(r) for r in sel])
+
+
+def estimated_rel():
+    """Most likely head turn at shot 1 (video + wound if available), from results/summary.json."""
+    s = json.loads((RES_DIR / "summary.json").read_text())
+    return float((s.get("video_and_wound") or s["wound_only"])["posterior_rel_mean"])
+
+
+def pose_rel():
+    """The estimated turn rounded to a pose we have renders for (5 degree steps)."""
+    return float(5 * round(estimated_rel() / 5)) + 0.0
 
 
 def turn_label(rel):
@@ -94,7 +103,7 @@ def fig_exposure_strip():
     if new:
         _, gr = curve(rows, lambda r: r["head"]["buckets"]["grazed"])
         ax.plot(x, gr, color=AQUA_HEX, lw=2, solid_capstyle="round")
-        ax.text(x[-1] + 2, gr[-1], "Grazed, not lethal\n(ear or outer 4 mm of skin)", color=INK, fontsize=10, va="center")
+        ax.text(x[-1] + 2, gr[-1], f"Grazed, not lethal\n(ear or outer {GRAZE_DEPTH_MM:.0f} mm of skin)", color=INK, fontsize=10, va="center")
     i = int(np.argmax(ear))
     ax.plot(x[i], ear[i], "o", ms=8, color=BLUE_HEX, mec=SURF, mew=2, zorder=5)
     ax.annotate(f"Hit on the ear only: {ear[i]:.2f}% at best", (x[i], ear[i]), xytext=(-14, 0),
@@ -114,7 +123,7 @@ def fig_exposure_strip():
         iax.imshow(crop(img, 0.70))
         iax.axis("off")
         fig.add_artist(plt.Line2D([xf, xf], [0.495, 0.525], color=GRID, lw=1, transform=fig.transFigure))
-    est = 7.0
+    est = estimated_rel()
     ax.axvline(est, color=INK2, lw=1, ls=(0, (4, 3)))
     ax.text(est + 1.5, ax.get_ylim()[1] * 0.06, "His estimated turn\nat the first shot", color=INK2, fontsize=9)
     fig.text(0.06, 0.955, "Seen from the rifle, his ear stands clear of his skull only when he faces nearly toward Crooks",
@@ -127,8 +136,6 @@ def fig_exposure_strip():
     plt.close(fig)
 
 
-if __name__ == "__main__":
-    fig_exposure_strip()
 
 
 def by_rel_pitch_avg(rows, key, lo=-30, hi=90):
@@ -207,12 +214,13 @@ def fig_inference():
     return mean, lo90, hi90
 
 
-if __name__ == "__main__":
-    print(fig_inference())
 
 
-def fig_shot_cloud(rel=7.0, n=400, seed=7):
+def fig_shot_cloud(rel=None, n=400, seed=7):
     """A cloud of simulated head-aimed shots over the posed head, coloured by what each would do."""
+    rel = pose_rel() if rel is None else rel
+    from views import make_view
+    make_view((rel, 0.0, 420.0))
     from dispersion import PRIORS, moa_to_cm, sample_engagements
     z = np.load(view_path(rel, 0.0, 420.0), allow_pickle=True)
     E = float(z["extent"])
@@ -272,12 +280,11 @@ def fig_shot_cloud(rel=7.0, n=400, seed=7):
     return counts
 
 
-if __name__ == "__main__":
-    print(fig_shot_cloud())
 
 
-def fig_top_down(rel=7.0):
+def fig_top_down(rel=None):
     """From above: his head at the estimated turn, with the bullet's path through the right ear."""
+    rel = pose_rel() if rel is None else rel
     from figures_3d import likeness_layers, xray
     from render import render
     from sim3d import Scene, fire_direction
@@ -330,14 +337,40 @@ def fig_top_down(rel=7.0):
             va="bottom")
     ax.text(-125, -125, "Seen from above, skin made see-through. The red shape at the bottom is his right ear.",
             color=INK2, fontsize=9.5)
-    ax.set_title(f"With his face about {rel:.0f}° from the rifle, a bullet can pass\nthrough his right ear "
+    facing = "toward the rifle" if abs(rel) < 3 else f"about {rel:.0f}° from the rifle"
+    ax.set_title(f"With his face {facing}, a bullet can pass\nthrough his right ear "
                  "without touching his skull", loc="left", color=INK, fontsize=13)
     fig.savefig(FIG / "top_down_bullet_path.png", dpi=120, facecolor=SURF, bbox_inches="tight")
     plt.close(fig)
+    write_top_down_json(rel, p - 170 * d, p + 150 * d, d)
 
 
-if __name__ == "__main__":
-    fig_top_down()
+def write_top_down_json(rel, start, end, d):
+    """Keep the dashboard's recipe for this figure in step with the pose and path drawn above."""
+    import json
+    from sim3d import head_rotation
+    path = Path("/mnt/project-files/butler-shooting/assets/dashboard/top_down_view.json")
+    if not path.exists():
+        return
+    spec = json.loads(path.read_text())
+    Rinv = np.linalg.inv(head_rotation(90.0 - rel))
+    to_head = lambda P: (Rinv @ np.append(P, 1.0))[:3]
+    r = lambda a: [round(float(x), 1) for x in a]
+    spec["pose"] = {"rel_deg": round(float(rel), 1), "head_yaw_deg": round(90.0 - float(rel), 1),
+                    "pitch_deg": 0, "roll_deg": 0,
+                    "note": "The combined video (RSBN) and wound estimate from results/summary.json, rounded to the nearest rendered view. "
+                            "Head yaw = 90 - rel, applied about the pivot as in README.md."}
+    b = spec["bullet"]
+    b["path_torso_frame_mm"] = {"start": r(start), "end": r(end), "direction": [round(float(x), 4) for x in d]}
+    dh = Rinv[:3, :3] @ d
+    b["path_head_frame_mm"] = {"start": r(to_head(start)), "end": r(to_head(end)),
+                               "direction": [round(float(x), 4) for x in dh],
+                               "note": b["path_head_frame_mm"].get("note", "")}
+    b["how_chosen"] = ("The centre of the right-ear-only zone in the shooter's-eye hit map at this pose, "
+                       "extended 170 mm toward the rifle and 150 mm past the head along the line of fire.")
+    path.write_text(json.dumps(spec, indent=1))
+
+
 
 
 def shot_density(aim_uv, half=420.0, step=3.0, n_eng=20_000, seed=2024):
@@ -357,7 +390,8 @@ def shot_density(aim_uv, half=420.0, step=3.0, n_eng=20_000, seed=2024):
     return g, dens
 
 
-def fig_heatmap(rel=7.0):
+def fig_heatmap(rel=None):
+    rel = pose_rel() if rel is None else rel
     from matplotlib.colors import LinearSegmentedColormap
     from figures_3d import display_layers
     from render import render
@@ -423,5 +457,11 @@ def fig_heatmap(rel=7.0):
     return {q: float(levels[q]) for q in levels}
 
 
+
+
 if __name__ == "__main__":
+    fig_exposure_strip()
+    print("inference", fig_inference())
+    print("cloud", fig_shot_cloud())
     fig_heatmap()
+    fig_top_down()

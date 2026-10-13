@@ -60,7 +60,7 @@ GROUPS = {
     "eye": ["eyeball_left", "eyeball_right"],
 }
 VITAL_ORDER = ["brain", "vessel", "bone", "airway", "eye", "torso", "deep_soft"]
-GRAZE_DEPTH_MM = 4.0  # Sam, 2026-10-13: deeper than skin (2-3 mm), short of the skull (~6 mm)
+GRAZE_DEPTH_MM = 3.0  # Sam, 2026-10-13: about the thickness of skin itself; the skull sits ~6 mm down
 
 
 def inner_skin(skin, not_ear_faces, depth=GRAZE_DEPTH_MM):

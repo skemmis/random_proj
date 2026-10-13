@@ -1,38 +1,54 @@
-# Results of the 3D simulation (2026-10-13)
+# Results of the 3D simulation (2026-10-13, 3 mm graze rule)
 
 ## The headline
 
-On July 13, 2024, Thomas Crooks fired his first shot at Donald Trump from a roof about 135 m away, and the bullet passed through the top of Trump's right ear without touching his skull. Our simulation estimates that a shot like Crooks's first one had about a 1 in 150 chance (0.67%) of doing exactly that: hitting the ear and nothing else.
+On July 13, 2024, Thomas Crooks fired his first shot at Donald Trump from a roof about 135 m away, and the bullet passed through the top of Trump's right ear without touching his skull. Our simulation estimates that a head-aimed shot like Crooks's first one, fired at Trump as he stood at that moment, had about a 1 in 57 chance (1.8%) of merely grazing him. It had a 0.90% chance, about 1 in 110, of doing exactly what the real bullet did: hitting the ear and nothing else.
 
-The same shot had about a 34% chance of killing or maiming Trump, a 63% chance of missing him, and a 1.5% chance of leaving some other minor wound, such as a graze to the scalp or neck.
+The same shot had about a 29% chance of killing or seriously wounding Trump and a 69% chance of missing him.
 
-## How the number depends on where Crooks aimed
+| Outcome of one head-aimed shot | Chance |
+|---|---|
+| Grazed, not lethal | 1.76% |
+| of which, the ear only | 0.90% |
+| Killed or seriously wounded | 29.5% |
+| Arm only | 0.02% |
+| Miss | 68.8% |
 
-We do not know whether Crooks aimed at Trump's head or his chest, so we simulated both.
+## What "grazed" means
 
-| Where Crooks aimed | Ear only | Killed or maimed | Other minor wound | Miss |
-|---|---|---|---|---|
-| At the head | 0.76% | 29.0% | 1.5% | 68.7% |
-| At the chest | 0.12% | 69.5% | 1.1% | 29.3% |
-| Best guess, both aims weighted | 0.67% | 34.4% | 1.5% | 63.5% |
+Sam set the definition on 2026-10-13. A shot grazes Trump when the bullet touches only his ear, or only the outer 3 mm of skin anywhere on his head or neck, and goes no deeper. A bullet that reaches deeper soft tissue, bone, the brain, a major blood vessel, the airway, an eye or the torso counts as killing or seriously wounding him. A bullet that touches only hair counts as a miss.
 
-The best-guess row weights the two aims by how well each one explains the wound Trump actually received. A head-aimed shot is about 6.5 times more likely than a chest-aimed shot to produce a right-ear-only hit, so the best guess leans 87% toward a head aim.
+We assume Crooks aimed at the middle of Trump's head. We no longer simulate a chest aim.
 
-## How the number depends on which way Trump faced
+## How much the head turn helped him
 
-A bullet can hit only the ear when Trump's face, or the back of his head, points toward the rifle. In that position the ear sticks out beside the skull, as seen from the gunman. When Trump turns his head 40° or more from the rifle, his ear lies in front of his skull from the gunman's view, so any bullet that hits the ear goes on into his head.
+Trump had turned his head to his right to look at a chart, which put his face almost straight toward the rifle. Had he faced the crowd instead, his right ear would have pointed at the rifle, and a head-aimed shot would have grazed him only 0.88% of the time, and never hit the ear alone. The turn therefore roughly doubled his chance of being merely grazed (by a factor of 1.99), and it made an ear-only wound possible at all.
 
-No one has published how far Trump had turned his head when the first shot hit. We therefore let the wound itself tell us: we started with every head turn from 30° left to 120° right as equally plausible, then favoured the turns that make a right-ear-only hit likely. That puts his face about 7° from the rifle, with a 90% range from 10° one way to 25° the other.
+An ear-only hit is possible only when his face, or the back of his head, points within about 30° of the rifle. Within that range the ear stands clear of the skull as the gunman sees it. Turned further away, the ear lies over the skull, so a bullet through the ear goes on into his head.
+
+The second half of the question, how unusual it was for Trump to be turned that far toward the rifle, needs the video thread's head-angle track over the whole speech. That track has not arrived yet.
+
+## How we estimated which way he faced
+
+We combined two pieces of evidence.
+
+1. The RSBN broadcast camera puts Trump's face about 11° past the rifle line at the first shot, give or take 14°. The video thread measured this; Sam dropped the pool camera because the microphone hid Trump's face in it.
+2. The wound itself favours the head turns that make an ear-only hit likely.
+
+Together they put his face about 1° past the rifle, with a 90% range from 15° past it to 15° short of it. The wound alone, without the video, would put his face 7° short of the rifle and give a graze chance of 1.63% (ear only 0.76%).
 
 ## The follow-up shot
 
-If Crooks had fired again at a Trump who stood still in the same pose, the second shot would have hit only the ear about 0.5% of the time with a head aim and 0.14% of the time with a chest aim. These numbers are lower because a shot fired less than a second after the previous one scatters about 1.5 times as widely, based on the same marksmanship data.
+If Crooks had fired again at a Trump who stood still in the same pose, a second head-aimed shot would have grazed him 1.16% of the time and hit only the ear 0.60% of the time. These numbers are lower because a shot fired less than a second after the previous one scatters about 1.5 times as widely, based on the same marksmanship data.
 
 ## What the model contains
 
 - **Head:** a 3D likeness of Trump by the Sketchfab artist shortlan, scaled to the head size of a 6-foot-1 man over 50.
-- **Anatomy:** the BodyParts3D skull, brain, blood vessels and airway, fitted inside the likeness about 6 mm under the skin.
-- **Bullet:** each simulated bullet is traced through the head.
-- **Shot spread:** comes from published marksmanship data for shooters like Crooks at this range.
+- **Anatomy:** the BodyParts3D skull, brain, blood vessels, spine and airway, fitted inside the likeness about 6 mm under the skin. A second surface 3 mm under the skin marks where a graze ends.
+- **Bullet:** each simulated bullet is traced through the head as a cylinder 5.7 mm across.
+- **Shot spread:** comes from published marksmanship data for soldiers firing red-dot rifles, scaled to the range. Half of all head-aimed shots land within about 18 cm of the aim point.
+- **Poses:** the full run covered 256 head poses, turning from 60° past the rifle to the back of the head toward it, with a range of nods and tilts.
 
-The figures are in /mnt/project-files/butler-shooting/figures/.
+The earlier ear-only run, which predates the graze rule and simulated both a head and a chest aim, is archived as `sweep_v1.json`, `rows_v1_earonly_2aims/` and `maps_v1/`.
+
+The figures are in /mnt/project-files/butler-shooting/figures/, and the dashboard inputs are in /mnt/project-files/butler-shooting/assets/dashboard/.
