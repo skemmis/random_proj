@@ -30,7 +30,7 @@ def run(pose):
         return json.loads(row_path(pose).read_text())
     m = OutcomeMap(shooter_az=SHOOTER_AZ, head_yaw=SHOOTER_AZ - rel, head_pitch=pitch, head_roll=roll)
     row = dict(rel=rel, pitch=pitch, roll=roll)
-    for aim in ("head", "chest"):
+    for aim in ("head",):  # Sam, 2026-10-13: analyse a head-aimed shot only
         rng = np.random.default_rng(2024)
         p = m.probabilities(aim, n_eng=20_000, rng=rng)
         row[aim] = dict(codes=p, buckets=buckets(p))
@@ -43,7 +43,7 @@ def run(pose):
                             fine=m.fine, coarse=m.coarse, fu=m.fu, fv=m.fv, cu=m.cu, cv=m.cv,
                             aim_head=m.aims["head"], aim_chest=m.aims["chest"], codes=np.array(CODES))
     row_path(pose).write_text(json.dumps(row))
-    print(f"rel {rel:+4.0f} pitch {pitch:+3.0f} roll {roll:+3.0f}: ear-only head {row['head']['buckets']['ear_only']:.4%}",
+    print(f"rel {rel:+4.0f} pitch {pitch:+3.0f} roll {roll:+3.0f}: grazed {row['head']['buckets']['grazed']:.3%}, ear-only {row['head']['buckets']['ear_only']:.3%}",
           flush=True)
     return row
 

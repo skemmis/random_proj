@@ -18,11 +18,14 @@ Each bullet is a 5.7 mm cylinder, approximated by its centreline plus six rays o
 structure counts as hit if any of the seven rays crosses it.
 
 Outcome buckets (most severe structure along the path wins):
-  killed_or_maimed: brain/brainstem/spinal cord, major vessel, skull/jaw/spine bone, airway,
-                    eye, face soft tissue, torso
-  ear_only:         auricle tissue only (the headline outcome)
-  other_minor:      scalp graze or neck flesh with nothing vital, arm, or ear + scalp graze
-  miss:             no tissue (hair-only passes are counted as misses and tallied separately)
+  killed_or_wounded: brain/brainstem/spinal cord, major vessel, skull/jaw/spine bone, airway,
+                     eye, torso, or any path deeper than GRAZE_DEPTH_MM into the soft tissue of
+                     the scalp, face or neck
+  grazed:            the headline (Sam, 2026-10-13: "grazed but not lethal"): the ear, and/or no
+                     more than the outer GRAZE_DEPTH_MM of skin anywhere on the head or neck.
+                     Ear-only paths (the actual wound) are reported as a subset.
+  arm:               a hit on the arm only
+  miss:              no tissue (hair-only passes are counted as misses and tallied separately)
 """
 
 import json
@@ -56,7 +59,23 @@ GROUPS = {
     "airway": ["trachea", "larynx", "esophagus"],
     "eye": ["eyeball_left", "eyeball_right"],
 }
-VITAL_ORDER = ["brain", "vessel", "bone", "airway", "eye", "face", "torso"]
+VITAL_ORDER = ["brain", "vessel", "bone", "airway", "eye", "torso", "deep_soft"]
+GRAZE_DEPTH_MM = 4.0  # Sam, 2026-10-13: deeper than skin (2-3 mm), short of the skull (~6 mm)
+
+
+def inner_skin(skin, not_ear_faces, depth=GRAZE_DEPTH_MM):
+    """The scalp, face and neck skin moved `depth` mm inward along its normals. A bullet path
+    that crosses this shell has gone deeper than a graze."""
+    sub = skin.submesh([np.where(not_ear_faces)[0]], append=True)
+    n = sub.vertex_normals.copy()
+    # A few bust patches are wound inside-out; flip their normals so every offset goes inward.
+    for comp in trimesh.graph.connected_components(sub.face_adjacency, nodes=np.arange(len(sub.faces))):
+        verts = np.unique(sub.faces[comp])
+        if np.mean(np.einsum("ij,ij->i", sub.face_normals[comp], sub.triangles_center[comp])) < 0:
+            n[verts] *= -1
+    shell = sub.copy()
+    shell.vertices = sub.vertices - depth * n
+    return shell
 
 
 def _load(name):
@@ -84,6 +103,7 @@ def base_meshes():
         "neck": skin.submesh([np.where(neck)[0]], append=True),
         "scalp": skin.submesh([np.where(scalp)[0]], append=True),
         "hair": _load("hair"),
+        "deep_soft": inner_skin(skin, not_ear),
     }
     for g, names in GROUPS.items():
         head[g] = trimesh.util.concatenate([_load(n) for n in names])
@@ -177,17 +197,16 @@ def classify(h):
     out = np.full(n, "miss", dtype=object)
     hair_only = h["hair"].copy()
     ear = h["ear_right"] | h["ear_left"]
-    soft_other = h["scalp"] | h["neck"]
+    skin = h["scalp"] | h["face"] | h["neck"]
     vital = np.zeros(n, bool)
     vital_kind = np.full(n, "", dtype=object)
     for g in VITAL_ORDER:
         sel = h[g] & ~vital
         vital_kind[sel] = g
         vital |= h[g]
-    out[(ear & ~soft_other) & ~vital] = "ear_only"
-    out[(soft_other | h["arm"]) & ~vital] = "other_minor"
-    out[(ear & soft_other) & ~vital] = "other_minor"
-    out[vital] = "killed_or_maimed"
+    out[(ear | skin) & ~vital] = "grazed"
+    out[h["arm"] & ~(ear | skin) & ~vital] = "arm"
+    out[vital] = "killed_or_wounded"
     hair_only &= out == "miss"
     return out, vital_kind, hair_only
 
@@ -226,7 +245,7 @@ def simulate(n, rng, aim="head", shooter_az=90.0, head_yaw=0.0, head_pitch=0.0, 
 
 def summarize(res):
     lab = res["labels"]
-    out = {k: float(np.mean(lab == k)) for k in ("ear_only", "killed_or_maimed", "other_minor", "miss")}
+    out = {k: float(np.mean(lab == k)) for k in ("grazed", "killed_or_wounded", "arm", "miss")}
     out["miss_hair_only"] = float(np.mean(res["hair_only"]))
     vk = res["vital_kind"]
     out["vital_breakdown"] = {g: float(np.mean(vk == g)) for g in VITAL_ORDER}

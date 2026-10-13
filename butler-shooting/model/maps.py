@@ -19,12 +19,12 @@ sys.path.insert(0, str(Path(__file__).parent))
 from dispersion import PRIORS, moa_to_cm, sample_engagements  # noqa: E402
 from sim3d import BULLET_RADIUS_MM, Scene, aim_points, classify, fire_direction, plane_basis  # noqa: E402
 
-CODES = ["miss", "miss_hair", "ear_only_right", "ear_only_left", "minor_scalp_neck", "minor_arm",
-         "brain", "vessel", "bone", "airway", "eye", "face", "torso"]
+VITALS = ("brain", "vessel", "bone", "airway", "eye", "torso", "deep_soft")
+CODES = ["miss", "miss_hair", "ear_only_right", "ear_only_left", "graze_skin", "arm"] + list(VITALS)
 CODE = {k: i for i, k in enumerate(CODES)}
-BUCKET = {"miss": "miss", "miss_hair": "miss", "ear_only_right": "ear_only", "ear_only_left": "ear_only",
-          "minor_scalp_neck": "other_minor", "minor_arm": "other_minor"}
-BUCKET.update({k: "killed_or_maimed" for k in ("brain", "vessel", "bone", "airway", "eye", "face", "torso")})
+BUCKET = {"miss": "miss", "miss_hair": "miss", "ear_only_right": "grazed", "ear_only_left": "grazed",
+          "graze_skin": "grazed", "arm": "arm"}
+BUCKET.update({k: "killed_or_wounded" for k in VITALS})
 
 
 def grid_codes(scene, d, origin, right, up, us, vs):
@@ -45,14 +45,14 @@ def grid_codes(scene, d, origin, right, up, us, vs):
         lab, vk, hair_only = classify(h)
         c = np.full(m, CODE["miss"], np.int8)
         c[hair_only] = CODE["miss_hair"]
-        ear_r = (lab == "ear_only") & h["ear_right"]
-        c[ear_r] = CODE["ear_only_right"]
-        c[(lab == "ear_only") & ~ear_r] = CODE["ear_only_left"]
-        minor = lab == "other_minor"
-        arm_only = minor & h["arm"] & ~(h["scalp"] | h["neck"] | h["ear_right"] | h["ear_left"])
-        c[minor & ~arm_only] = CODE["minor_scalp_neck"]
-        c[arm_only] = CODE["minor_arm"]
-        for g in ("brain", "vessel", "bone", "airway", "eye", "face", "torso"):
+        graze = lab == "grazed"
+        skin = h["scalp"] | h["face"] | h["neck"]
+        c[graze & skin] = CODE["graze_skin"]
+        ear_only = graze & ~skin
+        c[ear_only & h["ear_right"]] = CODE["ear_only_right"]
+        c[ear_only & ~h["ear_right"]] = CODE["ear_only_left"]
+        c[lab == "arm"] = CODE["arm"]
+        for g in VITALS:
             c[vk == g] = CODE[g]
         codes[s:s + chunk] = c
     return codes.reshape(len(vs), len(us))
@@ -123,7 +123,8 @@ class OutcomeMap:
 
 
 def buckets(p):
-    b = {"ear_only": 0.0, "killed_or_maimed": 0.0, "other_minor": 0.0, "miss": 0.0}
+    b = {"grazed": 0.0, "killed_or_wounded": 0.0, "arm": 0.0, "miss": 0.0}
     for k, v in p.items():
         b[BUCKET[k]] += v
+    b["ear_only"] = p["ear_only_right"] + p["ear_only_left"]  # subset of grazed
     return b
