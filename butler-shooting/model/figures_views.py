@@ -216,9 +216,14 @@ def fig_shot_cloud(rel=7.0, n=400, seed=7):
     from dispersion import PRIORS, moa_to_cm, sample_engagements
     z = np.load(view_path(rel, 0.0, 420.0), allow_pickle=True)
     E = float(z["extent"])
-    img, _ = painted(rel, 0.0) if False else (None, None)
-    img = z["img"].copy()
-    img[~np.isfinite(z["depth"])] = np.array([0xfc, 0xfc, 0xfb]) / 255
+    from figures_3d import display_layers
+    from render import render
+    from sim3d import Scene, fire_direction, aim_points
+    sc = Scene(90.0 - rel)
+    d = fire_direction(90.0, 0.8)
+    centre = aim_points(sc, d)["head"] + np.array([0, -150.0, 0])
+    img, depth = render(display_layers(sc), d, up=(0, 1, 0), res=z["codes"].shape[0], center=centre, extent=E)
+    img[~np.isfinite(depth)] = np.array([0xfc, 0xfc, 0xfb]) / 255
     names = list(z["codes_names"])
     codes = z["codes"]
     for group, col in (([n_ for n_ in names if n_.startswith("ear_only")], BLUE), (["graze_skin"], AQUA)):
@@ -333,3 +338,90 @@ def fig_top_down(rel=7.0):
 
 if __name__ == "__main__":
     fig_top_down()
+
+
+def shot_density(aim_uv, half=420.0, step=3.0, n_eng=20_000, seed=2024):
+    """Probability per mm^2 that one head-aimed shot lands at each point of the target plane,
+    averaged over our uncertainty about the shooter (same model as the outcome numbers)."""
+    from scipy.stats import norm
+    from dispersion import PRIORS, moa_to_cm, sample_engagements
+    rng = np.random.default_rng(seed)
+    e = sample_engagements(n_eng, rng, PRIORS)
+    to_mm = moa_to_cm(1.0, e["range_m"]) * 10.0
+    mu_u, mu_v = aim_uv[0] + e["bx"] * to_mm, aim_uv[1] + e["by"] * to_mm
+    s_u, s_v = e["sx"] * to_mm, e["sy"] * to_mm
+    g = np.arange(-half, half + 1e-9, step)
+    Pu = norm.pdf((g[None, :] - mu_u[:, None]) / s_u[:, None]) / s_u[:, None]
+    Pv = norm.pdf((g[None, :] - mu_v[:, None]) / s_v[:, None]) / s_v[:, None]
+    dens = (Pv.T @ Pu) / n_eng  # rows = v, cols = u
+    return g, dens
+
+
+def fig_heatmap(rel=7.0):
+    from matplotlib.colors import LinearSegmentedColormap
+    from figures_3d import display_layers
+    from render import render
+    from sim3d import Scene, fire_direction, aim_points
+    z = np.load(view_path(rel, 0.0, 420.0), allow_pickle=True)
+    E = float(z["extent"])
+    sc = Scene(90.0 - rel)
+    d = fire_direction(90.0, 0.8)
+    centre = aim_points(sc, d)["head"] + np.array([0, -150.0, 0])
+    img, depth = render(display_layers(sc), d, up=(0, 1, 0), res=700, center=centre, extent=E)
+    gray = img.mean(axis=2, keepdims=True).repeat(3, axis=2)
+    img = 0.55 + 0.45 * gray
+    img[~np.isfinite(depth)] = np.array([0xfc, 0xfc, 0xfb]) / 255
+    aim = np.array([z["aim"] @ z["right"], z["aim"] @ z["up"]])
+    g, dens = shot_density(aim, half=E)
+    # Contours that enclose 25%, 50%, 75% and 90% of shots (highest-density regions).
+    flat = np.sort(dens.ravel())[::-1]
+    cum = np.cumsum(flat) * 3.0 ** 2
+    levels = {q: flat[np.searchsorted(cum, q)] for q in (0.9, 0.75, 0.5, 0.25)}
+    ramp = ["#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "#184f95", "#0d366b"]
+    cmap = LinearSegmentedColormap.from_list("blue", ramp)
+    rgba = cmap(dens / dens.max())
+    rgba[..., 3] = np.clip(dens / dens.max(), 0, 1) ** 0.6 * 0.85
+    fig = plt.figure(figsize=(13.5, 8.2), facecolor=SURF)
+    ax = fig.add_axes([0.0, 0.03, 0.6, 0.86])
+    ax.imshow(img, extent=[-E, E, -E, E])
+    ax.imshow(rgba, extent=[g[0], g[-1], g[0], g[-1]], origin="lower")
+    cs = ax.contour(g, g, dens, levels=[levels[q] for q in (0.9, 0.75, 0.5, 0.25)], colors=[INK2], linewidths=1)
+    fmt = {levels[q]: f"{int(q * 100)}%" for q in levels}
+    ax.clabel(cs, fmt=fmt, fontsize=9, inline=True)
+    ax.plot(*aim, marker="+", color=INK, ms=16, mew=2)
+    ax.set_xlim(-E * 0.85, E * 0.85)
+    ax.set_ylim(-260, E)
+    ax.axis("off")
+    to_cm = 3.93  # cm per MOA at 135 m
+    text = (
+        "Where the shots come from\n\n"
+        "Each line encloses that share of head-aimed shots. The darkest blue\n"
+        "is where shots land most often. Only about one shot in three lands\n"
+        "on him at all, because the spread is wider than his head.\n\n"
+        "The spread combines three things, each taken from published tests:\n\n"
+        "1. Random scatter from shot to shot. Army Research Laboratory\n"
+        "   soldiers firing M4 rifles with red-dot sights at pop-up targets\n"
+        f"   (Burcham, 2018) scattered about 3.2 minutes of angle, roughly\n"
+        f"   {3.2 * to_cm:.0f} cm either way at Crooks's 135 m. We let this vary by about\n"
+        "   a third either way, since we do not know how good Crooks was.\n\n"
+        "2. Aim error that every shot in a volley shares: a sight that is\n"
+        "   not perfectly zeroed, red-dot parallax and wind. Canadian army\n"
+        "   tests at 125 m (Tikuisis, 2007) found this error is as large as\n"
+        f"   the scatter. We use about 2 minutes of angle ({2 * to_cm:.0f} cm) either way.\n\n"
+        "3. The range, which sources put between 125 and 142 m.\n\n"
+        "We assume he aimed at the middle of the head (the cross). The real\n"
+        "shots serve only as a check: the first one hit about 10 cm off that\n"
+        "point, which this spread treats as ordinary."
+    )
+    fig.text(0.6, 0.86, text, fontsize=10, color=INK2, va="top", linespacing=1.35)
+    r50 = np.sqrt((dens >= levels[0.5]).sum() * 9.0 / np.pi) / 10  # cm, radius of an equal-area circle
+    fig.text(0.02, 0.95, f"Half of Crooks's head-aimed shots would land within about {r50:.0f} cm of his aim point",
+             fontsize=15, color=INK)
+    fig.savefig(FIG / "shot_heatmap_estimated_pose.png", dpi=130, facecolor=SURF)
+    plt.close(fig)
+    on_him = None
+    return {q: float(levels[q]) for q in levels}
+
+
+if __name__ == "__main__":
+    fig_heatmap()

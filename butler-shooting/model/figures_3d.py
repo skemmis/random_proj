@@ -55,6 +55,21 @@ def likeness_layers(scene, ear_highlight=False, texture=True):
     return skin + [(m["hair"], HAIR), (m["torso"], SUIT)]
 
 
+def display_layers(scene, ear_highlight=False):
+    """Likeness for pictures: textured skin, hair and the bust's own textured suit. (The solid
+    torso used for hit-testing is a convex hull and looks crude, so figures show the suit.)"""
+    suit = trimesh.load(HM / "suit.ply", process=False)
+    uv = np.load(HM / "suit_uv.npy")
+    tex = np.asarray(Image.open(HM / "suit_texture.png"))
+    # The suit is open at the front; a slightly shrunken solid behind it closes the jacket.
+    v = suit.vertices[suit.vertices[:, 1] < -95.0]
+    shirt = trimesh.convex.convex_hull(v)
+    c = shirt.centroid
+    shirt.vertices = c + (shirt.vertices - c) * np.array([0.93, 1.0, 0.93])
+    return [textured_skin(scene, ear_highlight), (scene.meshes["hair"], HAIR), (suit, textured(uv, tex)),
+            (shirt, (0.10, 0.12, 0.22))]
+
+
 def anatomy_layers(scene):
     m = scene.meshes
     return [(m[k], c) for k, c in ANAT.items()] + [(m["ear_right"], EAR), (m["ear_left"], SKIN)]
