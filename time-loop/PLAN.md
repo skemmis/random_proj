@@ -4,7 +4,7 @@
 
 ## The conceit
 
-This series investigates, with a straight face, the claim that Donald Trump is trapped in a time loop like the one in the film *Groundhog Day*. Each page sets one trait of a time-loop hero beside a moment from Trump's public record and asks whether the loop explains the moment better than the ordinary explanation does. The series ends on Sam's hypothesis about the Butler shooting: that a bullet through the ear was the only way for Trump to win, so he had to relive July 13, 2024, until a bullet grazed only his ear, as Major William Cage relives the same battle in *Edge of Tomorrow*. The Butler project's own figure, 1 in 625, measures how many tries that would take.
+This series investigates, with a straight face, the claim that Donald Trump is trapped in a time loop like the one in the film *Groundhog Day*. Each page sets one trait of a time-loop hero beside a moment from Trump's public record and asks whether the loop explains the moment better than the ordinary explanation does. The series ends on Sam's hypothesis about the Butler shooting: that a bullet through the ear was the only way for Trump to win, so he had to relive July 13, 2024, until a bullet grazed only his ear, as Major William Cage relives the same battle in *Edge of Tomorrow*. The Butler project's own figure, 1 in 990, measures how many tries that would take.
 
 ## What the pages can and cannot show
 
