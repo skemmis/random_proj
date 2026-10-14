@@ -1,0 +1,241 @@
+<title>Shell Game</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>/*MAPLIBRE_CSS*/</style>
+<style>
+/* Layout: a county parcel map fills the screen; one ledger panel (the "tax bill") docks bottom-left on desktop, bottom sheet on phones. */
+:root {
+  --paper: #E9ECE6;      /* land: the pale green-grey of an assessor's map book */
+  --paper-deep: #DCE1D8; /* parks, water fill */
+  --ink: #1C2421;        /* roads, text */
+  --ink-soft: #66716B;   /* minor streets, secondary text */
+  --rule: #B9C1B9;       /* hairlines, building outlines */
+  --home: #C9D0C6;       /* residential footprints */
+  --redact: #111614;     /* the redaction bar: a hidden owner */
+  --stamp: #B3261E;      /* rare and legendary: the "withheld" stamp */
+  --panel: #F6F7F3;
+  --font-display: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-ui: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --paper: #151A18; --paper-deep: #1D2421; --ink: #DCE3DE; --ink-soft: #8E9993; --rule: #34403A;
+  --home: #26302B; --redact: #E4E9E5; --stamp: #F0645A; --panel: #1B211E; color-scheme: dark;
+} }
+:root[data-theme="dark"] {
+  --paper: #151A18; --paper-deep: #1D2421; --ink: #DCE3DE; --ink-soft: #8E9993; --rule: #34403A;
+  --home: #26302B; --redact: #E4E9E5; --stamp: #F0645A; --panel: #1B211E; color-scheme: dark;
+}
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-ui); font-size: 15px; overflow: hidden; }
+#map { position: absolute; inset: 0; background: var(--paper); }
+.maplibregl-ctrl-attrib { font-family: var(--font-ui); font-size: 11px; }
+
+.ledger {
+  position: absolute; left: calc(16px + env(safe-area-inset-left, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  width: min(380px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow: auto;
+  background: var(--panel); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--redact);
+  display: flex; flex-direction: column;
+}
+.ledger header { padding: 14px 16px 12px; border-bottom: 1px solid var(--ink); display: grid; gap: 4px; }
+.eyebrow { font-family: var(--font-data); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+h1 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1; letter-spacing: -.01em; text-transform: uppercase; text-wrap: balance; }
+h1 .bar { background: var(--redact); color: var(--panel); padding: 0 6px; }
+.lede { margin: 6px 0 0; font-size: 14px; line-height: 1.45; color: var(--ink); max-width: 36ch; }
+.section { padding: 12px 16px; border-bottom: 1px solid var(--rule); display: grid; gap: 10px; }
+.section:last-child { border-bottom: 0; }
+h2 { margin: 0; font-family: var(--font-display); font-size: 15px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.tiers { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.tiers li { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 10px; font-size: 13px; }
+.tiers .pts { font-family: var(--font-data); font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.swatch { height: 10px; background: var(--redact); }
+.t1 { width: 18px; opacity: .45; } .t2 { width: 26px; } .t3 { width: 34px; outline: 2px solid var(--stamp); outline-offset: 2px; } .t4 { width: 44px; background: var(--stamp); }
+.points { margin: 0; padding: 0 0 0 18px; display: grid; gap: 4px; font-size: 13px; line-height: 1.4; }
+.points b { font-family: var(--font-data); font-weight: 500; }
+.notice { font-size: 13px; line-height: 1.45; padding: 10px 12px; border: 1px dashed var(--ink-soft); }
+.notice strong { font-family: var(--font-display); text-transform: uppercase; letter-spacing: .05em; }
+.spot { display: grid; gap: 8px; }
+.spot .ain { font-family: var(--font-data); font-size: 13px; }
+.spot .rarity { font-family: var(--font-display); font-size: 22px; font-weight: 700; text-transform: uppercase; }
+.spot .rarity.hot { color: var(--stamp); }
+.spot ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 13px; line-height: 1.4; }
+.owner { font-family: var(--font-data); font-size: 13px; }
+.owner span { background: var(--redact); color: transparent; user-select: none; padding: 0 4px; }
+button.close { justify-self: start; font: 500 13px var(--font-ui); background: none; color: var(--ink); border: 1px solid var(--ink); padding: 4px 10px; cursor: pointer; }
+button.close:focus-visible, .toggle:focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px; }
+.toggle { font: 500 12px var(--font-ui); background: none; border: 0; color: var(--ink-soft); text-decoration: underline; cursor: pointer; padding: 0; justify-self: start; }
+.hood { font-family: var(--font-display); font-weight: 600; text-transform: uppercase; letter-spacing: .14em; color: var(--ink-soft); font-size: 12px; white-space: nowrap; pointer-events: none; text-shadow: 0 0 3px var(--paper), 0 0 3px var(--paper); }
+.hood.r2 { font-size: 16px; color: var(--ink); letter-spacing: .2em; }
+@media (max-width: 520px) {
+  .ledger { left: 0; right: 0; bottom: 0; width: 100%; max-height: 52%; border-width: 2px 0 0; box-shadow: none;
+    padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  h1 { font-size: 28px; }
+  .ledger.folded .fold { display: none; }
+  .phone-only { display: inline; }
+}
+.phone-only { display: none; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div id="map" role="region" aria-label="Map of Echo Park and Silver Lake"></div>
+
+<aside class="ledger" id="ledger" aria-live="polite">
+  <header>
+    <span class="eyebrow">Echo Park · Silver Lake · Los Angeles</span>
+    <h1>Shell <span class="bar">Game</span></h1>
+    <p class="lede">Every home on this map whose real owner is kept off the public record. Walk to one to claim it. The harder it is to say who owns it, the more it's worth.</p>
+    <button class="toggle phone-only" id="foldBtn" aria-expanded="false" aria-controls="legend">Show the legend</button>
+  </header>
+  <div id="detail" class="section" hidden></div>
+  <div class="section fold" id="legend">
+    <h2>How hidden</h2>
+    <ul class="tiers">
+      <li><span class="swatch t1"></span><span>Common</span><span class="pts">1–4 pts</span></li>
+      <li><span class="swatch t2"></span><span>Uncommon</span><span class="pts">5–7 pts</span></li>
+      <li><span class="swatch t3"></span><span>Rare</span><span class="pts">8–11 pts</span></li>
+      <li><span class="swatch t4"></span><span>Legendary</span><span class="pts">12+ pts</span></li>
+    </ul>
+    <button class="toggle" id="howBtn" aria-expanded="false" aria-controls="how">What earns points</button>
+    <ol class="points" id="how" hidden>
+      <li>Owned by a company or a non-family trust <b>+1</b></li>
+      <li>Nobody claims it as their home <b>+1</b></li>
+      <li>Tax bills go to a registered-agent office <b>+3</b>, a PO box or a lawyer <b>+1</b>, or out of state <b>+1</b></li>
+      <li>5 or more other homes share that mailing address <b>+2</b>, 25 or more <b>+3</b></li>
+      <li>Formed in Delaware, Wyoming, Nevada, New Mexico or South Dakota <b>+2</b>, offshore <b>+4</b></li>
+      <li>Each layer of companies before the trail goes cold <b>+1</b>, up to <b>+4</b></li>
+      <li>A name in the chain is in the ICIJ Offshore Leaks <b>+5</b> or on a sanctions list <b>+6</b></li>
+      <li>A small local landlord tops out at Common, whatever state the LLC is from</li>
+    </ol>
+  </div>
+  <div class="section fold" id="status"></div>
+</aside>
+
+<script>/*MAPLIBRE_JS*/</script>
+<script>
+const GEO = /*GEO*/;
+const BOUNDS = [[-118.2850, 34.0640], [-118.2440, 34.1050]];
+
+const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const tokens = () => ({
+  paper: css("--paper"), paperDeep: css("--paper-deep"), ink: css("--ink"), inkSoft: css("--ink-soft"),
+  rule: css("--rule"), home: css("--home"), redact: css("--redact"), stamp: css("--stamp"), panel: css("--panel"),
+});
+
+// Redaction-bar spot icons, one per tier, drawn on a canvas at 2x.
+function bar(t, tier) {
+  const w = [0, 18, 26, 34, 44][tier], h = 10, pad = 4, s = 2;
+  const cv = document.createElement("canvas");
+  cv.width = (w + pad * 2) * s; cv.height = (h + pad * 2) * s;
+  const c = cv.getContext("2d"); c.scale(s, s);
+  if (tier === 3) { c.strokeStyle = t.stamp; c.lineWidth = 2; c.strokeRect(1, 1, w + pad * 2 - 2, h + pad * 2 - 2); }
+  c.fillStyle = tier === 4 ? t.stamp : t.redact;
+  c.globalAlpha = tier === 1 ? 0.55 : 1;
+  c.fillRect(pad, pad, w, h);
+  return { width: cv.width, height: cv.height, data: c.getImageData(0, 0, cv.width, cv.height).data };
+}
+
+const byZoom = (a, b) => ["interpolate", ["linear"], ["zoom"], 13, a, 17, b];
+
+function style(t) {
+  return {
+    version: 8,
+    sources: {
+      landuse: { type: "geojson", data: GEO.landuse },
+      water: { type: "geojson", data: GEO.water },
+      buildings: { type: "geojson", data: GEO.buildings },
+      roads: { type: "geojson", data: GEO.roads },
+      paths: { type: "geojson", data: GEO.paths },
+      spots: { type: "geojson", data: GEO.spots, promoteId: "id" },
+    },
+    layers: [
+      { id: "paper", type: "background", paint: { "background-color": t.paper } },
+      { id: "parks", type: "fill", source: "landuse", filter: ["in", ["get", "c"], ["literal", ["park", "golf", "protected", "recreation", "cemetery"]]], paint: { "fill-color": t.paperDeep } },
+      { id: "water", type: "fill", source: "water", filter: ["in", ["geometry-type"], ["literal", ["Polygon", "MultiPolygon"]]], paint: { "fill-color": t.paperDeep, "fill-outline-color": t.inkSoft } },
+      { id: "homes", type: "fill", source: "buildings", minzoom: 14, filter: ["==", ["get", "h"], 1], paint: { "fill-color": t.home, "fill-opacity": byZoom(0, 1) } },
+      { id: "other-buildings", type: "fill", source: "buildings", minzoom: 14, filter: ["==", ["get", "h"], 0], paint: { "fill-color": t.rule, "fill-opacity": byZoom(0, 0.6) } },
+      { id: "building-lines", type: "line", source: "buildings", minzoom: 16, paint: { "line-color": t.rule, "line-width": 0.5 } },
+      { id: "stairs", type: "line", source: "paths", paint: { "line-color": t.inkSoft, "line-width": 1.2, "line-dasharray": [1, 1.5] } },
+      { id: "roads-minor", type: "line", source: "roads", filter: ["<", ["get", "t"], 2], layout: { "line-cap": "round", "line-join": "round" }, paint: { "line-color": ["match", ["get", "t"], 1, t.inkSoft, t.rule], "line-width": byZoom(0.4, 2.2) } },
+      { id: "roads-major", type: "line", source: "roads", filter: [">=", ["get", "t"], 2], layout: { "line-cap": "round", "line-join": "round" }, paint: { "line-color": t.ink, "line-width": ["interpolate", ["linear"], ["zoom"], 13, ["match", ["get", "t"], 3, 1.6, 1], 17, ["match", ["get", "t"], 3, 6, 4]] } },
+      { id: "spots", type: "symbol", source: "spots", layout: { "icon-image": ["concat", "bar-", ["to-string", ["get", "tier"]]], "icon-allow-overlap": true, "icon-size": byZoom(0.6, 1.2), "symbol-sort-key": ["get", "score"] } },
+    ],
+  };
+}
+
+const phone = matchMedia("(max-width: 520px)").matches;
+const map = new maplibregl.Map({
+  container: "map", style: style(tokens()), bounds: BOUNDS,
+  fitBoundsOptions: { padding: phone ? { top: 16, left: 16, right: 16, bottom: 240 } : { top: 24, right: 24, bottom: 24, left: 420 } },
+  maxBounds: [[-118.33, 34.045], [-118.20, 34.125]], minZoom: 12.5, attributionControl: false, dragRotate: false, pitchWithRotate: false,
+});
+map.touchZoomRotate.disableRotation();
+if (!phone) map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
+map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: "Base map © Overture Maps Foundation, OpenStreetMap contributors (ODbL)" }), phone ? "top-left" : "bottom-right");
+
+function addIcons() {
+  const t = tokens();
+  for (const tier of [1, 2, 3, 4]) {
+    const id = "bar-" + tier;
+    if (map.hasImage(id)) map.removeImage(id);
+    map.addImage(id, bar(t, tier), { pixelRatio: 2 });
+  }
+}
+map.on("styleimagemissing", addIcons);
+map.on("load", addIcons);
+
+// Neighborhood names as HTML labels (the page can't fetch map glyphs).
+// Hathaway Hills Estates sits on top of the Silver Lake label; leave it out.
+for (const f of GEO.neighborhoods.features.filter((f) => f.properties.name !== "Hathaway Hills Estates")) {
+  const el = document.createElement("div");
+  el.className = "hood r" + f.properties.rank;
+  el.textContent = f.properties.name;
+  new maplibregl.Marker({ element: el }).setLngLat(f.geometry.coordinates).addTo(map);
+}
+
+// Re-theme the map when the viewer's theme changes.
+const retheme = () => { map.setStyle(style(tokens()), { diff: false }); };
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", retheme);
+new MutationObserver(retheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+const ledger = document.getElementById("ledger");
+if (phone) ledger.classList.add("folded");
+const howBtn = document.getElementById("howBtn"), how = document.getElementById("how");
+howBtn.addEventListener("click", () => { how.hidden = !how.hidden; howBtn.setAttribute("aria-expanded", String(!how.hidden)); });
+
+const foldBtn = document.getElementById("foldBtn");
+const setFold = (folded) => { ledger.classList.toggle("folded", folded); foldBtn.setAttribute("aria-expanded", String(!folded)); foldBtn.textContent = folded ? "Show the legend" : "Hide the legend"; };
+foldBtn.addEventListener("click", () => setFold(!ledger.classList.contains("folded")));
+
+const count = GEO.spots.features.length;
+const status = document.getElementById("status");
+if (count) {
+  const tiers = [0, 0, 0, 0, 0];
+  for (const f of GEO.spots.features) tiers[f.properties.tier]++;
+  status.innerHTML = `<h2>On this map</h2><p class="lede">${count.toLocaleString()} hidden-owner homes: ${tiers[4]} legendary, ${tiers[3]} rare, ${tiers[2]} uncommon, ${tiers[1]} common.</p>`;
+} else {
+  status.innerHTML = `<div class="notice"><strong>No spots yet.</strong> Spots appear once LA County's owner records are loaded. The county's free parcel data leaves out owner names, so the records come from the Assessor's roll. Shaded footprints are homes; each hidden-owner home will get a black bar.</div>`;
+}
+
+const fmt = (n) => "$" + n.toLocaleString();
+const ainFmt = (a) => String(a).replace(/^(\d{4})(\d{3})(\d{3})$/, "$1-$2-$3");
+const detail = document.getElementById("detail");
+map.on("click", "spots", (e) => {
+  const p = e.features[0].properties, why = JSON.parse(p.why);
+  detail.innerHTML = `
+    <div class="spot">
+      <span class="eyebrow">Parcel <span class="ain">${ainFmt(p.id)}</span></span>
+      <span class="rarity ${p.tier >= 3 ? "hot" : ""}">${p.rarity} · ${p.score} pts</span>
+      <span class="owner">Owner: <span>withheld from the public</span></span>
+      <span class="eyebrow">${p.units > 1 ? p.units + " homes" : "1 home"} · assessed ${fmt(p.value)}</span>
+      <ul>${why.map((w) => `<li>${w}</li>`).join("")}</ul>
+      <button class="close" id="closeBtn">Back to the legend</button>
+    </div>`;
+  detail.hidden = false;
+  ledger.classList.add("folded");
+  document.getElementById("closeBtn").addEventListener("click", () => { detail.hidden = true; setFold(phone); });
+});
+map.on("mouseenter", "spots", () => (map.getCanvas().style.cursor = "pointer"));
+map.on("mouseleave", "spots", () => (map.getCanvas().style.cursor = ""));
+</script>
