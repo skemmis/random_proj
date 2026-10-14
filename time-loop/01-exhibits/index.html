@@ -25,6 +25,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .radio .t { color: var(--red); font-size: 22px; font-weight: 600; letter-spacing: .03em; }
 .radio .d { color: var(--dim); font-size: 12px; letter-spacing: .1em; }
 .hud-r { display: flex; gap: 8px; align-items: center; }
+.gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: rgba(7,7,7,.86); backdrop-filter: blur(8px); text-align: center; padding: 24px 16px; }
+.gate[hidden] { display: none; }
+.gate .in { display: grid; gap: 18px; justify-items: center; max-width: 520px; }
+.gate .k { font-family: var(--font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); margin: 0; }
+.gate .go { display: inline-flex; align-items: center; gap: 14px; border: 0; border-radius: 999px; background: var(--white); color: var(--black); font-size: clamp(22px, 5vw, 34px); font-weight: 900; padding: 22px 40px; letter-spacing: -.01em; box-shadow: 0 0 0 0 rgba(246,244,239,.5); animation: pulse 1.8s ease-out infinite; }
+.gate .go svg { width: 1.2em; height: 1.2em; }
+.gate .quiet { background: none; border: 0; color: var(--dim); font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(246,244,239,.45); } 100% { box-shadow: 0 0 0 26px rgba(246,244,239,0); } }
+@media (prefers-reduced-motion: reduce) { .gate .go { animation: none; } }
 .pill { border: 1px solid var(--faint); background: rgba(0,0,0,.6); color: var(--white); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; backdrop-filter: blur(6px); }
 .pill.on { background: var(--white); color: var(--black); }
 .dots { position: fixed; z-index: 20; right: 12px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; }
@@ -136,6 +145,11 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
 </style>
 
+<div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Sound">
+  <div class="in"><p class="k">This film has sound</p>
+  <button class="go" id="gateOn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>Turn on sound</button>
+  <button class="quiet" id="gateOff" type="button">Watch muted</button></div>
+</div>
 <div class="hud">
   <div class="radio" aria-label="Clock radio"><span class="t" id="hudTime">6:00</span><span class="d" id="hudDay">DAY 0001</span></div>
   <div class="hud-r"><button class="pill" id="soundBtn" type="button" aria-pressed="false">Sound off</button><button class="pill" id="pauseBtn" type="button">Pause</button></div>
@@ -210,11 +224,23 @@ function media(c, cls, scene, side) {
   v.addEventListener("ended", () => { if (scene.onEnded) scene.onEnded(p); });
   p.vEl = v; players.push(p); return m;
 }
+// Sound is on by default, but browsers allow it only after a click, so the page opens on one big prompt.
 let sound = false;
-document.getElementById("soundBtn").addEventListener("click", e => {
-  sound = !sound; e.target.textContent = sound ? "Sound on" : "Sound off"; e.target.classList.toggle("on", sound); e.target.setAttribute("aria-pressed", sound);
-  players.forEach(q => { if (q.vEl) q.vEl.muted = !(sound && q.active); });
-});
+const soundBtn = document.getElementById("soundBtn");
+function setSound(on) {
+  sound = on; soundBtn.textContent = on ? "Sound on" : "Sound off"; soundBtn.classList.toggle("on", on); soundBtn.setAttribute("aria-pressed", on);
+  players.forEach(q => { if (!q.vEl) return; q.vEl.muted = !(on && q.active); if (on && q.active && !paused && sections[current] === q.scene) q.vEl.play().catch(() => {}); });
+}
+soundBtn.addEventListener("click", () => setSound(!sound));
+const gate = document.getElementById("gate");
+// Safari and strict browsers unlock sound one video at a time, so the click starts and stops each clip once.
+function unlockAll() {
+  players.forEach(q => { const v = q.vEl; if (!v) return; const live = q.active && !paused && sections[current] === q.scene;
+    v.muted = false; const pr = v.play(); if (pr) pr.then(() => { if (!live) { v.pause(); v.currentTime = 0; } v.muted = !(sound && q.active); }).catch(() => {}); });
+}
+document.getElementById("gateOn").addEventListener("click", () => { gate.hidden = true; sound = true; unlockAll(); setSound(true); });
+document.getElementById("gateOff").addEventListener("click", () => { gate.hidden = true; });
+document.getElementById("gateOn").focus();
 function overlay(sc) {
   return `<div class="over ${sc.pos || "center"}">${sc.kicker ? `<p class="kick">${esc(sc.kicker)}</p>` : ""}${sc.title ? `<h2>${esc(sc.title)}</h2>` : ""}${sc.sub ? `<p class="sub">${esc(sc.sub)}</p>` : ""}</div><div class="rewind"></div>`;
 }
@@ -316,6 +342,7 @@ document.getElementById("pauseBtn").addEventListener("click", e => {
 players.filter(p => p.scene.classList.contains("finale")).forEach(p => { p.vEl.loop = true; });
 const FIN = CONTENT.scenes.find(s => s.layout === "finale");
 const fp = players.find(p => p.side === "trump" && p.scene.classList.contains("finale"));
+if (fp) fp.active = true;  // the full-screen Butler clip carries the sound; the inset stays muted
 const pipP = players.find(p => p.side === "film" && p.scene.classList.contains("finale"));
 let day = 0, done = false, timer = null; const runs = [];
 const dayEl = document.getElementById("loopDay"), msg = document.getElementById("loopMsg"), stamp = document.getElementById("stamp");
