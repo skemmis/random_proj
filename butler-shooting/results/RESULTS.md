@@ -1,33 +1,41 @@
-# Results of the 3D simulation (2026-10-13, 3 mm graze rule)
+# Results of the 3D simulation (updated 2026-10-14, 3 mm graze rule)
 
 ## The headline
 
-On July 13, 2024, Thomas Crooks fired his first shot at Donald Trump from a roof about 135 m away, and the bullet passed through the top of Trump's right ear without touching his skull. The headline asks how likely that was, given everything we model: Crooks's accuracy, Trump's anatomy, and the way Trump's head moved through his speech.
+On July 13, 2024, Thomas Crooks fired his first shot at Donald Trump from a roof about 139 m away, and the bullet passed through the top of Trump's right ear without touching his skull. The headline asks how likely that was, given everything we model: Crooks's accuracy, Trump's anatomy, and the way Trump's head moved through his speech.
 
-Suppose Crooks had fired one head-aimed shot at a random moment in the six and a half minutes of the speech before the first shot. Our simulation estimates that the shot would have hit only Trump's ear, as the real bullet did, about **1 in 625** times (0.16%). It would have merely grazed him, touching only the ear or the outer 3 mm of skin, about **1 in 94** times (1.06%). Sam named 1 in 625 as the project's headline on 2026-10-13; whether the article quotes the ear-only figure or the wider graze figure is still his call, so both appear here.
+Suppose Crooks had fired one head-aimed shot at a random moment in the six and a half minutes of the speech before the first shot. Our simulation estimates that the shot would have hit only Trump's ear, as the real bullet did, about **1 in 930** times (0.11%). It would have merely grazed him, touching only the ear or the outer 3 mm of skin, about **1 in 99** times (1.01%). Whether the article quotes the ear-only figure or the wider graze figure is Sam's call, so both appear here.
 
-These figures use the video thread's frame-by-frame track of Trump's head, with the camera's bearing corrected by the wound (see "How unusual that head turn was" below). Using the video alone, without that correction, the figures are 1 in 455 for an ear-only hit (0.22%) and 1 in 89 for a graze (1.12%).
+On 2026-10-13 Sam chose 1 in 625 as the headline. That figure rested on a head track whose camera bearing was off by about 21°. On 2026-10-14 the "Opening scene" thread solved the RSBN camera's position against a model of the grounds, and the video thread re-measured the track with it. The corrected track shows Trump facing the crowd more of the time, so a shot at a random moment is less likely to find his ear standing clear, and the headline moves from 1 in 625 to 1 in 930.
 
-The model follows only how far Trump turned his head, not how he nodded or tilted it. No one measured his nod and tilt frame by frame, so the speech figures average over the few nods we simulated near level (−10° to +20°), and this assumption is untested. Sam chose on 2026-10-13 not to run the extra poses. Judging by the poses already simulated, we expect that measured nod and tilt would keep the ear-only headline roughly between 1 in 500 and 1 in 750.
+With the camera solved, the video and the wound now agree about which way he faced, so the wound adds a correction of only about 1°. The video alone gives 1 in 920 for an ear-only hit and 1 in 99 for a graze.
+
+The model follows only how far Trump turned his head, not how he nodded or tilted it. No one measured his nod and tilt frame by frame, so the speech figures average over the few nods we simulated near level (−10° to +20°), and this assumption is untested. Sam chose on 2026-10-13 not to run the extra poses. Judging by the poses already simulated, we expect that measured nod and tilt would move the ear-only headline by no more than about a fifth either way.
 
 | Outcome of one head-aimed shot | At a random moment in the speech | At his actual turn when Crooks fired |
 |---|---|---|
-| Hits only the ear | 0.16% (1 in 625) | 0.90% (about 1 in 110) |
-| Grazed, not lethal (ear or outer 3 mm of skin) | 1.06% (1 in 94) | 1.76% (1 in 57) |
+| Hits only the ear | 0.11% (1 in 930) | 0.79% (about 1 in 125) |
+| Grazed, not lethal (ear or outer 3 mm of skin) | 1.01% (1 in 99) | 1.66% (1 in 60) |
+
+Put another way, Crooks would have needed about 650 head-aimed shots at random moments of the speech for an even chance that one of them hit only the ear, and about 87 shots fired at Trump's actual turn.
 
 ### At his actual turn
 
-At the moment Crooks fired, Trump had turned his face almost straight toward the rifle, which made the odds much better for him. A head-aimed shot fired at that turn had a 1.76% chance (1 in 57) of merely grazing him and a 0.90% chance (about 1 in 110) of hitting the ear and nothing else. It had about a 29% chance of killing or seriously wounding him and a 69% chance of missing him.
+At the moment Crooks fired, Trump had turned his face to within about 8° of the rifle line (on the short side), which made the odds much better for him. A head-aimed shot fired at that turn had a 1.66% chance (1 in 60) of merely grazing him and a 0.79% chance (about 1 in 125) of hitting the ear and nothing else. It had about a 30% chance of killing or seriously wounding him and a 69% chance of missing him.
 
 | Outcome of one head-aimed shot at his actual turn | Chance |
 |---|---|
-| Grazed, not lethal | 1.76% |
-| of which, the ear only | 0.90% |
-| Killed or seriously wounded | 29.5% |
+| Grazed, not lethal | 1.66% |
+| of which, the ear only | 0.79% |
+| Killed or seriously wounded | 29.6% |
 | Arm only | 0.02% |
-| Miss | 68.8% |
+| Miss | 68.7% |
 
-At that turn the margin was slim. Our model puts the edge of the real bullet, which is 5.7 mm across, 6.1 mm from Trump's skull and 2.2 mm from the depth, 3 mm under the skin, at which a graze becomes a serious wound. Holding the same bullet path fixed while the head turns, the bullet would have gone deeper than 3 mm if his face had been turned 20° or more past the rifle, or between about 60° and 125° short of it, which includes facing the crowd. The bullet's edge would have touched the skull only if his face had been turned about 25° or more past the rifle (`assets/dashboard/margin_by_turn.json`).
+At that turn the margin was slim. Our model puts the edge of the real bullet, which is 5.7 mm across, 6.1 mm from Trump's skull and 1.6 mm from the depth, 3 mm under the skin, at which a graze becomes a serious wound. Holding the same bullet path fixed while the head turns, the bullet would have gone deeper than 3 mm if his face had been turned 20° or more past the rifle, or between about 55° and 125° short of it, which includes facing the crowd. The bullet's edge would have touched the skull only if his face had been turned about 20° or more past the rifle (`assets/dashboard/margin_by_turn.json`).
+
+### The range
+
+The camera solve puts the rifle 139 m from Trump's head, with the bullet dropping 0.6° on its way. The shot-spread model still draws the range anywhere from 125 m to 142 m. If we fixed it at 139 m instead, every shot would spread about 4% wider, and every hit, including grazes and ear-only hits, would become about 6% less likely: with his face turned 10° short of the rifle, the ear-only chance would fall from 0.89% to 0.84%. That would move the headline from about 1 in 930 to about 1 in 990. We have not adopted it yet; it needs no new simulation, only a re-count of the existing hit maps. The 0.6° drop, against the 0.8° we assumed, shifts the bullet's path across the head by less than half a millimetre, which changes nothing.
 
 ## What "grazed" means
 
@@ -37,21 +45,21 @@ We assume Crooks aimed at the middle of Trump's head. We no longer simulate a ch
 
 ## How much the head turn helped him
 
-Trump had turned his head to his right to look at a chart, which put his face almost straight toward the rifle. Had he faced the crowd instead, his right ear would have pointed at the rifle, and a head-aimed shot would have grazed him only 0.88% of the time, and never hit the ear alone. The turn therefore roughly doubled his chance of being merely grazed (by a factor of 1.99), and it made an ear-only wound possible at all.
+Trump had turned his head to his right to look at a chart, which put his face nearly toward the rifle. Had he faced the crowd instead, his right ear would have pointed at the rifle, and a head-aimed shot would have grazed him only 0.88% of the time, and never hit the ear alone. The turn therefore nearly doubled his chance of being merely grazed (by a factor of 1.9), and it made an ear-only wound possible at all.
 
 An ear-only hit is possible only when his face, or the back of his head, points within about 30° of the rifle. Within that range the ear stands clear of the skull as the gunman sees it. Turned further away, the ear lies over the skull, so a bullet through the ear goes on into his head.
 
 ## How unusual that head turn was
 
-The video thread measured Trump's head turn five times a second from the RSBN broadcast over the six and a half minutes before the first shot (`video/pose_track.csv`, 1,599 usable frames, after the video thread dropped frames that showed spectators rather than Trump). Through most of the speech he faced somewhere between the crowd and the rifle; his median turn put his face about 45° short of the rifle. He turned toward the rifle line mainly in the last 50 seconds, when he looked at the immigration chart.
+The video thread measured Trump's head turn five times a second from the RSBN broadcast over the six and a half minutes before the first shot (`video/pose_track.csv`, 1,599 usable frames). On 2026-10-14 it re-measured the track using the camera position solved by the "Opening scene" thread, which shifted every frame by about 21° toward facing the crowd. Through most of the speech he faced somewhere between the crowd and the rifle; his median turn put his face about 66° short of the rifle. He turned toward the rifle line mainly in the last 50 seconds, when he looked at the immigration chart.
 
-The camera's bearing error of about 14° shifts every frame of the track by the same amount, so we drew that shift once per trial. The ear-only wound says the shift was most likely about 10° toward the rifle. With that correction:
+The camera's remaining bearing error of about 12° shifts every frame of the track by the same amount, so we drew that shift once per trial and weighted it by how well it explains the ear-only wound. The wound now asks for a shift of only about 1°. With that weighting:
 
-- A head-aimed shot fired at a random moment in the speech would have grazed him 1.06% of the time, against 1.75% at the moment of the first shot. His turn at the shot made a graze 1.7 times as likely as his average turn (90% range 1.3 to 1.8).
-- An ear-only hit was 6 times as likely at the shot as on average (0.89% against 0.16%).
-- Only about 6% of the speech found him turned as favourably as he was at the first shot (90% range under 1% to 19%).
+- A head-aimed shot fired at a random moment in the speech would have grazed him 1.01% of the time, against 1.65% at the moment of the first shot. His turn at the shot made a graze 1.6 times as likely as his average turn (90% range 1.3 to 1.8).
+- An ear-only hit was about 8 times as likely at the shot as on average (0.78% against 0.11%).
+- Only about 4% of the speech found him turned as favourably as he was at the first shot (90% range 1% to 8%).
 
-The video alone, without the wound's correction, gives a weaker and much less certain answer: a graze 1.4 times as likely as average, with about 20% of the speech as favourable as the shot (90% range 1% to 60%). The wound sharpens the estimate because only a turn near the rifle line can produce it. That reasoning does lean on the very outcome whose luck we are measuring, so the article should quote the video-only figure alongside it.
+The video alone, without the wound's weighting, now gives nearly the same answer: a graze 1.6 times as likely as average, with about 6% of the speech as favourable as the shot (90% range 1% to 18%). The video thread counts only 1 frame in 1,600 with a better chance of a right-ear-only hit than the moment he was hit. Its count uses its single best estimate of the camera bearing and the right ear alone; ours spreads the bearing over its uncertainty and counts a graze anywhere, so ours is the more cautious figure.
 
 The calculation is `model/speech_luck.py`; its output is `results/speech_luck.json` and the chart is `figures/head_turn_over_speech.png`.
 
@@ -59,14 +67,14 @@ The calculation is `model/speech_luck.py`; its output is `results/speech_luck.js
 
 We combined two pieces of evidence.
 
-1. The RSBN broadcast camera puts Trump's face about 11° past the rifle line at the first shot, give or take 14°. The video thread measured this; Sam dropped the pool camera because the microphone hid Trump's face in it.
+1. The RSBN broadcast camera, with its position solved against the scene model, puts Trump's face about 10° short of the rifle line at the first shot, give or take 12°. The video thread measured this; Sam dropped the pool camera because the microphone hid Trump's face in it.
 2. The wound itself favours the head turns that make an ear-only hit likely.
 
-Together they put his face about 1° past the rifle, with a 90% range from 15° past it to 15° short of it. The wound alone, without the video, would put his face 7° short of the rifle and give a graze chance of 1.63% (ear only 0.76%).
+Together they put his face about 8° short of the rifle, with a 90% range from 5° past it to 25° short of it. The wound alone, without the video, would put his face 7° short of the rifle and give a graze chance of 1.63% (ear only 0.76%). The two now agree.
 
 ## The follow-up shot
 
-If Crooks had fired again at a Trump who stood still in the same pose, a second head-aimed shot would have grazed him 1.16% of the time and hit only the ear 0.60% of the time. These numbers are lower because a shot fired less than a second after the previous one scatters about 1.5 times as widely, based on the same marksmanship data.
+If Crooks had fired again at a Trump who stood still in the same pose, a second head-aimed shot would have grazed him 1.10% of the time and hit only the ear 0.53% of the time. These numbers are lower because a shot fired less than a second after the previous one scatters about 1.5 times as widely, based on the same marksmanship data.
 
 ## What the model contains
 

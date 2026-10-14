@@ -39,7 +39,8 @@ def run(level, n=4000, seed=7, use_wound=True):
     C = curves(level)
     f = {k: (lambda x, k=k: np.interp(x, *C[k])) for k in C}
     rng = np.random.default_rng(seed)
-    e = rng.normal(0, 14.1, 40 * n)
+    sd = float(np.median([float(r["rel_sd_deg"]) for r in csv.DictReader(TRACK.open()) if r["rel_sd_deg"]]))
+    e = rng.normal(0, sd, 40 * n)
     w = f["ear_right"](shot_meas + e) if use_wound else np.ones_like(e)  # wound likelihood of each offset
     e = rng.choice(e, n, p=w / w.sum())
     res = {k: [] for k in ("zone_share", "grazed_shot", "grazed_avg", "ear_shot", "ear_avg",
@@ -128,9 +129,9 @@ def chart():
     fig.text(0.125, 0.965, f"At the first shot, his head turn made a graze {res['grazed_lift']['mean']:.1f} times as "
              "likely as it was on average during his speech", fontsize=14, color=INK)
     fig.text(0.125, 0.0, "The video analysis read his head turn from the RSBN broadcast five times a second (dots; "
-             "the line is a 2-second median, broken at cutaways).\nThe turn is shifted "
-             f"{off:.0f}° toward the rifle: that is the correction to the camera's bearing that the ear-only wound "
-             "implies.\nA graze means the bullet touched only the ear or the outer 3 mm of skin.",
+             "the line is a 2-second median, broken at cutaways).\nThe camera's bearing comes from the scene model's "
+             f"camera solve; the ear-only wound adds a correction of only {abs(off):.0f}°, which is applied here.\n"
+             "A graze means the bullet touched only the ear or the outer 3 mm of skin.",
              fontsize=8.5, color=INK2, va="top")
     fig.savefig(FIG / "head_turn_over_speech.png", dpi=150, facecolor=SURF, bbox_inches="tight")
     plt.close(fig)
@@ -152,12 +153,15 @@ if __name__ == "__main__":
                 "ear_only_at_shot": f"{100 * r['ear_shot']['mean']:.2f}%",
                 "ear_only_speech_average": f"{100 * r['ear_avg']['mean']:.2f}%",
                 "graze_speech_average_one_in": f"1 in {one_in(r['grazed_avg']['mean'])}",
-                "ear_only_speech_average_one_in": f"1 in {one_in(r['ear_avg']['mean'])}"}
+                "ear_only_speech_average_one_in": f"1 in {one_in(r['ear_avg']['mean'])}",
+                # head-aimed shots at random moments of the speech for an even chance of one ear-only hit
+                "shots_for_even_chance_ear_only": int(round(np.log(0.5) / np.log(1 - r["ear_avg"]["mean"]), -1)),
+                "shots_for_even_chance_graze": int(round(np.log(0.5) / np.log(1 - r["grazed_avg"]["mean"])))}
 
-    def one_in(p):  # 1/p from the rounded percentage the text quotes, so "0.16%" and "1 in 625" agree
-        pr = float(f"{100 * p:.2f}") / 100
-        n = 1 / pr
-        return int(round(n))
+    def one_in(p):  # 1/p to two significant figures (1 in 930, 1 in 99)
+        n = 1 / p
+        k = max(0, int(np.floor(np.log10(n))) - 1)
+        return int(round(n / 10 ** k) * 10 ** k)
     # The rounded figures RESULTS.md and the pages quote, so nobody has to round by hand.
     res["quoted"] = {"wound_corrected": quoted(res["pitch_averaged"]),
                      "video_only": quoted(res["video_only_pitch_averaged"])}

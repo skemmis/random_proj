@@ -171,7 +171,7 @@ def fig_inference():
     fig, axs = plt.subplots(3, 1, figsize=(12, 10), sharex=True, facecolor=SURF,
                             gridspec_kw=dict(hspace=0.55))
     bw = 4.0
-    step1 = (f"1. The broadcast footage puts his face {abs(video['mean']):.0f}° past the rifle at the first shot, "
+    step1 = (f"1. The broadcast footage puts his face {abs(video['mean']):.0f}° {'past' if video['mean'] < 0 else 'short of'} the rifle at the first shot, "
              f"give or take {video['sd']:.0f}°" if video else
              "1. Before we look at the wound, we treat every head turn from 30° past the rifle to 90° short of it as equally likely")
     titles = [
@@ -333,7 +333,7 @@ def fig_top_down(rel=None):
     ax.annotate("", xy=(-115, 130), xytext=(-115, 100), annotation_clip=False,
                 arrowprops=dict(arrowstyle="-|>", color=INK2, lw=1.2))
     ax.text(-108, 116, "Toward the crowd", color=INK2, fontsize=10, va="center")
-    ax.text(a0[0], a0[1] + 8, "Bullet from Crooks's rifle,\n135 m away", color=INK, fontsize=10, ha="right",
+    ax.text(a0[0], a0[1] + 8, "Bullet from Crooks's rifle,\n139 m away", color=INK, fontsize=10, ha="right",
             va="bottom")
     ax.text(-125, -125, "Seen from above, skin made see-through. The red shape at the bottom is his right ear.",
             color=INK2, fontsize=9.5)
