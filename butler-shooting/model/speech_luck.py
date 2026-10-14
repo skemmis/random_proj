@@ -158,9 +158,11 @@ if __name__ == "__main__":
                 "shots_for_even_chance_ear_only": int(round(np.log(0.5) / np.log(1 - r["ear_avg"]["mean"]), -1)),
                 "shots_for_even_chance_graze": int(round(np.log(0.5) / np.log(1 - r["grazed_avg"]["mean"])))}
 
-    def one_in(p):  # 1/p to two significant figures (1 in 930, 1 in 99)
+    def one_in(p):  # 1/p: whole numbers below 200 (1 in 105), two significant figures above (1 in 990)
         n = 1 / p
-        k = max(0, int(np.floor(np.log10(n))) - 1)
+        if n < 200:
+            return int(round(n))
+        k = int(np.floor(np.log10(n))) - 1
         return int(round(n / 10 ** k) * 10 ** k)
     # The rounded figures RESULTS.md and the pages quote, so nobody has to round by hand.
     res["quoted"] = {"wound_corrected": quoted(res["pitch_averaged"]),

@@ -14,7 +14,10 @@ import numpy as np
 MOA_RAD = np.pi / (180 * 60)
 
 # Distance from muzzle to Trump's head; sources range 125-142 m (see research-notes-01).
-RANGE_M = (125.0, 142.0)
+# 2026-10-14: the "Opening scene" thread's camera solve puts the rifle 139 m from his head, so the range is
+# now fixed there (Sam's decision card recommends it). To revert to the earlier spread of published
+# estimates, set RANGE_M = (125.0, 142.0) and run model/recount_range.py.
+RANGE_M = (139.0, 139.0)
 
 PRIORS = {
     # Shot-1 random per-axis sigma for a Crooks-type shooter, stressed, deliberate.

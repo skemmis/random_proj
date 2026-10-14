@@ -426,23 +426,23 @@ def fig_heatmap(rel=None):
     ax.set_xlim(-E * 0.85, E * 0.85)
     ax.set_ylim(-260, E)
     ax.axis("off")
-    to_cm = 3.93  # cm per MOA at 135 m
+    to_cm = 4.04  # cm per MOA at 139 m
     text = (
         "Where the shots come from\n\n"
         "Each line encloses that share of head-aimed shots. The darkest blue\n"
         "is where shots land most often. Only about one shot in three lands\n"
         "on him at all, because the spread is wider than his head.\n\n"
-        "The spread combines three things, each taken from published tests:\n\n"
+        "The spread combines three things:\n\n"
         "1. Random scatter from shot to shot. Army Research Laboratory\n"
         "   soldiers firing M4 rifles with red-dot sights at pop-up targets\n"
         f"   (Burcham, 2018) scattered about 3.2 minutes of angle, roughly\n"
-        f"   {3.2 * to_cm:.0f} cm either way at Crooks's 135 m. We let this vary by about\n"
+        f"   {3.2 * to_cm:.0f} cm either way at Crooks's 139 m. We let this vary by about\n"
         "   a third either way, since we do not know how good Crooks was.\n\n"
         "2. Aim error that every shot in a volley shares: a sight that is\n"
         "   not perfectly zeroed, red-dot parallax and wind. Canadian army\n"
         "   tests at 125 m (Tikuisis, 2007) found this error is as large as\n"
         f"   the scatter. We use about 2 minutes of angle ({2 * to_cm:.0f} cm) either way.\n\n"
-        "3. The range, which sources put between 125 and 142 m.\n\n"
+        "3. The range, 139 m, from the scene model's camera solve.\n\n"
         "We assume he aimed at the middle of the head (the cross). The real\n"
         "shots serve only as a check: the first one hit about 10 cm off that\n"
         "point, which this spread treats as ordinary."

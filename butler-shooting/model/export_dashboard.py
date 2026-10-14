@@ -190,7 +190,7 @@ def export_dispersion(out):
     doc = dict(
         what="Shot-spread model. Each simulated engagement draws a shooter skill, a shared aim error and a "
              "range; then each shot lands at aim + bias + Gaussian scatter. Angles are minutes of angle "
-             "(1 MOA = 3.93 cm at 135 m). The target plane is perpendicular to the line of fire: x = shooter's "
+             "(1 MOA = 4.04 cm at 139 m). The target plane is perpendicular to the line of fire: x = shooter's "
              "right, y = up.",
         priors=PRIORS, range_m=list(RANGE_M),
         sampling=["sigma = median * exp(N(0, log_sd)) from sigma_shot1_moa",
