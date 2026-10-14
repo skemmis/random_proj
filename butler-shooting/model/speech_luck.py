@@ -65,6 +65,35 @@ def run(level, n=4000, seed=7, use_wound=True):
     return out
 
 
+CHART_UP_S = -51.0  # the border chart appeared on the big screen about 51 s before the shot (final-turn thread)
+
+
+def final_turn(offset):
+    """The chart minute against the rest of the speech, on the same track, curve (pitch-averaged) and wound
+    shift as the headline. Frames are 0.2 s apart throughout, so shares of frames are shares of time."""
+    t, rel = [], []
+    for r in csv.DictReader(TRACK.open()):
+        if r["rel_deg"] and float(r["t_s"]) < 0:
+            t.append(float(r["t_s"])); rel.append(float(r["rel_deg"]))
+    t, rel = np.array(t), np.array(rel) + offset
+    ear = np.interp(rel, *curves(False)["ear_only"])
+    late = t >= CHART_UP_S
+    pct = lambda x: f"{100 * x:.0f}%"
+    return {
+        "definition": "Before the chart = more than 51 s before the shot; the chart minute = the last 51 s. "
+                      "'Within 35 degrees' = face within 35 degrees of the rifle line either way. Ear-only "
+                      "chance = one head-aimed shot hitting only an ear, averaged over the frames.",
+        "before_chart_share_within_35deg": pct(np.mean(np.abs(rel[~late]) < 35)),
+        "before_chart_closest_deg": int(round(np.abs(rel[~late]).min())),
+        "chart_minute_share_within_35deg": pct(np.mean(np.abs(rel[late]) < 35)),
+        "chart_minute_share_of_speech_time": pct(late.mean()),
+        "chart_minute_share_of_ear_only_chance": pct(ear[late].sum() / ear.sum()),
+        "chart_minute_ear_only_average": f"{100 * ear[late].mean():.2f}%",
+        "before_chart_ear_only_average": f"{100 * ear[~late].mean():.3f}%",
+        "chart_minute_vs_before_ratio": f"{ear[late].mean() / ear[~late].mean():.0f}x",
+    }
+
+
 def chart():
     import matplotlib
     matplotlib.use("Agg")
@@ -173,6 +202,7 @@ if __name__ == "__main__":
     at = json.loads((OUT.parent / "summary.json").read_text())["video_and_wound"]["given_estimated_pose"]
     res["quoted"]["wound_corrected"]["graze_at_shot"] = f"{100 * at['grazed']:.2f}%"
     res["quoted"]["wound_corrected"]["ear_only_at_shot"] = f"{100 * at['ear_only']:.2f}%"
+    res["quoted"]["final_turn"] = final_turn(res["pitch_averaged"]["offset_posterior_mean"])
     OUT.write_text(json.dumps(res, indent=1))
     chart()
     for k in ("pitch_averaged", "level_head", "video_only_pitch_averaged"):

@@ -216,6 +216,17 @@
    "ear_only_speech_average_one_in": "1 in 980",
    "shots_for_even_chance_ear_only": 680,
    "shots_for_even_chance_graze": 72
+  },
+  "final_turn": {
+   "definition": "Before the chart = more than 51 s before the shot; the chart minute = the last 51 s. 'Within 35 degrees' = face within 35 degrees of the rifle line either way. Ear-only chance = one head-aimed shot hitting only an ear, averaged over the frames.",
+   "before_chart_share_within_35deg": "10%",
+   "before_chart_closest_deg": 10,
+   "chart_minute_share_within_35deg": "96%",
+   "chart_minute_share_of_speech_time": "13%",
+   "chart_minute_share_of_ear_only_chance": "71%",
+   "chart_minute_ear_only_average": "0.50%",
+   "before_chart_ear_only_average": "0.031%",
+   "chart_minute_vs_before_ratio": "16x"
   }
  }
 }

@@ -72,6 +72,14 @@ The camera's remaining bearing error of about 12° shifts every frame of the tra
 
 The video alone, without the wound's weighting, now gives nearly the same answer: a graze 1.6 times as likely as average, with about 6% of the speech as favourable as the shot (90% range 1% to 18%). The video thread counts only 1 frame in 1,600 with a better chance of a right-ear-only hit than the moment he was hit. Its count uses its single best estimate of the camera bearing and the right ear alone; ours spreads the bearing over its uncertainty and counts a graze anywhere, so ours is the more cautious figure.
 
+### The chart minute
+
+The "Final turn" thread found that Trump's luck was concentrated in the last minute of the speech, after the border-crossing chart appeared on the big screen about 51 seconds before the shot (`open-questions/final-turn/README.md`). We recounted its figures from the same track and the same ear-only curve as the headline, with the same 1° wound shift. Here "within 35°" means his face pointed within 35° of the rifle line on either side, and every frame stands for the same fifth of a second.
+
+- Before the chart went up, his face pointed within 35° of the rifle only 10% of the time, and it never came closer than about 10°.
+- In the last 51 seconds, his face pointed within 35° of the rifle 96% of the time.
+- Those 51 seconds are 13% of the speech, but they hold 71% of the speech's total chance of an ear-only hit. A head-aimed shot at a random moment in them had an average ear-only chance of 0.50%, against 0.031% in the earlier minutes, about 16 times as much.
+
 The calculation is `model/speech_luck.py`; its output is `results/speech_luck.json` and the chart is `figures/head_turn_over_speech.png`.
 
 ## How we estimated which way he faced
