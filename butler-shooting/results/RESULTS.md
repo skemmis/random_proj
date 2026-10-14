@@ -67,7 +67,7 @@ The video thread measured Trump's head turn five times a second from the RSBN br
 The camera's remaining bearing error of about 12° shifts every frame of the track by the same amount, so we drew that shift once per trial and weighted it by how well it explains the ear-only wound. The wound now asks for a shift of only about 1°. With that weighting:
 
 - A head-aimed shot fired at a random moment in the speech would have grazed him 0.95% of the time, against 1.56% at the moment of the first shot. His turn at the shot made a graze 1.6 times as likely as his average turn (90% range 1.3 to 1.8).
-- An ear-only hit was about 8 times as likely at the shot as on average (0.74% against 0.10%).
+- An ear-only hit was about 8 times as likely at the shot as on average (0.75% against 0.10%).
 - Only about 4% of the speech found him turned as favourably as he was at the first shot (90% range 1% to 8%).
 
 The video alone, without the wound's weighting, now gives nearly the same answer: a graze 1.6 times as likely as average, with about 6% of the speech as favourable as the shot (90% range 1% to 18%). The video thread counts only 1 frame in 1,600 with a better chance of a right-ear-only hit than the moment he was hit. Its count uses its single best estimate of the camera bearing and the right ear alone; ours spreads the bearing over its uncertainty and counts a graze anywhere, so ours is the more cautious figure.

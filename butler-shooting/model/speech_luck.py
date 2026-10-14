@@ -167,6 +167,12 @@ if __name__ == "__main__":
     # The rounded figures RESULTS.md and the pages quote, so nobody has to round by hand.
     res["quoted"] = {"wound_corrected": quoted(res["pitch_averaged"]),
                      "video_only": quoted(res["video_only_pitch_averaged"])}
+    # The at-shot chances quoted with the wound weighting are the canonical at-turn figures from summary.json
+    # (analyze.py), so every page shows one number; this script's own Monte Carlo value differs in the
+    # second decimal and stays in pitch_averaged.grazed_shot / ear_shot.
+    at = json.loads((OUT.parent / "summary.json").read_text())["video_and_wound"]["given_estimated_pose"]
+    res["quoted"]["wound_corrected"]["graze_at_shot"] = f"{100 * at['grazed']:.2f}%"
+    res["quoted"]["wound_corrected"]["ear_only_at_shot"] = f"{100 * at['ear_only']:.2f}%"
     OUT.write_text(json.dumps(res, indent=1))
     chart()
     for k in ("pitch_averaged", "level_head", "video_only_pitch_averaged"):
