@@ -52,7 +52,7 @@ Page one uses these seven exhibits. Every link was found on October 13, 2026.
 
 ## The Butler exhibit
 
-The closing exhibit quotes the Butler project's figures and does not recompute them. From `butler-shooting/results/RESULTS.md` and the quoted section of `results/speech_luck.json`: one head-aimed shot fired at a random moment of the speech hits only the ear 1 in 625 times (0.16%) and merely grazes him 1 in 94 times (1.06%). The only arithmetic the page adds is the chance of at least one ear-only day in N tries, 1 − (1 − 1/625)^N: even odds after about 433 days, 63% after 625, 90% after about 1,438.
+The closing exhibit quotes the Butler project's figures and does not recompute them. From `butler-shooting/results/RESULTS.md` and the quoted section of `results/speech_luck.json`: one head-aimed shot fired at a random moment of the speech hits only the ear 1 in 990 times (0.10%) and merely grazes him 1 in 105 times (0.95%) (updated October 14, 2026, after the camera fix; it was 1 in 625). The only arithmetic the page adds is the chance of at least one ear-only day in N tries, 1 − (1 − 1/990)^N: even odds after about 690 days (the Butler files' figure), 90% after about 2,280.
 
 ## More loops worth exploring (added October 13, 22:55)
 

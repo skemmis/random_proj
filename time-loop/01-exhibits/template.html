@@ -187,7 +187,7 @@ const CONTENT = {
 /* ===== END CONTENT ===== */
 
 const FRAMES = __FRAMES__;
-const P = 1 / 625;  // Butler project headline: ear-only hit at a random moment of the speech (results/RESULTS.md).
+const P = 1 / 990;  // Butler project headline: ear-only hit at a random moment of the speech (results/RESULTS.md).
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const film = document.getElementById("film"), dots = document.getElementById("dots");
 const players = [];  // { scene, v (video or null), frames, side }
@@ -259,7 +259,7 @@ CONTENT.scenes.forEach((sc, idx) => {
     const pip = document.createElement("div"); pip.className = "pip"; pip.appendChild(media(sc.film, "a", s, "film")); s.appendChild(pip);
     s.insertAdjacentHTML("beforeend", overlay(sc) + `<div class="stamp" id="stamp"><span>Reset</span></div>
       <div class="loopbox"><div class="row"><div class="day" id="loopDay">0001<small>JULY 13 NUMBER</small></div>
-      <div class="odds"><b>1 in 625</b>chance that one shot at a random moment of the speech hits only his ear. Even odds of a hit like that take about 433 tries.</div></div>
+      <div class="odds"><b>1 in 990</b>chance that one shot at a random moment of the speech hits only his ear. Even odds of a hit like that take about 690 tries.</div></div>
       <div class="msg" id="loopMsg" aria-live="polite">${esc(CONTENT.finale.start)}</div>
       <div class="btns"><button class="primary" id="once" type="button">${esc(CONTENT.finale.once)}</button><button id="run" type="button">${esc(CONTENT.finale.run)}</button><button id="reset" type="button">${esc(CONTENT.finale.reset)}</button></div>
       <svg id="loopChart" viewBox="0 0 520 96" aria-label="Chance of at least one ear-only day by number of tries"></svg></div>`);
@@ -280,7 +280,7 @@ credits.innerHTML = `<div class="inner"><h3>The Butler analysis</h3><div class="
   <a href="https://claude.ai/artifact/5WaijmmetS7uG2dVGBsheb" target="_blank" rel="noopener">The Turn</a>
   <a href="https://claude.ai/artifact/97TVEKUAy91vTmbmpXCyzn" target="_blank" rel="noopener">Moving Target</a>
   <a href="https://claude.ai/artifact/6mqn5mzxwPv78qwL8KAzJh" target="_blank" rel="noopener">The Bump</a></div>
-  <h3>The odds</h3><p>The 1-in-625 figure comes from the Butler project's simulation of Thomas Crooks's first shot: one head-aimed shot at a random moment of Trump's speech, with his head turning as the RSBN broadcast shows. The page adds one calculation, the chance of at least one ear-only day in N tries, 1 − (1 − 1/625)<sup>N</sup>.</p>
+  <h3>The odds</h3><p>The 1-in-990 figure comes from the Butler project's simulation of Thomas Crooks's first shot: one head-aimed shot at a random moment of Trump's speech, with his head turning as the RSBN broadcast shows. The page adds one calculation, the chance of at least one ear-only day in N tries, 1 − (1 − 1/990)<sup>N</sup>.</p>
   <h3>Clips</h3><ul id="clipList"></ul>
   <p style="margin-top:22px">Clips are shown for commentary in a personal, non-commercial project and belong to their owners. Where a clip has not been supplied yet, the scene shows the four preview frames YouTube makes for it.</p></div>`;
 film.appendChild(credits); sections.push(credits);
@@ -329,7 +329,7 @@ function liveOne(fast) {
   day++; dayEl.firstChild.nodeValue = pad(day);
   if (Math.random() < P) {
     done = true; runs.push(day); stopRun();
-    msg.innerHTML = `<b>${esc(CONTENT.finale.win)}</b> Day ${day.toLocaleString()}. ${day <= 433 ? "An early escape: fewer than half of looped Trumps get out this fast." : day <= 1438 ? "A typical wait for a looped Trump." : "A long sentence: fewer than one looped Trump in ten waits this long."}`;
+    msg.innerHTML = `<b>${esc(CONTENT.finale.win)}</b> Day ${day.toLocaleString()}. ${day <= 690 ? "An early escape: fewer than half of looped Trumps get out this fast." : day <= 2280 ? "A typical wait for a looped Trump." : "A long sentence: fewer than one looped Trump in ten waits this long."}`;
     flash(true);
     if (fp && fp.v) { fp.vEl.currentTime = Math.max(0, (FIN.trump.crack || 0) - 4); fp.vEl.play().catch(() => {}); }
     document.getElementById("once").disabled = document.getElementById("run").disabled = true; chart(); return true;
@@ -349,13 +349,13 @@ document.getElementById("reset").addEventListener("click", () => {
   document.getElementById("once").disabled = document.getElementById("run").disabled = false; chart(); rewindClips();
 });
 function chart() {
-  const svg = document.getElementById("loopChart"), W = 520, H = 96, l = 26, r = 8, t = 8, b = 20, X = 2000;
+  const svg = document.getElementById("loopChart"), W = 520, H = 96, l = 26, r = 8, t = 8, b = 20, X = 3000;
   const xs = n => l + n / X * (W - l - r), ys = v => t + (1 - v) * (H - t - b), cum = n => 1 - Math.pow(1 - P, n);
   let d = ""; for (let n = 0; n <= X; n += 20) d += (n ? "L" : "M") + xs(n).toFixed(1) + "," + ys(cum(n)).toFixed(1);
   let h = `<line x1="${l}" x2="${W - r}" y1="${ys(0)}" y2="${ys(0)}" stroke="rgba(246,244,239,.35)"/><line x1="${l}" x2="${W - r}" y1="${ys(.5)}" y2="${ys(.5)}" stroke="rgba(246,244,239,.12)"/>
     <text x="${l - 4}" y="${ys(0) + 3}" text-anchor="end">0</text><text x="${l - 4}" y="${ys(.5) + 3}" text-anchor="end">50%</text><text x="${l - 4}" y="${ys(1) + 3}" text-anchor="end">100%</text>
-    <text x="${W - r}" y="${H - 4}" text-anchor="end">2,000 tries</text><text x="${xs(433)}" y="${H - 4}" text-anchor="middle">433</text>
-    <line x1="${xs(433)}" x2="${xs(433)}" y1="${ys(.5)}" y2="${ys(0)}" stroke="rgba(246,244,239,.4)" stroke-dasharray="3 3"/>
+    <text x="${W - r}" y="${H - 4}" text-anchor="end">3,000 tries</text><text x="${xs(690)}" y="${H - 4}" text-anchor="middle">690</text>
+    <line x1="${xs(690)}" x2="${xs(690)}" y1="${ys(.5)}" y2="${ys(0)}" stroke="rgba(246,244,239,.4)" stroke-dasharray="3 3"/>
     <path d="${d}" fill="none" stroke="#ff3b30" stroke-width="2"/>`;
   runs.forEach((n, i) => { const x = xs(Math.min(n, X)); h += `<line x1="${x}" x2="${x}" y1="${ys(0) - 6}" y2="${ys(0) + 6}" stroke="${i === runs.length - 1 ? "#f6f4ef" : "rgba(246,244,239,.45)"}" stroke-width="${i === runs.length - 1 ? 2.5 : 1.5}" stroke-linecap="round"/>`; });
   if (!done && day) h += `<line x1="${xs(Math.min(day, X))}" x2="${xs(Math.min(day, X))}" y1="${ys(1)}" y2="${ys(0)}" stroke="#ffb340" stroke-width="1"/>`;
