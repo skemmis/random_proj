@@ -43,3 +43,16 @@ Until then the page draws its own clock radio and uses YouTube stills for Phil, 
 
 
 Oct 15: every film slot is filled. Sam's uploads and his separate audio tracks are kept in time-loop/sources/; the audio files run the same length as their videos, so they were laid in from the same start time. The teaser now uses real footage too: the film's own 6:00 clock radio (a still from the end of the "winter prediction" upload), the forecast, Cage waking after the beach explosion ("wake up" 1:27.8-1:31.6), Cage waking on the tarmac ("training" 2:55.6-2:58.2), the train and Ned.
+
+## New finds: Trump coming to (Oct 15, for the teaser)
+
+All from C-SPAN on the Internet Archive TV News Archive, at 640x480 (the archive's best). Clip URL: archive.org/download/ID/ID.mp4?t=START/END, at most 300 s per request. Copies in sources/daze/; previews in the clip cutter.
+
+| File | What | Item and seconds |
+|---|---|---|
+| cabinet-nod.mp4 | Eyes shut, chin on chest; head jerks up about 1:33 in; opens his eyes and ends the meeting about 2:12 | CSPAN3_20251202_164900_President_Trump_Holds_a_Cabinet_Meeting, 6820-6960 |
+| coal-nod.mp4 | Eyes closed while Burgum speaks; deeper nod, head snaps up about 0:47 | CSPAN_20260604_192200_POTUS_President_Trump_Makes_Announcement_on_Clean_Coal, 1195-1255 |
+| didnt-sleep.mp4 | "I didn't sleep, I just closed them because I wanted to get the hell out of here" | CSPAN_20260129_163900_POTUS_Pres._Trump_Holds_Cabinet_Meeting, 1510-1560 |
+| never-seen.mp4 | "There's never been anything like this," about four times in 30 s (from captions; not checked on screen) | CSPAN_20251106_170200_President_Trump_on_Lowering_Price_of_Weight_Loss_Drugs, 655-700 |
+
+Also found, not cut: the "Hannibal Lecter" riff at three rallies (Chesapeake, Va., June 28, 2024, ~1502 s; St. Cloud, Minn., July 27, 2024, ~1151 s; Flint, Mich., Sept. 17, 2024, ~1792 s), for "same lines".
