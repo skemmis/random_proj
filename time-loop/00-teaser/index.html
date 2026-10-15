@@ -37,6 +37,7 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
 .radio .face { display: flex; align-items: baseline; gap: .12em; padding: .18em .42em; border-radius: .14em; background: #0c0a09; box-shadow: inset 0 0 0 2px #1d1916, inset 0 .1em .4em rgba(0,0,0,.9), 0 2vh 6vh rgba(0,0,0,.8); }
 .radio .t { font-family: var(--font-clock); font-weight: 600; font-size: clamp(88px, 24vw, 340px); line-height: 1; color: var(--led); text-shadow: 0 0 .08em rgba(255,59,47,.9), 0 0 .35em rgba(255,59,47,.45); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
 .radio .ap { font-family: var(--font-label); font-weight: 700; font-size: clamp(14px, 2.6vw, 34px); color: var(--led); opacity: .85; letter-spacing: .08em; align-self: flex-start; margin-top: .6em; }
+#end .credits { position: absolute; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 18px); margin: 0; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); text-align: center; font-family: var(--font-label); font-size: 12px; font-weight: 500; color: var(--dim); }
 .radio .sub { font-family: var(--font-label); font-weight: 600; font-size: clamp(12px, 1.5vw, 18px); letter-spacing: .22em; text-transform: uppercase; color: var(--dim); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
 
 /* the day counter and the reset stamp, in the corner and the middle */
@@ -85,9 +86,9 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
 </style>
 
 <div id="gate" role="dialog" aria-modal="true" aria-label="Sound">
-  <span class="k">This feature has sound</span>
+  <span class="k">This page plays sound</span>
   <button id="soundOn" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Turn on sound</button>
-  <p>It includes the sound of gunfire.</p>
+  <p>You will hear gunfire.</p>
   <button id="soundOff" type="button">Continue without sound</button>
 </div>
 
@@ -115,7 +116,7 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
     </div>
     <div id="q"><h1 id="qText"></h1></div>
   </div>
-  <div class="cut" id="end"><div class="radio"><div class="face"><span class="t" id="tEnd">6:00</span><span class="ap" id="apEnd">AM</span></div><div class="sub" id="endSub"></div><a id="go" href="https://claude.ai/artifact/1B7vZ6Sq6uXeL6fVtG1ZHU" target="_blank" rel="noopener"></a></div></div>
+  <div class="cut" id="end"><div class="radio"><div class="face"><span class="t" id="tEnd">6:00</span><span class="ap" id="apEnd">AM</span></div><div class="sub" id="endSub"></div><a id="go" href="https://claude.ai/artifact/1B7vZ6Sq6uXeL6fVtG1ZHU" target="_blank" rel="noopener"></a></div><p class="credits" id="endCredits"></p></div>
 
   <canvas id="grain" aria-hidden="true"></canvas>
   <div id="vig"></div>
@@ -123,7 +124,7 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
   <div id="flash"></div>
   <div id="hud">DAY <b id="day">0001</b></div>
   <div id="stamp" aria-hidden="true">RESET</div>
-  <button id="snd" type="button" aria-pressed="false">Sound off</button>
+  <button id="snd" type="button" aria-pressed="false">Turn on sound</button>
   <div id="hint"><span id="hintText"></span><i></i></div>
 </div>
 
@@ -134,12 +135,13 @@ const CONTENT = {
   clockSub: "[Placeholder] Every morning starts the same way",
   question: ["Is Donald Trump", "stuck in a", "<em>time loop?</em>"],
   endSub: "Butler, Pa. · July 13, 2024",
+  credits: "Groundhog Day (Columbia Pictures, 1993); Edge of Tomorrow (Warner Bros., 2014); video from the Right Side Broadcasting Network.",
   go: "Begin"
 };
 
 const $ = id => document.getElementById(id);
 const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
-$("hintText").textContent = CONTENT.hint; $("clockSub").textContent = CONTENT.clockSub; $("endSub").textContent = CONTENT.endSub; $("go").textContent = CONTENT.go + " →";
+$("hintText").textContent = CONTENT.hint; $("clockSub").textContent = CONTENT.clockSub; $("endSub").textContent = CONTENT.endSub; $("endCredits").textContent = CONTENT.credits; $("go").textContent = CONTENT.go + " →";
 $("qText").innerHTML = CONTENT.question.map(s => `<span>${s}</span>`).join("");
 
 // ---- the edit: each cut owns a stretch of the scroll, from 0 (top) to 1 (bottom) ----
@@ -220,7 +222,7 @@ function frame() {
   if (!REDUCED) setInterval(() => { c.style.transform = `translate(${(Math.random() * 10 - 5).toFixed(1)}%, ${(Math.random() * 10 - 5).toFixed(1)}%)`; }, 70); })();
 
 // ---- sound: on by default, but browsers need one click; the click also unlocks each clip for Safari ----
-function setSound(on) { sound = on; $("snd").textContent = on ? "Sound on" : "Sound off"; $("snd").setAttribute("aria-pressed", on); ear.muted = !on; filmVids.forEach(v => v.muted = !on); }
+function setSound(on) { sound = on; $("snd").textContent = on ? "Mute sound" : "Turn on sound"; $("snd").setAttribute("aria-pressed", on); ear.muted = !on; filmVids.forEach(v => v.muted = !on); }
 function unlock() { [ear, podium, ...wallVids, ...filmVids].forEach(v => { const was = v.muted; v.muted = !(v === ear || filmVids.includes(v)) || !sound; const pr = v.play(); if (pr) pr.then(() => { v.pause(); v.currentTime = 0; }).catch(() => {}); }); }
 $("soundOn").addEventListener("click", () => { $("gate").hidden = true; setSound(true); unlock(); });
 $("soundOff").addEventListener("click", () => { $("gate").hidden = true; setSound(false); unlock(); });

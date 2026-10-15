@@ -134,13 +134,13 @@ html.in-spine { scroll-snap-type: none; }
 </style>
 
 <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Sound">
-  <div class="in"><p class="k">This film has sound</p>
+  <div class="in"><p class="k">This page plays sound</p>
   <button class="go" id="gateOn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>Turn on sound</button>
-  <button class="quiet" id="gateOff" type="button">Watch muted</button></div>
+  <button class="quiet" id="gateOff" type="button">Continue without sound</button></div>
 </div>
 <div class="hud">
   <div class="radio" aria-label="Clock radio"><span class="t" id="hudTime">6:00</span><span class="d" id="hudDay">DAY 0001</span></div>
-  <div class="hud-r"><button class="pill" id="soundBtn" type="button" aria-pressed="false">Sound off</button><button class="pill" id="pauseBtn" type="button">Pause</button></div>
+  <div class="hud-r"><button class="pill" id="soundBtn" type="button" aria-pressed="false">Turn on sound</button><button class="pill" id="pauseBtn" type="button">Pause</button></div>
 </div>
 <nav class="dots" id="dots" aria-label="Scenes"></nav>
 <main id="film"></main>
@@ -160,23 +160,23 @@ const CONTENT = {
   },
   scenes: [
     { id: "rules", layout: "split", kicker: "Exhibit 1", title: "The rules don't apply", sub: "", pos: "center",
-      film:  { file: "clips/rules-film.mp4",  yt: "50jZVcRgkno", tag: "Groundhog Day, 1993", who: "Phil Connors (Bill Murray)", quote: "I'm not going to live by their rules anymore!", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/rules-trump.mp4", yt: "Iimj0j4NYME", tag: "NATO, Brussels, May 25, 2017", who: "Trump pushes past Montenegro's prime minister", quote: "", credit: "MSNBC, via the Internet Archive TV News Archive" } },
+      film:  { file: "clips/rules-film.mp4",  yt: "50jZVcRgkno", tag: "Groundhog Day (1993)", who: "Bill Murray as Phil Connors, a weatherman doomed to relive one day", quote: "I'm not going to live by their rules anymore!", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/rules-trump.mp4", yt: "Iimj0j4NYME", tag: "NATO summit, Brussels, May 25, 2017", who: "Trump shoves past Duško Marković, Montenegro's prime minister, to the front of a photo", quote: "", credit: "MSNBC, via the Internet Archive TV News Archive", src: "https://archive.org/details/MSNBCW_20170525_160000_Andrea_Mitchell_Reports" } },
     { id: "consequences", layout: "split", kicker: "Exhibit 2", title: "No consequences", sub: "", pos: "center",
-      film:  { file: "clips/consequences-film.mp4",  yt: "ZHpXxAW3p_o", tag: "Groundhog Day, 1993", who: "Phil Connors drives Gus and Ralph home", quote: "What if there were no tomorrow?", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/consequences-trump.mp4", yt: "iTACH1eVIaA", tag: "Sioux Center, Iowa, Jan. 23, 2016", who: "Trump at a rally at Dordt College", quote: "I could stand in the middle of Fifth Avenue and shoot somebody, and I wouldn't lose any voters.", credit: "CNN, via the Internet Archive TV News Archive" } },
+      film:  { file: "clips/consequences-film.mp4",  yt: "ZHpXxAW3p_o", tag: "Groundhog Day (1993)", who: "Phil, drunk at the wheel, asks two locals what they would do if there were no tomorrow", quote: "What if there were no tomorrow?", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/consequences-trump.mp4", yt: "iTACH1eVIaA", tag: "Sioux Center, Iowa, Jan. 23, 2016", who: "Trump, seeking the nomination, at Dordt College", quote: "I could stand in the middle of Fifth Avenue and shoot somebody, and I wouldn't lose any voters.", credit: "CNN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CNNW_20160123_230000_Smerconish" } },
     { id: "ennui", layout: "split", kicker: "Exhibit 3", title: "Ennui", sub: "", pos: "center",
-      film:  { file: "clips/ennui-film.mp4",  yt: "vBeGQAvabOE", tag: "Groundhog Day, 1993", who: "Phil's forecast from Gobbler's Knob", quote: "It's gonna last you for the rest of your life.", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/ennui-trump.mp4", yt: "OgAKS23TCXY", tag: "Oaks, Pa., Oct. 14, 2024", who: "Trump sways to music on stage for 39 minutes", quote: "Let's just listen to music.", credit: "C-SPAN, via the Internet Archive TV News Archive" } },
+      film:  { file: "clips/ennui-film.mp4",  yt: "vBeGQAvabOE", tag: "Groundhog Day (1993)", who: "Phil gives the same Groundhog Day forecast, again", quote: "It's gonna last you for the rest of your life.", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/ennui-trump.mp4", yt: "OgAKS23TCXY", tag: "Oaks, Pa., Oct. 14, 2024", who: "Trump stops taking questions at a town hall and sways to music for 39 minutes", quote: "Let's just listen to music.", credit: "C-SPAN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CSPAN_20241014_200000_Public_Affairs_Events" } },
     { id: "lines", layout: "split", kicker: "Exhibit 4", title: "Same day, same lines", sub: "", pos: "center",
-      film:  { file: "clips/lines-film.mp4",  yt: "XqSYC_vwhDg", tag: "Groundhog Day, 1993", who: "Ned Ryerson (Stephen Tobolowsky) greets Phil, every morning", quote: "Phil? Phil Connors? I thought that was you!", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/lines-trump.mp4", yt: "bqbmTnr9NSE", tag: "Four rallies, 2023 to 2024", who: "The same riff about sharks and electric boats, in Anaheim, Ankeny, Las Vegas and Grand Rapids", quote: "I'll take electrocution every time.", credit: "C-SPAN, via the Internet Archive TV News Archive" } },
+      film:  { file: "clips/lines-film.mp4",  yt: "XqSYC_vwhDg", tag: "Groundhog Day (1993)", who: "Every morning, Ned Ryerson (Stephen Tobolowsky), an old classmate turned insurance salesman, greets Phil the same way", quote: "Phil? Phil Connors? I thought that was you!", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/lines-trump.mp4", yt: "bqbmTnr9NSE", tag: "Four rallies, 2023 to 2024", who: "Trump tells the same story about sharks and electric boats in Anaheim, Calif.; Ankeny, Iowa; Las Vegas; and Grand Rapids, Mich.", quote: "I'll take electrocution every time.", credit: "C-SPAN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CSPAN2_20231002_171900_Campaign_2024_Fmr._Pres._Trump_Speaks_at_CA_GOP_Convention" } },
     { id: "butler", layout: "split", kicker: "Exhibit 5", title: "Again. Again. Again.", sub: "", pos: "center",
-      film:  { file: "clips/butler-film.mp4",  yt: "z1bVCdT5kso", tag: "Edge of Tomorrow, 2014", who: "Training: Cage (Tom Cruise) is shot, wakes and tries again", quote: "", credit: "Warner Bros., 2014" },
-      trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } },
+      film:  { file: "clips/butler-film.mp4",  yt: "z1bVCdT5kso", tag: "Edge of Tomorrow (2014)", who: "Tom Cruise as Cage, a soldier who wakes again each time he dies, is shot in training and tries again", quote: "", credit: "Warner Bros., 2014" },
+      trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "Trump's rally, the moment of the first shot", quote: "", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ", crack: 10.0 } },
     { id: "reaction", layout: "split", kicker: "Exhibit 6", title: "Death holds no fear", sub: "", pos: "center",
-      film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs, 2020", who: "Nyles (Andy Samberg) takes an arrow, then lies back on his float", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Hulu and Neon, 2020" },
-      trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "About a minute after the shot, Trump rises and raises his fist", quote: "Fight! Fight! Fight!", credit: "RSBN broadcast, via the Internet Archive" } }
+      film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs (2020)", who: "Andy Samberg as Nyles, a wedding guest stuck in a loop, takes an arrow and lies back on his float", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Hulu and Neon, 2020" },
+      trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "A minute after the shot, Trump rises, ear bleeding, and raises his fist", quote: "Fight! Fight! Fight!", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ" } }
   ]
 };
 /* ===== END CONTENT ===== */
@@ -198,7 +198,7 @@ function media(c, cls, scene, side) {
   const s = document.createElement("source"); s.src = c.file; s.type = "video/mp4";
   s.addEventListener("error", () => { v.remove(); });
   v.appendChild(s); m.prepend(v);
-  m.insertAdjacentHTML("beforeend", `<div class="grade"></div><div class="label">${c.tag ? `<span class="k">${esc(c.tag)}</span>` : ""}${c.who ? `<span class="w">${esc(c.who)}</span>` : ""}${c.quote ? `<span class="q">“${esc(c.quote)}”</span>` : ""}<span class="s">${esc(c.credit)} · <a href="https://www.youtube.com/watch?v=${c.yt}" target="_blank" rel="noopener">source clip</a></span></div>`);
+  m.insertAdjacentHTML("beforeend", `<div class="grade"></div><div class="label">${c.tag ? `<span class="k">${esc(c.tag)}</span>` : ""}${c.who ? `<span class="w">${esc(c.who)}</span>` : ""}${c.quote ? `<span class="q">“${esc(c.quote)}”</span>` : ""}<span class="s">${esc(c.credit)} · <a href="${c.src || "https://www.youtube.com/watch?v=" + c.yt}" target="_blank" rel="noopener">source</a></span></div>`);
   p.prog = document.createElement("div"); p.prog.className = "prog"; m.appendChild(p.prog);
   v.addEventListener("ended", () => { if (scene.onEnded) scene.onEnded(p); });
   p.vEl = v; players.push(p); return m;
@@ -207,7 +207,7 @@ function media(c, cls, scene, side) {
 let sound = false;
 const soundBtn = document.getElementById("soundBtn");
 function setSound(on) {
-  sound = on; soundBtn.textContent = on ? "Sound on" : "Sound off"; soundBtn.classList.toggle("on", on); soundBtn.setAttribute("aria-pressed", on);
+  sound = on; soundBtn.textContent = on ? "Mute sound" : "Turn on sound"; soundBtn.classList.toggle("on", on); soundBtn.setAttribute("aria-pressed", on);
   players.forEach(q => { if (!q.vEl) return; q.vEl.muted = !(on && q.active); if (on && q.active && !paused && sections[current] === q.scene) q.vEl.play().catch(() => {}); });
 }
 soundBtn.addEventListener("click", () => setSound(!sound));
@@ -267,13 +267,16 @@ CONTENT.scenes.forEach((sc, idx) => {
 const credits = document.createElement("section"); credits.className = "scene credits"; credits.id = "credits";
 credits.innerHTML = `<div class="inner"><div class="xlinks"><h3>The Butler analysis</h3><div class="links">
   <a href="https://claude.ai/artifact/JGEfKhHho4XZzHSed5YfBg" target="_blank" rel="noopener">Only the Ear</a>
-  <a href="https://claude.ai/artifact/5WaijmmetS7uG2dVGBsheb" target="_blank" rel="noopener">The Turn</a>
+  <a href="https://claude.ai/artifact/5WaijmmetS7uG2dVGBsheb" target="_blank" rel="noopener">The Margin</a>
   <a href="https://claude.ai/artifact/97TVEKUAy91vTmbmpXCyzn" target="_blank" rel="noopener">Moving Target</a>
+  <a href="https://claude.ai/artifact/4WAhWVqreAhn28htr9EcpB" target="_blank" rel="noopener">The chart minute</a>
   <a href="https://claude.ai/artifact/6mqn5mzxwPv78qwL8KAzJh" target="_blank" rel="noopener">The Bump</a></div></div>
   <h3>Clips</h3><ul id="clipList"></ul>
-  <p style="margin-top:22px">Clips are shown for commentary in a personal, non-commercial project and belong to their owners. Where a clip has not been supplied yet, the scene shows the four preview frames YouTube makes for it.</p></div>`;
+  <p style="margin-top:22px">Clips are shown for commentary in a personal, non-commercial project and belong to their owners.</p></div>`;
 film.appendChild(credits); sections.push(credits);
-CONTENT.scenes.filter(sc => sc.film).forEach(sc => [sc.film, sc.trump].forEach(c => document.getElementById("clipList").insertAdjacentHTML("beforeend", `<li>${esc(c.tag)}: ${esc(c.credit)} · <a href="https://www.youtube.com/watch?v=${c.yt}" target="_blank" rel="noopener">youtube.com/watch?v=${c.yt}</a></li>`)));
+{ const seen = new Set();  // each source once (Butler and the fist share one broadcast)
+  CONTENT.scenes.filter(sc => sc.film).forEach(sc => [sc.film, sc.trump].forEach(c => { const url = c.src || "https://www.youtube.com/watch?v=" + c.yt; if (seen.has(url)) return; seen.add(url);
+    document.getElementById("clipList").insertAdjacentHTML("beforeend", `<li>${esc(c.tag)}: ${esc(c.credit)} · <a href="${url}" target="_blank" rel="noopener">${url.replace("https://", "")}</a></li>`); })); }
 
 sections.forEach((s, i) => dots.insertAdjacentHTML("beforeend", `<a href="#${s.id}" aria-label="Scene ${i + 1}"></a>`));
 const dotEls = [...dots.children];
