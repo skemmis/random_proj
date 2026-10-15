@@ -60,6 +60,8 @@ So Sam is right that such angles exist, but they need a nod or tilt as well as t
 
 #### If his chin was raised at the shot
 
+**This is a sensitivity note, not quoted on any page.** On 2026-10-15 Sam chose to keep the level head, so the quoted margin stays 6.1 mm from the skull and 1.6 mm from a serious wound, and the quoted odds are unchanged.
+
 On 2026-10-15 Sam noticed that Trump looks slightly up in the RSBN frame at the shot, and the "Opening scene" thread, matching the model to that one frame, put his chin about 10° up. We measured what that does at his turn at the shot (drawn at 10° short of the rifle), two ways (`model/chin_up.py`, `results/chin_up_at_shot.json`).
 
 | Chin up | Same path in space: gap to skull | Same path in space: gap to a serious wound | Path through the ear wound: gap to skull | Path through the ear wound: gap to a serious wound |
