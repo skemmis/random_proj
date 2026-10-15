@@ -79,7 +79,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
   .split.play-a .seam { top: 60%; } .split.play-b .seam { top: 40%; }
   .split .media.a .label { bottom: auto; top: calc(env(safe-area-inset-top, 0px) + 60px); }
 }
-@media (max-width: 600px) { .finale .pip .label { display: none; } }
 
 /* Big overlaid type */
 .over { position: absolute; z-index: 6; pointer-events: none; padding: 0 20px; }
@@ -107,31 +106,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .open .cue { position: absolute; left: 0; right: 0; bottom: 28px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); animation: bob 2s ease-in-out infinite; }
 @keyframes bob { 50% { transform: translateY(6px); } }
 
-/* Finale: the loop */
-.finale .media.b { inset: 0; }
-.finale .pip { position: absolute; z-index: 4; right: 16px; top: calc(env(safe-area-inset-top, 0px) + 64px); width: min(34vw, 380px); aspect-ratio: 16 / 9; border: 2px solid var(--white); border-radius: 3px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,.5); }
-.finale .pip .media { inset: 0; }
-.finale .pip .label { left: 8px; bottom: 6px; }
-.finale .pip .label .w { font-size: 12px; }
-.finale .pip .label .q, .finale .pip .label .s { display: none; }
-.loopbox { position: absolute; z-index: 6; left: 16px; bottom: 16px; width: min(560px, calc(100% - 32px)); background: rgba(5,5,5,.78); backdrop-filter: blur(8px); border: 1px solid var(--faint); border-radius: 6px; padding: 16px 18px 14px; }
-.loopbox .row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
-.loopbox .day { font-family: var(--font-mono); font-weight: 600; color: var(--red); font-size: clamp(40px, 6vw, 64px); line-height: 1; font-variant-numeric: tabular-nums; }
-.loopbox .day small { display: block; font-size: 11px; letter-spacing: .14em; color: var(--dim); font-family: var(--font-head); font-weight: 700; margin-top: 4px; }
-.loopbox .odds { font-size: 13px; color: var(--dim); line-height: 1.35; flex: 1; min-width: 180px; }
-.loopbox .odds b { color: var(--white); font-size: 22px; font-weight: 900; display: block; }
-.loopbox .msg { font-size: 15px; font-weight: 700; line-height: 1.35; min-height: 2.7em; margin: 10px 0 10px; }
-.loopbox .btns { display: flex; gap: 8px; flex-wrap: wrap; }
-.loopbox button { border: 1.5px solid var(--white); background: transparent; color: var(--white); border-radius: 3px; padding: 8px 12px; font-size: 13px; font-weight: 800; }
-.loopbox button.primary { background: var(--white); color: var(--black); }
-.loopbox button:disabled { opacity: .4; cursor: default; }
-.loopbox svg { display: block; width: 100%; margin-top: 12px; overflow: visible; }
-.loopbox svg text { font-family: var(--font-head); fill: var(--dim); font-size: 10.5px; }
-.stamp { position: absolute; z-index: 5; inset: 0; display: grid; place-content: center; pointer-events: none; opacity: 0; }
-.stamp span { font-weight: 900; font-size: clamp(60px, 14vw, 200px); letter-spacing: -.03em; color: var(--white); text-transform: uppercase; border: .06em solid var(--white); padding: 0 .2em; transform: rotate(-6deg); text-shadow: 0 0 30px rgba(0,0,0,.5); }
-.stamp.win span { color: var(--red); border-color: var(--red); }
-.stamp.show { opacity: 1; }
-@media (max-width: 600px) { .finale .pip { width: 44vw; } .loopbox { padding: 12px 14px; } .loopbox svg { display: none; } }
 
 /* Credits roll */
 .credits { height: auto; min-height: 100svh; padding: 90px 16px 80px; scroll-snap-align: start; }
@@ -159,7 +133,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 
 <script>
 /* ===== CONTENT: Sam edits everything in this block. Empty strings hide a line. =====
-   layout: "split" (the film plays, then the Trump clip, side by side) or "finale".
+   layout: "split" (the film plays, then the Trump clip, side by side).
    hold: seconds each side shows when it has no video yet (default 6).
    file: a video published beside the page, e.g. "clips/ex1-film.mp4". Until a file exists the scene
    falls back to YouTube's four preview frames for the clip named by yt. */
@@ -185,27 +159,14 @@ const CONTENT = {
     { id: "butler", layout: "split", kicker: "Exhibit 5", title: "Again. Again. Again.", sub: "", pos: "center",
       film:  { file: "clips/butler-film.mp4",  yt: "z1bVCdT5kso", tag: "Edge of Tomorrow, 2014", who: "Training: Cage (Tom Cruise) is shot, wakes and tries again", quote: "", credit: "Warner Bros., 2014" },
       trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } },
-    // The loop simulator: its own scene after exhibit 5, full-screen Butler clip, no inset.
-    { id: "loop", layout: "finale", kicker: "", title: "Live it again", sub: "", pos: "top",
-      trump: { file: "clips/loop-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } },
     { id: "reaction", layout: "split", kicker: "Exhibit 6", title: "Death holds no fear", sub: "", pos: "center",
       film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs, 2020", who: "Nyles (Andy Samberg) takes an arrow, then lies back on his float", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Hulu and Neon, 2020" },
       trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "About a minute after the shot, Trump rises and raises his fist", quote: "Fight! Fight! Fight!", credit: "RSBN broadcast, via the Internet Archive" } }
-  ],
-  finale: {
-    once: "Live July 13 again",
-    run: "Loop until it works",
-    reset: "New Trump",
-    start: "One head-aimed shot, fired at a random moment of the speech. Press to live the day.",
-    fail: "Not the ear. The day resets.",
-    win: "The bullet clips his ear and nothing else."
-  }
+  ]
 };
 /* ===== END CONTENT ===== */
 
 const FRAMES = __FRAMES__;
-const P = 1 / 990;  // Butler project headline: ear-only hit at a random moment of the speech (results/RESULTS.md).
-const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const film = document.getElementById("film"), dots = document.getElementById("dots");
 const players = [];  // { scene, v (video or null), frames, side }
 let paused = false, current = -1;
@@ -278,22 +239,12 @@ function sequencer(s, sc) {
 const sections = [];
 CONTENT.scenes.forEach((sc, idx) => {
   const s = document.createElement("section"); s.className = "scene " + sc.layout; s.id = sc.id; s.dataset.idx = idx + 1;
-  if (sc.layout === "finale") {
-    s.appendChild(media(sc.trump, "b", s, "trump"));
-    if (sc.film) { const pip = document.createElement("div"); pip.className = "pip"; pip.appendChild(media(sc.film, "a", s, "film")); s.appendChild(pip); const pv = pip.querySelector("video"); if (pv) pv.loop = true; }
-    s.insertAdjacentHTML("beforeend", overlay(sc) + `<div class="stamp" id="stamp"><span>Reset</span></div>
-      <div class="loopbox"><div class="row"><div class="day" id="loopDay">0001<small>JULY 13 NUMBER</small></div>
-      <div class="odds"><b>1 in 990</b>chance that one shot at a random moment of the speech hits only his ear. Even odds of a hit like that take about 690 tries.</div></div>
-      <div class="msg" id="loopMsg" aria-live="polite">${esc(CONTENT.finale.start)}</div>
-      <div class="btns"><button class="primary" id="once" type="button">${esc(CONTENT.finale.once)}</button><button id="run" type="button">${esc(CONTENT.finale.run)}</button><button id="reset" type="button">${esc(CONTENT.finale.reset)}</button></div>
-      <svg id="loopChart" viewBox="0 0 520 96" aria-label="Chance of at least one ear-only day by number of tries"></svg></div>`);
-  } else {
-    s.appendChild(media(sc.film, "a", s, "film"));
-    s.appendChild(media(sc.trump, "b", s, "trump"));
-    s.insertAdjacentHTML("beforeend", `<div class="seam"></div>`);
-    sequencer(s, sc);
-    s.insertAdjacentHTML("beforeend", overlay(sc));
-  }
+  s.appendChild(media(sc.film, "a", s, "film"));
+  s.appendChild(media(sc.trump, "b", s, "trump"));
+  s.insertAdjacentHTML("beforeend", `<div class="seam"></div>`);
+  sequencer(s, sc);
+  s.insertAdjacentHTML("beforeend", overlay(sc));
+
   film.appendChild(s); sections.push(s);
 });
 
@@ -336,55 +287,4 @@ document.getElementById("pauseBtn").addEventListener("click", e => {
   players.forEach(p => { if (!p.vEl) return; if (paused) p.vEl.pause(); else if (sections[current] === p.scene && (p.active || !p.scene.start)) p.vEl.play().catch(() => {}); });
 });
 
-// Finale: relive July 13 until the ear-only day. Its two clips loop on their own.
-players.filter(p => p.scene.classList.contains("finale")).forEach(p => { p.vEl.loop = true; });
-const FIN = CONTENT.scenes.find(s => s.layout === "finale");
-const fp = players.find(p => p.side === "trump" && p.scene.classList.contains("finale"));
-if (fp) fp.active = true;  // the full-screen Butler clip carries the sound; the inset stays muted
-const pipP = players.find(p => p.side === "film" && p.scene.classList.contains("finale"));
-let day = 0, done = false, timer = null; const runs = [];
-const dayEl = document.getElementById("loopDay"), msg = document.getElementById("loopMsg"), stamp = document.getElementById("stamp");
-const pad = n => String(n).padStart(4, "0");
-function flash(win) {
-  stamp.classList.toggle("win", win); stamp.querySelector("span").textContent = win ? "Day " + day.toLocaleString() : "Reset";
-  stamp.classList.add("show"); clearTimeout(flash.t); flash.t = setTimeout(() => stamp.classList.remove("show"), win ? 2600 : 260);
-}
-function rewindClips() { [fp, pipP].forEach(p => { if (p && p.vEl && p.v) { p.vEl.currentTime = 0; p.vEl.play().catch(() => {}); } }); }
-function liveOne(fast) {
-  day++; dayEl.firstChild.nodeValue = pad(day);
-  if (Math.random() < P) {
-    done = true; runs.push(day); stopRun();
-    msg.innerHTML = `<b>${esc(CONTENT.finale.win)}</b> Day ${day.toLocaleString()}. ${day <= 690 ? "An early escape: fewer than half of looped Trumps get out this fast." : day <= 2280 ? "A typical wait for a looped Trump." : "A long sentence: fewer than one looped Trump in ten waits this long."}`;
-    flash(true);
-    if (fp && fp.v) { fp.vEl.currentTime = Math.max(0, (FIN.trump.crack || 0) - 4); fp.vEl.play().catch(() => {}); }
-    document.getElementById("once").disabled = document.getElementById("run").disabled = true; chart(); return true;
-  }
-  if (!fast) { msg.textContent = `Day ${day.toLocaleString()}. ${CONTENT.finale.fail}`; flash(false); rewindClips(); }
-  return false;
-}
-function stopRun() { if (timer) { clearInterval(timer); timer = null; document.getElementById("run").textContent = CONTENT.finale.run; } }
-document.getElementById("once").addEventListener("click", () => { if (!done) { liveOne(false); chart(); } });
-document.getElementById("run").addEventListener("click", e => {
-  if (timer) { stopRun(); return; }
-  e.target.textContent = "Stop";
-  timer = setInterval(() => { for (let k = 0; k < (reduce ? 60 : 4); k++) if (liveOne(true)) return; msg.textContent = `Day ${day.toLocaleString()}. ${CONTENT.finale.fail}`; flash(false); rewindClips(); chart(); }, 90);
-});
-document.getElementById("reset").addEventListener("click", () => {
-  stopRun(); day = 0; done = false; dayEl.firstChild.nodeValue = pad(1); msg.textContent = CONTENT.finale.start;
-  document.getElementById("once").disabled = document.getElementById("run").disabled = false; chart(); rewindClips();
-});
-function chart() {
-  const svg = document.getElementById("loopChart"), W = 520, H = 96, l = 26, r = 8, t = 8, b = 20, X = 3000;
-  const xs = n => l + n / X * (W - l - r), ys = v => t + (1 - v) * (H - t - b), cum = n => 1 - Math.pow(1 - P, n);
-  let d = ""; for (let n = 0; n <= X; n += 20) d += (n ? "L" : "M") + xs(n).toFixed(1) + "," + ys(cum(n)).toFixed(1);
-  let h = `<line x1="${l}" x2="${W - r}" y1="${ys(0)}" y2="${ys(0)}" stroke="rgba(246,244,239,.35)"/><line x1="${l}" x2="${W - r}" y1="${ys(.5)}" y2="${ys(.5)}" stroke="rgba(246,244,239,.12)"/>
-    <text x="${l - 4}" y="${ys(0) + 3}" text-anchor="end">0</text><text x="${l - 4}" y="${ys(.5) + 3}" text-anchor="end">50%</text><text x="${l - 4}" y="${ys(1) + 3}" text-anchor="end">100%</text>
-    <text x="${W - r}" y="${H - 4}" text-anchor="end">3,000 tries</text><text x="${xs(690)}" y="${H - 4}" text-anchor="middle">690</text>
-    <line x1="${xs(690)}" x2="${xs(690)}" y1="${ys(.5)}" y2="${ys(0)}" stroke="rgba(246,244,239,.4)" stroke-dasharray="3 3"/>
-    <path d="${d}" fill="none" stroke="#ff3b30" stroke-width="2"/>`;
-  runs.forEach((n, i) => { const x = xs(Math.min(n, X)); h += `<line x1="${x}" x2="${x}" y1="${ys(0) - 6}" y2="${ys(0) + 6}" stroke="${i === runs.length - 1 ? "#f6f4ef" : "rgba(246,244,239,.45)"}" stroke-width="${i === runs.length - 1 ? 2.5 : 1.5}" stroke-linecap="round"/>`; });
-  if (!done && day) h += `<line x1="${xs(Math.min(day, X))}" x2="${xs(Math.min(day, X))}" y1="${ys(1)}" y2="${ys(0)}" stroke="#ffb340" stroke-width="1"/>`;
-  svg.innerHTML = h;
-}
-chart();
 </script>
