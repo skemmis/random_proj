@@ -14,6 +14,7 @@ ap.add_argument("inp"); ap.add_argument("out")
 ap.add_argument("--seed", type=float, default=0.5); ap.add_argument("--aspect", default="4:5")
 ap.add_argument("--keys", default=""); ap.add_argument("--start", type=float, default=0); ap.add_argument("--dur", type=float, default=0)
 ap.add_argument("--manual", action="store_true", help="ignore the tracker and pan linearly between --keys")
+ap.add_argument("--smooth", type=float, default=0.8, help="seconds of smoothing; larger pans less")
 ap.add_argument("--height", type=int, default=960); ap.add_argument("--crf", type=int, default=24)
 a = ap.parse_args()
 model = str(pathlib.Path(__file__).with_name("face_detection_yunet_2023mar.onnx"))
@@ -45,7 +46,7 @@ for k in filter(None, a.keys.split(",")):  # manual centres win within half a se
 if a.manual and a.keys:
     kt, kx = zip(*[map(float, k.split(":")) for k in a.keys.split(",")])
     xs = np.interp(np.arange(len(xs)) / fps, kt, np.array(kx) * W)
-win = int(fps * 0.8) | 1; pad = np.pad(xs, win, mode="edge")
+win = int(fps * a.smooth) | 1; pad = np.pad(xs, win, mode="edge")
 sm = np.convolve(pad, np.ones(win) / win, mode="same")[win:-win]
 left = np.clip(sm - cw / 2, 0, W - cw).astype(int)
 

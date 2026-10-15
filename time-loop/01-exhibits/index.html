@@ -182,9 +182,12 @@ const CONTENT = {
     { id: "lines", layout: "split", kicker: "Exhibit 4", title: "Same day, same lines", sub: "", pos: "center",
       film:  { file: "clips/lines-film.mp4",  yt: "XqSYC_vwhDg", tag: "Groundhog Day, 1993", who: "Ned Ryerson (Stephen Tobolowsky) greets Phil, every morning", quote: "Phil? Phil Connors? I thought that was you!", credit: "Columbia Pictures, 1993" },
       trump: { file: "clips/lines-trump.mp4", yt: "bqbmTnr9NSE", tag: "Four rallies, 2023 to 2024", who: "The same riff about sharks and electric boats, in Anaheim, Ankeny, Las Vegas and Grand Rapids", quote: "I'll take electrocution every time.", credit: "C-SPAN, via the Internet Archive TV News Archive" } },
-    { id: "butler", layout: "finale", kicker: "Exhibit 5", title: "Again. Again. Again.", sub: "", pos: "top",
+    { id: "butler", layout: "split", kicker: "Exhibit 5", title: "Again. Again. Again.", sub: "", pos: "center",
       film:  { file: "clips/butler-film.mp4",  yt: "z1bVCdT5kso", tag: "Edge of Tomorrow, 2014", who: "Training: Cage (Tom Cruise) is shot, wakes and tries again", quote: "", credit: "Warner Bros., 2014" },
       trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } },
+    // The loop simulator: its own scene after exhibit 5, full-screen Butler clip, no inset.
+    { id: "loop", layout: "finale", kicker: "", title: "Live it again", sub: "", pos: "top",
+      trump: { file: "clips/loop-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } },
     { id: "reaction", layout: "split", kicker: "Exhibit 6", title: "Death holds no fear", sub: "", pos: "center",
       film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs, 2020", who: "Nyles (Andy Samberg) takes an arrow, then lies back on his float", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Hulu and Neon, 2020" },
       trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "About a minute after the shot, Trump rises and raises his fist", quote: "Fight! Fight! Fight!", credit: "RSBN broadcast, via the Internet Archive" } }
@@ -277,7 +280,7 @@ CONTENT.scenes.forEach((sc, idx) => {
   const s = document.createElement("section"); s.className = "scene " + sc.layout; s.id = sc.id; s.dataset.idx = idx + 1;
   if (sc.layout === "finale") {
     s.appendChild(media(sc.trump, "b", s, "trump"));
-    const pip = document.createElement("div"); pip.className = "pip"; pip.appendChild(media(sc.film, "a", s, "film")); s.appendChild(pip); const pv = pip.querySelector("video"); if (pv) pv.loop = true;  // the training montage loops under every relived day
+    if (sc.film) { const pip = document.createElement("div"); pip.className = "pip"; pip.appendChild(media(sc.film, "a", s, "film")); s.appendChild(pip); const pv = pip.querySelector("video"); if (pv) pv.loop = true; }
     s.insertAdjacentHTML("beforeend", overlay(sc) + `<div class="stamp" id="stamp"><span>Reset</span></div>
       <div class="loopbox"><div class="row"><div class="day" id="loopDay">0001<small>JULY 13 NUMBER</small></div>
       <div class="odds"><b>1 in 990</b>chance that one shot at a random moment of the speech hits only his ear. Even odds of a hit like that take about 690 tries.</div></div>
@@ -305,7 +308,7 @@ credits.innerHTML = `<div class="inner"><h3>The Butler analysis</h3><div class="
   <h3>Clips</h3><ul id="clipList"></ul>
   <p style="margin-top:22px">Clips are shown for commentary in a personal, non-commercial project and belong to their owners. Where a clip has not been supplied yet, the scene shows the four preview frames YouTube makes for it.</p></div>`;
 film.appendChild(credits); sections.push(credits);
-CONTENT.scenes.forEach(sc => [sc.film, sc.trump].forEach(c => document.getElementById("clipList").insertAdjacentHTML("beforeend", `<li>${esc(c.tag)}: ${esc(c.credit)} · <a href="https://www.youtube.com/watch?v=${c.yt}" target="_blank" rel="noopener">youtube.com/watch?v=${c.yt}</a></li>`)));
+CONTENT.scenes.filter(sc => sc.film).forEach(sc => [sc.film, sc.trump].forEach(c => document.getElementById("clipList").insertAdjacentHTML("beforeend", `<li>${esc(c.tag)}: ${esc(c.credit)} · <a href="https://www.youtube.com/watch?v=${c.yt}" target="_blank" rel="noopener">youtube.com/watch?v=${c.yt}</a></li>`)));
 
 sections.forEach((s, i) => dots.insertAdjacentHTML("beforeend", `<a href="#${s.id}" aria-label="Scene ${i + 1}"></a>`));
 const dotEls = [...dots.children];
