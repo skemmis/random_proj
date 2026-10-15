@@ -197,17 +197,36 @@ function enter(i) {
   filmVids.forEach(v => { if (v.closest(".cut").id === id) { v.currentTime = 0; v.muted = !sound; v.play().catch(() => {}); } else v.pause(); });
 }
 
+// Hold each clip (Sam, Oct 15): scrolling asks for the next shot, but a shot with a clip plays to its end first.
+// Scroll fast and the shots queue up and play in order; scroll back and the teaser jumps back at once.
+let target = -1, enteredAt = 0;
+function done(i) {
+  const id = CUTS[i][2], el = $(id), age = performance.now() - enteredAt;
+  if (age < 450) return false;
+  if (id === "c-ear") return resetDone && age > (EAR[earRep] && EAR[earRep][4] ? 1500 : 900);
+  if (id === "c-fist") return fist.paused;
+  const v = id === "c-podium" ? podium : el.classList.contains("film") ? el.querySelector("video") : null;
+  if (v) return v.ended || v.paused && age > 1500 || (v.duration && v.currentTime >= v.duration - .08);
+  return age > 700;
+}
+function step() {
+  if (target < 0) return;
+  if (cur < 0 || target < cur) { cur = target; enteredAt = performance.now(); enter(cur); return; }
+  if (target > cur && done(cur)) { cur++; enteredAt = performance.now(); enter(cur); }
+}
+
 function frame() {
+  step();
   const p = progress();
   if (p !== last) {
     last = p;
     const i = CUTS.findIndex(c => p >= c[0] && p < c[1]);
-    if (i !== cur && i >= 0) { cur = i; enter(i); }
+    if (i >= 0) target = i;
     $("hint").style.opacity = p < .01 ? 1 : 0;
     // the first notch flips the clock
     $("t0").textContent = p < .045 ? "5:59" : "6:00";
     // stills drift in as you scroll through them
-    if (i >= 0) { const [a, b, id] = CUTS[i], k = (p - a) / (b - a), img = $(id).querySelector(".still img, img");
+    if (cur >= 0) { const [a, b, id] = CUTS[cur], k = Math.min(1, Math.max(0, (p - a) / (b - a))), img = $(id).querySelector(".still img, img");
       if ($(id).classList.contains("still") && img && !REDUCED) img.style.transform = `scale(${(1.04 + .08 * k).toFixed(4)})`;
       if (id === "c-fist") {
         // hold on the raised fist; "Is Donald Trump", then "stuck in a time loop?"; then the still scrolls up and the collage rises under the question
