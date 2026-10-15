@@ -1,19 +1,19 @@
 [
  {
   "kind": "v",
-  "clip": "butler-speech",
-  "i": 20.0,
-  "o": 40.0,
+  "clip": "alarm-day1",
+  "i": 4.0,
+  "o": 10.0,
   "at": 0.0,
-  "mute": false,
+  "mute": true,
   "part": "pass1"
  },
  {
   "kind": "v",
-  "clip": "ned-day1",
-  "i": 2.0,
-  "o": 14.0,
-  "at": 20.0,
+  "clip": "butler-speech",
+  "i": 28.5,
+  "o": 38.0,
+  "at": 6.0,
   "mute": false,
   "part": "pass1"
  },
@@ -21,8 +21,26 @@
   "kind": "v",
   "clip": "electro-anaheim",
   "i": 0.0,
-  "o": 17.0,
-  "at": 32.0,
+  "o": 2.466666666666667,
+  "at": 15.5,
+  "mute": false,
+  "part": "pass1"
+ },
+ {
+  "kind": "v",
+  "clip": "electro-anaheim",
+  "i": 8.1,
+  "o": 11.3,
+  "at": 17.96666666666667,
+  "mute": false,
+  "part": "pass1"
+ },
+ {
+  "kind": "v",
+  "clip": "electro-anaheim",
+  "i": 12.85,
+  "o": 16.316666666666666,
+  "at": 21.166666666666668,
   "mute": false,
   "part": "pass1"
  },
@@ -30,17 +48,17 @@
   "kind": "v",
   "clip": "no-tomorrow",
   "i": 2.0,
-  "o": 18.5,
-  "at": 49.0,
+  "o": 12.0,
+  "at": 24.633333333333333,
   "mute": false,
   "part": "pass1"
  },
  {
   "kind": "v",
   "clip": "fifth-avenue",
-  "i": 7.0,
+  "i": 8.2,
   "o": 13.0,
-  "at": 65.5,
+  "at": 34.63333333333333,
   "mute": false,
   "part": "pass1"
  },
@@ -48,26 +66,26 @@
   "kind": "v",
   "clip": "find-me",
   "i": 5.0,
-  "o": 14.3,
-  "at": 71.5,
+  "o": 9.0,
+  "at": 39.43333333333333,
   "mute": false,
   "part": "pass1"
  },
  {
   "kind": "v",
-  "clip": "alarm-day1",
-  "i": 4.0,
-  "o": 16.0,
-  "at": 80.8,
+  "clip": "find-me",
+  "i": 11.6,
+  "o": 13.5,
+  "at": 43.43333333333333,
   "mute": false,
   "part": "pass1"
  },
  {
   "kind": "v",
   "clip": "butler-speech",
-  "i": 28.5,
-  "o": 34.0,
-  "at": 92.8,
+  "i": 30.0,
+  "o": 33.5,
+  "at": 45.33333333333333,
   "mute": false,
   "part": "pass2"
  },
@@ -76,63 +94,27 @@
   "clip": "skull-path",
   "i": 1.0,
   "o": 4.0,
-  "at": 98.3,
+  "at": 48.83333333333333,
   "mute": true,
   "part": "pass2"
  },
  {
   "kind": "a",
   "clip": "butler-speech",
-  "i": 34.0,
-  "o": 37.0,
-  "at": 101.3,
+  "i": 33.5,
+  "o": 36.5,
+  "at": 48.83333333333333,
   "gain": -6,
   "fade": 0,
-  "part": "pass2"
- },
- {
-  "kind": "v",
-  "clip": "ned-day2",
-  "i": 25.0,
-  "o": 31.0,
-  "at": 101.3,
-  "mute": false,
+  "fadeout": 0,
   "part": "pass2"
  },
  {
   "kind": "v",
   "clip": "electro-grandrapids",
-  "i": 8.5,
-  "o": 12.7,
-  "at": 107.3,
-  "mute": false,
-  "part": "pass2"
- },
- {
-  "kind": "v",
-  "clip": "word-ear",
-  "i": 0.5,
-  "o": 2.5,
-  "at": 111.5,
-  "mute": true,
-  "part": "pass2"
- },
- {
-  "kind": "a",
-  "clip": "no-tomorrow",
-  "i": 4.0,
-  "o": 6.0,
-  "at": 113.5,
-  "gain": -3,
-  "fade": 0,
-  "part": "pass2"
- },
- {
-  "kind": "v",
-  "clip": "no-tomorrow",
-  "i": 6.0,
-  "o": 10.0,
-  "at": 113.5,
+  "i": 9.2,
+  "o": 12.299999999999999,
+  "at": 51.83333333333333,
   "mute": false,
   "part": "pass2"
  },
@@ -140,27 +122,28 @@
   "kind": "v",
   "clip": "head-turn",
   "i": 1.0,
-  "o": 4.0,
-  "at": 117.5,
+  "o": 3.5,
+  "at": 54.93333333333333,
   "mute": true,
   "part": "pass2"
  },
  {
   "kind": "a",
-  "clip": "fifth-avenue",
-  "i": 8.0,
-  "o": 11.0,
-  "at": 120.5,
+  "clip": "no-tomorrow",
+  "i": 4.0,
+  "o": 6.5,
+  "at": 54.93333333333333,
   "gain": -3,
   "fade": 0,
+  "fadeout": 0,
   "part": "pass2"
  },
  {
   "kind": "v",
-  "clip": "fifth-avenue",
-  "i": 11.0,
-  "o": 12.7,
-  "at": 120.5,
+  "clip": "no-tomorrow",
+  "i": 6.0,
+  "o": 8.0,
+  "at": 57.43333333333333,
   "mute": false,
   "part": "pass2"
  },
@@ -169,72 +152,45 @@
   "clip": "never-seen",
   "i": 14.8,
   "o": 16.900000000000002,
-  "at": 122.2,
+  "at": 59.43333333333333,
   "mute": false,
   "part": "pass2"
  },
  {
   "kind": "v",
-  "clip": "word-head",
-  "i": 0.5,
-  "o": 2.0,
-  "at": 124.3,
+  "clip": "close-gap",
+  "i": 1.0,
+  "o": 3.0,
+  "at": 61.53333333333333,
   "mute": true,
   "part": "pass2"
  },
  {
   "kind": "a",
-  "clip": "find-me",
-  "i": 3.5,
-  "o": 5.0,
-  "at": 125.8,
-  "gain": -3,
-  "fade": 0,
-  "part": "pass2"
- },
- {
-  "kind": "v",
   "clip": "find-me",
   "i": 5.0,
   "o": 7.0,
-  "at": 125.8,
-  "mute": false,
-  "part": "pass2"
- },
- {
-  "kind": "v",
-  "clip": "word-bullet",
-  "i": 0.5,
-  "o": 2.0,
-  "at": 127.8,
-  "mute": true,
-  "part": "pass2"
- },
- {
-  "kind": "a",
-  "clip": "find-me",
-  "i": 7.0,
-  "o": 8.5,
-  "at": 129.3,
+  "at": 61.53333333333333,
   "gain": -3,
   "fade": 0,
+  "fadeout": 0,
   "part": "pass2"
  },
  {
   "kind": "v",
   "clip": "alarm-day2",
   "i": 4.5,
-  "o": 9.0,
-  "at": 129.3,
+  "o": 8.0,
+  "at": 63.53333333333333,
   "mute": false,
   "part": "pass2"
  },
  {
   "kind": "v",
   "clip": "daze-cabinet",
-  "i": 11.5,
-  "o": 15.0,
-  "at": 133.8,
+  "i": 12.0,
+  "o": 14.5,
+  "at": 67.03333333333333,
   "mute": false,
   "part": "pass2"
  },
@@ -242,17 +198,8 @@
   "kind": "v",
   "clip": "butler-speech",
   "i": 30.9,
-  "o": 31.599999999999998,
-  "at": 137.3,
-  "mute": false,
-  "part": "pass3"
- },
- {
-  "kind": "v",
-  "clip": "ned-day1",
-  "i": 9.0,
-  "o": 9.5,
-  "at": 138.0,
+  "o": 31.5,
+  "at": 69.53333333333333,
   "mute": false,
   "part": "pass3"
  },
@@ -260,18 +207,9 @@
   "kind": "v",
   "clip": "electro-ankeny",
   "i": 10.0,
-  "o": 11.0,
-  "at": 138.5,
+  "o": 10.9,
+  "at": 70.13333333333333,
   "mute": false,
-  "part": "pass3"
- },
- {
-  "kind": "v",
-  "clip": "word-990",
-  "i": 0.8,
-  "o": 1.4,
-  "at": 139.5,
-  "mute": true,
   "part": "pass3"
  },
  {
@@ -279,8 +217,17 @@
   "clip": "no-tomorrow",
   "i": 16.5,
   "o": 17.2,
-  "at": 140.1,
+  "at": 71.03333333333333,
   "mute": false,
+  "part": "pass3"
+ },
+ {
+  "kind": "v",
+  "clip": "skull-path",
+  "i": 2.0,
+  "o": 2.5,
+  "at": 71.73333333333333,
+  "mute": true,
   "part": "pass3"
  },
  {
@@ -288,17 +235,8 @@
   "clip": "fifth-avenue",
   "i": 9.8,
   "o": 10.4,
-  "at": 140.79999999999998,
+  "at": 72.23333333333333,
   "mute": false,
-  "part": "pass3"
- },
- {
-  "kind": "v",
-  "clip": "close-gap",
-  "i": 1.5,
-  "o": 2.0,
-  "at": 141.39999999999998,
-  "mute": true,
   "part": "pass3"
  },
  {
@@ -306,7 +244,7 @@
   "clip": "find-me",
   "i": 5.0,
   "o": 5.6,
-  "at": 141.89999999999998,
+  "at": 72.83333333333333,
   "mute": false,
   "part": "pass3"
  },
@@ -315,7 +253,7 @@
   "clip": "alarm-late",
   "i": 3.0,
   "o": 3.6,
-  "at": 142.49999999999997,
+  "at": 73.43333333333332,
   "mute": false,
   "part": "pass3"
  },
@@ -324,7 +262,7 @@
   "clip": "daze-coal",
   "i": 11.6,
   "o": 12.2,
-  "at": 143.09999999999997,
+  "at": 74.03333333333332,
   "mute": false,
   "part": "pass3"
  },
@@ -333,7 +271,7 @@
   "clip": "shove",
   "i": 1.2,
   "o": 1.7999999999999998,
-  "at": 143.69999999999996,
+  "at": 74.63333333333331,
   "mute": false,
   "part": "pass3"
  },
@@ -342,16 +280,25 @@
   "clip": "never-seen",
   "i": 1.1,
   "o": 1.7000000000000002,
-  "at": 144.29999999999995,
+  "at": 75.2333333333333,
   "mute": false,
   "part": "pass3"
  },
  {
   "kind": "v",
-  "clip": "chart-scrub",
-  "i": 4.0,
-  "o": 4.5,
-  "at": 144.89999999999995,
+  "clip": "head-turn",
+  "i": 2.5,
+  "o": 3.0,
+  "at": 75.8333333333333,
+  "mute": true,
+  "part": "pass3"
+ },
+ {
+  "kind": "v",
+  "clip": "close-gap",
+  "i": 1.5,
+  "o": 1.9,
+  "at": 76.3333333333333,
   "mute": true,
   "part": "pass3"
  },
@@ -360,16 +307,7 @@
   "clip": "butler-speech",
   "i": 31.0,
   "o": 31.4,
-  "at": 145.39999999999995,
-  "mute": false,
-  "part": "pass3"
- },
- {
-  "kind": "v",
-  "clip": "ned-day2",
-  "i": 27.5,
-  "o": 27.9,
-  "at": 145.79999999999995,
+  "at": 76.7333333333333,
   "mute": false,
   "part": "pass3"
  },
@@ -378,7 +316,7 @@
   "clip": "alarm-day2",
   "i": 5.8,
   "o": 6.2,
-  "at": 146.19999999999996,
+  "at": 77.13333333333331,
   "mute": false,
   "part": "pass3"
  },
@@ -387,7 +325,7 @@
   "clip": "electro-vegas",
   "i": 11.6,
   "o": 12.0,
-  "at": 146.59999999999997,
+  "at": 77.53333333333332,
   "mute": false,
   "part": "pass3"
  },
@@ -396,13 +334,13 @@
   "clip": "didnt-sleep",
   "i": 3.0,
   "o": 3.4,
-  "at": 146.99999999999997,
+  "at": 77.93333333333332,
   "mute": false,
   "part": "pass3"
  },
  {
   "kind": "grid",
-  "d": 2.0,
+  "d": 1.6,
   "src": [
    [
     "butler-speech",
@@ -421,7 +359,7 @@
     5.0
    ]
   ],
-  "at": 147.39999999999998,
+  "at": 78.33333333333333,
   "part": "pass3"
  },
  {
@@ -429,34 +367,24 @@
   "clip": "alarm-smash",
   "i": 3.8,
   "o": 5.0,
-  "at": 149.39999999999998,
+  "at": 79.93333333333332,
   "mute": false,
-  "part": "pass3"
- },
- {
-  "kind": "a",
-  "clip": "alarm-day1",
-  "i": 6.0,
-  "o": 19.299999999999955,
-  "at": 137.3,
-  "gain": -4,
-  "fade": 13.299999999999955,
   "part": "pass3"
  },
  {
   "kind": "a",
   "clip": "butler-speech",
   "i": 31.3,
-  "o": 44.59999999999995,
-  "at": 137.3,
+  "o": 42.89999999999999,
+  "at": 69.53333333333333,
   "gain": -8,
-  "fade": 9.309999999999967,
+  "fade": 8.119999999999996,
   "part": "pass3"
  },
  {
   "kind": "gap",
   "d": 1.0,
-  "at": 150.59999999999997,
+  "at": 81.13333333333333,
   "part": "end"
  },
  {
@@ -464,8 +392,19 @@
   "clip": "butler-fist",
   "i": 4.0,
   "o": 10.0,
-  "at": 151.59999999999997,
-  "mute": false,
+  "at": 82.13333333333333,
+  "mute": true,
+  "part": "end"
+ },
+ {
+  "kind": "a",
+  "clip": "butler-fist",
+  "i": 4.0,
+  "o": 10.0,
+  "at": 82.13333333333333,
+  "gain": -14,
+  "fade": 0,
+  "fadeout": 0,
   "part": "end"
  },
  {
@@ -473,7 +412,16 @@
   "clip": "butler-fist",
   "i": 10.0,
   "d": 3.0,
-  "at": 157.59999999999997,
+  "at": 88.13333333333333,
   "part": "end"
+ },
+ {
+  "kind": "bed",
+  "clip": "song-bed",
+  "up1": 6.0,
+  "up2": 82.13333333333333,
+  "total": 91.13333333333333,
+  "duck": -16,
+  "part": "all"
  }
 ]
