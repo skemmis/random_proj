@@ -29,3 +29,14 @@ The scene layouts (side by side, or a draggable wipe) and all on-screen text are
 Trump clips are pulled from the Internet Archive TV News Archive (archive.org/download/ID/ID.mp4?t=START/END, pieces under ~10 minutes), found with the GDELT TV API (api.gdeltproject.org/api/v2/tv/tv, mode=clipgallery). All six Trump slots are filled; the six film slots wait on Sam.
 
 Film links checked October 15, 2026, against YouTube's own title and uploader for each video (its oEmbed service). YouTube was refusing page loads from this environment that day, so the clip lengths and descriptions were not read and the keep points are cues from the dialogue, not timestamps.
+
+## The teaser (00-teaser/, added October 15, 2026)
+
+The teaser before the opening uses Trump footage already in hand (the RSBN Butler broadcast and the five tall Trump clips) and, for the films, YouTube still frames until Sam's clips arrive. Two more film clips would replace stills there:
+
+| Slot | Scene | Suggested source |
+|---|---|---|
+| alarm-film | Teaser, each morning | Groundhog Day: the clock radio flips from 5:59 to 6:00 and "I Got You Babe" starts. Movieclips upload: https://www.youtube.com/watch?v=hQCG2AwzTxA ("Groundhog Day" scene, title confirmed by YouTube's oEmbed). Keep the flip and the first bars of the song, about 5 s. |
+| wake-film | Teaser, each morning | Edge of Tomorrow: Cage jolts awake on the tarmac at Heathrow, "On your feet, maggot!" It appears in the training clip already on the list (https://www.youtube.com/watch?v=z1bVCdT5kso); keep two or three of the wake-ups, about 1 s each. |
+
+Until then the page draws its own clock radio and uses YouTube stills for Phil, Cage and Ned.

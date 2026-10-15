@@ -1,0 +1,229 @@
+<title>Stuck in the Loop</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* A teaser cut by the scroll wheel: one fixed screen, and every notch of scrolling is an edit.
+   It shares the night palette and narrow labels of "Butler, 6:11 p.m.", which it hands off to. Single dark look by choice. */
+:root {
+  --night: #0b0d10;
+  --paper: #f3efe6;
+  --dim: #b4afa4;
+  --shot: #f0583c;
+  --led: #ff3b2f;
+  --rule: rgba(243, 239, 230, .28);
+  --font-label: "Archivo Narrow", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --font-head: "Archivo", "Franklin Gothic Medium", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-clock: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html { background: var(--night); }
+body { background: var(--night); color: var(--paper); font-family: var(--font-text); }
+#track { height: 1300vh; }
+#stage { position: fixed; inset: 0; overflow: hidden; background: #000; }
+.cut { position: absolute; inset: 0; opacity: 0; visibility: hidden; }
+.cut.on { opacity: 1; visibility: visible; }
+.cut img, .cut video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cut.still img { filter: contrast(1.12) saturate(.78) brightness(.92); transform-origin: 50% 40%; will-change: transform; }
+/* film grain and a vignette over everything photographic */
+#grain { position: absolute; inset: -50%; pointer-events: none; opacity: .13; mix-blend-mode: overlay; z-index: 5; }
+#vig { position: absolute; inset: 0; pointer-events: none; z-index: 5; background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,.6) 100%); }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 8; }
+#redflash { position: absolute; inset: 0; background: var(--shot); mix-blend-mode: multiply; opacity: 0; pointer-events: none; z-index: 7; }
+
+/* the clock radio */
+.radio { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 2vh; background: #050505; }
+.radio .face { display: flex; align-items: baseline; gap: .12em; padding: .18em .42em; border-radius: .14em; background: #0c0a09; box-shadow: inset 0 0 0 2px #1d1916, inset 0 .1em .4em rgba(0,0,0,.9), 0 2vh 6vh rgba(0,0,0,.8); }
+.radio .t { font-family: var(--font-clock); font-weight: 600; font-size: clamp(88px, 24vw, 340px); line-height: 1; color: var(--led); text-shadow: 0 0 .08em rgba(255,59,47,.9), 0 0 .35em rgba(255,59,47,.45); font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.radio .ap { font-family: var(--font-label); font-weight: 700; font-size: clamp(14px, 2.6vw, 34px); color: var(--led); opacity: .85; letter-spacing: .08em; align-self: flex-start; margin-top: .6em; }
+.radio .sub { font-family: var(--font-label); font-weight: 600; font-size: clamp(12px, 1.5vw, 18px); letter-spacing: .22em; text-transform: uppercase; color: var(--dim); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+
+/* the day counter and the reset stamp, in the corner and the middle */
+#hud { position: absolute; z-index: 9; top: calc(env(safe-area-inset-top, 0px) + 16px); left: max(16px, env(safe-area-inset-left, 0px)); font-family: var(--font-clock); font-weight: 600; font-size: clamp(12px, 1.3vw, 16px); letter-spacing: .12em; color: var(--paper); background: rgba(0,0,0,.55); border: 1px solid var(--rule); padding: .45em .7em; border-radius: 2px; opacity: 0; transition: opacity .3s; font-variant-numeric: tabular-nums; }
+#hud.on { opacity: 1; }
+#hud b { color: var(--led); font-weight: 600; }
+#stamp { position: absolute; z-index: 9; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-8deg) scale(1.4); font-family: var(--font-head); font-weight: 900; font-size: clamp(56px, 15vw, 220px); letter-spacing: .02em; color: var(--shot); border: .07em solid var(--shot); padding: .02em .22em; line-height: 1; opacity: 0; mix-blend-mode: screen; pointer-events: none; }
+#stamp.hit { animation: stamp .9s cubic-bezier(.2,.9,.2,1) forwards; }
+@keyframes stamp { 0% { opacity: 0; transform: translate(-50%, -50%) rotate(-8deg) scale(1.6); } 12% { opacity: 1; transform: translate(-50%, -50%) rotate(-8deg) scale(1); } 75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -50%) rotate(-8deg) scale(1); } }
+.cap { position: absolute; z-index: 6; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 7vh); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); font-family: var(--font-label); font-weight: 600; font-size: clamp(11px, 1.2vw, 14px); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); text-shadow: 0 1px 3px #000; }
+
+/* the question, over a wall of everything at once */
+#wall { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px; background: #000; transform-origin: 50% 50%; }
+#wall > * { position: relative; overflow: hidden; }
+#wall img, #wall video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.35) contrast(1.1) brightness(.62); }
+#wall img { filter: grayscale(.35) contrast(1.1) brightness(.5); }
+#q { position: absolute; z-index: 6; inset: 0; display: grid; place-items: center; text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); pointer-events: none; }
+#q h1 { margin: 0; font-family: var(--font-head); font-weight: 900; font-size: clamp(40px, 8.4vw, 132px); line-height: .92; letter-spacing: -.025em; text-transform: uppercase; text-wrap: balance; max-width: 13ch; text-shadow: 0 .04em .3em rgba(0,0,0,.6); }
+#q h1 span { display: block; opacity: 0; transform: translateY(.25em); transition: opacity .5s, transform .6s cubic-bezier(.2,.8,.2,1); }
+#q h1 span.in { opacity: 1; transform: none; }
+#q h1 em { font-style: normal; color: var(--shot); }
+
+/* the hand-off */
+#end .radio { background: var(--night); }
+#go { display: inline-flex; align-items: center; gap: .6em; margin-top: 2vh; font-family: var(--font-label); font-weight: 700; font-size: clamp(15px, 1.8vw, 21px); letter-spacing: .1em; text-transform: uppercase; color: var(--night); background: var(--paper); text-decoration: none; padding: .8em 1.5em; border-radius: 999px; opacity: 0; transition: opacity .5s; }
+#go.on { opacity: 1; }
+#go:focus-visible { outline: 2px solid var(--shot); outline-offset: 3px; }
+
+#hint { position: absolute; z-index: 9; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 24px); transform: translateX(-50%); font-family: var(--font-label); font-weight: 600; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); display: grid; justify-items: center; gap: 8px; transition: opacity .4s; }
+#hint i { width: 1px; height: 34px; background: linear-gradient(var(--dim), transparent); animation: drop 1.6s ease-in-out infinite; }
+@keyframes drop { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+#snd { position: absolute; z-index: 9; top: calc(env(safe-area-inset-top, 0px) + 16px); right: max(16px, env(safe-area-inset-right, 0px)); font-family: var(--font-label); font-weight: 700; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--paper); background: rgba(0,0,0,.55); border: 1px solid var(--rule); border-radius: 999px; padding: .5em .9em; cursor: pointer; }
+#snd[aria-pressed="true"] { background: var(--paper); color: var(--night); }
+
+/* one prompt for sound, first thing on the page */
+#gate { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; align-content: center; gap: 16px; background: rgba(5,5,5,.9); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); }
+#gate[hidden] { display: none; }
+#gate p { margin: 0; font-family: var(--font-label); font-size: clamp(12px, 1.2vw, 15px); color: var(--dim); }
+#gate .k { font-family: var(--font-clock); font-size: 13px; letter-spacing: .16em; text-transform: uppercase; color: var(--led); }
+#soundOn { display: inline-flex; align-items: center; gap: .7em; font-family: var(--font-label); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; font-size: clamp(18px, 2.6vw, 28px); color: var(--night); background: var(--paper); border: 0; border-radius: 999px; padding: .85em 1.6em; cursor: pointer; animation: pulse 2s ease-out infinite; }
+#soundOn svg { width: 1.2em; height: 1.2em; }
+#soundOff { font-family: var(--font-label); font-size: 14px; color: var(--dim); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+#gate button:focus-visible, #snd:focus-visible { outline: 2px solid var(--shot); outline-offset: 3px; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(243,239,230,.45); } 100% { box-shadow: 0 0 0 24px rgba(243,239,230,0); } }
+@media (prefers-reduced-motion: reduce) { #soundOn, #hint i { animation: none; } #stamp.hit { animation-duration: 1.4s; } }
+</style>
+
+<div id="gate" role="dialog" aria-modal="true" aria-label="Sound">
+  <span class="k">This feature has sound</span>
+  <button id="soundOn" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Turn on sound</button>
+  <p>It includes the sound of gunfire.</p>
+  <button id="soundOff" type="button">Continue without sound</button>
+</div>
+
+<div id="track"></div>
+<div id="stage">
+  <div class="cut" id="c-dark"><div class="radio"><div class="face"><span class="t" id="t0">5:59</span><span class="ap">AM</span></div></div></div>
+  <div class="cut" id="c-clock"><div class="radio"><div class="face"><span class="t">6:00</span><span class="ap">AM</span></div><div class="sub" id="clockSub"></div></div></div>
+  <div class="cut still" id="c-phil"><img src="media/phil-steps.jpg" alt="Bill Murray as Phil Connors in Groundhog Day"></div>
+  <div class="cut still" id="c-wake"><img src="media/cruise-wake.jpg" alt="Tom Cruise as Cage in Edge of Tomorrow" style="object-position: 40% 30%"></div>
+  <div class="cut still" id="c-forecast"><img src="media/phil-forecast.jpg" alt="Phil Connors giving his forecast in Groundhog Day" style="object-position: 30% 30%"></div>
+  <div class="cut still" id="c-down"><img src="media/cruise-down.jpg" alt="Cage, killed again, in Edge of Tomorrow" style="object-position: 62% 40%"></div>
+  <div class="cut still" id="c-ned"><img src="media/ned.jpg" alt="Ned Ryerson greeting Phil in Groundhog Day" style="object-position: 45% 30%"></div>
+  <div class="cut still" id="c-train"><img src="media/train.jpg" alt="Phil's truck meets a train in Groundhog Day"></div>
+  <div class="cut" id="c-podium"><video id="podium" src="media/podium.mp4" muted playsinline preload="auto" style="object-position: 58% 30%"></video><div class="cap">Butler, Pa. · July 13, 2024</div></div>
+  <div class="cut" id="c-ear"><video id="ear" src="media/ear.mp4" muted playsinline preload="auto" style="object-position: 56% 30%"></video></div>
+  <div class="cut" id="c-wall">
+    <div id="wall" class="cut on" style="position:absolute;inset:0">
+      <div><video src="media/wall-rules.mp4" muted loop playsinline preload="auto"></video></div>
+      <div><img src="media/phil-steps.jpg" alt=""></div>
+      <div><video src="media/wall-consequences.mp4" muted loop playsinline preload="auto"></video></div>
+      <div><img src="media/cruise-down.jpg" alt="" style="object-position: 62% 40%"></div>
+      <div><img src="media/ned.jpg" alt="" style="object-position: 45% 30%"></div>
+      <div><video src="media/wall-ennui.mp4" muted loop playsinline preload="auto"></video></div>
+      <div><img src="media/phil-forecast.jpg" alt="" style="object-position: 30% 30%"></div>
+      <div><video src="media/wall-reaction.mp4" muted loop playsinline preload="auto"></video></div>
+    </div>
+    <div id="q"><h1 id="qText"></h1></div>
+  </div>
+  <div class="cut" id="end"><div class="radio"><div class="face"><span class="t" id="tEnd">6:00</span><span class="ap" id="apEnd">AM</span></div><div class="sub" id="endSub"></div><a id="go" href="https://claude.ai/artifact/1B7vZ6Sq6uXeL6fVtG1ZHU" target="_blank" rel="noopener"></a></div></div>
+
+  <canvas id="grain" aria-hidden="true"></canvas>
+  <div id="vig"></div>
+  <div id="redflash"></div>
+  <div id="flash"></div>
+  <div id="hud">DAY <b id="day">0001</b></div>
+  <div id="stamp" aria-hidden="true">RESET</div>
+  <button id="snd" type="button" aria-pressed="false">Sound off</button>
+  <div id="hint"><span id="hintText"></span><i></i></div>
+</div>
+
+<script>
+// ---- Sam's copy goes here. Everything on screen is a placeholder until he writes it. ----
+const CONTENT = {
+  hint: "Scroll",
+  clockSub: "[Placeholder] Every morning starts the same way",
+  question: ["Is Donald Trump", "stuck in a", "<em>time loop?</em>"],
+  endSub: "Butler, Pa. · July 13, 2024",
+  go: "Begin"
+};
+
+const $ = id => document.getElementById(id);
+const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches;
+$("hintText").textContent = CONTENT.hint; $("clockSub").textContent = CONTENT.clockSub; $("endSub").textContent = CONTENT.endSub; $("go").textContent = CONTENT.go + " →";
+$("qText").innerHTML = CONTENT.question.map(s => `<span>${s}</span>`).join("");
+
+// ---- the edit: each cut owns a stretch of the scroll, from 0 (top) to 1 (bottom) ----
+// three mornings, each shorter than the last; then the ear, six times; then the question; then the clock runs to 6:11 p.m.
+const EAR_T = 2.5;   // the first shot in media/ear.mp4 (RSBN broadcast, about 2.5 s in)
+const EAR = [   // [scroll start, scroll end, where the clip starts, day shown, reset after the shot?]
+  [.375, .44, 0.0, 4, true], [.44, .495, 0.9, 37, true], [.495, .54, 1.4, 212, true],
+  [.54, .575, 1.8, 433, true], [.575, .605, 2.0, 689, true], [.605, .66, 1.2, 690, false]
+];
+const CUTS = [
+  [0, .06, "c-dark"],
+  [.06, .10, "c-clock", 1], [.10, .145, "c-phil", 1], [.145, .20, "c-podium", 1],
+  [.20, .222, "c-clock", 2], [.222, .25, "c-wake", 2], [.25, .30, "c-podium", 2],
+  [.30, .314, "c-clock", 3], [.314, .328, "c-forecast", 3], [.328, .342, "c-down", 3], [.342, .356, "c-train", 3], [.356, .375, "c-ned", 3],
+  ...EAR.map(e => [e[0], e[1], "c-ear", e[3]]),
+  [.66, .85, "c-wall"],
+  [.85, 1.01, "end"]
+];
+
+let cur = -1, sound = false, last = -1;
+const ear = $("ear"), podium = $("podium"), wallVids = [...document.querySelectorAll("#wall video")];
+function progress() { const max = document.documentElement.scrollHeight - innerHeight; return max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0; }
+function flash(el, a) { el.style.transition = "none"; el.style.opacity = a; requestAnimationFrame(() => { el.style.transition = "opacity .45s ease-out"; el.style.opacity = 0; }); }
+const pad = n => String(n).padStart(4, "0");
+
+let earRep = -1, resetDone = false;
+function enter(i) {
+  const [a, b, id, day] = CUTS[i];
+  document.querySelectorAll(".cut.on:not(#wall)").forEach(c => c.classList.remove("on"));
+  $(id).classList.add("on");
+  if (day) $("day").textContent = pad(day);
+  $("hud").classList.toggle("on", !!day);
+  // hard cuts get a hit of white on the mornings
+  if (id === "c-clock") flash($("flash"), .5);
+  // video: the podium plays from the top each morning; the ear starts closer to the shot each time
+  if (id !== "c-podium") podium.pause(); else { podium.currentTime = 0; podium.play().catch(() => {}); }
+  const rep = EAR.findIndex(e => e[0] === a && id === "c-ear");
+  if (rep >= 0) { earRep = rep; resetDone = false; ear.muted = !sound; ear.currentTime = EAR[rep][2]; ear.play().catch(() => {}); }
+  else { ear.pause(); earRep = -1; }
+  wallVids.forEach(v => id === "c-wall" ? v.play().catch(() => {}) : v.pause());
+}
+
+function frame() {
+  const p = progress();
+  if (p !== last) {
+    last = p;
+    const i = CUTS.findIndex(c => p >= c[0] && p < c[1]);
+    if (i !== cur && i >= 0) { cur = i; enter(i); }
+    $("hint").style.opacity = p < .01 ? 1 : 0;
+    // the first notch flips the clock
+    $("t0").textContent = p < .045 ? "5:59" : "6:00";
+    // stills drift in as you scroll through them
+    if (i >= 0) { const [a, b, id] = CUTS[i], k = (p - a) / (b - a), img = $(id).querySelector(".still img, img");
+      if ($(id).classList.contains("still") && img && !REDUCED) img.style.transform = `scale(${(1.04 + .08 * k).toFixed(4)})`;
+      if (id === "c-wall") { const w = $("wall"); w.style.transform = REDUCED ? "none" : `scale(${(1.25 - .25 * Math.min(1, k * 1.6)).toFixed(4)})`;
+        [...$("qText").children].forEach((s, j) => s.classList.toggle("in", k > .12 + j * .12)); }
+      if (id === "end") { // 6:00 a.m. to 6:11 p.m., minute by minute
+        const m = Math.round(Math.min(1, k / .7) * 731), h24 = 6 + Math.floor(m / 60), mm = m % 60, h12 = ((h24 + 11) % 12) + 1;
+        $("tEnd").textContent = `${h12}:${String(mm).padStart(2, "0")}`; $("apEnd").textContent = h24 >= 12 ? "PM" : "AM";
+        $("go").classList.toggle("on", k > .72); }
+    }
+  }
+  // the ear: once the shot has gone by, every day but the last resets
+  if (earRep >= 0 && !resetDone && ear.currentTime > EAR_T + .32) {
+    resetDone = true;
+    if (EAR[earRep][4]) { flash($("redflash"), .85); const s = $("stamp"); s.classList.remove("hit"); void s.offsetWidth; s.classList.add("hit"); setTimeout(() => { if (cur >= 0 && CUTS[cur][2] === "c-ear") { ear.currentTime = EAR[earRep][2]; resetDone = false; ear.play().catch(() => {}); } }, 900); }
+    else { flash($("flash"), .7); }   // the day it works: a white flash, and the tape runs on
+  }
+  requestAnimationFrame(frame);
+}
+
+// ---- film grain, drawn once and shaken ----
+(() => { const c = $("grain"), x = c.getContext("2d"); c.width = c.height = 256; const d = x.createImageData(256, 256);
+  for (let i = 0; i < d.data.length; i += 4) { const v = Math.random() * 255; d.data[i] = d.data[i + 1] = d.data[i + 2] = v; d.data[i + 3] = 255; }
+  x.putImageData(d, 0, 0); c.style.width = c.style.height = "200%"; c.style.imageRendering = "pixelated";
+  if (!REDUCED) setInterval(() => { c.style.transform = `translate(${(Math.random() * 10 - 5).toFixed(1)}%, ${(Math.random() * 10 - 5).toFixed(1)}%)`; }, 70); })();
+
+// ---- sound: on by default, but browsers need one click; the click also unlocks each clip for Safari ----
+function setSound(on) { sound = on; $("snd").textContent = on ? "Sound on" : "Sound off"; $("snd").setAttribute("aria-pressed", on); ear.muted = !on; }
+function unlock() { [ear, podium, ...wallVids].forEach(v => { const was = v.muted; v.muted = v !== ear || !sound; const pr = v.play(); if (pr) pr.then(() => { v.pause(); v.currentTime = 0; }).catch(() => {}); }); }
+$("soundOn").addEventListener("click", () => { $("gate").hidden = true; setSound(true); unlock(); });
+$("soundOff").addEventListener("click", () => { $("gate").hidden = true; setSound(false); unlock(); });
+$("snd").addEventListener("click", () => setSound(!sound));
+$("soundOn").focus({ preventScroll: true });
+requestAnimationFrame(frame);
+</script>
