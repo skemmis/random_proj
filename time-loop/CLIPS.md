@@ -8,9 +8,9 @@ Each scene plays two video files: one from a film and one of Trump. Upload clips
 
 | Slot | Scene | Suggested source |
 |---|---|---|
-| rules-film | 1. The rules don't apply | Groundhog Day, Phil drives down the railroad tracks. https://www.youtube.com/watch?v=50jZVcRgkno ("Groundhog Day \"I'm not going to live by their rules anymore.\"", David Q Heffner). Keep from Phil saying "I'm not going to live by their rules anymore" through the truck running along the tracks toward the train. |
+| rules-film | 1. The rules don't apply | DONE (Oct 15) from Sam's upload sources/"no consequences.mp4" (124 s, 1280x720, NO SOUND TRACK): 1:16-1:47, the truck on the tracks, the train, Phil grinning; cropped tall with manual pans. |
 | rules-trump | | DONE: NATO, May 25, 2017, Trump pushes past Duško Marković. MSNBC (Andrea Mitchell Reports) via the Internet Archive TV News Archive, panned by hand to stay on Trump, 576x720 |
-| consequences-film | 2. No consequences | https://www.youtube.com/watch?v=ZHpXxAW3p_o ("Groundhog Day - \"What if there were no tomorrow?\"", Gale N Thrope). Keep from Phil asking the two men at the bowling-alley bar "What if there were no tomorrow?" through "That's the way I see it" (about 15 to 20 s). |
+| consequences-film | 2. No consequences | DONE (Oct 15) from the same upload: 0:05.5-0:25.5, Phil asks Gus and Ralph in the car (not the bowling alley) "What if there were no tomorrow?"; cropped tall. The file has no sound, so the cut points were chosen by picture. |
 | consequences-trump | | DONE: Sioux Center, Iowa, Jan. 23, 2016, "Fifth Avenue". CNN (Smerconish) via the TV News Archive, 14.5 s, cropped tall |
 | ennui-film | 3. Ennui | https://www.youtube.com/watch?v=vBeGQAvabOE ("Bill Murray - \"Groundhog Day\" winter prediction (HD)", Vlkoslak). Keep Phil's forecast at Gobbler's Knob, ending on "it's gonna last you for the rest of your life". |
 | ennui-trump | | DONE: Oaks, Pa., Oct. 14, 2024, 24 s of Trump standing on stage while "Ave Maria" plays, about 7:45 pm. C-SPAN via the TV News Archive (CSPAN_20241014_200000_Public_Affairs_Events, item seconds 13505-13529), cropped tall |
