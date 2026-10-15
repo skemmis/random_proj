@@ -58,6 +58,24 @@ Sam asked whether some other head angle would have put the real first bullet thr
 
 So Sam is right that such angles exist, but they need a nod or tilt as well as the turn. The video thread could not measure his nod or tilt, which is why the headline treats his head as level.
 
+#### If his chin was raised at the shot
+
+On 2026-10-15 Sam noticed that Trump looks slightly up in the RSBN frame at the shot, and the "Opening scene" thread, matching the model to that one frame, put his chin about 10° up. We measured what that does at his turn at the shot (drawn at 10° short of the rifle), two ways (`model/chin_up.py`, `results/chin_up_at_shot.json`).
+
+| Chin up | Same path in space: gap to skull | Same path in space: gap to a serious wound | Path through the ear wound: gap to skull | Path through the ear wound: gap to a serious wound |
+|---|---|---|---|---|
+| 0° (level, as quoted) | 6.1 mm | 1.6 mm | 6.1 mm | 1.7 mm |
+| 3° | 5.7 mm | 1.2 mm | 5.8 mm | 1.4 mm |
+| 5° | 5.4 mm | 0.9 mm | 5.8 mm | 1.3 mm |
+| 8° | 4.8 mm | 0.4 mm | 5.6 mm | 1.1 mm |
+| 10° | 4.5 mm | 0.1 mm | 5.6 mm | 1.0 mm |
+| 12° | 4.2 mm | 0.3 mm too deep | 5.5 mm | 0.9 mm |
+| 20° | 3.0 mm | 1.8 mm too deep | 6.1 mm | 1.6 mm |
+
+- **The path through the ear wound** is the right reading if he really was chin-up when hit: we re-aimed the bullet at the middle of the ear-only zone for each nod, so it still clips the top of his right ear as the real bullet did. **With his chin up 10°, the bullet's edge passed about 5.6 mm from his skull and 1.0 mm from a serious wound,** against 6.1 mm and 1.6 mm with his head level. The slim margin gets a little slimmer; the story does not change.
+- **The same path in space** answers a different question: had the bullet flown the line we draw for a level head while he nodded, how close would it have come? At 10° chin-up it would have passed 4.5 mm from the skull and right at the 3 mm line, a serious wound by a tenth of a millimetre; from about 11° it would have cut deeper than 3 mm. At this turn the path does not reach bone at any nod up to 20°, where it still clears the skull by 3 mm. The nods that put the bullet through bone, described above, need him facing the crowd.
+- **The odds at his actual turn barely move.** Recounting the full run's rows with the head held at 10° chin-up instead of level gives an ear-only hit 0.75%, a graze 1.57%, killed or seriously wounded 28.3% and a miss 70.1%; level gives 0.77%, 1.59%, 28.5% and 69.9%. The quoted figures (0.75%, 1.56%, 28.5%, 69.9%) already average over nods from 10° down to 20° up, so they stand.
+
 ## What "grazed" means
 
 Sam set the definition on 2026-10-13. A shot grazes Trump when the bullet touches only his ear, or only the outer 3 mm of skin anywhere on his head or neck, and goes no deeper. A bullet that reaches deeper soft tissue, bone, the brain, a major blood vessel, the airway, an eye or the torso counts as killing or seriously wounding him. A bullet that touches only hair counts as a miss.
