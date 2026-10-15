@@ -33,6 +33,7 @@ PASS2 = [  # tighter; the piece's graphics cut in; sound runs over the cuts
  ("v", "head-turn", 1.0, 4.0, {"mute": 1}), ("a", "fifth-avenue", 8.0, 11.0, "@", -3, 0),
  ("v", "fifth-avenue", 11.0, 12.7),
  ("v", "never-seen", 14.8, 16.9),          # "There's never been anything like this"
+ ("v", "word-head", 0.5, 2.0, {"mute": 1}), ("a", "find-me", 3.5, 5.0, "@", -3, 0),
  ("v", "find-me", 5.0, 7.0),
  ("v", "word-bullet", 0.5, 2.0, {"mute": 1}), ("a", "find-me", 7.0, 8.5, "@", -3, 0),
  ("v", "alarm-day2", 4.5, 9.0),            # close-up flip, 5:59 to 6:00
@@ -41,7 +42,7 @@ PASS2 = [  # tighter; the piece's graphics cut in; sound runs over the cuts
 PASS3 = [  # manic: half-second shots, sound piling up
  ("v", "butler-speech", 30.9, 31.6), ("v", "ned-day1", 9.0, 9.5), ("v", "electro-ankeny", 10.0, 11.0),
  ("v", "word-990", 0.8, 1.4, {"mute": 1}), ("v", "no-tomorrow", 16.5, 17.2), ("v", "fifth-avenue", 9.8, 10.4),
- ("v", "skull-path", 2.0, 2.5, {"mute": 1}), ("v", "find-me", 5.0, 5.6), ("v", "alarm-late", 3.0, 3.6),
+ ("v", "close-gap", 1.5, 2.0, {"mute": 1}), ("v", "find-me", 5.0, 5.6), ("v", "alarm-late", 3.0, 3.6),
  ("v", "daze-coal", 11.6, 12.2), ("v", "shove", 1.2, 1.8), ("v", "never-seen", 1.1, 1.7),
  ("v", "chart-scrub", 4.0, 4.5, {"mute": 1}), ("v", "butler-speech", 31.0, 31.4), ("v", "ned-day2", 27.5, 27.9),
  ("v", "alarm-day2", 5.8, 6.2), ("v", "electro-vegas", 11.6, 12.0), ("v", "didnt-sleep", 3.0, 3.4),

@@ -12,7 +12,7 @@ What's on the timeline
 - V2 to V5 hold the four-way split near the end of pass 3.
 - A1 is each shot's own sound. A2 is sound carried over a cut into the next shot. A3 and A4 are the crescendo under pass 3: the Butler screams and "I Got You Babe", fading up. A5 to A7 carry the sound of the four-way split.
 - Every clip has spare footage at both ends, so you can drag any edge longer.
-- Clips named skull-path, word-ear, word-bullet and word-990 are placeholder cards. The real graphics are being rendered, and I'll send a kit update with them.
+- The graphics (skull-path, close-gap, head-turn, chart-scrub, word-bullet, word-ear, word-head, word-990) are the piece's own renders, each with a one-second hold at both ends.
 - Ned's clips are silent until you send his audio.
 
 When you're done
