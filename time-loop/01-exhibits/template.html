@@ -271,13 +271,8 @@ function sequencer(s, sc) {
   };
 }
 
-// Opening scene
-const open = document.createElement("section"); open.className = "scene open"; open.id = "open";
-open.innerHTML = `<div class="clock" id="bigClock">5:59<small>AM</small></div><h1>${esc(CONTENT.open.title)}</h1>${CONTENT.open.sub ? `<p class="sub">${esc(CONTENT.open.sub)}</p>` : ""}<div class="cue">${esc(CONTENT.open.cue)} ↓</div>`;
-film.appendChild(open);
-setTimeout(() => { document.getElementById("bigClock").innerHTML = "6:00<small>AM</small>"; }, reduce ? 0 : 1400);
-
-const sections = [open];
+// The piece opens with the teaser (00-teaser), so this page starts straight on its first exhibit (Sam, Oct 15: one continuous page).
+const sections = [];
 CONTENT.scenes.forEach((sc, idx) => {
   const s = document.createElement("section"); s.className = "scene " + sc.layout; s.id = sc.id; s.dataset.idx = idx + 1;
   if (sc.layout === "finale") {
