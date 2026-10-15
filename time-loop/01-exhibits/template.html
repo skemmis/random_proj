@@ -183,7 +183,7 @@ const CONTENT = {
       film:  { file: "clips/lines-film.mp4",  yt: "XqSYC_vwhDg", tag: "Groundhog Day, 1993", who: "Ned Ryerson (Stephen Tobolowsky) greets Phil, every morning", quote: "Phil? Phil Connors? I thought that was you!", credit: "Movieclips" },
       trump: { file: "clips/lines-trump.mp4", yt: "bqbmTnr9NSE", tag: "Four rallies, 2023 to 2024", who: "The same riff about sharks and electric boats, in Anaheim, Ankeny, Las Vegas and Grand Rapids", quote: "I'll take electrocution every time.", credit: "C-SPAN, via the Internet Archive TV News Archive" } },
     { id: "butler", layout: "finale", kicker: "Exhibit 5", title: "Again. Again. Again.", sub: "", pos: "top",
-      film:  { file: "clips/butler-film.mp4",  yt: "1ORm14QpJvk", tag: "Edge of Tomorrow, 2014", who: "Cage (Tom Cruise) and Rita (Emily Blunt)", quote: "Come find me when you wake up.", credit: "Fan upload by Free Movie Scene" },
+      film:  { file: "clips/butler-film.mp4",  yt: "z1bVCdT5kso", tag: "Edge of Tomorrow, 2014", who: "Training: Cage (Tom Cruise) is shot, wakes and tries again", quote: "", credit: "Fandango at Home" },
       trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "The RSBN broadcast of Trump's rally", quote: "", credit: "RSBN broadcast, via the Internet Archive", crack: 10.0 } },
     { id: "reaction", layout: "split", kicker: "Exhibit 6", title: "Death holds no fear", sub: "", pos: "center",
       film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs, 2020", who: "Nyles (Andy Samberg), shot with an arrow, shrugs it off", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Prime Video UK" },
@@ -282,7 +282,7 @@ CONTENT.scenes.forEach((sc, idx) => {
   const s = document.createElement("section"); s.className = "scene " + sc.layout; s.id = sc.id; s.dataset.idx = idx + 1;
   if (sc.layout === "finale") {
     s.appendChild(media(sc.trump, "b", s, "trump"));
-    const pip = document.createElement("div"); pip.className = "pip"; pip.appendChild(media(sc.film, "a", s, "film")); s.appendChild(pip);
+    const pip = document.createElement("div"); pip.className = "pip"; pip.appendChild(media(sc.film, "a", s, "film")); s.appendChild(pip); const pv = pip.querySelector("video"); if (pv) pv.loop = true;  // the training montage loops under every relived day
     s.insertAdjacentHTML("beforeend", overlay(sc) + `<div class="stamp" id="stamp"><span>Reset</span></div>
       <div class="loopbox"><div class="row"><div class="day" id="loopDay">0001<small>JULY 13 NUMBER</small></div>
       <div class="odds"><b>1 in 990</b>chance that one shot at a random moment of the speech hits only his ear. Even odds of a hit like that take about 690 tries.</div></div>
