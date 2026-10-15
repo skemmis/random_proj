@@ -63,4 +63,21 @@ if __name__ == "__main__":
                    {"ear_only": share["ear"], "graze": share["graze"], "deeper": share["kill"], "miss": share["miss"]}).items()},
                outcome_bands_start_deg=bands)
     (RES / "path_share.json").write_text(json.dumps(out, indent=1))
+    # Per-moment series for the dashboard, so a timeline can be coloured from the same trace as the shares.
+    names = {"ear": "ear_only", "graze": "grazed", "kill": "deeper", "miss": "missed", "arm": "arm"}
+    frames = [[float(r["t_s"]), round(float(r["rel_deg"]) + off, 1),
+               names[oc[float(np.round(wrap(float(r["rel_deg"]) + off)))]]]
+              for r in csv.DictReader(open(B / "video/pose_track.csv"))]
+    (B / "assets/dashboard/real_path_by_moment.json").write_text(json.dumps(dict(
+        what="What the real first bullet's line would have done at each measured moment of the speech: the trace "
+             "behind the quoted shares (results/path_share.json, quoted.real_path_over_speech in speech_luck.json). "
+             "Shares are counted over frames with t_s < 0.",
+        frames_fields=["t_s: seconds before the first bullet arrived (0 = the shot), one row per measured frame, "
+                       "5 a second, with gaps where the camera cut away (video/pose_track.csv)",
+                       "rel_deg: head turn with the wound's shift applied (0 = face at the rifle, negative = past it)",
+                       "outcome: ear_only, grazed, deeper or missed"],
+        by_rel_deg_fields="outcome at every whole degree of turn from -180 to 180; round a smoothed turn to the "
+                          "nearest degree and look it up here to colour frames between the measured ones",
+        shift_deg=round(off, 2), frames=frames,
+        by_rel_deg={str(int(k)): names[v] for k, v in sorted(oc.items())}), separators=(",", ":")))
     print(out["quoted"], bands)
