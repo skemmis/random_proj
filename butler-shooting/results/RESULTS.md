@@ -48,6 +48,16 @@ Sam has not yet confirmed the 139 m range. If he prefers the earlier spread, the
 | Killed or seriously wounded / miss, at his actual turn | 29.6% / 68.7% | 28.5% / 69.9% |
 | Shots for an even chance of an ear-only hit (speech / at his turn) | 650 / 87 | 690 / 92 |
 
+### The real path at other head angles
+
+Sam asked whether some other head angle would have put the real first bullet through Trump's skull. We held the bullet's real path fixed in space and moved the head through every turn from 60° past the rifle to the back of his head facing it, in 10° steps, each combined with nods from 20° chin-down to 20° chin-up and tilts of 15° either way (375 poses, `results/path_by_head_angle.json`, made by `model/path_angles.py`).
+
+- **With his head level, the path enters bone only when he faces 20° or more past the rifle**, toward the chart screen. At every level turn from 10° past the rifle round to the back of his head, including facing the crowd, the bullet's edge clears the skull by about 5 to 11 mm. Those turns still cut more than 3 mm into the scalp at the back and side of the head.
+- **A small nod changes that.** Facing the crowd, with his chin raised about 5°, the bullet's edge touches the skull; at about 8° the bullet's centre goes through bone; at about 12° it reaches the brain. Over the crowd-side turns (60° to 150° short of the rifle), a 10° chin-up nod puts the path through bone at 9 of 10 turns, and a 20° nod puts it through bone at all 10 and through the brain at 8. Lowering the chin moves the skull away from the path: at 10° chin-down it clears the bone by at least 13 mm.
+- **A tilt does it too, sometimes.** Tilting the head 15° to either side, with no nod, puts the path through bone at 5 of the 10 crowd-side turns.
+
+So Sam is right that such angles exist, but they need a nod or tilt as well as the turn. The video thread could not measure his nod or tilt, which is why the headline treats his head as level.
+
 ## What "grazed" means
 
 Sam set the definition on 2026-10-13. A shot grazes Trump when the bullet touches only his ear, or only the outer 3 mm of skin anywhere on his head or neck, and goes no deeper. A bullet that reaches deeper soft tissue, bone, the brain, a major blood vessel, the airway, an eye or the torso counts as killing or seriously wounding him. A bullet that touches only hair counts as a miss.
