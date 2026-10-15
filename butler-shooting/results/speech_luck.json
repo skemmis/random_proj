@@ -239,6 +239,17 @@
    "graze": "14%",
    "deeper": "58%",
    "miss": "8%"
+  },
+  "face_map_areas": {
+   "ear_share_of_head": "4.3%",
+   "graze_share_of_head": "3.9%",
+   "serious_share_of_head": "91.8%",
+   "right_ear_share_of_head": "2.6%",
+   "ear_share_of_circle": "1.5%",
+   "graze_share_of_circle": "1.4%",
+   "serious_share_of_circle": "35.4%",
+   "miss_share_of_circle": "61.7%",
+   "circle_radius_cm": 19
   }
  }
 }

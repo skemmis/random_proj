@@ -39,6 +39,21 @@ At exactly 10° the figures would be 1.64% for a graze and 0.82% for the ear alo
 
 **The same bullet at other moments.** Had the real bullet flown the same line at a random moment in the speech, it would have hit only his ear **20%** of the time, grazed his skin **14%**, gone deeper **58%** and missed **8%**. We traced the bullet at every degree of head turn and read his turn at each of the 1,599 measured frames before the shot (`model/path_share.py`, `results/path_share.json`). The outcome at each frame, timed in seconds before the shot, is in `assets/dashboard/real_path_by_moment.json`, with a lookup by whole degree of turn for smoothed tracks. Each frame also carries the gap from the bullet's edge to the skull and to a serious wound, measured as for the 6.1 mm and 1.6 mm (negative means the edge cuts that far in; −2.85 means the centreline enters); `results/margin_by_degree.json`, made by `model/margin_by_degree.py`, holds those gaps by degree. The line hits only the ear with his face between 10° past the rifle and 33° short of it, misses from 34° to 42° short, grazes the skin from 43° to 52° short, and goes deeper from 53° to 129° short, which covers facing the crowd.
 
+### The ear by surface area
+
+As the rifle saw Trump's head at the shot (face 10° short of the rifle, head level), how much of it was ear? We coded every half-millimetre of the shooter's view by what a bullet whose centre passed there would do, under the same rules as the simulation (`model/face_areas.py`, `results/face_areas.json`; the coded image is `assets/dashboard/face_map_rel10.png`).
+
+| Share of the area | Of his head alone | Of a 19 cm circle around the aim point |
+|---|---|---|
+| Ear only (either ear) | 4.3% | 1.5% |
+| Skin graze (outer 3 mm) | 3.9% | 1.4% |
+| Serious wound or death | 91.8% | 35.4% |
+| Miss | (none) | 61.7% |
+
+- **Of his head alone**, the ears make up 4.3% of what the rifle saw; the right ear, the one hit, 2.6%. "Head" means every spot that touches him above the shoulders, neck included; hair counts as a miss.
+- **The circle** holds half of all simulated head-aimed shots, so it is the natural frame for a pie with a miss slice. Torso inside it counts as a serious wound, as in the simulation.
+- **Captions should quote the circle** (1.5% ear, 61.7% miss) for a pie that includes misses, or "the ears are about 4% of his head" for one that does not. These are shares of area, not odds: shots cluster near the aim point, in the middle of his head, so the ear-only chance at his turn, 0.75%, is about half the ear's 1.5% share of the circle.
+
 ### The range
 
 The camera solve puts the rifle 139 m from Trump's head, with the bullet dropping 0.6° on its way. Before 2026-10-14 the model drew the range from 125 m to 142 m, the spread of published estimates. At 139 m every shot spreads about 4% wider, so every kind of hit is about 6% less likely. We recounted the saved outcome maps rather than trace new rays: the 37 poses with a saved map exactly, the rest by the same ratio, which varies by less than 1% across head turns. The 0.6° drop, against the 0.8° we assumed, moves the path by less than half a millimetre.

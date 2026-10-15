@@ -216,6 +216,9 @@ if __name__ == "__main__":
     res["quoted"]["wound_corrected"]["ear_only_at_shot"] = f"{100 * at['ear_only']:.2f}%"
     res["quoted"]["final_turn"] = final_turn(res["pitch_averaged"]["offset_posterior_mean"])
     res["quoted"]["face_angle_at_shot"] = FACE_ANGLE
+    fa = OUT.parent / "face_areas.json"
+    if fa.exists():  # made by model/face_areas.py
+        res["quoted"]["face_map_areas"] = json.loads(fa.read_text())["quoted"]
     ps = OUT.parent / "path_share.json"
     if ps.exists():  # made by model/path_share.py
         res["quoted"]["real_path_over_speech"] = json.loads(ps.read_text())["quoted"]

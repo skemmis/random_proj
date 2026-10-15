@@ -1,0 +1,41 @@
+{
+ "what": "Surface area by outcome, as the rifle saw his head at the shot (face 10 degrees short of the rifle, head level).\nEach 0.5 mm cell of the shooter's-eye view is coded by what a bullet whose centre passes there would do (the same\n5.7 mm bullet and outcome rules as the simulation), so areas are where the bullet's centre could pass. Shares are\ngiven two ways: of the head alone (every cell that touches him above the shoulders), and of a circle around the\naim point that holds half of all simulated head-aimed shots (cells there that touch nothing are misses; torso\ncounts as a serious wound, as in the simulation). Pure geometry: no shots are simulated except to size the circle.\nWrites results/face_areas.json and assets/dashboard/face_map_rel10.png (codes image) + face_map_rel10.json.",
+ "rel_deg": 10.0,
+ "cell_mm": 0.5,
+ "circle_radius_mm": 189.4,
+ "head_alone_mm2": {
+  "ear_only": 1730,
+  "skin_graze": 1597,
+  "serious": 37234
+ },
+ "head_alone_share": {
+  "ear_only": 0.0427,
+  "skin_graze": 0.0394,
+  "serious": 0.918
+ },
+ "circle_mm2": {
+  "ear_only": 1730,
+  "skin_graze": 1596,
+  "serious": 39892,
+  "miss": 69526,
+  "arm": 0
+ },
+ "circle_share": {
+  "ear_only": 0.0153,
+  "skin_graze": 0.0142,
+  "serious": 0.3538,
+  "miss": 0.6167,
+  "arm": 0.0
+ },
+ "quoted": {
+  "ear_share_of_head": "4.3%",
+  "graze_share_of_head": "3.9%",
+  "serious_share_of_head": "91.8%",
+  "right_ear_share_of_head": "2.6%",
+  "ear_share_of_circle": "1.5%",
+  "graze_share_of_circle": "1.4%",
+  "serious_share_of_circle": "35.4%",
+  "miss_share_of_circle": "61.7%",
+  "circle_radius_cm": 19
+ }
+}
