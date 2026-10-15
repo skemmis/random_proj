@@ -44,7 +44,7 @@ PASS2 = [  # tighter; motion graphics cut in; sound runs over the cuts
  ("v", "find-me", 5.0, 7.0),
  ("v", "butler-speech", 30.0, 33.5),
  ("v", "whiteout-cut", 1.6, 4.0, {"mute": 1}), ("a", "butler-speech", 33.5, 35.9, "@", -6, 0),
- ("v", "flyover", 1.5, 4.5, {"mute": 1}), ("a", "butler-speech", 35.9, 38.9, "@", -9, 0),  # up and over to Crooks's roof
+ ("v", "flyover", 1.5, 4.5, {"mute": 1}), ("a", "butler-speech", 35.9, 38.9, "@", -9, 0),  # up and over to the shooter's roof
  ("v", "skull-path", 1.5, 4.0, {"mute": 1}), ("a", "butler-speech", 38.9, 41.4, "@", -12, 0),
  ("v", "margin-path", 1.5, 3.5, {"mute": 1}), ("a", "never-seen", 13.0, 14.8, "@", -3, 0),
  ("v", "never-seen", 14.8, 16.9),              # "There's never been anything like this"
