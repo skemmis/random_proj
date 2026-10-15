@@ -21,7 +21,7 @@ Put another way, Crooks would have needed about 690 head-aimed shots at random m
 
 ### At his actual turn
 
-At the moment Crooks fired, Trump had turned his face to within about 8° of the rifle line (on the short side), which made the odds much better for him. A head-aimed shot fired at that turn had a 1.56% chance (1 in 64) of merely grazing him and a 0.75% chance (about 1 in 135) of hitting the ear and nothing else. It had about a 29% chance of killing or seriously wounding him and a 70% chance of missing him.
+At the moment Crooks fired, Trump had turned his face to about 10° short of the rifle line, as the RSBN broadcast shows (give or take 12°), which made the odds much better for him. **This is the face angle pages quote.** The odds below average over the uncertainty in that turn, weighted by how well each turn explains the ear-only wound; that weighting centres on 8° short (see "How we estimated which way he faced"), and the 8° figure is not for captions. A head-aimed shot fired at his turn had a 1.56% chance (1 in 64) of merely grazing him and a 0.75% chance (about 1 in 135) of hitting the ear and nothing else. It had about a 29% chance of killing or seriously wounding him and a 70% chance of missing him.
 
 | Outcome of one head-aimed shot at his actual turn | Chance |
 |---|---|
@@ -120,7 +120,7 @@ We combined two pieces of evidence.
 1. The RSBN broadcast camera, with its position solved against the scene model, puts Trump's face about 10° short of the rifle line at the first shot, give or take 12°. The video thread measured this; Sam dropped the pool camera because the microphone hid Trump's face in it.
 2. The wound itself favours the head turns that make an ear-only hit likely.
 
-Together they put his face about 8° short of the rifle, with a 90% range from 5° past it to 25° short of it. The wound alone, without the video, would put his face 7° short of the rifle and give a graze chance of 1.54% (ear only 0.72%). The two now agree.
+Together they put his face about 8° short of the rifle, with a 90% range from 5° past it to 25° short of it. That combined figure weights the odds at his actual turn; captions quote the video's 10°, which the margin and the drawings also use. The wound alone, without the video, would put his face 7° short of the rifle and give a graze chance of 1.54% (ear only 0.72%). The two now agree.
 
 ## The follow-up shot
 

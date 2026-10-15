@@ -16,6 +16,18 @@ key = {"grazed": lambda r: r["head"]["buckets"]["grazed"],
        "ear_right": lambda r: r["head"]["codes"]["ear_only_right"]}
 
 
+
+# The one face angle pages quote (decided 2026-10-15): the video's measurement, which the margin, the drawings and
+# the opening use. The 8-degree combined estimate only centres the weighting behind the at-turn odds.
+FACE_ANGLE = {
+    "quote": "about 10 degrees short of the rifle",
+    "degrees_short_of_rifle": 10,
+    "source": "RSBN broadcast through the solved camera (video thread), give or take 12 degrees",
+    "not_quoted": "8 degrees short is the combined video-and-wound estimate (90% range 5 past to 25 short). It is "
+                  "not a caption figure: it only centres the weighting behind the at-turn odds, which average over "
+                  "the uncertainty in his turn (at exactly 10 degrees a graze would be 1.64% and ear-only 0.82%).",
+}
+
 def curves(level):
     out = {}
     for k, f in key.items():
@@ -203,6 +215,7 @@ if __name__ == "__main__":
     res["quoted"]["wound_corrected"]["graze_at_shot"] = f"{100 * at['grazed']:.2f}%"
     res["quoted"]["wound_corrected"]["ear_only_at_shot"] = f"{100 * at['ear_only']:.2f}%"
     res["quoted"]["final_turn"] = final_turn(res["pitch_averaged"]["offset_posterior_mean"])
+    res["quoted"]["face_angle_at_shot"] = FACE_ANGLE
     OUT.write_text(json.dumps(res, indent=1))
     chart()
     for k in ("pitch_averaged", "level_head", "video_only_pitch_averaged"):
