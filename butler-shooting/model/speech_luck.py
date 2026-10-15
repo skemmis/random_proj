@@ -22,7 +22,7 @@ key = {"grazed": lambda r: r["head"]["buckets"]["grazed"],
 FACE_ANGLE = {
     "quote": "about 10 degrees short of the rifle",
     "degrees_short_of_rifle": 10,
-    "source": "RSBN broadcast through the solved camera (video thread), give or take 12 degrees",
+    "source": "the camera, at its solved position, give or take 12 degrees",
     "not_quoted": "8 degrees short is the combined video-and-wound estimate (90% range 5 past to 25 short). It is "
                   "not a caption figure: it only centres the weighting behind the at-turn odds, which average over "
                   "the uncertainty in his turn (at exactly 10 degrees a graze would be 1.64% and ear-only 0.82%).",
