@@ -94,13 +94,12 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
 <div id="track"></div>
 <div id="stage">
   <div class="cut" id="c-dark"><div class="radio"><div class="face"><span class="t" id="t0">5:59</span><span class="ap">AM</span></div></div></div>
-  <div class="cut" id="c-clock"><div class="radio"><div class="face"><span class="t">6:00</span><span class="ap">AM</span></div><div class="sub" id="clockSub"></div></div></div>
-  <div class="cut still" id="c-phil"><img src="media/phil-steps.jpg" alt="Bill Murray as Phil Connors in Groundhog Day"></div>
-  <div class="cut still" id="c-wake"><img src="media/cruise-wake.jpg" alt="Tom Cruise as Cage in Edge of Tomorrow" style="object-position: 40% 30%"></div>
-  <div class="cut still" id="c-forecast"><img src="media/phil-forecast.jpg" alt="Phil Connors giving his forecast in Groundhog Day" style="object-position: 30% 30%"></div>
-  <div class="cut still" id="c-down"><img src="media/cruise-down.jpg" alt="Cage, killed again, in Edge of Tomorrow" style="object-position: 62% 40%"></div>
-  <div class="cut still" id="c-ned"><img src="media/ned.jpg" alt="Ned Ryerson greeting Phil in Groundhog Day" style="object-position: 45% 30%"></div>
-  <div class="cut still" id="c-train"><img src="media/train.jpg" alt="Phil's truck meets a train in Groundhog Day"></div>
+  <div class="cut still" id="c-clock"><img src="media/alarm.jpg" alt="The clock radio in Groundhog Day turns to 6:00" style="object-position: 45% 60%"><div class="cap" id="clockSub"></div></div>
+  <div class="cut film" id="c-forecast"><video src="media/forecast.mp4" muted playsinline preload="auto" style="object-position: 35% 30%"></video></div>
+  <div class="cut film" id="c-wake"><video src="media/wake-beach.mp4" muted playsinline preload="auto" style="object-position: 45% 40%"></video></div>
+  <div class="cut film" id="c-wake2"><video src="media/wake-tarmac.mp4" muted playsinline preload="auto" style="object-position: 50% 30%"></video></div>
+  <div class="cut film" id="c-train"><video src="media/train.mp4" muted playsinline preload="auto"></video></div>
+  <div class="cut film" id="c-ned"><video src="media/ned.mp4" muted playsinline preload="auto" style="object-position: 55% 30%"></video></div>
   <div class="cut" id="c-podium"><video id="podium" src="media/podium.mp4" muted playsinline preload="auto" style="object-position: 58% 30%"></video><div class="cap">Butler, Pa. · July 13, 2024</div></div>
   <div class="cut" id="c-ear"><video id="ear" src="media/ear.mp4" muted playsinline preload="auto" style="object-position: 56% 30%"></video></div>
   <div class="cut" id="c-wall">
@@ -152,16 +151,16 @@ const EAR = [   // [scroll start, scroll end, where the clip starts, day shown, 
 ];
 const CUTS = [
   [0, .06, "c-dark"],
-  [.06, .10, "c-clock", 1], [.10, .145, "c-phil", 1], [.145, .20, "c-podium", 1],
+  [.06, .10, "c-clock", 1], [.10, .145, "c-forecast", 1], [.145, .20, "c-podium", 1],
   [.20, .222, "c-clock", 2], [.222, .25, "c-wake", 2], [.25, .30, "c-podium", 2],
-  [.30, .314, "c-clock", 3], [.314, .328, "c-forecast", 3], [.328, .342, "c-down", 3], [.342, .356, "c-train", 3], [.356, .375, "c-ned", 3],
+  [.30, .314, "c-clock", 3], [.314, .33, "c-wake2", 3], [.33, .352, "c-train", 3], [.352, .375, "c-ned", 3],
   ...EAR.map(e => [e[0], e[1], "c-ear", e[3]]),
   [.66, .85, "c-wall"],
   [.85, 1.01, "end"]
 ];
 
 let cur = -1, sound = false, last = -1;
-const ear = $("ear"), podium = $("podium"), wallVids = [...document.querySelectorAll("#wall video")];
+const ear = $("ear"), podium = $("podium"), wallVids = [...document.querySelectorAll("#wall video")], filmVids = [...document.querySelectorAll(".cut.film video")];
 function progress() { const max = document.documentElement.scrollHeight - innerHeight; return max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0; }
 function flash(el, a) { el.style.transition = "none"; el.style.opacity = a; requestAnimationFrame(() => { el.style.transition = "opacity .45s ease-out"; el.style.opacity = 0; }); }
 const pad = n => String(n).padStart(4, "0");
@@ -181,6 +180,8 @@ function enter(i) {
   if (rep >= 0) { earRep = rep; resetDone = false; ear.muted = !sound; ear.currentTime = EAR[rep][2]; ear.play().catch(() => {}); }
   else { ear.pause(); earRep = -1; }
   wallVids.forEach(v => id === "c-wall" ? v.play().catch(() => {}) : v.pause());
+  // film cuts play from their first frame each time they come round
+  filmVids.forEach(v => { if (v.closest(".cut").id === id) { v.currentTime = 0; v.muted = !sound; v.play().catch(() => {}); } else v.pause(); });
 }
 
 function frame() {
@@ -219,8 +220,8 @@ function frame() {
   if (!REDUCED) setInterval(() => { c.style.transform = `translate(${(Math.random() * 10 - 5).toFixed(1)}%, ${(Math.random() * 10 - 5).toFixed(1)}%)`; }, 70); })();
 
 // ---- sound: on by default, but browsers need one click; the click also unlocks each clip for Safari ----
-function setSound(on) { sound = on; $("snd").textContent = on ? "Sound on" : "Sound off"; $("snd").setAttribute("aria-pressed", on); ear.muted = !on; }
-function unlock() { [ear, podium, ...wallVids].forEach(v => { const was = v.muted; v.muted = v !== ear || !sound; const pr = v.play(); if (pr) pr.then(() => { v.pause(); v.currentTime = 0; }).catch(() => {}); }); }
+function setSound(on) { sound = on; $("snd").textContent = on ? "Sound on" : "Sound off"; $("snd").setAttribute("aria-pressed", on); ear.muted = !on; filmVids.forEach(v => v.muted = !on); }
+function unlock() { [ear, podium, ...wallVids, ...filmVids].forEach(v => { const was = v.muted; v.muted = !(v === ear || filmVids.includes(v)) || !sound; const pr = v.play(); if (pr) pr.then(() => { v.pause(); v.currentTime = 0; }).catch(() => {}); }); }
 $("soundOn").addEventListener("click", () => { $("gate").hidden = true; setSound(true); unlock(); });
 $("soundOff").addEventListener("click", () => { $("gate").hidden = true; setSound(false); unlock(); });
 $("snd").addEventListener("click", () => setSound(!sound));

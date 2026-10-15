@@ -8,17 +8,17 @@ Each scene plays two video files: one from a film and one of Trump. Upload clips
 
 | Slot | Scene | Suggested source |
 |---|---|---|
-| rules-film | 1. The rules don't apply | DONE (Oct 15) from Sam's upload sources/"no consequences.mp4" (124 s, 1280x720, NO SOUND TRACK): 1:16-1:47, the truck on the tracks, the train, Phil grinning; cropped tall with manual pans. |
+| rules-film | 1. The rules don't apply | DONE (Oct 15, with sound) from Sam's "no consequences" upload and its audio: 1:39-2:00, the train bearing down, then Phil grinning: "I'm not going to live by their rules anymore." |
 | rules-trump | | DONE: NATO, May 25, 2017, Trump pushes past Duško Marković. MSNBC (Andrea Mitchell Reports) via the Internet Archive TV News Archive, panned by hand to stay on Trump, 576x720 |
-| consequences-film | 2. No consequences | DONE (Oct 15) from the same upload: 0:05.5-0:25.5, Phil asks Gus and Ralph in the car (not the bowling alley) "What if there were no tomorrow?"; cropped tall. The file has no sound, so the cut points were chosen by picture. |
+| consequences-film | 2. No consequences | DONE (Oct 15, with sound): 0:05.5-0:25.5 of the same upload, Phil in the car: "What if there were no tomorrow?" ... "That would mean there would be no consequences." |
 | consequences-trump | | DONE: Sioux Center, Iowa, Jan. 23, 2016, "Fifth Avenue". CNN (Smerconish) via the TV News Archive, 14.5 s, cropped tall |
-| ennui-film | 3. Ennui | https://www.youtube.com/watch?v=vBeGQAvabOE ("Bill Murray - \"Groundhog Day\" winter prediction (HD)", Vlkoslak). Keep Phil's forecast at Gobbler's Knob, ending on "it's gonna last you for the rest of your life". |
+| ennui-film | 3. Ennui | DONE (Oct 15, with sound) from Sam's "winter prediction" upload: 0:00-0:16.8, the whole forecast ending "...the rest of your life." |
 | ennui-trump | | DONE: Oaks, Pa., Oct. 14, 2024, 24 s of Trump standing on stage while "Ave Maria" plays, about 7:45 pm. C-SPAN via the TV News Archive (CSPAN_20241014_200000_Public_Affairs_Events, item seconds 13505-13529), cropped tall |
-| lines-film | 4. Same day, same lines | https://www.youtube.com/watch?v=XqSYC_vwhDg ("Groundhog Day (1993) - Ned Ryerson! Scene (1/8)", Movieclips). Keep from "Phil? Phil Connors?" through "Bing!" |
+| lines-film | 4. Same day, same lines | DONE (Oct 15, SILENT) from Sam's "ned" upload: 0:14-0:40, Ned greets Phil. Sam's audio set had no track for this one; send ned audio to add sound. |
 | lines-trump | | DONE: the sharks-and-electric-boats riff at four rallies, 56.5 s, each segment labelled with date and place: Anaheim Sept. 29, 2023; Ankeny Dec. 2, 2023; Las Vegas June 9, 2024; Grand Rapids July 20, 2024. All C-SPAN via the TV News Archive |
-| butler-film | 5. Again. Again. Again. (inset) | Sam's pick (Oct 15): Edge of Tomorrow training sequence, https://www.youtube.com/watch?v=z1bVCdT5kso ("Edge of Tomorrow Extended Movie Clip - Training Sequence (2014)", Fandango at Home). Keep the stretch where Cage is shot, wakes and tries again, over and over; the whole run is fine, since the inset loops it under every relived July 13 and its RESET stamp. |
+| butler-film | 5. Again. Again. Again. (inset) | DONE (Oct 15) from Sam's "training" upload and audio: 1:54-2:12, 2:52.5-2:58.5 (Rita shoots him; he wakes on the tarmac) and 3:36-3:48, 36 s, loops in the inset. |
 | butler-trump | 5. (full screen) | DONE: 20 seconds of the RSBN broadcast at 1280x720, first shot 10 seconds in |
-| reaction-film | 6. Death holds no fear | https://www.youtube.com/watch?v=7FS56uRsnjo ("The First Time Andy Samberg & Christin Milioti Get Stuck In A Loop | Palm Springs", Prime Video UK & IE). Keep the arrow hitting Nyles and his calm reaction. |
+| reaction-film | 6. Death holds no fear | DONE (Oct 15, with sound) from Sam's "the arrow" upload: 0:43.2-0:44.4 (the arrow hits Nyles) then 0:02-0:10 (Nyles lounging on his pool float). |
 | reaction-trump | | DONE: 13 seconds of the 1080p RSBN broadcast from about a minute after the shot, Trump rising and raising his fist, cropped tall by the reframe tool |
 
 **Cropping.** Each split side is tall, so landscape clips are cropped to a 4:5 frame that follows the subject's face. `tools/reframe.py` does this automatically with OpenCV's face detector and smooths the virtual camera; manual centres can override it where the tracker loses the subject.
@@ -40,3 +40,6 @@ The teaser before the opening uses Trump footage already in hand (the RSBN Butle
 | wake-film | Teaser, each morning | Edge of Tomorrow: Cage jolts awake on the tarmac at Heathrow, "On your feet, maggot!" It appears in the training clip already on the list (https://www.youtube.com/watch?v=z1bVCdT5kso); keep two or three of the wake-ups, about 1 s each. |
 
 Until then the page draws its own clock radio and uses YouTube stills for Phil, Cage and Ned.
+
+
+Oct 15: every film slot is filled. Sam's uploads and his separate audio tracks are kept in time-loop/sources/; the audio files run the same length as their videos, so they were laid in from the same start time. The teaser now uses real footage too: the film's own 6:00 clock radio (a still from the end of the "winter prediction" upload), the forecast, Cage waking after the beach explosion ("wake up" 1:27.8-1:31.6), Cage waking on the tarmac ("training" 2:55.6-2:58.2), the train and Ned.
