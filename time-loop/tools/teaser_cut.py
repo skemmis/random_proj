@@ -16,52 +16,65 @@ GFX_NAMES = {"sight-shots", "turn-fire", "margin-path", "whiteout-cut", "flyover
 
 # v2 (Sam, Oct 15 22:29): a teaser, not a piece: faster start, no Ned, no charts (motion graphics only),
 # "I Got You Babe" over the fist raise.
+# v5 order of every loop (Sam 22:55): clock (and Phil up), Trump's joke, the train scene ("their rules") with the
+# shove, no consequences, "shoot somebody", Edge of Tomorrow, Butler. Every loop starts on the clock (22:39).
 PASS1 = [  # long takes, clean sound
- ("v", "alarm-day1", 4.0, 9.0, {"mute": 1}),  # opens on the clock at 5:59; the song bed starts here (Sam 22:31)
- ("v", "wake-1", 2.5, 7.0, {"mute": 1}),       # Phil gets up (every loop: clock, then Phil out of bed; Sam 22:40)
- ("v", "butler-speech", 28.5, 38.0),     # "take a look at what happened" ... the shots ... agents cover him
- ("v", "electro-anaheim", 0.0, 2.45),    # the joke with its dead air cut out (jump cuts)
+ ("v", "alarm-day1", 4.0, 9.0, {"mute": 1}),  # the clock at 5:59; the song bed starts here (22:31)
+ ("v", "wake-1", 2.5, 7.0, {"mute": 1}),       # Phil gets up
+ ("v", "electro-anaheim", 0.0, 2.45),          # the joke, dead air cut out (jump cuts)
  ("v", "electro-anaheim", 8.1, 11.3),
  ("v", "electro-anaheim", 12.85, 16.3),
- ("v", "no-tomorrow", 2.0, 12.0),        # "What if there were no tomorrow? ... We could do whatever we wanted"
- ("v", "fifth-avenue", 8.2, 13.0),       # "shoot somebody and I wouldn't lose any voters"
- ("v", "find-me", 5.0, 9.0),             # "Find me when you wake up!" twice
- ("v", "find-me", 11.6, 13.5),           # and Cage wakes
+ ("v", "own-rules", 2.6, 8.4),                 # the train: "I'm not going to live by their rules anymore!" (22:51)
+ ("v", "shove", 0.6, 5.0),                     # Trump shoves past Montenegro's prime minister (22:51)
+ ("v", "no-tomorrow", 2.0, 12.0),              # "What if there were no tomorrow? ... whatever we wanted"
+ ("v", "fifth-avenue", 8.2, 13.0),             # "shoot somebody and I wouldn't lose any voters"
+ ("v", "find-me", 5.0, 9.0),                   # "Find me when you wake up!"
+ ("v", "find-me", 11.6, 13.5),                 # and Cage wakes
+ ("v", "butler-speech", 28.5, 38.0),           # "take a look at what happened" ... the shots ... agents cover him
 ]
-# Every loop starts on the clock (Sam 22:39): the wide 5:59 opens pass 1, the close-up flip opens passes 2 and 3,
-# and no clock appears mid-loop; the smash ends the last one.
 PASS2 = [  # tighter; motion graphics cut in; sound runs over the cuts
- ("v", "clock-flip-b", 1.5, 4.6, {"mute": 1}),  # close-up flip, 5:59 to 6:00: loop two
+ ("v", "clock-flip-b", 1.5, 4.6, {"mute": 1}), # 5:59 to 6:00: loop two
  ("v", "wake-4", 2.6, 5.6, {"mute": 1}),       # Phil sits up
+ ("v", "electro-grandrapids", 9.2, 12.3),      # punchline only: "I will take electrocution all day long"
+ ("v", "own-rules", 3.2, 6.6),
+ ("v", "shove", 1.4, 3.0),
+ ("v", "head-turn", 1.0, 3.0, {"mute": 1}), ("a", "no-tomorrow", 4.0, 6.0, "@", -3, 0),
+ ("v", "no-tomorrow", 6.0, 8.0),               # "there would be no consequences"
+ ("v", "fifth-avenue", 9.6, 11.6),             # "Fifth Avenue and shoot somebody"
+ ("v", "find-me", 5.0, 7.0),
  ("v", "butler-speech", 30.0, 33.5),
- ("v", "whiteout-cut", 1.6, 4.0, {"mute": 1}), ("a", "butler-speech", 33.5, 35.9, "@", -6, 0),  # the opening's cut to the model
- ("v", "skull-path", 1.5, 4.0, {"mute": 1}), ("a", "butler-speech", 35.9, 38.4, "@", -9, 0),
- ("v", "electro-grandrapids", 9.2, 12.3),  # punchline only: "I will take electrocution all day long"
- ("v", "head-turn", 1.0, 3.5, {"mute": 1}), ("a", "no-tomorrow", 4.0, 6.5, "@", -3, 0),
- ("v", "no-tomorrow", 6.0, 8.0),           # "there would be no consequences"
+ ("v", "whiteout-cut", 1.6, 4.0, {"mute": 1}), ("a", "butler-speech", 33.5, 35.9, "@", -6, 0),
+ ("v", "flyover", 1.5, 4.5, {"mute": 1}), ("a", "butler-speech", 35.9, 38.9, "@", -9, 0),  # up and over to Crooks's roof
+ ("v", "skull-path", 1.5, 4.0, {"mute": 1}), ("a", "butler-speech", 38.9, 41.4, "@", -12, 0),
  ("v", "margin-path", 1.5, 3.5, {"mute": 1}), ("a", "never-seen", 13.0, 14.8, "@", -3, 0),
- ("v", "never-seen", 14.8, 16.9),          # "There's never been anything like this"
- ("v", "close-gap", 1.0, 3.0, {"mute": 1}), ("a", "find-me", 5.0, 7.0, "@", -3, 0),
- ("v", "daze-cabinet", 12.0, 14.5),        # Trump jerks awake
+ ("v", "never-seen", 14.8, 16.9),              # "There's never been anything like this"
+ ("v", "close-gap", 1.0, 3.0, {"mute": 1}),
+ ("v", "daze-cabinet", 12.0, 14.5),            # Trump jerks awake, into the next loop
 ]
-PASS3 = [  # manic: half-second shots, sound piling up
+PASS3 = [  # manic: half-second shots in the same order, sound piling up
  ("v", "alarm-day2", 5.5, 6.3, {"mute": 1}),  # the flip again: loop three
- ("v", "wake-2", 2.4, 3.1, {"mute": 1}),       # Phil bolt upright
- ("v", "butler-speech", 30.9, 31.5), ("v", "electro-ankeny", 10.0, 10.9), ("v", "sight-shots", 1.5, 2.1, {"mute": 1}),
- ("v", "no-tomorrow", 16.5, 17.2), ("v", "skull-path", 2.0, 2.5, {"mute": 1}), ("v", "fifth-avenue", 9.8, 10.4),
- ("v", "find-me", 5.0, 5.6), ("v", "turn-fire", 2.0, 2.5, {"mute": 1}), ("v", "daze-coal", 11.6, 12.2),
- ("v", "shove", 1.2, 1.8), ("v", "never-seen", 1.1, 1.7), ("v", "head-turn", 2.5, 3.0, {"mute": 1}),
- ("v", "close-gap", 1.5, 1.9, {"mute": 1}), ("v", "butler-speech", 31.0, 31.4), ("v", "margin-path", 3.0, 3.4, {"mute": 1}),
- ("v", "electro-vegas", 11.6, 12.0), ("v", "didnt-sleep", 3.0, 3.4),
+ ("v", "wake-2", 2.4, 3.1, {"mute": 1}),
+ ("v", "electro-ankeny", 10.0, 10.9), ("v", "own-rules", 6.0, 6.7), ("v", "shove", 1.2, 1.8),
+ ("v", "no-tomorrow", 16.5, 17.2), ("v", "fifth-avenue", 9.8, 10.4), ("v", "find-me", 5.0, 5.6),
+ ("v", "butler-speech", 30.9, 31.5), ("v", "flyover", 5.0, 5.5, {"mute": 1}), ("v", "sight-shots", 1.5, 2.1, {"mute": 1}), ("v", "skull-path", 2.0, 2.5, {"mute": 1}),
+ ("v", "turn-fire", 2.0, 2.5, {"mute": 1}), ("v", "daze-coal", 11.6, 12.2), ("v", "never-seen", 1.1, 1.7),
+ ("v", "head-turn", 2.5, 3.0, {"mute": 1}), ("v", "close-gap", 1.5, 1.9, {"mute": 1}), ("v", "butler-speech", 31.0, 31.4),
+ ("v", "margin-path", 3.0, 3.4, {"mute": 1}), ("v", "electro-vegas", 11.6, 12.0), ("v", "didnt-sleep", 3.0, 3.4),
  ("grid", 1.6, [("butler-speech", 31.0), ("sight-shots", 2.0), ("electro-vegas", 11.3), ("find-me", 5.0)]),
- ("v", "alarm-smash", 3.8, 5.0),           # Phil smashes the clock: the loop breaks
+ ("v", "alarm-smash", 3.8, 5.0),               # Phil smashes the clock: the loop breaks
 ]
 # "I Got You Babe" runs under the whole teaser on A4 (song-bed: the film's clock-radio song, stitched to one take
 # until Sam sends a clean MP3): full over the opening clock, ducked by BED_DUCK dB, back up for the fist raise.
 BED_DUCK = -16
 ENDING = [ ("gap", 1.0),
  ("v", "butler-fist", 4.0, 10.0, {"mute": 1}), ("a", "butler-fist", 4.0, 10.0, "@", -14, 0),
- ("hold", "butler-fist", 10.0, 3.0) ]  # fist highest at 10.0 (rsbn 580)
+ ("hold", "butler-fist", 10.0, 4.5) ]
+# Placeholder end card (Sam 22:58): the title over the fist, then the subtitle; the page sets the real one as text.
+TITLE = [("title-1.png", 0.6), ("title-2.png", 2.0)]  # fist highest at 10.0 (rsbn 580)
+
+# The bin was recut on Oct 15 22:55 with about 10 s more at each end (Sam: "some of them need to be extended").
+# Times in the edit list are relative to the OLD cuts; SHIFT moves them onto the new files.
+SHIFT = {'electro-anaheim': 10, 'electro-grandrapids': 10, 'fifth-avenue': 10, 'no-tomorrow': 8, 'own-rules': 10, 'find-me': 10, 'alarm-day1': 4, 'alarm-day2': 10, 'alarm-smash': 10, 'alarm-late': 10, 'wake-1': 10, 'wake-2': 10, 'wake-3': 10, 'wake-4': 10, 'wake-5': 10, 'clock-flip-b': 10, 'daze-cabinet': 10, 'daze-coal': 10, 'didnt-sleep': 10, 'never-seen': 10}
 
 def build_events():
     ev, t, last = [], 0.0, 0.0  # "@" in an extra-sound event = the start of the shot just before it
@@ -83,11 +96,17 @@ def build_events():
         if part == "pass3":
             # the crescendo: the clock-radio song and the Butler screams rise under the whole pass
             ev.append(dict(kind="a", clip="butler-speech", i=31.3, o=31.3 + (t - p3), at=p3, gain=-8, fade=(t - p3) * .7, part=part))
+    for e in ev:
+        if e.get("clip") in SHIFT and e["kind"] in ("v", "a", "hold"):
+            e["i"] += SHIFT[e["clip"]]
+            if "o" in e: e["o"] += SHIFT[e["clip"]]
+        if e["kind"] == "grid": e["src"] = [(c, i + SHIFT.get(c, 0)) for c, i in e["src"]]
     first = ev[0]["o"] - ev[0]["i"]
     ev.append(dict(kind="bed", clip="song-bed", up1=first, up2=fist_at, total=t, duck=BED_DUCK, part="all"))
     return ev, t
 
 def path(c):
+    if c.endswith(".png"): return BIN / c
     if c in GFX_NAMES:
         g = GFX / f"{c}.mp4"
         if g.exists(): return g
@@ -113,8 +132,12 @@ def render(ev, total):
             if e["mute"]: ff("-ss", e["i"], "-t", d, "-i", path(e["clip"]), "-f", "lavfi", "-t", d, "-i", "anullsrc=r=48000:cl=stereo", "-map", "0:v", "-map", "1:a", "-vf", VF, "-t", d, *enc, s)
             else: ff("-ss", e["i"], "-t", d, "-i", path(e["clip"]), "-vf", VF, "-af", "apad", "-t", d, *enc, s)
         elif e["kind"] == "gap": ff("-f", "lavfi", "-i", f"color=c=black:s=1920x1080:r=30:d={e['d']}", "-f", "lavfi", "-t", e["d"], "-i", "anullsrc=r=48000:cl=stereo", "-t", e["d"], *enc, s)
-        elif e["kind"] == "hold": ff("-ss", e["i"] - 1 / FPS, "-i", path(e["clip"]), "-f", "lavfi", "-t", e["d"], "-i", "anullsrc=r=48000:cl=stereo", "-map", "0:v", "-map", "1:a",
-                                    "-vf", VF + f",trim=end_frame=1,tpad=stop_mode=clone:stop_duration={e['d']}", "-t", e["d"], *enc, s)
+        elif e["kind"] == "hold":
+            t1, t2 = (BIN / TITLE[0][0]), (BIN / TITLE[1][0])
+            fc = (f"[0:v]{VF},trim=end_frame=1,tpad=stop_mode=clone:stop_duration={e['d']}[b];"
+                  f"[b][2:v]overlay=enable='between(t,{TITLE[0][1]},{TITLE[1][1]})'[b1];[b1][3:v]overlay=enable='gte(t,{TITLE[1][1]})'[v]")
+            ff("-ss", e["i"] - 1 / FPS, "-i", path(e["clip"]), "-f", "lavfi", "-t", e["d"], "-i", "anullsrc=r=48000:cl=stereo", "-loop", "1", "-i", t1, "-loop", "1", "-i", t2,
+               "-filter_complex", fc, "-map", "[v]", "-map", "1:a", "-t", e["d"], *enc, s)
         elif e["kind"] == "grid":
             d = e["d"]; ins = []
             for c, i in e["src"]: ins += ["-ss", i, "-t", d, "-i", path(c)]
@@ -178,6 +201,9 @@ def xml(ev, total):
             ff("-ss", e["i"] - 1 / FPS, "-i", path(e["clip"]), "-f", "lavfi", "-t", 10, "-i", "anullsrc=r=48000:cl=stereo", "-map", "0:v", "-map", "1:a",
                "-vf", "trim=end_frame=1,tpad=stop_mode=clone:stop_duration=10", "-t", 10, "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", still)
             V[1].append(clip(f"v{n}", f"{e['clip']}-hold", 0, e["d"], e["at"], "v"))
+            D["title-1.png"] = D["title-2.png"] = 60
+            V[2].append(clip(f"t{n}a", "title-1.png", 0, TITLE[1][1] - TITLE[0][1], e["at"] + TITLE[0][1], "v"))
+            V[2].append(clip(f"t{n}b", "title-2.png", 0, e["d"] - TITLE[1][1], e["at"] + TITLE[1][1], "v"))
         elif e["kind"] == "grid":
             for k, (c, i) in enumerate(e["src"]):
                 pos = [(-0.5, -0.5), (0.5, -0.5), (-0.5, 0.5), (0.5, 0.5)][k]
