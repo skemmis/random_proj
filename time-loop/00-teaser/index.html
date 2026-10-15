@@ -104,6 +104,7 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
   <div class="cut film" id="c-forecast"><video src="media/forecast.mp4" muted playsinline preload="auto" style="object-position: 35% 30%"></video></div>
   <div class="cut film" id="c-wake"><video src="media/wake-beach.mp4" muted playsinline preload="auto" style="object-position: 45% 40%"></video></div>
   <div class="cut film" id="c-smash"><video src="media/smash.mp4" muted playsinline preload="auto" style="object-position: 55% 50%"></video></div>
+  <div class="cut film" id="c-shove"><video src="media/shove.mp4" muted playsinline preload="auto" style="object-position: 50% 30%"></video><div class="cap">NATO summit, Brussels · May 25, 2017</div></div>
   <div class="cut film" id="c-train"><video src="media/train.mp4" muted playsinline preload="auto"></video></div>
   <div class="cut film" id="c-ned"><video src="media/ned.mp4" muted playsinline preload="auto" style="object-position: 55% 30%"></video></div>
   <div class="cut" id="c-podium"><video id="podium" src="media/podium.mp4" muted playsinline preload="auto" style="object-position: 58% 30%"></video><div class="cap">Butler, Pa. · July 13, 2024</div></div>
@@ -165,7 +166,7 @@ const CUTS = [
   [0, .06, "c-dark"],
   [.06, .10, "c-clock", 1], [.10, .145, "c-forecast", 1], [.145, .20, "c-podium", 1],
   [.20, .222, "c-clock", 2], [.222, .25, "c-wake", 2], [.25, .30, "c-podium", 2],
-  [.30, .31, "c-clock", 3], [.31, .337, "c-smash", 3], [.337, .356, "c-train", 3], [.356, .375, "c-ned", 3],  // morning 3: Phil smashes the clock (Sam, Oct 15: "the money shot")
+  [.30, .31, "c-clock", 3], [.31, .332, "c-smash", 3], [.332, .348, "c-train", 3], [.348, .362, "c-ned", 3], [.362, .375, "c-shove", 3],  // morning 3: Phil smashes the clock (Sam, Oct 15: "the money shot")
   ...EAR.map(e => [e[0], e[1], "c-ear", e[3]]),
   [.64, .85, "c-fist", 690],   // day 690: he rises with his fist up and holds; the question fades in over the still; the still scrolls away to the collage (Sam, Oct 15)
   [.85, 1.01, "end"]
