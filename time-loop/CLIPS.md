@@ -16,8 +16,8 @@ Each scene plays two video files: one from a film and one of Trump. Upload clips
 | ennui-trump | | DONE: Oaks, Pa., Oct. 14, 2024, 24 s of Trump standing on stage while "Ave Maria" plays, about 7:45 pm. C-SPAN via the TV News Archive (CSPAN_20241014_200000_Public_Affairs_Events, item seconds 13505-13529), cropped tall |
 | lines-film | 4. Same day, same lines | DONE (Oct 15, SILENT) from Sam's "ned" upload: 0:14-0:40, Ned greets Phil. Sam's audio set had no track for this one; send ned audio to add sound. |
 | lines-trump | | DONE: the sharks-and-electric-boats riff at four rallies, 56.5 s, each segment labelled with date and place: Anaheim Sept. 29, 2023; Ankeny Dec. 2, 2023; Las Vegas June 9, 2024; Grand Rapids July 20, 2024. All C-SPAN via the TV News Archive |
-| butler-film | 5. Again. Again. Again. (inset) | DONE (Oct 15) from Sam's "training" upload and audio: 1:54-2:12, 2:52.5-2:58.5 (Rita shoots him; he wakes on the tarmac) and 3:36-3:48, 36 s, loops in the inset. |
-| butler-trump | 5. (full screen) | DONE: 20 seconds of the RSBN broadcast at 1280x720, first shot 10 seconds in |
+| butler-film | 5. Again. Again. Again. (split, film side) | DONE (Oct 15) from Sam's "training" upload and audio: 1:54-2:12, 2:52.5-2:58.5 (Rita shoots him; he wakes on the tarmac) and 3:36-3:48, 36 s, letterbox cropped, tall 4:5 (face tracker, 2.5 s smoothing). |
+| butler-trump | 5. (split, Trump side) | DONE: 20 seconds of the RSBN broadcast, chyron cropped, tall 4:5 held on Trump, first shot 10 seconds in. The loop simulator scene after it uses the landscape cut as loop-trump.mp4. |
 | reaction-film | 6. Death holds no fear | DONE (Oct 15, with sound) from Sam's "the arrow" upload: 0:43.2-0:44.4 (the arrow hits Nyles) then 0:02-0:10 (Nyles lounging on his pool float). |
 | reaction-trump | | DONE: 13 seconds of the 1080p RSBN broadcast from about a minute after the shot, Trump rising and raising his fist, cropped tall by the reframe tool |
 
