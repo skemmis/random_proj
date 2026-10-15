@@ -36,6 +36,7 @@ PASS2 = [  # tighter; motion graphics cut in; sound runs over the cuts
  ("v", "clock-flip-b", 1.5, 4.6, {"mute": 1}), # 5:59 to 6:00: loop two
  ("v", "wake-4", 2.6, 5.6, {"mute": 1}),       # Phil sits up
  ("v", "electro-grandrapids", 9.2, 12.3),      # punchline only: "I will take electrocution all day long"
+ ("v", "electro-ankeny", 9.3, 11.0),           # "I think I'll take the electrocution" (Sam 23:24: another electrocution)
  ("v", "own-rules", 3.2, 6.6),
  ("v", "shove", 1.4, 3.0),
  ("v", "head-turn", 1.0, 3.0, {"mute": 1}), ("a", "no-tomorrow", 4.0, 6.0, "@", -3, 0),
@@ -48,8 +49,7 @@ PASS2 = [  # tighter; motion graphics cut in; sound runs over the cuts
  ("v", "skull-path", 1.5, 4.0, {"mute": 1}), ("a", "butler-speech", 38.9, 41.4, "@", -12, 0),
  ("v", "margin-path", 1.5, 3.5, {"mute": 1}), ("a", "never-seen", 13.0, 14.8, "@", -3, 0),
  ("v", "never-seen", 14.8, 16.9),              # "There's never been anything like this"
- ("v", "close-gap", 1.0, 3.0, {"mute": 1}),
- ("v", "daze-cabinet", 12.0, 14.5),            # Trump jerks awake, into the next loop
+ ("v", "close-gap", 1.0, 3.0, {"mute": 1}),  # dozing clips cut (Sam 23:24: "they don't fit")
 ]
 PASS3 = [  # manic: half-second shots in the same order, sound piling up
  ("v", "alarm-day2", 5.5, 6.3, {"mute": 1}),  # the flip again: loop three
@@ -57,9 +57,9 @@ PASS3 = [  # manic: half-second shots in the same order, sound piling up
  ("v", "electro-ankeny", 10.0, 10.9), ("v", "own-rules", 6.0, 6.7), ("v", "shove", 1.2, 1.8),
  ("v", "no-tomorrow", 16.5, 17.2), ("v", "fifth-avenue", 9.8, 10.4), ("v", "find-me", 5.0, 5.6),
  ("v", "butler-speech", 30.9, 31.5), ("v", "flyover", 5.0, 5.5, {"mute": 1}), ("v", "sight-shots", 1.5, 2.1, {"mute": 1}), ("v", "skull-path", 2.0, 2.5, {"mute": 1}),
- ("v", "turn-fire", 2.0, 2.5, {"mute": 1}), ("v", "daze-coal", 11.6, 12.2), ("v", "never-seen", 1.1, 1.7),
+ ("v", "turn-fire", 2.0, 2.5, {"mute": 1}), ("v", "electro-grandrapids", 9.6, 10.6), ("v", "never-seen", 1.1, 1.7),
  ("v", "head-turn", 2.5, 3.0, {"mute": 1}), ("v", "close-gap", 1.5, 1.9, {"mute": 1}), ("v", "butler-speech", 31.0, 31.4),
- ("v", "margin-path", 3.0, 3.4, {"mute": 1}), ("v", "electro-vegas", 11.6, 12.0), ("v", "didnt-sleep", 3.0, 3.4),
+ ("v", "margin-path", 3.0, 3.4, {"mute": 1}), ("v", "electro-vegas", 11.6, 12.0), ("v", "electro-anaheim", 10.4, 11.2),
  ("grid", 1.6, [("butler-speech", 31.0), ("sight-shots", 2.0), ("electro-vegas", 11.3), ("find-me", 5.0)]),
  ("v", "alarm-smash", 3.8, 5.0),               # Phil smashes the clock: the loop breaks
 ]
