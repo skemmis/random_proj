@@ -8,7 +8,7 @@ Each scene plays two video files: one from a film and one of Trump. Upload clips
 
 | Slot | Scene | Suggested source |
 |---|---|---|
-| rules-film | 1. The rules don't apply | DONE (Oct 15, with sound) from Sam's "no consequences" upload and its audio: 1:39-2:00, the train bearing down, then Phil grinning: "I'm not going to live by their rules anymore." |
+| rules-film | 1. The rules don't apply | DONE (Oct 15, with sound; trimmed per Sam) from Sam's "no consequences" upload and its audio: 1:47-1:59, the train's headlights, the swerve off the tracks, then Phil grinning: "I'm not going to live by their rules anymore." |
 | rules-trump | | DONE: NATO, May 25, 2017, Trump pushes past Duško Marković. MSNBC (Andrea Mitchell Reports) via the Internet Archive TV News Archive, panned by hand to stay on Trump, 576x720 |
 | consequences-film | 2. No consequences | DONE (Oct 15, with sound): 0:05.5-0:25.5 of the same upload, Phil in the car: "What if there were no tomorrow?" ... "That would mean there would be no consequences." |
 | consequences-trump | | DONE: Sioux Center, Iowa, Jan. 23, 2016, "Fifth Avenue". CNN (Smerconish) via the TV News Archive, 14.5 s, cropped tall |
