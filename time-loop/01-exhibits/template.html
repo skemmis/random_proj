@@ -1,14 +1,21 @@
 <title>The Loop Hypothesis</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,500;0,700;0,800;0,900;1,800&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="../../tokens.css">
 <style>
 /* A film, not a page: every scene fills the screen and snaps into place. Videos run edge to edge;
    type sits on the footage. A clock-radio HUD counts the days as you scroll. Single dark world by choice. */
 :root {
-  --black: #070707; --white: #f6f4ef; --dim: rgba(246, 244, 239, .66); --faint: rgba(246, 244, 239, .28);
-  --red: #ff3b30; --amber: #ffb340; --shade: rgba(0, 0, 0, .55);
+  /* The piece's shared tokens (assembly/tokens.css), repeated here so the page also works on its own. */
+  --night: #0b0d10; --ink-on-night: #f3efe6; --dim-on-night: #b4afa4; --rule-on-night: rgba(243, 239, 230, .24); --led: #ff3b2f;
   --font-head: "Libre Franklin", "Franklin Gothic Medium", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-text: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-clock: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --fs-display: clamp(44px, 8vw, 128px); --fs-caption: clamp(18px, 2.2vw, 30px); --fs-label: clamp(12px, 1.05vw, 14px); --fs-small: 12px;
+  /* this page's names for them */
+  --black: var(--night); --white: var(--ink-on-night); --dim: var(--dim-on-night); --faint: var(--rule-on-night);
+  --red: var(--led); --amber: var(--ink-on-night); --shade: rgba(0, 0, 0, .55);
+  --font-mono: var(--font-clock);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -38,8 +45,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .pill.on { background: var(--white); color: var(--black); }
 .dots { position: fixed; z-index: 20; right: 12px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; }
 .dots a { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); display: block; }
-.dots a.on { background: var(--red); transform: scale(1.4); }
+.dots a.on { background: var(--white); transform: scale(1.4); }
 @media (max-width: 600px) { .dots { display: none; } }
+
+/* Inside the 6:11 p.m. spine (assembly/CONTRACT.md) */
+html.in-spine { scroll-snap-type: none; }
+:root.in-spine body { overflow: visible !important; }  /* section.js hides body overflow, which would stop the scenes sticking */
+.in-spine #gate, .in-spine .hud-r, .in-spine .xlinks { display: none !important; }
+.in-spine .scene { position: sticky; top: 0; margin-bottom: 70vh; margin-bottom: 70svh; }  /* each scene holds while the next slides over it */
+.in-spine .scene.credits { position: relative; margin-bottom: 0; }
 
 /* Scenes */
 .scene { position: relative; height: 100vh; height: 100svh; min-height: 480px; scroll-snap-align: start; overflow: hidden; background: var(--black); }
@@ -49,10 +63,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .media img.on { opacity: 1; }
 .media .grade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 58%, rgba(0,0,0,.8) 100%); }
 .label { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 3; display: flex; flex-direction: column; gap: 4px; }
-.label .k { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+.label .k { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
 .label .w { font-size: clamp(15px, 1.6vw, 20px); font-weight: 800; line-height: 1.2; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
-.label .q { font-size: clamp(16px, 1.9vw, 24px); font-style: italic; font-weight: 800; line-height: 1.2; max-width: 34ch; text-shadow: 0 1px 12px rgba(0,0,0,.7); }
-.label .s { font-size: 11px; color: var(--dim); }
+.label .q { font-family: var(--font-text); font-size: var(--fs-caption); font-style: italic; font-weight: 400; line-height: 1.3; max-width: 30ch; text-shadow: 0 1px 12px rgba(0,0,0,.7); }
+.label .s { font-size: var(--fs-small); font-weight: 500; color: var(--dim); }
 .label .s a { color: var(--dim); }
 .stub { position: absolute; z-index: 3; top: calc(env(safe-area-inset-top, 0px) + 60px); left: 16px; font-family: var(--font-mono); font-size: 11px; color: var(--black); background: var(--amber); padding: 2px 6px; border-radius: 2px; }
 
@@ -69,7 +83,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .split.play-a .media.b .label, .split.play-b .media.a .label { opacity: .3; }
 .split .seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--black); transition: left .7s cubic-bezier(.3,.8,.2,1), top .7s cubic-bezier(.3,.8,.2,1); }
 .split.play-a .seam { left: 60%; } .split.play-b .seam { left: 40%; }
-.prog { position: absolute; z-index: 4; left: 0; bottom: 0; height: 3px; width: 0; background: var(--red); }
+.prog { position: absolute; z-index: 4; left: 0; bottom: 0; height: 3px; width: 0; background: var(--white); }
 .split.play-a .media.b .prog, .split.play-b .media.a .prog { opacity: 0; }
 @media (max-aspect-ratio: 1/1) {
   .split .media.a { right: 0; bottom: 50%; } .split .media.b { left: 0; top: 50%; }
@@ -84,10 +98,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 .over { position: absolute; z-index: 6; pointer-events: none; padding: 0 20px; }
 .over.center { inset: 0; display: grid; place-content: center; text-align: center; }
 .over.top { left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 70px); }
-.over .kick { font-size: 12px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); margin: 0 0 10px; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
-.over h2 { margin: 0 auto; font-weight: 900; font-size: clamp(34px, 7.2vw, 108px); line-height: .92; letter-spacing: -.03em; text-transform: uppercase; max-width: 15ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(0,0,0,.65); }
+.over .kick { font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); margin: 0 0 10px; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
+.over h2 { margin: 0 auto; font-weight: 900; font-size: var(--fs-display); line-height: .92; letter-spacing: -.03em; text-transform: uppercase; max-width: 15ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(0,0,0,.65); }
 .over.top h2 { margin: 0; }
-.over p.sub { font-size: clamp(16px, 1.8vw, 22px); font-weight: 700; max-width: 36ch; margin: 14px auto 0; line-height: 1.3; text-shadow: 0 1px 14px rgba(0,0,0,.8); }
+.over p.sub { font-family: var(--font-text); font-size: var(--fs-caption); font-weight: 400; max-width: 36ch; margin: 14px auto 0; line-height: 1.3; text-shadow: 0 1px 14px rgba(0,0,0,.8); }
 .over.top p.sub { margin-left: 0; }
 .scene.enter .over h2 { animation: punch .7s cubic-bezier(.2,.9,.2,1) both; }
 .split.enter .over { animation: titlecard 4.2s ease-in forwards; }
@@ -110,8 +124,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 /* Credits roll */
 .credits { height: auto; min-height: 100svh; padding: 90px 16px 80px; scroll-snap-align: start; }
 .credits .inner { max-width: 640px; margin: 0 auto; text-align: center; }
-.credits h3 { font-size: 11px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--amber); margin: 34px 0 10px; }
-.credits p, .credits li { font-size: 14px; line-height: 1.55; color: var(--dim); font-weight: 500; }
+.credits h3 { font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); margin: 34px 0 10px; }
+.credits p, .credits li { font-family: var(--font-text); font-size: 16px; line-height: 1.55; color: var(--dim); }
 .credits ul { list-style: none; padding: 0; margin: 0; }
 .credits li { margin-bottom: 6px; }
 .credits .links { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
@@ -131,6 +145,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 <nav class="dots" id="dots" aria-label="Scenes"></nav>
 <main id="film"></main>
 
+<script src="../../section.js"></script>
 <script>
 /* ===== CONTENT: Sam edits everything in this block. Empty strings hide a line. =====
    layout: "split" (the film plays, then the Trump clip, side by side).
@@ -169,7 +184,7 @@ const CONTENT = {
 const FRAMES = __FRAMES__;
 const film = document.getElementById("film"), dots = document.getElementById("dots");
 const players = [];  // { scene, v (video or null), frames, side }
-let paused = false, current = -1;
+let paused = false, current = -1, userPaused = false, away = false;  // paused = the reader paused, or the spine has moved on (away)
 
 function esc(s) { return String(s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 function media(c, cls, scene, side) {
@@ -204,7 +219,7 @@ function unlockAll() {
 }
 document.getElementById("gateOn").addEventListener("click", () => { gate.hidden = true; sound = true; unlockAll(); setSound(true); });
 document.getElementById("gateOff").addEventListener("click", () => { gate.hidden = true; });
-document.getElementById("gateOn").focus();
+if (!(window.Spine && Spine.embedded)) document.getElementById("gateOn").focus();
 function overlay(sc) {
   return `<div class="over ${sc.pos || "center"}">${sc.kicker ? `<p class="kick">${esc(sc.kicker)}</p>` : ""}${sc.title ? `<h2>${esc(sc.title)}</h2>` : ""}${sc.sub ? `<p class="sub">${esc(sc.sub)}</p>` : ""}</div><div class="rewind"></div>`;
 }
@@ -250,12 +265,11 @@ CONTENT.scenes.forEach((sc, idx) => {
 
 // Credits roll
 const credits = document.createElement("section"); credits.className = "scene credits"; credits.id = "credits";
-credits.innerHTML = `<div class="inner"><h3>The Butler analysis</h3><div class="links">
+credits.innerHTML = `<div class="inner"><div class="xlinks"><h3>The Butler analysis</h3><div class="links">
   <a href="https://claude.ai/artifact/JGEfKhHho4XZzHSed5YfBg" target="_blank" rel="noopener">Only the Ear</a>
   <a href="https://claude.ai/artifact/5WaijmmetS7uG2dVGBsheb" target="_blank" rel="noopener">The Turn</a>
   <a href="https://claude.ai/artifact/97TVEKUAy91vTmbmpXCyzn" target="_blank" rel="noopener">Moving Target</a>
-  <a href="https://claude.ai/artifact/6mqn5mzxwPv78qwL8KAzJh" target="_blank" rel="noopener">The Bump</a></div>
-  <h3>The odds</h3><p>The 1-in-990 figure comes from the Butler project's simulation of Thomas Crooks's first shot: one head-aimed shot at a random moment of Trump's speech, with his head turning as the RSBN broadcast shows. The page adds one calculation, the chance of at least one ear-only day in N tries, 1 − (1 − 1/990)<sup>N</sup>.</p>
+  <a href="https://claude.ai/artifact/6mqn5mzxwPv78qwL8KAzJh" target="_blank" rel="noopener">The Bump</a></div></div>
   <h3>Clips</h3><ul id="clipList"></ul>
   <p style="margin-top:22px">Clips are shown for commentary in a personal, non-commercial project and belong to their owners. Where a clip has not been supplied yet, the scene shows the four preview frames YouTube makes for it.</p></div>`;
 film.appendChild(credits); sections.push(credits);
@@ -265,26 +279,50 @@ sections.forEach((s, i) => dots.insertAdjacentHTML("beforeend", `<a href="#${s.i
 const dotEls = [...dots.children];
 
 // Play only the scene on screen; the HUD day counter follows the scene.
-const io = new IntersectionObserver(es => es.forEach(en => {
-  const i = sections.indexOf(en.target);
-  if (en.isIntersecting) {
-    current = i; en.target.classList.remove("enter"); void en.target.offsetWidth; en.target.classList.add("enter");
+function show(sc, on) {
+  const i = sections.indexOf(sc);
+  if (on) {
+    current = i; sc.classList.remove("enter"); void sc.offsetWidth; sc.classList.add("enter");
     dotEls.forEach((d, j) => d.classList.toggle("on", j === i));
     document.getElementById("hudDay").textContent = "DAY " + String(i + 1).padStart(4, "0");
   }
-  const sc = en.target;
-  if (sc.start) { if (en.isIntersecting) sc.start(); else sc.stop(); }
-  else players.filter(p => p.scene === sc).forEach(p => { if (!p.vEl) return; if (en.isIntersecting && !paused) p.vEl.play().catch(() => {}); else p.vEl.pause(); });
-}), { threshold: 0.6 });
-sections.forEach(s => io.observe(s));
+  if (sc.start) { if (on) sc.start(); else sc.stop(); }
+  else players.filter(p => p.scene === sc).forEach(p => { if (!p.vEl) return; if (on && !paused) p.vEl.play().catch(() => {}); else p.vEl.pause(); });
+}
+if (window.Spine && Spine.embedded) {
+  // Inside the spine the scenes stack: each holds still while the next slides up over it, so the one on screen
+  // is the last whose top has passed 40% of the screen (covered scenes still count as visible to an observer).
+  let on = -1;
+  const pick = () => { let k = 0; sections.forEach((s, i) => { if (s.getBoundingClientRect().top < innerHeight * .4) k = i; });
+    if (k !== on) { if (on >= 0) show(sections[on], false); on = k; show(sections[k], true); } };
+  addEventListener("scroll", pick, { passive: true }); addEventListener("resize", pick); requestAnimationFrame(pick);
+} else {
+  const io = new IntersectionObserver(es => es.forEach(en => show(en.target, en.isIntersecting)), { threshold: 0.6 });
+  sections.forEach(s => io.observe(s));
+}
 
 // Flip-book fallback and sequencer clock
 setInterval(() => { if (paused) return; players.forEach(p => { if (p.v || !p.imgs.length || sections[current] !== p.scene) return; p.imgs[p.i].classList.remove("on"); p.i = (p.i + 1) % 4; p.imgs[p.i].classList.add("on"); }); }, 1000);
 (function tick(t) { const s = sections[current]; if (s && s.tick) s.tick(t); requestAnimationFrame(tick); })(0);
 
 document.getElementById("pauseBtn").addEventListener("click", e => {
-  paused = !paused; e.target.textContent = paused ? "Play" : "Pause"; e.target.classList.toggle("on", paused);
+  userPaused = !userPaused; paused = userPaused || away; e.target.textContent = userPaused ? "Play" : "Pause"; e.target.classList.toggle("on", userPaused);
   players.forEach(p => { if (!p.vEl) return; if (paused) p.vEl.pause(); else if (sections[current] === p.scene && (p.active || !p.scene.start)) p.vEl.play().catch(() => {}); });
 });
 
+// Inside the 6:11 p.m. spine (assembly/CONTRACT.md): the spine asks about sound once for the whole piece
+// and says when this section is on screen. Opened on its own, the page ignores all of this.
+if (window.Spine && Spine.embedded) {
+  gate.hidden = true; away = true; paused = true; setSound(Spine.sound);
+  Spine.register({
+    kind: "scroll",
+    sound(on) { setSound(on); },
+    unlock() { unlockAll(); },
+    enter() {
+      away = false; paused = userPaused; const s = sections[current]; if (!s || paused) return;
+      if (s.start) s.start(); else players.filter(p => p.scene === s).forEach(p => { if (p.vEl) p.vEl.play().catch(() => {}); });
+    },
+    leave() { away = true; paused = true; sections.forEach(s => { if (s.stop) s.stop(); }); players.forEach(p => { if (p.vEl) p.vEl.pause(); }); }
+  });
+}
 </script>
