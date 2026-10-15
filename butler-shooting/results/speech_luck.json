@@ -233,6 +233,12 @@
    "degrees_short_of_rifle": 10,
    "source": "the camera, at its solved position, give or take 12 degrees",
    "not_quoted": "8 degrees short is the combined video-and-wound estimate (90% range 5 past to 25 short). It is not a caption figure: it only centres the weighting behind the at-turn odds, which average over the uncertainty in his turn (at exactly 10 degrees a graze would be 1.64% and ear-only 0.82%)."
+  },
+  "real_path_over_speech": {
+   "ear_only": "20%",
+   "graze": "14%",
+   "deeper": "58%",
+   "miss": "8%"
   }
  }
 }

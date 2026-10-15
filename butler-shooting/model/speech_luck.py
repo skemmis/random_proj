@@ -216,6 +216,9 @@ if __name__ == "__main__":
     res["quoted"]["wound_corrected"]["ear_only_at_shot"] = f"{100 * at['ear_only']:.2f}%"
     res["quoted"]["final_turn"] = final_turn(res["pitch_averaged"]["offset_posterior_mean"])
     res["quoted"]["face_angle_at_shot"] = FACE_ANGLE
+    ps = OUT.parent / "path_share.json"
+    if ps.exists():  # made by model/path_share.py
+        res["quoted"]["real_path_over_speech"] = json.loads(ps.read_text())["quoted"]
     OUT.write_text(json.dumps(res, indent=1))
     chart()
     for k in ("pitch_averaged", "level_head", "video_only_pitch_averaged"):

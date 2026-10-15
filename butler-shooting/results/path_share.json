@@ -1,0 +1,72 @@
+{
+ "what": "What the real first bullet's path would have done at each moment of the speech. The path from\ntop_down_view.json is held fixed in the torso frame; at every 1 degree of head turn (level head) we trace the\nbullet (centre plus six rays on its rim) and classify it: ear only, skin graze, deeper (killed or seriously\nwounded), or miss. Then we read the turn at every measured frame before the shot (video/pose_track.csv, with the\nwound's 1-degree shift from speech_luck.json) and count shares. The per-degree outcomes are cached in\nresults/path_outcome_by_rel.json (delete it to retrace, about 15 minutes). Writes results/path_share.json.",
+ "frames": 1599,
+ "offset_deg": -1.06,
+ "share": {
+  "ear": 0.2026266416510319,
+  "graze": 0.13883677298311445,
+  "kill": 0.5747342088805504,
+  "miss": 0.08380237648530331,
+  "arm": 0.0
+ },
+ "quoted": {
+  "ear_only": "20%",
+  "graze": "14%",
+  "deeper": "58%",
+  "miss": "8%"
+ },
+ "outcome_bands_start_deg": [
+  [
+   -180.0,
+   "ear"
+  ],
+  [
+   -168.0,
+   "graze"
+  ],
+  [
+   -162.0,
+   "kill"
+  ],
+  [
+   -16.0,
+   "graze"
+  ],
+  [
+   -10.0,
+   "ear"
+  ],
+  [
+   34.0,
+   "miss"
+  ],
+  [
+   43.0,
+   "graze"
+  ],
+  [
+   53.0,
+   "kill"
+  ],
+  [
+   130.0,
+   "graze"
+  ],
+  [
+   140.0,
+   "miss"
+  ],
+  [
+   147.0,
+   "ear"
+  ],
+  [
+   173.0,
+   "graze"
+  ],
+  [
+   177.0,
+   "ear"
+  ]
+ ]
+}
