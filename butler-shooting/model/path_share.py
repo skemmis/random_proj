@@ -65,8 +65,9 @@ if __name__ == "__main__":
     (RES / "path_share.json").write_text(json.dumps(out, indent=1))
     # Per-moment series for the dashboard, so a timeline can be coloured from the same trace as the shares.
     names = {"ear": "ear_only", "graze": "grazed", "kill": "deeper", "miss": "missed", "arm": "arm"}
-    frames = [[float(r["t_s"]), round(float(r["rel_deg"]) + off, 1),
-               names[oc[float(np.round(wrap(float(r["rel_deg"]) + off)))]]]
+    mb = json.loads((RES / "margin_by_degree.json").read_text())["by_rel_deg"]  # made by margin_by_degree.py
+    deg = lambda r: float(np.round(wrap(float(r["rel_deg"]) + off)))
+    frames = [[float(r["t_s"]), round(float(r["rel_deg"]) + off, 1), names[oc[deg(r)]]] + mb[str(int(deg(r)))]
               for r in csv.DictReader(open(B / "video/pose_track.csv"))]
     (B / "assets/dashboard/real_path_by_moment.json").write_text(json.dumps(dict(
         what="What the real first bullet's line would have done at each measured moment of the speech: the trace "
@@ -75,8 +76,14 @@ if __name__ == "__main__":
         frames_fields=["t_s: seconds before the first bullet arrived (0 = the shot), one row per measured frame, "
                        "5 a second, with gaps where the camera cut away (video/pose_track.csv)",
                        "rel_deg: head turn with the wound's shift applied (0 = face at the rifle, negative = past it)",
-                       "outcome: ear_only, grazed, deeper or missed"],
-        by_rel_deg_fields="outcome at every whole degree of turn from -180 to 180; round a smoothed turn to the "
+                       "outcome: ear_only, grazed, deeper or missed",
+                       "skull_mm: gap from the bullet's edge (5.7 mm across) to the nearest bone; negative = the edge "
+                       "cuts that far in; -2.85 = the centreline enters",
+                       "serious_wound_mm: the same for the nearest tissue that counts as a serious wound (bone, "
+                       "brain, vessel, airway, eye, or deeper than 3 mm under the skin)"],
+        gap_by_rel_deg_fields=["skull_mm", "serious_wound_mm"],
+        gap_by_rel_deg=mb,
+        by_rel_deg_fields="outcome (gap_by_rel_deg: the two gaps) at every whole degree of turn from -180 to 180; round a smoothed turn to the "
                           "nearest degree and look it up here to colour frames between the measured ones",
         shift_deg=round(off, 2), frames=frames,
         by_rel_deg={str(int(k)): names[v] for k, v in sorted(oc.items())}), separators=(",", ":")))
