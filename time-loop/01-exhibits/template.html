@@ -53,7 +53,8 @@ html.in-spine { scroll-snap-type: none; }
 :root.in-spine body { overflow: visible !important; }  /* section.js hides body overflow, which would stop the scenes sticking */
 .in-spine #gate, .in-spine .hud-r, .in-spine .xlinks { display: none !important; }
 .in-spine .scene { position: sticky; top: 0; margin-bottom: 70vh; margin-bottom: 70svh; }  /* each scene holds while the next slides over it */
-.in-spine .scene.credits { position: relative; margin-bottom: 0; }
+.in-spine .scene.credits { display: none !important; }  /* credits live in the spine's sources panel (CONTRACT.md 3, 9) */
+.in-spine .scene.last { margin-bottom: 0; }  /* the last exhibit holds its final frame and scrolls away */
 
 /* Scenes */
 .scene { position: relative; height: 100vh; height: 100svh; min-height: 480px; scroll-snap-align: start; overflow: hidden; background: var(--black); }
@@ -239,7 +240,8 @@ function sequencer(s, sc) {
       if (p.active) { p.vEl.currentTime = 0; if (!paused) p.vEl.play().catch(() => {}); } else p.vEl.pause();
     });
   };
-  s.onEnded = p => { if (p.active && side) s.go(side === "a" ? "b" : "a"); };
+  // Inside the spine the last exhibit ends on its final frame, a calm picture before the sources panel.
+  s.onEnded = p => { if (!p.active || !side) return; if (side === "b" && s.classList.contains("last")) { side = null; return; } s.go(side === "a" ? "b" : "a"); };
   s.start = () => s.go("a");
   s.stop = () => { [pa, pb].forEach(p => { p.active = false; if (p.vEl) p.vEl.pause(); }); side = null; };
   s.tick = now => {
@@ -273,7 +275,9 @@ credits.innerHTML = `<div class="inner"><div class="xlinks"><h3>The Butler analy
   <a href="https://claude.ai/artifact/6mqn5mzxwPv78qwL8KAzJh" target="_blank" rel="noopener">The Bump</a></div></div>
   <h3>Clips</h3><ul id="clipList"></ul>
   <p style="margin-top:22px">Clips are shown for commentary in a personal, non-commercial project and belong to their owners.</p></div>`;
-film.appendChild(credits); sections.push(credits);
+film.appendChild(credits);
+const inSpine = !!(window.Spine && Spine.embedded);
+if (inSpine) sections[sections.length - 1].classList.add("last"); else sections.push(credits);
 { const seen = new Set();  // each source once (Butler and the fist share one broadcast)
   CONTENT.scenes.filter(sc => sc.film).forEach(sc => [sc.film, sc.trump].forEach(c => { const url = c.src || "https://www.youtube.com/watch?v=" + c.yt; if (seen.has(url)) return; seen.add(url);
     document.getElementById("clipList").insertAdjacentHTML("beforeend", `<li>${esc(c.tag)}: ${esc(c.credit)} · <a href="${url}" target="_blank" rel="noopener">${url.replace("https://", "")}</a></li>`); })); }
