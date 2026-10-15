@@ -50,7 +50,12 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
 .cap { position: absolute; z-index: 6; left: 0; right: 0; bottom: calc(env(safe-area-inset-bottom, 0px) + 7vh); text-align: center; padding-inline: max(16px, env(safe-area-inset-left, 0px)) max(16px, env(safe-area-inset-right, 0px)); font-family: var(--font-label); font-weight: 600; font-size: clamp(11px, 1.2vw, 14px); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); text-shadow: 0 1px 3px #000; }
 
 /* the question, over a wall of everything at once */
-#wall { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px; background: #000; transform-origin: 50% 50%; }
+#strip { position: absolute; inset: 0; will-change: transform; }
+#strip .panel { position: absolute; left: 0; right: 0; height: 100%; overflow: hidden; }
+#strip .panel + .panel { top: 100%; }
+#fist { transition: filter .6s; }
+#fist.dim { filter: brightness(.5) saturate(.8); }
+#wall { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 1fr); gap: 3px; background: #000; transform-origin: 50% 50%; }
 #wall > * { position: relative; overflow: hidden; }
 #wall img, #wall video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(.35) contrast(1.1) brightness(.62); }
 #wall img { filter: grayscale(.35) contrast(1.1) brightness(.5); }
@@ -103,16 +108,21 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
   <div class="cut film" id="c-ned"><video src="media/ned.mp4" muted playsinline preload="auto" style="object-position: 55% 30%"></video></div>
   <div class="cut" id="c-podium"><video id="podium" src="media/podium.mp4" muted playsinline preload="auto" style="object-position: 58% 30%"></video><div class="cap">Butler, Pa. · July 13, 2024</div></div>
   <div class="cut" id="c-ear"><video id="ear" src="media/ear.mp4" muted playsinline preload="auto" style="object-position: 56% 30%"></video></div>
-  <div class="cut" id="c-wall">
-    <div id="wall" class="cut on" style="position:absolute;inset:0">
-      <div><video src="media/wall-rules.mp4" muted loop playsinline preload="auto"></video></div>
-      <div><img src="media/phil-steps.jpg" alt=""></div>
-      <div><video src="media/wall-consequences.mp4" muted loop playsinline preload="auto"></video></div>
-      <div><img src="media/cruise-down.jpg" alt="" style="object-position: 62% 40%"></div>
-      <div><img src="media/ned.jpg" alt="" style="object-position: 45% 30%"></div>
-      <div><video src="media/wall-ennui.mp4" muted loop playsinline preload="auto"></video></div>
-      <div><img src="media/phil-forecast.jpg" alt="" style="object-position: 30% 30%"></div>
-      <div><video src="media/wall-reaction.mp4" muted loop playsinline preload="auto"></video></div>
+  <div class="cut" id="c-fist">
+    <div id="strip">
+      <div class="panel" id="fistPanel"><video id="fist" src="media/fist.mp4" muted playsinline preload="auto" style="object-position: 46% 20%"></video><div class="cap" id="fistCap">Butler, Pa. · July 13, 2024</div></div>
+      <div class="panel">
+      <div id="wall">
+        <div><video src="media/wall-rules.mp4" muted loop playsinline preload="auto"></video></div>
+        <div><img src="media/phil-steps.jpg" alt=""></div>
+        <div><video src="media/wall-consequences.mp4" muted loop playsinline preload="auto"></video></div>
+        <div><img src="media/cruise-down.jpg" alt="" style="object-position: 62% 40%"></div>
+        <div><img src="media/ned.jpg" alt="" style="object-position: 45% 30%"></div>
+        <div><video src="media/wall-ennui.mp4" muted loop playsinline preload="auto"></video></div>
+        <div><img src="media/phil-forecast.jpg" alt="" style="object-position: 30% 30%"></div>
+        <div><video src="media/wall-reaction.mp4" muted loop playsinline preload="auto"></video></div>
+      </div>
+      </div>
     </div>
     <div id="q"><h1 id="qText"></h1></div>
   </div>
@@ -149,7 +159,7 @@ $("qText").innerHTML = CONTENT.question.map(s => `<span>${s}</span>`).join("");
 const EAR_T = 2.5;   // the first shot in media/ear.mp4 (RSBN broadcast, about 2.5 s in)
 const EAR = [   // [scroll start, scroll end, where the clip starts, day shown, reset after the shot?]
   [.375, .44, 0.0, 4, true], [.44, .495, 0.9, 37, true], [.495, .54, 1.4, 212, true],
-  [.54, .575, 1.8, 433, true], [.575, .605, 2.0, 689, true], [.605, .66, 1.2, 690, false]
+  [.54, .575, 1.8, 433, true], [.575, .605, 2.0, 689, true], [.605, .64, 1.2, 690, false]
 ];
 const CUTS = [
   [0, .06, "c-dark"],
@@ -157,12 +167,13 @@ const CUTS = [
   [.20, .222, "c-clock", 2], [.222, .25, "c-wake", 2], [.25, .30, "c-podium", 2],
   [.30, .31, "c-clock", 3], [.31, .337, "c-smash", 3], [.337, .356, "c-train", 3], [.356, .375, "c-ned", 3],  // morning 3: Phil smashes the clock (Sam, Oct 15: "the money shot")
   ...EAR.map(e => [e[0], e[1], "c-ear", e[3]]),
-  [.66, .85, "c-wall"],
+  [.64, .85, "c-fist", 690],   // day 690: he rises with his fist up and holds; the question fades in over the still; the still scrolls away to the collage (Sam, Oct 15)
   [.85, 1.01, "end"]
 ];
 
 let cur = -1, sound = false, last = -1;
-const ear = $("ear"), podium = $("podium"), wallVids = [...document.querySelectorAll("#wall video")], filmVids = [...document.querySelectorAll(".cut.film video")];
+const FIST_HOLD = 3.0;  // seconds into media/fist.mp4 where his fist is highest; the clip freezes here
+const fist = $("fist"), ear = $("ear"), podium = $("podium"), wallVids = [...document.querySelectorAll("#wall video")], filmVids = [...document.querySelectorAll(".cut.film video")];
 function progress() { const max = document.documentElement.scrollHeight - innerHeight; return max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0; }
 function flash(el, a) { el.style.transition = "none"; el.style.opacity = a; requestAnimationFrame(() => { el.style.transition = "opacity .45s ease-out"; el.style.opacity = 0; }); }
 const pad = n => String(n).padStart(4, "0");
@@ -170,7 +181,7 @@ const pad = n => String(n).padStart(4, "0");
 let earRep = -1, resetDone = false;
 function enter(i) {
   const [a, b, id, day] = CUTS[i];
-  document.querySelectorAll(".cut.on:not(#wall)").forEach(c => c.classList.remove("on"));
+  document.querySelectorAll(".cut.on").forEach(c => c.classList.remove("on"));
   $(id).classList.add("on");
   if (day) $("day").textContent = pad(day);
   $("hud").classList.toggle("on", !!day);
@@ -181,7 +192,7 @@ function enter(i) {
   const rep = EAR.findIndex(e => e[0] === a && id === "c-ear");
   if (rep >= 0) { earRep = rep; resetDone = false; ear.muted = !sound; ear.currentTime = EAR[rep][2]; ear.play().catch(() => {}); }
   else { ear.pause(); earRep = -1; }
-  wallVids.forEach(v => id === "c-wall" ? v.play().catch(() => {}) : v.pause());
+  if (id === "c-fist") { fist.currentTime = 0; fist.muted = !sound; fist.classList.remove("dim"); fist.play().catch(() => {}); } else { fist.pause(); wallVids.forEach(v => v.pause()); }
   // film cuts play from their first frame each time they come round
   filmVids.forEach(v => { if (v.closest(".cut").id === id) { v.currentTime = 0; v.muted = !sound; v.play().catch(() => {}); } else v.pause(); });
 }
@@ -198,14 +209,23 @@ function frame() {
     // stills drift in as you scroll through them
     if (i >= 0) { const [a, b, id] = CUTS[i], k = (p - a) / (b - a), img = $(id).querySelector(".still img, img");
       if ($(id).classList.contains("still") && img && !REDUCED) img.style.transform = `scale(${(1.04 + .08 * k).toFixed(4)})`;
-      if (id === "c-wall") { const w = $("wall"); w.style.transform = REDUCED ? "none" : `scale(${(1.25 - .25 * Math.min(1, k * 1.6)).toFixed(4)})`;
-        [...$("qText").children].forEach((s, j) => s.classList.toggle("in", k > .12 + j * .12)); }
+      if (id === "c-fist") {
+        // hold on the raised fist; "Is Donald Trump", then "stuck in a time loop?"; then the still scrolls up and the collage rises under the question
+        if (k > .22 && (fist.currentTime < FIST_HOLD - .05 || !fist.paused)) { fist.pause(); fist.currentTime = FIST_HOLD; }
+        fist.classList.toggle("dim", k > .22);
+        const q = [...$("qText").children]; q.forEach((s, j) => s.classList.toggle("in", k > (j === 0 ? .26 : .38)));
+        const t = Math.min(1, Math.max(0, (k - .5) / .22)), e = t * t * (3 - 2 * t);
+        $("strip").style.transform = `translateY(${(-100 * e).toFixed(2)}%)`;
+        $("hud").classList.toggle("on", t < .5); $("fistCap").style.opacity = k > .22 ? 0 : 1;
+        if (k > .45) wallVids.forEach(v => { if (v.paused) v.play().catch(() => {}); }); else wallVids.forEach(v => v.pause());
+        $("wall").style.transform = REDUCED ? "none" : `scale(${(1.2 - .2 * Math.min(1, Math.max(0, (k - .5) / .5))).toFixed(4)})`; }
       if (id === "end") { // 6:00 a.m. to 6:11 p.m., minute by minute
         const m = Math.round(Math.min(1, k / .7) * 731), h24 = 6 + Math.floor(m / 60), mm = m % 60, h12 = ((h24 + 11) % 12) + 1;
         $("tEnd").textContent = `${h12}:${String(mm).padStart(2, "0")}`; $("apEnd").textContent = h24 >= 12 ? "PM" : "AM";
         $("go").classList.toggle("on", k > .72); }
     }
   }
+  if (cur >= 0 && CUTS[cur][2] === "c-fist" && !fist.paused && fist.currentTime >= FIST_HOLD) fist.pause();
   // the ear: once the shot has gone by, every day but the last resets
   if (earRep >= 0 && !resetDone && ear.currentTime > EAR_T + .32) {
     resetDone = true;
@@ -222,8 +242,8 @@ function frame() {
   if (!REDUCED) setInterval(() => { c.style.transform = `translate(${(Math.random() * 10 - 5).toFixed(1)}%, ${(Math.random() * 10 - 5).toFixed(1)}%)`; }, 70); })();
 
 // ---- sound: on by default, but browsers need one click; the click also unlocks each clip for Safari ----
-function setSound(on) { sound = on; $("snd").textContent = on ? "Mute sound" : "Turn on sound"; $("snd").setAttribute("aria-pressed", on); ear.muted = !on; filmVids.forEach(v => v.muted = !on); }
-function unlock() { [ear, podium, ...wallVids, ...filmVids].forEach(v => { const was = v.muted; v.muted = !(v === ear || filmVids.includes(v)) || !sound; const pr = v.play(); if (pr) pr.then(() => { v.pause(); v.currentTime = 0; }).catch(() => {}); }); }
+function setSound(on) { sound = on; $("snd").textContent = on ? "Mute sound" : "Turn on sound"; $("snd").setAttribute("aria-pressed", on); ear.muted = !on; fist.muted = !on; filmVids.forEach(v => v.muted = !on); }
+function unlock() { [fist, ear, podium, ...wallVids, ...filmVids].forEach(v => { const was = v.muted; v.muted = !(v === ear || v === fist || filmVids.includes(v)) || !sound; const pr = v.play(); if (pr) pr.then(() => { v.pause(); v.currentTime = 0; }).catch(() => {}); }); }
 $("soundOn").addEventListener("click", () => { $("gate").hidden = true; setSound(true); unlock(); });
 $("soundOff").addEventListener("click", () => { $("gate").hidden = true; setSound(false); unlock(); });
 $("snd").addEventListener("click", () => setSound(!sound));
