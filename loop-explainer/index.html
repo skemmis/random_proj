@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src="../../section.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Loops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>/* a copy of assembly/tokens.css, so the page reads correctly when opened alone; the link below wins inside the spine */
+:root {
+  /* two grounds: night for film (the teaser, the opening, the time-loop exhibits), paper for the charts */
+  --night: #0b0d10;
+  --night-2: #16181c;        /* a panel on night */
+  --paper: #f7f5f0;
+  --paper-2: #ffffff;        /* a panel on paper */
+  --ink-on-night: #f3efe6;
+  --dim-on-night: #b4afa4;
+  --rule-on-night: rgba(243, 239, 230, .24);
+  --ink-on-paper: #121212;
+  --dim-on-paper: #5f5d58;
+  --rule-on-paper: #e2e1dc;
+
+  /* one accent, the bullet: its path, the shot, the moment of impact */
+  --shot: #e2432a;
+  --shot-on-night: #f0583c;  /* the same red, lifted so it reads on night */
+  --led: #ff3b2f;            /* the clock radio's digits, and nothing else */
+
+  /* chart outcomes (dataviz skill, checked for colour blindness); use only in charts */
+  --ear: #2a78d6;
+  --graze: #1baf7a;
+  --kill: #e34948;
+  --miss: #8e8c86;
+
+  --font-head: "Libre Franklin", "Franklin Gothic Medium", "Helvetica Neue", Arial, sans-serif;
+  --font-text: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-clock: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  /* the type scale: seven sizes, fluid between a 375 px phone and a 1600 px screen */
+  --fs-display: clamp(44px, 8vw, 128px);    /* the one big question per chapter; Franklin 900, uppercase, line-height .92 */
+  --fs-h1: clamp(34px, 4.8vw, 68px);        /* chapter titles; Franklin 800, line-height 1.02 */
+  --fs-h2: clamp(24px, 2.6vw, 36px);        /* a finding stated as a headline; Franklin 700, line-height 1.15 */
+  --fs-caption: clamp(18px, 2.2vw, 30px);   /* captions laid over video or a 3D scene; Newsreader 400, line-height 1.3 */
+  --fs-text: clamp(18px, 1.35vw, 21px);     /* reading text; Newsreader 400, line-height 1.55, max 62ch */
+  --fs-label: clamp(12px, 1.05vw, 14px);    /* labels, kickers, chart labels; Franklin 600, often uppercase with .12em tracking */
+  --fs-small: 12px;                          /* credits and source notes; Franklin 500 */
+
+  /* timing: one easing and three speeds for every fade, so the sections move alike */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --t-quick: .3s;
+  --t-fade: .6s;
+  --t-slow: 1.2s;
+}
+</style>
+<link rel="stylesheet" href="../../tokens.css">
+<style>
+  :root { color-scheme: dark; }
+  html { background: var(--night); }
+  body { margin: 0; background: var(--night); color: var(--ink-on-night); }
+  #scroll { height: 640vh; }
+  #stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+  svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .lab { font: 600 13px var(--font-head); letter-spacing: .12em; text-transform: uppercase; fill: var(--dim-on-night); }
+  .lab.ink { fill: var(--ink-on-night); }
+  .lab.big { font-size: 15px; }
+  .panel { position: absolute; left: 0; top: 0; border: 3px solid var(--ink-on-night); background: #000 center / cover no-repeat;
+           box-shadow: 0 0 0 6px var(--night); opacity: 0; transform-origin: 0 0; will-change: transform, opacity; }
+  #counter { position: absolute; top: 22px; left: 24px; font: 600 var(--fs-label) var(--font-clock); letter-spacing: .08em;
+             color: var(--dim-on-night); opacity: 0; }
+  #counter span { display: block; font-size: clamp(30px, 4vw, 52px); color: var(--ink-on-night); line-height: 1.05; }
+  .cap { position: absolute; left: 50%; bottom: 6vh; width: min(560px, calc(100vw - 32px)); transform: translate(-50%, 8px);
+         font: 400 var(--fs-caption)/1.3 var(--font-text); opacity: 0; transition: opacity var(--t-fade) var(--ease), transform var(--t-fade) var(--ease);
+         text-shadow: 0 1px 14px rgba(11, 13, 16, .9); pointer-events: none; }
+  .cap.on { opacity: 1; transform: translate(-50%, 0); }
+  @media (prefers-reduced-motion: reduce) { .cap { transition: none; } }
+</style>
+</head>
+<body>
+<div id="scroll">
+  <div id="stage" aria-label="Two timelines: the rest of us run straight; Trump's line loops upward four times and ends at President of the United States.">
+    <svg id="world"><g id="cam"></g></svg>
+    <svg id="hud"></svg>
+    <div id="panels"></div>
+    <div id="counter" aria-hidden="true"><span id="day">1</span></div>
+    <div id="caps"></div>
+  </div>
+</div>
+<script>
+// All words live here for the copy deck and Sam's rewrite. The one number, about 690 tries, is quoted from
+// butler-shooting/results/RESULTS.md (shots for an even chance of an ear-only hit at a random moment; 1 in 990 per shot).
+const CONTENT = {
+  rest: 'The rest of us',
+  trump: 'Trump',
+  ticks: ['2016', '2020', 'July 13, 2024', 'Jan. 20, 2025'],
+  end: 'President of the United States',
+  endShort: 'President',
+  day: 'Day',
+  captions: [
+    'For the rest of us, time runs in a straight line.',
+    'For Trump, it loops. He lives the same stretch of time again and again, and comes out stronger.',
+    'He lost in 2020. On this theory, that was just another loop.',
+    'July 13, 2024. At one shot in 990, he would need about 690 tries for an even chance of a bullet that touched only his ear.',
+    'Where the loops lead: President of the United States, the most powerful person in the world.'
+  ],
+  alt: ['Manga drawing: Trump at a lectern, a faint aura around him.',
+        'Manga drawing: Trump powering up, hair lifting, flames around him.',
+        'Manga drawing: Trump at Butler, blood running from his right ear, agents gripping his shoulders, eyes glowing white, a column of light behind him.',
+        'Manga drawing: Trump taking the oath of office inside a tower of light.']
+};
+const DAYS = 690;
+
+// scroll beats, as shares of the section's scroll (p from 0 to 1)
+const BEATS = {
+  seg0: [0.02, 0.1], coil1: [0.1, 0.22], seg1: [0.25, 0.32], coil2: [0.32, 0.44], seg2: [0.47, 0.54], coil3: [0.54, 0.72],
+  seg3: [0.75, 0.84], finale: [0.84, 0.9],
+  caps: [[0, 0.09], [0.11, 0.31], [0.34, 0.53], [0.56, 0.78], [0.86, 1.01]]
+};
+
+const NS = 'http://www.w3.org/2000/svg';
+const $ = id => document.getElementById(id);
+const cam = $('cam'), hud = $('hud'), panelsEl = $('panels');
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ramp = (p, [a, b]) => clamp((p - a) / (b - a));
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const lerp = (a, b, t) => a + (b - a) * t;
+function el(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+
+CONTENT.captions.forEach(t => { const d = document.createElement('p'); d.className = 'cap'; d.textContent = t; $('caps').appendChild(d); });
+const caps = [...document.querySelectorAll('.cap')];
+const panels = [1, 2, 3, 4].map((n, i) => { const d = document.createElement('div'); d.className = 'panel'; d.setAttribute('role', 'img');
+  d.setAttribute('aria-label', CONTENT.alt[i]); d.style.backgroundImage = `url(loop-${n}.webp)`; panelsEl.appendChild(d); return d; });
+
+let G; // geometry, rebuilt on resize
+function build() {
+  const W = innerWidth, H = innerHeight, phone = W < 600;
+  cam.replaceChildren(); hud.replaceChildren();
+  const U = phone ? W : Math.min(W, H * 1.6);
+  const usY = H * (phone ? 0.6 : 0.66), y0 = usY - 18;
+  const X = [U * 0.45]; X.push(X[0] + U * 0.95, X[0] + U * 1.9); const XE = X[2] + U * 0.9;
+  const rises = phone ? [H * 0.07, H * 0.1, H * 0.24] : [H * 0.1, H * 0.13, H * 0.3];
+  const Y = [y0]; rises.forEach(r => Y.push(Y[Y.length - 1] - r));     // Y[i] is his level before loop i; Y[3] is after Butler
+  const rc = phone ? U * 0.065 : U * 0.032, laps = [6, 9, 26], widths = [2, 3, 4.5, 6.5];
+  const stroke = (w, o = .95) => ({ fill: 'none', stroke: '#f3efe6', 'stroke-width': w, 'stroke-opacity': o, 'stroke-linecap': 'round', 'vector-effect': 'non-scaling-stroke' });
+
+  // the rest of us: one straight line forever
+  el('line', { x1: -1e5, y1: usY, x2: 1e6, y2: usY, ...stroke(2, .55), stroke: '#b4afa4' }, cam);
+  // Trump: straight runs joined by vertical coils
+  const pieces = [];
+  const seg = (x1, y, x2, w, beat) => pieces.push({ e: el('path', { d: `M${x1},${y} L${x2},${y}`, ...stroke(w) }, cam), beat });
+  const coil = (x, yb, yt, n, w, beat) => { let d = `M${x},${yb}`; const N = n * 40;
+    for (let i = 1; i <= N; i++) { const th = i / 40 * 2 * Math.PI; d += ` L${(x + rc * Math.sin(th)).toFixed(1)},${(yb - (yb - yt) * i / N - rc * .28 * (1 - Math.cos(th))).toFixed(1)}`; }
+    pieces.push({ e: el('path', { d, ...stroke(w, .92) }, cam), beat }); };
+  seg(-W * 2, Y[0], X[0], widths[0], 'seg0');
+  coil(X[0], Y[0], Y[1], laps[0], widths[0] + .5, 'coil1'); seg(X[0], Y[1], X[1], widths[1], 'seg1');
+  coil(X[1], Y[1], Y[2], laps[1], widths[1] + .5, 'coil2'); seg(X[1], Y[2], X[2], widths[2], 'seg2');
+  coil(X[2], Y[2], Y[3], laps[2], widths[2] + .8, 'coil3'); seg(X[2], Y[3], XE, widths[3], 'seg3');
+  const dot = el('circle', { cx: XE, cy: Y[3], r: 9, fill: '#f3efe6', opacity: 0 }, cam);
+  pieces.forEach(p => { p.len = p.e.getTotalLength(); p.e.style.strokeDasharray = `${p.len} ${p.len}`; });
+
+  // panels: beside each coil, on the side of his line with more room
+  const pan = [0, 1, 2, 3].map(i => { if (i === 3) { const pw = Math.min(phone ? W * 0.62 : U * 0.4, usY - Y[3] - 70);
+      return { x: phone ? XE - W * 0.78 + (W - pw) / 2 : XE + 28, y: Y[3] + 28, w: pw }; } const yl = Y[i + 1], below = usY - yl - 46, above = yl - 24;
+    const room = Math.max(below, above), pw = Math.min(phone ? W * 0.56 : U * 0.36, room - 22);
+    return { x: X[i] + rc + (phone ? 14 : U * 0.05), y: below > above ? yl + 24 : yl - pw - 22, w: pw }; });
+
+  // camera keys: tx, ty, s (screen = world * s + t)
+  const ax = W * (phone ? 0.22 : 0.3);
+  const keyAt = x => ({ tx: ax - x, ty: 0, s: 1 });
+  G = { W, H, phone, usY, X, XE, Y, rc, pieces, dot, pan,
+    keys: [[0, keyAt(X[0])], [BEATS.seg1[0], keyAt(X[0])], [BEATS.seg1[1], keyAt(X[1])], [BEATS.seg2[0], keyAt(X[1])],
+           [BEATS.seg2[1], keyAt(X[2])], [BEATS.seg3[0], keyAt(X[2])], [BEATS.seg3[1], keyAt(XE - (phone ? W * 0.56 : 0))], [1, keyAt(XE - (phone ? W * 0.56 : 0))]] };
+
+  // labels drawn in screen space, so they stay legible when the camera pulls back
+  G.lab = {
+    rest: txt(CONTENT.rest), trump: txt(CONTENT.trump, 'ink'),
+    ticks: CONTENT.ticks.map(t => ({ t: txt(t, '', 'middle'), m: el('line', { stroke: '#b4afa4', 'stroke-width': 2 }, hud) })),
+    end: txt(phone ? CONTENT.endShort : CONTENT.end, 'ink big', 'end')
+  };
+  render();
+}
+function txt(s, cls = '', anchor = 'start') { const t = el('text', { class: 'lab ' + cls, 'text-anchor': anchor }, hud); t.textContent = s; return t; }
+
+function camAt(p) {
+  const k = G.keys; let i = 0; while (i < k.length - 2 && p > k[i + 1][0]) i++;
+  const [p0, a] = k[i], [p1, b] = k[i + 1], t = ease(clamp((p - p0) / ((p1 - p0) || 1)));
+  return { tx: lerp(a.tx, b.tx, t), ty: lerp(a.ty, b.ty, t), s: lerp(a.s, b.s, t) };
+}
+
+let lastP = -1, ticking = false;
+function progress() { const max = document.documentElement.scrollHeight - innerHeight; return max > 0 ? clamp(scrollY / max) : 0; }
+function render() {
+  ticking = false;
+  const p = progress(); lastP = p;
+  const { W, H, phone, usY, X, XE, Y, pieces, dot, pan } = G;
+  const c = camAt(p), sx = x => x * c.s + c.tx, sy = y => y * c.s + c.ty;
+  cam.setAttribute('transform', `translate(${c.tx},${c.ty}) scale(${c.s})`);
+  const fin = ease(ramp(p, BEATS.finale));
+
+  // draw his line up to the reader's place
+  for (const pc of pieces) pc.e.style.strokeDashoffset = pc.len * (1 - ramp(p, BEATS[pc.beat]));
+  dot.setAttribute('opacity', ramp(p, [BEATS.seg3[1] - .01, BEATS.seg3[1] + .01]));
+
+  // labels
+  const L = G.lab;
+  L.rest.setAttribute('x', 16); L.rest.setAttribute('y', sy(usY) + 50);
+  L.trump.setAttribute('x', 16); L.trump.setAttribute('y', sy(Y[0]) - 12);
+  L.trump.style.opacity = 1 - ramp(p, [BEATS.coil1[0], BEATS.coil1[0] + .02]);
+  [...X, XE].forEach((x, i) => { const t = L.ticks[i], X0 = sx(x), y = sy(usY);
+    const on = ramp(p, i < 3 ? BEATS['coil' + (i + 1)] : BEATS.seg3) > 0 ? 1 : 0;
+    t.t.setAttribute('x', X0); t.t.setAttribute('y', y + 26); t.t.style.opacity = X0 > W - 40 || X0 < 40 ? 0 : on;
+    t.m.setAttribute('x1', X0); t.m.setAttribute('x2', X0); t.m.setAttribute('y1', y - 6); t.m.setAttribute('y2', y + 6); t.m.style.opacity = on; });
+  const ex = sx(XE), ey = sy(Y[3]);
+  L.end.setAttribute('x', Math.min(ex + 10, W - 16)); L.end.setAttribute('y', ey - 22);
+  L.end.style.opacity = ramp(p, [BEATS.seg3[1] - .01, BEATS.seg3[1] + .02]);
+
+  // the power-up panels: each fades in as its coil finishes, and leaves as the camera moves on
+  pan.forEach((q, i) => { const b = i < 3 ? BEATS['coil' + (i + 1)] : BEATS.finale, next = i < 3 ? BEATS['seg' + (i + 1)] : null;
+    const o = i < 3 ? ramp(p, [b[0] + (b[1] - b[0]) * .55, b[1]]) * (1 - ramp(p, [next[0], next[0] + .04])) : fin;
+    const d = panels[i]; d.style.opacity = o; d.style.width = d.style.height = q.w + 'px';
+    d.style.transform = `translate(${sx(q.x)}px, ${sy(q.y)}px) scale(${c.s})`; });
+
+  // the day counter runs while the Butler coil draws
+  const dc = ramp(p, BEATS.coil3), cOn = ramp(p, [BEATS.coil3[0], BEATS.coil3[0] + .02]) * (1 - ramp(p, [BEATS.seg3[0], BEATS.seg3[0] + .03]));
+  $('counter').style.opacity = cOn; $('day').textContent = Math.max(1, Math.round(DAYS * dc));
+  $('counter').firstChild.nodeValue = CONTENT.day;
+
+  BEATS.caps.forEach(([a, b], i) => caps[i].classList.toggle('on', p >= a && p < b));
+}
+$('counter').insertBefore(document.createTextNode(CONTENT.day), $('day'));
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(render); } }, { passive: true });
+addEventListener('resize', build);
+document.fonts && document.fonts.ready.then(build);
+build();
+window.__p = p => { scrollTo(0, p * (document.documentElement.scrollHeight - innerHeight)); render(); };
+
+if (window.Spine) Spine.register({ kind: 'scroll', enter() { render(); }, leave() {} });
+</script>
+</body>
+</html>
