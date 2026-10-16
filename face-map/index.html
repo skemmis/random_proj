@@ -2,7 +2,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <!-- section.js lets this page run inside the 6:11 p.m. spine (assembly/CONTRACT.md); opened alone it is missing or does nothing -->
 <script src="../../section.js"></script>
-<script>window.Spine = window.Spine || { embedded: false, sound: false, register() {}, done() {} }; if (Spine.embedded) document.documentElement.dataset.theme = 'light';</script>
+<script>window.Spine = window.Spine || { embedded: false, sound: false, register() {}, done() {} }; </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap">
 <style>
@@ -18,26 +18,12 @@
 </style>
 <link rel="stylesheet" href="../../tokens.css">
 <style>
-/* Layout: one stage the height of the screen, held while the reader scrolls. The sight sits in the middle,
-   lights up zone by zone, then its colours fly out into a pie beside it (below it on a phone). */
+/* PROPOSAL (Sam's "one or two things" rule, design/LOOK.md): the sight fills the screen, black housing to the edges,
+   like a view through the tube. Short text sits on the black beside the lens (below it on a phone). One zone lights at a time;
+   then the colours leave the face and settle into a pie in the lens's place, with one label. */
 :root {
-  --bg: var(--paper);
-  --ink: var(--ink-on-paper);
-  --ink-2: var(--dim-on-paper);
-  --lens: #eeece6;          /* the glass of the sight: a calm warm grey behind the head */
-  --tube: #0d0d0d;          /* the sight's black housing */
-  --on-fill: #121212;       /* labels set inside a pie slice, in both themes */
-  --leader: #8a8780;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #161616; --ink: #f0efec; --ink-2: #c3c2b9; --lens: #2a2c2e; --tube: #000000; --leader: #77756f;
-    --ear: #3987e5; --graze: #199e70; --kill: #e66767; --miss: #8f8e88;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #161616; --ink: #f0efec; --ink-2: #c3c2b9; --lens: #2a2c2e; --tube: #000000; --leader: #77756f;
+  --bg: #0b0d10; --ink: #f3efe6; --ink-2: #b4afa4;
+  --lens: #d8d5ce; --tube: #0b0d10; --on-fill: #121212; --leader: #b4afa4;
   --ear: #3987e5; --graze: #199e70; --kill: #e66767; --miss: #8f8e88;
   color-scheme: dark;
 }
@@ -46,10 +32,9 @@ body { background: var(--bg); color: var(--ink); font-family: var(--font-text); 
 #track { height: 520vh; position: relative; }
 #stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 #cv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
-#captions { position: absolute; inset: 0; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 max(20px, env(safe-area-inset-bottom, 0px)); pointer-events: none; }
-.cap { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: min(34ch, calc(100% - 32px)); margin: 0; font: 400 var(--fs-caption)/1.3 var(--font-text); text-align: center; text-wrap: balance; opacity: 0; }
-.cap .k { display: inline-block; width: .62em; height: .62em; border-radius: 2px; margin-right: .3em; vertical-align: .06em; }
-.cap small { display: block; margin-top: .5em; font: 500 max(15px, var(--fs-label))/1.4 var(--font-head); color: var(--ink-2); }
+#captions { position: absolute; inset: 0; pointer-events: none; }
+.cap { position: absolute; margin: 0; font: 400 var(--fs-caption)/1.3 var(--font-text); text-wrap: pretty; opacity: 0; }
+.cap small { display: block; margin-top: .6em; font: 500 max(15px, var(--fs-label))/1.4 var(--font-head); color: var(--ink-2); }
 </style>
 
 <div id="track">
@@ -57,10 +42,10 @@ body { background: var(--bg); color: var(--ink); font-family: var(--font-text); 
     <canvas id="cv" role="img" data-c-aria="aria"></canvas>
     <div id="captions" aria-live="polite">
       <p class="cap" id="capA"><span data-c="capA"></span><small data-c="capAsmall"></small></p>
-      <p class="cap" id="capMiss"><span class="k" style="background:var(--miss)"></span><span data-c="capMiss"></span></p>
-      <p class="cap" id="capKill"><span class="k" style="background:var(--kill)"></span><span data-c="capKill"></span></p>
-      <p class="cap" id="capEar"><span class="k" style="background:var(--ear)"></span><span data-c="capEar"></span></p>
-      <p class="cap" id="capGraze"><span class="k" style="background:var(--graze)"></span><span data-c="capGraze"></span></p>
+      <p class="cap" id="capMiss"><span data-c="capMiss"></span></p>
+      <p class="cap" id="capKill"><span data-c="capKill"></span></p>
+      <p class="cap" id="capEar"><span data-c="capEar"></span></p>
+      <p class="cap" id="capGraze"><span data-c="capGraze"></span></p>
       <p class="cap" id="capPie"><span data-c="capPie"></span><small data-c="capPieSmall"></small></p>
     </div>
   </div>
@@ -105,8 +90,8 @@ let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return see
 // pie targets: N evenly spread points in a unit disk (a sunflower spiral), sorted clockwise from the start of
 // the ear slice and handed out by the quoted shares, so each slice holds its share of the points
 const SH = D.shares;
-const ORDER = ['ear', 'graze', 'serious', 'miss'];           // clockwise; the ear slice is centred at 3 o'clock
-const A0 = Math.PI / 2 - (SH.ear / 100) * Math.PI;            // angle where the ear slice starts, clockwise from 12
+const ORDER = ['ear', 'graze', 'serious', 'miss'];           // clockwise; the ear slice is centred at 12 o'clock
+const A0 = -(SH.ear / 100) * Math.PI;            // angle where the ear slice starts, clockwise from 12
 const slices = []; { let a = A0; for (const k of ORDER) { const s = SH[k] / 100 * 2 * Math.PI; slices.push({ k, a0: a, a1: a + s, mid: a + s / 2 }); a += s; } }
 const particles = [];
 {
@@ -177,17 +162,15 @@ const lerp = (a, b, t) => a + (b - a) * t;
 // where things sit, in CSS pixels, at the start (sight alone) and at the end (small sight and the pie)
 function layout(w, h) {
   if (w / h > 1.1) {
-    const r0 = Math.min(h * 0.33, w * 0.3);
-    return { s0: { x: w / 2, y: h * 0.41, r: r0 }, s1: { x: w * 0.27, y: h * 0.40, r: Math.min(h * 0.19, w * 0.14) },
-             pie: { x: w * 0.6, y: h * 0.40, r: Math.min(h * 0.29, w * 0.19) }, wide: true };
+    const r = Math.min(h * 0.45, w * 0.3), x = Math.max(w * 0.62, w - r - 56), left = Math.max(32, w * 0.06);
+    return { s: { x, y: h / 2, r }, pie: { x, y: h / 2, r: r * 0.78 }, cap: { left, width: Math.min(x - r - 56 - left, 420), top: h / 2, mid: true } };
   }
-  const r0 = Math.min(w * 0.42, h * 0.25), pr = Math.min(w * 0.3, h * 0.19), px = Math.max(pr + 16, w * 0.4);
-  return { s0: { x: w / 2, y: h * 0.31, r: r0 }, s1: { x: px, y: h * 0.14, r: Math.min(w * 0.14, h * 0.075) },
-           pie: { x: px, y: h * 0.43, r: pr }, wide: false };
+  const r = Math.min(w * 0.46, h * 0.3), y = h * 0.4;
+  return { s: { x: w / 2, y, r }, pie: { x: w / 2, y, r: r * 0.78 }, cap: { left: 20, width: w - 40, top: y + r * 1.1 + 28, mid: false } };
 }
 
 // the scroll's beats, as fractions of the section's scroll
-const B = { miss: [0.13, 0.2], kill: [0.22, 0.29], ear: [0.31, 0.38], graze: [0.40, 0.46], fly: [0.50, 0.80], pie: [0.80, 0.85], capPie: [0.83, 0.86], end: [0.95, 0.99] };
+const B = { miss: [0.13, 0.17, 0.22, 0.25], kill: [0.22, 0.26, 0.31, 0.34], ear: [0.31, 0.35, 0.40, 0.43], graze: [0.40, 0.44, 0.46, 0.47], all: [0.46, 0.5], fly: [0.52, 0.80], pie: [0.80, 0.85] };
 const CAPS = [['capA', -1, 0, 0.11, 0.13], ['capMiss', 0.13, 0.15, 0.2, 0.22], ['capKill', 0.22, 0.24, 0.29, 0.31], ['capEar', 0.31, 0.33, 0.38, 0.40],
               ['capGraze', 0.40, 0.42, 0.47, 0.49], ['capPie', 0.83, 0.86, 0.95, 0.98]];
 
@@ -212,38 +195,40 @@ function draw() {
     const o = Math.min(a < 0 ? 1 : ramp(p, a, b), 1 - ramp(p, c, d));
     document.getElementById(id).style.opacity = o.toFixed(3);
   }
-  // captions sit just under the picture they describe
-  const capTop = L.s0.y + L.s0.r * 1.08 + 24, pieTop = L.pie.y + L.pie.r + 32;
-  for (const [id] of CAPS) document.getElementById(id).style.top = (id === 'capPie' ? pieTop : capTop) + 'px';
+  // captions sit on the black housing, beside the lens or below it
+  for (const [id] of CAPS) { const s = document.getElementById(id).style; s.left = L.cap.left + 'px'; s.width = L.cap.width + 'px'; s.top = L.cap.top + 'px'; s.transform = L.cap.mid ? 'translateY(-50%)' : 'none'; s.textAlign = L.cap.mid ? 'left' : 'center'; }
 
   // the sight moves aside while the colours fly
-  const fly = ramp(p, B.fly[0], B.fly[1]), mv = ease(ramp(p, B.fly[0], B.fly[0] + 0.18));
-  const S = { x: lerp(L.s0.x, L.s1.x, mv), y: lerp(L.s0.y, L.s1.y, mv), r: lerp(L.s0.r, L.s1.r, mv) };
+  const fly = ramp(p, B.fly[0], B.fly[1]), gone = ramp(p, B.fly[0] + 0.02, B.fly[0] + 0.12);  // the lens empties as the colours leave
+  const S = L.s;
   const k = S.r / D.radiusMM;  // px per mm
 
   // the zones light one at a time; while one is new, the others step back so it stands out
-  const lit = { miss: ramp(p, ...B.miss), serious: ramp(p, ...B.kill), ear: ramp(p, ...B.ear), graze: ramp(p, ...B.graze) };
-  const focus = p < B.miss[0] ? null : p < B.kill[0] ? 'miss' : p < B.ear[0] ? 'serious' : p < B.graze[0] ? 'ear' : p < B.graze[1] + 0.02 ? 'graze' : null;
+  // one zone at a time; all four together only just before they fly
+  const one = b => Math.max(Math.min(ramp(p, b[0], b[1]), 1 - ramp(p, b[2], b[3])), ramp(p, ...B.all));
+  const lit = { miss: one(B.miss), serious: one(B.kill), ear: one(B.ear), graze: one(B.graze) };
+  const focus = null;
   const leave = ramp(p, B.fly[0], B.fly[0] + 0.02);  // the painted zones hand over to the flying cells
 
   // lens, face and zones
   ctx.save(); ctx.beginPath(); ctx.arc(S.x, S.y, S.r, 0, 2 * Math.PI); ctx.clip();
-  ctx.fillStyle = css('--lens'); ctx.fillRect(S.x - S.r, S.y - S.r, 2 * S.r, 2 * S.r);
+  ctx.fillStyle = css('--bg'); ctx.fillRect(S.x - S.r, S.y - S.r, 2 * S.r, 2 * S.r);
+  ctx.globalAlpha = 1 - gone; ctx.fillStyle = css('--lens'); ctx.fillRect(S.x - S.r, S.y - S.r, 2 * S.r, 2 * S.r);
   const span = (D.halfMM + D.mmPerPx / 2) * k;  // the face still and the coded image share one frame, centred on the aim point
   if (face.complete && face.naturalWidth) ctx.drawImage(face, S.x - span, S.y - span, 2 * span, 2 * span);
   if (layersKey) {
     ctx.imageSmoothingEnabled = true;
     for (const c of ['miss', 'serious', 'ear', 'graze']) {
-      let a = lit[c] * 0.82 * (1 - leave);
+      let a = lit[c] * 0.85 * (1 - leave) * (1 - gone);
       if (focus && focus !== c) a *= 0.45;
       if (c === 'miss') a = Math.min(1, a * 1.1);
       if (a <= 0) continue;
       ctx.globalAlpha = a; ctx.drawImage(layers[c], S.x - span, S.y - span, 2 * span, 2 * span);
     }
-    ctx.globalAlpha = 1;
   }
+  ctx.globalAlpha = 1;
   ctx.restore();
-  drawTube(S, 1 - ramp(p, B.miss[0], B.miss[1]) * 0.6);
+  if (gone < 1) { ctx.globalAlpha = 1 - gone; drawTube(S, 1 - ramp(p, B.miss[0], B.miss[1])); ctx.globalAlpha = 1; }
 
   // the flight: each cell leaves the face for its place in the pie
   if (fly > 0) {
@@ -278,7 +263,7 @@ function explode(P) { const s = slices[0]; return { x: Math.sin(s.mid) * P.r * 0
 function drawTube(S, dotAlpha) {
   const t = Math.max(8, S.r * 0.075), TAU = 2 * Math.PI;
   ctx.save();
-  ctx.strokeStyle = css('--tube'); ctx.lineWidth = t; ctx.beginPath(); ctx.arc(S.x, S.y, S.r + t / 2, 0, TAU); ctx.stroke();
+  ctx.strokeStyle = '#2a2b2d'; ctx.lineWidth = t; ctx.beginPath(); ctx.arc(S.x, S.y, S.r + t / 2, 0, TAU); ctx.stroke();
   ctx.strokeStyle = 'rgba(255,255,255,.16)'; ctx.lineWidth = Math.max(1, t * 0.14); ctx.beginPath(); ctx.arc(S.x, S.y, S.r + t * 0.55, Math.PI * 1.05, Math.PI * 1.55); ctx.stroke();
   const g = ctx.createRadialGradient(S.x, S.y, S.r * 0.8, S.x, S.y, S.r); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.16)');
   ctx.fillStyle = g; ctx.beginPath(); ctx.arc(S.x, S.y, S.r, 0, TAU); ctx.fill();
@@ -307,22 +292,18 @@ function drawPie(P, colors, a, L) {
     ctx.textAlign = align; ctx.fillStyle = color;
     lines.forEach((ln, i) => { ctx.font = `${i === lines.length - 1 && bold ? 700 : 600} ${fs}px ${head}`; ctx.fillText(ln, x, y + i * fs * 1.2); });
   };
+  // every slice labelled (Sam, 2026-10-16): the two big slices inside, the two thin ones above, ear to the left, graze to the right
   const at = (s, rr, o = { x: 0, y: 0 }) => ({ x: P.x + o.x + Math.sin(s.mid) * rr, y: P.y + o.y - Math.cos(s.mid) * rr });
   const sl = Object.fromEntries(slices.map(s => [s.k, s]));
-  const q = Q;
-  // inside the two big slices
-  { const c = at(sl.miss, P.r * 0.55); lab([CONTENT.slices.miss, q.miss_share_of_circle], c.x, c.y - fs * 0.2, 'center', css('--on-fill'), true); }
-  { const c = at(sl.serious, P.r * 0.55), t = (P.r > 150 ? CONTENT.slices.serious : CONTENT.slices.seriousShort).split('\n');
-    lab([...t, q.serious_share_of_circle], c.x, c.y - fs * 0.6 * t.length, 'center', css('--on-fill'), true); }
-  // the two thin slices, labelled to the right with leader lines; the ear is the one the eye should land on
-  const lx = P.x + P.r + Math.max(26, P.r * 0.22), ink = css('--ink');
-  const tip = (s, o) => at(s, P.r + 3, o);
-  const rows = [[sl.ear, ex, CONTENT.slices.ear, q.ear_share_of_circle, -fs * 1.5], [sl.graze, { x: 0, y: 0 }, CONTENT.slices.graze, q.graze_share_of_circle, fs * 1.9]];
+  { const c = at(sl.miss, P.r * 0.52); lab([CONTENT.slices.miss, Q.miss_share_of_circle], c.x, c.y - fs * 0.2, 'center', css('--on-fill'), true); }
+  { const c = at(sl.serious, P.r * 0.55), t = (P.r > 170 ? CONTENT.slices.serious : CONTENT.slices.seriousShort).split('\n');
+    lab([...t, Q.serious_share_of_circle], c.x, c.y - fs * 0.6 * t.length, 'center', css('--on-fill'), true); }
   ctx.strokeStyle = css('--leader'); ctx.lineWidth = 1;
-  for (const [s, o, name, val, dy] of rows) {
-    const t = tip(s, o), y = P.y + o.y + dy;
-    ctx.beginPath(); ctx.moveTo(t.x, t.y); ctx.lineTo(lx - 12, y - fs * 0.35); ctx.lineTo(lx - 6, y - fs * 0.35); ctx.stroke();
-    lab([name, val], lx, y, 'left', ink, true);
+  const top = P.y - P.r - Math.max(30, P.r * 0.16), dx = Math.max(34, P.r * 0.22);
+  for (const [s, o, name, val, side] of [[sl.ear, ex, CONTENT.slices.ear, Q.ear_share_of_circle, -1], [sl.graze, { x: 0, y: 0 }, CONTENT.slices.graze, Q.graze_share_of_circle, 1]]) {
+    const t = at(s, P.r + 4, o), x = P.x + side * dx;
+    ctx.beginPath(); ctx.moveTo(t.x, t.y); ctx.lineTo(x, top + 6); ctx.lineTo(x + side * 6, top + 6); ctx.stroke();
+    lab([name + ' ' + val], x + side * 10, top + 6 + fs * 0.35, side < 0 ? 'right' : 'left', css('--ink'), true);
   }
   ctx.restore();
 }
