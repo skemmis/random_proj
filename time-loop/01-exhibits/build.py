@@ -1,7 +1,7 @@
-# Builds index.html from template.html and frames.json (four YouTube preview frames per clip, as data URIs).
-import json, pathlib
+# Builds index.html from template.html. (The YouTube preview frames in frames.json are no longer used:
+# each clip now shows its first frame from posters/ while it loads.)
+import pathlib
 here = pathlib.Path(__file__).parent
-frames = json.loads((here / "frames.json").read_text())
-html = (here / "template.html").read_text().replace("__FRAMES__", json.dumps(frames))
+html = (here / "template.html").read_text()
 (here / "index.html").write_text(html)
 print("index.html", len(html) // 1024, "KB")

@@ -54,8 +54,10 @@ html.in-spine { scroll-snap-type: none; }
 .scene { position: relative; height: 100vh; height: 100svh; min-height: 480px; scroll-snap-align: start; overflow: hidden; background: var(--black); }
 .media { position: absolute; inset: 0; overflow: hidden; background: #000; }
 .media video, .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.media img { opacity: 0; }
-.media img.on { opacity: 1; }
+.media .load { position: absolute; z-index: 4; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 4vh); transform: translateX(-50%); display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(246,244,239,.8); text-shadow: 0 1px 8px rgba(0,0,0,.7); transition: opacity .4s; pointer-events: none; }
+.media .load i { width: 18px; height: 18px; border-radius: 50%; border: 2px solid rgba(246,244,239,.3); border-top-color: rgba(246,244,239,.9); animation: spin .9s linear infinite; }
+.media.ready .load { opacity: 0; }
+@keyframes spin { to { transform: rotate(360deg); } }
 /* A calm dark patch at the foot of the frame for the one line */
 .media .grade { position: absolute; inset: auto 0 0 0; height: 55%; pointer-events: none; background: linear-gradient(180deg, rgba(11,13,16,0), rgba(11,13,16,.72) 45%, rgba(11,13,16,.9)); transition: opacity .5s; }
 .label { position: absolute; z-index: 3; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 9vh); width: min(560px, calc(100vw - 48px)); display: flex; flex-direction: column; gap: 10px; transition: opacity .5s; }
@@ -130,8 +132,8 @@ html.in-spine { scroll-snap-type: none; }
    name line. tag, who and credit no longer show on the clip; they feed the credits roll and the sources panel.
    layout: "split" (the film plays, then the Trump clip, side by side).
    hold: seconds each side shows when it has no video yet (default 6).
-   file: a video published beside the page, e.g. "clips/ex1-film.mp4". Until a file exists the scene
-   falls back to YouTube's four preview frames for the clip named by yt. */
+   file: a video published beside the page, e.g. "clips/ex1-film.mp4". Its first frame, posters/<same name>.jpg,
+   shows with a small loading mark until the clip can play. */
 const CONTENT = {
   open: {
     title: "Is Donald Trump living the same day over and over?",
@@ -161,7 +163,6 @@ const CONTENT = {
 };
 /* ===== END CONTENT ===== */
 
-const FRAMES = __FRAMES__;
 const film = document.getElementById("film");
 const TITLE = 3000, BEAT = 900;  // ms: the title alone on its still; the side-by-side beat at each switch
 const players = [];  // { scene, v (video or null), frames, side }
@@ -170,15 +171,17 @@ let paused = false, current = -1, userPaused = false, away = false;  // paused =
 function esc(s) { return String(s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 function media(c, cls, scene, side) {
   const m = document.createElement("div"); m.className = "media " + cls;
-  const keys = ["hqdefault", "hq1", "hq2", "hq3"];
-  const imgs = keys.map((k, i) => { const im = new Image(); im.alt = ""; im.src = FRAMES[c.yt + "_" + k] || ""; if (!i) im.className = "on"; m.appendChild(im); return im; });
-  const p = { scene, side, v: null, imgs, i: 0 };
+  const p = { scene, side, v: null };
   const v = document.createElement("video"); v.muted = true; v.loop = false; v.playsInline = true; v.preload = "metadata"; v.setAttribute("playsinline", "");
-  v.addEventListener("loadeddata", () => { p.v = v; imgs.forEach(im => im.remove()); });
-  v.addEventListener("error", () => { v.remove(); }, true);
+  v.poster = c.file.replace("clips/", "posters/").replace(/\.mp4$/, ".jpg");  // the clip's first frame while it loads
+  v.addEventListener("loadeddata", () => { p.v = v; m.classList.add("ready"); });
+  v.addEventListener("canplay", () => m.classList.add("ready"));
+  v.addEventListener("waiting", () => { if (p.active) m.classList.remove("ready"); });
+  v.addEventListener("playing", () => m.classList.add("ready"));
   const s = document.createElement("source"); s.src = c.file; s.type = "video/mp4";
-  s.addEventListener("error", () => { v.remove(); });
+  s.addEventListener("error", () => m.classList.add("ready"));  // no clip: the still holds for the scene's hold time
   v.appendChild(s); m.prepend(v);
+  m.insertAdjacentHTML("beforeend", `<div class="load"><i></i>Loading</div>`);
   const line = c.quote ? `<span class="q">“${esc(c.quote)}”</span>` : c.desc ? `<span class="q desc">${esc(c.desc)}</span>` : "";
   m.insertAdjacentHTML("beforeend", `<div class="grade"></div><div class="label">${line}${c.att ? `<span class="att">${esc(c.att)}</span>` : ""}</div>`);
   v.addEventListener("ended", () => { if (scene.onEnded) scene.onEnded(p); });
@@ -209,6 +212,7 @@ function overlay(sc) {
 // The title holds alone on the film's first frame, then the film plays full screen, a short side-by-side
 // beat, the Trump clip full screen, a beat, and the film again. A side without video holds its preview frames.
 // Timers count only while playing (el, in ms), so a pause holds the title or the beat where it is.
+function warm(p) { if (p.vEl && p.vEl.preload !== "auto") { p.vEl.preload = "auto"; p.vEl.load(); } }
 function sequencer(s, sc) {
   const [pa, pb] = players.filter(p => p.scene === s);
   let phase = null, el = 0, next = null;
@@ -231,13 +235,14 @@ function sequencer(s, sc) {
   s.onEnded = p => { if (!p.active || (phase !== "a" && phase !== "b")) return; if (phase === "b" && s.classList.contains("last")) { phase = null; return; } beat(phase === "a" ? "b" : "a"); };
   s.start = () => {
     phase = "title"; el = 0; set("title"); s.classList.remove("play-a", "play-b");
-    [pa, pb].forEach(p => { p.active = false; if (p.vEl) { if (p.vEl.preload !== "auto") { p.vEl.preload = "auto"; p.vEl.load(); } p.vEl.pause(); p.vEl.currentTime = 0; } });  // fetch this exhibit's clips while its title shows
+    [pa, pb].forEach(p => { p.active = false; if (p.vEl) { warm(p); p.vEl.pause(); p.vEl.currentTime = 0; } });  // fetch this exhibit's clips while its title shows
+    const nx = sections[sections.indexOf(s) + 1]; if (nx) players.filter(q => q.scene === nx).forEach(warm);  // and the next exhibit's
   };
   s.stop = () => { [pa, pb].forEach(p => { p.active = false; if (p.vEl) p.vEl.pause(); }); phase = null; };
   s.tick = dt => {
     if (!phase || paused) return;
     el += dt;
-    if (phase === "title") { if (el > TITLE) s.go("a"); return; }
+    if (phase === "title") { if (el > TITLE && (pa.v || el > 10000)) s.go("a"); return; }  // the title waits (up to 10 s) for the film to be ready
     if (phase === "beat") { if (el > BEAT) s.go(next); return; }
     const p = phase === "a" ? pa : pb;
     if (!p.v && el > (sc.hold || 6) * 1000) { if (phase === "b" && s.classList.contains("last")) { phase = null; return; } beat(phase === "a" ? "b" : "a"); }
@@ -295,8 +300,7 @@ if (window.Spine && Spine.embedded) {
   sections.forEach(s => io.observe(s));
 }
 
-// Flip-book fallback and sequencer clock
-setInterval(() => { if (paused) return; players.forEach(p => { if (p.v || !p.imgs.length || sections[current] !== p.scene) return; p.imgs[p.i].classList.remove("on"); p.i = (p.i + 1) % 4; p.imgs[p.i].classList.add("on"); }); }, 1000);
+// Sequencer clock
 { let last = performance.now(); (function tick(t) { const dt = Math.min(100, t - last); last = t; const s = sections[current]; if (s && s.tick) s.tick(dt); requestAnimationFrame(tick); })(last); }
 
 document.getElementById("pauseBtn").addEventListener("click", e => {
