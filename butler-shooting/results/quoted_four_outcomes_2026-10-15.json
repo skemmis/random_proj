@@ -1,0 +1,81 @@
+{
+ "what": "The quoted section of results/speech_luck.json as it stood on 2026-10-15, with four outcomes (ear only, skin graze, serious wound or death, miss). Superseded on 2026-10-16 when Sam cut the skin-graze outcome; kept so nothing is lost.",
+ "quoted": {
+  "wound_corrected": {
+   "share_of_speech_as_lucky": "4%",
+   "share_of_speech_as_lucky_90pct": [
+    "1%",
+    "8%"
+   ],
+   "graze_lift": "1.6x",
+   "graze_lift_90pct": [
+    "1.3",
+    "1.8"
+   ],
+   "ear_only_lift": "8x",
+   "graze_at_shot": "1.56%",
+   "graze_speech_average": "0.95%",
+   "ear_only_at_shot": "0.75%",
+   "ear_only_speech_average": "0.10%",
+   "graze_speech_average_one_in": "1 in 105",
+   "ear_only_speech_average_one_in": "1 in 990",
+   "shots_for_even_chance_ear_only": 690,
+   "shots_for_even_chance_graze": 73
+  },
+  "video_only": {
+   "share_of_speech_as_lucky": "6%",
+   "share_of_speech_as_lucky_90pct": [
+    "1%",
+    "18%"
+   ],
+   "graze_lift": "1.6x",
+   "graze_lift_90pct": [
+    "1.1",
+    "1.8"
+   ],
+   "ear_only_lift": "7x",
+   "graze_at_shot": "1.50%",
+   "graze_speech_average": "0.95%",
+   "ear_only_at_shot": "0.67%",
+   "ear_only_speech_average": "0.10%",
+   "graze_speech_average_one_in": "1 in 105",
+   "ear_only_speech_average_one_in": "1 in 980",
+   "shots_for_even_chance_ear_only": 680,
+   "shots_for_even_chance_graze": 72
+  },
+  "final_turn": {
+   "definition": "Before the chart = more than 51 s before the shot; the chart minute = the last 51 s. 'Within 35 degrees' = face within 35 degrees of the rifle line either way. Ear-only chance = one head-aimed shot hitting only an ear, averaged over the frames.",
+   "before_chart_share_within_35deg": "10%",
+   "before_chart_closest_deg": 10,
+   "chart_minute_share_within_35deg": "96%",
+   "chart_minute_share_of_speech_time": "13%",
+   "chart_minute_share_of_ear_only_chance": "71%",
+   "chart_minute_ear_only_average": "0.50%",
+   "before_chart_ear_only_average": "0.031%",
+   "chart_minute_vs_before_ratio": "16x"
+  },
+  "face_angle_at_shot": {
+   "quote": "about 10 degrees short of the rifle",
+   "degrees_short_of_rifle": 10,
+   "source": "the camera, at its solved position, give or take 12 degrees",
+   "not_quoted": "8 degrees short is the combined video-and-wound estimate (90% range 5 past to 25 short). It is not a caption figure: it only centres the weighting behind the at-turn odds, which average over the uncertainty in his turn (at exactly 10 degrees a graze would be 1.64% and ear-only 0.82%)."
+  },
+  "real_path_over_speech": {
+   "ear_only": "20%",
+   "graze": "14%",
+   "deeper": "58%",
+   "miss": "8%"
+  },
+  "face_map_areas": {
+   "ear_share_of_head": "4.3%",
+   "graze_share_of_head": "3.9%",
+   "serious_share_of_head": "91.8%",
+   "right_ear_share_of_head": "2.6%",
+   "ear_share_of_circle": "1.5%",
+   "graze_share_of_circle": "1.4%",
+   "serious_share_of_circle": "35.4%",
+   "miss_share_of_circle": "61.7%",
+   "circle_radius_cm": 19
+  }
+ }
+}

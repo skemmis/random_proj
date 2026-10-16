@@ -1,43 +1,42 @@
 # Results of the 3D simulation
 
-Updated 2026-10-15. Graze rule: 3 mm. Range: 139 m.
+Updated 2026-10-16. Three outcomes: Ear only, Serious wound or death, Miss. Range: 139 m.
+
+On 2026-10-16 Sam cut the skin-graze outcome and kept the label "Serious wound or death". Every figure now uses three outcomes:
+
+- **Ear only:** the bullet touches only an ear.
+- **Serious wound or death:** the bullet touches any skin of his head or neck, or anything deeper, or his body or arms. Shots that used to count as a skin graze (the outer 3 mm away from the ear) are here.
+- **Miss:** the bullet touches nothing, or only hair.
+
+The four-outcome figures that stood until 2026-10-15 are in the appendix and in `results/quoted_four_outcomes_2026-10-15.json`. The three-outcome arithmetic is `model/three_outcomes.py`, its output `results/three_outcomes.json`; nothing was re-simulated.
 
 ## The headline
 
 On July 13, 2024, Thomas Crooks fired at Donald Trump from a roof 139 m away. The first bullet passed through the top of Trump's right ear and missed his skull. How likely was that?
 
-Suppose Crooks had fired one shot at Trump's head at a random moment in the six and a half minutes of speech before the first shot. That shot would have hit only his ear, as the real bullet did, about **1 time in 990** (0.10%). It would have merely grazed him, touching only the ear or the outer 3 mm of skin, about **1 time in 105** (0.95%). Sam will choose which figure the article leads with.
+Suppose Crooks had fired one shot at Trump's head at a random moment in the six and a half minutes of speech before the first shot. That shot would have hit only his ear, as the real bullet did, about **1 time in 990** (0.10%).
 
 | One shot at his head | At a random moment in the speech | At his turn when Crooks fired |
 |---|---|---|
-| Hits only the ear | 0.10% (1 in 990) | 0.75% (about 1 in 135) |
-| Grazes him (ear or outer 3 mm of skin) | 0.95% (1 in 105) | 1.56% (1 in 64) |
+| Ear only | 0.10% (1 in 990) | 0.75% (about 1 in 135) |
+| Serious wound or death | 32.2% | 29.4% |
+| Miss | 67.7% | 69.9% |
 
 Crooks would have needed about 690 shots at random moments for an even chance of one ear-only hit, and about 92 shots at Trump's turn when he fired.
 
 The headline has moved twice. Sam chose 1 in 625 on 2026-10-13, but the head track behind it used a camera bearing that was off by about 21°. Once we solved the camera's true position, the corrected track showed Trump facing the crowd more often, and the figure became 1 in 930. Fixing the range at the solved 139 m made it 1 in 990.
 
-The video and the wound now agree on which way he faced; the wound shifts the track by only about 1°. The video alone gives 1 in 980 for an ear-only hit and 1 in 105 for a graze.
+The video and the wound now agree on which way he faced; the wound shifts the track by only about 1°. The video alone gives 1 in 980 for an ear-only hit.
 
 The model follows how far Trump turned his head, not how he nodded or tilted it. No one measured nod and tilt frame by frame, so the figures average over nods from 10° down to 20° up. Sam chose on 2026-10-13 not to simulate more. Judging by the poses we have, measured nods and tilts would move the ear-only figure by no more than a fifth either way.
 
 ### At his turn when Crooks fired
 
-When Crooks fired, Trump's face pointed about **10° short of the rifle** (give or take 12°), as the camera shows. Pages quote this angle. The odds below average over our uncertainty about that turn, weighting each turn by how well it explains the ear-only wound. That weighting centres on 8° short; captions should not quote the 8°.
+When Crooks fired, Trump's face pointed about **10° short of the rifle** (give or take 12°), as the camera shows. Pages quote this angle. The odds above average over our uncertainty about that turn, weighting each turn by how well it explains the ear-only wound. That weighting centres on 8° short; captions should not quote the 8°. At exactly 10° the ear-only chance would be 0.82%.
 
-| One shot at his head, at his turn | Chance |
-|---|---|
-| Grazes him | 1.56% |
-| of which, hits only the ear | 0.75% |
-| Kills or seriously wounds him | 28.5% |
-| Hits only an arm | 0.03% |
-| Misses | 69.9% |
+**The margin was slim.** The bullet, 5.7 mm across, passed 6.1 mm from his skull and **0.7 mm from the skin of his scalp**. Under the three outcomes, touching that skin counts as a serious wound, so 0.7 mm is the margin between what happened and "Serious wound or death". (Under the old rule, which let a bullet cut 3 mm into the skin before it counted, the margin was 1.6 mm.) Had the bullet flown the same line while his head was turned differently, it would have touched the skull only with his face 20° or more past the rifle (`assets/dashboard/margin_by_turn.json`).
 
-At exactly 10° the figures would be 1.64% for a graze and 0.82% for the ear alone.
-
-**The margin was slim.** The bullet, 5.7 mm across, passed 6.1 mm from his skull and 1.6 mm from the depth of 3 mm at which a graze becomes a serious wound. Had the bullet flown the same line while his head was turned differently, it would have cut deeper than 3 mm with his face 20° or more past the rifle, or between about 53° and 129° short of it, which includes facing the crowd. It would have touched the skull only with his face 20° or more past the rifle (`assets/dashboard/margin_by_turn.json`).
-
-**The same bullet at other moments.** Had the real bullet flown the same line at a random moment in the speech, it would have hit only his ear **20%** of the time, grazed his skin **14%**, gone deeper **58%** and missed **8%**. We traced the bullet at every degree of head turn and read his turn at each of the 1,599 measured frames before the shot (`model/path_share.py`, `results/path_share.json`). The outcome at each frame, timed in seconds before the shot, is in `assets/dashboard/real_path_by_moment.json`, with a lookup by whole degree of turn for smoothed tracks. Each frame also carries the gap from the bullet's edge to the skull and to a serious wound, measured as for the 6.1 mm and 1.6 mm (negative means the edge cuts that far in; −2.85 means the centreline enters); `results/margin_by_degree.json`, made by `model/margin_by_degree.py`, holds those gaps by degree. The line hits only the ear with his face between 10° past the rifle and 33° short of it, misses from 34° to 42° short, grazes the skin from 43° to 52° short, and goes deeper from 53° to 129° short, which covers facing the crowd.
+**The same bullet at other moments.** Had the real bullet flown the same line at a random moment in the speech, it would have hit only his ear **20%** of the time, seriously wounded or killed him **72%**, and missed **8%**. We traced the bullet at every degree of head turn and read his turn at each of the 1,599 measured frames before the shot (`model/path_share.py`, `results/path_share.json`). The line hits only the ear with his face between 10° past the rifle and 33° short of it, misses from 34° to 42° short, and seriously wounds him at every other turn from 43° short round past the crowd. The outcome at each frame, timed in seconds before the shot, is in `assets/dashboard/real_path_by_moment.json`, with a lookup by whole degree of turn for smoothed tracks; that file still names the old classes (`grazed` and `deeper` both count as Serious wound or death). Each frame also carries the gap from the bullet's edge to the skull and to the old 3 mm line (negative means the edge cuts that far in); `results/margin_by_degree.json` holds those gaps by degree.
 
 ### The ear by surface area
 
@@ -46,13 +45,12 @@ As the rifle saw Trump's head at the shot (face 10° short of the rifle, head le
 | Share of the area | Of his head alone | Of a 19 cm circle around the aim point |
 |---|---|---|
 | Ear only (either ear) | 4.3% | 1.5% |
-| Skin graze (outer 3 mm) | 3.9% | 1.4% |
-| Serious wound or death | 91.8% | 35.4% |
+| Serious wound or death | 95.7% | 36.8% |
 | Miss | (none) | 61.7% |
 
 - **Of his head alone**, the ears make up 4.3% of what the rifle saw; the right ear, the one hit, 2.6%. "Head" means every spot that touches him above the shoulders, neck included; hair counts as a miss.
 - **The circle** holds half of all simulated head-aimed shots, so it is the natural frame for a pie with a miss slice. Torso inside it counts as a serious wound, as in the simulation.
-- **Captions should quote the circle** (1.5% ear, 61.7% miss) for a pie that includes misses, or "the ears are about 4% of his head" for one that does not. These are shares of area, not odds: shots cluster near the aim point, in the middle of his head, so the ear-only chance at his turn, 0.75%, is about half the ear's 1.5% share of the circle.
+- **Captions should quote the circle** (1.5% ear, 36.8% serious wound or death, 61.7% miss) for a pie that includes misses, or "the ears are about 4% of his head" for one that does not. These are shares of area, not odds: shots cluster near the aim point, in the middle of his head, so the ear-only chance at his turn, 0.75%, is about half the ear's 1.5% share of the circle.
 
 ### The range
 
@@ -63,10 +61,8 @@ Sam has not confirmed the 139 m range. To restore the earlier figures, follow th
 | Figure | 125–142 m | 139 m (current) |
 |---|---|---|
 | Ear only, random moment | 0.11% (1 in 930) | 0.10% (1 in 990) |
-| Graze, random moment | 1.01% (1 in 99) | 0.95% (1 in 105) |
 | Ear only, at his turn | 0.79% | 0.75% |
-| Graze, at his turn | 1.66% | 1.56% |
-| Killed or seriously wounded / miss, at his turn | 29.6% / 68.7% | 28.5% / 69.9% |
+| Serious wound or death / miss, at his turn | 30.5% / 68.7% | 29.4% / 69.9% |
 | Shots for an even chance of an ear-only hit (random moment / at his turn) | 650 / 87 | 690 / 92 |
 
 ### The real path at other head angles
@@ -81,7 +77,7 @@ Such angles exist, then, but they need a nod or tilt as well as the turn. No one
 
 #### If his chin was raised at the shot
 
-**Not quoted on any page.** On 2026-10-15 Sam chose to keep the level head, so the quoted margin stays 6.1 mm and 1.6 mm and the quoted odds stand.
+**Not quoted on any page.** On 2026-10-15 Sam chose to keep the level head, so the quoted margins and odds stand. The gaps "to a serious wound" in this table are to the old 3 mm line, measured before Sam cut the skin-graze outcome.
 
 Trump looks slightly up in the camera's frame at the shot. Matching the model to that frame puts his chin about 10° up; a separate estimate from the video puts it about 8° up, plausibly anywhere from 0° to 16° (`video/NOTES.md`, "Chin-up at shot 1"). We measured both ways the question can be asked, at his turn of 10° short of the rifle (`model/chin_up.py`, `results/chin_up_at_shot.json`).
 
@@ -97,17 +93,17 @@ Trump looks slightly up in the camera's frame at the shot. Matching the model to
 
 - **Through the ear wound** is the reading that fits the real wound: at each nod we aimed the bullet at the middle of the ear-only zone, so it still clips the top of his ear. With his chin up 10°, the bullet passed 5.6 mm from his skull and 1.0 mm from a serious wound; at 8°, 5.6 mm and 1.1 mm. The margin narrows a little; the story holds.
 - **The same line in space** asks what the level-head line would have done had he nodded. At 10° up it passes 4.5 mm from the skull and right at the 3 mm limit; beyond about 11° it cuts deeper. At this turn it reaches no bone at any nod up to 20°. The nods that put the bullet through bone need him facing the crowd.
-- **The odds barely move.** With his chin up 10°, the full run's rows give 0.75% for the ear alone, 1.57% for a graze, 28.3% killed or seriously wounded and 70.1% a miss. Interpolated to 8°, they give 0.75%, 1.57%, 28.4% and 70.0%. The quoted figures already average over nods.
+- **The odds barely move.** With his chin up 10°, the full run's rows give 0.75% ear only, 29.2% serious wound or death and 70.1% miss. Interpolated to 8°, they give 0.75%, 29.2% and 70.0%. The quoted figures already average over nods.
 
-## What "grazed" means
+## What the outcomes mean
 
-Sam set the definition on 2026-10-13. A bullet grazes Trump when it touches only his ear, or only the outer 3 mm of skin on his head or neck. A bullet that reaches deeper soft tissue, bone, the brain, a major blood vessel, the airway, an eye or the torso kills or seriously wounds him. A bullet that touches only hair misses.
+Sam set the three outcomes on 2026-10-16 (see the top of this file). The simulation itself still records finer classes: a bullet touching only the outer 3 mm of skin away from the ear was a "skin graze" under the rule Sam set on 2026-10-13; it now counts as Serious wound or death.
 
 We assume Crooks aimed at the middle of Trump's head.
 
 ## How much the head turn helped him
 
-Trump had turned his head to his right to look at a chart, which put his face nearly toward the rifle. Had he faced the crowd, his right ear would have pointed at the rifle; a shot at his head would have grazed him 0.84% of the time and never hit the ear alone. The turn nearly doubled his chance of a graze (1.9 times) and made an ear-only wound possible at all.
+Trump had turned his head to his right to look at a chart, which put his face nearly toward the rifle. Had he faced the crowd, his right ear would have pointed at the rifle, and a shot at his head could never have hit the ear alone: it would have seriously wounded or killed him 33.7% of the time and missed 66.3%. The turn made an ear-only wound possible at all.
 
 An ear-only hit is possible only when his face, or the back of his head, points within about 30° of the rifle. Then the ear stands clear of the skull as the gunman sees it. Turned further, the ear lies over the skull, and a bullet through the ear goes on into his head.
 
@@ -117,11 +113,10 @@ We measured Trump's head turn five times a second from the camera over the six a
 
 The camera's remaining bearing error, about 12°, shifts every frame by the same amount. We drew that shift once per trial and weighted it by how well it explains the wound, which asks for a shift of only about 1°. With that weighting:
 
-- A shot at his head at a random moment would have grazed him 0.95% of the time, against 1.56% at his turn when Crooks fired: 1.6 times as likely at the shot (90% range 1.3 to 1.8).
-- An ear-only hit was about 8 times as likely at the shot as on average (0.75% against 0.10%).
-- Only about 4% of the speech found him turned as favourably as at the shot (90% range 1% to 8%).
+- An ear-only hit was about 8 times as likely at the shot as on average (0.75% against 0.10%; 90% range 4 to 9 times).
+- Only about 4% of the speech found him turned as favourably for an ear-only hit as at the shot (90% range 1% to 8%).
 
-The video alone gives nearly the same answer: a graze 1.6 times as likely as average, with about 6% of the speech as favourable as the shot (90% range 1% to 18%). Counting frames with a better chance of a right-ear-only hit, using the camera's single best bearing, finds 1 in 1,600. Our 4% spreads the bearing over its uncertainty and counts a graze anywhere, so it is the more cautious figure.
+The video alone gives nearly the same answer: an ear-only hit 7 times as likely as average, with about 6% of the speech as favourable as the shot (90% range 1% to 16%). Counting frames with a better chance of a right-ear-only hit, using the camera's single best bearing, finds 1 in 1,600. Our 4% spreads the bearing over its uncertainty, so it is the more cautious figure.
 
 ### The chart minute
 
@@ -140,19 +135,34 @@ Two kinds of evidence, combined:
 1. The camera puts Trump's face about 10° short of the rifle at the first shot, give or take 12°.
 2. The wound favours the turns that make an ear-only hit likely.
 
-Together they put his face about 8° short of the rifle (90% range 5° past to 25° short). That combined figure weights the odds at his turn; captions quote the camera's 10°, which the margin and the drawings also use. The wound alone would put his face 7° short and give a graze chance of 1.54% (ear only 0.72%).
+Together they put his face about 8° short of the rifle (90% range 5° past to 25° short). That combined figure weights the odds at his turn; captions quote the camera's 10°, which the margin and the drawings also use. The wound alone would put his face 7° short and give an ear-only chance of 0.72%.
 
 ## The follow-up shot
 
-Had Crooks fired again at a Trump standing still in the same pose, a second shot would have grazed him 1.03% of the time and hit only the ear 0.50% of the time. A shot fired less than a second after the last one scatters about 1.5 times as widely, by the same marksmanship data.
+Had Crooks fired again at a Trump standing still in the same pose, a second shot would have hit only the ear 0.50% of the time, seriously wounded or killed him 23.8% and missed 75.7%. A shot fired less than a second after the last one scatters about 1.5 times as widely, by the same marksmanship data.
 
 ## What the model contains
 
 - **Head:** a 3D likeness of Trump by the Sketchfab artist shortlan, scaled to the head of a 6-foot-1 man over 50.
-- **Anatomy:** the BodyParts3D skull, brain, blood vessels, spine and airway, fitted about 6 mm under the skin. A second surface 3 mm under the skin marks where a graze ends.
+- **Anatomy:** the BodyParts3D skull, brain, blood vessels, spine and airway, fitted about 6 mm under the skin. A second surface 3 mm under the skin marks where the old skin-graze outcome ended.
 - **Bullet:** a cylinder 5.7 mm across, traced through the head.
 - **Shot spread:** published marksmanship data for soldiers firing red-dot rifles, scaled to the range. Half of all shots at the head land within about 19 cm of the aim point.
 - **Poses:** 256 head poses, from 60° past the rifle round to the back of the head, with a range of nods and tilts.
+
+## Appendix: the four-outcome figures (until 2026-10-15)
+
+Until Sam cut it on 2026-10-16, "grazed" meant the ear or the outer 3 mm of skin, and pages quoted these figures. The full quoted section as it stood is in `results/quoted_four_outcomes_2026-10-15.json`.
+
+| Figure | Ear only | Skin graze | Serious wound or death | Miss |
+|---|---|---|---|---|
+| At his turn | 0.75% | 0.81% (grazed in all, 1.56%, 1 in 64) | 28.5% (plus arm only 0.03%) | 69.9% |
+| Random moment in the speech | 0.10% (1 in 990) | grazed in all 0.95% (1 in 105) | | |
+| 19 cm circle, by area | 1.5% | 1.4% | 35.4% | 61.7% |
+| His head alone, by area | 4.3% | 3.9% | 91.8% | |
+| The real bullet's line over the speech | 20% | 14% | 58% | 8% |
+| Follow-up shot | 0.50% | grazed in all 1.03% | | |
+
+Other four-outcome figures: facing the crowd, a graze 0.84%, so the turn made a graze 1.9 times as likely; a graze 1.6 times as likely at the shot as on average (90% range 1.3 to 1.8; video alone 1.6, with 6% of the speech as favourable, 90% range 1% to 18%); 73 shots at random moments for an even chance of one graze; at 125–142 m, a graze 1.01% (1 in 99) at a random moment and 1.66% at his turn; at exactly 10°, a graze 1.64%; with his chin up 10°, a graze 1.57%; the wound alone, a graze 1.54%.
 
 ## Sources
 

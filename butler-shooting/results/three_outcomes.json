@@ -1,0 +1,111 @@
+{
+ "what": "Three outcomes, as Sam decided on 2026-10-16: Ear only, Serious wound or death, Miss. Skin grazes (the outer 3 mm\nof skin away from the ear) and arm-only hits join Serious wound or death. As a marked variant, skin grazes count as misses\ninstead. Arithmetic on the full run's rows and the existing track weighting (same seed and draws as\nspeech_luck.py); nothing is re-simulated. Writes results/three_outcomes.json.",
+ "default": {
+  "at_his_turn": {
+   "ear_only": 0.007486373702322357,
+   "serious_wound_or_death": 0.2937581449381066,
+   "miss": 0.6987554813595711
+  },
+  "random_moment": {
+   "ear_only": 0.001009949250174729,
+   "serious_wound_or_death": 0.32243909027875506,
+   "miss": 0.6765509604710702
+  },
+  "facing_crowd": {
+   "ear_only": 0.0,
+   "serious_wound_or_death": 0.33734294194365766,
+   "miss": 0.6626570580563423
+  },
+  "area_circle_19cm": {
+   "ear_only": 0.0153,
+   "serious_wound_or_death": 0.368,
+   "miss": 0.6167
+  },
+  "area_head_alone": {
+   "ear_only": 0.0427,
+   "serious_wound_or_death": 0.9574,
+   "miss": 0.0
+  },
+  "real_path_over_speech": {
+   "ear_only": 0.2026266416510319,
+   "serious_wound_or_death": 0.7135709818636649,
+   "miss": 0.08380237648530331
+  }
+ },
+ "skin_graze_as_miss": {
+  "at_his_turn": {
+   "ear_only": 0.007486373702322357,
+   "serious_wound_or_death": 0.28560270081676187,
+   "miss": 0.7069109254809158
+  },
+  "random_moment": {
+   "ear_only": 0.001009949250174729,
+   "serious_wound_or_death": 0.3139431185885513,
+   "miss": 0.685046932161274
+  },
+  "facing_crowd": {
+   "ear_only": 0.0,
+   "serious_wound_or_death": 0.32898332502152594,
+   "miss": 0.6710166749784741
+  },
+  "area_circle_19cm": {
+   "ear_only": 0.0153,
+   "serious_wound_or_death": 0.3538,
+   "miss": 0.6309
+  },
+  "area_head_alone": {
+   "ear_only": 0.0427,
+   "serious_wound_or_death": 0.918,
+   "miss": 0.0394
+  },
+  "real_path_over_speech": {
+   "ear_only": 0.2026266416510319,
+   "serious_wound_or_death": 0.5747342088805504,
+   "miss": 0.22263914946841776
+  }
+ },
+ "quoted": {
+  "outcome_names": [
+   "Ear only",
+   "Serious wound or death",
+   "Miss"
+  ],
+  "margin_at_his_turn_mm": {
+   "skull": 6.1,
+   "skin": 0.7
+  },
+  "at_his_turn": {
+   "ear_only": "0.75%",
+   "serious_wound_or_death": "29.4%",
+   "miss": "69.9%",
+   "ear_only_one_in": "about 1 in 135",
+   "shots_for_even_chance_ear_only": 92
+  },
+  "random_moment": {
+   "ear_only": "0.10%",
+   "ear_only_one_in": "1 in 990",
+   "serious_wound_or_death": "32.2%",
+   "miss": "67.7%"
+  },
+  "facing_crowd": {
+   "ear_only": "0.0%",
+   "serious_wound_or_death": "33.7%",
+   "miss": "66.3%"
+  },
+  "area_circle_19cm": {
+   "ear_only": "1.5%",
+   "serious_wound_or_death": "36.8%",
+   "miss": "61.7%"
+  },
+  "area_head_alone": {
+   "ear_only": "4.3%",
+   "serious_wound_or_death": "95.7%",
+   "miss": "0.0%"
+  },
+  "real_path_over_speech": {
+   "ear_only": "20%",
+   "serious_wound_or_death": "72%",
+   "miss": "8%"
+  }
+ }
+}

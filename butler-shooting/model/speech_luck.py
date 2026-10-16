@@ -178,50 +178,56 @@ def chart():
     plt.close(fig)
 
 
+def one_in(p):  # 1/p: whole numbers below 200, two significant figures above (1 in 990)
+    n = 1 / p
+    if n < 200:
+        return int(round(n))
+    k = int(np.floor(np.log10(n))) - 1
+    return int(round(n / 10 ** k) * 10 ** k)
+
+
+def quoted(r):
+    """Rounded figures for the pages. Three outcomes since 2026-10-16 (Sam cut the skin-graze outcome), so
+    "as lucky" and the lift are measured on the ear-only chance."""
+    pct = lambda x: "under 1%" if x < 0.005 else f"{100 * x:.0f}%"
+    return {"share_of_speech_as_lucky": pct(r["ear_pct_frames_higher"]["mean"]),
+            "share_of_speech_as_lucky_90pct": [pct(r["ear_pct_frames_higher"]["p05"]),
+                                               pct(r["ear_pct_frames_higher"]["p95"])],
+            "ear_only_lift": f"{r['ear_lift']['mean']:.0f}x",
+            "ear_only_lift_90pct": [f"{r['ear_lift']['p05']:.0f}", f"{r['ear_lift']['p95']:.0f}"],
+            "ear_only_at_shot": f"{100 * r['ear_shot']['mean']:.2f}%",
+            "ear_only_speech_average": f"{100 * r['ear_avg']['mean']:.2f}%",
+            "ear_only_speech_average_one_in": f"1 in {one_in(r['ear_avg']['mean'])}",
+            # head-aimed shots at random moments of the speech for an even chance of one ear-only hit
+            "shots_for_even_chance_ear_only": int(round(np.log(0.5) / np.log(1 - r["ear_avg"]["mean"]), -1))}
+
+
+def build_quoted(res):
+    """The rounded figures RESULTS.md and the pages quote, so nobody has to round by hand."""
+    q = {"wound_corrected": quoted(res["pitch_averaged"]), "video_only": quoted(res["video_only_pitch_averaged"])}
+    # The at-shot ear-only chance is the canonical figure from summary.json (analyze.py), so every page shows one
+    # number; this script's own Monte Carlo value differs in the second decimal and stays in pitch_averaged.ear_shot.
+    at = json.loads((OUT.parent / "summary.json").read_text())["video_and_wound"]["given_estimated_pose"]
+    q["wound_corrected"]["ear_only_at_shot"] = f"{100 * at['ear_only']:.2f}%"
+    q["final_turn"] = final_turn(res["pitch_averaged"]["offset_posterior_mean"])
+    q["face_angle_at_shot"] = FACE_ANGLE
+    to = OUT.parent / "three_outcomes.json"
+    if to.exists():  # made by model/three_outcomes.py: at his turn, random moment, areas, real path
+        q["three_outcomes"] = json.loads(to.read_text())["quoted"]
+    return q
+
+
 if __name__ == "__main__":
+    import sys
+    if "--quoted-only" in sys.argv:  # rebuild the quoted section from the saved draws, without re-sampling
+        res = json.loads(OUT.read_text())
+        res["quoted"] = build_quoted(res)
+        OUT.write_text(json.dumps(res, indent=1))
+        print(json.dumps(res["quoted"], indent=1))
+        sys.exit()
     res = {"pitch_averaged": run(False), "level_head": run(True), "video_only_pitch_averaged": run(False, use_wound=False),
            "notes": __doc__}
-    def quoted(r):
-        pct = lambda x: "under 1%" if x < 0.005 else f"{100 * x:.0f}%"
-        return {"share_of_speech_as_lucky": pct(r["grazed_pct_frames_higher"]["mean"]),
-                "share_of_speech_as_lucky_90pct": [pct(r["grazed_pct_frames_higher"]["p05"]),
-                                                   pct(r["grazed_pct_frames_higher"]["p95"])],
-                "graze_lift": f"{r['grazed_lift']['mean']:.1f}x",
-                "graze_lift_90pct": [f"{r['grazed_lift']['p05']:.1f}", f"{r['grazed_lift']['p95']:.1f}"],
-                "ear_only_lift": f"{r['ear_lift']['mean']:.0f}x",
-                "graze_at_shot": f"{100 * r['grazed_shot']['mean']:.2f}%",
-                "graze_speech_average": f"{100 * r['grazed_avg']['mean']:.2f}%",
-                "ear_only_at_shot": f"{100 * r['ear_shot']['mean']:.2f}%",
-                "ear_only_speech_average": f"{100 * r['ear_avg']['mean']:.2f}%",
-                "graze_speech_average_one_in": f"1 in {one_in(r['grazed_avg']['mean'])}",
-                "ear_only_speech_average_one_in": f"1 in {one_in(r['ear_avg']['mean'])}",
-                # head-aimed shots at random moments of the speech for an even chance of one ear-only hit
-                "shots_for_even_chance_ear_only": int(round(np.log(0.5) / np.log(1 - r["ear_avg"]["mean"]), -1)),
-                "shots_for_even_chance_graze": int(round(np.log(0.5) / np.log(1 - r["grazed_avg"]["mean"])))}
-
-    def one_in(p):  # 1/p: whole numbers below 200 (1 in 105), two significant figures above (1 in 990)
-        n = 1 / p
-        if n < 200:
-            return int(round(n))
-        k = int(np.floor(np.log10(n))) - 1
-        return int(round(n / 10 ** k) * 10 ** k)
-    # The rounded figures RESULTS.md and the pages quote, so nobody has to round by hand.
-    res["quoted"] = {"wound_corrected": quoted(res["pitch_averaged"]),
-                     "video_only": quoted(res["video_only_pitch_averaged"])}
-    # The at-shot chances quoted with the wound weighting are the canonical at-turn figures from summary.json
-    # (analyze.py), so every page shows one number; this script's own Monte Carlo value differs in the
-    # second decimal and stays in pitch_averaged.grazed_shot / ear_shot.
-    at = json.loads((OUT.parent / "summary.json").read_text())["video_and_wound"]["given_estimated_pose"]
-    res["quoted"]["wound_corrected"]["graze_at_shot"] = f"{100 * at['grazed']:.2f}%"
-    res["quoted"]["wound_corrected"]["ear_only_at_shot"] = f"{100 * at['ear_only']:.2f}%"
-    res["quoted"]["final_turn"] = final_turn(res["pitch_averaged"]["offset_posterior_mean"])
-    res["quoted"]["face_angle_at_shot"] = FACE_ANGLE
-    fa = OUT.parent / "face_areas.json"
-    if fa.exists():  # made by model/face_areas.py
-        res["quoted"]["face_map_areas"] = json.loads(fa.read_text())["quoted"]
-    ps = OUT.parent / "path_share.json"
-    if ps.exists():  # made by model/path_share.py
-        res["quoted"]["real_path_over_speech"] = json.loads(ps.read_text())["quoted"]
+    res["quoted"] = build_quoted(res)
     OUT.write_text(json.dumps(res, indent=1))
     chart()
     for k in ("pitch_averaged", "level_head", "video_only_pitch_averaged"):

@@ -181,41 +181,31 @@
     "1%",
     "8%"
    ],
-   "graze_lift": "1.6x",
-   "graze_lift_90pct": [
-    "1.3",
-    "1.8"
-   ],
    "ear_only_lift": "8x",
-   "graze_at_shot": "1.56%",
-   "graze_speech_average": "0.95%",
+   "ear_only_lift_90pct": [
+    "4",
+    "9"
+   ],
    "ear_only_at_shot": "0.75%",
    "ear_only_speech_average": "0.10%",
-   "graze_speech_average_one_in": "1 in 105",
    "ear_only_speech_average_one_in": "1 in 990",
-   "shots_for_even_chance_ear_only": 690,
-   "shots_for_even_chance_graze": 73
+   "shots_for_even_chance_ear_only": 690
   },
   "video_only": {
    "share_of_speech_as_lucky": "6%",
    "share_of_speech_as_lucky_90pct": [
     "1%",
-    "18%"
-   ],
-   "graze_lift": "1.6x",
-   "graze_lift_90pct": [
-    "1.1",
-    "1.8"
+    "16%"
    ],
    "ear_only_lift": "7x",
-   "graze_at_shot": "1.50%",
-   "graze_speech_average": "0.95%",
+   "ear_only_lift_90pct": [
+    "2",
+    "9"
+   ],
    "ear_only_at_shot": "0.67%",
    "ear_only_speech_average": "0.10%",
-   "graze_speech_average_one_in": "1 in 105",
    "ear_only_speech_average_one_in": "1 in 980",
-   "shots_for_even_chance_ear_only": 680,
-   "shots_for_even_chance_graze": 72
+   "shots_for_even_chance_ear_only": 680
   },
   "final_turn": {
    "definition": "Before the chart = more than 51 s before the shot; the chart minute = the last 51 s. 'Within 35 degrees' = face within 35 degrees of the rifle line either way. Ear-only chance = one head-aimed shot hitting only an ear, averaged over the frames.",
@@ -234,22 +224,49 @@
    "source": "the camera, at its solved position, give or take 12 degrees",
    "not_quoted": "8 degrees short is the combined video-and-wound estimate (90% range 5 past to 25 short). It is not a caption figure: it only centres the weighting behind the at-turn odds, which average over the uncertainty in his turn (at exactly 10 degrees a graze would be 1.64% and ear-only 0.82%)."
   },
-  "real_path_over_speech": {
-   "ear_only": "20%",
-   "graze": "14%",
-   "deeper": "58%",
-   "miss": "8%"
-  },
-  "face_map_areas": {
-   "ear_share_of_head": "4.3%",
-   "graze_share_of_head": "3.9%",
-   "serious_share_of_head": "91.8%",
-   "right_ear_share_of_head": "2.6%",
-   "ear_share_of_circle": "1.5%",
-   "graze_share_of_circle": "1.4%",
-   "serious_share_of_circle": "35.4%",
-   "miss_share_of_circle": "61.7%",
-   "circle_radius_cm": 19
+  "three_outcomes": {
+   "outcome_names": [
+    "Ear only",
+    "Serious wound or death",
+    "Miss"
+   ],
+   "margin_at_his_turn_mm": {
+    "skull": 6.1,
+    "skin": 0.7
+   },
+   "at_his_turn": {
+    "ear_only": "0.75%",
+    "serious_wound_or_death": "29.4%",
+    "miss": "69.9%",
+    "ear_only_one_in": "about 1 in 135",
+    "shots_for_even_chance_ear_only": 92
+   },
+   "random_moment": {
+    "ear_only": "0.10%",
+    "ear_only_one_in": "1 in 990",
+    "serious_wound_or_death": "32.2%",
+    "miss": "67.7%"
+   },
+   "facing_crowd": {
+    "ear_only": "0.0%",
+    "serious_wound_or_death": "33.7%",
+    "miss": "66.3%"
+   },
+   "area_circle_19cm": {
+    "ear_only": "1.5%",
+    "serious_wound_or_death": "36.8%",
+    "miss": "61.7%"
+   },
+   "area_head_alone": {
+    "ear_only": "4.3%",
+    "serious_wound_or_death": "95.7%",
+    "miss": "0.0%"
+   },
+   "real_path_over_speech": {
+    "ear_only": "20%",
+    "serious_wound_or_death": "72%",
+    "miss": "8%"
+   }
   }
  }
 }
