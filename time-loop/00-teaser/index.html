@@ -144,7 +144,9 @@ body { background: var(--night); color: var(--paper); font-family: var(--font-te
 const CONTENT = {
   hint: "Scroll",
   clockSub: "[Placeholder] Every morning starts the same way",
-  question: ["Is Trump", "Trapped in a", "<em>Time Loop?</em>"],
+  // No title here (Sam, Oct 16 01:40, "Poster"): the joined page opens on the poster with the title, so the teaser ends on the fist.
+  // To bring it back: question: ["Is Trump", "Trapped in a", "<em>Time Loop?</em>"],
+  question: [],
   endSub: "Butler, Pa. · July 13, 2024",
   credits: "Groundhog Day (Columbia Pictures, 1993); Edge of Tomorrow (Warner Bros., 2014); video from the Right Side Broadcasting Network.",
   go: "Begin"
@@ -232,7 +234,7 @@ function frame() {
       if (id === "c-fist") {
         // hold on the raised fist; "Is Donald Trump", then "stuck in a time loop?"; then the still scrolls up and the collage rises under the question
         if (k > .22 && (fist.currentTime < FIST_HOLD - .05 || !fist.paused)) { fist.pause(); fist.currentTime = FIST_HOLD; }
-        fist.classList.toggle("dim", k > .22);
+        fist.classList.toggle("dim", k > .22 && CONTENT.question.length > 0);  // dim only to carry a title
         const q = [...$("qText").children]; q.forEach((s, j) => s.classList.toggle("in", k > (j === 0 ? .26 : .38)));
         const t = Math.min(1, Math.max(0, (k - .5) / .22)), e = t * t * (3 - 2 * t);
         $("strip").style.transform = `translateY(${(-100 * e).toFixed(2)}%)`;

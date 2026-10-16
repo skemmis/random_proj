@@ -69,8 +69,10 @@ BED_DUCK = -16
 ENDING = [ ("gap", 1.0),
  ("v", "butler-fist", 4.0, 10.0, {"mute": 1}), ("a", "butler-fist", 4.0, 10.0, "@", -14, 0),
  ("hold", "butler-fist", 10.0, 4.5) ]
-# Placeholder end card (Sam 22:58): the title over the fist, then the subtitle; the page sets the real one as text.
-TITLE = [("title-1.png", 0.6), ("title-2.png", 2.0)]  # fist highest at 10.0 (rsbn 580)
+# No end card (Sam, Oct 16 01:40, "Poster"): the joined page opens on the poster with the title, so the teaser
+# ends on the fist alone (fist highest at 10.0, rsbn 580). To bring the old placeholder card back:
+# TITLE = [("title-1.png", 0.6), ("title-2.png", 2.0)]
+TITLE = []
 
 # The bin was recut on Oct 15 22:55 with about 10 s more at each end (Sam: "some of them need to be extended").
 # Times in the edit list are relative to the OLD cuts; SHIFT moves them onto the new files.
@@ -133,11 +135,15 @@ def render(ev, total):
             else: ff("-ss", e["i"], "-t", d, "-i", path(e["clip"]), "-vf", VF, "-af", "apad", "-t", d, *enc, s)
         elif e["kind"] == "gap": ff("-f", "lavfi", "-i", f"color=c=black:s=1920x1080:r=30:d={e['d']}", "-f", "lavfi", "-t", e["d"], "-i", "anullsrc=r=48000:cl=stereo", "-t", e["d"], *enc, s)
         elif e["kind"] == "hold":
-            t1, t2 = (BIN / TITLE[0][0]), (BIN / TITLE[1][0])
-            fc = (f"[0:v]{VF},trim=end_frame=1,tpad=stop_mode=clone:stop_duration={e['d']}[b];"
-                  f"[b][2:v]overlay=enable='between(t,{TITLE[0][1]},{TITLE[1][1]})'[b1];[b1][3:v]overlay=enable='gte(t,{TITLE[1][1]})'[v]")
-            ff("-ss", e["i"] - 1 / FPS, "-i", path(e["clip"]), "-f", "lavfi", "-t", e["d"], "-i", "anullsrc=r=48000:cl=stereo", "-loop", "1", "-i", t1, "-loop", "1", "-i", t2,
-               "-filter_complex", fc, "-map", "[v]", "-map", "1:a", "-t", e["d"], *enc, s)
+            if TITLE:
+                t1, t2 = (BIN / TITLE[0][0]), (BIN / TITLE[1][0])
+                fc = (f"[0:v]{VF},trim=end_frame=1,tpad=stop_mode=clone:stop_duration={e['d']}[b];"
+                      f"[b][2:v]overlay=enable='between(t,{TITLE[0][1]},{TITLE[1][1]})'[b1];[b1][3:v]overlay=enable='gte(t,{TITLE[1][1]})'[v]")
+                ff("-ss", e["i"] - 1 / FPS, "-i", path(e["clip"]), "-f", "lavfi", "-t", e["d"], "-i", "anullsrc=r=48000:cl=stereo", "-loop", "1", "-i", t1, "-loop", "1", "-i", t2,
+                   "-filter_complex", fc, "-map", "[v]", "-map", "1:a", "-t", e["d"], *enc, s)
+            else:
+                ff("-ss", e["i"] - 1 / FPS, "-i", path(e["clip"]), "-f", "lavfi", "-t", e["d"], "-i", "anullsrc=r=48000:cl=stereo",
+                   "-filter_complex", f"[0:v]{VF},trim=end_frame=1,tpad=stop_mode=clone:stop_duration={e['d']}[v]", "-map", "[v]", "-map", "1:a", "-t", e["d"], *enc, s)
         elif e["kind"] == "grid":
             d = e["d"]; ins = []
             for c, i in e["src"]: ins += ["-ss", i, "-t", d, "-i", path(c)]
@@ -201,9 +207,10 @@ def xml(ev, total):
             ff("-ss", e["i"] - 1 / FPS, "-i", path(e["clip"]), "-f", "lavfi", "-t", 10, "-i", "anullsrc=r=48000:cl=stereo", "-map", "0:v", "-map", "1:a",
                "-vf", "trim=end_frame=1,tpad=stop_mode=clone:stop_duration=10", "-t", 10, "-c:v", "libx264", "-pix_fmt", "yuv420p", "-c:a", "aac", still)
             V[1].append(clip(f"v{n}", f"{e['clip']}-hold", 0, e["d"], e["at"], "v"))
-            D["title-1.png"] = D["title-2.png"] = 60
-            V[2].append(clip(f"t{n}a", "title-1.png", 0, TITLE[1][1] - TITLE[0][1], e["at"] + TITLE[0][1], "v"))
-            V[2].append(clip(f"t{n}b", "title-2.png", 0, e["d"] - TITLE[1][1], e["at"] + TITLE[1][1], "v"))
+            if TITLE:
+                D["title-1.png"] = D["title-2.png"] = 60
+                V[2].append(clip(f"t{n}a", "title-1.png", 0, TITLE[1][1] - TITLE[0][1], e["at"] + TITLE[0][1], "v"))
+                V[2].append(clip(f"t{n}b", "title-2.png", 0, e["d"] - TITLE[1][1], e["at"] + TITLE[1][1], "v"))
         elif e["kind"] == "grid":
             for k, (c, i) in enumerate(e["src"]):
                 pos = [(-0.5, -0.5), (0.5, -0.5), (-0.5, 0.5), (0.5, 0.5)][k]
