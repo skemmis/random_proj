@@ -3,8 +3,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="../../tokens.css">
 <style>
-/* A film, not a page: every scene fills the screen and snaps into place. Videos run edge to edge;
-   type sits on the footage. A clock-radio HUD counts the days as you scroll. Single dark world by choice. */
+/* A film, not a page: every scene fills the screen and snaps into place. One thing on screen at a time
+   (Sam, Oct 15, 23:13; design/LOOK.md): the exhibit's title alone on a still, then each clip full screen
+   with one line on it. Single dark world by choice. */
 :root {
   /* The piece's shared tokens (assembly/tokens.css), repeated here so the page also works on its own. */
   --night: #0b0d10; --ink-on-night: #f3efe6; --dim-on-night: #b4afa4; --rule-on-night: rgba(243, 239, 230, .24); --led: #ff3b2f;
@@ -26,11 +27,8 @@ button { font-family: var(--font-head); cursor: pointer; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 
 /* Heads-up display */
-.hud { position: fixed; z-index: 20; left: 0; right: 0; top: 0; padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px 0; display: flex; justify-content: space-between; align-items: flex-start; pointer-events: none; }
+.hud { position: fixed; z-index: 20; left: 0; right: 0; top: 0; padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px 0; display: flex; justify-content: flex-end; align-items: flex-start; pointer-events: none; }
 .hud > * { pointer-events: auto; }
-.radio { display: flex; gap: 8px; align-items: baseline; font-family: var(--font-mono); background: rgba(0,0,0,.6); border-radius: 4px; padding: 6px 10px 5px; backdrop-filter: blur(6px); }
-.radio .t { color: var(--red); font-size: 22px; font-weight: 600; letter-spacing: .03em; }
-.radio .d { color: var(--dim); font-size: 12px; letter-spacing: .1em; }
 .hud-r { display: flex; gap: 8px; align-items: center; }
 .gate { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: rgba(7,7,7,.86); backdrop-filter: blur(8px); text-align: center; padding: 24px 16px; }
 .gate[hidden] { display: none; }
@@ -43,10 +41,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 3px solid 
 @media (prefers-reduced-motion: reduce) { .gate .go { animation: none; } }
 .pill { border: 1px solid var(--faint); background: rgba(0,0,0,.6); color: var(--white); border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; backdrop-filter: blur(6px); }
 .pill.on { background: var(--white); color: var(--black); }
-.dots { position: fixed; z-index: 20; right: 12px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 10px; }
-.dots a { width: 8px; height: 8px; border-radius: 50%; background: var(--faint); display: block; }
-.dots a.on { background: var(--white); transform: scale(1.4); }
-@media (max-width: 600px) { .dots { display: none; } }
 
 /* Inside the 6:11 p.m. spine (assembly/CONTRACT.md) */
 html.in-spine { scroll-snap-type: none; }
@@ -62,55 +56,40 @@ html.in-spine { scroll-snap-type: none; }
 .media video, .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .media img { opacity: 0; }
 .media img.on { opacity: 1; }
-.media .grade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 58%, rgba(0,0,0,.8) 100%); }
-.label { position: absolute; left: 16px; right: 16px; bottom: 16px; z-index: 3; display: flex; flex-direction: column; gap: 4px; }
-.label .k { font-size: var(--fs-label); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
-.label .w { font-size: clamp(15px, 1.6vw, 20px); font-weight: 800; line-height: 1.2; text-shadow: 0 1px 12px rgba(0,0,0,.6); }
-.label .q { font-family: var(--font-text); font-size: var(--fs-caption); font-style: italic; font-weight: 400; line-height: 1.3; max-width: 30ch; text-shadow: 0 1px 12px rgba(0,0,0,.7); }
-.label .s { font-size: var(--fs-small); font-weight: 500; color: var(--dim); }
-.label .s a { color: var(--dim); }
-.stub { position: absolute; z-index: 3; top: calc(env(safe-area-inset-top, 0px) + 60px); left: 16px; font-family: var(--font-mono); font-size: 11px; color: var(--black); background: var(--amber); padding: 2px 6px; border-radius: 2px; }
+/* A calm dark patch at the foot of the frame for the one line */
+.media .grade { position: absolute; inset: auto 0 0 0; height: 55%; pointer-events: none; background: linear-gradient(180deg, rgba(11,13,16,0), rgba(11,13,16,.72) 45%, rgba(11,13,16,.9)); transition: opacity .5s; }
+.label { position: absolute; z-index: 3; left: 50%; transform: translateX(-50%); bottom: calc(env(safe-area-inset-bottom, 0px) + 9vh); width: min(560px, calc(100vw - 48px)); display: flex; flex-direction: column; gap: 10px; transition: opacity .5s; }
+.label .q { font-family: var(--font-text); font-size: clamp(22px, 2.4vw, 34px); font-style: italic; font-weight: 400; line-height: 1.3; text-wrap: pretty; text-shadow: 0 1px 12px rgba(0,0,0,.7); }
+.label .q.desc { font-style: normal; }  /* a clip with no quote gets one line saying what happens */
+.label .att { font-size: 14px; font-weight: 600; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; color: rgba(246,244,239,.78); text-shadow: 0 1px 8px rgba(0,0,0,.7); }
 
-/* Split layout: two screens side by side (stacked on tall screens). One side plays while the other
-   waits, dimmed; then they swap. The playing side widens a little. */
-.split .media { transition: left .7s cubic-bezier(.3,.8,.2,1), right .7s cubic-bezier(.3,.8,.2,1), top .7s cubic-bezier(.3,.8,.2,1), bottom .7s cubic-bezier(.3,.8,.2,1); }
-.split .media.a { right: 50%; }
-.split .media.b { left: 50%; }
-.split.play-a .media.a { right: 40%; } .split.play-a .media.b { left: 60%; }
-.split.play-b .media.a { right: 60%; } .split.play-b .media.b { left: 40%; }
-.split .media video, .split .media img { transition: filter .7s; }
-.split.play-a .media.b video, .split.play-a .media.b img, .split.play-b .media.a video, .split.play-b .media.a img { filter: grayscale(1) brightness(.32); }
-.split .media .label { transition: opacity .7s; }
-.split.play-a .media.b .label, .split.play-b .media.a .label { opacity: .3; }
-.split .seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--black); transition: left .7s cubic-bezier(.3,.8,.2,1), top .7s cubic-bezier(.3,.8,.2,1); }
-.split.play-a .seam { left: 60%; } .split.play-b .seam { left: 40%; }
-.prog { position: absolute; z-index: 4; left: 0; bottom: 0; height: 3px; width: 0; background: var(--white); }
-.split.play-a .media.b .prog, .split.play-b .media.a .prog { opacity: 0; }
+/* Split layout: each side plays full screen in turn. Between them the two sit side by side for under a
+   second (.beat), the only time two things are on screen. Before the film plays, its first frame holds
+   under the exhibit's title (.titling). */
+.split .media { transition: left .35s cubic-bezier(.3,.8,.2,1), right .35s cubic-bezier(.3,.8,.2,1), top .35s cubic-bezier(.3,.8,.2,1), bottom .35s cubic-bezier(.3,.8,.2,1), opacity .35s; }
+.split .media.b { opacity: 0; }
+.split.play-b .media.a { opacity: 0; } .split.play-b .media.b { opacity: 1; }
+.split.beat .media.a { right: 50%; opacity: 1; } .split.beat .media.b { left: 50%; opacity: 1; }
+.split .media .label, .split .media .grade { opacity: 0; }
+.split.play-a:not(.beat) .media.a .label, .split.play-a:not(.beat) .media.a .grade,
+.split.play-b:not(.beat) .media.b .label, .split.play-b:not(.beat) .media.b .grade { opacity: 1; }
+.split .seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--black); opacity: 0; transition: opacity .3s; }
+.split.beat .seam { opacity: 1; }
 @media (max-aspect-ratio: 1/1) {
-  .split .media.a { right: 0; bottom: 50%; } .split .media.b { left: 0; top: 50%; }
-  .split.play-a .media.a { right: 0; bottom: 40%; } .split.play-a .media.b { left: 0; top: 60%; }
-  .split.play-b .media.a { right: 0; bottom: 60%; } .split.play-b .media.b { left: 0; top: 40%; }
-  .split .seam, .split.play-a .seam, .split.play-b .seam { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 3px; margin: -1.5px 0 0; }
-  .split.play-a .seam { top: 60%; } .split.play-b .seam { top: 40%; }
-  .split .media.a .label { bottom: auto; top: calc(env(safe-area-inset-top, 0px) + 60px); }
+  .split.beat .media.a { right: 0; bottom: 50%; } .split.beat .media.b { left: 0; top: 50%; }
+  .split .seam { left: 0; right: 0; top: 50%; bottom: auto; width: auto; height: 3px; margin: -1.5px 0 0; }
 }
 
 /* Big overlaid type */
-.over { position: absolute; z-index: 6; pointer-events: none; padding: 0 20px; }
+.over { position: absolute; z-index: 6; pointer-events: none; padding: 0 20px; opacity: 0; transition: opacity .6s; }
+.split.titling .over { opacity: 1; }
+.split.titling .media.a::after { content: ""; position: absolute; inset: 0; background: rgba(11,13,16,.45); }  /* quiet the still under the title */
 .over.center { inset: 0; display: grid; place-content: center; text-align: center; }
 .over.top { left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 70px); }
-.over .kick { font-size: var(--fs-label); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--white); margin: 0 0 10px; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
 .over h2 { margin: 0 auto; font-weight: 900; font-size: var(--fs-display); line-height: .92; letter-spacing: -.03em; text-transform: uppercase; max-width: 15ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(0,0,0,.65); }
 .over.top h2 { margin: 0; }
 .over p.sub { font-family: var(--font-text); font-size: var(--fs-caption); font-weight: 400; max-width: 36ch; margin: 14px auto 0; line-height: 1.3; text-shadow: 0 1px 14px rgba(0,0,0,.8); }
 .over.top p.sub { margin-left: 0; }
-.scene.enter .over h2 { animation: punch .7s cubic-bezier(.2,.9,.2,1) both; }
-.split.enter .over { animation: titlecard 4.2s ease-in forwards; }
-@keyframes titlecard { 0%, 72% { opacity: 1; } 100% { opacity: 0; } }
-@keyframes punch { from { opacity: 0; transform: scale(1.08); letter-spacing: .02em; } to { opacity: 1; transform: none; } }
-.scene.enter .rewind { animation: rewind .45s steps(6) both; }
-.rewind { position: absolute; inset: 0; z-index: 7; pointer-events: none; opacity: 0; background: repeating-linear-gradient(0deg, rgba(255,255,255,.09) 0 2px, transparent 2px 5px); mix-blend-mode: screen; }
-@keyframes rewind { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(-40px); } }
 
 /* Opening */
 .open { display: grid; place-content: center; text-align: center; padding: 0 20px; }
@@ -140,15 +119,15 @@ html.in-spine { scroll-snap-type: none; }
   <button class="quiet" id="gateOff" type="button">Continue without sound</button></div>
 </div>
 <div class="hud">
-  <div class="radio" aria-label="Clock radio"><span class="t" id="hudTime">6:00</span><span class="d" id="hudDay">DAY 0001</span></div>
   <div class="hud-r"><button class="pill" id="soundBtn" type="button" aria-pressed="false">Turn on sound</button><button class="pill" id="pauseBtn" type="button">Pause</button></div>
 </div>
-<nav class="dots" id="dots" aria-label="Scenes"></nav>
 <main id="film"></main>
 
 <script src="../../section.js"></script>
 <script>
 /* ===== CONTENT: Sam edits everything in this block. Empty strings hide a line. =====
+   On screen each clip shows one line: quote (or desc, when the clip has no quote) and att, the small
+   name line. tag, who and credit no longer show on the clip; they feed the credits roll and the sources panel.
    layout: "split" (the film plays, then the Trump clip, side by side).
    hold: seconds each side shows when it has no video yet (default 6).
    file: a video published beside the page, e.g. "clips/ex1-film.mp4". Until a file exists the scene
@@ -161,29 +140,30 @@ const CONTENT = {
   },
   scenes: [
     { id: "rules", layout: "split", kicker: "Exhibit 1", title: "The rules don't apply", sub: "", pos: "center",
-      film:  { file: "clips/rules-film.mp4",  yt: "50jZVcRgkno", tag: "Groundhog Day (1993)", who: "Bill Murray as Phil Connors, a weatherman doomed to relive one day", quote: "I'm not going to live by their rules anymore!", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/rules-trump.mp4", yt: "Iimj0j4NYME", tag: "NATO summit, Brussels, May 25, 2017", who: "Trump shoves past Duško Marković, Montenegro's prime minister, to the front of a photo", quote: "", credit: "MSNBC, via the Internet Archive TV News Archive", src: "https://archive.org/details/MSNBCW_20170525_160000_Andrea_Mitchell_Reports" } },
+      film:  { file: "clips/rules-film.mp4",  yt: "50jZVcRgkno", att: "Phil Connors · Groundhog Day, 1993", tag: "Groundhog Day (1993)", who: "Bill Murray as Phil Connors, a weatherman doomed to relive one day", quote: "I'm not going to live by their rules anymore!", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/rules-trump.mp4", yt: "Iimj0j4NYME", att: "NATO summit · Brussels · May 25, 2017", desc: "Trump shoves past Montenegro's prime minister to the front of the photo.", tag: "NATO summit, Brussels, May 25, 2017", who: "Trump shoves past Duško Marković, Montenegro's prime minister, to the front of a photo", quote: "", credit: "MSNBC, via the Internet Archive TV News Archive", src: "https://archive.org/details/MSNBCW_20170525_160000_Andrea_Mitchell_Reports" } },
     { id: "consequences", layout: "split", kicker: "Exhibit 2", title: "No consequences", sub: "", pos: "center",
-      film:  { file: "clips/consequences-film.mp4",  yt: "ZHpXxAW3p_o", tag: "Groundhog Day (1993)", who: "Phil, drunk at the wheel, asks two locals what they would do if there were no tomorrow", quote: "What if there were no tomorrow?", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/consequences-trump.mp4", yt: "iTACH1eVIaA", tag: "Sioux Center, Iowa, Jan. 23, 2016", who: "Trump, seeking the nomination, at Dordt College", quote: "I could stand in the middle of Fifth Avenue and shoot somebody, and I wouldn't lose any voters.", credit: "CNN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CNNW_20160123_230000_Smerconish" } },
+      film:  { file: "clips/consequences-film.mp4",  yt: "ZHpXxAW3p_o", att: "Phil Connors · Groundhog Day, 1993", tag: "Groundhog Day (1993)", who: "Phil, drunk at the wheel, asks two locals what they would do if there were no tomorrow", quote: "What if there were no tomorrow?", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/consequences-trump.mp4", yt: "iTACH1eVIaA", att: "Trump · Sioux Center, Iowa · Jan. 23, 2016", tag: "Sioux Center, Iowa, Jan. 23, 2016", who: "Trump, seeking the nomination, at Dordt College", quote: "I could stand in the middle of Fifth Avenue and shoot somebody, and I wouldn't lose any voters.", credit: "CNN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CNNW_20160123_230000_Smerconish" } },
     { id: "ennui", layout: "split", kicker: "Exhibit 3", title: "Ennui", sub: "", pos: "center",
-      film:  { file: "clips/ennui-film.mp4",  yt: "vBeGQAvabOE", tag: "Groundhog Day (1993)", who: "Phil gives the same Groundhog Day forecast, again", quote: "It's gonna last you for the rest of your life.", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/ennui-trump.mp4", yt: "OgAKS23TCXY", tag: "Oaks, Pa., Oct. 14, 2024", who: "Trump stops taking questions at a town hall and sways to music for 39 minutes", quote: "", credit: "C-SPAN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CSPAN_20241014_200000_Public_Affairs_Events" } },
+      film:  { file: "clips/ennui-film.mp4",  yt: "vBeGQAvabOE", att: "Phil Connors · Groundhog Day, 1993", tag: "Groundhog Day (1993)", who: "Phil gives the same Groundhog Day forecast, again", quote: "It's gonna last you for the rest of your life.", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/ennui-trump.mp4", yt: "OgAKS23TCXY", att: "Town hall · Oaks, Pa. · Oct. 14, 2024", desc: "Trump stops taking questions and sways to the music.", tag: "Oaks, Pa., Oct. 14, 2024", who: "Trump stops taking questions at a town hall and sways to music for 39 minutes", quote: "", credit: "C-SPAN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CSPAN_20241014_200000_Public_Affairs_Events" } },
     { id: "lines", layout: "split", kicker: "Exhibit 4", title: "Same day, same lines", sub: "", pos: "center",
-      film:  { file: "clips/lines-film.mp4",  yt: "XqSYC_vwhDg", tag: "Groundhog Day (1993)", who: "Every morning, Ned Ryerson (Stephen Tobolowsky), an old classmate turned insurance salesman, greets Phil the same way", quote: "Phil? Phil Connors? I thought that was you!", credit: "Columbia Pictures, 1993" },
-      trump: { file: "clips/lines-trump.mp4", yt: "bqbmTnr9NSE", tag: "Four rallies, 2023 to 2024", who: "Trump tells the same story about sharks and electric boats in Anaheim, Calif.; Ankeny, Iowa; Las Vegas; and Grand Rapids, Mich.", quote: "I'll take electrocution every time.", credit: "C-SPAN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CSPAN2_20231002_171900_Campaign_2024_Fmr._Pres._Trump_Speaks_at_CA_GOP_Convention" } },
+      film:  { file: "clips/lines-film.mp4",  yt: "XqSYC_vwhDg", att: "Ned Ryerson · Groundhog Day, 1993", tag: "Groundhog Day (1993)", who: "Every morning, Ned Ryerson (Stephen Tobolowsky), an old classmate turned insurance salesman, greets Phil the same way", quote: "Phil? Phil Connors? I thought that was you!", credit: "Columbia Pictures, 1993" },
+      trump: { file: "clips/lines-trump.mp4", yt: "bqbmTnr9NSE", att: "Trump · four rallies, 2023–24", tag: "Four rallies, 2023 to 2024", who: "Trump tells the same story about sharks and electric boats in Anaheim, Calif.; Ankeny, Iowa; Las Vegas; and Grand Rapids, Mich.", quote: "I'll take electrocution every time.", credit: "C-SPAN, via the Internet Archive TV News Archive", src: "https://archive.org/details/CSPAN2_20231002_171900_Campaign_2024_Fmr._Pres._Trump_Speaks_at_CA_GOP_Convention" } },
     { id: "butler", layout: "split", kicker: "Exhibit 5", title: "Again. Again. Again.", sub: "", pos: "center",
-      film:  { file: "clips/butler-film.mp4",  yt: "z1bVCdT5kso", tag: "Edge of Tomorrow (2014)", who: "Tom Cruise as Cage, a soldier who wakes again each time he dies, is shot in training and tries again", quote: "", credit: "Warner Bros., 2014" },
-      trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "Trump's rally, the moment of the first shot", quote: "", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ", crack: 10.0 } },
+      film:  { file: "clips/butler-film.mp4",  yt: "z1bVCdT5kso", att: "Cage · Edge of Tomorrow, 2014", tag: "Edge of Tomorrow (2014)", who: "Tom Cruise as Cage, a soldier who wakes again each time he dies, is shot in training and tries again", quote: "", credit: "Warner Bros., 2014" },
+      trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", att: "Trump · Butler, Pa. · July 13, 2024", tag: "Butler, Pa., July 13, 2024", who: "Trump's rally, the moment of the first shot", quote: "", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ", crack: 10.0 } },
     { id: "reaction", layout: "split", kicker: "Exhibit 6", title: "Death holds no fear", sub: "", pos: "center",
-      film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", tag: "Palm Springs (2020)", who: "Andy Samberg as Nyles, a wedding guest stuck in a loop, takes an arrow and lies back on his float", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Hulu and Neon, 2020" },
-      trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", tag: "Butler, Pa., July 13, 2024", who: "A minute after the shot, Trump rises, ear bleeding, and raises his fist", quote: "Fight! Fight! Fight!", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ" } }
+      film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", att: "Nyles · Palm Springs, 2020", tag: "Palm Springs (2020)", who: "Andy Samberg as Nyles, a wedding guest stuck in a loop, takes an arrow and lies back on his float", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Hulu and Neon, 2020" },
+      trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", att: "Trump · Butler, Pa. · July 13, 2024", tag: "Butler, Pa., July 13, 2024", who: "A minute after the shot, Trump rises, ear bleeding, and raises his fist", quote: "Fight! Fight! Fight!", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ" } }
   ]
 };
 /* ===== END CONTENT ===== */
 
 const FRAMES = __FRAMES__;
-const film = document.getElementById("film"), dots = document.getElementById("dots");
+const film = document.getElementById("film");
+const TITLE = 3000, BEAT = 900;  // ms: the title alone on its still; the side-by-side beat at each switch
 const players = [];  // { scene, v (video or null), frames, side }
 let paused = false, current = -1, userPaused = false, away = false;  // paused = the reader paused, or the spine has moved on (away)
 
@@ -192,15 +172,15 @@ function media(c, cls, scene, side) {
   const m = document.createElement("div"); m.className = "media " + cls;
   const keys = ["hqdefault", "hq1", "hq2", "hq3"];
   const imgs = keys.map((k, i) => { const im = new Image(); im.alt = ""; im.src = FRAMES[c.yt + "_" + k] || ""; if (!i) im.className = "on"; m.appendChild(im); return im; });
-  const p = { scene, side, v: null, imgs, i: 0, stub: null };
+  const p = { scene, side, v: null, imgs, i: 0 };
   const v = document.createElement("video"); v.muted = true; v.loop = false; v.playsInline = true; v.preload = "metadata"; v.setAttribute("playsinline", "");
-  v.addEventListener("loadeddata", () => { p.v = v; imgs.forEach(im => im.remove()); p.stub && p.stub.remove(); });
+  v.addEventListener("loadeddata", () => { p.v = v; imgs.forEach(im => im.remove()); });
   v.addEventListener("error", () => { v.remove(); }, true);
   const s = document.createElement("source"); s.src = c.file; s.type = "video/mp4";
   s.addEventListener("error", () => { v.remove(); });
   v.appendChild(s); m.prepend(v);
-  m.insertAdjacentHTML("beforeend", `<div class="grade"></div><div class="label">${c.tag ? `<span class="k">${esc(c.tag)}</span>` : ""}${c.who ? `<span class="w">${esc(c.who)}</span>` : ""}${c.quote ? `<span class="q">“${esc(c.quote)}”</span>` : ""}<span class="s">${esc(c.credit)} · <a href="${c.src || "https://www.youtube.com/watch?v=" + c.yt}" target="_blank" rel="noopener">source</a></span></div>`);
-  p.prog = document.createElement("div"); p.prog.className = "prog"; m.appendChild(p.prog);
+  const line = c.quote ? `<span class="q">“${esc(c.quote)}”</span>` : c.desc ? `<span class="q desc">${esc(c.desc)}</span>` : "";
+  m.insertAdjacentHTML("beforeend", `<div class="grade"></div><div class="label">${line}${c.att ? `<span class="att">${esc(c.att)}</span>` : ""}</div>`);
   v.addEventListener("ended", () => { if (scene.onEnded) scene.onEnded(p); });
   p.vEl = v; players.push(p); return m;
 }
@@ -222,16 +202,19 @@ document.getElementById("gateOn").addEventListener("click", () => { gate.hidden 
 document.getElementById("gateOff").addEventListener("click", () => { gate.hidden = true; });
 if (!(window.Spine && Spine.embedded)) document.getElementById("gateOn").focus();
 function overlay(sc) {
-  return `<div class="over ${sc.pos || "center"}">${sc.kicker ? `<p class="kick">${esc(sc.kicker)}</p>` : ""}${sc.title ? `<h2>${esc(sc.title)}</h2>` : ""}${sc.sub ? `<p class="sub">${esc(sc.sub)}</p>` : ""}</div><div class="rewind"></div>`;
+  return `<div class="over ${sc.pos || "center"}">${sc.title ? `<h2>${esc(sc.title)}</h2>` : ""}${sc.sub ? `<p class="sub">${esc(sc.sub)}</p>` : ""}</div>`;
 }
 
 
-// One side plays, then the other, then the film again. A side without video holds its preview frames.
+// The title holds alone on the film's first frame, then the film plays full screen, a short side-by-side
+// beat, the Trump clip full screen, a beat, and the film again. A side without video holds its preview frames.
+// Timers count only while playing (el, in ms), so a pause holds the title or the beat where it is.
 function sequencer(s, sc) {
   const [pa, pb] = players.filter(p => p.scene === s);
-  let side = null, t0 = 0;
+  let phase = null, el = 0, next = null;
+  const set = (cls) => { s.classList.toggle("titling", cls === "title"); s.classList.toggle("beat", cls === "beat"); };
   s.go = which => {
-    side = which; t0 = performance.now();
+    phase = which; el = 0; set(which);
     s.classList.toggle("play-a", which === "a"); s.classList.toggle("play-b", which === "b");
     [pa, pb].forEach(p => {
       p.active = (p === (which === "a" ? pa : pb));
@@ -240,15 +223,24 @@ function sequencer(s, sc) {
       if (p.active) { p.vEl.currentTime = 0; if (!paused) p.vEl.play().catch(() => {}); } else p.vEl.pause();
     });
   };
+  const beat = to => {  // both sides on their last and first frames, side by side, then the next side plays
+    phase = "beat"; next = to; el = 0; set("beat");
+    [pa, pb].forEach(p => { p.active = false; if (!p.vEl) return; p.vEl.pause(); if (p === (to === "a" ? pa : pb)) p.vEl.currentTime = 0; });
+  };
   // Inside the spine the last exhibit ends on its final frame, a calm picture before the sources panel.
-  s.onEnded = p => { if (!p.active || !side) return; if (side === "b" && s.classList.contains("last")) { side = null; return; } s.go(side === "a" ? "b" : "a"); };
-  s.start = () => s.go("a");
-  s.stop = () => { [pa, pb].forEach(p => { p.active = false; if (p.vEl) p.vEl.pause(); }); side = null; };
-  s.tick = now => {
-    if (!side || paused) return;
-    const p = side === "a" ? pa : pb, hold = (sc.hold || 6) * 1000;
-    if (p.v) { const d = p.vEl.duration || 1; p.prog.style.width = (p.vEl.currentTime / d * 100) + "%"; }
-    else { p.prog.style.width = Math.min(100, (now - t0) / hold * 100) + "%"; if (now - t0 > hold) s.go(side === "a" ? "b" : "a"); }
+  s.onEnded = p => { if (!p.active || (phase !== "a" && phase !== "b")) return; if (phase === "b" && s.classList.contains("last")) { phase = null; return; } beat(phase === "a" ? "b" : "a"); };
+  s.start = () => {
+    phase = "title"; el = 0; set("title"); s.classList.remove("play-a", "play-b");
+    [pa, pb].forEach(p => { p.active = false; if (p.vEl) { if (p.vEl.preload !== "auto") { p.vEl.preload = "auto"; p.vEl.load(); } p.vEl.pause(); p.vEl.currentTime = 0; } });  // fetch this exhibit's clips while its title shows
+  };
+  s.stop = () => { [pa, pb].forEach(p => { p.active = false; if (p.vEl) p.vEl.pause(); }); phase = null; };
+  s.tick = dt => {
+    if (!phase || paused) return;
+    el += dt;
+    if (phase === "title") { if (el > TITLE) s.go("a"); return; }
+    if (phase === "beat") { if (el > BEAT) s.go(next); return; }
+    const p = phase === "a" ? pa : pb;
+    if (!p.v && el > (sc.hold || 6) * 1000) { if (phase === "b" && s.classList.contains("last")) { phase = null; return; } beat(phase === "a" ? "b" : "a"); }
   };
 }
 
@@ -282,16 +274,11 @@ if (inSpine) sections[sections.length - 1].classList.add("last"); else sections.
   CONTENT.scenes.filter(sc => sc.film).forEach(sc => [sc.film, sc.trump].forEach(c => { const url = c.src || "https://www.youtube.com/watch?v=" + c.yt; if (seen.has(url)) return; seen.add(url);
     document.getElementById("clipList").insertAdjacentHTML("beforeend", `<li>${esc(c.tag)}: ${esc(c.credit)} · <a href="${url}" target="_blank" rel="noopener">${url.replace("https://", "")}</a></li>`); })); }
 
-sections.forEach((s, i) => dots.insertAdjacentHTML("beforeend", `<a href="#${s.id}" aria-label="Scene ${i + 1}"></a>`));
-const dotEls = [...dots.children];
-
-// Play only the scene on screen; the HUD day counter follows the scene.
+// Play only the scene on screen.
 function show(sc, on) {
   const i = sections.indexOf(sc);
   if (on) {
-    current = i; sc.classList.remove("enter"); void sc.offsetWidth; sc.classList.add("enter");
-    dotEls.forEach((d, j) => d.classList.toggle("on", j === i));
-    document.getElementById("hudDay").textContent = "DAY " + String(i + 1).padStart(4, "0");
+    current = i;
   }
   if (sc.start) { if (on) sc.start(); else sc.stop(); }
   else players.filter(p => p.scene === sc).forEach(p => { if (!p.vEl) return; if (on && !paused) p.vEl.play().catch(() => {}); else p.vEl.pause(); });
@@ -310,7 +297,7 @@ if (window.Spine && Spine.embedded) {
 
 // Flip-book fallback and sequencer clock
 setInterval(() => { if (paused) return; players.forEach(p => { if (p.v || !p.imgs.length || sections[current] !== p.scene) return; p.imgs[p.i].classList.remove("on"); p.i = (p.i + 1) % 4; p.imgs[p.i].classList.add("on"); }); }, 1000);
-(function tick(t) { const s = sections[current]; if (s && s.tick) s.tick(t); requestAnimationFrame(tick); })(0);
+{ let last = performance.now(); (function tick(t) { const dt = Math.min(100, t - last); last = t; const s = sections[current]; if (s && s.tick) s.tick(dt); requestAnimationFrame(tick); })(last); }
 
 document.getElementById("pauseBtn").addEventListener("click", e => {
   userPaused = !userPaused; paused = userPaused || away; e.target.textContent = userPaused ? "Play" : "Pause"; e.target.classList.toggle("on", userPaused);
