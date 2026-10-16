@@ -67,7 +67,11 @@ if __name__ == "__main__":
     names = {"ear": "ear_only", "graze": "grazed", "kill": "deeper", "miss": "missed", "arm": "arm"}
     mb = json.loads((RES / "margin_by_degree.json").read_text())["by_rel_deg"]  # made by margin_by_degree.py
     deg = lambda r: float(np.round(wrap(float(r["rel_deg"]) + off)))
+    sk = json.loads((RES / "skin_by_degree.json").read_text())["by_rel_deg"]  # made by skin_by_degree.py
+    three = {"ear": "ear_only", "graze": "serious_wound_or_death", "kill": "serious_wound_or_death",
+             "miss": "miss", "arm": "serious_wound_or_death"}
     frames = [[float(r["t_s"]), round(float(r["rel_deg"]) + off, 1), names[oc[deg(r)]]] + mb[str(int(deg(r)))]
+              + [sk[str(int(deg(r)))], three[oc[deg(r)]]]
               for r in csv.DictReader(open(B / "video/pose_track.csv"))]
     (B / "assets/dashboard/real_path_by_moment.json").write_text(json.dumps(dict(
         what="What the real first bullet's line would have done at each measured moment of the speech: the trace "
@@ -80,7 +84,12 @@ if __name__ == "__main__":
                        "skull_mm: gap from the bullet's edge (5.7 mm across) to the nearest bone; negative = the edge "
                        "cuts that far in; -2.85 = the centreline enters",
                        "serious_wound_mm: the same for the nearest tissue that counts as a serious wound (bone, "
-                       "brain, vessel, airway, eye, or deeper than 3 mm under the skin)"],
+                       "brain, vessel, airway, eye, or deeper than 3 mm under the skin): the old four-outcome line",
+                       "skin_mm: gap from the bullet's edge to the skin of his head or neck (ear excluded); since "
+                       "2026-10-16 any touch of that skin is a serious wound, so this is the current margin",
+                       "outcome3: the three outcomes Sam set on 2026-10-16: ear_only, serious_wound_or_death or miss"],
+        by_rel_deg3={str(int(k)): three[v] for k, v in sorted(oc.items())},
+        skin_by_rel_deg=sk,
         gap_by_rel_deg_fields=["skull_mm", "serious_wound_mm"],
         gap_by_rel_deg=mb,
         by_rel_deg_fields="outcome (gap_by_rel_deg: the two gaps) at every whole degree of turn from -180 to 180; round a smoothed turn to the "
