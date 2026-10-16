@@ -66,14 +66,14 @@ html.in-spine { scroll-snap-type: none; }
 .label .att { font-size: 14px; font-weight: 600; line-height: 1.3; letter-spacing: .08em; text-transform: uppercase; color: rgba(246,244,239,.78); text-shadow: 0 1px 8px rgba(0,0,0,.7); }
 
 /* Split layout: each side plays full screen in turn. Between them the two sit side by side for under a
-   second (.beat), the only time two things are on screen. Before the film plays, its first frame holds
-   under the exhibit's title (.titling). */
+   second (.beat), the only time two things are on screen. The film starts under the exhibit's title
+   (.titling), which lifts after a few seconds. */
 .split .media { transition: left .35s cubic-bezier(.3,.8,.2,1), right .35s cubic-bezier(.3,.8,.2,1), top .35s cubic-bezier(.3,.8,.2,1), bottom .35s cubic-bezier(.3,.8,.2,1), opacity .35s; }
 .split .media.b { opacity: 0; }
 .split.play-b .media.a { opacity: 0; } .split.play-b .media.b { opacity: 1; }
 .split.beat .media.a { right: 50%; opacity: 1; } .split.beat .media.b { left: 50%; opacity: 1; }
 .split .media .label, .split .media .grade { opacity: 0; }
-.split.play-a:not(.beat) .media.a .label, .split.play-a:not(.beat) .media.a .grade,
+.split.play-a:not(.beat):not(.titling) .media.a .label, .split.play-a:not(.beat):not(.titling) .media.a .grade,
 .split.play-b:not(.beat) .media.b .label, .split.play-b:not(.beat) .media.b .grade { opacity: 1; }
 .split .seam { position: absolute; z-index: 2; top: 0; bottom: 0; left: 50%; width: 3px; margin-left: -1.5px; background: var(--black); opacity: 0; transition: opacity .3s; }
 .split.beat .seam { opacity: 1; }
@@ -85,7 +85,7 @@ html.in-spine { scroll-snap-type: none; }
 /* Big overlaid type */
 .over { position: absolute; z-index: 6; pointer-events: none; padding: 0 20px; opacity: 0; transition: opacity .6s; }
 .split.titling .over { opacity: 1; }
-.split.titling .media.a::after { content: ""; position: absolute; inset: 0; background: rgba(11,13,16,.45); }  /* quiet the still under the title */
+.split.titling .media.a::after { content: ""; position: absolute; inset: 0; background: rgba(11,13,16,.45); }  /* quiet the film under the title */
 .over.center { inset: 0; display: grid; place-content: center; text-align: center; }
 .over.top { left: 0; right: 0; top: calc(env(safe-area-inset-top, 0px) + 70px); }
 .over h2 { margin: 0 auto; font-weight: 900; font-size: var(--fs-display); line-height: .92; letter-spacing: -.03em; text-transform: uppercase; max-width: 15ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(0,0,0,.65); }
@@ -244,20 +244,24 @@ function sequencer(s, sc) {
   // The last exhibit must end on the fist (Sam). If its clip can't play here (a browser that blocks autoplay,
   // a clip that never loads), the still switches to the clip's last frame when its hold runs out.
   const endOn = p => { if (!p.v && p.vEl) { p.vEl.poster = p.vEl.poster.replace(/\.jpg$/, "-end.jpg"); p.vEl.parentNode.classList.add("ready"); } };
+  // The film starts at once under the title, so something moves the moment the exhibit arrives (Sam, Oct 16:
+  // "I'm worried they'll just scroll by because nothing happens"). The title lifts after TITLE ms.
+  let tEl = -1;
   s.start = () => {
-    phase = "title"; el = 0; set("title"); s.classList.remove("play-a", "play-b");
-    [pa, pb].forEach(p => { p.active = false; if (p.vEl) { warm(p); p.vEl.pause(); p.vEl.currentTime = 0; } });  // fetch this exhibit's clips while its title shows
-    const nx = sections[sections.indexOf(s) + 1]; if (nx) players.filter(q => q.scene === nx).forEach(warm);  // and the next exhibit's
+    [pa, pb].forEach(warm);
+    const i = sections.indexOf(s); [1, 2].forEach(d => { const nx = sections[i + d]; if (nx) players.filter(q => q.scene === nx).forEach(warm); });  // and the next two exhibits'
+    s.go("a"); s.classList.add("titling"); tEl = 0;
   };
-  s.stop = () => { [pa, pb].forEach(p => { p.active = false; if (p.vEl) p.vEl.pause(); }); phase = null; };
+  s.stop = () => { [pa, pb].forEach(p => { p.active = false; if (p.vEl) p.vEl.pause(); }); phase = null; tEl = -1; s.classList.remove("titling"); };
   s.tick = dt => {
     if (!phase || paused) return;
     el += dt;
-    if (phase === "title") { if (el > TITLE && (pa.v || el > 10000)) s.go("a"); return; }  // the title waits (up to 10 s) for the film to be ready
+    if (tEl >= 0) { if (pa.v && !pa.vEl.paused) tEl += dt; else if (!pa.v && el > 10000) tEl = TITLE + 1;  // the title counts only while the film plays
+      if (tEl > TITLE) { tEl = -1; s.classList.remove("titling"); } }
     if (phase === "beat") { if (el > BEAT) s.go(next); return; }
     const p = phase === "a" ? pa : pb;
     if (phase === "b" && p.v && p.endAt && s.classList.contains("last") && p.vEl.currentTime >= p.endAt) { p.vEl.pause(); phase = null; return; }  // hold on the fist
-    if (!p.v && el > (sc.hold || 6) * 1000) { if (phase === "b" && s.classList.contains("last")) { endOn(p); phase = null; return; } beat(phase === "a" ? "b" : "a"); }
+    if (!p.v && tEl < 0 && el > (sc.hold || 6) * 1000) { if (phase === "b" && s.classList.contains("last")) { endOn(p); phase = null; return; } beat(phase === "a" ? "b" : "a"); }
   };
 }
 
@@ -311,6 +315,10 @@ if (window.Spine && Spine.embedded) {
   const io = new IntersectionObserver(es => es.forEach(en => show(en.target, en.isIntersecting)), { threshold: 0.6 });
   sections.forEach(s => io.observe(s));
 }
+
+// Start fetching the first exhibit's clips as soon as the page loads (inside the joined page that is a few screens
+// before the reader arrives), so the film is ready to move when they get there.
+players.filter(p => p.scene === sections[0]).forEach(warm);
 
 // Sequencer clock
 { let last = performance.now(); (function tick(t) { const dt = Math.min(100, t - last); last = t; const s = sections[current]; if (s && s.tick) s.tick(dt); requestAnimationFrame(tick); })(last); }
