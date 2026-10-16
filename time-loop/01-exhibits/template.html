@@ -133,7 +133,8 @@ html.in-spine { scroll-snap-type: none; }
    layout: "split" (the film plays, then the Trump clip, side by side).
    hold: seconds each side shows when it has no video yet (default 6).
    file: a video published beside the page, e.g. "clips/ex1-film.mp4". Its first frame, posters/<same name>.jpg,
-   shows with a small loading mark until the clip can play. */
+   shows with a small loading mark until the clip can play. pos: where to anchor a clip that is cropped to fill the
+   screen (CSS object-position). endAt: on the last exhibit, the second to stop and hold on (the raised fist). */
 const CONTENT = {
   open: {
     title: "Is Donald Trump living the same day over and over?",
@@ -158,7 +159,7 @@ const CONTENT = {
       trump: { file: "clips/butler-trump.mp4", yt: "LAk6dXEzIUo", att: "Trump · Butler, Pa. · July 13, 2024", tag: "Butler, Pa., July 13, 2024", who: "Trump's rally, the moment of the first shot", quote: "", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ", crack: 10.0 } },
     { id: "reaction", layout: "split", kicker: "Exhibit 6", title: "Death holds no fear", sub: "", pos: "center",
       film:  { file: "clips/reaction-film.mp4",  yt: "7FS56uRsnjo", att: "Nyles · Palm Springs, 2020", tag: "Palm Springs (2020)", who: "Andy Samberg as Nyles, a wedding guest stuck in a loop, takes an arrow and lies back on his float", quote: "It's one of those infinite time loop situations you might have heard about.", credit: "Hulu and Neon, 2020" },
-      trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", att: "Trump · Butler, Pa. · July 13, 2024", tag: "Butler, Pa., July 13, 2024", who: "A minute after the shot, Trump rises, ear bleeding, and raises his fist", quote: "Fight! Fight! Fight!", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ" } }
+      trump: { file: "clips/reaction-trump.mp4", yt: "LAk6dXEzIUo", endAt: 11.0, pos: "0% 8%", att: "Trump · Butler, Pa. · July 13, 2024", tag: "Butler, Pa., July 13, 2024", who: "A minute after the shot, Trump rises, ear bleeding, and raises his fist", quote: "Fight! Fight! Fight!", credit: "Right Side Broadcasting Network, via the Internet Archive", src: "https://archive.org/details/youtube-vDxodBcJNgQ" } }
   ]
 };
 /* ===== END CONTENT ===== */
@@ -174,6 +175,8 @@ function media(c, cls, scene, side) {
   const p = { scene, side, v: null };
   const v = document.createElement("video"); v.muted = true; v.loop = false; v.playsInline = true; v.preload = "metadata"; v.setAttribute("playsinline", "");
   v.poster = c.file.replace("clips/", "posters/").replace(/\.mp4$/, ".jpg");  // the clip's first frame while it loads
+  if (c.pos) v.style.objectPosition = c.pos;
+  p.endAt = c.endAt;
   v.addEventListener("loadeddata", () => { p.v = v; m.classList.add("ready"); });
   v.addEventListener("canplay", () => m.classList.add("ready"));
   v.addEventListener("waiting", () => { if (p.active) m.classList.remove("ready"); });
@@ -233,6 +236,9 @@ function sequencer(s, sc) {
   };
   // Inside the spine the last exhibit ends on its final frame, a calm picture before the sources panel.
   s.onEnded = p => { if (!p.active || (phase !== "a" && phase !== "b")) return; if (phase === "b" && s.classList.contains("last")) { phase = null; return; } beat(phase === "a" ? "b" : "a"); };
+  // The last exhibit must end on the fist (Sam). If its clip can't play here (a browser that blocks autoplay,
+  // a clip that never loads), the still switches to the clip's last frame when its hold runs out.
+  const endOn = p => { if (!p.v && p.vEl) { p.vEl.poster = p.vEl.poster.replace(/\.jpg$/, "-end.jpg"); p.vEl.parentNode.classList.add("ready"); } };
   s.start = () => {
     phase = "title"; el = 0; set("title"); s.classList.remove("play-a", "play-b");
     [pa, pb].forEach(p => { p.active = false; if (p.vEl) { warm(p); p.vEl.pause(); p.vEl.currentTime = 0; } });  // fetch this exhibit's clips while its title shows
@@ -245,7 +251,8 @@ function sequencer(s, sc) {
     if (phase === "title") { if (el > TITLE && (pa.v || el > 10000)) s.go("a"); return; }  // the title waits (up to 10 s) for the film to be ready
     if (phase === "beat") { if (el > BEAT) s.go(next); return; }
     const p = phase === "a" ? pa : pb;
-    if (!p.v && el > (sc.hold || 6) * 1000) { if (phase === "b" && s.classList.contains("last")) { phase = null; return; } beat(phase === "a" ? "b" : "a"); }
+    if (phase === "b" && p.v && p.endAt && s.classList.contains("last") && p.vEl.currentTime >= p.endAt) { p.vEl.pause(); phase = null; return; }  // hold on the fist
+    if (!p.v && el > (sc.hold || 6) * 1000) { if (phase === "b" && s.classList.contains("last")) { endOn(p); phase = null; return; } beat(phase === "a" ? "b" : "a"); }
   };
 }
 
