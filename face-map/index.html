@@ -29,7 +29,7 @@
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-text); margin: 0; }
-#track { height: 860vh; position: relative; }   /* TIMELINE's 760 screens' worth of scrolling, in vh, plus the held screen */
+#track { height: 560vh; position: relative; }   /* the timeline's 460 vh of scrolling plus the held screen */
 /* opened on its own, the page settles on each stop; inside the spine the spine scrolls it and these do nothing */
 html:not(.in-spine) { scroll-snap-type: y proximity; }
 .stop { position: absolute; left: 0; width: 1px; height: 1px; scroll-snap-align: start; }
@@ -174,16 +174,16 @@ function layout(w, h) {
 }
 
 // the scroll's beats, as fractions of the section's scroll
-// The scroll's timeline, in vh of scrolling (Sam, 2026-10-17: each screen must hold still long enough to read).
-// Every stop holds for 80 vh with nothing moving; the changes between stops take 40 vh.
-const T = 760;                       // total; #track is T + 100 vh tall
-const STOPS = { open: [0, 80], miss: [120, 200], kill: [240, 320], ear: [360, 440], pie: [660, 760] };
+// The scroll's timeline, in vh of scrolling. Every stop holds for 40 vh with nothing moving; the changes between
+// stops take 30 vh (Sam, 2026-10-17: each screen holds long enough to read, but not so long it is hard to scroll through).
+const T = 460;                       // total; #track is T + 100 vh tall
+const STOPS = { open: [0, 40], miss: [70, 110], kill: [140, 180], ear: [210, 250], pie: [405, 445] };
 const u = x => x / T;
-const B = { miss: [u(80), u(120), u(200), u(240)], kill: [u(200), u(240), u(320), u(360)], ear: [u(320), u(360), u(440), u(480)],
-            all: [u(440), u(480)], fly: [u(500), u(640)], gone: [u(505), u(550)], pie: [u(640), u(660)] };
+const B = { miss: [u(40), u(70), u(110), u(140)], kill: [u(110), u(140), u(180), u(210)], ear: [u(180), u(210), u(250), u(280)],
+            all: [u(250), u(280)], fly: [u(290), u(390)], gone: [u(293), u(330)], pie: [u(390), u(405)] };
 // captions: [id, fade in from, to, fade out from, to]; each one is fully on for its whole stop
-const CAPS = [['capA', -1, 0, u(80), u(95)], ['capMiss', u(105), u(120), u(200), u(215)], ['capKill', u(225), u(240), u(320), u(335)],
-              ['capEar', u(345), u(360), u(440), u(455)], ['capPie', u(645), u(660), u(740), u(760)]];
+const CAPS = [['capA', -1, 0, u(40), u(50)], ['capMiss', u(60), u(70), u(110), u(120)], ['capKill', u(130), u(140), u(180), u(190)],
+              ['capEar', u(200), u(210), u(250), u(260)], ['capPie', u(395), u(405), u(445), u(460)]];
 
 function progress() {
   const max = document.documentElement.scrollHeight - innerHeight;
@@ -329,6 +329,6 @@ request();
 // snap points for the standalone page, one in the middle of each stop
 { const tr = document.getElementById('track'); for (const [a, b] of Object.values(STOPS)) { const m = document.createElement('div'); m.className = 'stop'; m.style.top = ((a + b) / 2) + 'vh'; tr.appendChild(m); } }
 
-// stops: where a fling should halt, as fractions of this section's scroll (an offer to the spine; ignored where unsupported)
-Spine.register({ kind: 'scroll', enter: request, leave() {}, stops: Object.values(STOPS).map(([a, b]) => +((a + b) / 2 / T).toFixed(4)) });
+// no stops are offered to the spine: the holds above pin each screen, and the spine scrolls freely (Sam, 2026-10-17)
+Spine.register({ kind: 'scroll', enter: request, leave() {} });
 </script>
