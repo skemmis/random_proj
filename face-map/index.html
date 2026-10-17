@@ -29,7 +29,10 @@
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-text); margin: 0; }
-#track { height: 520vh; position: relative; }
+#track { height: 860vh; position: relative; }   /* TIMELINE's 760 screens' worth of scrolling, in vh, plus the held screen */
+/* opened on its own, the page settles on each stop; inside the spine the spine scrolls it and these do nothing */
+html:not(.in-spine) { scroll-snap-type: y proximity; }
+.stop { position: absolute; left: 0; width: 1px; height: 1px; scroll-snap-align: start; }
 #stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 #cv { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 #captions { position: absolute; inset: 0; pointer-events: none; }
@@ -41,7 +44,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--font-text); 
   <div id="stage">
     <canvas id="cv" role="img" data-c-aria="aria"></canvas>
     <div id="captions" aria-live="polite">
-      <p class="cap" id="capA"><span data-c="capA"></span><small data-c="capAsmall"></small></p>
+      <p class="cap" id="capA"><span data-c="capA"></span></p>
       <p class="cap" id="capMiss"><span data-c="capMiss"></span></p>
       <p class="cap" id="capKill"><span data-c="capKill"></span></p>
       <p class="cap" id="capEar"><span data-c="capEar"></span></p>
@@ -58,8 +61,7 @@ const Q = D.quote;
 // Numbers come from results/speech_luck.json, quoted.face_map_areas (the 3D thread, October 15).
 const CONTENT = {
   aria: `Trump's head as the shooter saw it, coloured by what a bullet would do, turning into a pie chart: by area, the ear-only zone is ${Q.ear_share_of_circle} of a ${Q.circle_radius_cm} cm circle around the aim point.`,
-  capA: `The shooter's view as he fired. Half the shots we simulated landed inside this circle.`,
-  capAsmall: `Enlarged; his red-dot sight did not magnify.`,
+  capA: `The shooter's view as he fired.`,
   capMiss: `In the grey, a bullet misses him.`,
   capKill: `In the red, it kills or seriously wounds him.`,
   capEar: `In the blue, it hits only an ear.`,
@@ -172,9 +174,16 @@ function layout(w, h) {
 }
 
 // the scroll's beats, as fractions of the section's scroll
-const B = { miss: [0.13, 0.17, 0.22, 0.25], kill: [0.22, 0.26, 0.31, 0.34], ear: [0.31, 0.35, 0.40, 0.43], all: [0.41, 0.46], fly: [0.52, 0.80], pie: [0.80, 0.85] };
-const CAPS = [['capA', -1, 0, 0.11, 0.13], ['capMiss', 0.13, 0.15, 0.2, 0.22], ['capKill', 0.22, 0.24, 0.29, 0.31], ['capEar', 0.31, 0.33, 0.38, 0.40],
-              ['capPie', 0.83, 0.86, 0.95, 0.98]];
+// The scroll's timeline, in vh of scrolling (Sam, 2026-10-17: each screen must hold still long enough to read).
+// Every stop holds for 80 vh with nothing moving; the changes between stops take 40 vh.
+const T = 760;                       // total; #track is T + 100 vh tall
+const STOPS = { open: [0, 80], miss: [120, 200], kill: [240, 320], ear: [360, 440], pie: [660, 760] };
+const u = x => x / T;
+const B = { miss: [u(80), u(120), u(200), u(240)], kill: [u(200), u(240), u(320), u(360)], ear: [u(320), u(360), u(440), u(480)],
+            all: [u(440), u(480)], fly: [u(500), u(640)], gone: [u(505), u(550)], pie: [u(640), u(660)] };
+// captions: [id, fade in from, to, fade out from, to]; each one is fully on for its whole stop
+const CAPS = [['capA', -1, 0, u(80), u(95)], ['capMiss', u(105), u(120), u(200), u(215)], ['capKill', u(225), u(240), u(320), u(335)],
+              ['capEar', u(345), u(360), u(440), u(455)], ['capPie', u(645), u(660), u(740), u(760)]];
 
 function progress() {
   const max = document.documentElement.scrollHeight - innerHeight;
@@ -201,7 +210,7 @@ function draw() {
   for (const [id] of CAPS) { const s = document.getElementById(id).style; s.left = L.cap.left + 'px'; s.width = L.cap.width + 'px'; s.top = L.cap.top + 'px'; s.transform = L.cap.mid ? 'translateY(-50%)' : 'none'; s.textAlign = L.cap.mid ? 'left' : 'center'; }
 
   // the sight moves aside while the colours fly
-  const fly = ramp(p, B.fly[0], B.fly[1]), gone = ramp(p, B.fly[0] + 0.02, B.fly[0] + 0.12);  // the lens empties as the colours leave
+  const fly = ramp(p, B.fly[0], B.fly[1]), gone = ramp(p, ...B.gone);  // the lens empties as the colours leave
   const S = L.s;
   const k = S.r / D.radiusMM;  // px per mm
 
@@ -210,7 +219,9 @@ function draw() {
   const one = b => Math.max(Math.min(ramp(p, b[0], b[1]), 1 - ramp(p, b[2], b[3])), ramp(p, ...B.all));
   const lit = { miss: one(B.miss), serious: one(B.kill), ear: one(B.ear) };
   const focus = null;
-  const leave = ramp(p, B.fly[0], B.fly[0] + 0.02);  // the painted zones hand over to the flying cells
+  // the painted zones hand over to the cells in one frame: every cell is drawn from the moment the flight starts,
+  // waiting at its place on the face until it leaves, so the colours never drop out (Sam, 2026-10-17)
+  const leave = fly > 0 ? 1 : 0;
 
   // lens, face and zones
   ctx.save(); ctx.beginPath(); ctx.arc(S.x, S.y, S.r, 0, 2 * Math.PI); ctx.clip();
@@ -240,14 +251,13 @@ function draw() {
     const by = { miss: [], serious: [], ear: [] };
     for (const q of particles) {
       const t = ease(clamp((fly - q.d) / 0.48));
-      if (t <= 0 && leave < 1) continue;
       let x0 = S.x + q.u * k, y0 = S.y - q.v * k;
       let x1 = P.x + q.x * P.r, y1 = P.y + q.y * P.r;
       if (q.k === 'ear') { x1 += ex.x; y1 += ex.y; }
       const dx = x1 - x0, dy = y1 - y0, b = Math.sin(Math.PI * t) * q.bend;
       by[q.k].push(lerp(x0, x1, t) - dy * b, lerp(y0, y1, t) + dx * b, lerp(cell, dot, t));
     }
-    ctx.globalAlpha = 1 - crisp;
+    ctx.globalAlpha = (1 - crisp) * (0.85 + 0.15 * clamp(fly * 5));  // starts at the painted zones' strength
     for (const c of ['miss', 'serious', 'ear']) {
       const a = by[c]; if (!a.length) continue;
       ctx.fillStyle = colors[c]; ctx.beginPath();
@@ -316,5 +326,9 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { la
 document.fonts && document.fonts.ready.then(request);
 request();
 
-Spine.register({ kind: 'scroll', enter: request, leave() {} });
+// snap points for the standalone page, one in the middle of each stop
+{ const tr = document.getElementById('track'); for (const [a, b] of Object.values(STOPS)) { const m = document.createElement('div'); m.className = 'stop'; m.style.top = ((a + b) / 2) + 'vh'; tr.appendChild(m); } }
+
+// stops: where a fling should halt, as fractions of this section's scroll (an offer to the spine; ignored where unsupported)
+Spine.register({ kind: 'scroll', enter: request, leave() {}, stops: Object.values(STOPS).map(([a, b]) => +((a + b) / 2 / T).toFixed(4)) });
 </script>
