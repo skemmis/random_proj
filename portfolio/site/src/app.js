@@ -52,7 +52,8 @@
     if (small()) return;
     const area = $('#wins').getBoundingClientRect();
     const width = Math.min(+w.dataset.w || 720, area.width - 24);
-    const x = Math.min(120 + (cascade % 7) * 32, Math.max(12, area.width - width - 12));
+    const iconsRight = Math.max(0, ...[...document.querySelectorAll('.desk-icon')].map((i) => i.getBoundingClientRect().right - area.left));
+    const x = Math.min(iconsRight + 24 + (cascade % 7) * 32, Math.max(12, area.width - width - 12));
     const y = Math.min(28 + (cascade % 7) * 28, Math.max(12, area.height * 0.25));
     cascade++;
     w.style.setProperty('--w', width + 'px'); w.style.left = x + 'px'; w.style.top = y + 'px';
