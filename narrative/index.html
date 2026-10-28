@@ -47,6 +47,20 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 .beat.q p { max-width: 11em; font-size: var(--fs-question); font-weight: 500; line-height: 1.02; letter-spacing: -.015em; }
 .beat.short { min-height: 70svh; }
 
+/* ---------- the gaffes: one sentence held over three captioned exhibits ---------- */
+.gaffes { position: relative; background: var(--night); }
+.gaffes .stage { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: clamp(20px, 4svh, 44px); padding-block: clamp(48px, 10svh, 110px) clamp(24px, 6svh, 64px); justify-items: center; }
+.gaffes .lede { margin: 0; max-width: 24em; text-align: center; font-size: clamp(24px, 2.7vw, 40px); line-height: 1.22; text-wrap: balance; }
+.gaffes .exhibits { display: grid; min-height: 0; width: 100%; max-width: 64rem; }
+.gaffes figure { grid-area: 1 / 1; margin: 0; min-height: 0; display: grid; align-content: center; gap: 14px; justify-items: center; opacity: 0; transition: opacity .9s var(--ease); }
+.gaffes figure.on { opacity: 1; }
+.gaffes img { display: block; width: auto; height: auto; max-width: 100%; max-height: min(52svh, 600px); }
+.gaffes figcaption { display: grid; gap: 6px; text-align: center; max-width: 34rem; }
+.gaffes q { font: italic 400 clamp(22px, 1.9vw, 28px)/1.25 var(--font-text); color: var(--ink-night); quotes: "\201C" "\201D"; }
+.gaffes figcaption span { font: 600 var(--fs-label)/1.45 var(--font-head); letter-spacing: .1em; text-transform: uppercase; color: var(--dim-night); }
+.gaffes .step { height: 100svh; }
+.gaffes .step:last-child { height: 120svh; }
+
 /* ---------- title page (the spine's open screen) ---------- */
 .open { position: relative; height: 100svh; overflow: hidden; background: #1b1b1b; }
 .open img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 0; }
@@ -127,9 +141,30 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 </style>
 
 <!-- 1. COLD OPEN: Sam's five opening lines, one per screen -->
+<!-- 1a. THE GAFFES: Sam's first line holds while three of the gaffes he survived dissolve beneath it, each captioned -->
+<section class="gaffes" id="gaffes" aria-label="Three gaffes">
+  <div class="stage gut">
+    <p class="lede">Donald Trump has earned the nickname &ldquo;Teflon Don&rdquo; for his ability to overcome gaffs and scandals that would sink most political careers.</p>
+    <div class="exhibits">
+      <figure class="on">
+        <img src="img/gaffe-rep.jpg" width="1040" height="472" alt="Trump flails his arms at a rally, imitating a reporter with a disability.">
+        <figcaption><q>Now, the poor guy, you ought to see this guy.</q><span>Mocking a reporter with a disability &middot; Myrtle Beach, South Carolina &middot; November 24, 2015</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/gaffe-ah.jpg" width="944" height="520" alt="Trump and the television host Billy Bush beside the Access Hollywood bus, 2005.">
+        <figcaption><q>Grab them by the pussy. You can do anything.</q><span>Taped on the Access Hollywood bus in 2005 &middot; made public October 7, 2016, a month before he won</span></figcaption>
+      </figure>
+      <figure>
+        <img src="img/gaffe-dogs.jpg" width="1260" height="1260" alt="Trump speaks at the presidential debate in Philadelphia, 2024.">
+        <figcaption><q>In Springfield, they&rsquo;re eating the dogs.</q><span>The presidential debate &middot; Philadelphia &middot; September 10, 2024</span></figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="step"></div><div class="step"></div><div class="step"></div>
+</section>
+
 <section class="beats" id="cold-open" aria-label="Opening">
   <div class="bg" aria-hidden="true"><img src="img/rally.jpg" alt=""><img src="img/clock.jpg" alt=""></div>
-  <div class="beat gut"><p class="fade">Donald Trump has earned the nickname &ldquo;Teflon Don&rdquo; for his ability to overcome gaffs and scandals that would sink most political careers.</p></div>
   <div class="beat gut"><p class="fade">Critics bemoan this ability with disbelief. How can someone succeed while making so many mistakes by the traditional rules of politics?</p></div>
   <div class="beat gut short"><p class="fade">But maybe this ability isn&rsquo;t a personality trait. Or the result of good luck.</p></div>
   <div class="beat gut" data-swap><p class="fade">What if he has repeated this timeline over and over, until he knew what would happen in nearly every scenario, allowing him to disregard traditional rules and strategies altogether?</p></div>
@@ -244,6 +279,10 @@ function frame() {
     const d = Math.abs((r.top + r.height / 2) - vh / 2) / (vh * .5);   // 0 at the screen's centre, 1 at its edge
     el.style.setProperty('--a', Math.max(0, Math.min(1, 1.5 - d * 1.5)).toFixed(3));
   }
+  // the gaffes: one exhibit per screen of scrolling
+  const g = document.getElementById('gaffes'), gr = g.getBoundingClientRect();
+  const gi = Math.max(0, Math.min(2, Math.floor((-gr.top + vh * .35) / vh)));
+  g.querySelectorAll('figure').forEach((f, i) => f.classList.toggle('on', i === gi));
   // the cold open's photograph drifts in slowly, then dissolves to the clock for the time-loop lines
   const or = open.getBoundingClientRect();
   const p = Math.max(0, Math.min(1, -or.top / Math.max(1, or.height - vh)));
