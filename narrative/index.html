@@ -51,20 +51,19 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 .beat.short { min-height: 70svh; }
 
 
-/* ---------- the teaser: a mosaic of silent loops ---------- */
-.mosaic { position: relative; height: 280svh; background: var(--night); }
-.mosaic .stage { position: sticky; top: 0; height: 100svh; overflow: hidden; }
-.mosaic .stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(11,13,16,.75) 85%), rgba(11,13,16, var(--dark, 0)); }
-.mosaic .grid { position: absolute; inset: -9% -6%; display: grid; grid-template-columns: repeat(5, 1fr); grid-template-rows: repeat(4, 1fr); grid-auto-flow: dense; gap: 6px; transform: scale(calc(1.18 - var(--m, 0) * .2)) rotate(calc(-2deg + var(--m, 0) * 2deg)); }
-.mosaic .tile { width: 100%; height: 100%; min-height: 0; object-fit: cover; opacity: var(--o, .7); }
-.mosaic .t0 { grid-column: span 2; grid-row: span 2; }
-.mosaic .t1, .mosaic .t2 { grid-column: span 2; }
-@media (max-aspect-ratio: 1/1) {
-  .mosaic .grid { inset: -6% -14%; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(7, 1fr); }
-}
+/* ---------- the teaser: a wall of silent loops that scrolls like any page ---------- */
+.mosaic { position: relative; background: var(--night); padding-block: 8svh 0; }
+.mosaic .grid { --cols: 4; display: grid; grid-template-columns: repeat(var(--cols), 1fr); grid-auto-rows: calc(100vw / var(--cols) * .5625); grid-auto-flow: dense; gap: 4px; }
+.mosaic .tile { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--night-2, #16181c); }
+.mosaic .big { grid-column: span 2; grid-row: span 2; }
+.mosaic .wide { grid-column: span 2; }
+.mosaic .final { grid-column: 1 / -1; grid-row: span 2; }
+@media (max-width: 700px) { .mosaic .grid { --cols: 3; } .mosaic .pwide { grid-column: span 2; } }
 
 /* ---------- title page (the spine's open screen) ---------- */
-.open { position: relative; height: 100svh; overflow: hidden; background: #1b1b1b; }
+.open { position: relative; height: 190svh; background: var(--night); }
+.open .pin { position: sticky; top: 0; height: 100svh; overflow: hidden; background: #1b1b1b; }
+.open .title { opacity: var(--t, 1); transform: translateY(calc((1 - var(--t, 1)) * 18px)); }
 .open img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 30% 0; }
 .open .title { position: absolute; right: 4%; top: 15%; width: min(26rem, 32%); text-align: center; color: #fff; }
 .open h1 { margin: 0; font: 400 clamp(40px, 4.4vw, 64px)/1.02 var(--font-title); text-wrap: balance; }
@@ -73,7 +72,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 .open .by { margin: 0; font: 500 14px/1 var(--font-head); letter-spacing: .04em; text-transform: uppercase; }
 @media (max-aspect-ratio: 4/5) {
   .open img { object-position: 38% 0; }
-  .open::after { content: ""; position: absolute; inset: auto 0 0; height: 60%; background: linear-gradient(to top, rgba(10,10,10,.9) 35%, transparent); }
+  .open .pin::after { content: ""; position: absolute; inset: auto 0 0; height: 60%; background: linear-gradient(to top, rgba(10,10,10,.9) 35%, transparent); }
   .open .title { z-index: 1; left: 16px; right: 16px; width: auto; top: auto; bottom: 6svh; }
   .open h1 { font-size: clamp(34px, 9.4vw, 44px); }
 }
@@ -153,35 +152,62 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   <div class="beat gut" data-bg="2"><p class="fade">But maybe this ability isn&rsquo;t a personality trait. Or the result of good luck.</p></div>
 </section>
 
-<!-- 1b. THE TEASER: the salient clips play at once in a loose mosaic that drifts and flickers as the reader scrolls, then sinks into the title page -->
+<!-- 1b. THE TEASER: a wall of silent clips and the piece's own animations, scrolled through at reading pace; the fist photo closes it and the title fades in over it -->
 <section class="mosaic" id="mosaic" aria-label="The loop, in clips">
-  <div class="stage" aria-hidden="true"><div class="grid">
-    <video class="tile t0" muted loop playsinline preload="metadata" poster="mosaic/butler-fist.jpg"><source src="mosaic/butler-fist.webm" type="video/webm"><source src="mosaic/butler-fist.mp4" type="video/mp4"></video>
-    <video class="tile t1" muted loop playsinline preload="metadata" poster="mosaic/electro-grandrapids.jpg"><source src="mosaic/electro-grandrapids.webm" type="video/webm"><source src="mosaic/electro-grandrapids.mp4" type="video/mp4"></video>
-    <video class="tile t2" muted loop playsinline preload="metadata" poster="mosaic/wake-2.jpg"><source src="mosaic/wake-2.webm" type="video/webm"><source src="mosaic/wake-2.mp4" type="video/mp4"></video>
-    <video class="tile t3" muted loop playsinline preload="metadata" poster="mosaic/fifth-avenue.jpg"><source src="mosaic/fifth-avenue.webm" type="video/webm"><source src="mosaic/fifth-avenue.mp4" type="video/mp4"></video>
-    <video class="tile t4" muted loop playsinline preload="metadata" poster="mosaic/clock-flip-b.jpg"><source src="mosaic/clock-flip-b.webm" type="video/webm"><source src="mosaic/clock-flip-b.mp4" type="video/mp4"></video>
-    <video class="tile t5" muted loop playsinline preload="metadata" poster="mosaic/shove.jpg"><source src="mosaic/shove.webm" type="video/webm"><source src="mosaic/shove.mp4" type="video/mp4"></video>
-    <video class="tile t6" muted loop playsinline preload="metadata" poster="mosaic/tarmac-wake.jpg"><source src="mosaic/tarmac-wake.webm" type="video/webm"><source src="mosaic/tarmac-wake.mp4" type="video/mp4"></video>
-    <video class="tile t7" muted loop playsinline preload="metadata" poster="mosaic/didnt-sleep.jpg"><source src="mosaic/didnt-sleep.webm" type="video/webm"><source src="mosaic/didnt-sleep.mp4" type="video/mp4"></video>
-    <video class="tile t8" muted loop playsinline preload="metadata" poster="mosaic/ned-day2.jpg"><source src="mosaic/ned-day2.webm" type="video/webm"><source src="mosaic/ned-day2.mp4" type="video/mp4"></video>
-    <video class="tile t9" muted loop playsinline preload="metadata" poster="mosaic/never-seen.jpg"><source src="mosaic/never-seen.webm" type="video/webm"><source src="mosaic/never-seen.mp4" type="video/mp4"></video>
-    <video class="tile t10" muted loop playsinline preload="metadata" poster="mosaic/find-me.jpg"><source src="mosaic/find-me.webm" type="video/webm"><source src="mosaic/find-me.mp4" type="video/mp4"></video>
-    <video class="tile t11" muted loop playsinline preload="metadata" poster="mosaic/daze-cabinet.jpg"><source src="mosaic/daze-cabinet.webm" type="video/webm"><source src="mosaic/daze-cabinet.mp4" type="video/mp4"></video>
-    <video class="tile t12" muted loop playsinline preload="metadata" poster="mosaic/own-rules.jpg"><source src="mosaic/own-rules.webm" type="video/webm"><source src="mosaic/own-rules.mp4" type="video/mp4"></video>
-    <video class="tile t13" muted loop playsinline preload="metadata" poster="mosaic/electro-anaheim.jpg"><source src="mosaic/electro-anaheim.webm" type="video/webm"><source src="mosaic/electro-anaheim.mp4" type="video/mp4"></video>
-    <video class="tile t14" muted loop playsinline preload="metadata" poster="mosaic/wake-4.jpg"><source src="mosaic/wake-4.webm" type="video/webm"><source src="mosaic/wake-4.mp4" type="video/mp4"></video>
-  </div></div>
+  <div class="grid" aria-hidden="true">
+    <video class="tile" muted loop playsinline preload="none" poster="m2/wake-2.jpg" src="m2/wake-2.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/electro-vegas.jpg" src="m2/electro-vegas.mp4"></video>
+    <video class="tile big" muted loop playsinline preload="none" poster="m2/gfx-skull-path.jpg" src="m2/gfx-skull-path.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/clock-flip-b.jpg" src="m2/clock-flip-b.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/fifth-avenue.jpg" src="m2/fifth-avenue.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-head-turn.jpg" src="m2/gfx-head-turn.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/ned-day1.jpg" src="m2/ned-day1.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/shove.jpg" src="m2/shove.mp4"></video>
+    <video class="tile wide" muted loop playsinline preload="none" poster="m2/gfx-flyover.jpg" src="m2/gfx-flyover.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/didnt-sleep.jpg" src="m2/didnt-sleep.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/find-me.jpg" src="m2/find-me.mp4"></video>
+    <video class="tile big" muted loop playsinline preload="none" poster="m2/electro-grandrapids.jpg" src="m2/electro-grandrapids.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-word-990.jpg" src="m2/gfx-word-990.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/wake-1.jpg" src="m2/wake-1.mp4"></video>
+    <video class="tile pwide" muted loop playsinline preload="none" poster="m2/gaffe-dogs.jpg" src="m2/gaffe-dogs.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-close-gap.jpg" src="m2/gfx-close-gap.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/no-tomorrow.jpg" src="m2/no-tomorrow.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/daze-coal.jpg" src="m2/daze-coal.mp4"></video>
+    <video class="tile big" muted loop playsinline preload="none" poster="m2/gfx-facemap.jpg" src="m2/gfx-facemap.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/alarm-late.jpg" src="m2/alarm-late.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/electro-anaheim.jpg" src="m2/electro-anaheim.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-sight-shots.jpg" src="m2/gfx-sight-shots.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/tarmac-wake.jpg" src="m2/tarmac-wake.mp4"></video>
+    <video class="tile wide" muted loop playsinline preload="none" poster="m2/gaffe-tape.jpg" src="m2/gaffe-tape.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-margin-path.jpg" src="m2/gfx-margin-path.mp4"></video>
+    <video class="tile wide" muted loop playsinline preload="none" poster="m2/own-rules.jpg" src="m2/own-rules.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/never-seen.jpg" src="m2/never-seen.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-chart-scrub.jpg" src="m2/gfx-chart-scrub.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/wake-4.jpg" src="m2/wake-4.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/electro-ankeny.jpg" src="m2/electro-ankeny.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-crowd-beat.jpg" src="m2/gfx-crowd-beat.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/forecast.jpg" src="m2/forecast.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gaffe-reporter.jpg" src="m2/gaffe-reporter.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-turn-fire.jpg" src="m2/gfx-turn-fire.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/ned-day2.jpg" src="m2/ned-day2.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/daze-cabinet.jpg" src="m2/daze-cabinet.mp4"></video>
+    <video class="tile wide" muted loop playsinline preload="none" poster="m2/gfx-loops.jpg" src="m2/gfx-loops.mp4"></video>
+    <video class="tile pwide" muted loop playsinline preload="none" poster="m2/wake-5.jpg" src="m2/wake-5.mp4"></video>
+    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-whiteout-cut.jpg" src="m2/gfx-whiteout-cut.mp4"></video>
+    <video class="tile final" muted loop playsinline preload="none" poster="m2/butler-speech.jpg" src="m2/butler-speech.mp4"></video>
+      </div>
 </section>
 
-<!-- 2. TITLE PAGE: the spine's open screen, moved after the cold open -->
+<!-- 2. TITLE PAGE: the spine's open screen, the last picture of the montage; the title fades in over it -->
 <header class="open" aria-label="Title">
+  <div class="pin">
   <img src="img/open.jpg" alt="Donald Trump raises his fist after the shooting at Butler, Pennsylvania, his face replaced by a see-through skull.">
   <div class="title">
     <h1>Is Trump Trapped in a Time Loop?</h1>
     <p class="sub">A Pulitzer-worthy analysis</p>
     <hr>
     <p class="by">By Sam Kemmis</p>
+  </div>
   </div>
 </header>
 
@@ -261,8 +287,10 @@ const fades = [...document.querySelectorAll('.fade')];
 const open = document.getElementById('cold-open');
 const layers = [...open.querySelectorAll('.layer')], beats = [...open.querySelectorAll('[data-bg]')];
 let shown = -1;
-const mosaic = document.getElementById('mosaic'), tiles = [...mosaic.querySelectorAll('.tile')];
-let mosaicOn = false;
+const hero = document.querySelector('.open');
+// each clip plays only while it is on screen
+const io = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting && !reduce) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { rootMargin: '25% 0px' });
+document.querySelectorAll('.mosaic .tile').forEach(v => io.observe(v));
 const digits = document.querySelector('#denom span');
 const full = digits.textContent;
 let ticking = false;
@@ -274,14 +302,9 @@ function frame() {
     const d = Math.abs((r.top + r.height / 2) - vh / 2) / (vh * .5);   // 0 at the screen's centre, 1 at its edge
     el.style.setProperty('--a', Math.max(0, Math.min(1, 1.5 - d * 1.5)).toFixed(3));
   }
-  // the teaser: each tile breathes in and out on its own phase as the reader scrolls; the whole mosaic settles and darkens into the title
-  const mr = mosaic.getBoundingClientRect();
-  const m = Math.max(0, Math.min(1, -mr.top / Math.max(1, mr.height - vh)));
-  mosaic.style.setProperty('--m', m.toFixed(3));
-  mosaic.style.setProperty('--dark', (Math.max(0, (m - .8) / .2) * .85).toFixed(3));
-  if (!reduce) tiles.forEach((t, i) => t.style.setProperty('--o', (.3 + .7 * (.5 + .5 * Math.sin(m * (9 + i % 4 * 2.3) + i * 1.7))).toFixed(3)));
-  const mon = mr.top < vh && mr.bottom > 0;
-  if (mon !== mosaicOn) { mosaicOn = mon; tiles.forEach(t => { if (mon && !reduce) t.play().catch(() => {}); else t.pause(); }); }
+  // the title fades in once the fist photo has filled the screen
+  const hr = hero.getBoundingClientRect();
+  hero.style.setProperty('--t', reduce ? 1 : Math.max(0, Math.min(1, -hr.top / (vh * .55))).toFixed(3));
   // the cold open's photograph drifts in slowly, then dissolves to the clock for the time-loop lines
   const or = open.getBoundingClientRect();
   const p = Math.max(0, Math.min(1, -or.top / Math.max(1, or.height - vh)));
