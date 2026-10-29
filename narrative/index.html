@@ -367,7 +367,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   <div class="bg" aria-hidden="true"><img src="img/ear.jpg" alt=""></div>
   <div class="step gut"><p class="fade">Donald Trump was shot in the ear at a campaign rally on July 13, 2024.</p></div>
 </section>
-<div class="spacer" data-section="opening" data-src="sections/opening/index.html" data-kind="play" data-span="140" data-mount="4" data-title="Butler, 6:11 p.m."></div>
+<div class="spacer" data-section="opening" data-src="sections/opening/index.html" data-kind="play" data-span="320" data-mount="4" data-title="Butler, 6:11 p.m."></div>
 <section class="over nb" aria-label="The shot, continued">
   <div class="bg" aria-hidden="true"><img src="img/ear.jpg" alt=""></div>
   <div class="step gut"><p class="fade">On its own, this was just another freak outcome. But this outcome is interesting not just because it was unlikely. All outcomes are unlikely. It&rsquo;s interesting because it was the only outcome that would benefit Trump.</p></div>
@@ -596,7 +596,8 @@ function mountFrame(s) {
   const f = document.createElement('iframe');
   f.setAttribute('data-spine', ''); f.setAttribute('allow', 'autoplay; fullscreen'); f.title = s.title || s.id; f.tabIndex = -1;
   f.style.zIndex = 100 - s.i;   // an earlier section sits above the next, so it can clear away to reveal it
-  f.addEventListener('load', () => { s.loaded = true; update(true); });
+  // section.js sets overscroll-behavior: none on each page's root; Chrome can latch a wheel to a frame under a text block, and with none the scroll dies there instead of passing to this page (Sam, Oct 29 22:06)
+  f.addEventListener('load', () => { try { f.contentDocument.documentElement.style.overscrollBehavior = 'auto'; } catch (e) {} s.loaded = true; update(true); });
   f.src = s.src; s.frame = f; s.loaded = false; s.hooks = null; s.ready = false; s.done = false; s.on = false; s.lastP = s.lastK = -1;
   $('stage').appendChild(f);
 }
@@ -625,7 +626,8 @@ function update(force) {
       // no exit of its own: the section lifts away as it fades, over the first part of the hand-off, so two pages of text never sit on top of each other for long
       else { s.frame.style.opacity = 1 - ss(0, 0.4, nk); s.frame.style.transform = nk > 0 ? `translateY(${(-nk * VH * 0.25).toFixed(1)}px)` : ''; } }
     // a section is "on" (playing, listening) once the hand-off into it is half done, until the next is half done or an interlude covers it
-    const on = s.k >= 0.5 && nk < 0.5 && !covered && s.loaded && (s.kind !== 'play' || s.ready);
+    // a section under a text block waits until the block has half cleared the screen, so a clip's sound never starts behind the text (Sam, Oct 29 22:14)
+    const on = s.k >= 0.5 && nk < 0.5 && !covered && (s.cover === null || y >= s.top - VH * 0.5) && s.loaded && (s.kind !== 'play' || s.ready);
     if (on !== s.on) { s.on = on; on ? s.hooks.enter && s.hooks.enter() : s.hooks.leave && s.hooks.leave(); }
   });
   // a played section that is on screen but still loading says so
