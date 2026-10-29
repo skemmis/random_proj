@@ -150,11 +150,13 @@ function build() {
   const coil = (x, yb, yt, n, w, beat) => { let d = `M${x},${yb}`; const N = n * 40;
     for (let i = 1; i <= N; i++) { const th = i / 40 * 2 * Math.PI; d += ` L${(x + rc * Math.sin(th)).toFixed(1)},${(yb - (yb - yt) * i / N - rc * .28 * (1 - Math.cos(th))).toFixed(1)}`; }
     pieces.push({ e: el('path', { d, ...stroke(w, .92) }, cam), beat }); };
-  seg(-W * 2, Y[0], X[0], widths[0], 'seg0');
+  const ax = W * (phone ? 0.22 : 0.3), x00 = X[0] - ax - 20;      // ax: where the camera holds his place on screen; x00: just off the left edge
+  seg(x00, Y[0], X[0], widths[0], 'seg0');
   coil(X[0], Y[0], Y[1], laps[0], widths[0] + .5, 'coil1'); seg(X[0], Y[1], X[1], widths[1], 'seg1');
   coil(X[1], Y[1], Y[2], laps[1], widths[1] + .5, 'coil2'); seg(X[1], Y[2], X[2], widths[2], 'seg2');
   coil(X[2], Y[2], Y[3], laps[2], widths[2] + .8, 'coil3'); seg(X[2], Y[3], XE, widths[3], 'seg3');
   const dot = el('circle', { cx: XE, cy: Y[3], r: 9, fill: '#f3efe6', opacity: 0 }, cam);
+  const flat = [['seg0', x00, X[0]], ['coil1', X[0], X[0]], ['seg1', X[0], X[1]], ['coil2', X[1], X[1]], ['seg2', X[1], X[2]], ['coil3', X[2], X[2]], ['seg3', X[2], XE]];
   pieces.forEach(p => { p.len = p.e.getTotalLength(); p.e.style.strokeDasharray = `${p.len} ${p.len}`; });
 
   // panels: beside each coil, on the side of his line with more room
@@ -164,19 +166,17 @@ function build() {
     return { x: X[i] + rc + (phone ? 14 : U * 0.05), y: below > above ? yl + 24 : yl - pw - 22, w: pw }; });
 
   // camera keys: tx, ty, s (screen = world * s + t)
-  const ax = W * (phone ? 0.22 : 0.3);
   const keyAt = x => ({ tx: ax - x, ty: 0, s: 1 });
-  G = { W, H, phone, usY, X, XE, Y, rc, pieces, dot, pan,
+  G = { W, H, phone, usY, X, XE, Y, rc, pieces, dot, pan, flat,
     keys: [[0, keyAt(X[0])], [BEATS.seg1[0], keyAt(X[0])], [BEATS.seg1[1], keyAt(X[1])], [BEATS.seg2[0], keyAt(X[1])],
            [BEATS.seg2[1], keyAt(X[2])], [BEATS.seg3[0], keyAt(X[2])], [BEATS.seg3[1], keyAt(XE - (phone ? W * 0.56 : 0))], [1, keyAt(XE - (phone ? W * 0.56 : 0))]] };
 
+  // our time: the grey line brightens up to a light that keeps pace with Trump along the time axis.
+  // It moves when he moves forward and stands still while he loops.
+  G.time = { run: el('path', { ...stroke(2.5, .8), stroke: '#f3efe6' }, cam),
+    halo: el('circle', { r: 11, cy: usY, fill: '#f3efe6', opacity: .18 }, cam), dot: el('circle', { r: 4.5, cy: usY, fill: '#f3efe6' }, cam), x00 };
+
   // labels drawn in screen space, so they stay legible when the camera pulls back
-  // time moving for most of us: a light pulse with a fading trail runs along the grey line, again and again
-  const defs = el('defs', {}, hud), gr = el('linearGradient', { id: 'trail', x1: 0, x2: 1, y1: 0, y2: 0 }, defs);
-  el('stop', { offset: 0, 'stop-color': '#f3efe6', 'stop-opacity': 0 }, gr); el('stop', { offset: 1, 'stop-color': '#f3efe6', 'stop-opacity': .9 }, gr);
-  const tg = el('g', {}, hud), TL = phone ? 90 : 180;
-  G.time = { g: tg, TL, trail: el('rect', { x: -TL, y: -1.5, width: TL, height: 3, fill: 'url(#trail)' }, tg),
-    halo: el('circle', { r: 11, fill: '#f3efe6', opacity: .18 }, tg), dot: el('circle', { r: 4.5, fill: '#f3efe6' }, tg) };
   G.lab = {
     rest: txt(CONTENT.rest), trump: txt(CONTENT.trump, 'ink'),
     ticks: CONTENT.ticks.map(t => ({ t: txt(t, '', 'middle'), m: el('line', { stroke: '#b4afa4', 'stroke-width': 2 }, hud) })),
@@ -230,18 +230,14 @@ function render() {
   $('counter').style.opacity = cOn; $('day').textContent = Math.max(1, Math.round(DAYS * dc));
   $('counter').firstChild.nodeValue = CONTENT.day;
 
-  placeTime();
+  placeTime(p);
   BEATS.caps.forEach(([a, b], i) => caps[i].classList.toggle('on', p >= a && p < b));
 }
-// the pulse crosses the screen every few seconds; with reduced motion it rests at the middle of the line
-const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-let t0 = performance.now(), raf = 0;
-function placeTime(now = performance.now()) { if (!G) return; const { W, usY } = G, T = G.time, span = W + T.TL;
-  const period = G.phone ? 5000 : 7000, x = still ? W * .6 : ((now - t0) % period) / period * span;
-  T.g.setAttribute('transform', `translate(${x.toFixed(1)},${usY})`); }
-function tick(now) { placeTime(now); raf = requestAnimationFrame(tick); }
-function startTime() { if (!raf && !still) raf = requestAnimationFrame(tick); }
-function stopTime() { cancelAnimationFrame(raf); raf = 0; }
+// his place on the time axis: it advances along his straight runs and holds while a coil draws
+function placeTime(p) { const T = G.time; let x = T.x00;
+  for (const [b, a, z] of G.flat) { const r = ramp(p, BEATS[b]); if (r > 0) x = lerp(a, z, r); }
+  T.run.setAttribute('d', `M${T.x00},${G.usY} L${x.toFixed(1)},${G.usY}`);
+  T.halo.setAttribute('cx', x); T.dot.setAttribute('cx', x); }
 $('counter').insertBefore(document.createTextNode(CONTENT.day), $('day'));
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(render); } }, { passive: true });
 addEventListener('resize', build);
@@ -249,9 +245,7 @@ document.fonts && document.fonts.ready.then(build);
 build();
 window.__p = p => { scrollTo(0, p * (document.documentElement.scrollHeight - innerHeight)); render(); };
 
-// standalone, the pulse simply runs; in the spine it runs between enter() and leave()
-if (!(window.Spine && Spine.embedded)) startTime();
-if (window.Spine) Spine.register({ kind: 'scroll', enter() { render(); startTime(); }, leave() { stopTime(); } });
+if (window.Spine) Spine.register({ kind: 'scroll', enter() { render(); }, leave() {} });
 </script>
 </body>
 </html>
