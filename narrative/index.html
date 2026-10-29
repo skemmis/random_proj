@@ -229,15 +229,6 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 /* the opening lines sit on moving pictures; keep them dim enough to read */
 .beats .bg video.layer { filter: brightness(.8); }
 
-.split { min-height: 100svh; display: grid; place-items: center; }
-.split .in { display: grid; grid-template-columns: auto auto; gap: clamp(28px, 5vw, 80px); align-items: center; }
-.split .pie { width: min(62vmin, 520px); height: auto; }
-.split .legend { display: grid; gap: 28px; }
-.split .legend p { margin: 0; display: grid; gap: 4px; font: 600 clamp(18px, 1.6vw, 24px)/1.2 var(--font-head); color: var(--dim-night); }
-.split .legend b { font: 900 clamp(44px, 6vw, 92px)/.9 var(--font-head); letter-spacing: -.03em; }
-.split .yes b { color: #4f93e6; }
-.split .no b { color: var(--ink-night); }
-@media (max-width: 700px) { .split .in { grid-template-columns: 1fr; justify-items: center; text-align: center; } .split .pie { width: 72vw; } }
 
 /* scroll fades: only when the script runs, and never for readers who ask for less motion */
 .js .fade { opacity: var(--a, 1); transform: translateY(calc((1 - var(--a, 1)) * 14px)); will-change: opacity, transform; }
@@ -387,20 +378,6 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   <div class="step gut"><p class="fade">On its own, this was just another freak outcome. But this outcome is interesting not just because it was unlikely. All outcomes are unlikely. It&rsquo;s interesting because it was the only outcome that would benefit Trump.</p></div>
 </section>
 <div class="spacer" data-section="earbyarea" data-src="sections/earbyarea/index.html" data-kind="scroll" data-span="460" data-autospan data-mount="3" data-title="The Ear by Area"></div>
-<!-- Sam's note: end the face map by splitting the odds into "benefits Trump" (the ear) and "doesn't benefit Trump" (everything else). By area: 1.5% and 98.5% (results/RESULTS.md). -->
-<section class="split nb gut" aria-label="Benefits Trump, by area">
-  <div class="in">
-    <svg class="pie" viewBox="-110 -110 220 220" role="img" aria-label="By area, 1.5 percent of the target benefits Trump and 98.5 percent does not.">
-      <circle r="100" fill="#8e8c86"/>
-      <path d="M0 0 L0 -100 A100 100 0 0 1 9.41 -99.56 Z" fill="#2a78d6"/>
-      <circle r="100" fill="none" stroke="#0b0d10" stroke-width="2"/>
-    </svg>
-    <div class="legend">
-      <p class="yes"><b>1.5%</b>Benefits Trump</p>
-      <p class="no"><b>98.5%</b>Doesn&rsquo;t benefit Trump</p>
-    </div>
-  </div>
-</section>
 
 <section class="over nb" aria-label="The turn">
   <div class="bg" aria-hidden="true"><img src="img/turned.jpg" alt=""></div>
