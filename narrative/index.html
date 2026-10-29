@@ -103,7 +103,13 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 /* every block of the narrative is opaque and takes the pointer, so it covers the stage as it scrolls over it */
 .nb { pointer-events: auto; position: relative; background: var(--night); }
 .nb.read, .nb.denom { background: var(--paper); }
+.open { pointer-events: auto; }   /* the title page takes clicks, so the sound buttons work */
 .open #gate { margin-top: 26px; }
+#gate .state { display: none; margin: 0; font: 600 15px/1.4 var(--font-head); color: var(--ink-night); }
+#gate .state svg { width: 1.2em; height: 1.2em; vertical-align: -.25em; margin-right: .45em; }
+#gate.chosen .k, #gate.chosen #soundOn, #gate.chosen #soundOff { display: none; }
+#gate.chosen .state { display: block; }
+#gate[data-sound="on"] .off, #gate[data-sound="off"] .on { display: none; }
 .gut { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
 /* ---------- BEAT: sentences over a photograph that stays put ---------- */
@@ -307,6 +313,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
         <span class="k">This story has sound, including gunfire</span>
         <button id="soundOn" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Turn sound on</button>
         <button id="soundOff" type="button">Keep it silent</button>
+        <p class="state" aria-live="polite"><span class="on"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Sound is on. Scroll to begin.</span><span class="off">Sound is off. Turn it on any time with the switch at the top right.</span></p>
       </div>
   </div>
   </div>
@@ -347,7 +354,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   </div>
 </section>
 
-<div class="spacer" data-section="opening" data-src="sections/opening/index.html" data-kind="play" data-span="140" data-mount="3" data-title="Butler, 6:11 p.m." data-chapter></div>
+<div class="spacer" data-section="opening" data-src="sections/opening/index.html" data-kind="play" data-span="140" data-mount="9" data-title="Butler, 6:11 p.m." data-chapter></div>
 
 <!-- EXHIBIT A -->
 <section class="chapter exhibit gut nb" data-chapter aria-label="Exhibit A: The Theory">
@@ -662,14 +669,14 @@ addEventListener('resize', () => { if (innerWidth !== lastW || Math.abs(innerHei
 
 // ---- sound: asked once, at the top; the click also unlocks sound in every section already loaded ----
 function setSound(on) {
-  SOUND = on; $('snd').setAttribute('aria-pressed', on); $('sndText').textContent = on ? 'Sound on' : 'Sound off';
+  SOUND = on; $('snd').setAttribute('aria-pressed', on); if (CHOSEN) $('gate').dataset.sound = on ? 'on' : 'off'; $('sndText').textContent = on ? 'Sound on' : 'Sound off';
   SECS.forEach(s => s.hooks && s.hooks.sound && s.hooks.sound(on));
 }
 function choose(on) {
   CHOSEN = true; setSound(on);
   SECS.forEach(s => s.hooks && s.hooks.unlock && s.hooks.unlock());   // inside the click, where browsers allow it
-  $('gate').classList.add('out'); $('snd').classList.add('on');
-  setTimeout(() => { $('gate').inert = true; }, 700);
+  $('gate').classList.add('chosen'); $('gate').dataset.sound = on ? 'on' : 'off'; $('snd').classList.add('on');
+  
   update(true);
 }
 $('soundOn').addEventListener('click', () => choose(true));
