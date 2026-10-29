@@ -51,14 +51,25 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 .beat.short { min-height: 70svh; }
 
 
-/* ---------- the teaser: a wall of silent loops that scrolls like any page ---------- */
-.mosaic { position: relative; background: var(--night); padding-block: 8svh 0; }
-.mosaic .grid { --cols: 4; display: grid; grid-template-columns: repeat(var(--cols), 1fr); grid-auto-rows: calc(100vw / var(--cols) * .5625); grid-auto-flow: dense; gap: 4px; }
-.mosaic .tile { display: block; width: 100%; height: 100%; object-fit: cover; background: var(--night-2, #16181c); }
-.mosaic .big { grid-column: span 2; grid-row: span 2; }
-.mosaic .wide { grid-column: span 2; }
-.mosaic .final { grid-column: 1 / -1; grid-row: span 2; }
-@media (max-width: 700px) { .mosaic .grid { --cols: 3; } .mosaic .pwide { grid-column: span 2; } }
+/* ---------- the teaser: a collage of silent loops, no grid ---------- */
+.mosaic { position: relative; background: var(--night); overflow: hidden; overflow: clip; }
+.collage { position: relative; height: var(--hd); }
+.collage::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 20; opacity: .22; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.collage .c { position: absolute; left: var(--x); top: var(--y); width: var(--w); aspect-ratio: 16 / 9; object-fit: cover; z-index: var(--z); transform: translateY(var(--py-shift, 0px)) rotate(var(--r)); box-shadow: 0 10px 40px rgba(0,0,0,.6); }
+.collage .c.strip { aspect-ratio: 16 / 4; }
+.collage .c.tall { aspect-ratio: 3 / 4; width: calc(var(--w) * .6); }
+.collage .c.wide { aspect-ratio: 21 / 9; }
+.collage .c.wash { opacity: .28; box-shadow: none; filter: blur(2px) saturate(.7); }
+.collage .c.g { mix-blend-mode: screen; box-shadow: none; z-index: 8; }
+.collage .frag { position: absolute; left: var(--x); top: var(--y); z-index: 12; margin: 0; max-width: 16ch; color: #fff; font: 700 clamp(22px, 2.4vw, 40px)/1.05 var(--font-head); letter-spacing: -.01em; transform: translateY(var(--py-shift, 0px)) rotate(var(--r)); text-shadow: 0 2px 18px rgba(0,0,0,.8); }
+.collage .frag.xl { font-size: clamp(40px, 6vw, 96px); font-weight: 900; }
+.mosaic .final { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-top: -6vw; position: relative; z-index: 9; -webkit-mask-image: linear-gradient(transparent, #000 18%); mask-image: linear-gradient(transparent, #000 18%); }
+@media (max-width: 700px) {
+  .collage { height: var(--hp); }
+  .collage .c { left: var(--px); top: var(--py); width: var(--pw); }
+  .collage .frag { left: var(--px); top: var(--py); }
+  .mosaic .final { aspect-ratio: 4 / 5; margin-top: -20vw; }
+}
 
 /* ---------- title page (the spine's open screen) ---------- */
 .open { position: relative; height: 190svh; background: var(--night); }
@@ -154,50 +165,66 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   <div class="beat gut" data-bg="2"><p class="fade">But maybe this ability isn&rsquo;t a personality trait. Or the result of good luck.</p></div>
 </section>
 
-<!-- 1b. THE TEASER: a wall of silent clips and the piece's own animations, scrolled through at reading pace; the fist photo closes it and the title fades in over it -->
-<section class="mosaic" id="mosaic" aria-label="The loop, in clips">
-  <div class="grid" aria-hidden="true">
-    <video class="tile" muted loop playsinline preload="none" poster="m2/wake-2.jpg" src="m2/wake-2.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/electro-vegas.jpg" src="m2/electro-vegas.mp4"></video>
-    <video class="tile big" muted loop playsinline preload="none" poster="m2/gfx-skull-path.jpg" src="m2/gfx-skull-path.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/clock-flip-b.jpg" src="m2/clock-flip-b.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/fifth-avenue.jpg" src="m2/fifth-avenue.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-head-turn.jpg" src="m2/gfx-head-turn.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/ned-day1.jpg" src="m2/ned-day1.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/shove.jpg" src="m2/shove.mp4"></video>
-    <video class="tile wide" muted loop playsinline preload="none" poster="m2/gfx-flyover.jpg" src="m2/gfx-flyover.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/didnt-sleep.jpg" src="m2/didnt-sleep.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/find-me.jpg" src="m2/find-me.mp4"></video>
-    <video class="tile big" muted loop playsinline preload="none" poster="m2/electro-grandrapids.jpg" src="m2/electro-grandrapids.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-word-990.jpg" src="m2/gfx-word-990.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/wake-1.jpg" src="m2/wake-1.mp4"></video>
-    <video class="tile pwide" muted loop playsinline preload="none" poster="m2/gaffe-dogs.jpg" src="m2/gaffe-dogs.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-close-gap.jpg" src="m2/gfx-close-gap.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/no-tomorrow.jpg" src="m2/no-tomorrow.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/daze-coal.jpg" src="m2/daze-coal.mp4"></video>
-    <video class="tile big" muted loop playsinline preload="none" poster="m2/gfx-facemap.jpg" src="m2/gfx-facemap.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/alarm-late.jpg" src="m2/alarm-late.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/electro-anaheim.jpg" src="m2/electro-anaheim.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-sight-shots.jpg" src="m2/gfx-sight-shots.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/tarmac-wake.jpg" src="m2/tarmac-wake.mp4"></video>
-    <video class="tile wide" muted loop playsinline preload="none" poster="m2/gaffe-tape.jpg" src="m2/gaffe-tape.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-margin-path.jpg" src="m2/gfx-margin-path.mp4"></video>
-    <video class="tile wide" muted loop playsinline preload="none" poster="m2/own-rules.jpg" src="m2/own-rules.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/never-seen.jpg" src="m2/never-seen.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-chart-scrub.jpg" src="m2/gfx-chart-scrub.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/wake-4.jpg" src="m2/wake-4.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/electro-ankeny.jpg" src="m2/electro-ankeny.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-crowd-beat.jpg" src="m2/gfx-crowd-beat.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/forecast.jpg" src="m2/forecast.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gaffe-reporter.jpg" src="m2/gaffe-reporter.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-turn-fire.jpg" src="m2/gfx-turn-fire.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/ned-day2.jpg" src="m2/ned-day2.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/daze-cabinet.jpg" src="m2/daze-cabinet.mp4"></video>
-    <video class="tile wide" muted loop playsinline preload="none" poster="m2/gfx-loops.jpg" src="m2/gfx-loops.mp4"></video>
-    <video class="tile pwide" muted loop playsinline preload="none" poster="m2/wake-5.jpg" src="m2/wake-5.mp4"></video>
-    <video class="tile" muted loop playsinline preload="none" poster="m2/gfx-whiteout-cut.jpg" src="m2/gfx-whiteout-cut.mp4"></video>
-    <video class="tile final" muted loop playsinline preload="none" poster="m2/butler-speech.jpg" src="m2/butler-speech.mp4"></video>
-      </div>
+<!-- 1b. THE TEASER: a collage after Adam Curtis; clips, the piece's own animations and stray words overlap with no grid, as if falling down a rabbit hole. It scrolls like any page; the layers drift at slightly different speeds. -->
+<section class="mosaic" id="mosaic" aria-label="The loop, in clips" style="--hd:299vw;--hp:560vw">
+  <div class="collage" aria-hidden="true">
+    <video class="c wash" style="--x:10vw;--y:249vw;--w:120vw;--px:-30vw;--py:467vw;--pw:160vw;--r:0deg;--d:-.3;--z:0" muted loop playsinline preload="none" poster="m2/tarmac-wake.jpg" src="m2/tarmac-wake.mp4"></video>
+    <video class="c wash" style="--x:4vw;--y:199vw;--w:120vw;--px:-30vw;--py:374vw;--pw:160vw;--r:0deg;--d:-.3;--z:0" muted loop playsinline preload="none" poster="m2/electro-grandrapids.jpg" src="m2/electro-grandrapids.mp4"></video>
+    <video class="c wash" style="--x:-12vw;--y:150vw;--w:120vw;--px:-30vw;--py:280vw;--pw:160vw;--r:0deg;--d:-.3;--z:0" muted loop playsinline preload="none" poster="m2/alarm-late.jpg" src="m2/alarm-late.mp4"></video>
+    <video class="c wash" style="--x:0vw;--y:100vw;--w:120vw;--px:-30vw;--py:187vw;--pw:160vw;--r:0deg;--d:-.3;--z:0" muted loop playsinline preload="none" poster="m2/own-rules.jpg" src="m2/own-rules.mp4"></video>
+    <video class="c wash" style="--x:-7vw;--y:50vw;--w:120vw;--px:-30vw;--py:93vw;--pw:160vw;--r:0deg;--d:-.3;--z:0" muted loop playsinline preload="none" poster="m2/ned-day2.jpg" src="m2/ned-day2.mp4"></video>
+    <video class="c wash" style="--x:-14vw;--y:0vw;--w:120vw;--px:-30vw;--py:0vw;--pw:160vw;--r:0deg;--d:-.3;--z:0" muted loop playsinline preload="none" poster="m2/gfx-flyover.jpg" src="m2/gfx-flyover.mp4"></video>
+    <video class="c tall" style="--x:63.3vw;--y:3.0vw;--w:26vw;--px:3.4vw;--py:6.0vw;--pw:38vw;--r:-2.4deg;--d:0.08;--z:2" muted loop playsinline preload="none" poster="m2/wake-2.jpg" src="m2/wake-2.mp4"></video>
+    <video class="c" style="--x:22.3vw;--y:10.6vw;--w:46vw;--px:29.2vw;--py:17.3vw;--pw:67vw;--r:-0.6deg;--d:-0.08;--z:3" muted loop playsinline preload="none" poster="m2/daze-cabinet.jpg" src="m2/daze-cabinet.mp4"></video>
+    <video class="c g" style="--x:-0.4vw;--y:17.2vw;--w:30vw;--px:50.2vw;--py:30.8vw;--pw:44vw;--r:0.6deg;--d:-0.16;--z:4" muted loop playsinline preload="none" poster="m2/gfx-sight-shots.jpg" src="m2/gfx-sight-shots.mp4"></video>
+    <video class="c wide" style="--x:6.1vw;--y:22.8vw;--w:52vw;--px:15.0vw;--py:44.0vw;--pw:75vw;--r:0deg;--d:0.04;--z:3" muted loop playsinline preload="none" poster="m2/clock-flip-b.jpg" src="m2/clock-flip-b.mp4"></video>
+    <p class="frag xl" style="--x:22.3vw;--y:31.3vw;--px:7.1vw;--py:61.3vw;--r:-3.1deg;--d:-0.1">6:00</p>
+    <video class="c" style="--x:14.4vw;--y:30.3vw;--w:34vw;--px:7.2vw;--py:57.3vw;--pw:49vw;--r:0.6deg;--d:0.0;--z:2" muted loop playsinline preload="none" poster="m2/electro-vegas.jpg" src="m2/electro-vegas.mp4"></video>
+    <video class="c tall" style="--x:41.1vw;--y:36.6vw;--w:34vw;--px:1.2vw;--py:70.5vw;--pw:49vw;--r:0deg;--d:0.11;--z:5" muted loop playsinline preload="none" poster="m2/ned-day1.jpg" src="m2/ned-day1.mp4"></video>
+    <p class="frag xl" style="--x:69.2vw;--y:44.3vw;--px:31.2vw;--py:86.5vw;--r:0deg;--d:-0.01">Again.</p>
+    <video class="c g" style="--x:19.8vw;--y:43.3vw;--w:38vw;--px:14.9vw;--py:82.5vw;--pw:55vw;--r:0deg;--d:0.14;--z:5" muted loop playsinline preload="none" poster="m2/gfx-skull-path.jpg" src="m2/gfx-skull-path.mp4"></video>
+    <video class="c wide" style="--x:43.4vw;--y:49.6vw;--w:40vw;--px:0.1vw;--py:95.3vw;--pw:58vw;--r:0deg;--d:0.2;--z:7" muted loop playsinline preload="none" poster="m2/fifth-avenue.jpg" src="m2/fifth-avenue.mp4"></video>
+    <video class="c" style="--x:17.6vw;--y:54.8vw;--w:52vw;--px:17.7vw;--py:108.7vw;--pw:75vw;--r:0deg;--d:-0.0;--z:5" muted loop playsinline preload="none" poster="m2/no-tomorrow.jpg" src="m2/no-tomorrow.mp4"></video>
+    <p class="frag l" style="--x:23.7vw;--y:63.3vw;--px:6.8vw;--py:126.4vw;--r:-2.0deg;--d:-0.07">No consequences</p>
+    <video class="c" style="--x:31.0vw;--y:62.3vw;--w:30vw;--px:31.1vw;--py:122.4vw;--pw:44vw;--r:0deg;--d:0.02;--z:5" muted loop playsinline preload="none" poster="m2/shove.jpg" src="m2/shove.mp4"></video>
+    <video class="c" style="--x:7.8vw;--y:69.7vw;--w:30vw;--px:7.9vw;--py:134.1vw;--pw:44vw;--r:-1.0deg;--d:0.17;--z:7" muted loop playsinline preload="none" poster="m2/own-rules.jpg" src="m2/own-rules.mp4"></video>
+    <video class="c g" style="--x:7.4vw;--y:74.7vw;--w:30vw;--px:30.1vw;--py:147.0vw;--pw:44vw;--r:0deg;--d:-0.07;--z:6" muted loop playsinline preload="none" poster="m2/gfx-head-turn.jpg" src="m2/gfx-head-turn.mp4"></video>
+    <video class="c strip" style="--x:36.6vw;--y:80.9vw;--w:46vw;--px:25.9vw;--py:162.7vw;--pw:67vw;--r:0deg;--d:0.03;--z:7" muted loop playsinline preload="none" poster="m2/didnt-sleep.jpg" src="m2/didnt-sleep.mp4"></video>
+    <video class="c strip" style="--x:11.6vw;--y:88.1vw;--w:26vw;--px:64.0vw;--py:175.0vw;--pw:38vw;--r:-2.8deg;--d:0.07;--z:3" muted loop playsinline preload="none" poster="m2/wake-1.jpg" src="m2/wake-1.mp4"></video>
+    <p class="frag xl" style="--x:68.9vw;--y:95.6vw;--px:39.8vw;--py:192.6vw;--r:0.5deg;--d:0.03">Ennui</p>
+    <video class="c" style="--x:10.1vw;--y:94.6vw;--w:52vw;--px:7.8vw;--py:188.6vw;--pw:75vw;--r:-2.0deg;--d:-0.03;--z:5" muted loop playsinline preload="none" poster="m2/gaffe-dogs.jpg" src="m2/gaffe-dogs.mp4"></video>
+    <video class="c g" style="--x:17.8vw;--y:99.0vw;--w:38vw;--px:4.3vw;--py:203.7vw;--pw:55vw;--r:0deg;--d:0.01;--z:7" muted loop playsinline preload="none" poster="m2/gfx-word-990.jpg" src="m2/gfx-word-990.mp4"></video>
+    <video class="c" style="--x:12.8vw;--y:104.4vw;--w:26vw;--px:61.7vw;--py:215.3vw;--pw:38vw;--r:0deg;--d:-0.12;--z:3" muted loop playsinline preload="none" poster="m2/electro-grandrapids.jpg" src="m2/electro-grandrapids.mp4"></video>
+    <video class="c" style="--x:44.3vw;--y:111.2vw;--w:52vw;--px:18.6vw;--py:230.8vw;--pw:75vw;--r:0deg;--d:-0.06;--z:6" muted loop playsinline preload="none" poster="m2/ned-day2.jpg" src="m2/ned-day2.mp4"></video>
+    <p class="frag xl" style="--x:24.7vw;--y:119.6vw;--px:6.0vw;--py:245.8vw;--r:0deg;--d:0.03">Again.</p>
+    <video class="c strip" style="--x:5.4vw;--y:118.6vw;--w:60vw;--px:1.5vw;--py:241.8vw;--pw:87vw;--r:2.2deg;--d:0.21;--z:7" muted loop playsinline preload="none" poster="m2/find-me.jpg" src="m2/find-me.mp4"></video>
+    <video class="c g" style="--x:29.1vw;--y:125.9vw;--w:38vw;--px:6.9vw;--py:253.0vw;--pw:55vw;--r:1.6deg;--d:0.22;--z:6" muted loop playsinline preload="none" poster="m2/gfx-close-gap.jpg" src="m2/gfx-close-gap.mp4"></video>
+    <video class="c strip" style="--x:2.0vw;--y:133.7vw;--w:34vw;--px:2.8vw;--py:265.7vw;--pw:49vw;--r:0deg;--d:0.22;--z:3" muted loop playsinline preload="none" poster="m2/never-seen.jpg" src="m2/never-seen.mp4"></video>
+    <video class="c wide" style="--x:35.3vw;--y:139.0vw;--w:26vw;--px:41.4vw;--py:278.6vw;--pw:38vw;--r:0deg;--d:0.06;--z:2" muted loop playsinline preload="none" poster="m2/wake-4.jpg" src="m2/wake-4.mp4"></video>
+    <video class="c" style="--x:29.8vw;--y:146.4vw;--w:30vw;--px:36.4vw;--py:289.3vw;--pw:44vw;--r:1.5deg;--d:-0.1;--z:7" muted loop playsinline preload="none" poster="m2/gaffe-tape.jpg" src="m2/gaffe-tape.mp4"></video>
+    <video class="c g" style="--x:73.5vw;--y:152.0vw;--w:30vw;--px:-1.3vw;--py:301.7vw;--pw:44vw;--r:0deg;--d:0.11;--z:6" muted loop playsinline preload="none" poster="m2/gfx-facemap.jpg" src="m2/gfx-facemap.mp4"></video>
+    <p class="frag xl" style="--x:62.5vw;--y:162.6vw;--px:35.6vw;--py:320.6vw;--r:2.3deg;--d:0.21">1 in 990</p>
+    <video class="c" style="--x:32.4vw;--y:161.6vw;--w:52vw;--px:13.3vw;--py:316.6vw;--pw:75vw;--r:-2.6deg;--d:-0.17;--z:5" muted loop playsinline preload="none" poster="m2/electro-anaheim.jpg" src="m2/electro-anaheim.mp4"></video>
+    <video class="c tall" style="--x:18.9vw;--y:169.5vw;--w:30vw;--px:11.9vw;--py:327.7vw;--pw:44vw;--r:0deg;--d:-0.17;--z:4" muted loop playsinline preload="none" poster="m2/forecast.jpg" src="m2/forecast.mp4"></video>
+    <video class="c g" style="--x:42.4vw;--y:174.6vw;--w:38vw;--px:38.6vw;--py:340.2vw;--pw:55vw;--r:2.9deg;--d:-0.04;--z:6" muted loop playsinline preload="none" poster="m2/gfx-margin-path.jpg" src="m2/gfx-margin-path.mp4"></video>
+    <video class="c tall" style="--x:67.6vw;--y:180.2vw;--w:26vw;--px:49.8vw;--py:355.8vw;--pw:38vw;--r:0.2deg;--d:0.03;--z:2" muted loop playsinline preload="none" poster="m2/daze-coal.jpg" src="m2/daze-coal.mp4"></video>
+    <video class="c tall" style="--x:22.7vw;--y:187.3vw;--w:26vw;--px:32.2vw;--py:366.7vw;--pw:38vw;--r:0.8deg;--d:-0.13;--z:5" muted loop playsinline preload="none" poster="m2/alarm-late.jpg" src="m2/alarm-late.mp4"></video>
+    <p class="frag l" style="--x:12.6vw;--y:197.5vw;--px:11.3vw;--py:381.3vw;--r:0deg;--d:-0.08">Bizarre disregard for social norms</p>
+    <video class="c tall" style="--x:32.3vw;--y:196.5vw;--w:26vw;--px:38.7vw;--py:377.3vw;--pw:38vw;--r:0.4deg;--d:0.12;--z:6" muted loop playsinline preload="none" poster="m2/gfx-flyover.jpg" src="m2/gfx-flyover.mp4"></video>
+    <video class="c" style="--x:50.5vw;--y:202.5vw;--w:30vw;--px:51.3vw;--py:391.4vw;--pw:44vw;--r:0.2deg;--d:0.01;--z:6" muted loop playsinline preload="none" poster="m2/tarmac-wake.jpg" src="m2/tarmac-wake.mp4"></video>
+    <video class="c" style="--x:1.4vw;--y:210.1vw;--w:34vw;--px:10.7vw;--py:402.7vw;--pw:49vw;--r:-0.6deg;--d:-0.02;--z:3" muted loop playsinline preload="none" poster="m2/gaffe-reporter.jpg" src="m2/gaffe-reporter.mp4"></video>
+    <video class="c g" style="--x:35.9vw;--y:216.8vw;--w:46vw;--px:11.3vw;--py:417.4vw;--pw:67vw;--r:0deg;--d:-0.12;--z:4" muted loop playsinline preload="none" poster="m2/gfx-turn-fire.jpg" src="m2/gfx-turn-fire.mp4"></video>
+    <video class="c" style="--x:7.1vw;--y:224.3vw;--w:40vw;--px:29.1vw;--py:433.2vw;--pw:58vw;--r:3.2deg;--d:-0.02;--z:3" muted loop playsinline preload="none" poster="m2/electro-ankeny.jpg" src="m2/electro-ankeny.mp4"></video>
+    <p class="frag xl" style="--x:50.0vw;--y:234.1vw;--px:35.9vw;--py:453.1vw;--r:-0.6deg;--d:-0.04">Again.</p>
+    <video class="c g" style="--x:19.2vw;--y:233.1vw;--w:38vw;--px:28.8vw;--py:449.1vw;--pw:55vw;--r:-0.3deg;--d:0.1;--z:6" muted loop playsinline preload="none" poster="m2/gfx-loops.jpg" src="m2/gfx-loops.mp4"></video>
+    <video class="c" style="--x:2.9vw;--y:241.0vw;--w:26vw;--px:15.5vw;--py:459.8vw;--pw:38vw;--r:0deg;--d:-0.09;--z:4" muted loop playsinline preload="none" poster="m2/wake-5.jpg" src="m2/wake-5.mp4"></video>
+    <video class="c g" style="--x:24.4vw;--y:248.0vw;--w:38vw;--px:24.4vw;--py:474.7vw;--pw:55vw;--r:0deg;--d:0.09;--z:6" muted loop playsinline preload="none" poster="m2/gfx-crowd-beat.jpg" src="m2/gfx-crowd-beat.mp4"></video>
+    <p class="frag l" style="--x:16.2vw;--y:257.3vw;--px:2.9vw;--py:492.9vw;--r:-3.1deg;--d:0.1">Death holds no fear</p>
+    <video class="c g" style="--x:1.9vw;--y:256.3vw;--w:38vw;--px:40.7vw;--py:488.9vw;--pw:55vw;--r:0deg;--d:0.07;--z:2" muted loop playsinline preload="none" poster="m2/gfx-chart-scrub.jpg" src="m2/gfx-chart-scrub.mp4"></video>
+    <video class="c wide" style="--x:42.0vw;--y:261.3vw;--w:34vw;--px:-0.5vw;--py:499.7vw;--pw:49vw;--r:3.5deg;--d:-0.01;--z:3" muted loop playsinline preload="none" poster="m2/gfx-whiteout-cut.jpg" src="m2/gfx-whiteout-cut.mp4"></video>
+    <p class="frag l" style="--x:61.8vw;--y:272.1vw;--px:38.5vw;--py:519.5vw;--r:-2.2deg;--d:0.19">July 13, 2024</p>
+  </div>
+  <video class="final" muted loop playsinline preload="none" poster="m2/butler-speech.jpg" src="m2/butler-speech.mp4" aria-hidden="true"></video>
 </section>
 
 <!-- 2. TITLE PAGE: the spine's open screen, the last picture of the montage; the title fades in over it -->
@@ -376,10 +403,11 @@ const fades = [...document.querySelectorAll('.fade')];
 const open = document.getElementById('cold-open');
 const layers = [...open.querySelectorAll('.layer')], beats = [...open.querySelectorAll('[data-bg]')];
 let shown = -1;
-const hero = document.querySelector('.open');
+const hero = document.querySelector('.open'), mosaic = document.getElementById('mosaic');
 // each clip plays only while it is on screen
 const io = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting && !reduce) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause(); }), { rootMargin: '25% 0px' });
-document.querySelectorAll('.mosaic .tile').forEach(v => io.observe(v));
+document.querySelectorAll('.mosaic video').forEach(v => io.observe(v));
+const layersC = [...document.querySelectorAll('.collage .c, .collage .frag')];
 const digits = document.querySelector('#denom span');
 const full = digits.textContent;
 let ticking = false;
@@ -391,6 +419,8 @@ function frame() {
     const d = Math.abs((r.top + r.height / 2) - vh / 2) / (vh * .5);   // 0 at the screen's centre, 1 at its edge
     el.style.setProperty('--a', Math.max(0, Math.min(1, 1.5 - d * 1.5)).toFixed(3));
   }
+  // the collage's pieces drift at slightly different speeds, so it reads as depth rather than a page of tiles
+  if (!reduce) { const cr = mosaic.getBoundingClientRect(); if (cr.top < vh && cr.bottom > 0) { const c = vh / 2 - (cr.top + cr.height / 2); layersC.forEach(el => el.style.setProperty('--py-shift', (c * el.style.getPropertyValue('--d')).toFixed(1) + 'px')); } }
   // the title fades in once the fist photo has filled the screen
   const hr = hero.getBoundingClientRect();
   hero.style.setProperty('--t', reduce ? 1 : Math.max(0, Math.min(1, -hr.top / (vh * .55))).toFixed(3));
