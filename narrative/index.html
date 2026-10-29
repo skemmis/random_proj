@@ -2,7 +2,74 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@500&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400&display=swap">
+<link rel="stylesheet" href="tokens.css">
 <style>
+/* ---------- from the joined page: the stage the sections play on, their spacers, the cards, the sound choice and the sources panel ---------- */
+html { background: var(--night); color-scheme: dark; }
+body { margin: 0; background: var(--night); color: var(--ink-on-night); font-family: var(--font-text); }
+body.gated { overflow: hidden; }
+html { scrollbar-gutter: stable; }
+html.held { overflow: hidden; }
+#stage { position: fixed; inset: 0; background: var(--night); overflow: hidden; }
+#stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; background: transparent; color-scheme: dark; visibility: hidden; }
+#stage iframe.on { visibility: visible; }
+#flow { position: relative; z-index: 2; pointer-events: none; }
+.spacer { pointer-events: none; }
+/* interludes: the connecting questions between chapters, on paper, sliding up over the stage like a page turning */
+.interlude { pointer-events: auto; position: relative; min-height: calc(var(--vh, 1vh) * 100); display: grid; place-items: center; background: var(--paper); color: var(--ink-on-paper); box-shadow: 0 -24px 60px rgba(0, 0, 0, .45); padding: 12vh max(16px, env(safe-area-inset-left, 0px)) 14vh max(16px, env(safe-area-inset-right, 0px)); box-sizing: border-box; }
+.interlude .inner { width: min(100%, 1100px); text-align: center; }
+.interlude .kicker { margin: 0 0 1.2em; font-family: var(--font-head); font-weight: 600; font-size: var(--fs-label); letter-spacing: .14em; text-transform: uppercase; color: var(--shot); }
+.interlude h2 { margin: 0 auto; max-width: 15ch; font-family: var(--font-head); font-weight: 800; font-size: var(--fs-h1); line-height: 1.02; letter-spacing: -.02em; text-wrap: balance; }
+.interlude .note { margin: 1.6em auto 0; max-width: 44ch; font-size: var(--fs-text); line-height: 1.55; color: var(--dim-on-paper); }
+/* question cards over a still (proposal assembly/review/cards-with-stills.jpg, applied for Sam's demo, Oct 17): the photo fills the card, the question sits low on a dark gradient */
+.interlude.still { background: #0b0d10; color: #f3efe6; place-items: end start; overflow: hidden; }
+.interlude.still .bg { position: absolute; inset: 0; background: center / cover no-repeat; filter: grayscale(.55) sepia(.12) brightness(.82); }
+.interlude.still::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,13,16,.85) 0%, rgba(11,13,16,.35) 45%, rgba(11,13,16,0) 70%); }
+.interlude.still .inner { position: relative; z-index: 1; text-align: left; padding-inline: max(0px, 6vw - 16px); }
+.interlude.still h2 { margin: 0; color: #f3efe6; }
+.interlude.still .kicker { color: #f0583c; }
+@media (min-aspect-ratio: 1/1) { .interlude.still .bg.zoom { background-size: var(--zoom, cover); } }
+#gate { display: grid; justify-items: center; gap: 10px; margin-top: clamp(26px, 6vh, 56px); text-shadow: none; transition: opacity var(--t-fade) var(--ease); }
+@media (max-width: 700px), (max-aspect-ratio: 4/5) { #gate { margin-top: 22px; gap: 6px; } }
+#gate.out { opacity: 0; pointer-events: none; }
+#gate .k { text-wrap: balance; font-family: var(--font-head); font-weight: 600; font-size: var(--fs-label); letter-spacing: .14em; text-transform: uppercase; color: var(--dim-on-night); }
+#soundOn { display: inline-flex; align-items: center; gap: .7em; font-family: var(--font-head); font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-size: clamp(15px, 1.4vw, 18px); color: var(--night); background: var(--ink-on-night); border: 0; border-radius: 999px; padding: .85em 1.5em; cursor: pointer; animation: pulse 2s ease-out infinite; }
+#soundOn svg { width: 1.2em; height: 1.2em; }
+#soundOff { font-family: var(--font-head); font-size: 15px; color: var(--dim-on-night); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 6px; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(243, 239, 230, .45); } 100% { box-shadow: 0 0 0 24px rgba(243, 239, 230, 0); } }
+/* the spine's own controls: a sound switch, a thin progress line with a tick at each chapter, and a cue to scroll on */
+#snd { position: fixed; z-index: 20; top: calc(env(safe-area-inset-top, 0px) + 14px); right: max(16px, env(safe-area-inset-right, 0px)); display: inline-flex; align-items: center; gap: .5em; font-family: var(--font-head); font-weight: 600; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-on-night); background: rgba(11, 13, 16, .6); border: 1px solid var(--rule-on-night); border-radius: 999px; padding: .5em .85em; cursor: pointer; opacity: 0; transition: opacity var(--t-fade) var(--ease); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+#snd.on { opacity: .8; }
+#snd:hover { opacity: 1; }
+#snd svg { width: 15px; height: 15px; }
+#snd[aria-pressed="false"] .w { display: none; }
+#snd[aria-pressed="true"] .x { display: none; }
+#bar { position: fixed; z-index: 20; top: 0; left: 0; right: 0; height: 3px; pointer-events: none; opacity: 0; transition: opacity var(--t-slow) var(--ease); }
+#bar.on { opacity: 1; }
+#bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 100%; background: var(--shot-on-night); transform-origin: 0 50%; transform: scaleX(0); }
+#bar b { position: absolute; top: 0; width: 2px; height: 3px; background: var(--ink-on-night); opacity: .6; }
+#more { position: fixed; z-index: 20; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px); transform: translateX(-50%); display: grid; justify-items: center; gap: 8px; font-family: var(--font-head); font-weight: 600; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-on-night); text-shadow: 0 1px 3px #000; opacity: 0; transition: opacity var(--t-fade) var(--ease); pointer-events: none; }
+#more.on { opacity: .9; }
+#more i { width: 1px; height: 34px; background: linear-gradient(var(--ink-on-night), transparent); animation: drop 1.6s ease-in-out infinite; }
+@keyframes drop { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+#wait { position: fixed; z-index: 19; left: 50%; top: 50%; transform: translate(-50%, -50%); font-family: var(--font-head); font-size: var(--fs-label); letter-spacing: .12em; text-transform: uppercase; color: var(--dim-on-night); opacity: 0; transition: opacity var(--t-fade); pointer-events: none; }
+#wait.on { opacity: 1; }
+.sources { pointer-events: auto; position: relative; min-height: calc(var(--vh, 1vh) * 100); background: var(--paper); color: var(--ink-on-paper); border-top: 1px solid var(--rule-on-paper); padding-block: 14vh 18vh; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); box-sizing: border-box; }
+.sources .inner { max-width: 62ch; margin: 0 auto; }
+.sources h2 { margin: 0 0 1.4em; font-family: var(--font-head); font-weight: 800; font-size: var(--fs-h2); letter-spacing: -.01em; }
+.sources h3 { margin: 2em 0 .5em; font-family: var(--font-head); font-weight: 600; font-size: var(--fs-label); letter-spacing: .14em; text-transform: uppercase; color: var(--dim-on-paper); }
+.sources p { margin: 0 0 .9em; font-size: 17px; line-height: 1.55; }
+/* the method notes: one accordion, closed until a reader asks for it */
+.sources details.method { margin-top: 3em; border-top: 1px solid var(--rule-on-paper); }
+.sources details.method summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 1.1em 0; font-family: var(--font-head); font-weight: 800; font-size: var(--fs-h2); letter-spacing: -.01em; }
+.sources details.method summary::-webkit-details-marker { display: none; }
+.sources details.method summary::after { content: "+"; font-weight: 400; font-size: 1.2em; line-height: 1; transition: transform var(--t-fade) var(--ease); }
+.sources details.method[open] summary::after { transform: rotate(45deg); }
+.sources details.method summary:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.sources details.method h3:first-of-type { margin-top: .5em; }
+button:focus-visible { outline: 2px solid var(--shot-on-night); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { #soundOn, #more i { animation: none; } }
+
 /* Layout: the argument is the spine. Three text modes take turns:
    BEAT    one or two sentences per screen over a dim photograph (night), after Snow Fall's open and Reuters' Kill Zone captions;
    READ    a single paper column at book measure for the reasoning (Snow Fall's body text);
@@ -33,6 +100,10 @@
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--night); color: var(--ink-night); font-family: var(--font-text); }
+/* every block of the narrative is opaque and takes the pointer, so it covers the stage as it scrolls over it */
+.nb { pointer-events: auto; position: relative; background: var(--night); }
+.nb.read, .nb.denom { background: var(--paper); }
+.open #gate { margin-top: 26px; }
 .gut { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
 /* ---------- BEAT: sentences over a photograph that stays put ---------- */
@@ -151,14 +222,27 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 /* the opening lines sit on moving pictures; keep them dim enough to read */
 .beats .bg video.layer { filter: brightness(.8); }
 
+.split { min-height: 100svh; display: grid; place-items: center; }
+.split .in { display: grid; grid-template-columns: auto auto; gap: clamp(28px, 5vw, 80px); align-items: center; }
+.split .pie { width: min(62vmin, 520px); height: auto; }
+.split .legend { display: grid; gap: 28px; }
+.split .legend p { margin: 0; display: grid; gap: 4px; font: 600 clamp(18px, 1.6vw, 24px)/1.2 var(--font-head); color: var(--dim-night); }
+.split .legend b { font: 900 clamp(44px, 6vw, 92px)/.9 var(--font-head); letter-spacing: -.03em; }
+.split .yes b { color: #4f93e6; }
+.split .no b { color: var(--ink-night); }
+@media (max-width: 700px) { .split .in { grid-template-columns: 1fr; justify-items: center; text-align: center; } .split .pie { width: 72vw; } }
+
 /* scroll fades: only when the script runs, and never for readers who ask for less motion */
 .js .fade { opacity: var(--a, 1); transform: translateY(calc((1 - var(--a, 1)) * 14px)); will-change: opacity, transform; }
 @media (prefers-reduced-motion: reduce) { .js .fade { opacity: 1; transform: none; } .beats .bg img { transform: none; } }
 :focus-visible { outline: 2px solid var(--slot); outline-offset: 3px; }
 </style>
 
+<div id="stage" aria-live="off"></div>
+<main id="flow">
+
 <!-- 1. COLD OPEN: Sam's five opening lines, one per screen -->
-<section class="beats" id="cold-open" aria-label="Opening">
+<section class="beats nb" id="cold-open" aria-label="Opening">
   <div class="bg" aria-hidden="true"><video class="layer" data-i="0" muted loop playsinline preload="auto" poster="vid/reporter.jpg" style="object-position:56% 30%"><source src="vid/reporter.webm" type="video/webm"><source src="vid/reporter.mp4" type="video/mp4"></video><video class="layer" data-i="1" muted loop playsinline preload="auto" poster="vid/tape.jpg" style="object-position:50% 30%"><source src="vid/tape.webm" type="video/webm"><source src="vid/tape.mp4" type="video/mp4"></video><video class="layer" data-i="2" muted loop playsinline preload="auto" poster="vid/dogs.jpg" style="object-position:50% 30%"><source src="vid/dogs.webm" type="video/webm"><source src="vid/dogs.mp4" type="video/mp4"></video></div>
   <div class="beat gut" data-bg="0"><p class="fade">Donald Trump has earned the nickname &ldquo;Teflon Don&rdquo; for his ability to overcome gaffs and scandals that would sink most political careers.</p></div>
   <div class="beat gut" data-bg="1"><p class="fade">Critics bemoan this ability with disbelief. How can someone succeed while making so many mistakes by the traditional rules of politics?</p></div>
@@ -166,7 +250,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 </section>
 
 <!-- 1b. THE TEASER: a collage after Adam Curtis; clips and the piece's own animations, run through glitch, ghosting and stutter loops, sit loosely with no grid, as if falling down a rabbit hole. It scrolls like any page; the layers drift at slightly different speeds. -->
-<section class="mosaic" id="mosaic" aria-label="The loop, in clips" style="--hd:289vw;--hp:660vw">
+<section class="mosaic nb" id="mosaic" aria-label="The loop, in clips" style="--hd:289vw;--hp:660vw">
   <div class="collage" aria-hidden="true">
     <video class="c tall" style="--x:60.1vw;--y:3.0vw;--w:30vw;--px:2.8vw;--py:6.0vw;--pw:44vw;--r:-2.4deg;--d:0.08;--z:2" muted loop playsinline preload="none" poster="m3/wake-2.jpg" src="m3/wake-2.mp4"></video>
     <video class="c" style="--x:20.6vw;--y:10.8vw;--w:50vw;--px:25.1vw;--py:21.1vw;--pw:72vw;--r:-0.6deg;--d:-0.08;--z:3" muted loop playsinline preload="none" poster="m3/daze-cabinet.jpg" src="m3/daze-cabinet.mp4"></video>
@@ -211,7 +295,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 </section>
 
 <!-- 2. TITLE PAGE: the spine's open screen, the last picture of the montage; the title fades in over it -->
-<header class="open" aria-label="Title">
+<header class="open" aria-label="Title" data-title="Is Trump Trapped in a Time Loop?">
   <div class="pin">
   <img src="img/open.jpg" alt="Donald Trump raises his fist after the shooting at Butler, Pennsylvania, his face replaced by a see-through skull.">
   <div class="title">
@@ -219,167 +303,396 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
     <p class="sub">A Pulitzer-worthy analysis</p>
     <hr>
     <p class="by">By Sam Kemmis</p>
+      <div id="gate" role="dialog" aria-label="Sound">
+        <span class="k">This story has sound, including gunfire</span>
+        <button id="soundOn" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Turn sound on</button>
+        <button id="soundOff" type="button">Keep it silent</button>
+      </div>
   </div>
   </div>
 </header>
 
 <!-- 3. CHAPTER: 6:11pm -->
-<section class="chapter gut" aria-label="Chapter: 6:11pm">
+<section class="chapter gut nb" aria-label="Chapter: 6:11pm">
   <img src="img/chart.jpg" alt="">
   <div class="in">
     <div class="clock fade">6:11pm</div>
     <div class="dl fade">Butler, Pennsylvania &middot; July 13, 2024</div>
   </div>
 </section>
-<section aria-label="The odds">
+<section class="nb" aria-label="The odds">
   <div class="beat gut short"><p class="fade">The odds of any particular series of events happening is remote.</p></div>
 </section>
 
 <!-- READ: the coin -->
-<section class="read gut" aria-label="The coin">
+<section class="read gut nb" aria-label="The coin">
   <div class="col">
     <p class="lead">If you flip a coin 100 times, the chances that any particular outcome actually occurs is tiny. Even seemingly random outcomes, like alternating heads and tails throughout the 100-flip sequence, are extremely unlikely. If all 8 billion people on Earth flipped a 100-coin sequence every single second, it would take roughly 2.5 trillion years for someone to (probably) achieve a perfect head/tail/head sequence through all 100 flips.</p>
   </div>
 </section>
 
 <!-- slot: the denominator, sketched in type -->
-<section class="denom gut" aria-label="Slot: the denominator">
+<section class="denom gut nb" aria-label="The denominator">
   <div class="in">
-    <span class="tag">Slot &middot; proposal sketch</span>
     <div class="one">The chance of a perfect head/tail/head sequence in 100 flips</div>
     <div class="n" id="denom" aria-label="1 in 633,825,300,114,114,700,748,351,602,688">1 in <span>633,825,300,114,114,700,748,351,602,688</span></div>
-    <p class="cap">Your note asked for a visual of how big the denominator is. This sketch writes the number out in full, digit by digit, as the reader scrolls: 1 in 633.8 octillion. A second step could set it against 8 billion people flipping every second for 2.5 trillion years. I checked both of your numbers and both hold.</p>
   </div>
 </section>
 
 <!-- READ: what scientists ask -->
-<section class="read gut" aria-label="What scientists ask">
+<section class="read gut nb" aria-label="What scientists ask">
   <div class="col">
     <p>To account for this randomness, scientists focus their attention on outcomes that match a particular hypothesis. When testing a new drug, for example, they test the hypothesis that the drug has the effect they predict. If the odds of the outcome their predict happening by chance exceeds a certain threshold &mdash; usually 5% or 1% &mdash; it is deemed &ldquo;statistically significant.&rdquo; That is, it supports their hypothesis.</p>
     <p class="pull">Scientists aren&rsquo;t just asking &ldquo;did something unusual happen?&rdquo; They are asking &ldquo;did something unusual happen that supports our theory?&rdquo;</p>
   </div>
 </section>
 
-<section class="slot gut" aria-label="Slot: the opening">
-  <img src="img/turned.jpg" alt="">
-  <div class="note">
-    <span class="tag">Slot &middot; the opening</span>
-    <h3>Butler, 6:11 p.m.: the speech and the shot</h3>
-    <p class="yours">Your note: begin infographics, probably starting with Trump&rsquo;s speech, but we might break it up to include this narrative.</p>
-    <p>Proposal: the existing opening plays here unchanged.</p>
-  </div>
-</section>
+<div class="spacer" data-section="opening" data-src="sections/opening/index.html" data-kind="play" data-span="140" data-mount="3" data-title="Butler, 6:11 p.m." data-chapter></div>
 
 <!-- EXHIBIT A -->
-<section class="chapter exhibit gut" aria-label="Exhibit A: The Theory">
+<section class="chapter exhibit gut nb" data-chapter aria-label="Exhibit A: The Theory">
   <img src="img/exA.jpg" alt="">
   <div class="in">
     <div class="dl fade">Exhibit A</div>
     <h2 class="fade">The Theory</h2>
   </div>
 </section>
-<section class="read gut" aria-label="The theory">
+<section class="read gut nb" aria-label="The theory">
   <div class="col">
     <p class="lead">Here&rsquo;s the theory: Donald Trump has been trapped in a series of loops. He can only escape the loops to achieving some difficult and unlikely outcome, like winning the presidency.</p>
     <p>Each loop is like a video game level: If he fails, he starts over again. This repeated &ldquo;practice&rdquo; grants him superhuman abilities, like a video game speedrunner.</p>
   </div>
 </section>
-<section class="slot gut" aria-label="Slot: The Loops">
-  <img src="img/slot-loops.jpg" alt="">
-  <div class="note">
-    <span class="tag">Slot &middot; time-loop infographic</span>
-    <h3>The Loops: his coils rise while our line runs straight</h3>
-    <p class="yours">Your note: time loop infographic.</p>
-    <p>Proposal: The Loops plays here, the timeline where each failed loop leaves him higher, ending on &ldquo;President of the United States&rdquo;. It currently closes the piece.</p>
-  </div>
-</section>
+<div class="spacer" data-section="loops" data-src="sections/loops/index.html" data-kind="scroll" data-span="540" data-autospan data-mount="3" data-title="The Loops"></div>
 
 <!-- EXHIBIT B -->
-<section class="chapter exhibit gut" aria-label="Exhibit B: The Shot">
+<section class="chapter exhibit gut nb" data-chapter aria-label="Exhibit B: The Shot">
   <img src="img/exB.jpg" alt="">
   <div class="in">
     <div class="dl fade">Exhibit B</div>
     <h2 class="fade">The Shot</h2>
   </div>
 </section>
-<section class="over" aria-label="The shot">
+<section class="over nb" aria-label="The shot">
   <div class="bg" aria-hidden="true"><img src="img/ear.jpg" alt=""></div>
   <div class="step gut"><p class="fade">Donald Trump was shot in the ear at a campaign rally on July 13, 2024.</p></div>
   <div class="step gut"><p class="fade">On its own, this was just another freak outcome. But this outcome is interesting not just because it was unlikely. All outcomes are unlikely. It&rsquo;s interesting because it was the only outcome that would benefit Trump.</p></div>
 </section>
-<section class="slot gut" aria-label="Slot: The Ear by Area">
-  <img src="img/chances.jpg" alt="">
-  <div class="note">
-    <span class="tag">Slot &middot; The Ear by Area</span>
-    <h3>The face map, ending on &ldquo;benefits Trump&rdquo;</h3>
-    <p class="yours">Your note: the head-by-area graph, but at the end we break down the odds by &ldquo;benefits Trump&rdquo; (ear shot) and &ldquo;doesn&rsquo;t benefit Trump&rdquo; (everything else).</p>
-    <p>Proposal: the existing page plays unchanged, then one added last screen merges its three outcomes into two. By area, the ear is 1.5% of the target and everything else is 98.5%. The face-map thread would build that screen after your yes.</p>
+<div class="spacer" data-section="earbyarea" data-src="sections/earbyarea/index.html" data-kind="scroll" data-span="460" data-autospan data-mount="3" data-title="The Ear by Area"></div>
+<!-- Sam's note: end the face map by splitting the odds into "benefits Trump" (the ear) and "doesn't benefit Trump" (everything else). By area: 1.5% and 98.5% (results/RESULTS.md). -->
+<section class="split nb gut" aria-label="Benefits Trump, by area">
+  <div class="in">
+    <svg class="pie" viewBox="-110 -110 220 220" role="img" aria-label="By area, 1.5 percent of the target benefits Trump and 98.5 percent does not.">
+      <circle r="100" fill="#8e8c86"/>
+      <path d="M0 0 L0 -100 A100 100 0 0 1 9.41 -99.56 Z" fill="#2a78d6"/>
+      <circle r="100" fill="none" stroke="#0b0d10" stroke-width="2"/>
+    </svg>
+    <div class="legend">
+      <p class="yes"><b>1.5%</b>Benefits Trump</p>
+      <p class="no"><b>98.5%</b>Doesn&rsquo;t benefit Trump</p>
+    </div>
   </div>
 </section>
 
-<section class="over" aria-label="The turn">
+<section class="over nb" aria-label="The turn">
   <div class="bg" aria-hidden="true"><img src="img/turned.jpg" alt=""></div>
   <div class="step gut"><p class="fade">He knew a shot was coming, and positioned his head at exactly the right moment for maximum ear exposure.</p></div>
 </section>
-<section class="slot gut" aria-label="Slot: the turn">
-  <img src="img/slot-turn.jpg" alt="">
-  <div class="note">
-    <span class="tag">Slot &middot; the turn</span>
-    <h3>The head turn toward the rifle</h3>
-    <p class="yours">Your note: the turn infographic.</p>
-    <p>Proposal: The chart minute plays here, showing his face turned within 35 degrees of the rifle 96% of the time in the last 51 seconds. Moving Target, where the reader fires while he turns, could follow it or replace it.</p>
-  </div>
-</section>
+<div class="spacer" data-section="chartminute" data-src="sections/chartminute/index.html" data-kind="scroll" data-span="900" data-autospan data-mount="3" data-title="The chart minute"></div>
 
-<section class="read gut" aria-label="Did it help">
+<section class="read gut nb" aria-label="Did it help">
   <div class="col">
     <p class="lead">Did getting shot in the ear help his candidacy? Yes, his odds of winning jumped more after the shooting than any other event that year, including Biden&rsquo;s disastrous debate performance.</p>
   </div>
 </section>
-<section class="slot gut" aria-label="Slot: The Bump">
-  <img src="img/slot-bump.jpg" alt="">
-  <div class="note">
-    <span class="tag">Slot &middot; Polymarket</span>
-    <h3>The Bump: the betting odds after Butler</h3>
-    <p class="yours">Your note: infographic on polymarket odds.</p>
-    <p>Proposal: The Bump plays here unchanged: Trump rose 10 points in five hours and was still 9 points up a day later, while the debate&rsquo;s 7-point spike faded by morning.</p>
-  </div>
-</section>
+<div class="spacer" data-section="bump" data-src="sections/bump/index.html" data-kind="scroll" data-span="210" data-autospan data-mount="3" data-title="The Bump"></div>
 
 <!-- EXHIBIT C -->
-<section class="chapter exhibit gut" aria-label="Exhibit C: The Behavior">
+<section class="chapter exhibit gut nb" data-chapter aria-label="Exhibit C: The Behavior">
   <img src="img/exC.jpg" alt="">
   <div class="in">
     <div class="dl fade">Exhibit C</div>
     <h2 class="fade">The Behavior</h2>
   </div>
 </section>
-<section class="read gut" aria-label="The behavior">
+<section class="read gut nb" aria-label="The behavior">
   <div class="col">
     <p class="lead">Movies about time loops follow the protagonist as they devolve into psychosis and nihilism. But we&rsquo;re watching him at the end of this process.</p>
     <p>Trump&rsquo;s bizarre personality and behavior is perhaps the strongest evidence supporting the theory. He seems to have no regard for the consequences of his actions because, like a video game character repeating the same level, he knows it actually doesn&rsquo;t matter.</p>
   </div>
 </section>
-<section class="slot gut" aria-label="Slot: The Loop Hypothesis">
-  <img src="img/slot-loop.jpg" alt="">
-  <div class="note">
-    <span class="tag">Slot &middot; &ldquo;What does a man&rdquo;</span>
-    <h3>What does a man stuck in a time loop look like?</h3>
-    <p class="yours">Your note: &ldquo;what does a man&rdquo; section.</p>
-    <p>Proposal: the question card, then The Loop Hypothesis cork board with its five exhibits, unchanged.</p>
-  </div>
+<section class="interlude still" data-title="Stuck in the loop">
+  <div class="bg zoom" style="background-image: url(img/card-loop.jpg); background-position: 78% 62%; --zoom: 135%"></div>
+  <div class="inner"><h2>What does a man stuck in a time loop look like?</h2></div>
 </section>
+<div class="spacer" data-section="loop" data-src="sections/loop/index.html" data-kind="scroll" data-span="680" data-autospan data-mount="3" data-title="The Loop Hypothesis"></div>
 
 <!-- CONCLUSION -->
-<section class="chapter exhibit gut" aria-label="Conclusion">
+<section class="chapter exhibit gut nb" aria-label="Conclusion">
   <div class="in">
     <div class="dl fade">Conclusion</div>
     <h2 class="fade">Is there anything we can do?</h2>
   </div>
 </section>
-<section class="end gut"><p>Your conclusion goes here</p></section>
+<section class="end gut nb"><p>Your conclusion goes here</p></section>
+
+<section class="sources" id="sources" data-chapter data-title="Sources">
+  <div class="inner"><h2>Sources</h2>
+<!-- SOURCES -->
+<h3>The piece</h3>
+<p>Rally footage: the Right Side Broadcasting Network's live stream, via the Internet Archive. Other news footage: MSNBC, CNN and C-SPAN, via the Internet Archive's TV News Archive.</p>
+<p>Question cards: stills from the Butler broadcast and "Groundhog Day" (Columbia Pictures, 1993).</p>
+<h3>The open</h3>
+<p>Opening photograph: Evan Vucci / AP Photo, Butler, Pennsylvania, July 13, 2024; altered for this piece, with a skull from the project's head model.</p>
+<h3>Butler, 6:11 p.m.</h3>
+<p>His body is a model by 3designer94 (RenderHub). His cap, recoloured and lettered by us, is "Baseball Cap" by vanart (Sketchfab, CC BY 4.0). The crowd are stand-in figures by Quaternius.</p>
+<h3>The Loops</h3>
+<p>The four manga drawings were made with Google's Gemini image model (gemini-3-pro-image) from these photographs: Trump in Phoenix, 2016, and at a Turning Point Action event, 2020, both by Gage Skidmore (CC BY-SA 2.0, Flickr); Trump at Butler, Pennsylvania, July 13, 2024, with blood on his face just after the shot, a frame from the camera's live broadcast; and Trump taking the oath of office, 2025, by the Joint Congressional Committee on Inaugural Ceremonies (public domain).</p>
+<h3>Did it matter?</h3>
+<p>Chart 1 (the evening of July 13): Price of "Trump wins" on Polymarket, noon July 13 to noon July 14, Eastern time. We smoothed it over about 15 minutes to remove half-cent jumps between buying and selling prices, stopping at the shot so the line does not rise early.</p>
+<p>Chart 2 (the three events): Polymarket, smoothed over about 15 minutes, with the smoothing stopped at each event. Event start: debate 9 p.m. June 27; first shot 6:11 p.m. July 13; Biden's announcement 1:46 p.m. July 21, all Eastern time.</p>
+<h3>The Loop Hypothesis</h3>
+<p>Film clips: "Groundhog Day" (Columbia Pictures, 1993), "Edge of Tomorrow" (Warner Bros., 2014) and "Palm Springs" (Hulu and Neon, 2020). Trump clips: CNN, C-SPAN and MSNBC, via the Internet Archive's TV News Archive, and the Butler broadcast, via the Internet Archive.</p>
+<p>Exhibit 1: Phil, drunk at the wheel, asks two locals what they would do if there were no tomorrow; Trump at Dordt College, Sioux Center, Iowa, Jan. 23, 2016.</p>
+<p>Exhibit 2: Cage (Tom Cruise) is shot in training and tries again; Trump at the Republican National Convention, Milwaukee, July 18, 2024: "If I had not moved my head at that very last instant..."</p>
+<p>Exhibit 3: Nyles (Andy Samberg) drinks from other wedding guests' glasses; Trump shoves past Duško Marković, Montenegro's prime minister, at the NATO summit in Brussels, May 25, 2017.</p>
+<p>Exhibit 4: Phil gives the same forecast again; Trump stops taking questions and sways to music at a town hall in Oaks, Pa., Oct. 14, 2024.</p>
+<p>Exhibit 5: Nyles takes an arrow and lies back on his float; a minute after the shot at Butler, Pa., July 13, 2024, Trump rises and raises his fist.</p>
+<p>Cork board: board photo generated with Google Gemini; paper textures from ambientCG (CC0); push pins rendered in 3D for this piece.</p>
+<p>Clips are shown for commentary in a personal, non-commercial project and belong to their owners.</p>
+<h3>The opening lines and the montage</h3>
+<p>Gaffe footage: Trump at Myrtle Beach, South Carolina, November 24, 2015, from CNN's "Anderson Cooper 360"; the 2005 Access Hollywood tape, as published by The Washington Post on October 7, 2016; the presidential debate in Philadelphia, September 10, 2024, from ABC News. All via the Internet Archive.</p>
+<p>Montage: news footage from C-SPAN, CNN, MSNBC and the Butler broadcast via the Internet Archive; film clips from "Groundhog Day" (Columbia Pictures, 1993) and "Edge of Tomorrow" (Warner Bros., 2014); animations from this piece's own sections. Effects added by us.</p>
+<details class="method"><summary>Methodology</summary>
+<h3>Butler, 6:11 p.m.</h3>
+<p>We built the grounds from a 2019 U.S. Geological Survey lidar survey, aerial photographs taken July 28, 2024, and a drone photograph released by the House task force that investigated the shooting. The stage, bleachers and riser are sized by estimate.</p>
+<p>The bullet's path comes from our 3D model of Trump's head, which assumes he held it level. We slowed the bullet's trail so you can follow it.</p>
+<h3>The Loops</h3>
+<p>The coils are drawn, not counted; the lap numbers are symbolic, and only the 690 comes from the model. The figure of about 690 tries is the number of shots at random moments of the speech that would give an even chance of one shot hitting only his ear, at 1 in 990 per shot.</p>
+<h3>The ear by area</h3>
+<p>The coloured map shows Trump's head as the shooter's rifle saw it at the first shot, with his face 10 degrees short of the rifle and his head level. Each half-millimetre is coloured by what a bullet passing there would do, under the same rules as our simulation: a hit on the ear alone, a serious wound or death (which here includes a graze of the outer 3 mm of skin), or a miss. The circle has a radius of 19 cm around the aim point; half of all the shots we simulated landed inside it, using published marksmanship data for soldiers firing red-dot rifles. The shares in the pie are shares of area, not odds. The head is a 3D likeness by the Sketchfab artist shortlan.</p>
+<h3>The chart minute</h3>
+<p>We measured Trump's head angle from the camera, on a riser 32 metres in front of the stage. Sampling five times a second, face-reading software read his head in about four frames of five; checked by hand, it was typically within 9 degrees. Any error in the camera's position shifts every reading equally, so it cannot create the difference between the chart minute and the rest of the speech. Gaps are frames the software could not read, mostly cutaways and fast turns.</p>
+<p>When he faced past the rifle, the camera saw mostly the back of his head, the hardest view to read; we checked those frames by eye against our 3D head, and they hold. We placed the screen from the House task force's drone photograph and a wide shot from the broadcast. It is good to about 3 metres, the least certain input here.</p>
+<p>The ear-only chances come from our 3D simulation of one shot at his head from the shooter's roof, assuming his head was level. The quotations come from a machine transcript.</p>
+<h3>Did it matter?</h3>
+<p>Prices come from Polymarket's public history for "Presidential Election Winner 2024," a market on which traders wagered about $3.7 billion. Around the debate, the shooting and Biden's withdrawal we used minute-by-minute prices, which agree with the ten-minute prices at every moment we quote.</p>
+<p>In 2024 Polymarket ran offshore and took bets in cryptocurrency, so its traders did not resemble American voters, and later that year a few huge bettors moved its prices. A price records what traders believed, not why. That they waited for news that Trump was alive is our inference. Turning the 10-point move into votes needs an assumption. We assumed traders saw Trump's final margin as uncertain by about 3.5 points either way; then lifting his chance from 59.5 to 69.5 percent amounts to expecting him to win by about 1 point more, or 0.7 to 1.4 points if that uncertainty is 2.5 to 5 points.</p>
+<p>Poll figures compare each firm's last poll after the June 27 debate with its first after the shooting.</p>
+<h3>The Loop Hypothesis</h3>
+<p>Trump clips were cut from Internet Archive TV News Archive items and cropped to a tall frame by a face tracker. The convention clip is C-SPAN item CSPAN_20240719_023100, seconds 511.5 to 529.9.</p>
+</details>
+<!-- /SOURCES -->
+  </div>
+</section>
+</main>
+
+<button id="snd" type="button" aria-pressed="false" aria-label="Sound"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path class="w" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="x" d="M16 9l6 6M22 9l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span id="sndText">Sound off</span></button>
+<div id="bar" aria-hidden="true"><i></i></div>
+<div id="more" aria-hidden="true">Scroll<i></i></div>
+<div id="wait">Loading</div>
+
 
 <script>
+
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const ss = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+// ---- screen height: taken once per width, so a phone's toolbar sliding in and out does not reflow the whole piece ----
+let VH = innerHeight, lastW = innerWidth;
+function setVH() { VH = innerHeight; document.documentElement.style.setProperty('--vh', VH / 100 + 'px'); }
+setVH();
+
+// ---- the sections, read from the spacers ----
+const SECS = [...document.querySelectorAll('.spacer[data-section]')].map((el, i) => ({
+  el, i, id: el.dataset.section, src: el.dataset.src, kind: el.dataset.kind, title: el.dataset.title,
+  span: +el.dataset.span || 100, autoSpan: 'autospan' in el.dataset, hand: +el.dataset.handoff || 0, mount: +el.dataset.mount || 3,
+  frame: null, hooks: null, loaded: false, on: false, top: 0, k: 0, p: 0, lastP: -1, lastK: -1, done: false
+}));
+const INTERLUDES = [...document.querySelectorAll('.open, .interlude, .nb, .sources')];
+function layout() {
+  // a scrolling section followed by a card gets a tail: it reaches its end, holds it for a quarter screen, and only then does the card slide over it
+  SECS.forEach(s => { const next = s.el.nextElementSibling; s.tail = s.kind === 'scroll' && next && next.matches('.interlude, .nb, .sources') ? 125 : 0;
+    s.el.style.height = (s.hand + s.span + s.tail) * VH / 100 + 'px'; });
+  SECS.forEach(s => { s.top = s.el.offsetTop; s.hPx = s.hand * VH / 100; s.sPx = s.span * VH / 100;
+    // a section that follows an interlude is switched in while the interlude covers the screen, so it is already there as the interlude slides away
+    const prev = s.el.previousElementSibling; s.cover = prev && prev.matches('.open, .interlude, .nb') ? prev.offsetTop : null; });
+  // ticks on the progress line, one per chapter, measured from where the opening begins
+  const start = articleStart(), max = document.documentElement.scrollHeight - VH;
+  $('bar').querySelectorAll('b').forEach(b => b.remove());
+  document.querySelectorAll('[data-chapter]').forEach(el => { const s = SECS.find(x => x.el === el), y = s ? s.top + s.hPx : el.offsetTop - VH;
+    const b = document.createElement('b'); b.style.left = (100 * clamp((y - start) / (max - start))).toFixed(2) + '%'; b.title = el.dataset.title || ''; $('bar').appendChild(b); });
+  computeStops();
+}
+// ---- stops: a hard fling halts at the start of the next section or card, so a fast reader never overshoots a chapter (Sam, Oct 16) ----
+let STOPS = [], anchor = 0, idleT = 0, holding = false, heldAt = 0, lastInput = 0;
+// in the narrative only a section's start is a stop; the text blocks between sections scroll freely
+function computeStops() { STOPS = [...new Set(SECS.map(s => Math.round(s.top + s.hPx)))].filter(y => y > 0).sort((a, b) => a - b); }
+function jumpTo(y) { anchor = y; scrollTo(0, y); }   // a deliberate jump (review hooks, links) is not a fling
+function halt(stop) {
+  cancelAnimationFrame(coast); vel = 0; target = null; cancelAnimationFrame(raf); raf = 0;
+  holding = stop; anchor = stop; scrollTo(0, stop);
+  document.documentElement.classList.add('held');   // overflow hidden kills the browser's own momentum, a phone's included
+  clearTimeout(idleT); heldAt = lastInput = performance.now(); requestAnimationFrame(release);
+}
+// the hold lasts until the gesture that hit the stop is spent: the wheel or finger has been quiet for a moment, so a trackpad's or phone's coasting cannot carry on past it
+function release() {
+  const now = performance.now();
+  // but never longer than 900 ms, so a reader who keeps scrolling moves on (Sam, Oct 17 21:52: a long hold felt stuck)
+  if (now - heldAt < 900 && (now - heldAt < 450 || now - lastInput < 250)) { requestAnimationFrame(release); return; }
+  holding = false; document.documentElement.classList.remove('held'); anchor = scrollY;
+}
+function checkStops() {
+  const y = scrollY;
+  if (holding !== false) { if (Math.abs(y - holding) > 1) scrollTo(0, holding); return; }
+  const lo = Math.min(anchor, y), hi = Math.max(anchor, y), crossed = STOPS.filter(v => v > lo + 2 && v < hi - 2);
+  if (crossed.length) { halt(y > anchor ? crossed[0] : crossed[crossed.length - 1]); return; }
+  clearTimeout(idleT); idleT = setTimeout(() => { anchor = scrollY; }, 200);   // a gesture ends when the page has been still for a moment
+}
+addEventListener('wheel', e => { if (holding !== false) { lastInput = performance.now(); e.preventDefault(); } }, { passive: false });
+addEventListener('touchmove', e => { if (holding !== false) { lastInput = performance.now(); e.preventDefault(); } }, { passive: false });
+const articleStart = () => { const s = SECS.find(x => 'chapter' in x.el.dataset); return s ? s.top + s.hPx : 0; };
+
+// ---- the host that each section's section.js talks to ----
+let SOUND = false, CHOSEN = false;
+const SpineHost = window.SpineHost = {
+  get sound() { return SOUND; },
+  get chosen() { return CHOSEN; },   // the reader has answered the sound prompt and the piece has begun
+  register(frame, hooks) {
+    const s = SECS.find(x => x.frame === frame); if (!s) return;
+    s.hooks = hooks; s.lastP = s.lastK = -1;
+    // sections' own stops (hooks.stops) are not used: halting at every hold made The Ear by Area too sticky to scroll through (Sam, Oct 17 21:52)
+    // data-autospan: a scrolling page gets as much of the spine's scrolling as its own page is long, so it scrolls at its natural pace
+    if (s.autoSpan && hooks.kind === 'scroll') { try { const w = frame.contentWindow, span = (w.document.documentElement.scrollHeight - w.innerHeight) / VH * 100;
+      if (span > 50 && Math.abs(span - s.span) / s.span > 0.02 && s.top + s.hPx >= scrollY) { s.span = Math.round(span); layout(); } } catch (e) {} }
+    hooks.sound && hooks.sound(SOUND);
+    Promise.resolve(hooks.ready).catch(() => {}).then(() => { s.ready = true; update(true); });
+    update(true);
+  },
+  done(frame) { const s = SECS.find(x => x.frame === frame); if (s) { s.done = true; update(true); } },
+  wheel(dy) { glide(dy); },
+  touch(phase, dy) { touchScroll(phase, dy); },
+  key(key, shift) {
+    const step = { ' ': shift ? -0.85 : 0.85, PageDown: 0.85, PageUp: -0.85, ArrowDown: 0.12, ArrowUp: -0.12 }[key];
+    if (step !== undefined) { glide(step * VH); return true; }
+    if (key === 'Home') { jumpTo(0); return true; } if (key === 'End') { jumpTo(document.documentElement.scrollHeight - innerHeight); return true; }
+    return false;
+  }
+};
+
+// ---- scrolling passed up from a section: a short glide for the wheel and keys, momentum for a finger ----
+let target = null, pos = 0, raf = 0;
+function glide(dy) {
+  if (holding !== false) { lastInput = performance.now(); return; }
+  const max = document.documentElement.scrollHeight - innerHeight;
+  if (target === null) pos = scrollY;
+  target = clamp((target === null ? scrollY : target) + dy, 0, max);
+  if (REDUCED) { scrollTo(0, target); target = null; return; }
+  if (!raf) raf = requestAnimationFrame(step);
+}
+function step() { raf = 0; if (target === null) return;
+  if (Math.abs(scrollY - pos) > 3) { target = null; return; }   // something else moved the page (the scroll bar, a link): stop gliding
+  const d = target - pos;
+  if (Math.abs(d) < 1) { scrollTo(0, target); target = null; return; }
+  pos += d * 0.22; scrollTo(0, pos); raf = requestAnimationFrame(step); }
+let vel = 0, lastT = 0, coast = 0;
+function touchScroll(phase, dy) {
+  const now = performance.now();
+  if (phase === 'start') { cancelAnimationFrame(coast); target = null; vel = 0; lastT = now; return; }
+  if (holding !== false) { lastInput = performance.now(); return; }
+  if (phase === 'move') { scrollTo(0, scrollY + dy); const dt = Math.max(1, now - lastT); vel = 0.8 * (dy / dt) + 0.2 * vel; lastT = now; return; }
+  if (phase === 'end') { if (now - lastT > 80) vel = 0; let prev = now;
+    const run = t => { const dt = t - prev; prev = t; vel *= Math.pow(0.995, dt); if (Math.abs(vel) < 0.02) return; scrollTo(0, scrollY + vel * dt); coast = requestAnimationFrame(run); };
+    coast = requestAnimationFrame(run); }
+}
+
+// ---- mounting: a section's page loads when the reader is within data-mount screens of it, and is removed beyond two more ----
+function mountFrame(s) {
+  const f = document.createElement('iframe');
+  f.setAttribute('data-spine', ''); f.setAttribute('allow', 'autoplay; fullscreen'); f.title = s.title || s.id; f.tabIndex = -1;
+  f.style.zIndex = 100 - s.i;   // an earlier section sits above the next, so it can clear away to reveal it
+  f.addEventListener('load', () => { s.loaded = true; update(true); });
+  f.src = s.src; s.frame = f; s.loaded = false; s.hooks = null; s.ready = false; s.done = false; s.on = false; s.lastP = s.lastK = -1;
+  $('stage').appendChild(f);
+}
+function unmountFrame(s) { if (s.on && s.hooks && s.hooks.leave) s.hooks.leave(); s.frame.remove(); s.frame = null; s.hooks = null; s.loaded = false; s.on = false; }
+
+// ---- the frame loop: where the reader is decides every section's state ----
+function update(force) {
+  const y = scrollY, max = document.documentElement.scrollHeight - VH;
+  // how far into each section the reader is: k is the hand-off from the section before (0 to 1), p is the section's own progress (0 to 1)
+  SECS.forEach(s => { const local = y - s.top; s.k = s.cover !== null ? (y >= s.cover ? 1 : 0) : s.hPx ? clamp(local / s.hPx) : (local >= 0 ? 1 : 0); s.p = clamp((local - s.hPx) / s.sPx); });
+  // an interlude that fills the screen hides the stage, so the sections under it can stop
+  const covered = INTERLUDES.some(el => { const r = el.getBoundingClientRect(); return r.top <= 1 && r.bottom >= VH - 1; });
+  SECS.forEach((s, i) => {
+    const next = SECS[i + 1], nk = next ? next.k : 0;
+    const dist = Math.max(0, s.top - (y + VH), y - (s.top + s.hPx + s.sPx + VH)) / VH;
+    if (!s.frame && dist <= s.mount) mountFrame(s);
+    else if (s.frame && dist > s.mount + 2) { unmountFrame(s); return; }
+    if (!s.frame) return;
+    const shown = s.k > 0 && nk < 1 && !covered;
+    s.frame.classList.toggle('on', shown && s.loaded);
+    if (!s.hooks) return;
+    // a scroll-driven section is moved by setting its own page's scroll position, so its scroll code runs unchanged
+    if (s.kind === 'scroll' && (force || s.p !== s.lastP)) { s.lastP = s.p; try { const w = s.frame.contentWindow, d = w.document.documentElement; w.scrollTo(0, s.p * Math.max(0, d.scrollHeight - w.innerHeight)); } catch (e) {} }
+    // the hand-off to the next section: the section's own exit if it has one, then a short fade; otherwise a plain cross-fade
+    if (force || nk !== s.lastK) { s.lastK = nk; if (s.hooks.handoff) { s.hooks.handoff(nk); s.frame.style.opacity = 1 - ss(0.85, 1, nk); s.frame.style.transform = ''; }
+      // no exit of its own: the section lifts away as it fades, over the first part of the hand-off, so two pages of text never sit on top of each other for long
+      else { s.frame.style.opacity = 1 - ss(0, 0.4, nk); s.frame.style.transform = nk > 0 ? `translateY(${(-nk * VH * 0.25).toFixed(1)}px)` : ''; } }
+    // a section is "on" (playing, listening) once the hand-off into it is half done, until the next is half done or an interlude covers it
+    const on = s.k >= 0.5 && nk < 0.5 && !covered && s.loaded && (s.kind !== 'play' || s.ready);
+    if (on !== s.on) { s.on = on; on ? s.hooks.enter && s.hooks.enter() : s.hooks.leave && s.hooks.leave(); }
+  });
+  // a played section that is on screen but still loading says so
+  const loading = SECS.find(s => s.k >= 0.5 && (SECS[s.i + 1] ? SECS[s.i + 1].k < 0.5 : true) && !covered && (!s.loaded || (s.kind === 'play' && !s.ready)));
+  $('wait').classList.toggle('on', !!loading);
+  // the progress line belongs to the article proper, after the teaser
+  const start = articleStart(); $('bar').classList.toggle('on', y >= start - VH * 0.5);
+  $('bar').firstElementChild.style.transform = `scaleX(${clamp((y - start) / (max - start)).toFixed(4)})`;
+  // once a played section has finished, invite the reader on
+  const fin = SECS.find(s => s.on && s.kind === 'play' && s.done);
+  $('more').classList.toggle('on', (!!fin && !covered) || (CHOSEN && y < VH * 0.15));   // and on the open screen, once the sound prompt is answered
+}
+let ticking = false;
+addEventListener('scroll', () => { checkStops(); if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); } }, { passive: true });
+addEventListener('resize', () => { if (innerWidth !== lastW || Math.abs(innerHeight - VH) > 160) { lastW = innerWidth; setVH(); } layout(); update(true); });
+
+// ---- sound: asked once, at the top; the click also unlocks sound in every section already loaded ----
+function setSound(on) {
+  SOUND = on; $('snd').setAttribute('aria-pressed', on); $('sndText').textContent = on ? 'Sound on' : 'Sound off';
+  SECS.forEach(s => s.hooks && s.hooks.sound && s.hooks.sound(on));
+}
+function choose(on) {
+  CHOSEN = true; setSound(on);
+  SECS.forEach(s => s.hooks && s.hooks.unlock && s.hooks.unlock());   // inside the click, where browsers allow it
+  $('gate').classList.add('out'); $('snd').classList.add('on');
+  setTimeout(() => { $('gate').inert = true; }, 700);
+  update(true);
+}
+$('soundOn').addEventListener('click', () => choose(true));
+$('soundOff').addEventListener('click', () => choose(false));
+$('snd').addEventListener('click', () => { setSound(!SOUND); if (SOUND) SECS.forEach(s => s.hooks && s.hooks.unlock && s.on === false && s.hooks.unlock()); });
+
+// ---- review hooks: #opening jumps to a section once the sound prompt is answered; __spine.at(id, p) holds a section at a point ----
+window.__spine = {
+  secs: SECS,
+  at(id, p, k = 1) { target = null; const s = SECS.find(x => x.id === id); jumpTo( s.top + s.hPx * k + (k >= 1 ? s.sPx * p : 0)); update(true); }
+};
+document.querySelectorAll('details.method').forEach(d => d.addEventListener('toggle', () => layout()));   // the page grows when the methodology opens
+layout(); scrollTo(0, 0);
+// the piece always opens on the title screen, even if the browser or the viewer restores an old scroll position after load (Sam, Oct 17 22:01)
+let begun = false; ['soundOn', 'soundOff'].forEach(id => $(id).addEventListener('click', () => { begun = true; }, true));
+const atTop = () => { if (!begun && !location.hash) jumpTo(0); };
+addEventListener('load', atTop); addEventListener('pageshow', atTop); setTimeout(atTop, 600);
+const jump = location.hash.slice(1), js = SECS.find(s => s.id === jump);
+if (js) { const go = () => { layout(); jumpTo(js.top + js.hPx); update(true); }; $('soundOn').addEventListener('click', go); $('soundOff').addEventListener('click', go); }
+update(true);
+</script>
+<script>
+(() => {
 document.documentElement.classList.add('js');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const fades = [...document.querySelectorAll('.fade')];
@@ -434,4 +747,6 @@ function req() { if (!ticking) { ticking = true; requestAnimationFrame(frame); }
 addEventListener('scroll', req, { passive: true });
 addEventListener('resize', req);
 frame();
+})();
 </script>
+
