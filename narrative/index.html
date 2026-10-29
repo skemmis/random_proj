@@ -83,6 +83,8 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 .chapter::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 40%, var(--night)); }
 .chapter .in { position: relative; z-index: 1; display: grid; gap: 22px; justify-items: center; }
 .chapter .clock { font: 900 clamp(72px, 15vw, 220px)/.9 var(--font-head); letter-spacing: -.035em; }
+.exhibit h2 { margin: 0; max-width: 12em; font: 900 clamp(52px, 9vw, 140px)/.92 var(--font-head); letter-spacing: -.03em; text-wrap: balance; }
+.exhibit .dl { order: -1; }
 .chapter .dl { font: 600 var(--fs-label)/1.4 var(--font-head); letter-spacing: .14em; text-transform: uppercase; color: var(--dim-night); }
 
 /* ---------- READ: the paper column ---------- */
@@ -248,26 +250,53 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   </div>
 </section>
 
-<!-- slot: the infographics begin -->
 <section class="slot gut" aria-label="Slot: the opening">
   <img src="img/turned.jpg" alt="">
   <div class="note">
     <span class="tag">Slot &middot; the opening</span>
     <h3>Butler, 6:11 p.m.: the speech and the shot</h3>
     <p class="yours">Your note: begin infographics, probably starting with Trump&rsquo;s speech, but we might break it up to include this narrative.</p>
-    <p>Proposal: the existing opening plays here unchanged. Your next three paragraphs follow it over a still of the moment he grabs his ear.</p>
+    <p>Proposal: the existing opening plays here unchanged.</p>
   </div>
 </section>
 
-<!-- OVER: the shot -->
+<!-- EXHIBIT A -->
+<section class="chapter exhibit gut" aria-label="Exhibit A: The Theory">
+  <img src="img/exA.jpg" alt="">
+  <div class="in">
+    <div class="dl fade">Exhibit A</div>
+    <h2 class="fade">The Theory</h2>
+  </div>
+</section>
+<section class="read gut" aria-label="The theory">
+  <div class="col">
+    <p class="lead">Here&rsquo;s the theory: Donald Trump has been trapped in a series of loops. He can only escape the loops to achieving some difficult and unlikely outcome, like winning the presidency.</p>
+    <p>Each loop is like a video game level: If he fails, he starts over again. This repeated &ldquo;practice&rdquo; grants him superhuman abilities, like a video game speedrunner.</p>
+  </div>
+</section>
+<section class="slot gut" aria-label="Slot: The Loops">
+  <img src="img/slot-loops.jpg" alt="">
+  <div class="note">
+    <span class="tag">Slot &middot; time-loop infographic</span>
+    <h3>The Loops: his coils rise while our line runs straight</h3>
+    <p class="yours">Your note: time loop infographic.</p>
+    <p>Proposal: The Loops plays here, the timeline where each failed loop leaves him higher, ending on &ldquo;President of the United States&rdquo;. It currently closes the piece.</p>
+  </div>
+</section>
+
+<!-- EXHIBIT B -->
+<section class="chapter exhibit gut" aria-label="Exhibit B: The Shot">
+  <img src="img/exB.jpg" alt="">
+  <div class="in">
+    <div class="dl fade">Exhibit B</div>
+    <h2 class="fade">The Shot</h2>
+  </div>
+</section>
 <section class="over" aria-label="The shot">
   <div class="bg" aria-hidden="true"><img src="img/ear.jpg" alt=""></div>
   <div class="step gut"><p class="fade">Donald Trump was shot in the ear at a campaign rally on July 13, 2024.</p></div>
-  <div class="step gut"><p class="fade">On its own, this was just another freak outcome, like flipping &ldquo;heads&rdquo; 90 out of 100 times. Conspiracy theorists were quick to call the event &ldquo;fake&rdquo; or &ldquo;staged,&rdquo; but these claims have been thoroughly debunked.</p></div>
-  <div class="step gut"><p class="fade">But this outcome is interesting not just because it was unlikely. All outcomes are unlikely. It&rsquo;s interesting because it was the one that benefited Trump.</p></div>
+  <div class="step gut"><p class="fade">On its own, this was just another freak outcome. But this outcome is interesting not just because it was unlikely. All outcomes are unlikely. It&rsquo;s interesting because it was the only outcome that would benefit Trump.</p></div>
 </section>
-
-<!-- slot: The Ear by Area, with the benefits split -->
 <section class="slot gut" aria-label="Slot: The Ear by Area">
   <img src="img/chances.jpg" alt="">
   <div class="note">
@@ -278,7 +307,67 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   </div>
 </section>
 
-<section class="end gut"><p>Your draft continues here</p></section>
+<section class="over" aria-label="The turn">
+  <div class="bg" aria-hidden="true"><img src="img/turned.jpg" alt=""></div>
+  <div class="step gut"><p class="fade">He knew a shot was coming, and positioned his head at exactly the right moment for maximum ear exposure.</p></div>
+</section>
+<section class="slot gut" aria-label="Slot: the turn">
+  <img src="img/slot-turn.jpg" alt="">
+  <div class="note">
+    <span class="tag">Slot &middot; the turn</span>
+    <h3>The head turn toward the rifle</h3>
+    <p class="yours">Your note: the turn infographic.</p>
+    <p>Proposal: The chart minute plays here, showing his face turned within 35 degrees of the rifle 96% of the time in the last 51 seconds. Moving Target, where the reader fires while he turns, could follow it or replace it.</p>
+  </div>
+</section>
+
+<section class="read gut" aria-label="Did it help">
+  <div class="col">
+    <p class="lead">Did getting shot in the ear help his candidacy? Yes, his odds of winning jumped more after the shooting than any other event that year, including Biden&rsquo;s disastrous debate performance.</p>
+  </div>
+</section>
+<section class="slot gut" aria-label="Slot: The Bump">
+  <img src="img/slot-bump.jpg" alt="">
+  <div class="note">
+    <span class="tag">Slot &middot; Polymarket</span>
+    <h3>The Bump: the betting odds after Butler</h3>
+    <p class="yours">Your note: infographic on polymarket odds.</p>
+    <p>Proposal: The Bump plays here unchanged: Trump rose 10 points in five hours and was still 9 points up a day later, while the debate&rsquo;s 7-point spike faded by morning.</p>
+  </div>
+</section>
+
+<!-- EXHIBIT C -->
+<section class="chapter exhibit gut" aria-label="Exhibit C: The Behavior">
+  <img src="img/exC.jpg" alt="">
+  <div class="in">
+    <div class="dl fade">Exhibit C</div>
+    <h2 class="fade">The Behavior</h2>
+  </div>
+</section>
+<section class="read gut" aria-label="The behavior">
+  <div class="col">
+    <p class="lead">Movies about time loops follow the protagonist as they devolve into psychosis and nihilism. But we&rsquo;re watching him at the end of this process.</p>
+    <p>Trump&rsquo;s bizarre personality and behavior is perhaps the strongest evidence supporting the theory. He seems to have no regard for the consequences of his actions because, like a video game character repeating the same level, he knows it actually doesn&rsquo;t matter.</p>
+  </div>
+</section>
+<section class="slot gut" aria-label="Slot: The Loop Hypothesis">
+  <img src="img/slot-loop.jpg" alt="">
+  <div class="note">
+    <span class="tag">Slot &middot; &ldquo;What does a man&rdquo;</span>
+    <h3>What does a man stuck in a time loop look like?</h3>
+    <p class="yours">Your note: &ldquo;what does a man&rdquo; section.</p>
+    <p>Proposal: the question card, then The Loop Hypothesis cork board with its five exhibits, unchanged.</p>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="chapter exhibit gut" aria-label="Conclusion">
+  <div class="in">
+    <div class="dl fade">Conclusion</div>
+    <h2 class="fade">Is there anything we can do?</h2>
+  </div>
+</section>
+<section class="end gut"><p>Your conclusion goes here</p></section>
 
 <script>
 document.documentElement.classList.add('js');
