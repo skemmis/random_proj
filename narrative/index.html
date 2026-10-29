@@ -103,6 +103,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 /* every block of the narrative is opaque and takes the pointer, so it covers the stage as it scrolls over it */
 .nb { pointer-events: auto; position: relative; background: var(--night); }
 .nb.read, .nb.denom { background: var(--paper); }
+.nb.read { min-height: 100svh; display: grid; align-content: center; }   /* a reading block always fills the screen, so no section shows around it */
 .open { pointer-events: auto; }   /* the title page takes clicks, so the sound buttons work */
 .open #gate { margin-top: 26px; }
 #gate .state { display: none; margin: 0; font: 600 15px/1.4 var(--font-head); color: var(--ink-night); }
@@ -526,7 +527,9 @@ function layout() {
     s.el.style.height = (s.hand + s.span + s.tail) * VH / 100 + 'px'; });
   SECS.forEach(s => { s.top = s.el.offsetTop; s.hPx = s.hand * VH / 100; s.sPx = s.span * VH / 100;
     // a section that follows an interlude is switched in while the interlude covers the screen, so it is already there as the interlude slides away
-    const prev = s.el.previousElementSibling; s.cover = prev && prev.matches('.open, .interlude, .nb') ? prev.offsetTop : null; });
+    // in the narrative the cover is the whole run of text blocks before the section: it switches in as soon as that run fills the screen, so the section before never shows below a short block
+    let first = null, prev = s.el.previousElementSibling; while (prev && prev.matches('.open, .interlude, .nb')) { first = prev; prev = prev.previousElementSibling; }
+    s.cover = first ? first.offsetTop : null; });
   // ticks on the progress line, one per chapter, measured from where the opening begins
   const start = articleStart(), max = document.documentElement.scrollHeight - VH;
   $('bar').querySelectorAll('b').forEach(b => b.remove());
