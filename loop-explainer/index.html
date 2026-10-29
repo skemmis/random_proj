@@ -96,7 +96,7 @@ const CONTENT = {
   endShort: 'President',
   day: 'Day',
   captions: [
-    'For the rest of us, time runs in a straight line.',
+    'For most of us, time runs in a straight line.',
     'For Trump, it loops. He lives the same stretch of time again and again, and comes out stronger.',
     'He lost in 2020. On this theory, that was just another loop.',
     'July 13, 2024. At one shot in 990, he would need about 690 tries for an even chance of a bullet that touched only his ear.',
@@ -171,6 +171,12 @@ function build() {
            [BEATS.seg2[1], keyAt(X[2])], [BEATS.seg3[0], keyAt(X[2])], [BEATS.seg3[1], keyAt(XE - (phone ? W * 0.56 : 0))], [1, keyAt(XE - (phone ? W * 0.56 : 0))]] };
 
   // labels drawn in screen space, so they stay legible when the camera pulls back
+  // time moving for most of us: a light pulse with a fading trail runs along the grey line, again and again
+  const defs = el('defs', {}, hud), gr = el('linearGradient', { id: 'trail', x1: 0, x2: 1, y1: 0, y2: 0 }, defs);
+  el('stop', { offset: 0, 'stop-color': '#f3efe6', 'stop-opacity': 0 }, gr); el('stop', { offset: 1, 'stop-color': '#f3efe6', 'stop-opacity': .9 }, gr);
+  const tg = el('g', {}, hud), TL = phone ? 90 : 180;
+  G.time = { g: tg, TL, trail: el('rect', { x: -TL, y: -1.5, width: TL, height: 3, fill: 'url(#trail)' }, tg),
+    halo: el('circle', { r: 11, fill: '#f3efe6', opacity: .18 }, tg), dot: el('circle', { r: 4.5, fill: '#f3efe6' }, tg) };
   G.lab = {
     rest: txt(CONTENT.rest), trump: txt(CONTENT.trump, 'ink'),
     ticks: CONTENT.ticks.map(t => ({ t: txt(t, '', 'middle'), m: el('line', { stroke: '#b4afa4', 'stroke-width': 2 }, hud) })),
@@ -224,8 +230,18 @@ function render() {
   $('counter').style.opacity = cOn; $('day').textContent = Math.max(1, Math.round(DAYS * dc));
   $('counter').firstChild.nodeValue = CONTENT.day;
 
+  placeTime();
   BEATS.caps.forEach(([a, b], i) => caps[i].classList.toggle('on', p >= a && p < b));
 }
+// the pulse crosses the screen every few seconds; with reduced motion it rests at the middle of the line
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let t0 = performance.now(), raf = 0;
+function placeTime(now = performance.now()) { if (!G) return; const { W, usY } = G, T = G.time, span = W + T.TL;
+  const period = G.phone ? 5000 : 7000, x = still ? W * .6 : ((now - t0) % period) / period * span;
+  T.g.setAttribute('transform', `translate(${x.toFixed(1)},${usY})`); }
+function tick(now) { placeTime(now); raf = requestAnimationFrame(tick); }
+function startTime() { if (!raf && !still) raf = requestAnimationFrame(tick); }
+function stopTime() { cancelAnimationFrame(raf); raf = 0; }
 $('counter').insertBefore(document.createTextNode(CONTENT.day), $('day'));
 addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(render); } }, { passive: true });
 addEventListener('resize', build);
@@ -233,7 +249,9 @@ document.fonts && document.fonts.ready.then(build);
 build();
 window.__p = p => { scrollTo(0, p * (document.documentElement.scrollHeight - innerHeight)); render(); };
 
-if (window.Spine) Spine.register({ kind: 'scroll', enter() { render(); }, leave() {} });
+// standalone, the pulse simply runs; in the spine it runs between enter() and leave()
+if (!(window.Spine && Spine.embedded)) startTime();
+if (window.Spine) Spine.register({ kind: 'scroll', enter() { render(); startTime(); }, leave() { stopTime(); } });
 </script>
 </body>
 </html>
