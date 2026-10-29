@@ -29,7 +29,7 @@
 }
 * { box-sizing: border-box; }
 body { background: var(--bg); color: var(--ink); font-family: var(--font-text); margin: 0; }
-#track { height: 560vh; position: relative; }   /* the timeline's 460 vh of scrolling plus the held screen */
+#track { height: 630vh; position: relative; }   /* the timeline's 530 vh of scrolling plus the held screen */
 /* opened on its own, the page settles on each stop; inside the spine the spine scrolls it and these do nothing */
 html:not(.in-spine) { scroll-snap-type: y proximity; }
 .stop { position: absolute; left: 0; width: 1px; height: 1px; scroll-snap-align: start; }
@@ -60,7 +60,7 @@ const Q = D.quote;
 // Every line of text on this page. All of it is a placeholder until Sam rewrites it (assembly/CONTRACT.md, section 10).
 // Numbers come from results/speech_luck.json, quoted.face_map_areas (the 3D thread, October 15).
 const CONTENT = {
-  aria: `Trump's head as the shooter saw it, coloured by what a bullet would do, turning into a pie chart: by area, the ear-only zone is ${Q.ear_share_of_circle} of a ${Q.circle_radius_cm} cm circle around the aim point.`,
+  aria: `Trump's head as the shooter saw it, coloured by what a bullet would do, turning into a pie chart: by area, the ear-only zone is ${Q.ear_share_of_circle} of a ${Q.circle_radius_cm} cm circle around the aim point. Then the same pie is relabelled: the blue ear-only slice benefits Trump, the red kills Trump, and the grey doesn't benefit Trump.`,
   capA: `The shooter's view as he fired.`,
   capMiss: `In the grey, a bullet misses him.`,
   capKill: `In the red, it kills or seriously wounds him.`,
@@ -68,6 +68,8 @@ const CONTENT = {
   capPie: `By area, the ear-only zone is ${Q.ear_share_of_circle} of the circle.`,
   capPieSmall: `Area is not the odds: shots bunch toward the middle of his head.`,
   slices: { ear: 'Ear only', serious: 'Serious wound or death', seriousShort: 'Serious wound\nor death', miss: 'Miss' },
+  // the last screen: the same pie, relabelled by what each outcome meant for Trump (Sam, 2026-10-29)
+  slicesAfter: { ear: 'Benefits Trump', serious: 'Kills Trump', seriousShort: 'Kills Trump', miss: "Doesn't benefit Trump", missShort: "Doesn't benefit\nTrump" },
 };
 document.querySelectorAll('[data-c]').forEach(el => { el.textContent = CONTENT[el.dataset.c]; });
 document.querySelectorAll('[data-c-aria]').forEach(el => el.setAttribute('aria-label', CONTENT[el.dataset.cAria]));
@@ -176,11 +178,12 @@ function layout(w, h) {
 // the scroll's beats, as fractions of the section's scroll
 // The scroll's timeline, in vh of scrolling. Every stop holds for 40 vh with nothing moving; the changes between
 // stops take 30 vh (Sam, 2026-10-17: each screen holds long enough to read, but not so long it is hard to scroll through).
-const T = 460;                       // total; #track is T + 100 vh tall
-const STOPS = { open: [0, 40], miss: [70, 110], kill: [140, 180], ear: [210, 250], pie: [405, 445] };
+const T = 530;                       // total; #track is T + 100 vh tall
+const STOPS = { open: [0, 40], miss: [70, 110], kill: [140, 180], ear: [210, 250], pie: [405, 445], relabel: [475, 515] };
 const u = x => x / T;
 const B = { miss: [u(40), u(70), u(110), u(140)], kill: [u(110), u(140), u(180), u(210)], ear: [u(180), u(210), u(250), u(280)],
-            all: [u(250), u(280)], fly: [u(290), u(390)], gone: [u(293), u(330)], pie: [u(390), u(405)] };
+            all: [u(250), u(280)], fly: [u(290), u(390)], gone: [u(293), u(330)], pie: [u(390), u(405)],
+            relabel: [u(450), u(470)] };  // the pie stays; only its labels change
 // captions: [id, fade in from, to, fade out from, to]; each one is fully on for its whole stop
 const CAPS = [['capA', -1, 0, u(40), u(50)], ['capMiss', u(60), u(70), u(110), u(120)], ['capKill', u(130), u(140), u(180), u(190)],
               ['capEar', u(200), u(210), u(250), u(260)], ['capPie', u(395), u(405), u(445), u(460)]];
@@ -265,7 +268,7 @@ function draw() {
       ctx.fill();
     }
     ctx.globalAlpha = 1;
-    if (crisp > 0) drawPie(P, colors, crisp, L);
+    if (crisp > 0) drawPie(P, colors, crisp, L, ramp(p, ...B.relabel));
   }
 }
 
@@ -289,7 +292,7 @@ function drawTube(S, dotAlpha) {
 }
 
 // the finished pie, with its labels set directly on or beside each slice
-function drawPie(P, colors, a, L) {
+function drawPie(P, colors, a, L, re = 0) {
   const ex = explode(P), bg = css('--bg');
   ctx.save(); ctx.globalAlpha = a;
   for (const s of slices) {
@@ -307,16 +310,29 @@ function drawPie(P, colors, a, L) {
   // every slice labelled (Sam, 2026-10-16): the two big slices inside, the thin ear slice above
   const at = (s, rr, o = { x: 0, y: 0 }) => ({ x: P.x + o.x + Math.sin(s.mid) * rr, y: P.y + o.y - Math.cos(s.mid) * rr });
   const sl = Object.fromEntries(slices.map(s => [s.k, s]));
-  { const c = at(sl.miss, P.r * 0.52); lab([CONTENT.slices.miss, Q.miss_share_of_circle], c.x, c.y - fs * 0.2, 'center', css('--on-fill'), true); }
-  { const c = at(sl.serious, P.r * 0.55), t = (P.r > 170 ? CONTENT.slices.serious : CONTENT.slices.seriousShort).split('\n');
-    lab([...t, Q.serious_share_of_circle], c.x, c.y - fs * 0.6 * t.length, 'center', css('--on-fill'), true); }
-  ctx.strokeStyle = css('--leader'); ctx.lineWidth = 1;
-  const top = P.y - P.r - Math.max(30, P.r * 0.16), dx = Math.max(34, P.r * 0.22);
-  for (const [s, o, name, val, side] of [[sl.ear, ex, CONTENT.slices.ear, Q.ear_share_of_circle, -1]]) {
-    const t = at(s, P.r + 4, o), x = P.x + side * dx;
-    ctx.beginPath(); ctx.moveTo(t.x, t.y); ctx.lineTo(x, top + 6); ctx.lineTo(x + side * 6, top + 6); ctx.stroke();
-    lab([name + ' ' + val], x + side * 10, top + 6 + fs * 0.35, side < 0 ? 'right' : 'left', css('--ink'), true);
-  }
+  // the two sets of labels cross-fade in place; the slices never move
+  const labels = (N, alpha) => {
+    if (alpha <= 0) return;
+    ctx.globalAlpha = a * alpha;
+    { const m = (P.r > 170 || !N.missShort ? N.miss : N.missShort).split('\n'), c = at(sl.miss, P.r * 0.52);
+      lab([...m, Q.miss_share_of_circle], c.x, c.y - fs * 0.2 - fs * 0.6 * (m.length - 1), 'center', css('--on-fill'), true); }
+    { const c = at(sl.serious, P.r * 0.55), t = (P.r > 170 ? N.serious : N.seriousShort).split('\n');
+      lab([...t, Q.serious_share_of_circle], c.x, c.y - fs * 0.6 * t.length, 'center', css('--on-fill'), true); }
+    ctx.strokeStyle = css('--leader'); ctx.lineWidth = 1;
+    const top = P.y - P.r - Math.max(30, P.r * 0.16), dx = Math.max(34, P.r * 0.22);
+    for (const [s, o, name, val] of [[sl.ear, ex, N.ear, Q.ear_share_of_circle]]) {
+      // the ear label sits to the left of the slice unless the screen is too narrow for it there
+      ctx.font = `700 ${fs}px ${head}`;
+      const wide = ctx.measureText(name + ' ' + val).width, room = P.x - dx - 10 - 12;
+      const side = room >= wide ? -1 : 1, oneLine = room >= wide || cv.clientWidth - P.x - dx - 10 - 12 >= wide;
+      const t = at(s, P.r + 4, o), x = P.x + side * dx, lines = oneLine ? [name + ' ' + val] : [name, val];
+      const y = top + 6 - (lines.length - 1) * fs * 1.2;
+      ctx.beginPath(); ctx.moveTo(t.x, t.y); ctx.lineTo(x, y); ctx.lineTo(x + side * 6, y); ctx.stroke();
+      lab(lines, x + side * 10, y + fs * 0.35, side < 0 ? 'right' : 'left', css('--ink'), true);
+    }
+  };
+  labels(CONTENT.slices, 1 - clamp(re * 2));         // the old names leave, then the new ones arrive
+  labels(CONTENT.slicesAfter, clamp(re * 2 - 1));
   ctx.restore();
 }
 
