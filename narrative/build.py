@@ -14,9 +14,9 @@ ASM = '/mnt/project-files/assembly'
 spec = importlib.util.spec_from_file_location('assembly_build', f'{ASM}/build.py')
 ab = importlib.util.module_from_spec(spec); spec.loader.exec_module(ab)
 
-USED = ['opening', 'loops', 'earbyarea', 'chartminute', 'bump', 'loop']
+USED = ['opening', 'loops', 'earbyarea', 'target', 'chartminute', 'bump', 'loop']
 # the sources-panel files for those sections, in the order they appear in the narrative
-PANEL = ['00-piece', '05-open', '20-opening', '65-loops', '25-earbyarea', '50-chartminute', '55-bump', '27-loop']
+PANEL = ['00-piece', '05-open', '20-opening', '65-loops', '25-earbyarea', '40-target', '50-chartminute', '55-bump', '27-loop']
 
 
 def copy_sections():
