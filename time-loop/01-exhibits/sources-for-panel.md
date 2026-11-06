@@ -10,4 +10,4 @@ Five exhibits since v24; order and exhibit 3 as of v25 (Oct 16). The page shows 
 - Cork board: board photo generated with Google Gemini; paper textures from ambientCG (CC0); push pins rendered in 3D for this piece.
 - Clips are shown for commentary in a personal, non-commercial project and belong to their owners.
 
-Methodology: Trump clips were cut from Internet Archive TV News Archive items and cropped to a tall frame by a face tracker (time-loop/tools/reframe.py). The RNC clip is item CSPAN_20240719_023100, seconds 511.5 to 529.9.
+Methodology: Trump clips were cut from Internet Archive TV News Archive items and cropped to a tall frame by a face tracker (time-loop/tools/reframe.py). The RNC clip is item CSPAN_20240719_023100, seconds 516.77 to 529.9.
