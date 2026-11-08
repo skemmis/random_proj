@@ -1,0 +1,1 @@
+- Exhibit 5. "Palm Springs": Nyles takes an arrow and lies back on his float. Butler, Pa., July 13, 2024, a minute after the shot: Trump rises and raises his fist (the Butler broadcast, via the Internet Archive).
