@@ -16,7 +16,8 @@ ab = importlib.util.module_from_spec(spec); spec.loader.exec_module(ab)
 
 USED = ['opening', 'loops', 'earbyarea', 'target', 'chartminute', 'bump', 'loop']
 # files an owner has retired that assembly's SECTIONS table still copies (The Loop Hypothesis cut exhibit 5, Nov 8)
-EXTRA_SKIP = {'loop': ['reaction-film.*', 'reaction-trump.mp4', 'reaction-trump.jpg', 'reaction-trump-end.jpg']}
+EXTRA_SKIP = {'loop': ['reaction-film.*', 'reaction-trump.mp4', 'reaction-trump.jpg', 'reaction-trump-end.jpg'],
+              'loops': ['clean', 'tools', 'panels', 'README.md', '*.png', '*.jpg', '*.md']}
 # the sources-panel files for those sections, in the order they appear in the narrative
 PANEL = ['00-piece', '05-open', '20-opening', '65-loops', '25-earbyarea', '40-target', '50-chartminute', '55-bump', '27-loop']
 
