@@ -356,7 +356,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
     <p>Each loop is like a video game level: If he fails, he starts over again. This repeated &ldquo;practice&rdquo; grants him superhuman abilities, like a video game speedrunner.</p>
   </div>
 </section>
-<div class="spacer" data-section="loops" data-src="sections/loops/index.html" data-kind="scroll" data-span="540" data-autospan data-mount="3" data-title="The Loops"></div>
+<div class="spacer" data-section="loops" data-src="sections/loops/index.html" data-kind="scroll" data-span="540" data-autospan data-mount="3" data-title="The Loops" data-stops=".22,.44,.72,.9"></div>
 
 <!-- EXHIBIT B -->
 <section class="chapter exhibit gut nb" data-chapter aria-label="Exhibit B: The Shot">
@@ -521,7 +521,9 @@ function layout() {
 // ---- stops: a hard fling halts at the start of the next section or card, so a fast reader never overshoots a chapter (Sam, Oct 16) ----
 let STOPS = [], anchor = 0, idleT = 0, holding = false, heldAt = 0, lastInput = 0;
 // in the narrative only a section's start is a stop; the text blocks between sections scroll freely
-function computeStops() { STOPS = [...new Set(SECS.map(s => Math.round(s.top + s.hPx)))].filter(y => y > 0).sort((a, b) => a - b); }
+// a section can also name its landmarks (data-stops, shares of its own scroll), where a fling halts so the reader sees the picture and its line (Sam, Nov 8: The Loops)
+function computeStops() { const own = SECS.flatMap(s => (s.el.dataset.stops || '').split(',').filter(Boolean).map(p => Math.round(s.top + s.hPx + +p * s.sPx)));
+  STOPS = [...new Set([...SECS.map(s => Math.round(s.top + s.hPx)), ...own])].filter(y => y > 0).sort((a, b) => a - b); }
 function jumpTo(y) { anchor = y; scrollTo(0, y); }   // a deliberate jump (review hooks, links) is not a fling
 function halt(stop) {
   cancelAnimationFrame(coast); vel = 0; target = null; cancelAnimationFrame(raf); raf = 0;
