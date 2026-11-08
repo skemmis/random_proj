@@ -4,3 +4,6 @@ Montage: news footage from C-SPAN, CNN, MSNBC and the Butler broadcast via the I
 
 ## The opening's music
 Music: "Rewound" by Chris Zabriskie (CC BY 3.0).
+
+## Music under the opening lines and the montage
+Music: "Cylinder Five" by Chris Zabriskie (CC BY 4.0), via the Free Music Archive.

@@ -106,6 +106,8 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 .nb.read { min-height: 100svh; display: grid; align-content: center; }   /* a reading block always fills the screen, so no section shows around it */
 .open { pointer-events: auto; }   /* the title page takes clicks, so the sound buttons work */
 .open #gate { margin-top: 26px; }
+.beats #gate { margin-top: clamp(28px, 6vh, 56px); pointer-events: auto; }
+.beats #gate .k { color: var(--ink-on-night); }
 #gate .state { display: none; margin: 0; font: 600 15px/1.4 var(--font-head); color: var(--ink-night); }
 #gate .state svg { width: 1.2em; height: 1.2em; vertical-align: -.25em; margin-right: .45em; }
 #gate.chosen .k, #gate.chosen #soundOn, #gate.chosen #soundOff { display: none; }
@@ -240,9 +242,16 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 <main id="flow">
 
 <!-- 1. COLD OPEN: Sam's five opening lines, one per screen -->
+<audio id="bed" src="audio/bed.mp3" loop preload="auto"></audio>
 <section class="beats nb" id="cold-open" aria-label="Opening">
   <div class="bg" aria-hidden="true"><video class="layer" data-i="0" muted loop playsinline preload="auto" poster="vid/reporter.jpg" style="object-position:56% 30%"><source src="vid/reporter.webm" type="video/webm"><source src="vid/reporter.mp4" type="video/mp4"></video><video class="layer" data-i="1" muted loop playsinline preload="auto" poster="vid/tape.jpg" style="object-position:50% 30%"><source src="vid/tape.webm" type="video/webm"><source src="vid/tape.mp4" type="video/mp4"></video><video class="layer" data-i="2" muted loop playsinline preload="auto" poster="vid/dogs.jpg" style="object-position:50% 30%"><source src="vid/dogs.webm" type="video/webm"><source src="vid/dogs.mp4" type="video/mp4"></video></div>
-  <div class="beat gut" data-bg="0"><p class="fade">Donald Trump has earned the nickname &ldquo;Teflon Don&rdquo; for his ability to overcome gaffs and scandals that would sink most political careers.</p></div>
+  <div class="beat gut" data-bg="0"><p class="fade">Donald Trump has earned the nickname &ldquo;Teflon Don&rdquo; for his ability to overcome gaffs and scandals that would sink most political careers.</p>
+      <div id="gate" role="dialog" aria-label="Sound">
+        <span class="k">This story has music and sound, including gunfire</span>
+        <button id="soundOn" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Turn sound on</button>
+        <button id="soundOff" type="button">Keep it silent</button>
+        <p class="state" aria-live="polite"><span class="on"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Sound is on. Scroll to begin.</span><span class="off">Sound is off. Turn it on any time with the switch at the top right.</span></p>
+      </div></div>
   <div class="beat gut" data-bg="1"><p class="fade">Critics bemoan this ability with disbelief. How can someone succeed while making so many mistakes by the traditional rules of politics?</p></div>
   <div class="beat gut" data-bg="2"><p class="fade">But maybe this ability isn&rsquo;t a personality trait. Or the result of good luck.</p></div>
 </section>
@@ -301,12 +310,6 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
     <p class="sub">A Pulitzer-worthy analysis</p>
     <hr>
     <p class="by">By Sam Kemmis</p>
-      <div id="gate" role="dialog" aria-label="Sound">
-        <span class="k">This story has sound, including gunfire</span>
-        <button id="soundOn" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Turn sound on</button>
-        <button id="soundOff" type="button">Keep it silent</button>
-        <p class="state" aria-live="polite"><span class="on"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Sound is on. Scroll to begin.</span><span class="off">Sound is off. Turn it on any time with the switch at the top right.</span></p>
-      </div>
   </div>
   </div>
 </header>
@@ -441,10 +444,11 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 <p>Exhibit 5: Nyles takes an arrow and lies back on his float; a minute after the shot at Butler, Pa., July 13, 2024, Trump rises and raises his fist.</p>
 <p>Cork board: board photo generated with Google Gemini; paper textures from ambientCG (CC0); push pins rendered in 3D for this piece.</p>
 <p>Clips are shown for commentary in a personal, non-commercial project and belong to their owners.</p>
-<h3>The opening's music</h3>
+<h3>Music under the opening lines and the montage</h3>
 <p>Gaffe footage: Trump at Myrtle Beach, South Carolina, November 24, 2015, from CNN's "Anderson Cooper 360"; the 2005 Access Hollywood tape, as published by The Washington Post on October 7, 2016; the presidential debate in Philadelphia, September 10, 2024, from ABC News. All via the Internet Archive.</p>
 <p>Montage: news footage from C-SPAN, CNN, MSNBC and the Butler broadcast via the Internet Archive; film clips from "Groundhog Day" (Columbia Pictures, 1993) and "Edge of Tomorrow" (Warner Bros., 2014); animations from this piece's own sections. Effects added by us.</p>
 <p>Music: "Rewound" by Chris Zabriskie (CC BY 3.0).</p>
+<p>Music: "Cylinder Five" by Chris Zabriskie (CC BY 4.0), via the Free Music Archive.</p>
 <details class="method"><summary>Methodology</summary>
 <h3>Butler, 6:11 p.m.</h3>
 <p>We built the grounds from a 2019 U.S. Geological Survey lidar survey, aerial photographs taken July 28, 2024, and a drone photograph released by the House task force that investigated the shooting. The stage, bleachers and riser are sized by estimate.</p>
@@ -732,6 +736,28 @@ function frame() {
   const n = Math.round(q * full.length);
   const br = t => t.replace(/,/g, ',<wbr>');
   digits.innerHTML = br(full.slice(0, n)) + '<span style="--o:.12">' + br(full.slice(n)) + '</span>';
+  if (typeof levelBed === 'function' && bed) levelBed();
+}
+// the music bed under the opening lines and the montage: it starts inside the sound tap (where browsers allow sound),
+// follows the sound switch, and fades out as the title comes in (Sam, Nov 8). Web Audio gain, because iPhones ignore audio.volume.
+const bed = document.getElementById('bed');
+let actx = null, gain = null, bedLevel = 0;
+function startBed() {
+  try { const AC = window.AudioContext || window.webkitAudioContext; actx = new AC(); gain = actx.createGain(); gain.gain.value = 0;
+    actx.createMediaElementSource(bed).connect(gain).connect(actx.destination); } catch (e) { actx = null; }
+  bed.play().catch(() => {}); levelBed();
+}
+document.getElementById('soundOn').addEventListener('click', startBed);
+window.__bed = () => ({ paused: bed.paused, at: +bed.currentTime.toFixed(1), level: bedLevel });
+document.getElementById('snd').addEventListener('click', () => { if (!actx && window.SpineHost && SpineHost.sound) startBed(); setTimeout(levelBed, 0); });
+function levelBed() {
+  if (!bed) return;
+  const t = +(getComputedStyle(hero).getPropertyValue('--t') || 0);
+  const level = window.SpineHost && SpineHost.sound ? Math.round(Math.max(0, 1 - t) * 100) / 100 : 0;
+  if (level === bedLevel && (level > 0) === !bed.paused) return;
+  bedLevel = level;
+  if (gain) gain.gain.setTargetAtTime(level, actx.currentTime, .25); else bed.volume = level;
+  if (level > 0.001) { if (bed.paused) bed.play().catch(() => {}); } else if (!bed.paused) setTimeout(() => { if (bedLevel <= 0.001) bed.pause(); }, 900);
 }
 function req() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 addEventListener('scroll', req, { passive: true });
