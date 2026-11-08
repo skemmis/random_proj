@@ -64,7 +64,14 @@
   .lab.ink { fill: var(--ink-on-night); }
   .lab.big { font-size: 15px; }
   .panel { position: absolute; left: 0; top: 0; border: 3px solid var(--ink-on-night); background: #000 center / cover no-repeat;
-           box-shadow: 0 0 0 6px var(--night); opacity: 0; transform-origin: 0 0; will-change: transform, opacity; }
+           box-shadow: 0 0 0 6px var(--night); opacity: 0; transform-origin: 0 0; will-change: transform, opacity;
+           border-color: rgba(214, 204, 186, .55); overflow: hidden; animation: flicker 4.7s steps(1) infinite; }
+  /* the montage's tape look: the images are pre-roughened (tools/rough.py); a soft bright band rolls down and the frame flickers */
+  .panel::after { content: ""; position: absolute; left: 0; right: 0; top: -30%; height: 22%; pointer-events: none; mix-blend-mode: screen;
+           background: linear-gradient(transparent, rgba(255, 244, 220, .13) 45%, rgba(255, 244, 220, .2) 50%, transparent); animation: roll 6.5s linear infinite; }
+  @keyframes roll { to { top: 110%; } }
+  @keyframes flicker { 0%, 100% { filter: none; } 31% { filter: brightness(1.12) contrast(.94); } 33% { filter: none; } 72% { filter: brightness(.88); } 73.5% { filter: none; } }
+  @media (prefers-reduced-motion: reduce) { .panel, .panel::after { animation: none; } }
   #counter { position: absolute; top: 22px; left: 24px; font: 600 var(--fs-label) var(--font-clock); letter-spacing: .08em;
              color: var(--dim-on-night); opacity: 0; }
   #counter span { display: block; font-size: clamp(30px, 4vw, 52px); color: var(--ink-on-night); line-height: 1.05; }
