@@ -247,7 +247,7 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
   <div class="bg" aria-hidden="true"><video class="layer" data-i="0" muted loop playsinline preload="auto" poster="vid/reporter.jpg" style="object-position:56% 30%"><source src="vid/reporter.webm" type="video/webm"><source src="vid/reporter.mp4" type="video/mp4"></video><video class="layer" data-i="1" muted loop playsinline preload="auto" poster="vid/tape.jpg" style="object-position:50% 30%"><source src="vid/tape.webm" type="video/webm"><source src="vid/tape.mp4" type="video/mp4"></video><video class="layer" data-i="2" muted loop playsinline preload="auto" poster="vid/dogs.jpg" style="object-position:50% 30%"><source src="vid/dogs.webm" type="video/webm"><source src="vid/dogs.mp4" type="video/mp4"></video></div>
   <div class="beat gut" data-bg="0"><p class="fade">Donald Trump has earned the nickname &ldquo;Teflon Don&rdquo; for his ability to overcome gaffs and scandals that would sink most political careers.</p>
       <div id="gate" role="dialog" aria-label="Sound">
-        <span class="k">This story has music and sound, including gunfire</span>
+        <span class="k">This story has sound, including gunfire</span>
         <button id="soundOn" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Turn sound on</button>
         <button id="soundOff" type="button">Keep it silent</button>
         <p class="state" aria-live="polite"><span class="on"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Sound is on. Scroll to begin.</span><span class="off">Sound is off. Turn it on any time with the switch at the top right.</span></p>
@@ -436,14 +436,14 @@ body { margin: 0; background: var(--night); color: var(--ink-night); font-family
 <p>Chart 1 (the evening of July 13): Price of "Trump wins" on Polymarket, noon July 13 to noon July 14, Eastern time. We smoothed it over about 15 minutes to remove half-cent jumps between buying and selling prices, stopping at the shot so the line does not rise early.</p>
 <p>Chart 2 (the three events): Polymarket, smoothed over about 15 minutes, with the smoothing stopped at each event. Event start: debate 9 p.m. June 27; first shot 6:11 p.m. July 13; Biden's announcement 1:46 p.m. July 21, all Eastern time.</p>
 <h3>The Loop Hypothesis</h3>
-<p>Film clips: "Groundhog Day" (Columbia Pictures, 1993), "Edge of Tomorrow" (Warner Bros., 2014) and "Palm Springs" (Hulu and Neon, 2020). Trump clips: CNN, C-SPAN and MSNBC, via the Internet Archive's TV News Archive, and the Butler broadcast, via the Internet Archive.</p>
+<p>Film clips: "Groundhog Day" (Columbia Pictures, 1993), "Edge of Tomorrow" (Warner Bros., 2014) and "Palm Springs" (Hulu and Neon, 2020). Trump clips: CNN, C-SPAN and MSNBC, via the Internet Archive's TV News Archive.</p>
 <p>Exhibit 1: Phil, drunk at the wheel, asks two locals what they would do if there were no tomorrow; Trump at Dordt College, Sioux Center, Iowa, Jan. 23, 2016.</p>
 <p>Exhibit 2: Cage (Tom Cruise) is shot in training and tries again; Trump at the Republican National Convention, Milwaukee, July 18, 2024: "If I had not moved my head at that very last instant..."</p>
 <p>Exhibit 3: Nyles (Andy Samberg) drinks from other wedding guests' glasses; Trump shoves past Duško Marković, Montenegro's prime minister, at the NATO summit in Brussels, May 25, 2017.</p>
 <p>Exhibit 4: Phil gives the same forecast again; Trump stops taking questions and sways to music at a town hall in Oaks, Pa., Oct. 14, 2024.</p>
 <p>Cork board: board photo generated with Google Gemini; paper textures from ambientCG (CC0); push pins rendered in 3D for this piece.</p>
 <p>Clips are shown for commentary in a personal, non-commercial project and belong to their owners.</p>
-<h3>Music under the opening lines and the montage</h3>
+<h3>Music under the montage</h3>
 <p>Gaffe footage: Trump at Myrtle Beach, South Carolina, November 24, 2015, from CNN's "Anderson Cooper 360"; the 2005 Access Hollywood tape, as published by The Washington Post on October 7, 2016; the presidential debate in Philadelphia, September 10, 2024, from ABC News. All via the Internet Archive.</p>
 <p>Montage: news footage from C-SPAN, CNN, MSNBC and the Butler broadcast via the Internet Archive; film clips from "Groundhog Day" (Columbia Pictures, 1993) and "Edge of Tomorrow" (Warner Bros., 2014); animations from this piece's own sections. Effects added by us.</p>
 <p>Music: "Rewound" by Chris Zabriskie (CC BY 3.0).</p>
@@ -726,7 +726,8 @@ function frame() {
     layers.forEach(l => {
       const on = +l.dataset.i === best;
       l.classList.toggle('on', on);
-      if (l.tagName === 'VIDEO') { if (on && near && !reduce) l.play().catch(() => {}); else l.pause(); }
+      // each gaffe plays with its own sound when sound is on, from the start of its line (Sam, Nov 8)
+      if (l.tagName === 'VIDEO') { l.muted = !(window.SpineHost && SpineHost.sound); if (on && near && !reduce) { if (l.paused) l.currentTime = 0; l.play().catch(() => {}); } else l.pause(); }
     });
   }
   // the denominator writes itself out as it crosses the screen
@@ -737,7 +738,7 @@ function frame() {
   digits.innerHTML = br(full.slice(0, n)) + '<span style="--o:.12">' + br(full.slice(n)) + '</span>';
   if (typeof levelBed === 'function' && bed) levelBed();
 }
-// the music bed under the opening lines and the montage: it starts inside the sound tap (where browsers allow sound),
+// the music bed under the montage: it starts inside the sound tap (where browsers allow sound),
 // follows the sound switch, and fades out as the title comes in (Sam, Nov 8). Web Audio gain, because iPhones ignore audio.volume.
 const bed = document.getElementById('bed');
 let actx = null, gain = null, bedLevel = 0;
@@ -746,13 +747,18 @@ function startBed() {
     actx.createMediaElementSource(bed).connect(gain).connect(actx.destination); } catch (e) { actx = null; }
   bed.play().catch(() => {}); levelBed();
 }
-document.getElementById('soundOn').addEventListener('click', startBed);
+document.getElementById('soundOn').addEventListener('click', () => { startBed(); gaffeSound(true); });
+// unmuting inside the tap lets phones play the gaffes' sound; the current one restarts so its line is heard from the top
+function gaffeSound(restart) { const on = !!(window.SpineHost && SpineHost.sound);
+  layers.forEach(l => { if (l.tagName !== 'VIDEO') return; l.muted = !on; if (l.classList.contains('on') && shown >= 0) { if (restart) l.currentTime = 0; l.play().catch(() => {}); } }); }
 window.__bed = () => ({ paused: bed.paused, at: +bed.currentTime.toFixed(1), level: bedLevel });
-document.getElementById('snd').addEventListener('click', () => { if (!actx && window.SpineHost && SpineHost.sound) startBed(); setTimeout(levelBed, 0); });
+document.getElementById('snd').addEventListener('click', () => { if (!actx && window.SpineHost && SpineHost.sound) startBed(); gaffeSound(false); setTimeout(levelBed, 0); });
 function levelBed() {
   if (!bed) return;
   const t = +(getComputedStyle(hero).getPropertyValue('--t') || 0);
-  const level = window.SpineHost && SpineHost.sound ? Math.round(Math.max(0, 1 - t) * 100) / 100 : 0;
+  // the gaffes carry their own sound, so the music comes in only as the montage rises into view
+  const m = Math.max(0, Math.min(1, (innerHeight - mosaic.getBoundingClientRect().top) / innerHeight));
+  const level = window.SpineHost && SpineHost.sound ? Math.round(m * Math.max(0, 1 - t) * 100) / 100 : 0;
   if (level === bedLevel && (level > 0) === !bed.paused) return;
   bedLevel = level;
   if (gain) gain.gain.setTargetAtTime(level, actx.currentTime, .25); else bed.volume = level;
